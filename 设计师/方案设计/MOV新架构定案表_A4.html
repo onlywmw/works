@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MOV 新架构定案表（MOV × dsh 对照 · A4 竖版黑白打印版）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #fff; }
+
+  @media screen {
+    .sheet { width: 210mm; height: 297mm; margin: 12px auto; background: #fff;
+             border: 1px solid #000; overflow: hidden; }
+  }
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: #fff; }
+    .sheet { width: 210mm; height: 297mm; page-break-after: always; }
+    .sheet:last-child { page-break-after: auto; }
+  }
+
+  .sheet { padding: 9mm 10mm; }
+  h1 { font-size: 18pt; text-align: center; font-weight: bold; letter-spacing: 1px;
+       margin-bottom: 3mm; }
+  .meta { font-size: 9.5pt; text-align: center; margin-bottom: 5mm; }
+
+  h2 { font-size: 12pt; color: #000; font-weight: bold;
+       padding: 1.5mm 0 1mm; margin: 6mm 0 3mm; border-bottom: 1.2pt solid #000; }
+
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  th, td { border: .6pt solid #000; padding: 2.2mm 2.5mm; vertical-align: top;
+           font-size: 9pt; line-height: 1.5; word-wrap: break-word; }
+  th { font-size: 10pt; }
+  thead th { color: #000; font-weight: bold; }
+
+  col.dim { width: 30mm; }
+  col.a { width: 76mm; }
+  col.b { width: 76mm; }
+
+  .dim { font-weight: bold; }
+  .dsh { font-weight: bold; }
+  .keep { font-weight: bold; }
+  .foot { text-align: center; font-size: 8.5pt; margin-top: 4mm; }
+</style>
+</head>
+<body>
+
+<!-- ================= 第 1 页 ================= -->
+<div class="sheet">
+  <h1>MOV 新架构定案表（MOV × dsh 对照）</h1>
+  <div class="meta">依据：2026-08-18 逐项核对 30 项全部定案（决策 26 条）　|　标记：<b>→dsh</b> = 采用 dsh 方案　<b>保留</b> = MOV 原有机制不动　MCP = 注册 MCP 化</div>
+
+  <h2>A. 总体架构</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>dsh 参照</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">A1 三巨头拆解</td>
+        <td>AgentLoop/Journal/ToolRegistry 拆解（循环/会话/工具注册分模块）</td>
+        <td>core/* 独立包 + 能力包</td></tr>
+      <tr><td class="dim">A2 分层形态</td>
+        <td><b>LLM 层（ai/model/serve）→ Agent 层（核心循环）→ 外围能力包（MCP 工具等）</b>；UI 层经 MCP 调用</td>
+        <td>llm/* → core/* → 外围能力包</td></tr>
+      <tr><td class="dim">A3 运行形态</td>
+        <td><b>删除 proot + llama 本地推理</b>——纯安卓应用（全云端）</td>
+        <td>桌面 Web + headless + native 沙箱</td></tr>
+      <tr><td class="dim">A4 扩展机制</td>
+        <td><b>注册 MCP</b>（工具/模型/权限/错误/UI 组件 = MCP 服务器，McpServerStore 配置即注册）</td>
+        <td>everything is a plugin（Cordis 插件树）</td></tr>
+    </tbody>
+  </table>
+
+  <h2>B. 真相源与持久化（Journal 保留 + dsh 加层）</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>dsh 参照</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">B1 会话存储</td>
+        <td><b>保留</b>：Journal append-only 事件日志（唯一真理源，红线）</td>
+        <td>SessionEvent 日志 = 真理源（同理念）</td></tr>
+      <tr><td class="dim">B2 重放保真</td>
+        <td><b>→dsh</b>：assistant/chunk 逐 chunk 落盘 + sourceEventSeqs 关联</td>
+        <td>chunk 级保真 + 关联 seq</td></tr>
+      <tr><td class="dim">B3 崩溃恢复</td>
+        <td><b>→dsh</b>：request/header Epoch 快照 + 离线折叠重建（替代 startRecovery）</td>
+        <td>Epoch 快照 + foldRequestHeader</td></tr>
+      <tr><td class="dim">B4 事件可扩展</td>
+        <td><b>→dsh</b>：事件注册表化 + ignorable 标记（替代 EventType 常量 + 9 处 switch）</td>
+        <td>merge-extensible SessionEventMap</td></tr>
+      <tr><td class="dim">B5 重试恢复</td>
+        <td><b>保留</b> UPG-08 分级退避/熔断/failover + <b>补</b> durable retry（llm/retry 落盘续退避）</td>
+        <td>durable retry（重试计划落盘）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 1 / 5 页 —— MOV 新架构定案（2026-08-18）</div>
+</div>
+
+<!-- ================= 第 2 页 ================= -->
+<div class="sheet">
+  <h2>C. 模型可见上下文</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>dsh 参照</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">C1 投影机制</td>
+        <td><b>→dsh</b>：Surface 投影（删 ConversationProjector）——compaction 只换投影、日志永不删</td>
+        <td>Surface + surfaceOp replace + sourceEventSeqs</td></tr>
+      <tr><td class="dim">C2 上下文预算</td>
+        <td><b>保留</b>：ContextBudget（分层分配/CUT_ORDER/最低保留/4 态降级/85% 触发）+ 衔接：降级"砍"改"换投影"</td>
+        <td>token-meter replay 计量</td></tr>
+      <tr><td class="dim">C3 超长结果</td>
+        <td><b>→dsh</b>：spill——超 maxInlineBytes 存私有文件（0600）+ head/tail 预览 + 定位符；read 跳过防循环、失败不报错</td>
+        <td>spill-policy（外部存储 + 预览）</td></tr>
+    </tbody>
+  </table>
+
+  <h2>D. Agent 循环</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>dsh 参照</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">D1 循环主体</td>
+        <td><b>→dsh</b>：ReactLoopAgent 工具驱动（turn/step + 日志派生 + chunk 流式 + max-tokens 粘性）；不保留计划审批特色</td>
+        <td>ReactLoopAgent（核心 496 行）</td></tr>
+      <tr><td class="dim">D2 状态管理</td>
+        <td><b>→dsh</b>：Phase 状态机（idle/running/maintenance）+ 任务进度 = 日志派生（删 AgentContext 状态机）</td>
+        <td>Phase + 日志即状态</td></tr>
+      <tr><td class="dim">D3 换模型</td>
+        <td><b>MCP 化</b>：模型 = MCP 服务器注册/切换；prompt 快照 + request 应用一致性；换模型记 request/header</td>
+        <td>agent/request waterfall + model-selection</td></tr>
+      <tr><td class="dim">D4 中途干预</td>
+        <td><b>→dsh</b>：Inbox 三通道（steer/followup/inject）+ pre-execute approval（删 gateLock 阻塞式）</td>
+        <td>Inbox + approval waterfall</td></tr>
+      <tr><td class="dim">D5 截断防护</td>
+        <td><b>→dsh</b>：BlockAssembler max-tokens 丢残缺 tool-call 块 + max-tokens 粘性</td>
+        <td>BlockAssembler + 粘性</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 2 / 5 页</div>
+</div>
+
+<!-- ================= 第 3 页 ================= -->
+<div class="sheet">
+  <h2>E. 工具系统</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>dsh 参照</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">E1 注册表</td>
+        <td><b>MCP 注册保留</b>（ToolRegistry 瘦身为注册中心+查找表）+ <b>补</b> dsh pre→execute→post 流水线 + scoped agent 级隔离</td>
+        <td>ToolRuntime 流水线 + scope</td></tr>
+      <tr><td class="dim">E2 工具呈现</td>
+        <td><b>保留</b>流式+卡片 + <b>MCP 工具自描述</b>（视图词汇 read/terminal/diff/search/web，前端通用分派删特判）</td>
+        <td>presentCall/presentResult 词汇</td></tr>
+      <tr><td class="dim">E3 工具面收缩</td>
+        <td><b>→dsh</b>：Code Mode（native/code/both）——code 模式只暴露执行器 + 自动 SDK，其余 UNKNOWN_TOOL 塌缩</td>
+        <td>ToolPresentationMode</td></tr>
+      <tr><td class="dim">E4 权限门</td>
+        <td><b>MCP 化 + 权限模式</b>：permission.guard + 模式（strict 默认/standard/open/custom）；切换只归人、默认严格、系统底线护栏</td>
+        <td>monotonic guards + approval</td></tr>
+      <tr><td class="dim">E5 执行模式</td>
+        <td><b>→dsh</b>：去掉双脑（Worker 接口）——长任务 = subagent fork（父前缀作种子 + continuable + delegationDepth ≤2）；工具批 = isConcurrencySafe</td>
+        <td>subagent + isConcurrencySafe</td></tr>
+    </tbody>
+  </table>
+
+  <h2>H. 前端与通信</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>dsh 参照</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">H1 前端</td>
+        <td>拆 newface.js（3935 行→模块）；UI 组件 = MCP 注册；<b>前端 = MCP 客户端 + 词汇渲染器</b>（只留两样）</td>
+        <td>Web UI + Chat Node 插件</td></tr>
+      <tr><td class="dim">H2 桥接层</td>
+        <td><b>142 桥方法全删</b>——McpServer = 对外唯一通道（前端 MCP JSON-RPC 直达）；BridgeKernel/9 子桥退役；不建 HTTP API 网关（对内对外都 MCP）</td>
+        <td>api-gateway（HTTP，dsh 因插件非 MCP 才需要）</td></tr>
+      <tr><td class="dim">H3 测试</td>
+        <td><b>安全口，不 MCP 化</b>：单测（JUnit 直接测）/前端模块测试/真机验收/CI 自动跑/arch-check 架构守门；MCP 仅契约测试</td>
+        <td>pytest + spec + 生成式文档</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 3 / 5 页</div>
+</div>
+
+<!-- ================= 第 4 页 ================= -->
+<div class="sheet">
+  <h2>F. 记忆 · 检索 · 错误 · 凭据 · 加密</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>dsh 参照</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">F1 长期记忆</td>
+        <td><b>保留</b>：M-LIFE 生命周期（晋升/衰减/幂等/引用证据）+ causal 因果引擎（四元组 + 规则匹配）</td>
+        <td>无内置（用检索替代）</td></tr>
+      <tr><td class="dim">F2 会话检索</td>
+        <td><b>→dsh</b>：FTS5 双虚表（persisted/live）+ traceEvent 血缘（对接 MCP 工具调用记录）；M-LIFE 打点迁移</td>
+        <td>session-query（FTS5 + 血缘）</td></tr>
+      <tr><td class="dim">F3 错误分类</td>
+        <td><b>MCP 化</b>：错误事实化 = MCP 契约字段（kind/retryable/code）+ error.classify + error.report + 防 SDK getter 陷阱</td>
+        <td>normalizeLlmFailure（事实化）</td></tr>
+      <tr><td class="dim">F4 凭据</td>
+        <td><b>保留</b>：CredentialStore 引用式（0600 + Keystore AES-GCM）+ <b>补</b>原子写 + 权限校验</td>
+        <td>CredentialRef + 0600 原子写 + assertOwnerOnly</td></tr>
+      <tr><td class="dim">F5 加密/沙箱</td>
+        <td><b>保留</b>：vault（Keystore + AES-GCM + DualWriter 双写 + KeyguardGate）；<b>沙箱不借鉴</b>（Android 系统自带 + SELinux）</td>
+        <td>landlock 沙箱（桌面，Android 不适用）</td></tr>
+    </tbody>
+  </table>
+
+  <h2>工程治理（非架构项，独立清单）</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>项</th><th>动作</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">仓库收敛</td>
+        <td>94 未推分支逐个评估（有工作→推送；死的→删）</td>
+        <td>远程 main = 唯一真相源</td></tr>
+      <tr><td class="dim">最小 CI</td>
+        <td>push → 编译 + 单测 + JS 测试 + arch-check</td>
+        <td>机器自动验证</td></tr>
+      <tr><td class="dim">清理</td>
+        <td>61 空壳目录 + new-mov 遗留仓库</td>
+        <td>打扫治理</td></tr>
+      <tr><td class="dim">分支纪律</td>
+        <td>工单分支一律推远程，合 main 后删</td>
+        <td>防再堆积</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 4 / 5 页</div>
+</div>
+
+<!-- ================= 第 5 页 ================= -->
+<div class="sheet">
+  <h2>总结：新架构全景</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <thead><tr><th>层</th><th>MOV 新架构</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">对外</td>
+        <td><b>全 MCP</b>：前端 JS / 外部集成 / 测试 = MCP 客户端；McpServer = 唯一通道（对内对外一套协议）</td>
+        <td>桥层 142 方法全删，不建 HTTP API</td></tr>
+      <tr><td class="dim">LLM 层</td>
+        <td>ai/ model/ serve/（云端，llama 已删）；模型 = MCP 注册</td>
+        <td>怎么和模型说话</td></tr>
+      <tr><td class="dim">Agent 层</td>
+        <td>循环（dsh ReactLoopAgent）+ 状态（Phase+日志派生）+ Journal（保留+chunk/Epoch/事件表/durable retry）+ ContextBudget</td>
+        <td>跑一个 agent</td></tr>
+      <tr><td class="dim">外围能力包</td>
+        <td>MCP 工具 / skill / workflow / causal / context / subagent / memory / retrieval / 权限模式 / vault / 错误</td>
+        <td>能力即 MCP 注册</td></tr>
+      <tr><td class="dim">前端</td>
+        <td>MCP 客户端 + 词汇渲染器（拆模块、UI 组件 MCP 注册）</td>
+        <td>只留两样</td></tr>
+    </tbody>
+  </table>
+
+  <h2>保留基线红线（改造中禁止改语义）</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <tbody>
+      <tr><td class="dim">红线</td>
+        <td>Journal append-only（B1）｜ ContextBudget 4 态降级（C2）｜ 卡片呈现（E2）｜ M-LIFE 记忆（F1）｜ vault 加密（F5）｜ 凭据 0600 引用式（F4）｜ 测试独立安全口（H3）</td>
+        <td>7 项不动</td></tr>
+    </tbody>
+  </table>
+
+  <h2>改造顺序（工程治理前置 → 日志侧 → 循环 → 工具 → 前端）</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="b"></colgroup>
+    <tbody>
+      <tr><td class="dim">第一批</td>
+        <td>工程治理：分支收敛 + 最小 CI + 清理（非架构，但改造安全前提）</td>
+        <td>先有闸门</td></tr>
+      <tr><td class="dim">第二批</td>
+        <td>日志侧：B4 事件注册表化 → B3 Epoch 快照 → B2 chunk 保真 → C1 Surface 投影 → B5 durable retry → C3 spill</td>
+        <td>B4 先行</td></tr>
+      <tr><td class="dim">第三批</td>
+        <td>循环：D1-D5（dsh ReactLoopAgent + Phase + Inbox + BlockAssembler + 模型 MCP 化）</td>
+        <td>循环换 dsh</td></tr>
+      <tr><td class="dim">第四批</td>
+        <td>工具/外围：E1 流水线 → E3 Code Mode → E4 权限 MCP → E5 subagent → F2 FTS5 → F3 错误 MCP → A1/A2 拆解</td>
+        <td>能力 MCP 化</td></tr>
+      <tr><td class="dim">第五批</td>
+        <td>前端：H1 拆模块 + H2 桥层全删（前端 MCP 客户端 + 词汇渲染器）</td>
+        <td>最后动 UI</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 5 / 5 页 —— MOV 新架构定案表（2026-08-18 生成）｜ 依据：新架构夹逐项核对 + 决策 26 条</div>
+</div>
+
+</body>
+</html>
