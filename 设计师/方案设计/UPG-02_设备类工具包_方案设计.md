@@ -31,6 +31,7 @@
 | 设备 | `device.appLaunch` | 启动应用 | ASK |
 | 传感器 | `sensor.list` | 传感器清单（加速度/陀螺/指南针等） | harmless |
 | 相机 | `camera.capture` | 拍照（产物落应用专属区） | ASK |
+| 相机 | `camera.ocrCapture` | 拍照并直接走 OCR（复接已有 image.ocr，照片→文字） | ASK |
 | 相机 | `qr.scan` | 扫码 | ASK |
 | 日历 | `calendar.list` | 近期日程（只读） | ASK |
 | 日历 | `calendar.add` | 新建日程 | ASK |
