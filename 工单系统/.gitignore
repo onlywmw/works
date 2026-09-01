@@ -5,3 +5,6 @@
 
 # 原子发布临时文件
 处理中心/验证产物/*.tmp
+node_modules/
+_备份归档/*.bak.md
+_备份归档/*.bak.xlsx

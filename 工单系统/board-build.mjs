@@ -109,12 +109,66 @@ const hangMore = hanging.slice(5).map(h => `<div class="bg-surface border border
 
 const renderFn = `
 if(location.protocol==="file:"){const b=document.getElementById("file-banner");if(b)b.classList.remove("hidden");}
+let WT = null; let WT_T = 0;
+async function getToken(){
+  const n = Date.now();
+  if(WT && n - WT_T < 10 * 60 * 1000) return WT;
+  try{
+    const r = await fetch("/api/board/v1/health");
+    const j = await r.json();
+    WT = j.writeToken || ""; WT_T = n;
+    return WT;
+  }catch(e){ return ""; }
+}
+const BoardAPI = {
+  async call(op, payload){
+    const tk = await getToken();
+    if(!WT){ const err = new Error("引擎离线——请通过本地服务打开看板（双击 看板.bat）"); err.offline = true; throw err; }
+    const r = await fetch("/api/board/v1/" + op, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Write-Token": tk, "Idempotency-Key": (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random())) },
+      body: JSON.stringify(payload),
+    });
+    return r.json();
+  },
+  reject: (no) => BoardAPI.call("card.reject", { no }),
+  restore: (no) => BoardAPI.call("card.restore", { no }),
+};
 function assertWritable(){
   if(location.protocol === "file:"){
     alert("当前为离线预览模式——回炉等写操作不可用，请通过本地服务打开看板（双击 看板.bat）");
     return false;
   }
   return true;
+}
+function updateRowLocally(no, stage, blocker){
+  const tr = document.querySelector('#main-table-body tr[data-no="' + no + '"]');
+  if(!tr) return false;
+  const badge = tr.children[5];
+  if(!badge) return false;
+  badge.innerHTML = '<span class="bg-yellow-100 text-yellow-800 border-yellow-200 text-[10px] px-1.5 py-0.5 rounded">' + (stage === "rejected" ? "🔨 施工·回炉" : stage) + '</span>';
+  const kp = tr.children[6];
+  if(kp) kp.textContent = blocker || "回炉重修中";
+  tr.dataset.stage = stage;
+  return true;
+}
+async function rejectRow(no){
+  if(!assertWritable())return;
+  if(!confirm(no + " 改回施工·回炉？"))return;
+  try{
+    const j = await BoardAPI.reject(no);
+    if(j.ok){ if(!updateRowLocally(no, "rejected", "回炉重修中")) location.reload(); alert(no + " 已提交回炉（" + (j.data?.txid || "") + "）"); }
+    else alert("回炉失败：" + (j.code || "") + " " + (j.msg || ""));
+  }catch(e){ alert(e.offline ? e.message : "回炉失败（服务未运行？）：" + e.message); }
+}
+async function restoreRow(no){
+  if(!assertWritable())return;
+  if(!confirm(no + " 恢复（取消回炉）？"))return;
+  try{
+    const j = await BoardAPI.restore(no);
+    if(j.ok){ if(!updateRowLocally(no, "delivering", "已恢复——施工中")) location.reload(); alert(no + " 已恢复"); }
+    else alert("恢复失败：" + (j.code || "") + " " + (j.msg || ""));
+  }catch(e){ alert("恢复失败（服务未运行？）：" + e.message); }
 }
 async function rejectRow(no){
   if(!assertWritable())return;
