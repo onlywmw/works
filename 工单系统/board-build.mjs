@@ -55,7 +55,10 @@ const urgent = projections
     return `<div class="bg-surface-container-lowest border-l-4 ${p.rejected ? "border-red-600" : p.overdue ? "border-red-500" : "border-blue-600"} border border-outline-variant rounded p-sm shadow-sm">
   <div class="flex justify-between items-start mb-xs">
     <span class="font-mono text-mono font-bold">${esc(p.no)}</span>
-    <span class="text-[10px] px-1 rounded ${p.priority === "P0" ? "bg-red-100 text-red-800" : p.priority === "P1" ? "bg-orange-100 text-orange-800" : "bg-gray-100 text-gray-500"}">${esc(p.priority || "未排")}</span>
+    <span class="flex items-center gap-1">
+      <span class="text-[10px] px-1 rounded ${p.priority === "P0" ? "bg-red-100 text-red-800" : p.priority === "P1" ? "bg-orange-100 text-orange-800" : "bg-gray-100 text-gray-500"}">${esc(p.priority || "未排")}</span>
+      <button class="copy-btn text-[11px] px-1.5 py-0.5 rounded border border-outline-variant hover:bg-surface-container" onclick="copyCard('${p.no}')">复制</button>
+    </span>
   </div>
   <p class="font-body-sm text-body-sm text-on-surface line-clamp-2">${esc(p.title)}</p>
   <div class="mt-xs text-[11px] text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">info</span> ${esc(p.blocker || st.zh + "（待补充卡点）")}</div>
@@ -99,6 +102,24 @@ const hangMore = hanging.slice(5).map(h => `<div class="bg-surface border border
 </div>`).join("");
 
 const renderFn = `
+function copyCard(no){
+  const t = DATA.tickets.find(x=>x.no===no);
+  if(!t) return;
+  const st = {merged:"终态",accepted:"待合",delivering:t.rejected?"回炉":"施工",archived:"作废",assigned:"已派",queued:"排队",unknown:"待查"}[t.stage]||"待查";
+  const txt = "【MOV 工单】"+t.no+" · "+st+(t.priority&&t.priority!=="—"?" · "+t.priority:"")+"
+"+t.title+"
+卡点："+(t.blocker||"—")+(t.line?"
+线："+t.line:"");
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(()=>feedback(no)).catch(()=>legacyCopy(txt,no));
+  } else legacyCopy(txt,no);
+}
+function legacyCopy(txt,no){
+  const ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");feedback(no);}catch(e){}document.body.removeChild(ta);
+}
+function feedback(no){
+  document.querySelectorAll(".copy-btn").forEach(b=>{if(b.getAttribute("onclick").includes(no)){b.textContent="✓ 已复制";setTimeout(()=>b.textContent="复制",1500);}});
+}
 function toggleRow(tr){
   const det = tr.nextElementSibling;
   if(det && det.classList.contains('row-detail')) det.classList.toggle('hidden');
