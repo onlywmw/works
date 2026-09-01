@@ -85,6 +85,13 @@ app.get("/api/board/v1/health", (c) => {
   const h = engineHealth(WRITE_ON, BIND);
   return c.json({ ...h, writeToken: h.writeEnabled ? WRITE_TOKEN : null });
 });
+app.post("/api/reject", async (c) => {
+  try {
+    if(!WRITE_ON) throw Object.assign(new Error("写面已关闭"), { code: ERR.WRITE_DISABLED });
+    const body = RejectSchema.parse(await c.req.json());
+    return c.json(await cardOp("reject", body.no));
+  } catch (e) { return sendErr(c, e); }
+});
 app.get("/api/board/v1/capabilities", (c) => c.json({ ok: true, transitions: TRANSITIONS, operations: ["card.reject", "card.restore", "card.move"] }));
 
 // 写面（Origin + Token 校验）
@@ -127,6 +134,7 @@ app.post("/api/board/v1/card.move", async (c) => {
 });
 
 app.onError((e, c) => sendErr(c, e));
+app.notFound((c) => c.json({ ok: false, code: "NOT_FOUND", msg: "未知路径" }, 404));
 
 serve({ fetch: app.fetch, port: PORT, hostname: BIND }, (info) => {
   console.log(`[board-server v3] http://${info.address}:${info.port} — Hono+BoardEngine（write=${WRITE_ON ? "on" : "off"}）`);
