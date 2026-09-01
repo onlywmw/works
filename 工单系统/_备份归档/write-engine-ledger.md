@@ -4,3 +4,5 @@
 {"ts":"2026-09-01T22:08:33.634Z","txid":"TX-202609012208319-wo1d","op":"restore","no":"UPG-19","before":"rejected","after":"delivering","result":"committed","actor":"board"}
 {"ts":"2026-09-01T22:13:58.521Z","txid":"TX-202609012213569-ihlm","op":"reject","no":"UPG-19","before":"delivering","after":"rejected","result":"committed","actor":"board"}
 {"ts":"2026-09-01T22:14:00.069Z","txid":"TX-202609012213587-5myy","op":"restore","no":"UPG-19","before":"rejected","after":"delivering","result":"committed","actor":"board"}
+{"ts":"2026-09-01T22:14:25.910Z","txid":"TX-202609012214248-xz71","op":"reject","no":"UPG-08","before":"delivering","after":"rejected","result":"committed","actor":"board"}
+{"ts":"2026-09-01T22:22:30.564Z","txid":"TX-202609012222293-knhd","op":"reject","no":"UPG-09","before":"delivering","after":"rejected","result":"committed","actor":"board"}
