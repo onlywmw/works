@@ -336,9 +336,14 @@ function analyzeCard(card, nowMs) {
   const ts = tsNum >= 0 ? dateNumToStr(tsNum) : null;
   const overdueEligible = stage === "delivering" || stage === "accepted" || stage === "assigned";
   const overdue = computeOverdue(stage, tsNum, nowMs);
-  return {
-    no: card.cardNo,
-    title: card.title,
+  const kd = txt.indexOf(String.fromCharCode(42,42,21345,28857,42,42,65306));
+  const kdEnd = kd >= 0 ? txt.indexOf(String.fromCharCode(65372), kd) : -1;
+  const blocker = kd >= 0 && kdEnd > kd ? txt.slice(kd + 7, kdEnd).trim().slice(0, 40) : null;
+  
+  if (card.cardNo === "UPG-68") console.error("DBG2", JSON.stringify(blocker));
+    return {
+    blocker,
+    no: card.cardNo,title: card.title,
     stage,
     ts,
     tsMissing: overdueEligible && ts === null,
@@ -395,12 +400,12 @@ function renderHtml(projections, hanging, meta, md) {
     .map((p) => `${p.no} ${p.stage === "delivering" ? (p.rejected ? "打回回炉" : "施工中") : p.stage === "accepted" ? "待合" : p.stage === "assigned" ? "待认领" : "等前置"}`).join(" · ");
   const rows = sorted.map((p, i) => {
     const [st, color] = short(p);
-    const blk = p.stage === "merged" || p.stage === "archived" ? "—" : keypoint(p).replace(/^[^：:]*[:：]/, "").slice(0, 34);
+    const blk = p.stage === "merged" || p.stage === "archived" ? "—" : (p.blocker || keypoint(p).replace(/^[^：:]*[:：]/, "").slice(0, 34));
     return `<tr><td>${i + 1}</td><td><b>${p.no}</b></td><td title="${p.title.replace(/"/g, "&quot;")}">${p.title.length > 20 ? p.title.slice(0, 20) + "…" : p.title}</td><td><span class="st" style="background:${color}1a;color:${color}">${st}</span></td><td>${blk}</td><td>${p.line}</td></tr>`;
   }).join("\n");
-  const hangExtra = hanging.length > 5 ? '<button class="more" onclick="showHang()">展开全部（' + hanging.length + '）</button><div id="hangMore" style="display:none"><table><tbody>' + hRowsAll.slice(5).join("
-") + '</tbody></table></div>' : '';
-  const hRowsAll = hanging.map((h, i) => `<tr><td>${i + 1}</td><td>${h.id}</td><td>${(h.title || "").slice(0, 30)}</td><td>${h.priority || "—"}</td><td>⏳ ${h.who} @${h.date || "?"}</td></tr>`).join("\n");
+  const hRowsFirst = hanging.slice(0, 5).map((h, i) => `<tr><td>${i + 1}</td><td>${h.id}</td><td>${(h.title || "").slice(0, 30)}</td><td>${h.priority || "—"}</td><td>⏳ ${h.who} @${h.date || "?"}</td></tr>`).join(String.fromCharCode(10));
+  const hRowsRest = hanging.slice(5).map((h, i) => `<tr><td>${i + 1}</td><td>${h.id}</td><td>${(h.title || "").slice(0, 30)}</td><td>${h.priority || "—"}</td><td>⏳ ${h.who} @${h.date || "?"}</td></tr>`).join(String.fromCharCode(10));
+const hangExtra = hanging.length > 5 ? '<button class="more" onclick="showHang()">展开全部（'+hanging.length+'）</button><div id="hangMore" style="display:none"><table><tbody>'+hRowsRest+'</tbody></table></div>' : "";
   const overdueN = projections.filter((p) => p.overdue).length;
   const unknown = projections.filter((p) => p.stage === "unknown").length;
   return `<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>MOV 工单看板</title><style>
@@ -435,8 +440,7 @@ h2{font-size:16px;margin:28px 0 10px}
 ${rows}</tbody></table>
 <h2>挂账待审池（${hanging.length} 条）</h2>
 <table><thead><tr><th>#</th><th>挂账号</th><th>标题</th><th>优先级</th><th>状态</th></tr></thead><tbody>
-${hRowsAll.slice(0, 5).join("
-")}</tbody></table>${hangExtra}
+${hRowsFirst}</tbody></table>${hangExtra}
 <div class="gray">点击刷新：node 审验员/orders-overview.mjs --html</div>
 </div></body></html>`;
 }
@@ -452,7 +456,7 @@ function renderBoard(projections, hanging, meta) {
     if (p.stage === "queued") return "⏳ 排队";
     return "⚠️ 待查";
   };
-  const blk = (p) => (p.stage !== "merged" && p.stage !== "archived" ? keypoint(p).replace(/^[^：:]*[:：]/, "").slice(0, 34) : "—");
+  const blk = (p) => (p.stage !== "merged" && p.stage !== "archived" ? (p.blocker || keypoint(p).replace(/^[^：:]*[:：]/, "").slice(0, 34)) : "—");
   const rows = sorted.map((p, i) => {
     const name = p.title.length > 22 ? p.title.slice(0, 22) + "…" : p.title;
     return `| ${i + 1} | ${p.no} | ${name} | ${short(p)} | ${blk(p)} | ${p.line} |`;
