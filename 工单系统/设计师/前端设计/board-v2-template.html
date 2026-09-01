@@ -91,22 +91,22 @@
         <h2 class="font-h3 text-h3 mb-sm flex items-center gap-xs"><span class="material-symbols-outlined text-red-600">priority_high</span> 当前重点（Top 5）</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-md" id="urgent-box"></div>
       </section>
-      <div class="flex items-center gap-sm mb-sm">
-  <button id="btn-filter" class="fil-btn px-2 py-1" onclick="openPanel('filter')">🔍 筛选<span id="filter-count" class="ml-1 text-[10px] text-on-surface-variant"></span></button>
-  <button class="fil-btn px-2 py-1" onclick="openPanel('sort')">↕ 排序<span id="sort-count" class="ml-1 text-[10px] text-on-surface-variant"></span></button>
-  <button class="fil-btn px-2 py-1" onclick="openPanel('cols')">▤ 列</button>
-  <button class="fil-btn px-2 py-1" onclick="resetAll()">⟳ 重置</button>
-  <span class="text-[11px] text-on-surface-variant ml-auto" id="filter-summary"></span>
+      <div class="flex items-center gap-sm mb-sm text-[13px]">
+  <label class="text-on-surface-variant">单号</label>
+  <select id="sel-no" class="text-[12px] px-1.5 py-1 border border-outline-variant rounded bg-surface min-w-[140px]" onchange="applyF()"><option value="">全部</option></select>
+  <label class="text-on-surface-variant ml-2">P</label>
+  <select id="sel-pri" class="text-[12px] px-1.5 py-1 border border-outline-variant rounded bg-surface" onchange="applyF()"><option value="">全部</option><option>P0</option><option>P1</option><option>P2</option><option>P3</option><option>未排</option></select>
+  <span class="text-[11px] text-on-surface-variant ml-2" id="filter-summary"></span>
 </div><section class="bg-surface-container-lowest border border-outline-variant rounded overflow-hidden shadow-sm">
         <table class="w-full text-left border-collapse">
           <thead class="bg-surface-container-low border-b border-outline-variant">
             <tr class="whitespace-nowrap">
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-10">#</th>
-              <th data-h="no" class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-24">单号 <button class="fil-btn" data-col="no" onclick="openPanel('filter')">&#9662;</button></th>
-              <th data-h="pri" class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-14">P <button class="fil-btn" data-col="pri" onclick="openPanel('filter')">&#9662;</button></th>
-              <th data-h="title" class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">标题 <button class="fil-btn" data-col="title" onclick="openPanel('filter')">&#9662;</button></th>
-              <th data-h="stage" class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-32">状态 <button class="fil-btn" data-col="stage" onclick="openPanel('filter')">&#9662;</button></th>
-              <th data-h="blocker" class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">卡点 / 下一步</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-24">单号</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-14">P</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">标题</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-32">状态</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">卡点 / 下一步</th>
             </tr>            </tr>
           </thead>
           <tbody class="font-body-sm text-body-sm" id="main-table-body"></tbody>

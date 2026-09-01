@@ -72,11 +72,11 @@ const rows = projections.map((p, i) => {
   const line = p.line ? `<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">${esc(p.line)}</span>` : "";
   return `<tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors ${ov}" data-no="${esc(p.no)}" onclick="toggleRow(this)">
   <td class="py-sm px-md text-on-surface-variant">${i + 1}</td>
-  <td data-h="no" class="py-sm px-md font-mono text-mono">${esc(p.no)}${line}</td>
-  <td data-h="pri" class="py-sm px-md">${pri}</td>
-  <td data-h="title" class="py-sm px-md font-medium">${esc(p.title).slice(0, 24)}</td>
-  <td data-h="stage" class="py-sm px-md">${badge}</td>
-  <td data-h="blocker" class="py-sm px-md text-on-surface-variant">${esc(p.blocker || "—")}</td>
+  <td class="py-sm px-md font-mono text-mono">${esc(p.no)}${line}</td>
+  <td class="py-sm px-md">${pri}</td>
+  <td class="py-sm px-md font-medium">${esc(p.title).slice(0, 24)}</td>
+  <td class="py-sm px-md">${badge}</td>
+  <td class="py-sm px-md text-on-surface-variant">${esc(p.blocker || "—")}</td>
 </tr>
 <tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="6">
   <div class="bg-surface border border-outline-variant rounded p-md">
@@ -118,148 +118,28 @@ function feedback(no){
   document.querySelectorAll(".copy-btn").forEach(b=>{if(b.getAttribute("onclick").includes(no)){b.textContent="✓ 已复制";setTimeout(()=>b.textContent="复制",1500);}});
 }
 
-const FIELDS = [
-  { id: "no", zh: "单号", type: "text", val: t => t.no },
-  { id: "title", zh: "标题", type: "text", val: t => t.title },
-  { id: "pri", zh: "优先级", type: "enum", vals: ["P0","P1","P2","P3","未排"], val: t => (t.priority && t.priority !== "—") ? t.priority : "未排" },
-  { id: "stage", zh: "状态", type: "enum", vals: ["终态","施工/回炉","待合","已派","排队","作废","待查"], val: t => t.stage === "archived" ? "作废" : t.stage === "merged" ? "终态" : t.stage === "delivering" ? "施工/回炉" : t.stage === "accepted" ? "待合" : t.stage === "assigned" ? "已派" : t.stage === "queued" ? "排队" : "待查" },
-  { id: "line", zh: "线", type: "enum", vals: ["A","B","C"], val: t => t.line || "—" },
-  { id: "blocker", zh: "卡点", type: "text", val: t => t.blocker || "" },
-];
-const OPS = {
-  text: [["contains","包含"],["notcontains","不包含"],["equals","等于"],["startswith","开头是"],["isempty","为空"],["notempty","不为空"]],
-  enum: [["eq","等于"],["neq","不等于"]],
-};
-const FILTER = { and: true, conds: [] };
-const SORTS = [];
-const HIDDEN = new Set();
-const stageKey = (t) => t.stage === "archived" ? "作废" : t.stage === "merged" ? "终态" : t.stage === "delivering" ? "施工/回炉" : t.stage === "accepted" ? "待合" : t.stage === "assigned" ? "已派" : t.stage === "queued" ? "排队" : "待查";
-const valOf = (f, t) => { const fd = FIELDS.find(x => x.id === f); return fd ? fd.val(t) : ""; };
-function condOk(c, t) {
-  const v = String(valOf(c.field, t));
-  const x = (c.val || "").trim();
-  switch (c.op) {
-    case "contains": return v.toLowerCase().includes(x.toLowerCase());
-    case "notcontains": return !v.toLowerCase().includes(x.toLowerCase());
-    case "equals": return v === x;
-    case "startswith": return v.toLowerCase().startsWith(x.toLowerCase());
-    case "isempty": return v.trim() === "";
-    case "notempty": return v.trim() !== "";
-    case "neq": return v !== x;
-    case "eq": return v === x;
-    default: return true;
-  }
-}
-const matches = (t) => FILTER.conds.length ? (FILTER.and ? FILTER.conds.every(c => condOk(c, t)) : FILTER.conds.some(c => condOk(c, t))) : true;
-function rebuild() {
-  const tbody = document.getElementById("main-table-body");
-  const rows = [...tbody.querySelectorAll("tr:not(.row-detail)")];
-  rows.forEach(r => {
+
+function applyF() {
+  const no = document.getElementById("sel-no") ? document.getElementById("sel-no").value : "";
+  const pri = document.getElementById("sel-pri") ? document.getElementById("sel-pri").value : "";
+  document.querySelectorAll("#main-table-body > tr:not(.row-detail)").forEach(r => {
     const p = DATA.tickets.find(x => x.no === r.dataset.no);
     if (!p) { r.classList.add("hidden"); return; }
-    const rowHidden = !matches(p);
-    r.classList.toggle("hidden", rowHidden);
-    r.querySelectorAll("td[data-h]").forEach(td => td.style.display = HIDDEN.has(td.dataset.h) ? "none" : "");
+    const priKey = p.priority && p.priority !== "—" ? p.priority : "未排";
+    const okNo = !no || p.no === no;
+    const okPri = !pri || priKey === pri;
+    r.classList.toggle("hidden", !(okNo && okPri));
   });
-  document.querySelectorAll("th[data-h]").forEach(th => th.style.display = HIDDEN.has(th.dataset.h) ? "none" : "");
-  if (SORTS.length) {
-    const rk = { merged: 6, accepted: 5, delivering: 3, assigned: 2, queued: 1, archived: 7, unknown: 0 };
-    const ordered = [...rows].sort((a, b) => {
-      const ta = DATA.tickets.find(x => x.no === a.dataset.no) || {};
-      const tb = DATA.tickets.find(x => x.no === b.dataset.no) || {};
-      for (const sf of SORTS) {
-        let va = valOf(sf.field, ta), vb = valOf(sf.field, tb);
-        if (sf.field === "stage") { va = rk[ta.stage] ?? 0; vb = rk[tb.stage] ?? 0; }
-        if (sf.field === "pri") { va = va === "未排" ? 99 : Number(String(va).slice(1)); vb = vb === "未排" ? 99 : Number(String(vb).slice(1)); }
-        const c = typeof va === "string" ? va.localeCompare(vb) : va - vb;
-        if (c !== 0) return sf.dir * c;
-      }
-      return 0;
-    });
-    ordered.forEach(r => tbody.appendChild(r));
-  }
-  updCounters();
-}
-function updCounters() {
-  const fc = document.getElementById("filter-count"), sc = document.getElementById("sort-count"), sum = document.getElementById("filter-summary");
-  if (fc) fc.textContent = FILTER.conds.length ? "(" + FILTER.conds.length + ")" : "";
-  if (sc) sc.textContent = SORTS.length ? "(" + SORTS.length + ")" : "";
+  const sum = document.getElementById("filter-summary");
   if (sum) { const vis = document.querySelectorAll("#main-table-body > tr:not(.row-detail):not(.hidden)").length; sum.textContent = "显示 " + vis + " / " + DATA.stats.total; }
 }
-function openPanel(type) {
-  const pop = document.getElementById("smart-pop");
-  pop.innerHTML = "";
-  const mkSel = (opts, cur, on) => { const s = document.createElement("select"); opts.forEach(o => { const op = document.createElement("option"); op.value = o[0]; op.textContent = o[1]; if (String(o[0]) === String(cur)) op.selected = true; s.appendChild(op); }); s.onchange = on; return s; };
-  if (type === "filter") {
-    const h = document.createElement("div"); h.className = "font-label-md text-label-md mb-sm"; h.textContent = "高级筛选 · smart-table 式（多条件）"; pop.appendChild(h);
-    const andRow = document.createElement("div"); andRow.className = "text-[12px] mb-sm";
-    andRow.innerHTML = '<label style="margin-right:12px"><input type="radio" name="cj" ' + (FILTER.and ? "checked" : "") + '> AND（全部满足）</label><label><input type="radio" name="cj" ' + (!FILTER.and ? "checked" : "") + '> OR（任一满足）</label>';
-    andRow.querySelectorAll("input").forEach(r => r.onchange = () => { FILTER.and = (r === andRow.querySelector("input")); rebuild(); });
-    pop.appendChild(andRow);
-    const box = document.createElement("div"); pop.appendChild(box);
-    FILTER.conds.forEach((c, i) => {
-      const row = document.createElement("div"); row.className = "cond-row";
-      const fd = () => FIELDS.find(f => f.id === c.field);
-      const fSel = mkSel(FIELDS.map(f => [f.id, f.zh]), c.field, () => { c.field = fSel.value; c.op = OPS[fd().type][0][0]; c.val = ""; openPanel("filter"); rebuild(); });
-      const oSel = mkSel(OPS[fd().type], c.op, () => { c.op = oSel.value; rebuild(); });
-      row.appendChild(fSel); row.appendChild(oSel);
-      const vSel = document.createElement("select"); const inp = document.createElement("input");
-      if (fd().type === "text") { inp.value = c.val; inp.placeholder = "值…"; inp.className = "w-16"; inp.oninput = () => { c.val = inp.value; rebuild(); }; row.appendChild(inp); }
-      else { fd().vals.forEach(v => { const o = document.createElement("option"); o.value = v; o.textContent = v; if (v === c.val) o.selected = true; vSel.appendChild(o); }); vSel.onchange = () => { c.val = vSel.value; rebuild(); }; row.appendChild(vSel); }
-      const del = document.createElement("span"); del.className = "cond-del"; del.textContent = "✕"; del.onclick = () => { FILTER.conds.splice(i, 1); openPanel("filter"); rebuild(); }; row.appendChild(del);
-      box.appendChild(row);
-    });
-    if (!FILTER.conds.length) { const e = document.createElement("div"); e.className = "text-[11px] text-on-surface-variant"; e.textContent = "（暂无条件——点「＋添加条件」）"; box.appendChild(e); }
-    const add = document.createElement("button"); add.className = "fil-btn px-2 py-1 mt-sm"; add.textContent = "＋ 添加条件";
-    add.onclick = () => { FILTER.conds.push({ field: "no", op: "contains", val: "" }); openPanel("filter"); rebuild(); };
-    pop.appendChild(add);
-  } else if (type === "sort") {
-    const h = document.createElement("div"); h.className = "font-label-md text-label-md mb-sm"; h.textContent = "排序（多字段优先级，自上而下）"; pop.appendChild(h);
-    const box = document.createElement("div"); pop.appendChild(box);
-    if (!SORTS.length) { const e = document.createElement("div"); e.className = "text-[11px] text-on-surface-variant"; e.textContent = "（无排序——点下方添加）"; box.appendChild(e); }
-    SORTS.forEach((sf, i) => {
-      const row = document.createElement("div"); row.className = "cond-row";
-      const fSel = mkSel(FIELDS.map(f => [f.id, (i + 1) + ". " + f.zh]), sf.field, () => { sf.field = fSel.value; openPanel("sort"); rebuild(); });
-      const dSel = mkSel([["1","升序"],["-1","降序"]], String(sf.dir), () => { sf.dir = Number(dSel.value); rebuild(); });
-      const del = document.createElement("span"); del.className = "cond-del"; del.textContent = "✕"; del.onclick = () => { SORTS.splice(i, 1); openPanel("sort"); rebuild(); };
-      row.appendChild(fSel); row.appendChild(dSel); row.appendChild(del);
-      box.appendChild(row);
-    });
-    const add = document.createElement("button"); add.className = "fil-btn px-2 py-1 mt-sm"; add.textContent = "＋ 添加字段";
-    add.onclick = () => { SORTS.push({ field: "no", dir: 1 }); openPanel("sort"); rebuild(); };
-    pop.appendChild(add);
-  } else if (type === "cols") {
-    const h = document.createElement("div"); h.className = "font-label-md text-label-md mb-sm"; h.textContent = "列显示 / 隐藏"; pop.appendChild(h);
-    [["no","单号"],["pri","P"],["title","标题"],["stage","状态"],["blocker","卡点"]].forEach(([id, zh]) => {
-      const lab = document.createElement("label"); lab.className = "fil-label";
-      const cb = document.createElement("input"); cb.type = "checkbox"; cb.checked = !HIDDEN.has(id);
-      cb.onchange = () => { if (cb.checked) HIDDEN.delete(id); else HIDDEN.add(id); rebuild(); };
-      lab.appendChild(cb); lab.appendChild(document.createTextNode(zh)); pop.appendChild(lab);
-    });
+function initSel() {
+  const noSel = document.getElementById("sel-no");
+  if (noSel) {
+    const nos = DATA.tickets.map(t => t.no).sort();
+    nos.forEach(n => { const o = document.createElement("option"); o.value = n; o.textContent = n; noSel.appendChild(o); });
   }
-  const btn = document.getElementById("btn-filter");
-  const rect = btn.getBoundingClientRect();
-  pop.style.left = Math.min(rect.left, window.innerWidth - 300) + "px";
-  pop.style.top = (rect.top + 30) + "px";
-  pop.classList.remove("hidden");
-  setTimeout(() => document.addEventListener("click", (e) => { const p2 = document.getElementById("smart-pop"); if (p2 && !p2.contains(e.target) && !e.target.closest("#btn-filter,#btn-sort,#btn-cols")) p2.classList.add("hidden"); }, { once: true }));
-}
-function resetAll() {
-  FILTER.conds = []; SORTS.length = 0; HIDDEN.clear();
-  rebuild();
-}
-function initResize() {
-  document.querySelectorAll("th[data-h]").forEach(th => {
-    const rz = document.createElement("span"); rz.className = "th-resizer";
-    rz.onmousedown = (e) => {
-      e.preventDefault(); e.stopPropagation();
-      const startX = e.clientX, w = th.offsetWidth;
-      const mv = (ev) => { th.style.width = (w + ev.clientX - startX) + "px"; };
-      const up = () => { document.removeEventListener("mousemove", mv); document.removeEventListener("mouseup", up); };
-      document.addEventListener("mousemove", mv); document.addEventListener("mouseup", up);
-    };
-    th.appendChild(rz);
-  });
+  applyF();
 }
 function toggleRow(tr){
   const det = tr.nextElementSibling;
@@ -276,8 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   btn.textContent = '展开全部（'+DATA.hanging.length+'）';
   btn.addEventListener('click', ()=>{ more.classList.toggle('hidden'); btn.textContent = more.classList.contains('hidden') ? '展开全部（'+DATA.hanging.length+'）' : '收起'; });
   document.getElementById('summary-line').textContent = '总数 '+DATA.stats.total+' · 终态 '+DATA.stats.finished+' · 在流 '+DATA.stats.inflow+' · 超期 '+DATA.stats.overdue+' · 挂账 '+DATA.stats.onhold+' ｜ sha '+DATA.meta.libSha.slice(0,8)+'…';
-  initResize();
-  updCounters();
+  initSel();
 });
 `;
 
