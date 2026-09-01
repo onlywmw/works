@@ -1,0 +1,355 @@
+#!/usr/bin/env node
+/**
+ * SYS-02 阶段三 E1 状态单源——工单库 ⇄ 工单表 单向同步器（3A 校验器 + 3B 生成器）
+ *
+ * 唯一权威 = 工单库.md 每卡状态行（人只写这一处）；工单表.xlsx = 生成物（禁止手写）。
+ *
+ * 用法：
+ *   node sync-orders.mjs --check           3A 只读校验：库状态行 vs 表内容 → diff 报告（不写表）
+ *   node sync-orders.mjs --sync            3B 单向生成：库→表全量重写；生成后 --check diff=0 为成功条件
+ *   node sync-orders.mjs --check --table <副本.xlsx>   对指定表文件校验（测试/迁移前演练用，只读）
+ *   node sync-orders.mjs --sync  --table <副本.xlsx>   对指定表文件生成（测试用，不碰真实表）
+ *
+ * 红线：
+ *   - 只动工单系统侧（0027-mov 零接触）
+ *   - 3A --check 只读（绝不写表）；未过评审前禁止对真实表 --sync
+ *   - --sync 前自动备份真实表到 _备份归档\；--table 覆盖仅用于测试副本
+ *   - 表=纯生成物：写元信息行（A 列以 # 开头）标注机器生成，check 跳过该行
+ *
+ * 列映射（9 列，对齐现有表口径）：
+ *   A 工单号 = 卡编号；B 标题 = 卡标题；C 优先级 = 状态区内联 **优先级**：X；
+ *   D 设计师 / E 程序员 / F 验收员 / G 设计师(合main) = 状态区该角色最新动作段；
+ *   H 备注 = 状态区首个 设计师[/\]...md 文档引用（无则 —）；I delivery_id = 状态区最后 DEL-... 编号（无则 —）
+ *
+ * xlsx 读写经 python openpyxl 子进程（node 无 npm/xlsx）。中文输出需 PYTHONUTF8=1（GBK 控制台可能乱码，不影响逻辑）。
+ *
+ * 退出码：--check  0=CHECK_OK（diff=0） 1=CHECK_DIFF（有 diff） 2=ERROR
+ *        --sync   0=成功（生成后 diff=0） 2=失败
+ */
+
+import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.dirname(__dirname); // 工单系统\
+const DEFAULT_LIB = path.join(ROOT, "工单库.md");
+const DEFAULT_TABLE = path.join(ROOT, "工单表.xlsx");
+const BACKUP_DIR = path.join(ROOT, "_备份归档");
+
+const HEADER = ["工单号", "标题", "优先级", "设计师", "程序员", "验收员", "设计师(合main)", "备注", "delivery_id"];
+const META_ROW = "# 生成: sync-orders.mjs ｜ 库→表单向投影 ｜ 禁止手工编辑 ｜ 源: 工单库.md";
+
+// ---------------- 参数 ----------------
+function parseArgs(argv) {
+  const opts = { mode: null, table: DEFAULT_TABLE };
+  for (const a of argv) {
+    if (a === "--check") opts.mode = "check";
+    else if (a === "--sync") opts.mode = "sync";
+    else if (a === "--table") { opts.table = null; opts._nextTable = true; }
+    else if (opts._nextTable) { opts.table = a; opts._nextTable = false; }
+  }
+  return opts;
+}
+
+// ---------------- 工单库解析 ----------------
+const SEC_WORDS = [
+  "**背景", "**来源", "**问题", "**修法", "**验收", "**交接", "**红线", "**方案",
+  "**决策点", "**施工规矩", "**根因", "**定案", "**防撞", "**级别", "**判据",
+  "**范围红线", "**关键设计点", "**送审", "**与契约", "**一句话", "**施工范围",
+  "**遗留", "**用户实测", "**其余", "**串行", "**交付", "**顺带纠正", "**无冲突",
+  "**Token", "**认领情况", "**派单交接", "**核心方案", "**实施", "**不做清单",
+  "**维持死亡", "**证伪复活", "**方法学注记", "**文档纪律", "**打回依据",
+  "**重修验收", "**关联独立单", "**桥能力现状", "**达标项", "**修正项", "**差距",
+  "**合格", "**结构", "**能力清单", "**安装", "**功能", "**规则", "**场景",
+  "**边界", "**职责", "**契约", "**接口", "**数据结构", "**配置", "**流转",
+];
+
+const SEG_RE = /(?=→\s*[✅🔨❌⚠️📌🆕⏳】]+)|(?=→\s*\*\*)|(?=｜\s*[✅🔨❌⚠️📌🆕⏳】]+)|(?=｜\s*\*\*)|(?=【✅)|(?=】；)|(?=\*\*日期\*\*)|(?=\*\*出单人\*\*)|(?=\*\*优先级\*\*)|(?= \*\*✅)|(?= \*\*🔨)|(?= \*\*❌)/;
+
+const FIELD_HEAD = ["**出单人**", "**日期**", "**优先级**", "**原状态**"];
+
+const ROLE_WORDS = [
+  ["merge", ["已合 main", "合 main", "合流", "待设计师合 main"]],
+  ["inspector", ["验收员", "审验", "打回", "复验", "验收通过", "独立复核"]],
+  ["dev", ["C 完成", "C 交付", "C 批", "C 修复", "程序员", "已认领", "在施", "施工中", "修复交付", "修复完成", "M3-R2"]],
+  ["designer", ["方案", "设计", "定稿", "派单", "评审", "激活", "规范", "裁决", "终审", "拍板", "设计师", "大神"]],
+];
+
+const DATE_RE = /@?(\d{4}-\d{2}-\d{2})/g;
+const DEL_RE = /DEL-[A-Z0-9]+-\d{8}-\d+/g;
+const DOC_RE = /设计师[\\/][^\s｜|，。；）)（(]*?\.md/;
+
+function parseLib(libPath) {
+  const src = fs.readFileSync(libPath, "utf8").replace(/\r\n/g, "\n");
+  const lines = src.split("\n");
+  const cards = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^# (UPG-\d+)\s+(.*)$/);
+    if (m) cards.push({ idx: i, no: m[1], title: m[2].trim() });
+  }
+  const endOf = (i) => (i + 1 < cards.length ? cards[i + 1].idx : lines.length);
+
+  function statusRegion(idx, end) {
+    let st = -1;
+    for (let j = idx; j < end; j++) {
+      if (lines[j].includes("**状态**：")) { st = j; break; }
+    }
+    if (st === -1) return null;
+    let endline = end;
+    for (let j = st + 1; j < end; j++) {
+      const l = lines[j];
+      if (/^# UPG-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
+      if (SEC_WORDS.some((w) => l.startsWith(w))) { endline = j; break; }
+    }
+    return { st, endline };
+  }
+
+  function segments(text) {
+    let body = text.replace(/^\*\*状态\*\*：/, "").replace(/\n/g, " ").replace(/——/g, "｜");
+    return body
+      .split(SEG_RE)
+      .map((p) => p.trim().replace(/^[→｜。；]+/, "").trim())
+      .filter((p) => p.length > 0);
+  }
+
+  function classify(seg) {
+    if (FIELD_HEAD.some((f) => seg.startsWith(f))) return null;
+    const head = seg.slice(0, 40);
+    for (const [role, words] of ROLE_WORDS) {
+      if (words.some((w) => head.includes(w))) return role;
+    }
+    return null;
+  }
+
+  function pick(segs, role) {
+    let best = null, bestDate = -1, bestPos = -1;
+    segs.forEach((s, pos) => {
+      if (classify(s) !== role) return;
+      let date = -1;
+      DATE_RE.lastIndex = 0;
+      for (let m = DATE_RE.exec(s); m; m = DATE_RE.exec(s)) {
+        const t = Number(m[1].replace(/-/g, ""));
+        if (t > date) date = t;
+      }
+      if (date > bestDate || (date === bestDate && pos > bestPos)) {
+        best = s; bestDate = date; bestPos = pos;
+      }
+    });
+    return best;
+  }
+
+  const rows = [];
+  const warnings = [];
+  for (const c of cards) {
+    const region = statusRegion(c.idx, endOf(c.idx));
+    const row = { no: c.no, title: c.title, C: "—", D: "—", E: "—", F: "—", G: "—", H: "—", I: "—" };
+    const warns = [];
+    if (!region) {
+      warns.push("无状态区");
+      rows.push(row); warnings.push({ no: c.no, warns }); continue;
+    }
+    const txt = lines.slice(region.st, region.endline).join("\n");
+    const segs = segments(txt);
+    for (const [role, col] of [["designer", "D"], ["dev", "E"], ["inspector", "F"], ["merge", "G"]]) {
+      const s = pick(segs, role);
+      if (s) row[col] = s.slice(0, 70);
+    }
+    const pm = txt.match(/\*\*优先级\*\*：([^｜|]*)/);
+    if (pm && pm[1].trim()) {
+      const val = pm[1].trim().replace(/[｜|]+$/, "").trim();
+      const m2 = val.match(/^([^（(]+)/);
+      row.C = (m2 ? m2[1] : val).trim();
+    } else {
+      warns.push("优先级缺失");
+    }
+    const dm = txt.match(DEL_RE);
+    if (dm) row.I = dm[dm.length - 1];
+    const hp = txt.match(DOC_RE);
+    if (hp) row.H = hp[0];
+    if (row.D === "—" && row.E === "—" && row.F === "—" && row.G === "—") warns.push("状态列全空");
+    rows.push(row);
+    if (warns.length) warnings.push({ no: c.no, warns });
+  }
+  return { rows, warnings };
+}
+
+// ---------------- python openpyxl 桥 ----------------
+const PY_READ = `
+import openpyxl, json, sys
+p = sys.argv[1]
+wb = openpyxl.load_workbook(p)
+ws = wb[wb.sheetnames[0]]
+hdr = [ws.cell(1,c).value for c in range(1, ws.max_column+1)]
+rows = []
+for r in range(2, ws.max_row+1):
+    vals = [ws.cell(r,c).value for c in range(1, ws.max_column+1)]
+    if vals[0] is None: continue
+    rows.append(['' if v is None else str(v) for v in vals])
+print(json.dumps({'sheet': wb.sheetnames[0], 'header': hdr, 'rows': rows}, ensure_ascii=False))
+`;
+
+const PY_WRITE = `
+import openpyxl, json, sys
+data = json.loads(sys.stdin.read())
+p = sys.argv[1]
+wb = openpyxl.load_workbook(p)
+if data['sheet'] in wb.sheetnames:
+    ws = wb[data['sheet']]
+else:
+    ws = wb.active
+    ws.title = data['sheet']
+for c, h in enumerate(data['header'], start=1):
+    ws.cell(1, c).value = h
+if ws.max_row > 1:
+    ws.delete_rows(2, ws.max_row - 1)
+r = 2
+if data.get('meta'):
+    ws.cell(r, 1).value = data['meta']; r += 1
+for row in data['rows']:
+    for c, v in enumerate(row, start=1):
+        ws.cell(r, c).value = v
+    r += 1
+wb.save(p)
+print(json.dumps({'ok': True, 'written_rows': len(data['rows'])}, ensure_ascii=False))
+`;
+
+function runPython(code, args, input) {
+  const env = { ...process.env, PYTHONUTF8: "1" };
+  const res = spawnSync("python", ["-c", code, ...args], { encoding: "utf8", env, input });
+  if (res.status !== 0) throw new Error(`python 失败 exit=${res.status} stderr=${(res.stderr || "").slice(0, 500)}`);
+  return JSON.parse(res.stdout.trim().split("\n").pop());
+}
+
+function readTable(path) {
+  const d = runPython(PY_READ, [path]);
+  return { header: d.header, rows: d.rows };
+}
+
+function writeTable(path, rows, meta) {
+  // rows 是对象数组（no/title/C..I）→ 转为二维数组供 openpyxl 迭代（dict 会被枚举键名）
+  const rows2 = rows.map((r) => [r.no, r.title, r.C, r.D, r.E, r.F, r.G, r.H, r.I]);
+  const payload = JSON.stringify({ sheet: "升级工单表", header: HEADER, meta, rows: rows2 });
+  return runPython(PY_WRITE, [path], payload);
+}
+
+function backupTable(tablePath) {
+  if (!fs.existsSync(tablePath)) return null;
+  fs.mkdirSync(BACKUP_DIR, { recursive: true });
+  const ts = new Date().toISOString().replace(/[:T]/g, "-").slice(0, 19);
+  const dest = path.join(BACKUP_DIR, `工单表_备份_${ts}.xlsx`);
+  fs.copyFileSync(tablePath, dest);
+  return dest;
+}
+
+// ---------------- diff ----------------
+const COL_LABEL = { B: "标题", C: "优先级", D: "设计师", E: "程序员", F: "验收员", G: "设计师(合main)", H: "备注", I: "delivery_id" };
+
+function diffLibVsTable(libRows, tableRows) {
+  const libMap = new Map(libRows.map((r) => [r.no, r]));
+  const tblMap = new Map();
+  for (const r of tableRows) {
+    if (typeof r[0] === "string" && r[0].startsWith("#")) continue; // 跳过元信息行
+    if (r[0]) tblMap.set(r[0], r);
+  }
+  const issues = [];
+  let compared = 0, matched = 0;
+  for (const lr of libRows) {
+    const tr = tblMap.get(lr.no);
+    if (!tr) {
+      issues.push({ no: lr.no, type: "表缺行", detail: `表=${lr.no} 无此行，库有` });
+      continue;
+    }
+    // 表列: [0]=A 工单号 [1]=B 标题 [2]=C ... [8]=I
+    const tblVals = {
+      B: tr[1] || "", C: tr[2] || "", D: tr[3] || "", E: tr[4] || "",
+      F: tr[5] || "", G: tr[6] || "", H: tr[7] || "", I: tr[8] || "",
+    };
+    const libVals = { B: lr.title, C: lr.C, D: lr.D, E: lr.E, F: lr.F, G: lr.G, H: lr.H, I: lr.I };
+    compared++;
+    let rowIssues = 0;
+    for (const col of ["B", "C", "D", "E", "F", "G", "H", "I"]) {
+      const a = (tblVals[col] || "").trim();
+      const b = (libVals[col] || "").trim();
+      if (a !== b) {
+        rowIssues++;
+        issues.push({ no: lr.no, type: "值不一致", detail: `列${col}(${COL_LABEL[col]}) 表="${a.slice(0, 40)}" → 库="${b.slice(0, 40)}"` });
+      }
+    }
+    if (rowIssues === 0) matched++;
+  }
+  for (const tno of tblMap.keys()) {
+    if (!libMap.has(tno) && !tno.startsWith("#")) {
+      issues.push({ no: tno, type: "库缺卡", detail: `表有 ${tno} 但库无此卡` });
+    }
+  }
+  return { issues, compared, matched };
+}
+
+function printDiff(issues, compared) {
+  console.log(`═══ SYS-02 E1 sync-orders ${issues.length === 0 ? "CHECK_OK" : "CHECK_DIFF"} ═══`);
+  console.log(`对比 ${compared} 张卡`);
+  if (issues.length === 0) {
+    console.log("库 ⇄ 表 零差异（diff=0）——表为库的确定性投影，一致。");
+    return;
+  }
+  console.log(`不一致 ${issues.length} 处：`);
+  for (const it of issues.slice(0, 60)) {
+    console.log(`  [${it.no} · ${it.type}] ${it.detail}`);
+  }
+  if (issues.length > 60) console.log(`  ... 其余 ${issues.length - 60} 处省略`);
+}
+
+// ---------------- main ----------------
+function main() {
+  const opts = parseArgs(process.argv.slice(2));
+  if (!opts.mode) {
+    console.error("用法: node sync-orders.mjs --check | --sync [--table <副本.xlsx>]");
+    process.exit(2);
+  }
+
+  const libPath = DEFAULT_LIB;
+  const tablePath = path.resolve(opts.table);
+  if (!fs.existsSync(libPath)) { console.error(`工单库不存在: ${libPath}`); process.exit(2); }
+  if (!fs.existsSync(tablePath)) { console.error(`工单表不存在: ${tablePath}`); process.exit(2); }
+
+  const { rows: libRows, warnings } = parseLib(libPath);
+  const realTable = path.resolve(DEFAULT_TABLE);
+
+  if (opts.mode === "check") {
+    if (warnings.length) {
+      console.log("═══ 工单库解析警告（机器不猜，人工裁决）═══");
+      for (const w of warnings) console.log(`  [${w.no}] ${w.warns.join("；")}`);
+      console.log("");
+    }
+    const { rows: tblRows } = readTable(tablePath);
+    const { issues, compared } = diffLibVsTable(libRows, tblRows);
+    printDiff(issues, compared);
+    process.exit(issues.length === 0 ? 0 : 1);
+  }
+
+  if (opts.mode === "sync") {
+    const isReal = path.resolve(tablePath) === realTable;
+    if (isReal) {
+      const b = backupTable(realTable);
+      console.log(`已备份真实表 → ${b}`);
+    }
+    writeTable(tablePath, libRows, META_ROW);
+    console.log(`已生成 ${tablePath}：${libRows.length} 张卡（库=${libRows.length} 卡 → 表 ${libRows.length} 行）`);
+    if (isReal) console.log("⚠ 红线注记：真实表已 --sync 覆盖——仅在设计评审通过后允许；3A --check 应先行且 diff=0。");
+    // 成功条件 = 生成后 check diff=0
+    const { rows: tblRows } = readTable(tablePath);
+    const { issues, compared } = diffLibVsTable(libRows, tblRows);
+    printDiff(issues, compared);
+    if (issues.length !== 0) {
+      console.error("FAIL：生成后 diff 非零——不满足成功条件，请人工核查（勿继续覆盖）。");
+      process.exit(2);
+    }
+    process.exit(0);
+  }
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main();
+}
