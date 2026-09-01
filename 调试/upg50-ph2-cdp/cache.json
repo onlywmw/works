@@ -1,0 +1,1 @@
+{"fetchedAt":1788289827830,"payload":"{\"updatedAt\": \"2026-09-02\", \"packages\": [{\"id\": \"vendor-files\", \"name\": \"文件选择器\", \"desc\": \"MCP 文件选择\", \"cat\": \"效率\", \"ui\": \"files\", \"uiComponentId\": \"UI-099999\", \"server\": {\"url\": \"http://127.0.0.1:9999\"}}]}"}
