@@ -4,7 +4,7 @@ import fs from "fs";
 
 const DATA_JSON = "处理中心/验证产物/orders-overview.data.json";
 const TPL = "设计师/前端设计/board-v2-template.html";
-const OUT = "处理中心/验证产物/orders-overview.html";
+const OUT = process.env.BOARD_TMP ? "处理中心/验证产物/orders-overview.html.tmp" : "处理中心/验证产物/orders-overview.html";
 
 if (!fs.existsSync(DATA_JSON)) { console.error("缺 " + DATA_JSON + " ——先跑 orders-overview.mjs"); process.exit(1); }
 const data = JSON.parse(fs.readFileSync(DATA_JSON, "utf8"));
