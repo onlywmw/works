@@ -85,21 +85,13 @@
           <thead class="bg-surface-container-low border-b border-outline-variant">
             <tr>
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-12">#</th>
-              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-24">单号</th>
-              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-12">P</th>
-              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">标题</th>
-              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-32">状态</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-28"><button class="hover:underline cursor-pointer" onclick="sortTbl('no')">单号 ▲▼</button><br/><input id="f-no" placeholder="单号" class="w-[80px] mt-1 text-[11px] px-1 py-0.5 border border-outline-variant rounded bg-surface" oninput="filterTbl()"/></th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-16">P<br/><select id="f-pri" class="w-full mt-1 text-[11px] px-1 py-0.5 border border-outline-variant rounded bg-surface" onchange="filterTbl()"><option value="">全部</option><option>P0</option><option>P1</option><option>P2</option><option>P3</option></select></th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase"><button class="hover:underline cursor-pointer" onclick="sortTbl('title')">标题 ▲▼</button><br/><input id="f-title" placeholder="标题" class="w-full mt-1 text-[11px] px-1 py-0.5 border border-outline-variant rounded bg-surface" oninput="filterTbl()"/></th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-36"><button class="hover:underline cursor-pointer" onclick="sortTbl('stage')">状态 ▲▼</button><br/><select id="f-stage" class="w-full mt-1 text-[11px] px-1 py-0.5 border border-outline-variant rounded bg-surface" onchange="filterTbl()"><option value="">全部状态</option><option value="merged">终态</option><option value="delivering">施工/回炉</option><option value="accepted">待合</option><option value="assigned">已派</option><option value="queued">排队</option><option value="archived">作废</option></select></th>
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">卡点 / 下一步</th>
             </tr>
           </thead>
-          <tr class="bg-surface-container-lowest border-b border-outline-variant">
-            <td></td>
-            <td class="py-sm px-md"><input id="f-no" placeholder="单号" class="w-full text-[12px] px-1.5 py-1 border border-outline-variant rounded bg-surface" oninput="filterTbl()"/></td>
-            <td></td>
-            <td class="py-sm px-md"><input id="f-title" placeholder="标题" class="w-full text-[12px] px-1.5 py-1 border border-outline-variant rounded bg-surface" oninput="filterTbl()"/></td>
-            <td class="py-sm px-md"><select id="f-stage" class="w-full text-[12px] px-1 py-1 border border-outline-variant rounded bg-surface" onchange="filterTbl()"><option value="">全部状态</option><option value="merged">终态</option><option value="delivering">施工/回炉</option><option value="accepted">待合</option><option value="assigned">已派</option><option value="queued">排队</option><option value="archived">作废</option></select></td>
-            <td class="py-sm px-md"><select id="f-pri" class="w-full text-[12px] px-1 py-1 border border-outline-variant rounded bg-surface" onchange="filterTbl()"><option value="">全部 P</option><option value="P0">P0</option><option value="P1">P1</option><option value="P2">P2</option><option value="P3">P3</option></select></td>
-          </tr>
           <tbody class="font-body-sm text-body-sm" id="main-table-body"></tbody>
         </table>
       </section>
