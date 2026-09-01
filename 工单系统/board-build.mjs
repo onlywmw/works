@@ -70,7 +70,7 @@ const rows = projections.map((p, i) => {
   const badge = `<span class="bg-${st.zh === "终态" ? "green-100 text-green-800 border-green-200" : st.zh === "待合" ? "yellow-100 text-yellow-800 border-yellow-200" : st.zh === "施工" ? "orange-100 text-orange-800 border-orange-200" : st.zh === "作废" ? "gray-100 text-gray-700 border-gray-200" : st.zh === "已派" ? "blue-100 text-blue-800 border-blue-200" : st.zh === "排队" ? "gray-100 text-gray-600 border-gray-200" : "purple-100 text-purple-800 border-purple-200"} font-label-xs px-2 py-1 rounded-full border">${st.zh}${p.rejected ? "·回炉" : ""}${ov ? "·超期" : ""}</span>`;
   const pri = p.priority && PRI[p.priority] ? `<span class="text-[10px] px-1 rounded ${PRI[p.priority]} ml-1">${p.priority}</span>` : "";
   const line = p.line ? `<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">${esc(p.line)}</span>` : "";
-  return `<tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors ${ov}" data-no="${esc(p.no)}" onclick="toggleRow(this)">
+  return `<tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors ${ov}" data-no="${esc(p.no)}" data-stage="${esc(p.stage)}" onclick="toggleRow(this)">
   <td class="py-sm px-md text-on-surface-variant">${i + 1}</td>
   <td class="py-sm px-md font-mono text-mono">${esc(p.no)}${line}</td>
   <td class="py-sm px-md">${pri}</td>
@@ -153,12 +153,30 @@ function focusRow(no) {
   row.classList.add("focus-flash");
   setTimeout(() => row.classList.remove("focus-flash"), 2200);
 }
+let lastK = "";
+function setFilter(k) {
+  const noSel = document.getElementById("sel-no"), priSel = document.getElementById("sel-pri");
+  if (noSel) noSel.value = ""; if (priSel) priSel.value = "";
+  lastK = (lastK === k) ? "" : k;
+  document.querySelectorAll("#main-table-body > tr:not(.row-detail)").forEach(r => {
+    const st = r.dataset.stage;
+    let show = true;
+    if (lastK === "finished") show = st === "merged";
+    else if (lastK === "inflow") show = st !== "merged" && st !== "archived";
+    else if (lastK === "rejected") show = st === "delivering";  // 回炉（施工态包含打回）
+    else if (lastK === "onhold") show = false; // 挂账=滚到池
+    else show = true;
+    r.classList.toggle("hidden", !show);
+  });
+  document.querySelectorAll(".stat-card").forEach(c => c.classList.toggle("ring-2", c.dataset.k === lastK));
+  if (lastK === "onhold") document.getElementById("hold-box") && document.getElementById("hold-box").scrollIntoView({ behavior: "smooth" });
+}
 function toggleRow(tr){
   const det = tr.nextElementSibling;
   if(det && det.classList.contains('row-detail')) det.classList.toggle('hidden');
 }
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.stat-card').forEach(c=>c.addEventListener('click',()=>{ FILTER.conds=[]; if(c.dataset.k==='finished')FILTER.conds.push({field:'stage',op:'eq',val:'终态'}); else if(c.dataset.k==='inflow')FILTER.conds.push({field:'stage',op:'neq',val:'终态'}); else if(c.dataset.k==='rejected')FILTER.conds.push({field:'stage',op:'eq',val:'施工/回炉'}); rebuild(); }));
+  document.querySelectorAll('.stat-card').forEach(c=>c.addEventListener('click',()=>setFilter(c.dataset.k)));
   const box = document.getElementById('hold-box');
   const more = document.createElement('div');
   more.className = 'hidden col-span-full grid grid-cols-1 md:grid-cols-5 gap-sm';
