@@ -81,7 +81,8 @@ const rows = projections.map((p, i) => {
   <td class="py-sm px-md">${p.cat&&CATN[p.cat]?`<span class="text-[10px] px-1 rounded ${CATS[p.cat]} inline-block">${p.cat} ${CATN[p.cat]}</span>`:""}</td>
   <td class="py-sm px-md font-medium">${esc(TITLES[p.no] || p.title).slice(0, 24)}</td>
   <td class="py-sm px-md">${badge}</td>
-  <td class="py-sm px-md text-on-surface-variant">${esc((p.blocker || "—")).slice(0, 16)}<button class="ml-1 text-[10px] px-1.5 py-0.5 rounded border border-red-200 text-red-700 bg-red-50 hover:bg-red-100 cursor-pointer" onclick="event.stopPropagation();rejectRow(\'${esc(p.no)}\')">🔁 回炉</button></td>
+  <td class="py-sm px-md text-on-surface-variant">${esc((p.blocker || "—")).slice(0, 22)}</td>
+  <td class="py-sm px-md text-right"><button class="text-[10px] px-2 py-0.5 rounded border border-red-200 text-red-700 bg-red-50 hover:bg-red-100 cursor-pointer whitespace-nowrap" onclick="event.stopPropagation();rejectRow(\'${esc(p.no)}\')">🔁 回炉</button></td>
 </tr>
 <tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="6">
   <div class="bg-surface border border-outline-variant rounded p-md">
