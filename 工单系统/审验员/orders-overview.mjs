@@ -199,7 +199,8 @@ function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
     if (p) row[key] = p;
   }
   const dm = txt.match(DEL_RE);
-  return { cardNo, title: cardTitle, statusText: txt, raw: libLines.slice(idx, end).join(String.fromCharCode(10)), row, priority: extractPriority(txt), delId: dm ? dm[dm.length - 1] : null };
+  const rawT = libLines.slice(idx, end).join(String.fromCharCode(10));
+  return { cardNo, title: cardTitle, statusText: txt, raw: rawT, row, priority: extractPriority(rawT), delId: dm ? dm[dm.length - 1] : null };
 }
 
 function readLib(libPath) {
