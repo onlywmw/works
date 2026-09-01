@@ -8,7 +8,9 @@ import { fileURLToPath } from "node:url";
 import { execFile } from "node:child_process";
 
 const __dir = path.dirname(fileURLToPath(import.meta.url));
-const PORT = 8787;
+const PORT = Number(process.env.BOARD_PORT || 8787);
+// 默认只绑本机（工单信息不对内网默认暴露）；显式 BOARD_BIND=0.0.0.0 才开放多机访问
+const BIND = process.env.BOARD_BIND || "127.0.0.1";
 const LIB = path.join(__dir, "工单库.md");
 const TBL = path.join(__dir, "工单表.xlsx");
 let lastMtime = "";
@@ -54,4 +56,4 @@ const server = http.createServer(async (req, res) => {
   res.writeHead(404); res.end("not found");
 });
 
-server.listen(PORT, () => console.log(`[board-server] http://localhost:${PORT} — 点刷新=实时最新（变化时自动重新生成）`));
+server.listen(PORT, BIND, () => console.log(`[board-server] http://${BIND}:${PORT} — 点刷新=实时最新（变化时自动重新生成）`));
