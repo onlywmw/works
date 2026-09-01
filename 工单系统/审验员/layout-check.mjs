@@ -15,6 +15,7 @@ const ROOT = ROOT_ARG ? path.resolve(ROOT_ARG) : path.dirname(SYS); // Desktop\M
 const FORBIDDEN = [
   "设计师", "审验员", "程序员", "验收员", "处理中心",
   "工单库.md", "工单表.xlsx", "挂账登记表.md", "归档", "_备份归档",
+  "调试", "upg50-ph2-cdp", "验证产物",
 ];
 const errors = [];
 
