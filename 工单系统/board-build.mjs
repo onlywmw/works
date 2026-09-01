@@ -111,7 +111,7 @@ const renderFn = `
 async function rejectRow(no){
   if(!confirm(no + " 改回施工·回炉？"))return;
   try{
-    const r = await fetch("/api/reject",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({no})});
+    const r = await fetch("http://127.0.0.1:8787/api/reject",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({no})});
     const j = await r.json();
     if(r.ok && j.ok){ location.reload(); }
     else alert("回炉失败：" + (j.msg || r.status));
