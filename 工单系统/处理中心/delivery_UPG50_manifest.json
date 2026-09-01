@@ -2,7 +2,7 @@
   "ticket_id": "UPG-50",
   "delivery_id": "DEL-UPG50-20260901-001",
   "standard_id": "STD-UPG50-v1",
-  "code_commit_sha": "8e73e8d4ae53ae47e943039a9fa00b63ec8ceef5",
+  "code_commit_sha": "0d6df7f680e979e1caf91a14b46009b46b641986",
   "artifact_sha": "acbd30fb85c73dac",
   "evidence_manifest": [
     {
@@ -55,7 +55,21 @@
       "sha256": "b3761017a5eca596b464564d72acc7201ed22f51375e3c9b9b958276f35a7606",
       "producer": "C",
       "created_at": "2026-09-02"
+    },
+    {
+      "evidence_id": "E-009",
+      "path": "程序员/交付报告/DELIVERY_UPG50_PH1_1C_2026-09-02.md",
+      "sha256": "1caf4dfe690b59ea30c1026bd4b12ea2d7f52b307a986ef19445dea1bca5d92b",
+      "producer": "C",
+      "created_at": "2026-09-02"
+    },
+    {
+      "evidence_id": "E-010",
+      "path": "0027-mov/upg50_screens/（1C 截图证据 20 张：1C 12 + P2-A wcard 2 + P2-B 资产 pressed 6，不含作废废图）",
+      "sha256": "fdf60d99426826fb9f81e0c5a35b54c1cc72cdf2259404d6c8d83fa7ed1cc660",
+      "producer": "C",
+      "created_at": "2026-09-02"
     }
   ],
-  "evidence_manifest_sha": "1fb5d7deb695e65cb5881f7f5878337fc1bb17ec8b1e95185a0d47f702d84423"
+  "evidence_manifest_sha": "9b3118d37c1296e5725277165c64f1dabb52b72a8d105a7f70ac208fc7bc3041"
 }

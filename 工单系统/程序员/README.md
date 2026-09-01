@@ -6,6 +6,7 @@
 - `交付报告\`：DELIVERY_* / 交付报告_*（已交付报告）
 - `工单文档\`：TASKS_* / UPG-*（工单/派单文本）
 - 根：README.md + 证据目录（按工单建 `*-evidence` 目录）
+- `ponytail-bench`：极简对照测量工具（交付前跑 `loc.mjs --diff` 出 Code-LOC 申报，与 Token 影响申报并列；详见 ponytail-bench/README.md）
 
 ---
 
