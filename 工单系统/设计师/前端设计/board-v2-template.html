@@ -88,6 +88,8 @@
   <select id="sel-no" class="text-[12px] px-1.5 py-1 border border-outline-variant rounded bg-surface w-[148px]" onchange="applyF()"><option value="">全部</option></select>
   <label class="text-on-surface-variant ml-2">P</label>
   <select id="sel-pri" class="text-[12px] px-1.5 py-1 border border-outline-variant rounded bg-surface w-[148px]" onchange="applyF()"><option value="">全部</option><option>P0</option><option>P1</option><option>P2</option><option>P3</option><option>未排</option></select>
+  <label class="text-on-surface-variant ml-2">分类</label>
+  <select id="sel-cat" class="text-[12px] px-1.5 py-1 border border-outline-variant rounded bg-surface w-[148px]" onchange="applyF()"><option value="">全部</option><option value="M1">M1 安全</option><option value="M2">M2 体系</option><option value="M3">M3 基建</option><option value="M4">M4 工具</option><option value="M5">M5 商业</option><option value="M6">M6 记忆</option><option value="M7">M7 资产</option><option value="M8">M8 UI</option></select>
   <span class="text-[11px] text-on-surface-variant ml-2" id="filter-summary"></span>
 </div><section class="bg-surface-container-lowest border border-outline-variant rounded overflow-hidden shadow-sm">
         <table class="w-full text-left border-collapse">
@@ -96,6 +98,7 @@
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-10">#</th>
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-24">单号</th>
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-14">P</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-16">分类</th>
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">标题</th>
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-32">状态</th>
               <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">卡点 / 下一步</th>

@@ -200,7 +200,9 @@ function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
   }
   const dm = txt.match(DEL_RE);
   const rawT = libLines.slice(idx, end).join(String.fromCharCode(10));
-  return { cardNo, title: cardTitle, statusText: txt, raw: rawT, row, priority: extractPriority(rawT), delId: dm ? dm[dm.length - 1] : null };
+  const cm = rawT.match(/\*\*分类\*\*[：:]\s*([MP0-9A-Z]{1,3})/);
+  const cat = cm ? cm[1] : null;
+  return { cardNo, title: cardTitle, statusText: txt, raw: rawT, cat, row, priority: extractPriority(rawT), delId: dm ? dm[dm.length - 1] : null };
 }
 
 function readLib(libPath) {
@@ -345,6 +347,7 @@ function analyzeCard(card, nowMs) {
 
     return {
     blocker,
+    cat: card.cat || null,
     no: card.cardNo,title: card.title,
     stage,
     ts,

@@ -68,12 +68,15 @@ const rows = projections.map((p, i) => {
   const st = ST[p.stage] || ST.unknown;
   const ov = p.overdue ? "overdue-row" : "";
   const badge = `<span class="bg-${st.zh === "终态" ? "green-100 text-green-800 border-green-200" : st.zh === "待合" ? "yellow-100 text-yellow-800 border-yellow-200" : st.zh === "施工" ? "orange-100 text-orange-800 border-orange-200" : st.zh === "作废" ? "gray-100 text-gray-700 border-gray-200" : st.zh === "已派" ? "blue-100 text-blue-800 border-blue-200" : st.zh === "排队" ? "gray-100 text-gray-600 border-gray-200" : "purple-100 text-purple-800 border-purple-200"} font-label-xs px-2 py-1 rounded-full border">${st.zh}${p.rejected ? "·回炉" : ""}${ov ? "·超期" : ""}</span>`;
+  const CATN={M1:"安全",M2:"体系",M3:"基建",M4:"工具",M5:"商业",M6:"记忆",M7:"资产",M8:"UI"};
+  const CATS={M1:"bg-red-100 text-red-800",M2:"bg-purple-100 text-purple-800",M3:"bg-sky-100 text-sky-800",M4:"bg-teal-100 text-teal-800",M5:"bg-amber-100 text-amber-800",M6:"bg-green-100 text-green-800",M7:"bg-orange-100 text-orange-800",M8:"bg-slate-100 text-slate-700"};
   const pri = p.priority && PRI[p.priority] ? `<span class="text-[10px] px-1 rounded ${p.stage === "merged" ? "bg-surface-container-high text-on-surface-variant" : PRI[p.priority]} ml-1">${p.priority}</span>` : "";
   const line = p.line ? `<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">${esc(p.line)}</span>` : "";
   return `<tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors ${ov}" data-no="${esc(p.no)}" data-stage="${esc(p.stage)}" onclick="toggleRow(this)">
   <td class="py-sm px-md text-on-surface-variant">${i + 1}</td>
   <td class="py-sm px-md font-mono text-mono">${esc(p.no)}${line}</td>
   <td class="py-sm px-md">${pri}</td>
+  <td class="py-sm px-md">${p.cat&&CATN[p.cat]?`<span class="text-[10px] px-1 rounded ${CATS[p.cat]} inline-block">${p.cat} ${CATN[p.cat]}</span>`:""}</td>
   <td class="py-sm px-md font-medium">${esc(p.title).slice(0, 24)}</td>
   <td class="py-sm px-md">${badge}</td>
   <td class="py-sm px-md text-on-surface-variant">${esc(p.blocker || "—")}</td>
@@ -122,13 +125,15 @@ function feedback(no){
 function applyF() {
   const no = document.getElementById("sel-no") ? document.getElementById("sel-no").value : "";
   const pri = document.getElementById("sel-pri") ? document.getElementById("sel-pri").value : "";
+  const cat = document.getElementById("sel-cat") ? document.getElementById("sel-cat").value : "";
   document.querySelectorAll("#main-table-body > tr:not(.row-detail)").forEach(r => {
     const p = DATA.tickets.find(x => x.no === r.dataset.no);
     if (!p) { r.classList.add("hidden"); return; }
     const priKey = p.priority && p.priority !== "—" ? p.priority : "未排";
     const okNo = !no || p.no === no;
     const okPri = !pri || priKey === pri;
-    r.classList.toggle("hidden", !(okNo && okPri));
+    const okCat = !cat || p.cat === cat;
+    r.classList.toggle("hidden", !(okNo && okPri && okCat));
   });
   const sum = document.getElementById("filter-summary");
   if (sum) { const vis = document.querySelectorAll("#main-table-body > tr:not(.row-detail):not(.hidden)").length; sum.textContent = "显示 " + vis + " / " + DATA.stats.total; }
