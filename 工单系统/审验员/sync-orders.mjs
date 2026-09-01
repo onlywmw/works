@@ -70,16 +70,41 @@ const SEG_RE = /(?=→\s*[✅🔨❌⚠️📌🆕⏳】]+)|(?=→\s*\*\*)|(?=�
 
 const FIELD_HEAD = ["**出单人**", "**日期**", "**优先级**", "**原状态**"];
 
-const ROLE_WORDS = [
-  ["merge", ["已合 main", "合 main", "合流", "待设计师合 main"]],
-  ["inspector", ["验收员", "审验", "打回", "复验", "验收通过", "独立复核"]],
-  ["dev", ["C 完成", "C 交付", "C 批", "C 修复", "程序员", "已认领", "在施", "施工中", "修复交付", "修复完成", "M3-R2"]],
-  ["designer", ["方案", "设计", "定稿", "派单", "评审", "激活", "规范", "裁决", "终审", "拍板", "设计师", "大神"]],
+// 角色动作锚（R1 增强：卡文本锚 + 长文本段兜底）
+// 只含动作语义锚，不含纯人名（防「设计师合前抽查」误判为设计动作；人名词随动作词命中）
+// 段内任一锚命中 → 从锚位置切出该角色动作子段（旧卡长状态段多角色并存也可逐个提取）
+// 同 idx 多锚时保留更长锚（如 待设计师合 main > 已合 main > 合 main）
+const ROLE_ANCHORS = [
+  { role: "merge", re: /待设计师合 main|已合 main|合 main|合流/g },
+  { role: "inspector", re: /验收员|验收通过|独立复核|复验|打回|审验/g },
+  { role: "dev", re: /C 交付|C 完成|C 修复|C 批|修复交付|修复完成|M3-R2|已认领|在施|施工中/g },
+  { role: "designer", re: /出单人|方案[\s**]*[vV]\d|设计[\s]*[vV]\d|定稿|已派单|评审|裁决|拍板|规范|激活/g },
 ];
 
 const DATE_RE = /@?(\d{4}-\d{2}-\d{2})/g;
 const DEL_RE = /DEL-[A-Z0-9]+-\d{8}-\d+/g;
 const DOC_RE = /设计师[\\/][^\s｜|，。；）)（(]*?\.md/;
+
+// 优先级多形态锚（R1 增强）：**优先级**：X / 优先级：X / ｜ 优先级：X / （PX· / **级别**：PX
+// 只认明确的优先级/级别标注；「修复范围（P1 必修）」等缺陷等级不命中（不造值）
+function extractPriority(txt) {
+  const patterns = [
+    /\*\*优先级\*\*：\s*([^｜|]+)/,   // 允许含空格（批 1 P0 / 批 2 P1），取到竖线前
+    /(?:｜|\|)\s*优先级：\s*([^｜|]+)/,
+    /(?:^|；)优先级：\s*([^｜|]+)/,
+    /（(P[0-4])\s*·\s*[0-9~]/u, // 排期形态（P0·3~5 工作日）；缺陷级别（P1，L3…）不命中（不造值）
+    /\*\*级别\*\*：\s*([^｜|]+)/,
+  ];
+  for (const re of patterns) {
+    const m = txt.match(re);
+    if (!m) continue;
+    let v = m[1].trim().replace(/[（(].*$/, "").trim();
+    if (v.startsWith("P") && /^P[0-4]$/.test(v)) return v;
+    if (/^[0-4]$/.test(v)) return "P" + v;
+    return v; // 非 P 形态标注（如「紧急」「批 1 P0」），照实返回不猜
+  }
+  return "—";
+}
 
 function parseLib(libPath) {
   const src = fs.readFileSync(libPath, "utf8").replace(/\r\n/g, "\n");
@@ -101,6 +126,8 @@ function parseLib(libPath) {
     for (let j = st + 1; j < end; j++) {
       const l = lines[j];
       if (/^# UPG-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
+      // R1：blockquote（> 遗留跟进等）与分隔线（---）非状态区内容，排除
+      if (l.startsWith(">") || l.startsWith("---")) { endline = j; break; }
       if (SEC_WORDS.some((w) => l.startsWith(w))) { endline = j; break; }
     }
     return { st, endline };
@@ -117,25 +144,74 @@ function parseLib(libPath) {
   function classify(seg) {
     if (FIELD_HEAD.some((f) => seg.startsWith(f))) return null;
     const head = seg.slice(0, 40);
-    for (const [role, words] of ROLE_WORDS) {
-      if (words.some((w) => head.includes(w))) return role;
+    for (const { role, re } of ROLE_ANCHORS) {
+      re.lastIndex = 0; // g flag 下 test 会移动 lastIndex，先重置
+      if (re.test(head)) return role;
     }
     return null;
   }
 
+  function actionSubsegs(seg) {
+    // 段内按动作锚位置切片：锚→下一锚 的子文本作为该角色候选动作（R1 长文本段兜底）
+    const markers = [];
+    for (const { role, re } of ROLE_ANCHORS) {
+      for (const m of seg.matchAll(re)) {
+        markers.push({ idx: m.index, role, word: m[0] });
+      }
+    }
+    if (!markers.length) return [];
+    markers.sort((a, b) => a.idx - b.idx || b.word.length - a.word.length);
+    const dedup = [];
+    for (const mk of markers) {
+      const last = dedup[dedup.length - 1];
+      if (last && last.idx === mk.idx) continue;            // 同 idx 取最长锚
+      if (last && mk.role === last.role && mk.idx < last.idx + last.word.length) continue; // 同角色重叠锚
+      dedup.push(mk);
+    }
+    const out = [];
+    for (let k = 0; k < dedup.length; k++) {
+      const mk = dedup[k];
+      const tail = seg.slice(mk.idx + mk.word.length, k + 1 < dedup.length ? dedup[k + 1].idx : seg.length)
+        .trim().replace(/^[｜|→。；：]+/, "").trim();
+      out.push({ role: mk.role, text: (mk.word + tail).slice(0, 70) });
+    }
+    return out;
+  }
+
+  function maxDate(s) {
+    let date = -1;
+    DATE_RE.lastIndex = 0;
+    for (let m = DATE_RE.exec(s); m; m = DATE_RE.exec(s)) {
+      const t = Number(m[1].replace(/-/g, ""));
+      if (t > date) date = t;
+    }
+    return date;
+  }
+
   function pick(segs, role) {
-    let best = null, bestDate = -1, bestPos = -1;
+    let best = null, bestDate = -1, bestPos = -1, hasWhole = false;
+    // 优先：整段主分类为该角色 → 完整段提取（内容完整，不劣化原有正确提取）
     segs.forEach((s, pos) => {
+      if (FIELD_HEAD.some((f) => s.startsWith(f))) return;
       if (classify(s) !== role) return;
-      let date = -1;
-      DATE_RE.lastIndex = 0;
-      for (let m = DATE_RE.exec(s); m; m = DATE_RE.exec(s)) {
-        const t = Number(m[1].replace(/-/g, ""));
-        if (t > date) date = t;
-      }
+      hasWhole = true;
+      const date = maxDate(s);
       if (date > bestDate || (date === bestDate && pos > bestPos)) {
-        best = s; bestDate = date; bestPos = pos;
+        best = s.slice(0, 70); bestDate = date; bestPos = pos;
       }
+    });
+    if (hasWhole) return best;
+    // 兜底：段内锚切片（旧卡长状态段多角色并存——如 UPG-03 merge 段内嵌「验收员通过」）
+    segs.forEach((s, pos) => {
+      if (FIELD_HEAD.some((f) => s.startsWith(f))) return;
+      actionSubsegs(s).forEach((sub, si) => {
+        if (sub.role !== role) return;
+        const date = maxDate(sub.text);
+        const score = pos + si / 100;
+        if (date > bestDate || (date === bestDate && score > bestPos)) {
+          best = sub.text; bestDate = date; bestPos = score;
+        }
+      });
     });
     return best;
   }
@@ -156,14 +232,8 @@ function parseLib(libPath) {
       const s = pick(segs, role);
       if (s) row[col] = s.slice(0, 70);
     }
-    const pm = txt.match(/\*\*优先级\*\*：([^｜|]*)/);
-    if (pm && pm[1].trim()) {
-      const val = pm[1].trim().replace(/[｜|]+$/, "").trim();
-      const m2 = val.match(/^([^（(]+)/);
-      row.C = (m2 ? m2[1] : val).trim();
-    } else {
-      warns.push("优先级缺失");
-    }
+    row.C = extractPriority(txt);
+    if (row.C === "—") warns.push("优先级缺失");
     const dm = txt.match(DEL_RE);
     if (dm) row.I = dm[dm.length - 1];
     const hp = txt.match(DOC_RE);
@@ -270,8 +340,10 @@ function diffLibVsTable(libRows, tableRows) {
     compared++;
     let rowIssues = 0;
     for (const col of ["B", "C", "D", "E", "F", "G", "H", "I"]) {
-      const a = (tblVals[col] || "").trim();
+      let a = (tblVals[col] || "").trim();
       const b = (libVals[col] || "").trim();
+      // R1 口径归一化：I(delivery_id) 表占位符「—（合前交付，未绑定）」≡ 库「—」（均表无交付绑定，非实质差异）
+      if (col === "I" && /^—（/.test(a)) a = "—";
       if (a !== b) {
         rowIssues++;
         issues.push({ no: lr.no, type: "值不一致", detail: `列${col}(${COL_LABEL[col]}) 表="${a.slice(0, 40)}" → 库="${b.slice(0, 40)}"` });
