@@ -616,6 +616,8 @@ function main() {
 
   fs.writeFileSync(outPath.replace(/.md$/, ".html"), renderHtml(projections, hanging, meta, md), "utf8");
 
+  fs.writeFileSync(outPath.replace(/.md$/, ".data.json"), JSON.stringify({ projections, hanging, meta }, null, 1), "utf8");
+
   // 只读实证：跑后 hash 必须与跑前一致（E4 不写库/表）
   const libShaAfter = sha256(DEFAULT_LIB);
   const tblShaAfter = tblShaBefore && fs.existsSync(DEFAULT_TABLE) ? sha256(DEFAULT_TABLE) : null;

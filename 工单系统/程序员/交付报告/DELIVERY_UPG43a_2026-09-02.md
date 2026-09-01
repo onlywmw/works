@@ -37,3 +37,36 @@
 - 工单库 UPG-43a 状态：`程序员✅完成，待验收`
 
 **待验收员**：WebMcpHubTest 复跑（H4/H5/H7 关键用例）+ 变异亲杀还原复核 + 真机补验（web.* 工具面出现需 UPG-69/stub 站点——诚实标注项）+ H6 browser.* 零回归抽查。
+
+---
+
+## R1 打回修复节（ACCEPTANCE_LOG §P24 · 2026-09-02）
+
+**对象**：feat/upg43a `8b7b6d0` 被验收员打回——M-1/M-2/M-3 框架正确性缺口（无 HIGH，但 H4/H5 判据实质完整性必修）。修复提交 **`c924197`**（4 文件 +165/-14）。
+
+### 打回项 → 修法（security_review 实证）
+
+| 打回项 | 缺口 | 修复 |
+|---|---|---|
+| **M-1** bridge 注入幂等守卫方向反 | `webmcp-bridge.js:8 if(window.__movWebMcp) return`——页面预置假 `__movWebMcp` 后 App 静默放弃真注入，discover/call/poll 全走伪造实现逃 H4 审批闸；且工具 write 标志完全信任页面声明 | ① 删入口短路，末尾 `delete window.__movWebMcp` + `Object.defineProperty(..., writable:false, configurable:false)` **无条件覆盖**；② write 判定 App 侧登记并集：新增 `WebMcpHub.REGISTERED_WRITE_TOOLS`（域→写工具名）+ `isWriteTool()`=页面声明 ∪ App 登记（页面谎报 write=false 不可免审；UPG-69 写工具在此登记） |
+| **M-2** dispatch 域校验 TOCTOU | 校验读 `session.url` 快照（onPageFinished 才更新），call 打 webView **当前文档**——跨域导航窗口内 evil.com 假桥借 mow.kim 校验身份执行 | dispatch 新增 `liveHostname` 双域校验（与 sessionHostname **AND**，任一非白名单拒）；MainActivity 调用处主线程实时读 `webView.url`；`call()` 转发前再以 `withContext(Main)` 读 `webView.url` 兜底二次校验 |
+| **M-3** discover 元数据 prompt injection 载体 | description/inputSchema 原样进 AI 工具面（白名单域被 XSS 时伪造工具描述诱导 AI） | `sanitizeDescription`：控制字符/换行折叠 + 长度上限 200；`normalizeSchema` 顶层字段白名单（只保留 type/properties/required） |
+| LOW | pollTask 30s 超时后页面侧任务悬挂至导航 | bridge 增 `cancel(taskId)`；pollTask 超时同步 `evalRaw("...cancel(...)")` 清理 |
+
+### 变异亲杀（R1 判据 4/4，每条注入→红→回滚实证）
+
+| # | 变异 | 亲杀测试 | 结果 |
+|---|---|---|---|
+| M-1a | bridge 入口加回 `if(window.__movWebMcp) return` 短路 | `M1a bridge 无条件覆盖...` | **红**（1 failed）→ 回滚 |
+| M-1b | `isWriteTool` 删 App 登记并集（只看页面 write） | `M1 页面谎报 write=false...` | **红**（1 failed）→ 回滚 |
+| M-2 | dispatch 删 `liveHostname` 校验（只剩快照） | `M2 实时域非白名单...` | **红**（1 failed）→ 回滚 |
+| M-3 | `sanitizeDescription` 删消毒（直接返回原文） | `M3 描述消毒 控制字符折叠 超长裁剪` | **红**（1 failed）→ 回滚 |
+
+### 回归与诚实标注
+
+- **WebMcpHubTest 16→22**（R1 变异亲杀 6 条）；全量 JVM **625/1/0/0**（619 基线 + 6 新用例）BUILD SUCCESSFUL
+- M-1a 变红验证采用 `--rerun-tasks` 强制（assets 变化不触发 JVM 测试增量重跑——已确认亲杀真实）
+- **诚实标注**：M-1/M-2/M-3/LOW 均框架正确性代码修复（JVM 单测+源码断言覆盖）；真 WebView 注入→页面 handler→JSON 回程端到端仍需 UPG-69 站点侧/stub 驱动——与 §P24 口径一致
+- ApprovalRegistry/c7_baseline drift 已 `git checkout` 还原，未混入提交
+
+**待验收员 R1 复验**：M-1（bridge 源码断言+假桥场景测试）、M-2（liveHostname 双校验测试）、M-3（消毒/白名单测试）+ 变异亲杀 4/4 还原复核；H2/H3 端到端随 UPG-69 专项补验。

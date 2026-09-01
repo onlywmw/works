@@ -1,110 +1,1262 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>MOV 工单看板</title><style>
-body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding:24px;background:#f1f5f9;color:#0f172a}
-.wrap{max-width:1100px;margin:0 auto}
-h1{font-size:22px;margin:0 0 4px}
-.sub{color:#64748b;font-size:12px;margin-bottom:16px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px}
-.card{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.card b{display:block;font-size:24px;margin-bottom:2px}
-.card span{color:#64748b;font-size:12px}
-.block{border-left:4px solid #2563eb;background:#eff6ff;padding:10px 14px;border-radius:8px;margin-bottom:20px;font-size:13px}
-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-th{background:#f8fafc;text-align:left;padding:9px 12px;font-size:12px;color:#475569;border-bottom:1px solid #e2e8f0}
-td{padding:8px 12px;font-size:13px;border-bottom:1px solid #f1f5f9}
-tr:hover td{background:#f8fafc}
-.st{font-size:12px;padding:3px 8px;border-radius:99px;white-space:nowrap}
-h2{font-size:16px;margin:28px 0 10px}
-.gray{color:#94a3b8;font-size:12px}.more{margin:8px 0;padding:6px 12px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;cursor:pointer}
-</style></head><body><div class="wrap">
-<h1>🧭 MOV 工单全局看板</h1><div class="sub">2026-09-02 · E1 负责真相·E4 只投影 · sha 83bec992… / 7147d2ba…</div>
-<div class="cards">
-<div class="card"><b>58</b><span>总卡数</span></div>
-<div class="card"><b style="color:#d97706">9</b><span>在流（未终态）</span></div>
-<div class="card"><b style="color:#16a34a">48</b><span>✅ 终态</span></div>
-<div class="card"><b style="color:#dc2626">0</b><span>⚠️ 超期</span></div>
-<div class="card"><b style="color:#2563eb">20</b><span>挂账待审</span></div>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MOV 工单全局看板</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: {
+        "primary-container": "#2563eb", "surface-tint": "#0053db", "tertiary": "#943700",
+        "surface-variant": "#e1e2ed", "inverse-primary": "#b4c5ff", "surface-container-high": "#e7e7f3",
+        "error-container": "#ffdad6", "on-tertiary": "#ffffff", "on-tertiary-container": "#ffede6",
+        "error": "#ba1a1a", "secondary": "#495c95", "on-secondary": "#ffffff",
+        "on-secondary-fixed": "#00174b", "secondary-fixed-dim": "#b4c5ff", "surface-bright": "#faf8ff",
+        "surface-container": "#ededf9", "on-surface": "#191b23", "primary-fixed": "#dbe1ff",
+        "surface-container-highest": "#e1e2ed", "on-error-container": "#93000a", "inverse-surface": "#2e3039",
+        "on-primary-container": "#eeefff", "tertiary-fixed": "#ffdbcd", "on-tertiary-fixed-variant": "#7d2d00",
+        "background": "#faf8ff", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#360f00",
+        "on-primary-fixed-variant": "#003ea8", "on-secondary-container": "#394c84", "outline-variant": "#c3c6d7",
+        "outline": "#737686", "on-error": "#ffffff", "surface": "#faf8ff", "on-surface-variant": "#434655",
+        "on-background": "#191b23", "tertiary-container": "#bc4800", "surface-dim": "#d9d9e5",
+        "tertiary-fixed-dim": "#ffb596", "secondary-fixed": "#dbe1ff", "primary-fixed-dim": "#b4c5ff",
+        "surface-container-low": "#f3f3fe", "inverse-on-surface": "#f0f0fb", "on-secondary-fixed-variant": "#31447b",
+        "primary": "#004ac6", "on-primary-fixed": "#00174b", "secondary-container": "#acbfff"
+      },
+      borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+      spacing: { sm: "8px", base: "8px", "container-max": "1200px", xl: "32px", gutter: "20px", lg: "24px", xs: "4px", md: "16px" },
+      fontFamily: { "label-md": ["Inter"], "body-base": ["Inter"], h3: ["Inter"], "label-xs": ["Inter"], mono: ["monospace"], h1: ["Inter"], "display-sm": ["Inter"], h2: ["Inter"], "body-sm": ["Inter"] },
+      fontSize: {
+        "label-md": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+        "body-base": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+        h3: ["18px", { lineHeight: "28px", fontWeight: "600" }],
+        "label-xs": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "600" }],
+        mono: ["13px", { lineHeight: "20px", fontWeight: "400" }],
+        h1: ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }],
+        "display-sm": ["30px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        h2: ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }]
+      }
+    }}
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #191b23; }
+  .grid-bg { background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 16px 16px; }
+  .table-row-expanded { background-color: #f3f3fe; }
+  .overdue-row td { background-color: #fef2f2; }
+</style>
+</head>
+<body class="bg-surface text-on-surface antialiased grid-bg">
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-lg h-10 bg-surface border-b border-outline-variant">
+  <div class="flex items-center gap-md">
+    <span class="font-h2 text-h2 font-bold text-primary">MOV 工单看板</span>
+    <div class="flex gap-sm ml-lg">
+      <button class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1">全局视图</button>
+      <button class="font-label-md text-label-md text-on-surface-variant" disabled>分析</button>
+      <button class="font-label-md text-label-md text-on-surface-variant" disabled>团队</button>
+      <button class="font-label-md text-label-md text-on-surface-variant" disabled>设置</button>
+    </div>
+  </div>
+  <div class="flex items-center gap-sm">
+    <span class="font-label-xs text-label-xs text-on-surface-variant px-2 py-1 rounded-full border border-outline-variant" id="sha-chip">E1 真相 · E4 只投影</span>
+  </div>
+</nav>
+<div class="max-w-[1200px] mx-auto mt-12 px-md pb-xl">
+  <header class="py-md border-b border-outline-variant mb-md">
+    <h1 class="font-h1 text-h1 text-on-surface mb-xs">MOV 工单全局看板</h1>
+    <p class="font-body-base text-body-base text-on-surface-variant" id="summary-line">—</p>
+  </header>
+  <section class="grid grid-cols-2 md:grid-cols-6 gap-md mb-lg" id="summary-cards">
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm cursor-pointer hover:bg-surface-container transition-colors stat-card" data-k="all">
+  <div class="font-label-md text-label-md text-on-surface-variant mb-xs">总数</div>
+  <div class="font-h2 text-h2 text-on-surface">58</div>
 </div>
-<div class="block"><b>⚡ 当前重点：</b>UPG-05 打回回炉 · UPG-43 打回回炉 · UPG-18 施工中 · UPG-25 打回回炉 · UPG-46 待认领　<b>告警：</b>超期 0 · 无法解析 0　</div>
-<h2>主看板（58 卡）</h2>
-<table><thead><tr><th>#</th><th>单</th><th>名称</th><th>状态</th><th>卡点/下一步</th><th>线</th></tr></thead><tbody>
-<tr><td>1</td><td><b>UPG-24</b></td><td title="MOV 设计规范 v1（风格定性 + token 坐标表）">MOV 设计规范 v1（风格定性 + t…</td><td><span class="st" style="background:#64748b1a;color:#64748b">❌ 作废</span></td><td>—</td><td>—</td></tr>
-<tr><td>2</td><td><b>UPG-05</b></td><td title="记忆体系回补">记忆体系回补</td><td><span class="st" style="background:#dc26261a;color:#dc2626">❌ 回炉</span></td><td>验收打回·回炉——E3/R2 行为面补验（模拟器失败场景受限）</td><td>—</td></tr>
-<tr><td>3</td><td><b>UPG-18</b></td><td title="Android 死代码清理">Android 死代码清理</td><td><span class="st" style="background:#d977061a;color:#d97706">🔨 施工</span></td><td>施工中——死代码清理清单核对（registerMovQueryTools/Mcp</td><td>—</td></tr>
-<tr><td>4</td><td><b>UPG-25</b></td><td title="UI 瑕疵批修（规范 v1 待并轨清单 13 项）">UI 瑕疵批修（规范 v1 待并轨清单 …</td><td><span class="st" style="background:#dc26261a;color:#dc2626">❌ 回炉</span></td><td>验收打回·回炉——v1 待并轨清单 13 项修</td><td>C</td></tr>
-<tr><td>5</td><td><b>UPG-43</b></td><td title="ConnectWeb 作 WebMCP 客户端/Hub（浏览器双本质三期）">ConnectWeb 作 WebMCP …</td><td><span class="st" style="background:#dc26261a;color:#dc2626">❌ 回炉</span></td><td>施工中——App 侧 WebMCP Hub 框架（契约 v0.1 待 43a 起</td><td>C</td></tr>
-<tr><td>6</td><td><b>UPG-55</b></td><td title="我的资产（资产管理项注册体系 · 基于安全体系 v2.1）">我的资产（资产管理项注册体系 · 基于安…</td><td><span class="st" style="background:#d977061a;color:#d97706">🔨 施工</span></td><td>施工中——C 线（资产管理项注册体系）</td><td>C</td></tr>
-<tr><td>7</td><td><b>UPG-57</b></td><td title="Evolution Ledger 骨架（改造计划第一阶段②）">Evolution Ledger 骨架（…</td><td><span class="st" style="background:#dc26261a;color:#dc2626">❌ 回炉</span></td><td>验收打回·回炉——Evolution Ledger 骨架修</td><td>C</td></tr>
-<tr><td>8</td><td><b>UPG-65</b></td><td title="A-2 门 3 灰度自动化（改造计划第二阶段·接 B 生产信号）">A-2 门 3 灰度自动化（改造计划第二…</td><td><span class="st" style="background:#dc26261a;color:#dc2626">❌ 回炉</span></td><td>验收打回·回炉——门 3 灰度自动化修</td><td>C</td></tr>
-<tr><td>9</td><td><b>UPG-46</b></td><td title="工具联动 Runtime 契约（Tool Orchestration）">工具联动 Runtime 契约（Tool…</td><td><span class="st" style="background:#2563eb1a;color:#2563eb">📌 已派</span></td><td>已派·待认领——无</td><td>—</td></tr>
-<tr><td>10</td><td><b>UPG-69</b></td><td title="WebMCP 站点试点（mow.kim 工单站「站点=业务工具」第一站）">WebMCP 站点试点（mow.kim …</td><td><span class="st" style="background:#2563eb1a;color:#2563eb">📌 已派</span></td><td>已派·待认领——等 WEBMCP_PROTOCOL_v0.1 契约冻结（43a </td><td>—</td></tr>
-<tr><td>11</td><td><b>UPG-01</b></td><td title="全量工具元数据补全">全量工具元数据补全</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>12</td><td><b>UPG-02</b></td><td title="设备类工具包迁移（AVD 内置 device.*/sensor.* 非敏感子集）">设备类工具包迁移（AVD 内置 devi…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>13</td><td><b>UPG-03</b></td><td title="生活场景工具（12306 内置；地图线已删）">生活场景工具（12306 内置；地图线已…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>14</td><td><b>UPG-04</b></td><td title="Obsidian 工具包迁移（AVD 内置 obsidian.*，SAF 通路）">Obsidian 工具包迁移（AVD 内…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>15</td><td><b>UPG-06</b></td><td title="确定性防编造回补">确定性防编造回补</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>16</td><td><b>UPG-07</b></td><td title="预算口径 + 用量计量 + 审批简化">预算口径 + 用量计量 + 审批简化</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>17</td><td><b>UPG-08</b></td><td title="mow.kim 工作台落地（Stitch 框架工程化）">mow.kim 工作台落地（Stitch…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>18</td><td><b>UPG-09</b></td><td title="MOV App 登录页实现">MOV App 登录页实现</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>19</td><td><b>UPG-10</b></td><td title="工作台 sync 状态语义细分">工作台 sync 状态语义细分</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>20</td><td><b>UPG-11</b></td><td title="首启隐私政策弹窗（应用宝整改）">首启隐私政策弹窗（应用宝整改）</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>21</td><td><b>UPG-12</b></td><td title="WebView 引擎预热 + 页面加载体验优化">WebView 引擎预热 + 页面加载体…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>22</td><td><b>UPG-13</b></td><td title="登录页视觉修订（用户 6 条 + 顺手修）">登录页视觉修订（用户 6 条 + 顺手修…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>23</td><td><b>UPG-14</b></td><td title="设置页收口（账号卡接真 + 退出登录去重 + 两行死链修复）">设置页收口（账号卡接真 + 退出登录去重…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>24</td><td><b>UPG-15</b></td><td title="登录页死锁修（登录钮常可点 + 协议整行可点）">登录页死锁修（登录钮常可点 + 协议整行…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>25</td><td><b>UPG-16</b></td><td title="release 签名配置收口（明文口令外移）">release 签名配置收口（明文口令外…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>26</td><td><b>UPG-17</b></td><td title="App demo 假数据全清（Vue 侧）">App demo 假数据全清（Vue 侧…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>27</td><td><b>UPG-19</b></td><td title="应用图标换 MOV 竖眼 Logo">应用图标换 MOV 竖眼 Logo</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>28</td><td><b>UPG-20</b></td><td title="聊天页 chips 改造 v2（气泡式 切换模型+MCP 工具）">聊天页 chips 改造 v2（气泡式 …</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>29</td><td><b>UPG-21</b></td><td title="聊天页输入框回车键=发送（IME 发送键修复）">聊天页输入框回车键=发送（IME 发送键…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>30</td><td><b>UPG-22</b></td><td title="记忆尾单（UPG-05 遗留收口：COVER_HIT 装配打点 + 剧本断言 + 冗余清理）">记忆尾单（UPG-05 遗留收口：COV…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>31</td><td><b>UPG-23</b></td><td title="本地 tab「本机能力总览」+ 主页钉选小按钮">本地 tab「本机能力总览」+ 主页钉选…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>32</td><td><b>UPG-26</b></td><td title="侧边栏品牌区换 logo+黑字 + 抽屉展开占比 61.8%">侧边栏品牌区换 logo+黑字 + 抽屉…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>33</td><td><b>UPG-27</b></td><td title="Code Mode SDK 生成 + 工具描述按需加载（tool.help）">Code Mode SDK 生成 + 工…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>34</td><td><b>UPG-28</b></td><td title="obsidian.file.write 审批闸修复（isHarmless file.write 特判误捕）">obsidian.file.write …</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>35</td><td><b>UPG-40</b></td><td title="App 视觉风格统一（黑白主调 · logo 同源）">App 视觉风格统一（黑白主调 · lo…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>36</td><td><b>UPG-41</b></td><td title="本地页「列表/详情」重设计 + 市场包独立模板（2026-08-30 拍板替代原「二级页化」方案）">本地页「列表/详情」重设计 + 市场包独…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>37</td><td><b>UPG-42</b></td><td title="mow.kim 站点容器面 WebMCP 化（一期+二期：mov-page-server + 全站 10 工具 + 双轨 AI 就绪）">mow.kim 站点容器面 WebMCP…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>38</td><td><b>UPG-44</b></td><td title="AcceptanceJudge B1 观察层（UPG-06 批2 剩项）">AcceptanceJudge B1 观…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>39</td><td><b>UPG-45</b></td><td title="审批 · Approval Capability Registry（权限能力注册表）">审批 · Approval Capabi…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>40</td><td><b>UPG-47</b></td><td title="主页胶囊系统（pin_type+stableId / 三区 / ＋管理弹层 / 点击分派 / 长按 / 第三态 / 气泡字数）">主页胶囊系统（pin_type+stab…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>41</td><td><b>UPG-48</b></td><td title="Memory API 工程契约（记忆页:memory-core/memory-api 模块化）">Memory API 工程契约（记忆页:…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>42</td><td><b>UPG-49</b></td><td title="记忆页「我的记忆」UI 分层管理">记忆页「我的记忆」UI 分层管理</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>43</td><td><b>UPG-50</b></td><td title="外观·组件级显示（Display Appearance 工程契约）">外观·组件级显示（Display App…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>44</td><td><b>UPG-51</b></td><td title="用户画像标签池（Memory OS 商用投影 + 合规）">用户画像标签池（Memory OS 商用…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>45</td><td><b>UPG-52</b></td><td title="Memory OS 生命链（Semantic 池子 + 生命周期 + Timeline + Retrieval + blockedSourceHashes）">Memory OS 生命链（Semant…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>46</td><td><b>UPG-53</b></td><td title="安全体验优化改造（该守才守 · 守得舒服）">安全体验优化改造（该守才守 · 守得舒服…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>47</td><td><b>UPG-54</b></td><td title="安全中心（设置 -> 安全 二级 · 等级仪表盘 + 分组策略 + 硬边界）">安全中心（设置 -> 安全 二级 · 等…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>48</td><td><b>UPG-56</b></td><td title="评测集盘点与 fixture 版本机制（改造计划第一阶段①⑤）">评测集盘点与 fixture 版本机制（…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>B</td></tr>
-<tr><td>49</td><td><b>UPG-58</b></td><td title="A-1 Manifest 五步链脚本（改造计划第一阶段③）">A-1 Manifest 五步链脚本（改…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>50</td><td><b>UPG-59</b></td><td title="B 线蒸馏 MVP（改造计划第一阶段④ · 里程碑一承载）">B 线蒸馏 MVP（改造计划第一阶段④ …</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>B</td></tr>
-<tr><td>51</td><td><b>UPG-60</b></td><td title="A-2 三道门实现+元验证（改造计划第一阶段⑥）">A-2 三道门实现+元验证（改造计划第一…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>52</td><td><b>UPG-61</b></td><td title="vault.get 伪放行修（记住豁免与 fail-closed handler 不一致 · UI 禁用豁免勾选）">vault.get 伪放行修（记住豁免与…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr>
-<tr><td>53</td><td><b>UPG-62</b></td><td title="多轮对话输入框失焦修（markstream WebView 抢焦点 · 焦点归还兜底）">多轮对话输入框失焦修（markstrea…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>—</td></tr>
-<tr><td>54</td><td><b>UPG-63</b></td><td title="第二阶段收口：弹窗基线 Z-5 + MULTI_CALL 分布统计 + M-1 真实重放补跑">第二阶段收口：弹窗基线 Z-5 + MU…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>D</td></tr>
-<tr><td>55</td><td><b>UPG-64</b></td><td title="C 线效应注解首批（改造计划第二阶段·C 线）">C 线效应注解首批（改造计划第二阶段·C…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>D</td></tr>
-<tr><td>56</td><td><b>UPG-66</b></td><td title="A-3 Judge 扩面（改造计划第二阶段·判定三类+反哺管道）">A-3 Judge 扩面（改造计划第二阶…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>B</td></tr>
-<tr><td>57</td><td><b>UPG-67</b></td><td title="D 线 DAG 编排试点（改造计划第三阶段 · 预立待前置）">D 线 DAG 编排试点（改造计划第三阶…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>D</td></tr>
-<tr><td>58</td><td><b>UPG-68</b></td><td title="商业安全闸（原「商业防线批」——W2 白名单自动闸 + 商业面 fail-open 集中收口）">商业安全闸（原「商业防线批」——W2 白…</td><td><span class="st" style="background:#16a34a1a;color:#16a34a">✅ 终态</span></td><td>—</td><td>C</td></tr></tbody></table>
-<h2>挂账待审池（20 条）</h2>
-<table><thead><tr><th>#</th><th>挂账号</th><th>标题</th><th>优先级</th><th>状态</th></tr></thead><tbody>
-<tr><td>1</td><td>挂账-upg11验收-报告计数虚高</td><td>UPG-11 交付报告称 PrivacyConsentTes</td><td>P3</td><td>⏳ 验收员 @2026-08-27</td></tr>
-<tr><td>2</td><td>挂账-upg11验收-测试锚点弱</td><td>PrivacyConsentTest 对「双 LAUNCHE</td><td>P3</td><td>⏳ 验收员 @2026-08-27</td></tr>
-<tr><td>3</td><td>挂账-upg12观察-WebView默认错误页</td><td>UPG-12 设置页 WebView 首加载若遇瞬时不可达，</td><td>P3</td><td>⏳ 验收员 @2026-08-27</td></tr>
-<tr><td>4</td><td>挂账-upg16-L3真机走查</td><td>UPG-16 release 签名 APK 装机启动走查（L</td><td>P3</td><td>⏳ 验收员 @2026-08-28</td></tr>
-<tr><td>5</td><td>挂账-upg19-verifyicons阈值不敏感</td><td>UPG-19 R1 交付的 tools/verify_ico</td><td>P3</td><td>⏳ 验收员 @2026-08-29</td></tr></tbody></table><button class="more" onclick="showHang()">展开全部（20）</button><div id="hangMore" style="display:none"><table><tbody><tr><td>1</td><td>挂账-upg05-e3r2行为面补验通道</td><td>E3（失败教训 occurrences≥2 注入）+R2（A</td><td>P3</td><td>⏳ 验收员 @2026-08-29</td></tr>
-<tr><td>2</td><td>挂账-upg0204-WRITE_CALENDAR重复声明</td><td>UPG-02+04 交付的 AndroidManifest.</td><td>P3</td><td>⏳ 验收员 @2026-08-29</td></tr>
-<tr><td>3</td><td>挂账-upg21-源码锚契约逻辑变异局限</td><td>UPG-21 ComposerInputContractTe</td><td>P3</td><td>⏳ 验收员 @2026-08-29</td></tr>
-<tr><td>4</td><td>挂账-模拟器AI未回复</td><td>emulator-5556 对话 AI 请求 80s+ 无回</td><td>P1</td><td>⏳ 设计师 @2026-08-26</td></tr>
-<tr><td>5</td><td>挂账-GoalDomain无日志恢复</td><td>GoalDomain 无 restoreFrom：goal/</td><td>P1</td><td>⏳ 设计师（UPG-07 溯源发现） @2026-08-29</td></tr>
-<tr><td>6</td><td>挂账-looksLikeToolRequest关键词过宽</td><td>E3 兜底触发词含 turn/get/set/check/l</td><td>P2</td><td>⏳ 设计师（UPG-06 溯源发现） @2026-08-29</td></tr>
-<tr><td>7</td><td>挂账-E3重试文本拼接</td><td>E3 nudge 重试后，runChat 汇总 events</td><td>P3</td><td>⏳ 设计师（UPG-06 溯源发现） @2026-08-29</td></tr>
-<tr><td>8</td><td>挂账-压缩双阈值口径漂移</td><td>压缩阈值双事实源并存：ContextBudget.degra</td><td>P3</td><td>⏳ 设计师（UPG-07 溯源发现） @2026-08-29</td></tr>
-<tr><td>9</td><td>挂账-syncpages不校验dist新鲜度</td><td>sync-pages.mjs 不校验 dist 新鲜度——不</td><td>P2</td><td>⏳ 验收员（UPG-14 复核附带发现） @2026-08-29</td></tr>
-<tr><td>10</td><td>挂账-registerMovQueryTools死代码</td><td>`McpServer.registerMovQueryToo</td><td>P3</td><td>⏳ 设计师（UPG-01 溯源发现） @2026-08-29</td></tr>
-<tr><td>11</td><td>挂账-McpToolProvider零调用</td><td>`McpToolProvider` 生产零调用——它是唯一保</td><td>P3</td><td>⏳ 设计师（UPG-01 溯源发现） @2026-08-29</td></tr>
-<tr><td>12</td><td>挂账-mockServer-本地与商店展示不一致</td><td>已安装但不在目录的包，本地 tab 与市场商店展示不一致（M</td><td>P3</td><td>⏳ 设计师（真机对照发现） @2026-08-30</td></tr>
-<tr><td>13</td><td>挂账-UPG50-P2-1</td><td>UPG-50 阶段0 classic vs capsule </td><td>P2</td><td>⏳ 设计师 @2026-09-01</td></tr>
-<tr><td>14</td><td>挂账-deliveryManifest指纹治理</td><td>历史 delivery_*_manifest.json 治理</td><td>P2</td><td>⏳ 验收员 @2026-09-02</td></tr>
-<tr><td>15</td><td>挂账-UPG50-1C产物待重建</td><td>UPG-50 阶段 1 合入后 sidebar 产物=mai</td><td>P3</td><td>⏳ 设计师 @2026-09-02</td></tr></tbody></table></div>
-<div class="gray">点击刷新：node 审验员/orders-overview.mjs --html</div>
-</div></body></html>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm cursor-pointer hover:bg-surface-container transition-colors stat-card" data-k="finished">
+  <div class="font-label-md text-label-md text-on-surface-variant mb-xs">终态</div>
+  <div class="font-h2 text-h2 text-green-600">48</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm cursor-pointer hover:bg-surface-container transition-colors stat-card" data-k="inflow">
+  <div class="font-label-md text-label-md text-on-surface-variant mb-xs">在流</div>
+  <div class="font-h2 text-h2 text-blue-600">9</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm cursor-pointer hover:bg-surface-container transition-colors stat-card" data-k="overdue">
+  <div class="font-label-md text-label-md text-on-surface-variant mb-xs">超期</div>
+  <div class="font-h2 text-h2 text-red-600">0</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm cursor-pointer hover:bg-surface-container transition-colors stat-card" data-k="rejected">
+  <div class="font-label-md text-label-md text-on-surface-variant mb-xs">回炉</div>
+  <div class="font-h2 text-h2 text-red-500">5</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm cursor-pointer hover:bg-surface-container transition-colors stat-card" data-k="onhold">
+  <div class="font-label-md text-label-md text-on-surface-variant mb-xs">挂账</div>
+  <div class="font-h2 text-h2 text-gray-500">20</div>
+</div></section>
+  <div class="flex gap-lg">
+    <main class="flex-1">
+      <section class="mb-lg">
+        <h2 class="font-h3 text-h3 mb-sm flex items-center gap-xs"><span class="material-symbols-outlined text-red-600">priority_high</span> 当前重点（Top 5）</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md" id="urgent-box"><div class="bg-surface-container-lowest border-l-4 border-red-600 border border-outline-variant rounded p-sm shadow-sm">
+  <div class="flex justify-between items-start mb-xs">
+    <span class="font-mono text-mono font-bold">UPG-05</span>
+    <span class="text-[10px] px-1 rounded bg-red-100 text-red-800">P0</span>
+  </div>
+  <p class="font-body-sm text-body-sm text-on-surface line-clamp-2">记忆体系回补</p>
+  <div class="mt-xs text-[11px] text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">info</span> 验收打回·回炉——E3/R2 行为面补验（模拟器失败场景受限）</div>
+</div><div class="bg-surface-container-lowest border-l-4 border-red-600 border border-outline-variant rounded p-sm shadow-sm">
+  <div class="flex justify-between items-start mb-xs">
+    <span class="font-mono text-mono font-bold">UPG-43</span>
+    <span class="text-[10px] px-1 rounded bg-gray-100 text-gray-500">P2</span>
+  </div>
+  <p class="font-body-sm text-body-sm text-on-surface line-clamp-2">ConnectWeb 作 WebMCP 客户端/Hub（浏览器双本质三期）</p>
+  <div class="mt-xs text-[11px] text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">info</span> 施工中——App 侧 WebMCP Hub 框架（契约 v0.1 待 43a 起</div>
+</div><div class="bg-surface-container-lowest border-l-4 border-red-600 border border-outline-variant rounded p-sm shadow-sm">
+  <div class="flex justify-between items-start mb-xs">
+    <span class="font-mono text-mono font-bold">UPG-25</span>
+    <span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800">P1</span>
+  </div>
+  <p class="font-body-sm text-body-sm text-on-surface line-clamp-2">UI 瑕疵批修（规范 v1 待并轨清单 13 项）</p>
+  <div class="mt-xs text-[11px] text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">info</span> 验收打回·回炉——v1 待并轨清单 13 项修</div>
+</div><div class="bg-surface-container-lowest border-l-4 border-red-600 border border-outline-variant rounded p-sm shadow-sm">
+  <div class="flex justify-between items-start mb-xs">
+    <span class="font-mono text-mono font-bold">UPG-57</span>
+    <span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800">P1</span>
+  </div>
+  <p class="font-body-sm text-body-sm text-on-surface line-clamp-2">Evolution Ledger 骨架（改造计划第一阶段②）</p>
+  <div class="mt-xs text-[11px] text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">info</span> 验收打回·回炉——Evolution Ledger 骨架修</div>
+</div><div class="bg-surface-container-lowest border-l-4 border-red-600 border border-outline-variant rounded p-sm shadow-sm">
+  <div class="flex justify-between items-start mb-xs">
+    <span class="font-mono text-mono font-bold">UPG-65</span>
+    <span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800">P1</span>
+  </div>
+  <p class="font-body-sm text-body-sm text-on-surface line-clamp-2">A-2 门 3 灰度自动化（改造计划第二阶段·接 B 生产信号）</p>
+  <div class="mt-xs text-[11px] text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">info</span> 验收打回·回炉——门 3 灰度自动化修</div>
+</div></div>
+      </section>
+      <section class="bg-surface-container-lowest border border-outline-variant rounded overflow-hidden shadow-sm">
+        <table class="w-full text-left border-collapse">
+          <thead class="bg-surface-container-low border-b border-outline-variant">
+            <tr>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-12">#</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-24">单号</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">标题</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase w-32">状态</th>
+              <th class="py-sm px-md font-label-xs text-label-xs text-on-surface-variant uppercase">卡点 / 下一步</th>
+            </tr>
+          </thead>
+          <tbody class="font-body-sm text-body-sm" id="main-table-body"><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-01" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">1</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-01<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">全量工具元数据补全</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-02" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">2</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-02<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">设备类工具包迁移（AVD 内置 device.*</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-03" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">3</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-03<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">生活场景工具（12306 内置；地图线已删）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-04" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">4</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-04<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">Obsidian 工具包迁移（AVD 内置 ob</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-05" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">5</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-05<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">记忆体系回补</td>
+  <td class="py-sm px-md"><span class="bg-orange-100 text-orange-800 border-orange-200 font-label-xs px-2 py-1 rounded-full border">施工·回炉</span></td>
+  <td class="py-sm px-md text-on-surface-variant">验收打回·回炉——E3/R2 行为面补验（模拟器失败场景受限）</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 🔨</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-06" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">6</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-06<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">确定性防编造回补</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-07" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">7</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-07<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">预算口径 + 用量计量 + 审批简化</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-08" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">8</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-08<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">mow.kim 工作台落地（Stitch 框架工</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-09" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">9</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-09<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">MOV App 登录页实现</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-10" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">10</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-10<span class="text-[10px] px-1 rounded bg-gray-100 text-gray-500 ml-1">P3</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">工作台 sync 状态语义细分</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-11" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">11</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-11<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">首启隐私政策弹窗（应用宝整改）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-12" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">12</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-12<span class="text-[10px] px-1 rounded bg-gray-100 text-gray-500 ml-1">P3</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">WebView 引擎预热 + 页面加载体验优化</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-13" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">13</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-13<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">登录页视觉修订（用户 6 条 + 顺手修）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-27" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">14</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-27<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">Code Mode SDK 生成 + 工具描述按</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-40" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">15</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-40<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">App 视觉风格统一（黑白主调 · logo 同</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-41" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">16</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-41<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">本地页「列表/详情」重设计 + 市场包独立模板（</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-42" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">17</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-42<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">mow.kim 站点容器面 WebMCP 化（一</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-43" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">18</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-43<span class="text-[10px] px-1 rounded bg-gray-100 text-gray-600 ml-1">P2</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">ConnectWeb 作 WebMCP 客户端/</td>
+  <td class="py-sm px-md"><span class="bg-orange-100 text-orange-800 border-orange-200 font-label-xs px-2 py-1 rounded-full border">施工·回炉</span></td>
+  <td class="py-sm px-md text-on-surface-variant">施工中——App 侧 WebMCP Hub 框架（契约 v0.1 待 43a 起</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 🔨</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-14" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">19</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-14<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">设置页收口（账号卡接真 + 退出登录去重 + 两</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-15" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">20</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-15<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">登录页死锁修（登录钮常可点 + 协议整行可点）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-16" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">21</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-16<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">release 签名配置收口（明文口令外移）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-17" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">22</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-17<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">App demo 假数据全清（Vue 侧）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-18" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">23</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-18<span class="text-[10px] px-1 rounded bg-gray-100 text-gray-600 ml-1">P2</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">Android 死代码清理</td>
+  <td class="py-sm px-md"><span class="bg-orange-100 text-orange-800 border-orange-200 font-label-xs px-2 py-1 rounded-full border">施工</span></td>
+  <td class="py-sm px-md text-on-surface-variant">施工中——死代码清理清单核对（registerMovQueryTools/Mcp</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 🔨</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-19" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">24</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-19<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">应用图标换 MOV 竖眼 Logo</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-20" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">25</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-20<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">聊天页 chips 改造 v2（气泡式 切换模型</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-21" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">26</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-21<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">聊天页输入框回车键=发送（IME 发送键修复）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-22" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">27</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-22<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">记忆尾单（UPG-05 遗留收口：COVER_H</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-23" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">28</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-23<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">本地 tab「本机能力总览」+ 主页钉选小按钮</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-24" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">29</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-24<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">MOV 设计规范 v1（风格定性 + token</td>
+  <td class="py-sm px-md"><span class="bg-gray-100 text-gray-700 border-gray-200 font-label-xs px-2 py-1 rounded-full border">作废</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ❌</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-25" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">30</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-25<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">UI 瑕疵批修（规范 v1 待并轨清单 13 项</td>
+  <td class="py-sm px-md"><span class="bg-orange-100 text-orange-800 border-orange-200 font-label-xs px-2 py-1 rounded-full border">施工·回炉</span></td>
+  <td class="py-sm px-md text-on-surface-variant">验收打回·回炉——v1 待并轨清单 13 项修</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 🔨</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-26" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">31</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-26<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">侧边栏品牌区换 logo+黑字 + 抽屉展开占比</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-28" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">32</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-28<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">obsidian.file.write 审批闸修</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-44" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">33</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-44<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">AcceptanceJudge B1 观察层（U</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-45" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">34</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-45<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">审批 · Approval Capability</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-46" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">35</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-46<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">工具联动 Runtime 契约（Tool Orc</td>
+  <td class="py-sm px-md"><span class="bg-blue-100 text-blue-800 border-blue-200 font-label-xs px-2 py-1 rounded-full border">已派</span></td>
+  <td class="py-sm px-md text-on-surface-variant">已派·待认领——无</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 📌</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-47" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">36</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-47<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">主页胶囊系统（pin_type+stableId</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-48" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">37</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-48<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">Memory API 工程契约（记忆页:memo</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-49" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">38</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-49<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">记忆页「我的记忆」UI 分层管理</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-50" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">39</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-50<span class="text-[10px] px-1 rounded bg-gray-100 text-gray-600 ml-1">P2</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">外观·组件级显示（Display Appeara</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-51" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">40</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-51<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">用户画像标签池（Memory OS 商用投影 +</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-52" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">41</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-52<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">Memory OS 生命链（Semantic 池</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-53" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">42</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-53<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">安全体验优化改造（该守才守 · 守得舒服）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-54" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">43</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-54<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">安全中心（设置 -&gt; 安全 二级 · 等级</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-55" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">44</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-55<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">我的资产（资产管理项注册体系 · 基于安全体系 </td>
+  <td class="py-sm px-md"><span class="bg-orange-100 text-orange-800 border-orange-200 font-label-xs px-2 py-1 rounded-full border">施工</span></td>
+  <td class="py-sm px-md text-on-surface-variant">施工中——C 线（资产管理项注册体系）</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 🔨</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-56" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">45</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-56<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">B</span></td>
+  <td class="py-sm px-md font-medium">评测集盘点与 fixture 版本机制（改造计划</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-57" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">46</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-57<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">Evolution Ledger 骨架（改造计划</td>
+  <td class="py-sm px-md"><span class="bg-orange-100 text-orange-800 border-orange-200 font-label-xs px-2 py-1 rounded-full border">施工·回炉</span></td>
+  <td class="py-sm px-md text-on-surface-variant">验收打回·回炉——Evolution Ledger 骨架修</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 🔨</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-58" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">47</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-58<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">A-1 Manifest 五步链脚本（改造计划第</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-59" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">48</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-59<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">B</span></td>
+  <td class="py-sm px-md font-medium">B 线蒸馏 MVP（改造计划第一阶段④ · 里程</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-60" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">49</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-60<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">A-2 三道门实现+元验证（改造计划第一阶段⑥）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-61" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">50</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-61<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">vault.get 伪放行修（记住豁免与 fai</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-62" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">51</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-62<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">多轮对话输入框失焦修（markstream We</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-63" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">52</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-63<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">D</span></td>
+  <td class="py-sm px-md font-medium">第二阶段收口：弹窗基线 Z-5 + MULTI_</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-64" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">53</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-64<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">D</span></td>
+  <td class="py-sm px-md font-medium">C 线效应注解首批（改造计划第二阶段·C 线）</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-65" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">54</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-65<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">A-2 门 3 灰度自动化（改造计划第二阶段·接</td>
+  <td class="py-sm px-md"><span class="bg-orange-100 text-orange-800 border-orange-200 font-label-xs px-2 py-1 rounded-full border">施工·回炉</span></td>
+  <td class="py-sm px-md text-on-surface-variant">验收打回·回炉——门 3 灰度自动化修</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 🔨</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-66" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">55</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-66<span class="text-[10px] px-1 rounded bg-gray-100 text-gray-600 ml-1">P2</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">B</span></td>
+  <td class="py-sm px-md font-medium">A-3 Judge 扩面（改造计划第二阶段·判定</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-67" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">56</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-67<span class="text-[10px] px-1 rounded bg-gray-100 text-gray-600 ml-1">P2</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">D</span></td>
+  <td class="py-sm px-md font-medium">D 线 DAG 编排试点（改造计划第三阶段 · </td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">—</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-68" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">57</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-68<span class="text-[10px] px-1 rounded bg-red-100 text-red-800 ml-1">P0</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">C</span></td>
+  <td class="py-sm px-md font-medium">商业安全闸（原「商业防线批」——W2 白名单自动</td>
+  <td class="py-sm px-md"><span class="bg-green-100 text-green-800 border-green-200 font-label-xs px-2 py-1 rounded-full border">终态</span></td>
+  <td class="py-sm px-md text-on-surface-variant">施工中——V68-8/V69-4 新判据补验 → rebase 合 main</td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 ✅</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main ✅</div>
+    </div>
+  </div>
+</td></tr><tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors " data-no="UPG-69" onclick="toggleRow(this)">
+  <td class="py-sm px-md text-on-surface-variant">58</td>
+  <td class="py-sm px-md font-mono text-mono">UPG-69<span class="text-[10px] px-1 rounded bg-orange-100 text-orange-800 ml-1">P1</span><span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">—</span></td>
+  <td class="py-sm px-md font-medium">WebMCP 站点试点（mow.kim 工单站「</td>
+  <td class="py-sm px-md"><span class="bg-blue-100 text-blue-800 border-blue-200 font-label-xs px-2 py-1 rounded-full border">已派</span></td>
+  <td class="py-sm px-md text-on-surface-variant">已派·待认领——等 WEBMCP_PROTOCOL_v0.1 契约冻结（43a </td>
+</tr>
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+  <div class="bg-surface border border-outline-variant rounded p-md">
+    <h4 class="font-label-md mb-sm">流转时间线</h4>
+    <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 交付 📌</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> 验收 —</div>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      <div class="flex items-center gap-1 opacity-50"><span class="w-2 h-2 rounded-full bg-gray-300"></span> 合 main —</div>
+    </div>
+  </div>
+</td></tr></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <section class="mt-xl border-t border-outline-variant pt-md">
+    <div class="flex justify-between items-center mb-sm cursor-pointer hover:bg-surface-container-lowest p-xs rounded transition-colors" id="toggle-on-hold">
+      <h3 class="font-h3 text-h3 flex items-center gap-xs text-on-surface-variant"><span class="material-symbols-outlined">pause_circle</span> 挂账待审池</h3>
+      <button class="text-primary font-label-md text-label-md hover:underline" id="expand-hold">展开全部</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-sm opacity-60" id="hold-box"><div class="bg-surface border border-outline-variant border-dashed rounded p-sm">
+  <div class="font-mono text-xs font-bold mb-1">挂账-upg11验收-报告计数虚高</div>
+  <div class="text-[10px] truncate">UPG-11 交付报告称 PrivacyCo · 验收员 @2026-08-27</div>
+</div><div class="bg-surface border border-outline-variant border-dashed rounded p-sm">
+  <div class="font-mono text-xs font-bold mb-1">挂账-upg11验收-测试锚点弱</div>
+  <div class="text-[10px] truncate">PrivacyConsentTest 对「双 · 验收员 @2026-08-27</div>
+</div><div class="bg-surface border border-outline-variant border-dashed rounded p-sm">
+  <div class="font-mono text-xs font-bold mb-1">挂账-upg12观察-WebView默认错误页</div>
+  <div class="text-[10px] truncate">UPG-12 设置页 WebView 首加载 · 验收员 @2026-08-27</div>
+</div><div class="bg-surface border border-outline-variant border-dashed rounded p-sm">
+  <div class="font-mono text-xs font-bold mb-1">挂账-upg16-L3真机走查</div>
+  <div class="text-[10px] truncate">UPG-16 release 签名 APK  · 验收员 @2026-08-28</div>
+</div><div class="bg-surface border border-outline-variant border-dashed rounded p-sm">
+  <div class="font-mono text-xs font-bold mb-1">挂账-upg19-verifyicons阈值不敏感</div>
+  <div class="text-[10px] truncate">UPG-19 R1 交付的 tools/ve · 验收员 @2026-08-29</div>
+</div></div>
+  </section>
+</div>
+<script>
+const DATA = {"stats":{"total":58,"finished":48,"inflow":9,"overdue":0,"rejected":5,"onhold":20},"tickets":[{"blocker":null,"no":"UPG-01","title":"全量工具元数据补全","stage":"merged","ts":"2026-09-01","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-02","title":"设备类工具包迁移（AVD 内置 device.*/sensor.* 非敏感子集）","stage":"merged","ts":"2026-08-29","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-03","title":"生活场景工具（12306 内置；地图线已删）","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-04","title":"Obsidian 工具包迁移（AVD 内置 obsidian.*，SAF 通路）","stage":"merged","ts":"2026-08-29","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":"验收打回·回炉——E3/R2 行为面补验（模拟器失败场景受限）","no":"UPG-05","title":"记忆体系回补","stage":"delivering","ts":"2026-08-29","tsMissing":false,"overdue":null,"rejected":true,"line":"—","rank":1,"cols":{"d":"🔨","a":"—","m":"—"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-06","title":"确定性防编造回补","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"批 1 P0 / 批 2 P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-07","title":"预算口径 + 用量计量 + 审批简化","stage":"merged","ts":"2026-09-01","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"批 1 P0 / 批 2 P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-08","title":"mow.kim 工作台落地（Stitch 框架工程化）","stage":"merged","ts":"2026-08-26","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-09","title":"MOV App 登录页实现","stage":"merged","ts":"2026-08-27","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-10","title":"工作台 sync 状态语义细分","stage":"merged","ts":"2026-08-27","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P3","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-11","title":"首启隐私政策弹窗（应用宝整改）","stage":"merged","ts":"2026-08-27","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-12","title":"WebView 引擎预热 + 页面加载体验优化","stage":"merged","ts":"2026-08-27","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P3","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-13","title":"登录页视觉修订（用户 6 条 + 顺手修）","stage":"merged","ts":"2026-08-27","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-27","title":"Code Mode SDK 生成 + 工具描述按需加载（tool.help）","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-40","title":"App 视觉风格统一（黑白主调 · logo 同源）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-41","title":"本地页「列表/详情」重设计 + 市场包独立模板（2026-08-30 拍板替代原「二级页化」方案）","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-42","title":"mow.kim 站点容器面 WebMCP 化（一期+二期：mov-page-server + 全站 10 工具 + 双轨 AI 就绪）","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":"施工中——App 侧 WebMCP Hub 框架（契约 v0.1 待 43a 起","no":"UPG-43","title":"ConnectWeb 作 WebMCP 客户端/Hub（浏览器双本质三期）","stage":"delivering","ts":"2026-09-02","tsMissing":false,"overdue":null,"rejected":true,"line":"C","rank":1,"cols":{"d":"🔨","a":"—","m":"—"},"priority":"P2","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-14","title":"设置页收口（账号卡接真 + 退出登录去重 + 两行死链修复）","stage":"merged","ts":"2026-08-28","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-15","title":"登录页死锁修（登录钮常可点 + 协议整行可点）","stage":"merged","ts":"2026-08-28","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-16","title":"release 签名配置收口（明文口令外移）","stage":"merged","ts":"2026-08-28","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-17","title":"App demo 假数据全清（Vue 侧）","stage":"merged","ts":"2026-08-28","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":"施工中——死代码清理清单核对（registerMovQueryTools/Mcp","no":"UPG-18","title":"Android 死代码清理","stage":"delivering","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":1,"cols":{"d":"🔨","a":"—","m":"—"},"priority":"P2","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-19","title":"应用图标换 MOV 竖眼 Logo","stage":"merged","ts":"2026-08-28","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-20","title":"聊天页 chips 改造 v2（气泡式 切换模型+MCP 工具）","stage":"merged","ts":"2026-08-29","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-21","title":"聊天页输入框回车键=发送（IME 发送键修复）","stage":"merged","ts":"2026-08-29","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"—","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-22","title":"记忆尾单（UPG-05 遗留收口：COVER_HIT 装配打点 + 剧本断言 + 冗余清理）","stage":"merged","ts":"2026-08-29","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-23","title":"本地 tab「本机能力总览」+ 主页钉选小按钮","stage":"merged","ts":"2026-08-29","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-24","title":"MOV 设计规范 v1（风格定性 + token 坐标表）","stage":"archived","ts":"2026-09-02","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":0,"cols":{"d":"❌","a":"—","m":"—"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":"验收打回·回炉——v1 待并轨清单 13 项修","no":"UPG-25","title":"UI 瑕疵批修（规范 v1 待并轨清单 13 项）","stage":"delivering","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":true,"line":"C","rank":1,"cols":{"d":"🔨","a":"—","m":"—"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-26","title":"侧边栏品牌区换 logo+黑字 + 抽屉展开占比 61.8%","stage":"merged","ts":"2026-09-02","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-28","title":"obsidian.file.write 审批闸修复（isHarmless file.write 特判误捕）","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-44","title":"AcceptanceJudge B1 观察层（UPG-06 批2 剩项）","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-45","title":"审批 · Approval Capability Registry（权限能力注册表）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":"已派·待认领——无","no":"UPG-46","title":"工具联动 Runtime 契约（Tool Orchestration）","stage":"assigned","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":3,"cols":{"d":"📌","a":"—","m":"—"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-47","title":"主页胶囊系统（pin_type+stableId / 三区 / ＋管理弹层 / 点击分派 / 长按 / 第三态 / 气泡字数）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-48","title":"Memory API 工程契约（记忆页:memory-core/memory-api 模块化）","stage":"merged","ts":"2026-08-30","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-49","title":"记忆页「我的记忆」UI 分层管理","stage":"merged","ts":"2026-09-02","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"—","delId":"DEL-UPG49-20260901-002","conflicts":[]},{"blocker":null,"no":"UPG-50","title":"外观·组件级显示（Display Appearance 工程契约）","stage":"merged","ts":"2026-09-02","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P2","delId":"DEL-UPG50-20260901-001","conflicts":[]},{"blocker":null,"no":"UPG-51","title":"用户画像标签池（Memory OS 商用投影 + 合规）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-52","title":"Memory OS 生命链（Semantic 池子 + 生命周期 + Timeline + Retrieval + blockedSourceHashes）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-53","title":"安全体验优化改造（该守才守 · 守得舒服）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-54","title":"安全中心（设置 -> 安全 二级 · 等级仪表盘 + 分组策略 + 硬边界）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":"施工中——C 线（资产管理项注册体系）","no":"UPG-55","title":"我的资产（资产管理项注册体系 · 基于安全体系 v2.1）","stage":"delivering","ts":"2026-09-01","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":1,"cols":{"d":"🔨","a":"—","m":"—"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-56","title":"评测集盘点与 fixture 版本机制（改造计划第一阶段①⑤）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"B","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":"验收打回·回炉——Evolution Ledger 骨架修","no":"UPG-57","title":"Evolution Ledger 骨架（改造计划第一阶段②）","stage":"delivering","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":true,"line":"C","rank":1,"cols":{"d":"🔨","a":"—","m":"—"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-58","title":"A-1 Manifest 五步链脚本（改造计划第一阶段③）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-59","title":"B 线蒸馏 MVP（改造计划第一阶段④ · 里程碑一承载）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"B","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-60","title":"A-2 三道门实现+元验证（改造计划第一阶段⑥）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-61","title":"vault.get 伪放行修（记住豁免与 fail-closed handler 不一致 · UI 禁用豁免勾选）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-62","title":"多轮对话输入框失焦修（markstream WebView 抢焦点 · 焦点归还兜底）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-63","title":"第二阶段收口：弹窗基线 Z-5 + MULTI_CALL 分布统计 + M-1 真实重放补跑","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"D","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-64","title":"C 线效应注解首批（改造计划第二阶段·C 线）","stage":"merged","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":false,"line":"D","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":"验收打回·回炉——门 3 灰度自动化修","no":"UPG-65","title":"A-2 门 3 灰度自动化（改造计划第二阶段·接 B 生产信号）","stage":"delivering","ts":"2026-08-31","tsMissing":false,"overdue":null,"rejected":true,"line":"C","rank":1,"cols":{"d":"🔨","a":"—","m":"—"},"priority":"P1","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-66","title":"A-3 Judge 扩面（改造计划第二阶段·判定三类+反哺管道）","stage":"merged","ts":"2026-09-01","tsMissing":false,"overdue":null,"rejected":false,"line":"B","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P2","delId":null,"conflicts":[]},{"blocker":null,"no":"UPG-67","title":"D 线 DAG 编排试点（改造计划第三阶段 · 预立待前置）","stage":"merged","ts":"2026-09-01","tsMissing":false,"overdue":null,"rejected":false,"line":"D","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P2","delId":null,"conflicts":[]},{"blocker":"施工中——V68-8/V69-4 新判据补验 → rebase 合 main","no":"UPG-68","title":"商业安全闸（原「商业防线批」——W2 白名单自动闸 + 商业面 fail-open 集中收口）","stage":"merged","ts":"2026-09-02","tsMissing":false,"overdue":null,"rejected":false,"line":"C","rank":5,"cols":{"d":"✅","a":"✅","m":"✅"},"priority":"P0","delId":null,"conflicts":[]},{"blocker":"已派·待认领——等 WEBMCP_PROTOCOL_v0.1 契约冻结（43a ","no":"UPG-69","title":"WebMCP 站点试点（mow.kim 工单站「站点=业务工具」第一站）","stage":"assigned","ts":"2026-09-02","tsMissing":false,"overdue":null,"rejected":false,"line":"—","rank":3,"cols":{"d":"📌","a":"—","m":"—"},"priority":"P1","delId":null,"conflicts":[]}],"hanging":[{"id":"挂账-upg11验收-报告计数虚高","title":"UPG-11 交付报告称 PrivacyConsentTest「13 用例 13/13 绿」，实测 @Test 共 11 个（11/11 绿）","priority":"P3","who":"验收员","date":"2026-08-27"},{"id":"挂账-upg11验收-测试锚点弱","title":"PrivacyConsentTest 对「双 LAUNCHER」（Gate+Main 各一个）变异不敏感——MainActivity 节点提取以 /> 为边界，自闭合改嵌套后边界漂移致断言漏检","priority":"P3","who":"验收员","date":"2026-08-27"},{"id":"挂账-upg12观察-WebView默认错误页","title":"UPG-12 设置页 WebView 首加载若遇瞬时不可达，会短暂显示系统默认错误页（Something went wrong / no network connection）后再恢复","priority":"P3","who":"验收员","date":"2026-08-27"},{"id":"挂账-upg16-L3真机走查","title":"UPG-16 release 签名 APK 装机启动走查（L3）因模拟器 adb 连接不稳降级——可用环境后补验","priority":"P3","who":"验收员","date":"2026-08-28"},{"id":"挂账-upg19-verifyicons阈值不敏感","title":"UPG-19 R1 交付的 tools/verify_icons.mjs 自检脚本对「自身解码器回归」不设防：删其内部 offset += stride 后退化解码仍残存行 0 暗像素（12~108px），「暗像素>0」断言不红——若后续有人改坏脚本自身将假绿","priority":"P3","who":"验收员","date":"2026-08-29"},{"id":"挂账-upg05-e3r2行为面补验通道","title":"E3（失败教训 occurrences≥2 注入）+R2（AVOID 不误伤）行为面待补验：模拟器环境失败场景制造受限——torch 在 AVD 成功、file.write 越界被工作区重定向保护、12306 受 AI 编排不确定性影响","priority":"P3","who":"验收员","date":"2026-08-29"},{"id":"挂账-upg0204-WRITE_CALENDAR重复声明","title":"UPG-02+04 交付的 AndroidManifest.xml 中 WRITE_CALENDAR uses-permission 重复声明两次（:11 与 :14）——无功能影响，装包合并去重，属清单整洁","priority":"P3","who":"验收员","date":"2026-08-29"},{"id":"挂账-upg21-源码锚契约逻辑变异局限","title":"UPG-21 ComposerInputContractTest 为源码字符串包含断言——对逻辑变异不敏感（验收员变异 isSend=false 短路后契约仍绿，字符串保留）——关键行为逻辑（发送闸门）无行为级测试覆盖","priority":"P3","who":"验收员","date":"2026-08-29"},{"id":"挂账-模拟器AI未回复","title":"emulator-5556 对话 AI 请求 80s+ 无回复（scene 工具 L3 验证受阻）","priority":"P1","who":"设计师","date":"2026-08-26"},{"id":"挂账-GoalDomain无日志恢复","title":"GoalDomain 无 restoreFrom：goal/change 事件落盘但重启/会话恢复后活跃目标丢失、轮次驱动失效、落盘事件成孤儿（UPG-07 批 2 goal 级豁免的直接前置）","priority":"P1","who":"设计师（UPG-07 溯源发现）","date":"2026-08-29"},{"id":"挂账-looksLikeToolRequest关键词过宽","title":"E3 兜底触发词含 turn/get/set/check/list 等超宽英文词（\"get it\" 即误触发、凭空多发一轮模型请求），中文「列一下/帮我看看」类反而漏判","priority":"P2","who":"设计师（UPG-06 溯源发现）","date":"2026-08-29"},{"id":"挂账-E3重试文本拼接","title":"E3 nudge 重试后，runChat 汇总 eventsBefore 之后全部 assistant 文本——第二轮文本与第一轮（可能是编造内容）一并拼进 [AI] 回复显示","priority":"P3","who":"设计师（UPG-06 溯源发现）","date":"2026-08-29"},{"id":"挂账-压缩双阈值口径漂移","title":"压缩阈值双事实源并存：ContextBudget.degradeRatio=0.85 vs BasicCompactionEngine.thresholdRatio=0.8（默认值，装配时未传参覆盖；现靠 AgentLoop 85% 先门控不爆雷）；另 MainActivity.kt:160 注释「1M/128K/5K」与实际仅 1M↔5K 两档切换（:1144）不符","priority":"P3","who":"设计师（UPG-07 溯源发现）","date":"2026-08-29"},{"id":"挂账-syncpages不校验dist新鲜度","title":"sync-pages.mjs 不校验 dist 新鲜度——不重建就同步会把 stale dist（旧 hash 文件，含已清理的 demo key）重新同步进入库产物，再污染源已清净的 assets","priority":"P2","who":"验收员（UPG-14 复核附带发现）","date":"2026-08-29"},{"id":"挂账-registerMovQueryTools死代码","title":"`McpServer.registerMovQueryTools()`（McpServer.kt:234）全仓零调用且语义重复——若未来有人调用，会与 MainActivity 已注册并经 server 循环入面的同名工具重复注册（后者覆盖前者，丢失真描述和真 schema）","priority":"P3","who":"设计师（UPG-01 溯源发现）","date":"2026-08-29"},{"id":"挂账-McpToolProvider零调用","title":"`McpToolProvider` 生产零调用——它是唯一保留外部工具真 description 的路径，却不在链路上；外部工具实际走 `McpExtDiscovery.kt:91-102`（只取 name，丢弃 description/inputSchema）","priority":"P3","who":"设计师（UPG-01 溯源发现）","date":"2026-08-29"},{"id":"挂账-mockServer-本地与商店展示不一致","title":"已安装但不在目录的包，本地 tab 与市场商店展示不一致（MockServer 为证）","priority":"P3","who":"设计师（真机对照发现）","date":"2026-08-30"},{"id":"挂账-UPG50-P2-1","title":"UPG-50 阶段0 classic vs capsule 视觉近似","priority":"P2","who":"设计师","date":"2026-09-01"},{"id":"挂账-deliveryManifest指纹治理","title":"历史 delivery_*_manifest.json 治理：E-001~005 缺指纹（evidence 条目缺 sha/指纹字段）+ E-006/007 回填后未重算（设计侧回填条目未回算总指纹）+ 目录型路径（evidence path 有目录形态而非文件）——检出自 UPG-50 阶段 1C 交付复核","priority":"P2","who":"验收员","date":"2026-09-02"},{"id":"挂账-UPG50-1C产物待重建","title":"UPG-50 阶段 1 合入后 sidebar 产物=main 品牌区版——1C 的 UI-SIDE-TOOL 视觉产物未随合入（SidebarNav.vue 源码=合并版已含 1C 11 处；vite 环境缺未重 build）——待 sync-pages 重建后视觉生效","priority":"P3","who":"设计师","date":"2026-09-02"}],"holdMore":"<div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-upg05-e3r2行为面补验通道</div>\n  <div class=\"text-[10px] truncate\">E3（失败教训 occurrences≥2  · 验收员 @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-upg0204-WRITE_CALENDAR重复声明</div>\n  <div class=\"text-[10px] truncate\">UPG-02+04 交付的 AndroidM · 验收员 @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-upg21-源码锚契约逻辑变异局限</div>\n  <div class=\"text-[10px] truncate\">UPG-21 ComposerInputCo · 验收员 @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-模拟器AI未回复</div>\n  <div class=\"text-[10px] truncate\">emulator-5556 对话 AI 请求 · 设计师 @2026-08-26</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-GoalDomain无日志恢复</div>\n  <div class=\"text-[10px] truncate\">GoalDomain 无 restoreFr · 设计师（UPG-07 溯源发现） @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-looksLikeToolRequest关键词过宽</div>\n  <div class=\"text-[10px] truncate\">E3 兜底触发词含 turn/get/set · 设计师（UPG-06 溯源发现） @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-E3重试文本拼接</div>\n  <div class=\"text-[10px] truncate\">E3 nudge 重试后，runChat 汇 · 设计师（UPG-06 溯源发现） @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-压缩双阈值口径漂移</div>\n  <div class=\"text-[10px] truncate\">压缩阈值双事实源并存：ContextBudg · 设计师（UPG-07 溯源发现） @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-syncpages不校验dist新鲜度</div>\n  <div class=\"text-[10px] truncate\">sync-pages.mjs 不校验 dis · 验收员（UPG-14 复核附带发现） @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-registerMovQueryTools死代码</div>\n  <div class=\"text-[10px] truncate\">`McpServer.registerMov · 设计师（UPG-01 溯源发现） @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-McpToolProvider零调用</div>\n  <div class=\"text-[10px] truncate\">`McpToolProvider` 生产零调 · 设计师（UPG-01 溯源发现） @2026-08-29</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-mockServer-本地与商店展示不一致</div>\n  <div class=\"text-[10px] truncate\">已安装但不在目录的包，本地 tab 与市场商 · 设计师（真机对照发现） @2026-08-30</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-UPG50-P2-1</div>\n  <div class=\"text-[10px] truncate\">UPG-50 阶段0 classic vs  · 设计师 @2026-09-01</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-deliveryManifest指纹治理</div>\n  <div class=\"text-[10px] truncate\">历史 delivery_*_manifest · 验收员 @2026-09-02</div>\n</div><div class=\"bg-surface border border-outline-variant border-dashed rounded p-sm\">\n  <div class=\"font-mono text-xs font-bold mb-1\">挂账-UPG50-1C产物待重建</div>\n  <div class=\"text-[10px] truncate\">UPG-50 阶段 1 合入后 sideba · 设计师 @2026-09-02</div>\n</div>","meta":{"date":"2026-09-02","libSha":"0d91cf4fdffe6e1c","tblSha":"51b9d736ecbafb86","tblRows":58,"tblMissing":0,"tblExtra":0}};
+
+function toggleRow(tr){
+  const det = tr.nextElementSibling;
+  if(det && det.classList.contains('row-detail')) det.classList.toggle('hidden');
+}
+function setFilter(k){
+  document.querySelectorAll('.stat-card').forEach(c=>c.classList.remove('ring-2','ring-primary'));
+  const card = document.querySelector('.stat-card[data-k="'+k+'"]');
+  if(card) card.classList.add('ring-2','ring-primary');
+  const rows = document.querySelectorAll('#main-table-body > tr:not(.row-detail)');
+  rows.forEach(r=>{
+    if(k==='all'){r.classList.remove('hidden');return;}
+    if(k==='onhold'){r.classList.add('hidden');return;}
+    const p = DATA.tickets.find(t=>t.no===r.dataset.no);
+    if(!p){r.classList.remove('hidden');return;}
+    const show = k==='finished' ? p.stage==='merged' : k==='inflow' ? !(['merged','archived'].includes(p.stage)) : k==='overdue' ? p.overdue : k==='rejected' ? !!p.rejected : false;
+    r.classList.toggle('hidden', !show);
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.stat-card').forEach(c=>c.addEventListener('click',()=>setFilter(c.dataset.k)));
+  const box = document.getElementById('hold-box');
+  const more = document.createElement('div');
+  more.className = 'hidden col-span-full grid grid-cols-1 md:grid-cols-5 gap-sm';
+  more.innerHTML = DATA.holdMore;
+  box.appendChild(more);
+  const btn = document.getElementById('expand-hold');
+  btn.textContent = '展开全部（'+DATA.hanging.length+'）';
+  btn.addEventListener('click', ()=>{ more.classList.toggle('hidden'); btn.textContent = more.classList.contains('hidden') ? '展开全部（'+DATA.hanging.length+'）' : '收起'; });
+  document.getElementById('summary-line').textContent = '总数 '+DATA.stats.total+' · 终态 '+DATA.stats.finished+' · 在流 '+DATA.stats.inflow+' · 超期 '+DATA.stats.overdue+' · 挂账 '+DATA.stats.onhold+' ｜ sha '+DATA.meta.libSha.slice(0,8)+'…';
+  // 默认高亮「在流」
+  setFilter('inflow');
+});
+
+</script>
+</body>
+</html>
