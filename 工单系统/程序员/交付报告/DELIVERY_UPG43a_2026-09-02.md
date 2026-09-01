@@ -70,3 +70,36 @@
 - ApprovalRegistry/c7_baseline drift 已 `git checkout` 还原，未混入提交
 
 **待验收员 R1 复验**：M-1（bridge 源码断言+假桥场景测试）、M-2（liveHostname 双校验测试）、M-3（消毒/白名单测试）+ 变异亲杀 4/4 还原复核；H2/H3 端到端随 UPG-69 专项补验。
+
+---
+
+## R2 打回修复节（ACCEPTANCE_LOG §P24 · 2026-09-02）
+
+**对象**：R1 修复提交 `c924197` 被验收员打回 **M-1a ⚠️ PARTIAL——唯一遗留 假桥覆盖**。R2 仅核两点（按验收员修法逐条落地）。
+
+### 打回项 → 修法（不可配置假桥逃逸路径）
+
+**逃逸路径**：页面预置 `Object.defineProperty({writable:false, configurable:false})` 假 `__movWebMcp`，且注入早于 onPageFinished → 真桥 `delete` 抛 TypeError → R1 catch 内 `window.__movWebMcp = undefined` 在 strict 模式下对不可写属性赋值**再抛** → IIFE 中断 → 真桥 `defineProperty` 永不执行 → App 侧 discover 不验桥真伪（evalRaw null 不检查）→ **fail-open 全走假桥逃 H4 审批闸**。
+
+| 修法（R2 仅核此两点） | 落地 |
+|---|---|
+| **① catch 内不再赋值（防中断链）** | `webmcp-bridge.js`：`delete` 失败 catch 吞掉**不再赋值**（注释明示防赋值中断链）；`defineProperty` 亦包 try/catch——不可配置假桥使真桥装不上时 IIFE 不崩溃，交 App 侧标志判伪 |
+| **② 真桥带验证标志 + App 侧 discover/call 前校验，不匹配 fail-closed 返回空** | bridge 增 `AUTH='__mov_webmcp_auth_v1__'`，真桥对象带 `__movWebBridge__: AUTH`；`WebMcpHub` 增 `BRIDGE_AUTH` 常量 + `isAuthenticBridge(raw)`（trim+trim('"') 比对，兼容 evaluateJavascript JSON 引号）；**discover()** 注入后校验标志不匹配即返回空（不注入 web.* 工具）；**call()** 转发前校验标志不匹配即 `ERR_INTERNAL_ERROR` 拒绝转发——双点 fail-closed |
+
+### 变异亲杀（R2 判据 4/4，每条注入→红→回滚实证）
+
+| # | 变异 | 亲杀测试 | 结果 |
+|---|---|---|---|
+| R2-① | bridge catch 加回 `window.__movWebMcp = undefined`（中断链复发） | `M1a ... R2 catch 内不得赋值` | **红**（L338）→ 回滚 |
+| R2-② | bridge 去 `__movWebBridge__: AUTH` 标志 | `M1a ... R2 真桥须带验证标志` | **红**（L339）→ 回滚 |
+| R2-③ | `isAuthenticBridge` 恒 true（fail-open） | `M1 R2 isAuthenticBridge 假标志 null 拒绝` | **红**（L351）→ 回滚 |
+| R2-④ | discover 删真桥标志校验行 | `M1 R2 discover call 前校验源码断言` | **红**（L360）→ 回滚 |
+
+### 回归与诚实标注
+
+- **WebMcpHubTest 22→24**（新增 isAuthenticBridge 纯逻辑 + discover/call 源码断言各 1）；全量 JVM **627/0/0/1**（625 基线 + 2 新用例；skipped=1 为既有 SceneLiveQueryTest @Ignore）BUILD SUCCESSFUL
+- **变异②④暴露弱断言并修正**：`js.contains("__movWebBridge__")` 首版亲杀不红——bridge.js 注释亦含该词；`src.contains("window.__movWebMcp.__movWebBridge__")` 亦因 discover/call 两处匹配，删单处不红。断言改精确（`__movWebBridge__: AUTH`；discover 校验以 `return emptyList()` 收尾=discover 特有）后亲杀变红——亲杀实证同时驱动断言收紧
+- **诚实标注**：R2 为框架正确性代码修复（JVM 单测+源码断言覆盖）；真 WebView 注入→页面 handler→JSON 回程端到端仍需 UPG-69 站点侧/stub 驱动——与 §P24/R1 口径一致
+- ApprovalRegistry/c7_baseline drift 已 `git checkout` 还原，未混入提交
+
+**待验收员 R2 复验**：① catch 内不赋值（防中断链）② 真桥验证标志 + App 侧 discover/call 前校验 fail-closed（源码断言+纯逻辑测试+变异亲杀 4/4 还原复核）。
