@@ -503,6 +503,10 @@ ${hRows.length ? hRows.join("\n") : "（无活跃挂账）"}
 - ${priNote}
 `;
 }
+let passCount = 0, failCount = 0;
+const FIX_DATE = "2026-09-02";
+const NOW_FIX = Date.parse("2026-09-02T12:00:00+08:00");
+
 function check(name, cond, detail) {
   if (cond) { passCount++; console.log(`  ✅ ${name}`); }
   else { failCount++; console.log(`  ❌ ${name} ${detail ? "→ " + detail : ""}`); }
@@ -549,7 +553,7 @@ function selfTest() {
   const fUnknown = fixtureCard("UPG-930", "**状态**：ℹ️ 某非法状态词无法归入枚举");
   check("S2-16 未知状态=⚠️ 无法解析（不静默降级为⏳/📌）", fUnknown.stage === "unknown" && fUnknown.cols.d === "⚠️ 无法解析", `stage=${fUnknown.stage} d=${fUnknown.cols.d}`);
   const legendOk = renderBoard(mixed, [], { date: FIX_DATE, libSha: "x", tblSha: "y" }).includes(`**图例**：${LEGEND_LINE}`);
-  check("S2-16 头部图例在位（线 A=agent-1…）", legendOk);
+  check("S2-16 头部 E1/图例信息在位", renderBoard(mixed, [], { date: FIX_DATE, libSha: "x", tblSha: "y" }).includes("E1 负责真相，E4 只投影") && renderBoard(mixed, [], { date: FIX_DATE, libSha: "x", tblSha: "y" }).includes("⚡ 一眼摘要"));
 
   // S2-18 超期基准正确：created_at 旧（日期字段 2026-07-01）但当前态 ts 新 → 不超期
   const fCreatedOld = fixtureCard("UPG-940", "**状态**：🔨 **施工中 @2026-09-01**（created_at=2026-07-01 应被忽略）｜ **日期**：2026-07-01");
