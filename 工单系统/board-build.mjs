@@ -117,38 +117,6 @@ function legacyCopy(txt,no){
 function feedback(no){
   document.querySelectorAll(".copy-btn").forEach(b=>{if(b.getAttribute("onclick").includes(no)){b.textContent="✓ 已复制";setTimeout(()=>b.textContent="复制",1500);}});
 }
-let sortState={key:null,dir:0};
-function sortTbl(key){
-  const st=sortState;
-  if(st.key!==key){st.key=key;st.dir=1;}else{st.dir=st.dir===1?-1:0;}
-  const tbody=document.getElementById("main-table-body");
-  const rows=[...tbody.querySelectorAll("tr:not(.row-detail)")];
-  if(st.dir===0){rows.reverse();rows.forEach(r=>tbody.appendChild(r));return;}
-  const stageRank={merged:6,accepted:5,delivering:3,assigned:2,queued:1,archived:7,unknown:0};
-  rows.sort((a,b)=>{
-    const pa=DATA.tickets.find(x=>x.no===a.dataset.no)||{}, pb=DATA.tickets.find(x=>x.no===b.dataset.no)||{};
-    let va,vb;
-    if(key==="no"){va=pa.no;vb=pb.no;}
-    else if(key==="title"){va=pa.title;vb=pb.title;}
-    else{va=stageRank[pa.stage]??0;vb=stageRank[pb.stage]??0;}
-    const c=typeof va==="string"?va.localeCompare(vb):(va-vb);
-    return st.dir*c;
-  });
-  rows.forEach(r=>tbody.appendChild(r));
-}
-function filterTbl(){
-  const q=(id)=>document.getElementById(id).value.toLowerCase().trim();
-  const n=q("f-no"), t=q("f-title"), st=document.getElementById("f-stage").value, pr=document.getElementById("f-pri").value;
-  document.querySelectorAll("#main-table-body > tr:not(.row-detail)").forEach(r=>{
-    const p=DATA.tickets.find(x=>x.no===r.dataset.no);
-    if(!p){r.classList.remove("hidden");return;}
-    const okNo=!n||p.no.toLowerCase().includes(n);
-    const okT=!t||p.title.toLowerCase().includes(t);
-    const okS=!st||(st==="delivering"?(p.stage==="delivering"):p.stage===st);
-    const okP=!pr||p.priority===pr;
-    r.classList.toggle("hidden",!(okNo&&okT&&okS&&okP));
-  });
-}
 function toggleRow(tr){
   const det = tr.nextElementSibling;
   if(det && det.classList.contains('row-detail')) det.classList.toggle('hidden');
