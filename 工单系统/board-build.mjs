@@ -106,7 +106,7 @@ function copyCard(no){
   const t = DATA.tickets.find(x=>x.no===no);
   if(!t) return;
   const st = {merged:"终态",accepted:"待合",delivering:t.rejected?"回炉":"施工",archived:"作废",assigned:"已派",queued:"排队",unknown:"待查"}[t.stage]||"待查";
-  const txt = "【MOV 工单】"+t.no+" · "+st+(t.priority&&t.priority!=="—"?" · "+t.priority:"")+String.fromCharCode(10)+t.title+String.fromCharCode(10)+"卡点："+(t.blocker||"—")+(t.line?String.fromCharCode(10)+"线："+t.line:"");
+  const txt = t.no + " 这个工单什么情况？";
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(txt).then(()=>feedback(no)).catch(()=>legacyCopy(txt,no));
   } else legacyCopy(txt,no);
