@@ -81,18 +81,21 @@ const DOC_RE = /设计师[\\/][^\s｜|，。；）)（(]*?\.md/;
 
 function extractPriority(txt) {
   const patterns = [
-    /\*\*优先级\*\*：\s*([^｜|]+)/,
-    /(?:｜|\|)\s*优先级：\s*([^｜|]+)/,
-    /(?:^|；)优先级：\s*([^｜|]+)/,
+    /\*\*优先级\*\*：\s*([^｜|\n\r]+)/,
+    /(?:｜|\|)\s*优先级：\s*([^｜|\n\r]+)/,
+    /(?:^|；)优先级：\s*([^｜|\n\r]+)/,
     /（(P[0-4])\s*·\s*[0-9~]/u,
-    /\*\*级别\*\*：\s*([^｜|]+)/,
+    /\*\*级别\*\*：\s*([^｜|\n\r]+)/,
   ];
   for (const re of patterns) {
     const m = txt.match(re);
     if (!m) continue;
     let v = m[1].trim().replace(/[（(].*$/, "").trim();
-    if (v.startsWith("P") && /^P[0-4]$/.test(v)) return v;
+    // 多批分级（如「批 1 P0 / 批 2 P1」）→ 取主批（首个 P 级）
+    const pm = v.match(/P[0-4]/);
+    if (pm) return pm[0];
     if (/^[0-4]$/.test(v)) return "P" + v;
+    if (/^P[0-4]$/.test(v)) return v;
     return v;
   }
   return "—";
