@@ -68,7 +68,7 @@ const rows = projections.map((p, i) => {
   const st = ST[p.stage] || ST.unknown;
   const ov = p.overdue ? "overdue-row" : "";
   const badge = `<span class="bg-${st.zh === "终态" ? "green-100 text-green-800 border-green-200" : st.zh === "待合" ? "yellow-100 text-yellow-800 border-yellow-200" : st.zh === "施工" ? "orange-100 text-orange-800 border-orange-200" : st.zh === "作废" ? "gray-100 text-gray-700 border-gray-200" : st.zh === "已派" ? "blue-100 text-blue-800 border-blue-200" : st.zh === "排队" ? "gray-100 text-gray-600 border-gray-200" : "purple-100 text-purple-800 border-purple-200"} font-label-xs px-2 py-1 rounded-full border">${st.zh}${p.rejected ? "·回炉" : ""}${ov ? "·超期" : ""}</span>`;
-  const pri = p.priority && PRI[p.priority] ? `<span class="text-[10px] px-1 rounded ${PRI[p.priority]} ml-1">${p.priority}</span>` : "";
+  const pri = p.priority && PRI[p.priority] ? `<span class="text-[10px] px-1 rounded ${p.stage === "merged" ? "bg-surface-container-high text-on-surface-variant" : PRI[p.priority]} ml-1">${p.priority}</span>` : "";
   const line = p.line ? `<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">${esc(p.line)}</span>` : "";
   return `<tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors ${ov}" data-no="${esc(p.no)}" data-stage="${esc(p.stage)}" onclick="toggleRow(this)">
   <td class="py-sm px-md text-on-surface-variant">${i + 1}</td>
