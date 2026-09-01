@@ -64,6 +64,8 @@ const urgent = projections
 </div>`;
   }).join("");
 
+// 人话短标题（看板显示；库卡原标题保留）
+const TITLES={"UPG-01":"工具描述补全（AI 看到真说明）","UPG-02":"设备/传感器工具接入","UPG-03":"12306 等生活工具","UPG-04":"Obsidian 笔记工具接入","UPG-05":"记忆体系修补","UPG-06":"防 AI 编造加固","UPG-07":"预算口径与用量计量","UPG-08":"工作台（mow.kim）落地","UPG-09":"登录页实现","UPG-10":"工作台同步状态细分","UPG-11":"隐私政策弹窗（合规）","UPG-12":"WebView 加载提速","UPG-13":"登录页视觉优化","UPG-27":"Code Mode 工具描述按需加载","UPG-40":"App 视觉统一（黑白）","UPG-41":"本地页列表/详情重做","UPG-42":"mow.kim 站点 WebMCP 化","UPG-43":"浏览器 WebMCP Hub","UPG-14":"设置页收口","UPG-15":"登录按钮死锁修复","UPG-16":"签名配置安全收口","UPG-17":"假数据清理（前端）","UPG-18":"死代码清理","UPG-19":"新 Logo 图标","UPG-20":"聊天 chips 气泡改造","UPG-21":"回车键发送","UPG-22":"记忆收尾（COVER_HIT）","UPG-23":"本机能力总览页","UPG-24":"设计规范 v1","UPG-25":"UI 瑕疵批量修复","UPG-26":"侧边栏品牌区","UPG-28":"Obsidian 写操作审批闸","UPG-44":"验收判定器（B1）","UPG-45":"权限能力注册表","UPG-46":"工具联动契约","UPG-47":"主页胶囊系统","UPG-48":"记忆 API 模块化","UPG-49":"记忆页 UI 分层","UPG-50":"外观组件级显示","UPG-51":"用户画像标签池","UPG-52":"记忆生命周期","UPG-53":"安全体验优化","UPG-54":"安全中心页","UPG-55":"资产管理注册体系","UPG-56":"评测集盘点与版本","UPG-57":"演进台账骨架","UPG-58":"基线清单五步链","UPG-59":"教训蒸馏 MVP","UPG-60":"三道门+元验证","UPG-61":"vault 读修复（安全）","UPG-62":"输入框失焦修复","UPG-63":"弹窗基线等收口","UPG-64":"效应注解（C 线）","UPG-65":"门 3 灰度自动化","UPG-66":"Judge 判定扩面","UPG-67":"DAG 编排试点","UPG-68":"商业安全闸","UPG-69":"工单站 WebMCP 试点"};
 const rows = projections.map((p, i) => {
   const st = ST[p.stage] || ST.unknown;
   const ov = p.overdue ? "overdue-row" : "";
@@ -77,7 +79,7 @@ const rows = projections.map((p, i) => {
   <td class="py-sm px-md font-mono text-mono">${esc(p.no)}${line}</td>
   <td class="py-sm px-md">${pri}</td>
   <td class="py-sm px-md">${p.cat&&CATN[p.cat]?`<span class="text-[10px] px-1 rounded ${CATS[p.cat]} inline-block">${p.cat} ${CATN[p.cat]}</span>`:""}</td>
-  <td class="py-sm px-md font-medium">${esc(p.title).slice(0, 24)}</td>
+  <td class="py-sm px-md font-medium">${esc(TITLES[p.no] || p.title).slice(0, 24)}</td>
   <td class="py-sm px-md">${badge}</td>
   <td class="py-sm px-md text-on-surface-variant">${esc(p.blocker || "—")}</td>
 </tr>
