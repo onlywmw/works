@@ -13,7 +13,7 @@ import { cardOp, health as engineHealth, TRANSITIONS, ERR } from "./board-engine
 const __dir = path.dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.BOARD_PORT || 8787);
 const BIND = process.env.BOARD_BIND || "127.0.0.1";
-const WRITE_ON = process.env.BOARD_WRITE !== "off" && BIND === "127.0.0.1";
+const WRITE_ON = process.env.BOARD_WRITE === "on" && BIND === "127.0.0.1"; // 用户拍板：默认只读（状态改走 LLM 渲染）
 const FINAL = path.join(__dir, "处理中心", "验证产物", "orders-overview.html");
 const TMP = FINAL + ".tmp";
 const WRITE_TOKEN = randomBytes(32).toString("hex"); // 启动随机 256-bit
