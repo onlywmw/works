@@ -54,4 +54,4 @@ fixture 固化在脚本内 `VERIFY_HASH_FIXTURES`，连真实主仓库（只读�
 ## 七、登记说明
 
 - 已登记：`README.md` §六追加 SYS-02 阶段一 ✅（见下）；挂账登记表引子行（`挂账-sys02-UPG49hash漂移引子`）设计师验证列改 ✅已实施。
-- 交付 git 分支：`feat/sys02-ph1`（基底 工单系统仓库 main `099860a`）。
+- 交付 git 分支：`feat/sys02-ph1`，commit `ac67692`（基底 工单系统仓库 main `099860a`）。
