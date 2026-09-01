@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>组件库 · 收拢版</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --surface:#ffffff; --text:#1a1d23; --text2:#8a9099;
+    --green:#19c88f; --line1:#eef0f3; --line2:#f5f6f8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font:14px/1.55 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif; padding:26px 22px 70px;}
+  .head{max-width:900px; margin:0 auto 26px;}
+  h1{font-size:21px; font-weight:700;}
+  .tip{font-size:13px; color:var(--text2); margin-top:6px;}
+  .wrap{max-width:900px; margin:0 auto;}
+  section{margin-bottom:30px;}
+  h2{font-size:15px; font-weight:700; margin-bottom:14px; display:flex; align-items:baseline; gap:8px;}
+  h2 .zh{font-size:12px; color:var(--text2); font-weight:400;}
+  .rowa{display:flex; gap:12px; flex-wrap:wrap;}
+  .demo-cell{background:var(--surface); border-radius:14px; padding:16px; min-width:150px; flex:1; display:flex; flex-direction:column; gap:10px;}
+  .tag{font-size:11px; color:var(--text2);}
+  .s .pill,.s .rounded,.s .square{height:40px;}
+  .m .pill,.m .rounded,.m .square{height:48px;}
+  .l .pill,.l .rounded,.l .square{height:56px;}
+  .pill{border:none; width:100%; background:var(--bg); border-radius:99px; display:flex; align-items:center; padding:0 16px; font-size:13.5px;}
+  .pill.on{background:var(--green); color:#fff;}
+  .rounded{border:none; width:100%; background:var(--bg); border-radius:14px; display:flex; align-items:center; padding:0 16px; font-size:13.5px;}
+  .rounded.on{background:var(--green); color:#fff;}
+  .square{border:none; width:100%; background:var(--bg); border-radius:6px; display:flex; align-items:center; padding:0 16px; font-size:13.5px;}
+  .square.on{background:var(--green); color:#fff;}
+  .circle{width:40px; height:40px; border-radius:50%; background:var(--bg); flex:none; display:flex; align-items:center; justify-content:center; font-size:15px;}
+  .applied{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+  .app{background:var(--surface); border-radius:14px; padding:16px; }
+  .app .name{font-size:13px; font-weight:600; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;}
+  .app .name .key{font-size:10px; color:var(--text2); font-weight:400;}
+  .bubble{max-width:100%; padding:9px 13px; border-radius:14px 14px 14px 4px; font-size:13px; word-break:break-word; background:var(--bg);}
+  .bubble.a{border-radius:14px 14px 4px 14px; background:var(--green); color:#fff;}
+  .rowx{display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--line2); font-size:13.5px;}
+  .rowx:last-child{border-bottom:none;}
+  .switch{width:40px; height:24px; border-radius:99px; background:var(--green); position:relative; flex:none;}
+  .switch::after{content:""; position:absolute; top:2px; right:2px; width:20px; height:20px; border-radius:50%; background:#fff;}
+  .switch.off{background:#d8dce2;}
+  .card{width:100%; border-radius:16px; background:var(--bg); padding:14px; font-size:13.5px;}
+  .card .t{font-weight:600; margin-bottom:4px;}
+  .empty{text-align:center; color:var(--text2); font-size:13px; padding:16px 0;}
+</style>
+</head>
+<body>
+<div class="head">
+  <h1>组件库 · 收拢版</h1>
+  <div class="tip">形状 × 尺寸——组件只定义内容，外形不重做</div>
+</div>
+<div class="wrap">
+
+  <section>
+    <h2>形状标尺 <span class="zh">三种形状 × 三档尺寸</span></h2>
+    <div class="rowa">
+      <div class="demo-cell s"><div class="tag">胶囊 · 小</div><div class="pill">胶囊</div></div>
+      <div class="demo-cell m"><div class="tag">胶囊 · 中</div><div class="pill on">胶囊</div></div>
+      <div class="demo-cell l"><div class="tag">胶囊 · 大</div><div class="pill">胶囊</div></div>
+    </div>
+    <div class="rowa" style="margin-top:12px;">
+      <div class="demo-cell s"><div class="tag">圆角 · 小</div><div class="rounded">圆角</div></div>
+      <div class="demo-cell m"><div class="tag">圆角 · 中</div><div class="rounded on">圆角</div></div>
+      <div class="demo-cell l"><div class="tag">圆角 · 大</div><div class="rounded">圆角</div></div>
+    </div>
+    <div class="rowa" style="margin-top:12px;">
+      <div class="demo-cell s"><div class="tag">方角 · 小</div><div class="square">方角</div></div>
+      <div class="demo-cell m"><div class="tag">方角 · 中</div><div class="square on">方角</div></div>
+      <div class="demo-cell l"><div class="tag">方角 · 大</div><div class="square">方角</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>组件 = 基元应用 <span class="zh">每种组件只写一次，形状/尺寸是参数</span></h2>
+    <div class="applied">
+      <div class="app"><div class="name">输入框 <span class="key">胶囊 · 中</span></div><div class="pill">说点什么…</div></div>
+      <div class="app"><div class="name">气泡 <span class="key">圆角 · 自动</span></div>
+        <div class="bubble">今天状态怎么样</div>
+        <div class="bubble a">一切正常</div>
+      </div>
+      <div class="app"><div class="name">列表行 <span class="key">分隔线 · 自动</span></div>
+        <div class="rowx">信息管理<span style="color:var(--text2)">›</span></div>
+        <div class="rowx">外观设置<span style="color:var(--text2)">›</span></div>
+      </div>
+      <div class="app"><div class="name">开关 <span class="key">胶囊 · 小</span></div>
+        <div class="rowx">节省流量 <div class="switch"></div></div>
+        <div class="rowx">消息提醒 <div class="switch off"></div></div>
+      </div>
+      <div class="app"><div class="name">数据卡 <span class="key">圆角 · 大</span></div>
+        <div class="card"><div class="t">我的资产</div><div class="tag">3 项 · 正常</div></div>
+      </div>
+      <div class="app"><div class="name">圆形按钮 <span class="key">圆形 · 固定</span></div>
+        <div style="display:flex; gap:10px; align-items:center;"><div class="circle">🎤</div><div class="circle">📷</div></div>
+      </div>
+      <div class="app"><div class="name">空状态 <span class="key">方角 · 自动</span></div>
+        <div class="empty">还没有内容</div>
+      </div>
+      <div class="app"><div class="name">弹层头部 <span class="key">圆角 · 大</span></div>
+        <div style="font-size:16px; font-weight:700;">‹ 信息管理</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
