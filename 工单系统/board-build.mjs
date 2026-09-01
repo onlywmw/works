@@ -34,9 +34,8 @@ const stats = {
 
 const cards = [
   { key: "all", zh: "总数", n: stats.total, cls: "text-on-surface" },
-  { key: "finished", zh: "终态", n: stats.finished, cls: "text-green-600" },
-  { key: "inflow", zh: "在流", n: stats.inflow, cls: "text-blue-600" },
-  { key: "overdue", zh: "超期", n: stats.overdue, cls: "text-red-600" },
+  { key: "finished", zh: "已合 main", n: stats.finished, cls: "text-green-600" },
+  { key: "inflow", zh: "流转中", n: stats.inflow, cls: "text-blue-600" },
   { key: "rejected", zh: "回炉", n: stats.rejected, cls: "text-red-500" },
   { key: "onhold", zh: "挂账", n: stats.onhold, cls: "text-gray-500" },
 ];
@@ -73,12 +72,13 @@ const rows = projections.map((p, i) => {
   const line = p.line ? `<span class="text-[10px] px-1 rounded bg-surface-container text-on-surface-variant ml-1">${esc(p.line)}</span>` : "";
   return `<tr class="border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors ${ov}" data-no="${esc(p.no)}" onclick="toggleRow(this)">
   <td class="py-sm px-md text-on-surface-variant">${i + 1}</td>
-  <td class="py-sm px-md font-mono text-mono">${esc(p.no)}${pri}${line}</td>
+  <td class="py-sm px-md font-mono text-mono">${esc(p.no)}${line}</td>
+  <td class="py-sm px-md">${pri}</td>
   <td class="py-sm px-md font-medium">${esc(p.title).slice(0, 24)}</td>
   <td class="py-sm px-md">${badge}</td>
   <td class="py-sm px-md text-on-surface-variant">${esc(p.blocker || "—")}</td>
 </tr>
-<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="5">
+<tr class="row-detail hidden border-b border-outline-variant"><td class="p-md" colspan="6">
   <div class="bg-surface border border-outline-variant rounded p-md">
     <h4 class="font-label-md mb-sm">流转时间线</h4>
     <div class="flex items-center gap-sm text-xs font-mono text-on-surface-variant">
@@ -116,6 +116,19 @@ function legacyCopy(txt,no){
 }
 function feedback(no){
   document.querySelectorAll(".copy-btn").forEach(b=>{if(b.getAttribute("onclick").includes(no)){b.textContent="✓ 已复制";setTimeout(()=>b.textContent="复制",1500);}});
+}
+function filterTbl(){
+  const q=(id)=>document.getElementById(id).value.toLowerCase().trim();
+  const n=q("f-no"), t=q("f-title"), st=document.getElementById("f-stage").value, pr=document.getElementById("f-pri").value;
+  document.querySelectorAll("#main-table-body > tr:not(.row-detail)").forEach(r=>{
+    const p=DATA.tickets.find(x=>x.no===r.dataset.no);
+    if(!p){r.classList.remove("hidden");return;}
+    const okNo=!n||p.no.toLowerCase().includes(n);
+    const okT=!t||p.title.toLowerCase().includes(t);
+    const okS=!st||(st==="delivering"?(p.stage==="delivering"):p.stage===st);
+    const okP=!pr||p.priority===pr;
+    r.classList.toggle("hidden",!(okNo&&okT&&okS&&okP));
+  });
 }
 function toggleRow(tr){
   const det = tr.nextElementSibling;
