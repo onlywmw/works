@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>组件库</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --surface:#ffffff; --text:#1a1d23; --text2:#8a9099;
+    --green:#19c88f; --green-dark:#0ea579; --line1:#f0f1f4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font:14px/1.55 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif; padding:24px 20px 60px;}
+  h1{font-size:20px; font-weight:700; margin:0 0 20px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px;}
+  .cell{background:var(--surface); border-radius:14px; padding:16px 14px; box-shadow:0 1px 2px rgba(20,25,40,.04);}
+  .name{font-size:13px; font-weight:600; margin-bottom:12px;}
+  .demo{display:flex; flex-direction:column; gap:10px; align-items:flex-start;}
+  a{color:var(--green-dark); text-decoration:none; font-weight:600; font-size:14px; display:block; width:100%;}
+  /* ---- 组件示例 ---- */
+  .input{width:100%; border:none; outline:none; background:var(--bg); border-radius:10px; padding:10px 12px; font-size:14px; color:var(--text);}
+  .bubble{max-width:100%; padding:9px 13px; border-radius:14px; font-size:13.5px; word-break:break-word;}
+  .bubble.u{border-bottom-left-radius:4px; background:var(--bg);}
+  .bubble.a{border-bottom-right-radius:4px; background:var(--green); color:#fff;}
+  .iconbtn{width:34px; height:34px; border-radius:50%; background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:15px;}
+  .row{width:100%; display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--line1); font-size:14px;}
+  .row:last-child{border-bottom:none;}
+  .sub{font-size:12px; color:var(--text2);}
+  .toggle{width:42px; height:25px; border-radius:99px; background:var(--green); position:relative; flex:none;}
+  .toggle::after{content:""; position:absolute; top:2.5px; right:2.5px; width:20px; height:20px; border-radius:50%; background:#fff;}
+  .header-ic{font-size:18px; font-weight:700; display:flex; align-items:center; gap:8px;}
+  .card{width:100%; border-radius:14px; background:var(--bg); padding:13px; font-size:13.5px; box-shadow:none;}
+  .card .t{font-weight:600; margin-bottom:4px;}
+  .empty{width:100%; text-align:center; padding:18px 0; color:var(--text2); font-size:13px;}
+  .badge{font-size:12px; font-weight:600; padding:5px 11px; border-radius:99px; background:var(--bg);}
+  .badge.on{background:var(--green); color:#fff;}
+  .list{width:100%;}
+  .list .i{display:flex; align-items:center; gap:10px; padding:11px 0; border-bottom:1px solid var(--line1); font-size:14px;}
+  .list .i:last-child{border-bottom:none;}
+  .list .dot{width:8px; height:8px; border-radius:50%; background:var(--green); flex:none;}
+  .list .i.gray .dot{background:#cfd3da;}
+  .list .i .arrow{margin-left:auto; color:var(--text2); font-size:13px;}
+</style>
+</head>
+<body>
+<h1>组件库</h1>
+<div class="grid">
+
+  <div class="cell"><div class="name">对话输入框</div><div class="demo"><div class="input">说点什么…</div></div></div>
+
+  <div class="cell"><div class="name">对话气泡</div><div class="demo">
+    <div class="bubble u">今天状态怎么样</div>
+    <div class="bubble a">一切正常</div>
+  </div></div>
+
+  <div class="cell"><div class="name">发送按钮</div><div class="demo"><a>发送 ›</a></div></div>
+
+  <div class="cell"><div class="name">语音按钮</div><div class="demo"><div class="iconbtn">🎤</div></div></div>
+
+  <div class="cell"><div class="name">设置搜索框</div><div class="demo"><div class="input">搜索设置…</div></div></div>
+
+  <div class="cell"><div class="name">设置列表行</div><div class="demo">
+    <div class="row"><span>信息管理</span><span class="arrow sub">›</span></div>
+    <div class="row"><span>外观</span><span class="arrow sub">›</span></div>
+  </div></div>
+
+  <div class="cell"><div class="name">设置开关</div><div class="demo">
+    <div class="row"><span>省电模式</span><div class="toggle"></div></div>
+    <div class="row"><span>通知提醒</span><div class="toggle" style="background:#d5d9df"></div></div>
+  </div></div>
+
+  <div class="cell"><div class="name">设置标题栏</div><div class="demo"><div class="header-ic">‹ 设置</div></div></div>
+
+  <div class="cell"><div class="name">侧边栏标题</div><div class="demo"><div class="header-ic">· 我的空间</div></div></div>
+
+  <div class="cell"><div class="name">房间列表行</div><div class="demo"><div class="list">
+    <div class="i"><div class="dot"></div>工作讨论<span class="arrow">›</span></div>
+    <div class="i gray"><div class="dot"></div>旅行计划<span class="arrow">›</span></div>
+  </div></div></div>
+
+  <div class="cell"><div class="name">侧边栏工具行</div><div class="demo"><div class="list">
+    <div class="i"><div class="dot"></div>本机能力<span class="arrow">›</span></div>
+    <div class="i gray"><div class="dot"></div>信息库<span class="arrow">›</span></div>
+  </div></div></div>
+
+  <div class="cell"><div class="name">工作台行</div><div class="demo"><div class="row"><span>能力市场</span><span class="arrow sub">›</span></div></div></div>
+
+  <div class="cell"><div class="name">能力卡片</div><div class="demo"><div class="card"><div class="t">信息存储</div><div class="sub">记录与查找</div></div></div></div>
+
+  <div class="cell"><div class="name">市场工具卡</div><div class="demo"><div class="card"><div class="t">笔记工具</div><div class="sub">已安装</div></div></div></div>
+
+  <div class="cell"><div class="name">市场列表</div><div class="demo"><div class="list">
+    <div class="i"><div class="dot"></div>已安装<span class="arrow">›</span></div>
+    <div class="i gray"><div class="dot"></div>商店<span class="arrow">›</span></div>
+  </div></div></div>
+
+  <div class="cell"><div class="name">资产卡</div><div class="demo"><div class="card"><div class="t">我的资产</div><div class="sub">3 项</div></div></div></div>
+
+  <div class="cell"><div class="name">资产列表行</div><div class="demo"><div class="list">
+    <div class="i"><div class="dot"></div>登录密码<span class="arrow">›</span></div>
+    <div class="i gray"><div class="dot"></div>照片库<span class="arrow">›</span></div>
+  </div></div></div>
+
+  <div class="cell"><div class="name">弹层标题</div><div class="demo"><div class="header-ic">信息管理</div></div></div>
+
+  <div class="cell"><div class="name">弹层内容行</div><div class="demo"><div class="row"><span>我的记忆</span><span class="arrow sub">›</span></div></div></div>
+
+  <div class="cell"><div class="name">通用空状态</div><div class="demo"><div class="empty">还没有内容</div></div></div>
+
+</div>
+</body>
+</html>
