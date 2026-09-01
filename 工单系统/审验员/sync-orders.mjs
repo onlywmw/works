@@ -77,8 +77,8 @@ const FIELD_HEAD = ["**出单人**", "**日期**", "**优先级**", "**原状态
 const ROLE_ANCHORS = [
   { role: "merge", re: /待设计师合 main|已合 main|合 main|合流/g },
   { role: "inspector", re: /验收员|验收通过|独立复核|复验|打回|审验/g },
-  { role: "dev", re: /C 交付|C 完成|C 修复|C 批|修复交付|修复完成|M3-R2|已认领|在施|施工中/g },
-  { role: "designer", re: /出单人|方案[\s**]*[vV]\d|设计[\s]*[vV]\d|定稿|已派单|评审|裁决|拍板|规范|激活/g },
+  { role: "dev", re: /C 交付|C 完成|C 修复|C 批|修复交付|修复完成|M3-R2|已认领|在施|施工中|重修完成/g },
+  { role: "designer", re: /出单人|方案[\s**]*[vV]\d|设计[\s]*[vV]\d|定稿|已派单|评审|裁决|拍板|规范|激活|方案完成/g },
 ];
 
 const DATE_RE = /@?(\d{4}-\d{2}-\d{2})/g;
