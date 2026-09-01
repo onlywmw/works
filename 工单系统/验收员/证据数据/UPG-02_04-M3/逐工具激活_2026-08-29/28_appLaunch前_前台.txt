@@ -1,0 +1,1 @@
+  mCurrentFocus=Window{d7d96be u0 com.mov.android/com.mov.android.MainActivity}

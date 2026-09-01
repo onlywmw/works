@@ -1,0 +1,21 @@
+--------- beginning of main
+08-29 17:23:32.600  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995412282570100 start obsidian.vault.rescan
+08-29 17:23:32.636 12098 12098 I MOVTEST : MOVTEST_1787995412282570100 start obsidian.vault.rescan
+08-29 17:23:32.648  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:32.665  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+--------- beginning of system
+08-29 17:23:32.767  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{91308a3 com.termux/10304} BLOCKED
+08-29 17:23:32.769  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{44c3ff1 com.tencent.qqlive/10419} BLOCKED
+08-29 17:23:32.769  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{d8117b5 com.tencent.news/10423} BLOCKED
+08-29 17:23:32.770  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{bfb0498 com.google.android.documentsui/10091} BLOCKED
+08-29 17:23:32.778  2759  6217 I SmartPower: com.android.externalstorage/10086(9010): idle->background(7188ms) R(content provider start ContentProviderRecord{9e6b042 u0 com.android.externalstorage/.ExternalStorageProvider}) adj=0.
+08-29 17:23:32.783 22231 22231 D HidDeviceService: handleMessage(): msg.what=8
+08-29 17:23:32.786  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10086, uidState = 3
+08-29 17:23:32.790  2759  4515 I MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic uid=10086,add=true
+08-29 17:23:32.791  2759  4515 D MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic rst=true
+08-29 17:23:32.793  8389  8919 D JavaheapMonitor: Java heap used=11M max=384M, proc: com.miui.powerkeeper
+08-29 17:23:32.794  8389  8919 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:23:32.849  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:32.883  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995412282570100 end obsidian.vault.rescan
+08-29 17:23:32.923 12104 12104 I MOVTEST : MOVTEST_1787995412282570100 end obsidian.vault.rescan
+08-29 17:23:32.950  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

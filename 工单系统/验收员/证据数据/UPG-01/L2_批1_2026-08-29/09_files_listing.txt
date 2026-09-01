@@ -1,0 +1,5 @@
+mcp_token.txt
+model_store.json
+profileInstalled
+search.db
+search.db-journal

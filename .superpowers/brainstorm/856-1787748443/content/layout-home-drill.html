@@ -1,0 +1,84 @@
+<h2>设计稿：首页 + 钻取页</h2>
+<p class="subtitle">左：mow.kim 首页（架构图即工作台）。右：点「App」节点后的钻取页（工单流转中心的实时映射）。这是布局示意，配色/细节后调。</p>
+
+<style>
+.w{background:#141414;border-radius:10px;padding:12px;min-height:330px;font-family:system-ui}
+.bar{display:flex;justify-content:space-between;font-size:11px;color:#999;border-bottom:1px solid #2a2a2a;padding-bottom:6px;margin-bottom:10px}
+.map{position:relative;height:180px;margin-bottom:10px}
+.nd{position:absolute;padding:5px 9px;border-radius:7px;font-size:11px;background:#222;border:1px solid #3a3a3a;color:#ddd;cursor:pointer}
+.nd small{display:block;color:#888;font-size:9px}
+.nd .d{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px}
+.g{background:#22c55e}.y{background:#eab308}.r{background:#ef4444}
+.ctr{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);text-align:center;font-size:12px;color:#fff;background:#1d2b45;border:1px solid #3b82f6;border-radius:8px;padding:8px 12px}
+.ed{position:absolute;background:#2e2e2e;height:1px}
+.focus{background:#1c1c1c;border:1px solid #2e2e2e;border-radius:7px;padding:8px 10px}
+.focus h4{margin:0 0 6px;font-size:11px;color:#93c5fd}
+.focus div{font-size:10px;color:#bbb;padding:2px 0}
+.pipe{display:flex;gap:2px;margin:8px 0 10px}
+.pipe .s{flex:1;text-align:center;font-size:10px;padding:6px 2px;border-radius:5px;background:#222;border:1px solid #333;color:#999}
+.pipe .s b{display:block;font-size:12px;color:#eee}
+.pipe .s.hot{background:#1f3a5f;border-color:#3b82f6}
+.pipe .s.hot b{color:#93c5fd}
+.row{display:flex;justify-content:space-between;font-size:10px;padding:5px 8px;border-radius:5px;background:#1c1c1c;margin:3px 0;color:#bbb;border-left:3px solid #444}
+.row.p0{border-left-color:#ef4444}.row.p1{border-left-color:#eab308}.row.ok{border-left-color:#22c55e}
+.row .st{color:#888}
+.sect{font-size:10px;color:#777;margin:8px 0 2px;letter-spacing:1px}
+</style>
+
+<div class="split">
+
+<div class="mockup">
+  <div class="mockup-header">mow.kim 首页（登录后）</div>
+  <div class="mockup-body"><div class="w">
+    <div class="bar"><span>◈ mow.kim 工作台</span><span>周三 08-26 ｜ admin ⏷</span></div>
+    <div class="map">
+      <div class="ctr">MOV 宇宙<br><small style="color:#7aa2f7;font-size:9px">5 维度 · 在制 9 · 阻塞 2</small></div>
+      <div class="nd" style="left:2%;top:2%"><span class="d y"></span>品牌<small>在制2 · 商标✅</small></div>
+      <div class="nd" style="left:72%;top:2%"><span class="d y"></span>App 建设<small>在制4 · 阻塞1</small></div>
+      <div class="nd" style="left:2%;top:72%"><span class="d g"></span>能力市场<small>在制2</small></div>
+      <div class="nd" style="left:72%;top:72%"><span class="d r"></span>营销推广<small>未启动 ⚠</small></div>
+      <div class="nd" style="left:37%;top:88%"><span class="d g"></span>基建<small>迁移中1</small></div>
+      <div class="ed" style="left:16%;top:14%;width:70px;transform:rotate(24deg)"></div>
+      <div class="ed" style="left:60%;top:14%;width:70px;transform:rotate(-24deg)"></div>
+      <div class="ed" style="left:16%;top:70%;width:70px;transform:rotate(-24deg)"></div>
+      <div class="ed" style="left:60%;top:70%;width:70px;transform:rotate(-24deg)"></div>
+      <div class="ed" style="left:49%;top:62%;width:2px;height:40px"></div>
+    </div>
+    <div class="focus">
+      <h4>本周焦点（各维度 P0/P1 在制 Top）</h4>
+      <div>🔴 App · UPG-07批1 预算口径（待专家审）</div>
+      <div>🔴 App · UPG-05 记忆链路修通（待专家审）</div>
+      <div>🟡 品牌 · VI/Logo 设计（未出单）</div>
+    </div>
+  </div></div>
+</div>
+
+<div class="mockup">
+  <div class="mockup-header">钻取页 · App 建设（点节点进入）</div>
+  <div class="mockup-body"><div class="w">
+    <div class="bar"><span>◀ 首页 ｜ 📱 App 建设</span><span>数据源：工单流转中心 · 5分钟前同步</span></div>
+    <div class="pipe">
+      <div class="s"><b>4</b>设计师</div>
+      <div class="s hot"><b>1</b>程序员🔨</div>
+      <div class="s"><b>0</b>验收员</div>
+      <div class="s"><b>0</b>审验员</div>
+      <div class="s"><b>—</b>合main</div>
+    </div>
+    <div class="sect">在制工单</div>
+    <div class="row p0"><span>UPG-07 批1 预算口径加权</span><span class="st">待专家审</span></div>
+    <div class="row p0"><span>UPG-05 记忆链路修通</span><span class="st">待专家审</span></div>
+    <div class="row p1"><span>UPG-01 工具元数据登记层</span><span class="st">待领单</span></div>
+    <div class="row ok"><span>UPG-02 设备工具包</span><span class="st">✅已验收</span></div>
+    <div class="sect">挂账 / 阻塞</div>
+    <div class="row p0"><span>模拟器 AI 未回复（DeepSeek key）</span><span class="st">⏳待审</span></div>
+    <div class="sect">最近验收（ACCEPTANCE_LOG）</div>
+    <div class="row ok"><span>AB模式与审批弹窗 · 真机✅</span><span class="st">08-24</span></div>
+  </div></div>
+</div>
+
+</div>
+
+<div class="section">
+  <p class="label">其他维度钻取页</p>
+  <p>同一版式，流水线换成各维度自己的阶段：品牌=策划→设计→定稿→注册/落地；营销=选题→创作→发布→复盘；市场=需求→开发→验收入口→上线；基建=计划→实施→验证。所有维度共用一套工单状态机。</p>
+</div>

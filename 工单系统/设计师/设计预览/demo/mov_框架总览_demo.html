@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV · Agent 架构与关系</title>
+<style>
+  :root{--s0:#F3F4F7;--s1:#fff;--s2:#EDEFF3;--text:#191B21;--text2:#565C6B;--text3:#8B91A1;
+    --line:rgba(22,28,48,.08);--primary:#0E7C5B;--ptint:rgba(14,124,91,.08);--danger:#D92D20;--warn:#B45309;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#E9EBF0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);padding:24px 14px}
+  .wrap{max-width:980px;margin:0 auto}
+  .h1{font-size:19px;font-weight:800}.sub{font-size:13px;color:var(--text2);margin:6px 0 18px}
+  .sub b{color:var(--primary)}
+
+  .core{display:flex;justify-content:center;margin:6px 0 14px}
+  .agent{background:var(--primary);color:#fff;border-radius:16px;padding:14px 26px;text-align:center;box-shadow:0 4px 14px rgba(14,124,91,.25)}
+  .agent .a{font-size:18px;font-weight:800;letter-spacing:1px}
+  .agent .d{font-size:11px;opacity:.9;margin-top:3px}
+
+  .ring{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media(max-width:600px){.ring{grid-template-columns:1fr}}
+  .loop{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .loop .lh{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;margin-bottom:6px}
+  .loop .lc{width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+  .loop .rel{font-size:12px;color:var(--text2);line-height:1.6}
+  .rel b{color:var(--text)}
+  .arrow{display:inline-block;color:var(--primary);font-weight:700;margin:0 2px}
+
+  .perim{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  @media(max-width:600px){.perim{grid-template-columns:1fr}}
+  .pcard{background:#fbfcfd;border:1px dashed var(--line);border-radius:12px;padding:11px 13px}
+  .pcard .pt{font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .pcard .pb{font-size:11.5px;color:var(--text2);line-height:1.55}
+
+  .arch{background:linear-gradient(135deg,#f4fbf8,#eef2f5);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:18px}
+  .arch .t{font-size:13px;font-weight:800;color:var(--primary);margin-bottom:6px}
+  .arch pre{font-size:11.5px;line-height:1.55;color:var(--text2);margin:0;white-space:pre;overflow-x:auto}
+  .note{font-size:12px;color:var(--text3);margin-top:14px;line-height:1.6}
+  .pil{color:var(--warn)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="h1">MOV · Agent 架构与关系</div>
+  <div class="sub"><b>Agent（AI 管家）是中枢</b>——它通过四件事工作：<b>懂你（读记忆）</b>→ <b>决策（调工具·走授权）</b>→ <b>办事（执行）</b>→ <b>沉淀（写记忆·留痕）</b>，形成"感知→决策→行动→记memoria"闭环。各系统围绕 Agent、被 Agent 调用。</div>
+
+  <!-- 中央 Agent -->
+  <div class="core"><div class="agent"><div class="a">MOV Agent</div><div class="d">AI 管家 · 中枢 · 感知→决策→行动→沉淀</div></div></div>
+
+  <!-- Agent 运行四环 -->
+  <div class="ring">
+    <div class="loop">
+      <div class="lh"><span class="lc" style="background:#3B82F6">1</span> 感知 · 懂你</div>
+      <div class="rel">Agent <span class="arrow">←读取</span> <b>统一记忆系统</b>：先取 <b>Core</b>（瞬时用户画像）→ <b>Semantic</b>（池子/MD）→ <b>Episodic</b>（近期碎片）兜底。来自 <b>Event→Episodic→Semantic→Timeline</b> 的历史记忆。</div>
+    </div>
+    <div class="loop">
+      <div class="lh"><span class="lc" style="background:#F59E0B">2</span> 决策 · 授权</div>
+      <div class="rel">Agent 要调工具 → <span class="arrow">走过</span> <b>安全体系</b>：<b>SecurityGate</b>（subject×resource×op×data×dest）→ 分档（free/ask/gate）→ <b>DecisionToken</b>（授权绑定）→ 该确认时 <b>审批弹窗</b>（大白话）→ 高层级给确认放行。工具联动 <b>Runtime</b> 判参数/风险/多工具编排（NO_CALL/CALL/MULTI）。</div>
+    </div>
+    <div class="loop">
+      <div class="lh"><span class="lc" style="background:#22C55E">3</span> 行动 · 办事</div>
+      <div class="rel">Agent <span class="arrow">→调用</span> <b>工具 / MCP</b>：内置工具（文件/HTTP/设备）+ 本地能力 + 第三方 MCP（经 <b>Gatekeeper</b> 校验/白名单/防注入）→ 执行"办事"（查资料/写文件/发消息/支付…）。可触达 <b>资产库</b>（生成/访问文件资产）。</div>
+    </div>
+    <div class="loop">
+      <div class="lh"><span class="lc" style="background:#8B5CF6">4</span> 沉淀 · 记住</div>
+      <div class="rel">Agent <span class="arrow">→写入</span> <b>记忆</b>：新认知晋级 <b>Semantic 池子</b>（MD分篇·人工确认）→ <b>Timeline</b>（不可变留痕）+ 审计——下次"懂你"用得着。用户删除=被挡（blockedSourceHashes，删掉不回来）。</div>
+    </div>
+  </div>
+
+  <!-- 外围：用户 / 资产 / 商业 -->
+  <div class="perim">
+    <div class="pcard"><div class="pt">👤 用户（人机对话 · 入口）</div><div class="pb">向 Agent 说话 → Agent 感知记忆懂你 → 决策办事 → 在有需要时<small>（敏感/写/对外/不可逆）</small>弹一次<b>大白话审批</b> → 执行 → 沉淀。设置页/侧边栏是用户配置与入口。</div></div>
+    <div class="pcard"><div class="pt">📦 资产库（Agent 可生成/访问的对象）</div><div class="pb"><b>我的资产</b>（挂账·待安全体系后）：类目管理项注册（图片/视频/音乐/文章/<b>衣物·衣柜</b>/凭据）——Agent 换装 MCP 可产出衣物资产入库。安全体系定稿后基于其上立项。</div></div>
+    <div class="pcard"><div class="pt">🧩 MCP 生态（能力市场）</div><div class="pb">第三方/自建能力（市场·本地能力·工具联动 Runtime）：Agent 经 <b>Gatekeeper</b> 调用，白名单/风险分级/审计——"能力 → 资产 → 商业"。</div></div>
+    <div class="pcard"><div class="pt">💳 商业层（Agent 沉淀的输出）</div><div class="pb">协议授权下，把 Agent 沉淀的记忆<b>二次加工成画像</b>（星座/偏好…）→ 个性化推荐/人群分组（<b>只传去标识标签·不传原文·可关个性化</b>）。承载交易/支付/广告——商业重点。</div></div>
+  </div>
+
+  <!-- 架构关系 -->
+  <div class="arch">
+    <div class="t">Agent 为中心的架构关系（单向 · 谁调谁）</div>
+    <pre>                用户 👤（说话 / 配置）
+                       │ 输入
+                       ▼
+        ┌─────────────────────────────┐
+        │          MOV Agent           │ ← 中枢
+        │  感知 → 决策 → 行动 → 沉淀    │
+        └───┬───────┬───────┬──────┬──┘
+    读记忆 │       │ 走安全 │  调用 │  │ 写记忆
+        ▼       ▼       ▼      ▼      ▼
+  统一记忆系统  安全体系   工具/MCP   资产库
+  Event→Epi    SecurityGate 内置/本地  AssetKind
+  →Seman→Time  →Gatekeeper 第三方/MCP  管理项
+  +Retrieval   +DecisionToken +Runtime  (MCP可写入)
+  懂你 · 根    护你 · 授权    办事 · 能力   你的资产
+        └───────────┴───────────┴─────────┘
+                       │ Agent 沉淀
+                       ▼
+                记忆(Timeline·审计·不可变) + 商业层(画像·个性化·交易)</pre>
+  </div>
+
+  <div class="note">
+    <b>关系要点</b>：Agent 是唯一中枢——①读记忆<span class="arrow">→</span>懂你 ②走安全<span class="arrow">→</span>护你 ③调工具/MCP<span class="arrow">→</span>办事 ④写记忆+留痕<span class="arrow">→</span>沉淀。记忆/安全/资产 都是被 Agent 调用的"服务"，不是平级功能。<span class="pil">资产/安全体系为阶段设计（资产挂账待安全体系 v2.1 定稿后立项）。</span>
+  </div>
+</div>
+</body>
+</html>

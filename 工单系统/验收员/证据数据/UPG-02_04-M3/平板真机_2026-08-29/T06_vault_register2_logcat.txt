@@ -1,0 +1,49 @@
+--------- beginning of main
+08-29 17:21:10.631  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:21:10.632  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:54
+08-29 17:21:10.632  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:21:10.632  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 17:21:10.633  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:21:10.636  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:10.675  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995270187370300 start obsidian.vault.register
+08-29 17:21:10.704 11757 11757 I MOVTEST : MOVTEST_MARK_1787995270187370300 start obsidian.vault.register
+08-29 17:21:10.707  2759  4515 I MiuiNetworkPolicy: bandwidth: 1 KB/s, Max bandwidth: 830 KB/s
+08-29 17:21:10.709  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.710  8701  8925 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.710  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.710  8701  8925 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.710  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/enableUTCheckWhenSplashReportStart, shiplyKey: splash_enableUTCheckWhenSplashReportStart
+08-29 17:21:10.710  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/enableUTCheckWhenSplashReportStart, value: null
+08-29 17:21:10.710  8701  8925 D AdCoreConfigService: getShiplyKey, key: /root/controller/enableUTCheckWhenSplashReportStart, shiplyKey: splash_enableUTCheckWhenSplashReportStart
+08-29 17:21:10.710  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.710  8701  8925 D AdCoreConfigService: use old config, path: /root/controller/enableUTCheckWhenSplashReportStart, value: null
+08-29 17:21:10.711  8701  8925 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.711  8701  8925 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.711  8701  8925 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.711  8701  8925 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.711  8701  8925 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.712  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.712  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.712  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.712  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.712  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.712  8701  8923 I FileLockLib: [8701]file 121 unlocked. fl.pid=0
+08-29 17:21:10.713  8701  8925 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.713  8701  8925 I FileLockLib: [8701]file 121 unlocked. fl.pid=0
+08-29 17:21:10.714  8701  8925 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.714  8701  8925 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.715  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.715  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.715  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.715  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.715  8701  8923 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:21:10.715  8701  8923 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:21:10.763  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:21:10.839  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:10.846  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785981105880445, lux: 3.0
+08-29 17:21:10.848  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785981105880445, sensor=5, temperature(K)=   0.0000
+08-29 17:21:10.848  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:21:10.948  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995270187370300 end obsidian.vault.register
+08-29 17:21:10.977 11762 11762 I MOVTEST : MOVTEST_MARK_1787995270187370300 end obsidian.vault.register
+08-29 17:21:11.023  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:21:11.041  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM

@@ -1,0 +1,77 @@
+<h2>工作台整体结构：三个思路选一个</h2>
+<p class="subtitle">都满足「简约、一目了然、可视化」，差别在信息组织方式。点选你倾向的，细节后面再调。</p>
+
+<style>
+.lane{display:flex;gap:4px;margin:3px 0;align-items:center}
+.lane .tag{width:52px;font-size:11px;text-align:right;color:#888;flex-shrink:0}
+.lane .cell{flex:1;height:26px;border-radius:4px;background:#2a2a2a;font-size:10px;display:flex;align-items:center;justify-content:center;color:#bbb;border:1px solid #333}
+.cell.doing{background:#1f3a5f;border-color:#3b82f6;color:#93c5fd}
+.cell.block{background:#4a1f1f;border-color:#ef4444;color:#fca5a5}
+.cell.done{background:#1f3d2b;border-color:#22c55e;color:#86efac}
+.mapbox{position:relative;height:150px}
+.node{position:absolute;padding:4px 8px;border-radius:6px;font-size:11px;background:#2a2a2a;border:1px solid #444;color:#ddd}
+.node .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px}
+.g{background:#22c55e}.y{background:#eab308}.r{background:#ef4444}
+.edge{position:absolute;background:#444;height:1px}
+.flow{display:flex;gap:3px;margin-top:6px}
+.flow .st{flex:1;text-align:center;font-size:10px;padding:5px 2px;border-radius:4px;background:#2a2a2a;border:1px solid #333;color:#aaa}
+.flow .st.hot{background:#1f3a5f;border-color:#3b82f6;color:#93c5fd}
+.arrow{color:#555;align-self:center;font-size:10px}
+.wire{background:#161616;border-radius:8px;padding:10px;height:190px;overflow:hidden}
+.wire-title{font-size:11px;color:#888;margin-bottom:6px}
+</style>
+
+<div class="cards">
+
+<div class="card" data-choice="a" onclick="toggleSelect(this)">
+  <div class="card-image"><div class="wire">
+    <div class="wire-title">A · 五泳道看板（Trello 式）</div>
+    <div class="lane"><span class="tag">品牌</span><div class="cell done">商标✅</div><div class="cell doing">VI/Logo</div><div class="cell">品牌故事</div><div class="cell">—</div></div>
+    <div class="lane"><span class="tag">营销</span><div class="cell">公众号注册</div><div class="cell">内容计划</div><div class="cell">—</div><div class="cell">—</div></div>
+    <div class="lane"><span class="tag">App</span><div class="cell done">UPG-02✅</div><div class="cell doing">UPG-01</div><div class="cell block">UPG-05⏸</div><div class="cell">UPG-06</div></div>
+    <div class="lane"><span class="tag">市场</span><div class="cell doing">中文化</div><div class="cell">商家入驻</div><div class="cell">—</div><div class="cell">—</div></div>
+    <div class="lane"><span class="tag">基建</span><div class="cell done">服务器✅</div><div class="cell doing">mov-ai.cn迁移</div><div class="cell">备份</div><div class="cell">—</div></div>
+  </div></div>
+  <div class="card-body"><h3>A · 泳道看板</h3><p>每维度一条泳道，卡片从左（待办）流到右（完成）。上手最快、最眼熟。<b>短板：维度之间的关系看不见</b>（市场依赖 App 的工具面这类依赖表达不了），本质上还是个待办列表。</p></div>
+</div>
+
+<div class="card" data-choice="b" onclick="toggleSelect(this)">
+  <div class="card-image"><div class="wire">
+    <div class="wire-title">B · 指挥塔（架构图为中心）</div>
+    <div class="mapbox">
+      <div class="node" style="left:38%;top:4px"><span class="dot g"></span>mow.kim 工作台</div>
+      <div class="node" style="left:4%;top:60px"><span class="dot y"></span>品牌</div>
+      <div class="node" style="left:28%;top:60px"><span class="dot y"></span>App</div>
+      <div class="node" style="left:52%;top:60px"><span class="dot g"></span>市场</div>
+      <div class="node" style="left:76%;top:60px"><span class="dot r"></span>营销</div>
+      <div class="node" style="left:38%;top:116px"><span class="dot g"></span>基建（服务器/域名）</div>
+      <div class="edge" style="left:18%;top:38px;width:60px;transform:rotate(28deg)"></div>
+      <div class="edge" style="left:44%;top:38px;width:24px;transform:rotate(90deg)"></div>
+      <div class="edge" style="left:58%;top:38px;width:40px;transform:rotate(-24deg)"></div>
+    </div>
+  </div></div>
+  <div class="card-body"><h3>B · 指挥塔仪表盘</h3><p>首页就是一张「MOV 宇宙」架构图，节点带状态灯（绿/黄/红），一眼看全局。<b>短板：颗粒度粗</b>——看得见「营销红了」，看不见具体哪件事卡着，还得再点进去。</p></div>
+</div>
+
+<div class="card" data-choice="c" onclick="toggleSelect(this)">
+  <div class="card-image"><div class="wire">
+    <div class="wire-title">C · 架构图首页 + 点节点钻入工单流（推荐）</div>
+    <div class="mapbox" style="height:86px">
+      <div class="node" style="left:36%;top:2px;border-color:#3b82f6"><span class="dot g"></span>mow.kim 工作台</div>
+      <div class="node" style="left:2%;top:40px"><span class="dot y"></span>品牌</div>
+      <div class="node" style="left:24%;top:40px;border-color:#3b82f6"><span class="dot y"></span>App ◀ 选中</div>
+      <div class="node" style="left:50%;top:40px"><span class="dot g"></span>市场</div>
+      <div class="node" style="left:72%;top:40px"><span class="dot r"></span>营销</div>
+    </div>
+    <div class="wire-title" style="margin-top:4px">钻入「App」→ 就是工单流转中心的流水线：</div>
+    <div class="flow"><div class="st done">设计师<br>✅4单</div><span class="arrow">→</span><div class="st hot">程序员<br>🔨UPG-01</div><span class="arrow">→</span><div class="st">验收员</div><span class="arrow">→</span><div class="st">审验员</div><span class="arrow">→</span><div class="st">合main</div></div>
+  </div></div>
+  <div class="card-body"><h3>C · 架构图 + 工单流钻取（推荐）</h3><p>首页 = B 的架构图（全局一眼）；点任一节点 = 钻入该维度的流水线（工单流转中心同款角色流）。<b>数据只有一份</b>：泛化版工单库，App 维度直接接现有工单表，其他维度用同一套「出单→流转→验收」机制。<b>最贴你说的『像工单流转中心一样』，且治『进度追踪不到位』。</b></p></div>
+</div>
+
+</div>
+
+<div class="section">
+  <p class="label">选型逻辑</p>
+  <p>你的痛点是「事多+进度追不上」，不是「看不见全景」——纯看板(A)和纯仪表盘(B)各治一半。C 的关键决策点：<b>非研发维度要不要也用「工单制」管</b>（品牌/营销的事也出工单、走状态机），这是 C 能成立的根。终端里告诉我你的想法。</p>
+</div>

@@ -1,0 +1,71 @@
+--------- beginning of main
+08-29 17:05:25.965  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/quick_charge_type value = 1
+08-29 17:05:25.965  8509 10239 I IMiChargeUtils: getIMiChargeStringValue method:getQuickChargeType,value:1
+08-29 17:05:25.965  8509 10239 I BatteryChargeTimeHelper: Use history time, 0.97 17h9m30s332ms
+08-29 17:05:25.965  8509 10239 I BatteryChargeTimeHelper: Left charge time in if, 0.97 17h9m30s332ms
+08-29 17:05:25.979  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1521 (37.122303 percent)
+08-29 17:05:25.996  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1549 (37.815472 percent)
+08-29 17:05:26.007  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+--------- beginning of system
+08-29 17:05:26.010  3128  3128 I wificond: station_bandwidth:  
+08-29 17:05:26.013  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1578 (38.508640 percent)
+08-29 17:05:26.017  5847  5699 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:05:26.018  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:05:26.024  2759  4537 D MiuiNM  : tcp fail rate reach: 100
+08-29 17:05:26.030  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1606 (39.201813 percent)
+08-29 17:05:26.046  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1634 (39.894981 percent)
+08-29 17:05:26.063  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1663 (40.588150 percent)
+08-29 17:05:26.080  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1691 (41.281319 percent)
+08-29 17:05:26.082 16273 16849 D JavaheapMonitor: Java heap used=5M max=384M, proc: com.milink.service:ui
+08-29 17:05:26.085 16273 16849 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:05:26.096  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1719 (41.974487 percent)
+08-29 17:05:26.113  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1748 (42.667656 percent)
+08-29 17:05:26.122  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787994325668583400 start torch.off
+08-29 17:05:26.130  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1776 (43.360825 percent)
+08-29 17:05:26.147  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1805 (44.053997 percent)
+08-29 17:05:26.156  8019  8019 I MOVTEST : MOVTEST_MARK_1787994325668583400 start torch.off
+08-29 17:05:26.163  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1833 (44.747166 percent)
+08-29 17:05:26.164  2759  2897 I SmartPower: com.miui.voicetrigger/10181(9870): idle->background(27062ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=200.
+08-29 17:05:26.166  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.voicetrigger, stopped=false, firstLaunch=false
+08-29 17:05:26.167  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:05:26.167  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:05:26.168  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.xmsf, stopped=false, firstLaunch=false
+08-29 17:05:26.169  2759  2897 I SmartPower: com.miui.systemAdSolution/10165(22369): idle->background(27065ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=100.
+08-29 17:05:26.170  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.systemAdSolution, stopped=false, firstLaunch=false
+08-29 17:05:26.170  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.gallery, stopped=false, firstLaunch=false
+08-29 17:05:26.171  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.gallery, stopped=false, firstLaunch=false
+08-29 17:05:26.171  2759  2897 I SmartPower: com.miui.video/10286(25249): idle->background(27067ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:05:26.171  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.video, stopped=false, firstLaunch=false
+08-29 17:05:26.172  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:05:26.172  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:05:26.173  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:05:26.173  2759  2897 I SmartPower: com.xiaomi.market/10163(19212): idle->background(27068ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:05:26.173  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.market, stopped=false, firstLaunch=false
+08-29 17:05:26.174  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:05:26.175  2759  2897 D BroadcastQueue: Logging broadcast for com.kugou.android.lite, stopped=false, firstLaunch=false
+08-29 17:05:26.177  2047 30235 I libusbconfigfs: event=1 on fd=5
+08-29 17:05:26.178  2759  2897 D BroadcastQueue: Logging broadcast for com.android.providers.downloads, stopped=false, firstLaunch=false
+08-29 17:05:26.179  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1861 (45.440334 percent)
+08-29 17:05:26.180  2759  2897 D BroadcastQueue: Logging broadcast for com.android.camera, stopped=false, firstLaunch=false
+08-29 17:05:26.181 31570 31570 W MCAM_Camera@20516204: onLowBatteryNotification: isActivityPaused=true,isSwitchingModule=false
+08-29 17:05:26.196  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1890 (46.133503 percent)
+08-29 17:05:26.214  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1918 (46.826672 percent)
+08-29 17:05:26.230  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1946 (47.519840 percent)
+08-29 17:05:26.233  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:05:26.247  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1975 (48.213013 percent)
+08-29 17:05:26.263  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2003 (48.906181 percent)
+08-29 17:05:26.282  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2032 (49.599350 percent)
+08-29 17:05:26.287  5847  6086 D JavaheapMonitor: Java heap used=20M max=384M, proc: com.android.phone
+08-29 17:05:26.287  5847  6086 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:05:26.296  2121  2701 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2047 (49.975567 percent)
+08-29 17:05:26.296  2759  2922 D BrightnessDataProcessor: actualBrightness: 0.49975565originalBrightness: 0.49975565
+08-29 17:05:26.311 14930 15420 D JavaheapMonitor: Java heap used=4M max=384M, proc: com.google.android.webview:webview_apk
+08-29 17:05:26.311 14930 15420 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:05:26.377 31728  8030 D CameraInjector: updateCloudCameraControllerInfoAsync: has aleardy start update task.
+08-29 17:05:26.377 31728  8030 D CameraInjector: waitForResult: 
+08-29 17:05:26.377 31728  8030 W libc    : Access denied finding property "vendor.camera.aux.packagelist"
+08-29 17:05:26.378 31728  8030 W libc    : Access denied finding property "vendor.camera.aux.packagelistext"
+08-29 17:05:26.391  3120  4042 I CameraService: Torch for camera id 0 turned off for client PID 31728
+08-29 17:05:26.463  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787994325668583400 end torch.off
+08-29 17:05:26.492  8033  8033 I MOVTEST : MOVTEST_MARK_1787994325668583400 end torch.off
+08-29 17:05:26.547  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

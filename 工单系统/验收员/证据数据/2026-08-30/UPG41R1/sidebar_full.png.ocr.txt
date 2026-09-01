@@ -1,0 +1,36 @@
+﻿16 ： 02 8 月 50 日 周 日
+MOV AI
+搜 索 历 史
+工 作 台
+口
+房 间
+MCP 市 场
+我 的 订 单
+我 的 信 息
+Use tool obsidian.va..
+Call ext MockServer
+Use tool ext.MockSer.
+Use tool ext.MockSer.
+Use tool ext.MockSer.
+Use tool ext.MockSer.
+Use tool shell.exec 思
+Call
+Use tool obsidian.fi.
+M OV 用 户
+15 ： 48
+14 ： 19
+14 ： 12
+15 ： 24
+13 ： 21
+15 ： 18
+15 ： 08
+05 ： 17
+04 ： 56
+0
+一 要 放 行
+OOL N OT FOUND,
+在 设 备 界 面 手 动 允 许 。
+ol%s file.read%s to%s
+下 没 有 upg27_test.txt
+/sdcard/upg27_test.txt
+是 文 件 名 不 同 或 路 径 不

@@ -1,0 +1,24 @@
+--------- beginning of main
+08-29 17:23:22.324  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:22.398  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995402074014200 start obsidian.file.search
+08-29 17:23:22.431 12080 12080 I MOVTEST : MOVTEST_1787995402074014200 start obsidian.file.search
+08-29 17:23:22.468  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:23:22.528  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+--------- beginning of system
+08-29 17:23:22.574  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{91308a3 com.termux/10304} BLOCKED
+08-29 17:23:22.574  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{44c3ff1 com.tencent.qqlive/10419} BLOCKED
+08-29 17:23:22.574  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{d8117b5 com.tencent.news/10423} BLOCKED
+08-29 17:23:22.575  2759  6217 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{bfb0498 com.google.android.documentsui/10091} BLOCKED
+08-29 17:23:22.584  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10086, uidState = 3
+08-29 17:23:22.584 22231 22231 D HidDeviceService: handleMessage(): msg.what=8
+08-29 17:23:22.588  2759  6217 I SmartPower: com.android.externalstorage/10086(9010): idle->background(9825ms) R(content provider start ContentProviderRecord{9e6b042 u0 com.android.externalstorage/.ExternalStorageProvider}) adj=0.
+08-29 17:23:22.591  2759  4515 I MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic uid=10086,add=true
+08-29 17:23:22.591  2759  4515 D MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic rst=true
+08-29 17:23:22.639  7122  6758 D MediaProvider: Open with FUSE. FilePath: /storage/emulated/0/Documents/MovTestVault/验收测试笔记-平板.md. Uid: 10086. Media Capabilities Uid: 0. ShouldRedact: false. ShouldTranscode: false
+08-29 17:23:22.643  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=786112705801961, lux: 3.0
+08-29 17:23:22.645  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=786112705801961, sensor=5, temperature(K)=   0.0000
+08-29 17:23:22.645  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 3, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:23:22.685  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995402074014200 end obsidian.file.search
+08-29 17:23:22.719 12085 12085 I MOVTEST : MOVTEST_1787995402074014200 end obsidian.file.search
+08-29 17:23:22.731  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:22.749  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

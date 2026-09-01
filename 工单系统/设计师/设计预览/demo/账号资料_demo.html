@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MOV · 账号资料（二级）</title>
+<style>
+  :root{--s0:#F3F4F7;--s1:#fff;--s2:#EDEFF3;--text:#191B21;--text2:#565C6B;--text3:#8B91A1;
+    --line:rgba(22,28,48,.08);--primary:#0E7C5B;--danger:#D92D20;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#1A1C22;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);
+    display:flex;justify-content:center;min-height:100vh;}
+  .phone{width:375px;max-width:100%;background:var(--s0);margin:24px 0;border-radius:20px;overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.45);position:relative;height:720px;display:flex;flex-direction:column;}
+  .status{height:40px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text3);}
+  /* 顶栏 */
+  .top{height:46px;background:var(--s1);display:flex;align-items:center;padding:0 12px;border-bottom:1px solid var(--line);}
+  .top .back{font-size:16px;color:var(--text);width:32px;}
+  .top .tt{flex:1;text-align:center;font-size:16px;font-weight:600;margin-right:32px;}
+  .body{flex:1;overflow-y:auto;padding:12px 12px 20px;}
+
+  /* 账号主体 */
+  .acct{background:var(--s1);border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;}
+  .av{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#0E7C5B,#34C79A);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;}
+  .nm{font-size:16px;font-weight:700;}
+  .ph{font-size:13px;color:var(--text3);margin-top:2px;}
+  .acct .arr{margin-left:auto;color:#C6CAD2;}
+
+  /* 分组列表 */
+  .group{background:var(--s1);border-radius:14px;margin-top:12px;overflow:hidden;}
+  .row{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid var(--line);cursor:pointer;}
+  .row:last-child{border-bottom:0;}
+  .row .l{font-size:14px;}
+  .row .v{margin-left:auto;font-size:13px;color:var(--text3);}
+  .row .arr{color:#C6CAD2;font-size:13px;}
+  .gtitle{font-size:12px;color:var(--text3);margin:14px 4px -4px;letter-spacing:.3px;}
+
+  /* 危险项 */
+  .danger{background:var(--s1);border-radius:14px;margin-top:12px;}
+  .danger .row{justify-content:center;color:var(--danger);font-weight:600}
+  .logout{color:var(--danger);font-weight:600;}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top"><span class="back">‹</span><span class="tt">账号资料</span></div>
+  <div class="body">
+    <!-- 账号主体 -->
+    <div class="acct">
+      <div class="av">M</div>
+      <div>
+        <div class="nm">MOV 用户</div>
+        <div class="ph">138****5678</div>
+      </div>
+      <div class="arr">›</div>
+    </div>
+
+    <div class="gtitle">资料</div>
+    <div class="group">
+      <div class="row"><span class="l">昵称</span><span class="v">MOV 用户</span><span class="arr">›</span></div>
+      <div class="row"><span class="l">头像</span><span class="v">点击更换</span><span class="arr">›</span></div>
+      <div class="row"><span class="l">绑定手机号</span><span class="v">138****5678</span><span class="arr">›</span></div>
+    </div>
+
+    <div class="gtitle">账号与安全</div>
+    <div class="group">
+      <div class="row"><span class="l">安全中心</span><span class="v">改密码 · 设备 · 敏感</span><span class="arr">›</span></div>
+      <div class="row"><span class="l">我的资产</span><span class="v">凭据 · 资料(加密)</span><span class="arr">›</span></div>
+    </div>
+
+    <div class="gtitle">账号操作</div>
+    <div class="danger">
+      <div class="row logout">退出登录</div>
+    </div>
+    <div class="danger">
+      <div class="row" style="color:var(--text2);font-weight:500">注销账号</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

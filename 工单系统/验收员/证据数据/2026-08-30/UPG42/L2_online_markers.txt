@@ -1,0 +1,12 @@
+# UPG-42 批1 线上内容真实性标记
+---
+[spec.html 标记]
+      1 allowedOrigins
+      1 mov_get_tool_contract
+      1 mov_search_spec
+      1 mov-page-server.js
+[quick-start.html 标记]
+      1 allowedOrigins
+      1 mov_get_quickstart_template
+      1 mov-page-server.js
+exit=0

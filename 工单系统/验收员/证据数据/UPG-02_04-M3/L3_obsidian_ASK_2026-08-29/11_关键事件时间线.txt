@@ -1,0 +1,42 @@
+08:08:54 tool/call shell_exec {"command": "echo hello_upg05_new_session"}
+08:08:54 approval/asked {"requestId": "appr-18048501898900", "toolName": "shell.exec", "reason": "默认权限：shell.exec 超出安全范围，请求允许"}
+08:09:46 approval/decided {"requestId": "appr-18048501898900", "outcome": "allowed-once"}
+08:22:54 tool/call obsidian_vault_check {}
+08:22:54 tool/result isError=False [{"type": "text", "text": "{ok=true, registered=false, hint=未登记 vault——先调用 obsidian.vault.detect 授权}"}]
+08:22:56 tool/call obsidian_vault_detect {}
+08:32:54 tool/result isError=False [{"type": "text", "text": "{ok=false, error=授权超时或取消}"}]
+08:36:52 tool/call obsidian_vault_detect {}
+08:39:16 tool/result isError=False [{"type": "text", "text": "{ok=false, error=授权超时或取消}"}]
+08:55:10 tool/call obsidian_vault_detect {}
+08:55:55 tool/result isError=False [{"type": "text", "text": "{ok=true, hint=目录已授权（uri=content://com.android.externalstorage.documents/tree/primary%3AMovTestVault）。请调用 obsidian.vault.register 完成登记。, uri=content://com.android.externalst
+08:55:57 tool/call obsidian_vault_register {"uri": "content://com.android.externalstorage.documents/tree/primary%3AMovTestVault"}
+08:55:57 approval/asked {"requestId": "appr-20871069409200", "toolName": "obsidian.vault.register", "reason": "默认权限：obsidian.vault.register 超出安全范围，请求允许"}
+08:56:17 tool/result isError=True [{"type": "text", "text": "工具执行超时(20s)，已中止"}]
+08:56:18 tool/call obsidian_vault_check {}
+08:56:18 tool/result isError=False [{"type": "text", "text": "{ok=true, registered=false, hint=未登记 vault——先调用 obsidian.vault.detect 授权}"}]
+08:56:20 tool/call obsidian_vault_register {"uri": "content://com.android.externalstorage.documents/tree/primary%3AMovTestVault"}
+08:56:20 approval/asked {"requestId": "appr-20893725841500", "toolName": "obsidian.vault.register", "reason": "默认权限：obsidian.vault.register 超出安全范围，请求允许"}
+08:56:40 tool/result isError=True [{"type": "text", "text": "工具执行超时(20s)，已中止"}]
+08:56:41 tool/call obsidian_vault_check {}
+08:56:41 tool/result isError=False [{"type": "text", "text": "{ok=true, registered=false, hint=未登记 vault——先调用 obsidian.vault.detect 授权}"}]
+08:58:56 tool/call obsidian_vault_register {"uri": "content://com.android.externalstorage.documents/tree/primary%3AMovTestVault"}
+08:58:56 approval/asked {"requestId": "appr-21050569708000", "toolName": "obsidian.vault.register", "reason": "默认权限：obsidian.vault.register 超出安全范围，请求允许"}
+08:59:16 tool/result isError=True [{"type": "text", "text": "工具执行超时(20s)，已中止"}]
+08:59:17 tool/call obsidian_vault_check {}
+08:59:17 tool/result isError=False [{"type": "text", "text": "{ok=true, registered=false, hint=未登记 vault——先调用 obsidian.vault.detect 授权}"}]
+09:01:37 tool/call obsidian_vault_register {"uri": "content://com.android.externalstorage.documents/tree/primary%3AMovTestVault"}
+09:01:37 approval/asked {"requestId": "appr-21211188500700", "toolName": "obsidian.vault.register", "reason": "默认权限：obsidian.vault.register 超出安全范围，请求允许"}
+09:01:57 tool/result isError=True [{"type": "text", "text": "工具执行超时(20s)，已中止"}]
+09:01:58 tool/call obsidian_vault_check {}
+09:01:58 tool/result isError=False [{"type": "text", "text": "{ok=true, registered=false, hint=未登记 vault——先调用 obsidian.vault.detect 授权}"}]
+09:04:26 tool/call obsidian_vault_register {"uri": "content://com.android.externalstorage.documents/tree/primary%3AMovTestVault"}
+09:04:26 approval/asked {"requestId": "appr-21380311127100", "toolName": "obsidian.vault.register", "reason": "默认权限：obsidian.vault.register 超出安全范围，请求允许"}
+09:04:29 approval/decided {"requestId": "appr-21380311127100", "outcome": "allowed-turn"}
+09:04:30 tool/call obsidian_file_write {"path": "upg02_l3_probe.md", "content": "MOV acceptance probe L3"}
+09:04:30 tool/result isError=False [{"type": "text", "text": "{ok=true, path=upg02_l3_probe.md, chars=23}"}]
+09:06:19 tool/call obsidian_file_write {"content": "MOV acceptance probe L3 v2", "path": "upg02_l3_probe.md"}
+09:06:19 tool/result isError=False [{"type": "text", "text": "{ok=true, path=upg02_l3_probe.md, chars=26}"}]
+09:09:36 tool/call obsidian_file_write {"content": "MOV acceptance probe L3 v3", "path": "/upg02_l3_probe_v3.md"}
+09:09:36 approval/asked {"requestId": "appr-21690034284500", "toolName": "obsidian.file.write", "reason": "默认权限：obsidian.file.write 超出安全范围，请求允许"}
+09:09:39 approval/decided {"requestId": "appr-21690034284500", "outcome": "allowed-turn"}
+09:09:39 tool/result isError=False [{"type": "text", "text": "{ok=true, path=/upg02_l3_probe_v3.md, chars=26}"}]

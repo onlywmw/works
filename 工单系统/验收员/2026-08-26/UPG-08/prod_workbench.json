@@ -1,0 +1,270 @@
+{
+  "generatedAt": "2026-08-26T14:38:21.262Z",
+  "tree": [
+    {
+      "key": "overview",
+      "name": "总览",
+      "icon": "📊",
+      "type": "leaf"
+    },
+    {
+      "key": "app",
+      "name": "App 建设",
+      "icon": "📱",
+      "children": [
+        {
+          "key": "app-tickets",
+          "name": "工单流转",
+          "type": "pipeline",
+          "pipeline": [
+            {
+              "stage": "设计师",
+              "count": 7,
+              "hot": false
+            },
+            {
+              "stage": "程序员",
+              "count": 0,
+              "hot": true
+            },
+            {
+              "stage": "验收员",
+              "count": 1,
+              "hot": false
+            },
+            {
+              "stage": "审验员",
+              "count": 0,
+              "hot": false
+            },
+            {
+              "stage": "合 main",
+              "count": 0,
+              "hot": false
+            }
+          ],
+          "tickets": [
+            {
+              "id": "UPG-01",
+              "title": "全量工具元数据补全：description/inputSchema/output 三件套",
+              "prio": "P1",
+              "status": "设计师处理中",
+              "updated": "",
+              "blocked": false
+            },
+            {
+              "id": "UPG-02",
+              "title": "P0-A 设备类工具包迁移（AVD 内置 device.*/sensor.* 非敏感子集）",
+              "prio": "P0",
+              "status": "设计师处理中",
+              "updated": "",
+              "blocked": false
+            },
+            {
+              "id": "UPG-03",
+              "title": "P0-B 生活场景工具（12306 内置 + 地图）",
+              "prio": "P0",
+              "status": "设计师处理中",
+              "updated": "",
+              "blocked": false
+            },
+            {
+              "id": "UPG-04",
+              "title": "P0-C Obsidian 工具包迁移（AVD 内置 obsidian.*）",
+              "prio": "P0",
+              "status": "设计师处理中",
+              "updated": "",
+              "blocked": false
+            },
+            {
+              "id": "UPG-05",
+              "title": "记忆体系回补（基因化 + memory.* 工具接线 + 预算投影）",
+              "prio": "P0",
+              "status": "设计师处理中",
+              "updated": "",
+              "blocked": false
+            },
+            {
+              "id": "UPG-06",
+              "title": "确定性防编造回补（FabricateGuard先行；GoalGate/AcceptanceJudge降P1）",
+              "prio": "P0",
+              "status": "设计师处理中",
+              "updated": "",
+              "blocked": false
+            },
+            {
+              "id": "UPG-07",
+              "title": "预算口径 + 用量计量 + 审批简化（设备裁剪/ExecuteToolGate移出）",
+              "prio": "P0",
+              "status": "设计师处理中",
+              "updated": "",
+              "blocked": false
+            },
+            {
+              "id": "UPG-08",
+              "title": "mow.kim 工作台落地（Stitch 框架工程化：单页+文件树+JSON驱动+同步脚本+门禁部署）",
+              "prio": "P1",
+              "status": "验收中",
+              "updated": "",
+              "blocked": false
+            }
+          ],
+          "backlog": []
+        },
+        {
+          "key": "app-backlog",
+          "name": "挂账与问题",
+          "type": "pipeline",
+          "pipeline": [
+            {
+              "stage": "登记",
+              "count": 0
+            },
+            {
+              "stage": "设计师验证",
+              "count": 0
+            },
+            {
+              "stage": "转工单/销项",
+              "count": 0
+            }
+          ],
+          "tickets": [],
+          "backlog": []
+        },
+        {
+          "key": "app-accept",
+          "name": "验收记录",
+          "type": "timeline",
+          "events": []
+        }
+      ]
+    },
+    {
+      "key": "market",
+      "name": "能力市场",
+      "icon": "🏪",
+      "children": [
+        {
+          "key": "market-mcp",
+          "name": "MCP 工具审核",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        },
+        {
+          "key": "market-merchant",
+          "name": "商家入驻",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        },
+        {
+          "key": "market-site",
+          "name": "站点建设",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        }
+      ]
+    },
+    {
+      "key": "brand",
+      "name": "品牌",
+      "icon": "®️",
+      "children": [
+        {
+          "key": "brand-tm",
+          "name": "商标",
+          "type": "archive",
+          "cards": []
+        },
+        {
+          "key": "brand-vi",
+          "name": "视觉识别（VI/Logo）",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        },
+        {
+          "key": "brand-content",
+          "name": "品牌内容",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        }
+      ]
+    },
+    {
+      "key": "marketing",
+      "name": "营销推广",
+      "icon": "📣",
+      "children": [
+        {
+          "key": "marketing-gzh",
+          "name": "公众号",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        },
+        {
+          "key": "marketing-cal",
+          "name": "内容日历",
+          "type": "archive",
+          "events": []
+        },
+        {
+          "key": "marketing-channel",
+          "name": "渠道与投放",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        }
+      ]
+    },
+    {
+      "key": "infra",
+      "name": "服务器基建",
+      "icon": "🖥️",
+      "children": [
+        {
+          "key": "infra-servers",
+          "name": "服务器与域名",
+          "type": "archive",
+          "cards": []
+        },
+        {
+          "key": "infra-site",
+          "name": "官网建设",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        },
+        {
+          "key": "infra-backup",
+          "name": "备份与运维",
+          "type": "pipeline",
+          "pipeline": [],
+          "tickets": [],
+          "backlog": []
+        }
+      ]
+    },
+    {
+      "key": "archive",
+      "name": "归档",
+      "icon": "🗄️",
+      "type": "leaf"
+    }
+  ],
+  "focus": [],
+  "archive": []
+}

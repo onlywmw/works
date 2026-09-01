@@ -1,0 +1,44 @@
+Lcom/mov/android/ObsidianProvider$Companion; <init>()V  callers=1
+     from Lcom/mov/android/ObsidianProvider$Companion; <init>
+Lcom/mov/android/ObsidianProvider$Companion; <init>(Lkotlin/jvm/internal/DefaultConstructor  callers=1
+     from Lcom/mov/android/ObsidianProvider; <clinit>
+Lcom/mov/android/ObsidianProvider$Companion; allMeta()Ljava/util/Map;  callers=1
+     from Lcom/mov/android/MainActivity; providerToolMeta_delegate$lambda$5
+Lcom/mov/android/ObsidianProvider$Companion; getHARMLESS_TOOLS()Ljava/util/Set;  callers=0
+Lcom/mov/android/ObsidianProvider$Companion; getWRITE_TOOLS()Ljava/util/Set;  callers=0
+Lcom/mov/android/ObsidianProvider$Companion; sanitizeSegments$app_debug(Ljava/lang/String;)Ljava/util/List;  callers=2
+     from Lcom/mov/android/ObsidianProvider; fileRead
+     from Lcom/mov/android/ObsidianProvider; fileWrite
+Lcom/mov/android/ObsidianProvider; <clinit>()V  callers=0
+Lcom/mov/android/ObsidianProvider; <init>(Landroid/content/Context;)V  callers=0
+Lcom/mov/android/ObsidianProvider; access$getHARMLESS_TOOLS$cp()Ljava/util/Set;  callers=1
+     from Lcom/mov/android/ObsidianProvider$Companion; getHARMLESS_TOOLS
+Lcom/mov/android/ObsidianProvider; access$getPARAM_DEFS$cp()Ljava/util/List;  callers=1
+     from Lcom/mov/android/ObsidianProvider$Companion; allMeta
+Lcom/mov/android/ObsidianProvider; access$getWRITE_TOOLS$cp()Ljava/util/Set;  callers=1
+     from Lcom/mov/android/ObsidianProvider$Companion; getWRITE_TOOLS
+Lcom/mov/android/ObsidianProvider; fileSearch$walk$11(Ljava/util/List; Lcom/mov/android/Obsid  callers=2
+     from Lcom/mov/android/ObsidianProvider; fileSearch
+     from Lcom/mov/android/ObsidianProvider; fileSearch$walk$11
+Lcom/mov/android/ObsidianProvider; rescan$walk(Ljava/util/List; Landroidx/documentfile  callers=2
+     from Lcom/mov/android/ObsidianProvider; rescan$walk
+     from Lcom/mov/android/ObsidianProvider; rescan
+Lcom/mov/android/ObsidianProvider; resolveDoc(Ljava/util/List; Z)Landroidx/documentfi  callers=2
+     from Lcom/mov/android/ObsidianProvider; fileRead
+     from Lcom/mov/android/ObsidianProvider; fileWrite
+Lcom/mov/android/ObsidianProvider; vaultRoot()Landroidx/documentfile/provider/Docume  callers=1
+     from Lcom/mov/android/ObsidianProvider; resolveDoc
+Lcom/mov/android/ObsidianProvider; vaultUri()Landroid/net/Uri;  callers=4
+     from Lcom/mov/android/ObsidianProvider; fileSearch
+     from Lcom/mov/android/ObsidianProvider; check
+     from Lcom/mov/android/ObsidianProvider; rescan
+     from Lcom/mov/android/ObsidianProvider; vaultRoot
+Lcom/mov/android/ObsidianProvider; check()Ljava/util/Map;  callers=0
+Lcom/mov/android/ObsidianProvider; detect()Ljava/util/Map;  callers=0
+Lcom/mov/android/ObsidianProvider; fileRead(Ljava/lang/String;)Ljava/util/Map;  callers=0
+Lcom/mov/android/ObsidianProvider; fileSearch(Ljava/lang/String;)Ljava/util/Map;  callers=0
+Lcom/mov/android/ObsidianProvider; fileWrite(Ljava/lang/String; Ljava/lang/String;)L  callers=0
+Lcom/mov/android/ObsidianProvider; getSafPick()Lkotlin/jvm/functions/Function0;  callers=0
+Lcom/mov/android/ObsidianProvider; register(Ljava/lang/String;)Ljava/util/Map;  callers=0
+Lcom/mov/android/ObsidianProvider; rescan()Ljava/util/Map;  callers=0
+Lcom/mov/android/ObsidianProvider; setSafPick(Lkotlin/jvm/functions/Function0;)V  callers=0

@@ -1,0 +1,20 @@
+=== E1 chips（uiautomator dump 原文）===
+text="DeepSeek V4 Flash（快速对话） · 快速"
+text="MCP 工具"
+
+=== E2 房间浮层时间行 ===
+text="plan dinners for thi… 14:14"
+text="hello 14:11"
+text="remember this: I am … 14:08"
+
+=== E3 设置页关键行（原文含尾随空格）===
+text="MOV 用户 ****2556 退出登录 "
+text="我的记忆 "
+text="AI 模型 DeepSeek V4 Flash（快速对话） "
+text="DeepSeek API Key sk-****ddc6 "
+
+=== E13 MemoryPage 折叠态行高（bounds 高=单行实证）===
+标题[42,225][807,270]h=45 内容[42,270][807,335]h=65 meta[42,335][807,384]h=49 · meta「来源 ession」=originSession.takeLast(6) 脱敏设计
+
+=== W12 运行时 token（CDP 纯观测）===
+加载表=tokens-DI-iJGDV.css（62986c2 新产物）· .topbar{height:46px} · --danger:#d92d20 · --primary:#0E7C5B

@@ -1,0 +1,17 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=JiangXi PiDan Technology, OU=MOV, O=MOV, L=Nanchang, ST=JiangXi, C=CN
+Signer #1 certificate SHA-256 digest: b7343c2144680708aea14f4c06ce0636080f0d2f6727809f1b8e99af2e8b4118
+Signer #1 certificate SHA-1 digest: 7bd6018833814e72414ef927de740769838f1ca2
+Signer #1 certificate MD5 digest: 5548ee8bbf81ebf4c12fa6aade7715c6
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: 73ea74e3d3a8d10dd59dcca80ef3323909b99af175d646a385a3de5d71404c34
+Signer #1 public key SHA-1 digest: 810a26d7dc96dcc729a3d131388f69af520ef209
+Signer #1 public key MD5 digest: e5c59f14aeaec380664585a51b5f5b91

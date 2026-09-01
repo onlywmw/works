@@ -1,0 +1,18 @@
+{
+ "tool": "obsidian.vault.check",
+ "args": {},
+ "ts": "2026-08-29T16:26:26",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 91986,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "[code: TOOL_NOT_FOUND] 未知工具: obsidian.vault.check"
+    }
+   ],
+   "isError": true
+  }
+ }
+}

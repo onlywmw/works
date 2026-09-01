@@ -1,0 +1,61 @@
+{
+  "ticket_id": "UPG-50",
+  "delivery_id": "DEL-UPG50-20260901-001",
+  "standard_id": "STD-UPG50-v1",
+  "code_commit_sha": "8e73e8d4ae53ae47e943039a9fa00b63ec8ceef5",
+  "artifact_sha": "acbd30fb85c73dac",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/交付报告/DELIVERY_UPG50_2026-09-01.md",
+      "producer": "C",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "0027-mov/app/build/test-results/testDebugUnitTest（UPG-50 专项 31 用例：AppearanceContract 11 + Profile 8 + Resolver 7 + Catalog 5，全 0 失败；全量 590/0/1skip）",
+      "producer": "C",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "0027-mov/upg50_screens/（L2-1~7 真机截图 + L3 端到端截图 + 验证脚本 .mjs）",
+      "producer": "C",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "处理中心/验收标准冻结区/UPG-50/STD-UPG50-v1_2026-09-02.md",
+      "producer": "设计师",
+      "created_at": "2026-09-02"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "工单表.xlsx（UPG-50 行 ✅C 交付 + DEL-UPG50-20260901-001）+ 工单库.md（UPG-50 卡片交付段）",
+      "producer": "C",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/交付报告/DELIVERY_UPG50_PH1_1A_2026-09-02.md",
+      "sha256": "73a530e666b20fc956b56c460f844254d54a13585521379176bb3b91f04b42bb",
+      "producer": "C",
+      "created_at": "2026-09-02"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "程序员/交付报告/DELIVERY_UPG50_PH1_1B_2026-09-02.md",
+      "sha256": "e9c2d7ca4049c1ec35f560440672e71f65ce0a58e71ff1a5084782a55bc93ef6",
+      "producer": "C",
+      "created_at": "2026-09-02"
+    },
+    {
+      "evidence_id": "E-008",
+      "path": "0027-mov/upg50_screens/（1B 截图证据 18 张 + probe_bubble_v2/probe_settings_v2/press_hold.mjs）",
+      "sha256": "b3761017a5eca596b464564d72acc7201ed22f51375e3c9b9b958276f35a7606",
+      "producer": "C",
+      "created_at": "2026-09-02"
+    }
+  ],
+  "evidence_manifest_sha": "1fb5d7deb695e65cb5881f7f5878337fc1bb17ec8b1e95185a0d47f702d84423"
+}

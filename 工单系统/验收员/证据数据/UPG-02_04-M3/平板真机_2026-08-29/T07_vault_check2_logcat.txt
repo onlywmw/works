@@ -1,0 +1,24 @@
+--------- beginning of main
+08-29 17:21:11.243  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:11.244  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785981305800289, lux: 2.0
+08-29 17:21:11.244  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785981505882841, lux: 3.0
+08-29 17:21:11.245  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785981305800289, sensor=5, temperature(K)=   0.0000
+08-29 17:21:11.245  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:21:11.245  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785981505882841, sensor=5, temperature(K)=   0.0000
+08-29 17:21:11.245  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:21:11.364  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995270859054900 start obsidian.vault.check
+08-29 17:21:11.389  5241  6253 D JavaheapMonitor: Java heap used=33M max=512M, proc: com.miui.home
+08-29 17:21:11.389  5241  6253 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:21:11.393 11770 11770 I MOVTEST : MOVTEST_MARK_1787995270859054900 start obsidian.vault.check
+08-29 17:21:11.446  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:11.449  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:21:11.627  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995270859054900 end obsidian.vault.check
+08-29 17:21:11.644  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785981705881226, lux: 2.0
+08-29 17:21:11.644  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785981905800029, lux: 3.0
+08-29 17:21:11.649  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785981705881226, sensor=5, temperature(K)=   0.0000
+08-29 17:21:11.649  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:21:11.649  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785981905800029, sensor=5, temperature(K)=   0.0000
+08-29 17:21:11.649  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:21:11.650  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:11.662 11775 11775 I MOVTEST : MOVTEST_MARK_1787995270859054900 end obsidian.vault.check
+08-29 17:21:11.705  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

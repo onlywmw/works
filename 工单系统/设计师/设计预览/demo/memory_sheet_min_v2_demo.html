@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的记忆 · 半屏 Sheet（两级示意）</title>
+<style>
+  :root{
+    --s0:#F3F4F7; --s2:#EDEFF3; --text:#191B21; --text2:#565C6B; --text3:#8B91A1;
+    --line:rgba(22,28,48,.10); --primary:#0E7C5B; --danger:#D92D20;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:#E9EBF0; font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    display:flex; justify-content:center; padding:28px 16px;}
+  .wrap{width:760px; max-width:100%;}
+  .note{font-size:13px; color:var(--text2); margin:0 0 18px 4px;}
+  .note b{color:var(--text);}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:560px){.grid{grid-template-columns:1fr;}}
+  .h{font-size:12px; color:var(--text2); margin:0 2px 8px; letter-spacing:.3px;}
+
+  /* 手机容器 */
+  .phone{background:var(--s0); border-radius:20px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.12);}
+  .phone-inter{padding:14px 16px 20px;}
+
+  /* 一级 */
+  h2{font-size:17px; font-weight:600; color:var(--text); margin:4px 2px 0;}
+  .search{display:flex; align-items:center; gap:6px; background:var(--s2); height:38px;
+    border-radius:8px; padding:0 12px; margin-top:12px;}
+  .search input{flex:1; border:0; outline:0; background:transparent; font-size:14px; color:var(--text);}
+  .search input::placeholder{color:var(--text3);}
+  .sec{font-size:12px; color:var(--text3); margin:18px 2px 4px; letter-spacing:.3px;}
+  .row{display:flex; align-items:center; gap:12px; padding:13px 2px; border-bottom:1px solid var(--line); cursor:pointer;}
+  .row:last-child{border-bottom:0;}
+  .txt{flex:1; min-width:0;}
+  .content{font-size:14px; color:var(--text);}
+  .sub{font-size:11px; color:var(--text3); margin-top:2px;}
+  .chev{color:#C6CAD2;}
+  .chev svg{width:15px;height:15px;}
+
+  /* 二级 */
+  .detail{background:#fff; border-radius:14px; padding:18px 18px 16px;}
+  .d-ic{font-size:10px; color:var(--text3); letter-spacing:.5px;}
+  .d-content{font-size:17px; font-weight:600; color:var(--text); line-height:1.5; margin:2px 0 16px;}
+  .d-meta{list-style:none; margin:0 0 16px; padding:0; }
+  .d-meta li{display:flex; font-size:12px; color:var(--text2); padding:7px 0; border-bottom:1px solid var(--line);}
+  .d-meta li b{color:var(--text3); font-weight:500; width:64px;}
+  .d-state{color:var(--primary);}
+  .d-ops{display:flex; justify-content:flex-end; gap:10px; margin-top:4px;}
+  .btn{border:0; border-radius:8px; padding:9px 12px; font-size:13px; font-weight:500; cursor:pointer;}
+  .btn.ghost{background:transparent; color:var(--text2);}
+  .btn.primary{background:transparent; color:var(--primary); font-weight:600;}
+  .btn.danger{background:transparent; color:var(--danger);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="note">点一级任意一行 → 右侧/<b>下一块</b>即二级详情（操作在这里做）。<b>两级都摆出来了。</b></div>
+  <div class="grid">
+
+    <div>
+      <div class="h">◀ 一级 · 列表（极简）</div>
+      <div class="phone">
+        <div class="phone-inter">
+          <h2>我的记忆</h2>
+          <div class="search"><input placeholder="搜索记忆…"></div>
+          <div class="sec">已记住</div>
+          <div class="row"><div class="txt"><div class="content">我喜欢简洁的界面</div><div class="sub">MOV 会优先参考</div></div>
+            <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div></div>
+          <div class="row"><div class="txt"><div class="content">工作日早上 9 点开始处理订单类消息</div></div>
+            <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div></div>
+          <div class="sec">待确认</div>
+          <div class="row"><div class="txt"><div class="content">我最近在学习运动健康…</div></div>
+            <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div></div>
+          <div class="row"><div class="txt"><div class="content">用户更喜欢极简的交互方式</div></div>
+            <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">▶ 二级 · 详情（点击上图第一行后）</div>
+      <div class="detail">
+        <div class="d-ic">正在查看 · 已记住的记忆</div>
+        <div class="d-content">我喜欢简洁的界面</div>
+        <ul class="d-meta">
+          <li><b>MOV 会</b>优先参考这条</li>
+          <li><b>首次记录</b>2026-08-27</li>
+          <li><b>最近使用</b>2026-08-30</li>
+          <li><b>引用次数</b>3 次</li>
+          <li><b>来源</b>来自一次对话「XX」<span style="margin-left:auto;font-size:11px;color:var(--text3)">溯源入口</span></li>
+        </ul>
+        <div class="d-ops">
+          <button class="btn ghost">取消置顶</button>
+          <button class="btn danger">移除</button>
+          <button class="btn primary">设为重要</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

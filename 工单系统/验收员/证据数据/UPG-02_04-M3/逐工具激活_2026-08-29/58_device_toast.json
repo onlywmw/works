@@ -1,0 +1,19 @@
+{
+ "tool": "device.toast",
+ "args": {
+  "message": "UPG02 toast probe 0829"
+ },
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 59,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, shown=UPG02 toast probe 0829}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

@@ -1,0 +1,444 @@
+--------- beginning of system
+08-29 17:18:55.899  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.900  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+--------- beginning of main
+08-29 17:18:55.900  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:18:55.902  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.903  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.903  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.904  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.905  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.905  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.906  2759  2897 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+08-29 17:18:55.906  2759  2897 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+08-29 17:18:55.906  2759  2868 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:18:55.907  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.daemon, stopped=false, firstLaunch=false
+08-29 17:18:55.907  2178  2214 E vendor.xiaomi.hardware.micharge@1.0-service: Failed to open node /sys/class/qcom-battery/board_sensor_temp
+08-29 17:18:55.907  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/board_sensor_temp value = 
+08-29 17:18:55.907  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.bluetooth, stopped=false, firstLaunch=false
+08-29 17:18:55.908  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:18:55.908  5253  5253 D OfflineFindBroadcastManager: onReceive: action = android.intent.action.BATTERY_CHANGED
+08-29 17:18:55.908  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:18:55.909  5253  5253 D OfflineFindBroadcastManager: mBatteryPercentage = 3 mBatteryVolage 3684 mBatteryTemperature 32
+08-29 17:18:55.909  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:18:55.909  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:18:55.910  8509 10239 W BatteryHistoryLoadMgr: getHistoryInfo begin
+08-29 17:18:55.911  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:18:55.911  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:18:55.911  8509  8509 I PowerSaveService: onReceive: android.intent.action.BATTERY_CHANGED
+08-29 17:18:55.911  8509  8509 D ChargeWarningManager: checkBatteryErrorState: mChargeWarningMap is null
+08-29 17:18:55.911  8509  8509 I SmartChargeManager: Battery changed from 2 to 3	isPogoConnected=false
+08-29 17:18:55.911  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:18:55.912  8509  8509 I PowerNoticeUI: handleBatteryChanged oldPlugType 1 mPlugType 1 oldBatteryLevel 2 mBatteryLevel 3 temperature 326
+08-29 17:18:55.912  8509  8509 I ChargerBatteryIntelligenceReceiver: onBatteryChanged temperature：32,plugType:1
+08-29 17:18:55.912  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.powerkeeper, stopped=false, firstLaunch=false
+08-29 17:18:55.913  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.powerkeeper, stopped=false, firstLaunch=false
+08-29 17:18:55.913  8389 13900 D DFS-BatteryDataManager: notifyBatteryLevelChanged level:3
+08-29 17:18:55.913  8389 13892 D SM_S_SubsystemN: notify msgId=7
+08-29 17:18:55.914  8389 13895 D PowerCheckerService: onBatteryChanged, mBatteryLevel = 2, status = 2, level = 3, plug = 1, scale = 100
+08-29 17:18:55.914  8389 13902 D powerkeeper.dfscollect: plug type 1
+08-29 17:18:55.914  8509 10280 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:18:55.915  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/night_charging value = 0
+08-29 17:18:55.915  2759  2759 D UiModeManager: updateConfigurationLocked: mDockState=0; mCarMode=false; mCar=false; mPowerSave=false; mOverrideNightModeOn=false; mOverrideNightModeOff=false; mComputedNightMode=false; mWaitForDeviceInactive=false; mNightModeValue=1; uiMode=17
+08-29 17:18:55.915  8509 10280 I ChargeProtectionUtils: getNightChargingState: 0
+08-29 17:18:55.915  2759  2759 D WifiFeatureControl: isCharging = true mInWifiBclMode = false chargePercent = 3
+08-29 17:18:55.915  8389 10551 D PowerKeeper.Thermal: mBatteryTemperature: 32
+08-29 17:18:55.916  2759  2897 D BroadcastQueue: Logging broadcast for com.android.bluetooth, stopped=false, firstLaunch=false
+08-29 17:18:55.916  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.joyose, stopped=false, firstLaunch=false
+08-29 17:18:55.917  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.917  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.917  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.917  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:18:55.918  2759  4557 D AS.AudioService: received ACTION_AUDIO_LOWTEMP_SWITCH
+08-29 17:18:55.918  2759  2759 D WifiFeatureControl: mCurrentBcasLevel is 2
+08-29 17:18:55.918  2759  2922 I DisplayPowerControllerImpl: updateBatteryThermalBrightness: level: 2, limitBrightness: 0.49975574
+08-29 17:18:55.919  2759  2922 D DisplayPowerControllerImpl: updateBrightnessChangeStatus: animating: true, displayState: 2, slowChange: false, appliedDimming: false, currentBrightness: 0.25001925, currentSdrBrightness: 0.25001925, targetBrightness: 0.49975565, targetSdrBrightness: 0.49975565, previousDisplayPolicy: 3, currentDisplayPolicy: 3
+08-29 17:18:55.920  2759  2922 D BrightnessDataProcessor: actualBrightness: 0.49975565originalBrightness: 0.49975565
+08-29 17:18:55.921  2759  2922 I DisplayPowerController[0]: Brightness [0.49975565] reason changing to: 'manual', previous reason: 'manual [ low_battery ]'.
+08-29 17:18:55.921  2759  2922 I DisplayPowerController[0]: BrightnessEvent: brt=0.49975565 (100.0%), nits= 699.9999, lux=-1.0, reason=manual, strat=InvalidBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.25001925, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=false (default), unclampedBrt=0.49975565, hbmMax=0.49975574, hbmMode=off, thrmMax=1.0, rbcStrength=50, powerFactor=1.0, physDisp=内置屏幕(local:4630947038039379843), logicalId=0, slowChange=false, rampSpeed=1.0
+08-29 17:18:55.925  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1030 (25.122257 percent)
+08-29 17:18:55.926  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:18:55.941  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:18:55.943  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:18:55.944  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1064 (25.954065 percent)
+08-29 17:18:55.944  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:18:55.964  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1098 (26.785872 percent)
+08-29 17:18:55.984  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1132 (27.617678 percent)
+08-29 17:18:56.004  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1166 (28.449484 percent)
+08-29 17:18:56.009  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10296/pid_26493/cgroup.procs
+08-29 17:18:56.009  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10296/pid_26493/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:18:56.009  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:18:56.009  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:18:56.010  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10286/pid_25524/cgroup.procs
+08-29 17:18:56.010  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10286/pid_25524/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:18:56.010  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:18:56.010  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10165/pid_22522/cgroup.procs
+08-29 17:18:56.010  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10165/pid_22522/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:18:56.010  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:18:56.010  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:18:56.011  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10303/pid_13699/cgroup.procs
+08-29 17:18:56.011  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10303/pid_13699/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:18:56.011  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:18:56.011  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:18:56.010  8389 13895 D PowerCheckerService: power check cycle start...
+08-29 17:18:56.012  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10429/pid_7698/cgroup.procs
+08-29 17:18:56.012  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10429/pid_7698/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:18:56.012  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:18:56.012  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:18:56.019  8389 13895 D PowerCheckerService: rawUptime = 600328054000 us
+08-29 17:18:56.019  8389 13895 D PowerCheckerService: rawRealtime = 785846377000 us
+08-29 17:18:56.019  8389 13895 D PowerCheckerService: batteryUptime = 48030496000 us
+08-29 17:18:56.019  8389 13895 D PowerCheckerService: batteryRealtime = 84087439000 us
+08-29 17:18:56.019  8389 13895 D PowerCheckerService: whichBatteryUptime = 48030496000 us
+08-29 17:18:56.019  8389 13895 D PowerCheckerService: whichBatteryRealtime = 84087439000 us
+08-29 17:18:56.019  8389 13895 D PowerCheckerService: startClockTime = 1787889163669000 us mLastStartClockTime = 1787889163669000 us mLastRawUTCTime = 1787992401983000 us
+08-29 17:18:56.020  8389 13895 D PowerCheckerService: mLastBatteryRealTime = 84087439000 us whichBatteryRealtime = 84087439000 us
+08-29 17:18:56.020  8389 13895 W PowerCheckerService: Time on battery is not increased since last check
+08-29 17:18:56.020  8389 13895 D PowerCheckerService: power check cycle done, consume time 10ms
+08-29 17:18:56.024  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1200 (29.282614 percent)
+08-29 17:18:56.045  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1234 (30.114613 percent)
+08-29 17:18:56.064  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1268 (30.946609 percent)
+08-29 17:18:56.078  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:56.084  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1302 (31.778606 percent)
+08-29 17:18:56.104  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1336 (32.610603 percent)
+08-29 17:18:56.126  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1370 (33.442600 percent)
+08-29 17:18:56.144  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1404 (34.274597 percent)
+08-29 17:18:56.166  8509 10239 W BpBinder: PerfMonitor binderTransact: time=256ms interface=com.android.internal.app.IBatteryStats code=29
+08-29 17:18:56.173  2759  2854 I system_server: This is sticky GC, maxfree is 33554432 minfree is 8388608
+08-29 17:18:56.177  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1438 (35.106598 percent)
+08-29 17:18:56.183  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1472 (35.938595 percent)
+08-29 17:18:56.187  8509 10239 D BatteryHistory: batteryState : 3927956755_100_0_5,3927956751_100_0_3,3976193177_42_1_3,3976193456_42_1_2,3995031634_28_0_2,3995031832_28_0_3,4012911484_18_1_2,4012934552_19_0_2,4012934943_19_0_3,4030905708_7_1_3,4030905834_7_1_2,
+08-29 17:18:56.187  8509 10239 I BatteryHistoryLoadMgr: lastIncreasingIntervalStartIndex=0
+08-29 17:18:56.187  8509 10239 W BatteryHistoryLoadMgr: get firstHistoryInfo time: 3927956755
+08-29 17:18:56.188  8509 10239 I BatteryDataUtils: usageRealTime = 84087439000
+08-29 17:18:56.188  8509 10239 D BatteryHistoryLoadMgr: getHistoryInfo end
+08-29 17:18:56.191  8509 10239 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:18:56.195  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/quick_charge_type value = 1
+08-29 17:18:56.195  8509 10239 I IMiChargeUtils: getIMiChargeStringValue method:getQuickChargeType,value:1
+08-29 17:18:56.196  8509 10239 I BatteryChargeTimeHelper: calculateTimeByHistory chargeDetail leftChargeTime: 0  startLevel: 0  endLevel: 6
+08-29 17:18:56.197  8509 10239 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:18:56.199  8509  8567 I tycenter.remote: This is sticky GC, maxfree is 33554432 minfree is 8388608
+08-29 17:18:56.201  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/quick_charge_type value = 1
+08-29 17:18:56.201  8509 10239 I IMiChargeUtils: getIMiChargeStringValue method:getQuickChargeType,value:1
+08-29 17:18:56.201  8509 10239 I BatteryChargeTimeHelper: Use history time, 0.97 17h9m30s332ms
+08-29 17:18:56.201  8509 10239 I BatteryChargeTimeHelper: Left charge time in if, 0.97 17h9m30s332ms
+08-29 17:18:56.204  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1506 (36.770592 percent)
+08-29 17:18:56.225  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1540 (37.602589 percent)
+08-29 17:18:56.245  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1575 (38.434586 percent)
+08-29 17:18:56.264  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1609 (39.266582 percent)
+08-29 17:18:56.279  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:56.285  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1643 (40.098579 percent)
+08-29 17:18:56.306  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1677 (40.930576 percent)
+08-29 17:18:56.327  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1711 (41.762577 percent)
+08-29 17:18:56.343  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785846705881712, lux: 3.0
+08-29 17:18:56.344  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785846705881712, sensor=5, temperature(K)=   0.0000
+08-29 17:18:56.344  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:18:56.346  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1745 (42.594574 percent)
+08-29 17:18:56.365  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1779 (43.426571 percent)
+08-29 17:18:56.386  2759  2897 I SmartPower: com.miui.voicetrigger/10181(9870): idle->background(20142ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=200.
+08-29 17:18:56.386  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1813 (44.258568 percent)
+08-29 17:18:56.388  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.voicetrigger, stopped=false, firstLaunch=false
+08-29 17:18:56.388  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:18:56.389  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:18:56.389  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.xmsf, stopped=false, firstLaunch=false
+08-29 17:18:56.390  2759  2897 I SmartPower: com.miui.systemAdSolution/10165(22369): idle->background(20139ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=100.
+08-29 17:18:56.390  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.systemAdSolution, stopped=false, firstLaunch=false
+08-29 17:18:56.390  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.gallery, stopped=false, firstLaunch=false
+08-29 17:18:56.391  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.gallery, stopped=false, firstLaunch=false
+08-29 17:18:56.391  2759  2897 I SmartPower: com.miui.video/10286(25249): idle->background(20141ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:18:56.391  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.video, stopped=false, firstLaunch=false
+08-29 17:18:56.392  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:18:56.392  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:18:56.393  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:18:56.393  2759  2897 I SmartPower: com.xiaomi.market/10163(19212): idle->background(20137ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:18:56.393  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.market, stopped=false, firstLaunch=false
+08-29 17:18:56.393  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:18:56.394  2759  2897 I SmartPower: com.kugou.android.lite/10407(7835): idle->background(20135ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:18:56.394  2759  2897 D BroadcastQueue: Logging broadcast for com.kugou.android.lite, stopped=false, firstLaunch=false
+08-29 17:18:56.395  2759  2897 D BroadcastQueue: Logging broadcast for com.android.providers.downloads, stopped=false, firstLaunch=false
+08-29 17:18:56.395  2759  2897 D BroadcastQueue: Logging broadcast for com.android.camera, stopped=false, firstLaunch=false
+08-29 17:18:56.398  2047 30235 I libusbconfigfs: event=1 on fd=5
+08-29 17:18:56.403 31570 31570 W MCAM_Camera@20516204: onLowBatteryNotification: isActivityPaused=true,isSwitchingModule=false
+08-29 17:18:56.405  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1847 (45.090565 percent)
+08-29 17:18:56.424  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1881 (45.922562 percent)
+08-29 17:18:56.444  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1915 (46.754559 percent)
+08-29 17:18:56.465  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1949 (47.586555 percent)
+08-29 17:18:56.480  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:56.484  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1983 (48.418556 percent)
+08-29 17:18:56.505  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2017 (49.250553 percent)
+08-29 17:18:56.524  2759  2922 D BrightnessDataProcessor: actualBrightness: 0.49975565originalBrightness: 0.49975565
+08-29 17:18:56.526  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2047 (49.975567 percent)
+08-29 17:18:56.684  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:56.759  7658 15717 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.xiaomi.metoknlp
+08-29 17:18:56.762  7658 15717 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:18:56.886  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:57.075  7308 14545 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.qualcomm.qti.services.systemhelper:systemhelper_service
+08-29 17:18:57.076  7308 14545 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:18:57.088  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:57.291  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:57.495  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:57.612  7080  7486 D JavaheapMonitor: Java heap used=13M max=512M, proc: com.miui.gallery
+08-29 17:18:57.612  7080  7486 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:18:57.698  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:57.745  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785848105800618, lux: 4.0
+08-29 17:18:57.748  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   3.9825,   0.0000,   0.0000>,time=785848105800618, sensor=5, temperature(K)=   0.0000
+08-29 17:18:57.749  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 3, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:18:57.901  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:57.926  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:18:57.928  3128  3128 I wificond: station_bandwidth: �
+08-29 17:18:57.937  5847  6976 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:18:57.937  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:18:57.942  2759  2892 D JavaheapMonitor: Java heap used=148M max=512M, proc: system_server
+08-29 17:18:57.942  2759  2892 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+08-29 17:18:57.980 20997 21065 D JavaheapMonitor: Java heap used=6M max=384M, proc: com.xiaomi.xmsf:kit6
+08-29 17:18:57.981 20997 21065 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:18:58.074  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:18:58.075  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:18:58.103  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:58.246  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785848305883223, lux: 3.0
+08-29 17:18:58.248  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785848305883223, sensor=5, temperature(K)=   0.0000
+08-29 17:18:58.248  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 3, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:18:58.306  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:58.332  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:18:58.334  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:18:58.334  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:18:58.334  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 17:18:58.335  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:18:58.427  8397  8397 E adbd    : failed to connect to socket 'tcp:8389': Connection refused
+08-29 17:18:58.428  8397  8397 I adbd    : in ShellService: input tap 1016 2905
+08-29 17:18:58.477  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995106280756600 end obsidian.vault.detect
+08-29 17:18:58.509  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:18:58.521  2759  6584 W MIUIInput: Input event injection from package: null action ACTION_DOWN
+08-29 17:18:58.523  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600330562, channel '78fcc19 com.google.android.documentsui/com.android.documentsui.picker.PickActivity'
+08-29 17:18:58.523  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600330562, channel '[Gesture Monitor] WMShell'
+08-29 17:18:58.523  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600330562, channel '[Gesture Monitor] swipe-up'
+08-29 17:18:58.523  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600330562, channel '[Gesture Monitor] miui-gesture'
+08-29 17:18:58.524  2759  2878 D MiuiMultiWindowServiceImpl: Event x is in dot region, fullscreenTask=Task{41d426d #3585 type=standard A=10429:com.mov.android}
+08-29 17:18:58.524  2759  2878 D WindowManager: on down in dot capation bar
+08-29 17:18:58.524 24865 24865 I MIUIInput: [MotionEvent] ViewRootImpl windowName 'com.google.android.documentsui/com.android.documentsui.picker.PickActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=600330562, downTime=600330562, phoneEventTime=17:18:58.520 } moveCount:0
+08-29 17:18:58.525 24865 24865 D VRI[PickActivity]: getMiuiFreeformStackInfo mTmpFrames.miuiFreeFormStackInfo: null
+08-29 17:18:58.525  5911  6158 D MiuiInfinityModeThermalArea: onInputEvent action=0
+08-29 17:18:58.525  5911  6158 D MiuiInfinityModeThermalArea: freeformHotSpotDetection isInFreeform:false
+08-29 17:18:58.525  5911  6158 D MiuiFreeformModeGestureHandler: start handle MotionEvents:(1016.0,2905.0)
+08-29 17:18:58.526  5911  6158 D MiuiFreeformModeGestureHandler: handleMotionEvents mActiveMiuiFreeformTask null x: 1016.0 y: 2905.0 current miuiFreeformModeTaskInfo: 
+08-29 17:18:58.527  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 17:18:58.527  2759  6584 W MIUIInput: Input event injection from package: null action ACTION_UP
+08-29 17:18:58.528  5241  5241 D MiuiPadHome_GestureInputHelper: onInputEvent action=ACTION_DOWN
+08-29 17:18:58.528 24865 24865 I HandWritingStubImpl: setCurrentKeyboardType: 1
+08-29 17:18:58.528  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600330562, channel '78fcc19 com.google.android.documentsui/com.android.documentsui.picker.PickActivity'
+08-29 17:18:58.528 24865 24865 I MIUIInput: [MotionEvent] ViewRootImpl windowName 'com.google.android.documentsui/com.android.documentsui.picker.PickActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=600330562, downTime=600330562, phoneEventTime=17:18:58.520 } moveCount:0
+08-29 17:18:58.528  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600330562, channel '[Gesture Monitor] WMShell'
+08-29 17:18:58.528  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:18:58.528  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600330562, channel '[Gesture Monitor] swipe-up'
+08-29 17:18:58.529  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600330562, channel '[Gesture Monitor] miui-gesture'
+08-29 17:18:58.529  2759  4893 I ProcessManager: getRenderThreadTidByPid, caller=2759
+08-29 17:18:58.529  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:18:58.530  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:18:58.530  5241  5241 W RecentsModel: getRunningTaskContainHome containHome : true
+08-29 17:18:58.530  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:18:58.530  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:18:58.530  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:18:58.530  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:18:58.530  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:18:58.531  2322  2322 D DisplayModeController: setDesiredMode 4630947038039379843 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-29 17:18:58.531  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:18:58.531  5241  5241 W RecentsModel: getRunningTask return tasks.get(0)= TaskInfo{userId=0 taskId=3585 effectiveUid=10429 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity } baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} topActivity=ComponentInfo{com.google.android.documentsui/com.android.documentsui.picker.PickActivity} origActivity=null realActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} numActivities=2 lastActiveTime=785664304 supportsSplitScreenMultiWindow=true mSoScDisplayMode=-1 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=200 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@91eebc} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{6481e45 com.android.documentsui.picker.PickActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(501, 632 - 1531, 2462) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false topActivityInMiuiSizeCompat=false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 2032, 3048) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} isImmersive=false mTopActivityRequestOrientation=-1 mStatusBarParent=null mNavBarParent=null mBehindAppLockPkg=null mOriginatingUid=0 isEmbedded=false shouldBeVisible=true isCreatedByOrganizer=false mIsCastMode=false mTopActivityMediaSize=Rect(0, 0 - 0, 0) mTopActivityRecordName=ActivityRecord{206512384 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity t3585} mTopActivityOrientation=-1 topActivityMainWindowFrame=null}
+08-29 17:18:58.531  5241  5241 D MiuiPadHome_GestureModeApp: isReadyToQuickSwitch11Mode: 1
+08-29 17:18:58.531  5241  5241 D GestureModeHelper: isGoogleOverlay=false   process=-1.0   isUseGoogleMinusScreenMode=false
+08-29 17:18:58.532  5241  5241 D MiuiPadHome_GestureModeApp: isReadyToQuickSwitch11Mode: 1
+08-29 17:18:58.532  5241  5241 D GestureModeHelper: createGes11tureMode: false===false===false===false===false===false
+08-29 17:18:58.532  5241  5241 D MiuiPadHome_GestureModeApp: isReadyToQuickSwitch11Mode: 1
+08-29 17:18:58.532  5241  5241 D MiuiPadHome_GestureInputHelper: onInputEvent, lastGestureMode=com.miui.home.recents.GestureModeApp@cb9a6e1, newGestureMode=com.miui.home.recents.GestureModeApp@cb9a6e1
+08-29 17:18:58.532  5241  5241 D MiuiPadHome_GestureMode: setGestureTouchE1ventTracker: com.miui.home.recents.GestureTouchEventTracker@31a1caf
+08-29 17:18:58.532  5241  5241 D GestureTouchEventTracker: use Rotation : displayRotation = 1
+08-29 17:18:58.532  5241  5241 I GestureTouchEventTracker: initValues: isDockNeedFollowGesture=true
+08-29 17:18:58.532  5241  5241 D Dock_MainStateManager: appState onDown
+08-29 17:18:58.532  5241  5241 D MiuiPadHome_GestureModeApp: WithoutDock, runningTaskTopActivityComponentName=com.android.documentsui.picker.PickActivity, withoutDock=false
+08-29 17:18:58.532  5241  5241 I MiuiPadHome_GestureInputHelper: onInputEvent: mIsUseNewDock = true getDockController =  +true
+08-29 17:18:58.532  5241  5241 D MiuiPadHome_GestureInputHelper: mIsStartGesture is false, mIsUseNewDock is true, isTouchCountAndHotSeatSupport is truemGestureMode = com.miui.home.recents.GestureModeApp@cb9a6e1
+08-29 17:18:58.533  5241  5241 D MiuiPadHome_GestureInputHelper: onInputEvent action=ACTION_UP
+08-29 17:18:58.533  5241  5241 D Dock_GlobalGestureDispatcher: dispatchUp 10
+08-29 17:18:58.533  5241  5241 D LauncherOrientationController: requestedOrientation -1 post delay=1000
+08-29 17:18:58.533  5241  5241 D GestureTouchEventTracker: stopTailCatcher
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: onTouchEvent: ACTION_UP
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: mPivotLocX=1016	mFollowTailX=1016.0	deltaTailX=0.0
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: mPivotLocY=3048	mFollowTailY=3048.0	deltaTailY=0.0
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: mVelocityPxPerMs=PointF(0.0, 0.0)	XY=0.0
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: mDownY=2905.0	mWindowMoveStartY=2905.0	mCurrentY=2817.7998
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: mDownX=1016.0	mWindowMoveStartX=1016.0	mCurrentX=577.5996
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: isSafeArea=true
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: isSafeArea(mWindowMoveStartY - mCurrentY)=87.200195
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: isSafeArea2(mDownY - mCurrentY)=87.200195
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: isDockNotShowedInApp=false
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: isLeaveSafeArea=false
+08-29 17:18:58.533  5241  5241 I GestureTouchEventTracker: mUpType=10
+08-29 17:18:58.533  5241  5241 D MiuiPadHome_GestureInputHelper: mIsStartGesture is false, mIsUseNewDock is true, isTouchCountAndHotSeatSupport is truemGestureMode = com.miui.home.recents.GestureModeApp@cb9a6e1
+08-29 17:18:58.535  5911  6158 D MultiTaskingTaskRepository: getTopFullscreenTaskInfo: taskId=3585 windowingMode=1 isVisible=true isTopActivityTransparent=false
+08-29 17:18:58.535  5911  6158 D MiuiDecorationDot: isTouchedInTopCaption: taskId = 3585,  captionTouchRegion = RectF(938.5, 0.0, 1093.5, 101.0) pointRelativeToTask=PointF(1016.0, 2905.0) isSplitTask=false eventX=1016.0 eventY=2905.0
+08-29 17:18:58.535  5911  6158 D MiuiDecorationDot: isTouchedInTopCaption: taskId = 3585, point not in captionTouchRegion
+08-29 17:18:58.535  5911  6158 D MulWinSwitchEventHandler: dispatchToFullOrSplitDecorationDot: touchedTaskId=-1
+08-29 17:18:58.535  5911  6158 D MulWinSwitchEventHandler: handleReceivedMotionEvent: mTouchedBottomTaskId=-1
+08-29 17:18:58.537 10976 10976 I MOVTEST : MOVTEST_MARK_1787995106280756600 end obsidian.vault.detect
+08-29 17:18:58.543  2121  2700 I SDM     : HWCFunctionTimer::noticeTimerFps: displayid:65, fps: 120
+08-29 17:18:58.543  2121  2700 I SDM     : HWCDisplay::SetActiveConfigWithConstraints: display:65-0, config: 0, WxH 3048x2032, fps 120
+08-29 17:18:58.544  2121  2700 W SDM     : HWDeviceDRM::GetSupportedBitClkRate: Requested rate not supported: 1190090000
+08-29 17:18:58.545  2121  2700 I SDM     : HWDeviceDRM::UpdateMixerAttributes: Mixer WxH 3048x2032-1 for Peripheral
+08-29 17:18:58.545  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active configuration changed from config 4 to 0
+08-29 17:18:58.545  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active WxH 3048x2032 ,ddic_mode:normal, timing_fps: 120, sf_fps: 120
+08-29 17:18:58.547  2121  2224 I SDM     : HWDeviceDRM::SetDisplaySwitchMode: Mode 0 already set
+08-29 17:18:58.548  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:18:58.546  2322  2322 W binder:2322_2: type=1400 audit(0.0:2982016): avc:  denied  { search } for  name="mcd" dev="dm-56" ino=574 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+08-29 17:18:58.553 24865 24865 W WindowOnBackDispatcher: OnBackInvokedCallback is not enabled for the application.
+08-29 17:18:58.553 24865 24865 W WindowOnBackDispatcher: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+08-29 17:18:58.563  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:18:58.563  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:18:58.563  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:18:58.563  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:18:58.563  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:18:58.570  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:18:58.575  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:18:58.575 24865 24865 D DecorView: updateFreeformOutlineFromActivity, inFreeform=false,inFreeformWindowMode=false
+08-29 17:18:58.578 24865 24865 D ScrollerOptimizationManager: registerConfigChangedListener
+08-29 17:18:58.579 24865 24865 D ScrollerOptimizationManager: registerConfigChangedListener
+08-29 17:18:58.583  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:18:58.584 24865  8634 D HWUI    : TAG_DDRE, CanvasContext::setDdreActivities: 
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.588  2759  6015 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:18:58.589  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:18:58.591  2759  6015 D BarFollowAnimation: reparentCaptionBar2Task reparent caption to task
+08-29 17:18:58.591  2759  6015 D BarFollowAnimation: onAppTaskBarLeashCreate task=Task{41d426d #3585 type=standard A=10429:com.mov.android}
+08-29 17:18:58.592  2759  6015 D BarFollowAnimation: reparentCaptionBar2StatusBarLeash topwindow=Window{78fcc19 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity}
+08-29 17:18:58.592  2759  6015 D WindowManager: wms.Input focus has changed to Window{7e96337 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} display=0 updateInputWindows = false
+08-29 17:18:58.592  2759  6015 I MultiSenceManagerInternalStub: getInstance
+08-29 17:18:58.592  2759  4914 I MultiSenceManagerInternalStubImpl: packageName = com.google.android.documentsui
+08-29 17:18:58.593  2759  4914 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1280 com.android.server.wm.MultiSenceManagerInternalStubImpl.sendFocusWindowsBroadcast:151 com.android.server.wm.MultiSenceManagerInternalStubImpl$UpdateScreenStatus.run:96 android.os.Handler.handleCallback:1029 android.os.Handler.dispatchMessage:107 
+08-29 17:18:58.594  2759  4914 W ActivityManagerServiceImpl: Sending non-protected broadcast com.xiaomi.multisence.action.FOCUSED_CHANGE from system 2759:system/1000 pkg android. Callers=com.android.server.am.BroadcastController.checkBroadcastFromSystem:2218 com.android.server.am.BroadcastController.broadcastIntentLockedTraced:1703 com.android.server.am.BroadcastController.broadcastIntentLocked:857 com.android.server.am.BroadcastController.broadcastIntentWithFeature:779 com.android.server.am.ActivityManagerService.broadcastIntentWithFeature:15832 
+08-29 17:18:58.595  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.powerkeeper, stopped=false, firstLaunch=false
+08-29 17:18:58.595  2759  2881 D WindowManager: wms.Focus not requested for window=Window{7e96337 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} because it has no surface or is not focusable.
+08-29 17:18:58.597 24865 24865 I ComputilityLevel: getComputilityLevel(): 4
+08-29 17:18:58.598  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:18:58.599  2759  6584 D CoreBackPreview: Window{7e96337 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@f1b822f, mPriority=0, mIsAnimationCallback=false, mOverrideBehavior=0}

@@ -1,0 +1,18 @@
+{
+ "tool": "screen.capture",
+ "args": {},
+ "ts": "2026-08-29T15:54:36",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 90076,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=false, error=捕获通道未就绪（需主界面在前台）}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

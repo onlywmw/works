@@ -1,0 +1,8 @@
+field Lcom/mov/android/MainActivity; pageToolProvider
+   read : Lcom/mov/android/MainActivity; access$getPageToolProvider$cp
+   read : Lcom/mov/android/MainActivity; onCreate$lambda$131
+   write: Lcom/mov/android/MainActivity; <clinit>
+   write: Lcom/mov/android/MainActivity; access$setPageToolProvider$cp
+   write: Lcom/mov/android/MainActivity; onCreate
+ObsidianProvider methods: 25
+DeviceProvider.<init> from Lcom/mov/android/MainActivity; onCreate

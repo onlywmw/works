@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MOV · 主页胶囊管理（高级简约）</title>
+<style>
+  :root{--s0:#F3F4F7;--s1:#fff;--s2:#EDEFF3;--text:#191B21;--text2:#565C6B;--text3:#8B91A1;
+    --line:rgba(22,28,48,.08);--primary:#0E7C5B;--ptint:rgba(14,124,91,.08);}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:#1A1C22;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);
+    display:flex;justify-content:center;min-height:100vh;align-items:flex-end;}
+  .sheet{width:375px;max-width:100%;background:var(--s0);border-radius:22px 22px 0 0;overflow:hidden;
+    box-shadow:0 -8px 32px rgba(0,0,0,.4);max-height:78vh;display:flex;flex-direction:column;}
+  .sc{height:34px;display:flex;align-items:center;justify-content:center;}
+  .handle{width:42px;height:5px;border-radius:99px;background:#D8D8DC;}
+  .head{padding:10px 20px 2px;}
+  .head h1{font-size:17px;font-weight:700;margin:0;}
+  .head p{font-size:12px;color:var(--text3);margin:3px 0 0;}
+
+  .body{flex:1;overflow-y:auto;padding:14px 20px 24px;}
+  .sec{font-size:11px;color:var(--text3);letter-spacing:.4px;margin:14px 4px 8px;}
+
+  /* 当前钉选：胶囊横排（可拖拽） */
+  .pins{display:flex;flex-wrap:wrap;gap:8px;background:var(--s1);border-radius:16px;padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.03);}
+  .pin{display:inline-flex;align-items:center;height:34px;border-radius:17px;background:var(--s0);border:1px solid var(--line);
+    padding:0 8px 0 14px;font-size:13px;}
+  .pin .x{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:var(--text3);font-size:12px;margin-left:6px;background:var(--s2);}
+  .pin.plus{width:34px;padding:0;justify-content:center;border-style:dashed;color:var(--text3);background:var(--s0);font-size:18px;}
+
+  /* 添加：胶囊块（官方 / 第三方） */
+  .add{display:flex;flex-wrap:wrap;gap:8px;background:var(--s1);border-radius:16px;padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.03);}
+  .cap{display:inline-flex;align-items:center;height:34px;border-radius:17px;background:var(--s0);border:1px solid var(--line);
+    padding:0 13px;font-size:13px;color:var(--text2);}
+  .cap.on{background:var(--ptint);border-color:var(--primary);color:var(--primary);font-weight:600;}
+  .cap .n{font-size:10px;color:var(--text3);margin-left:4px;}
+  .hint{font-size:11px;color:var(--text3);margin:8px 4px 0;}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="sc"><div class="handle"></div></div>
+  <div class="head">
+    <h1>主页胶囊</h1>
+    <p>哪些能力显示在主页 · 上限 5/5 · 拖拽排序</p>
+  </div>
+  <div class="body">
+    <div class="sec">当前钉选 · 拖拽换序 / 点 ✕ 删除</div>
+    <div class="pins">
+      <span class="pin">我的订单<span class="x">✕</span></span>
+      <span class="pin">我的记忆<span class="x">✕</span></span>
+      <span class="pin">我的信息<span class="x">✕</span></span>
+      <span class="pin">我的能力<span class="x">✕</span></span>
+      <span class="pin">设备控制<span class="x">✕</span></span>
+      <span class="pin plus">＋</span>
+    </div>
+
+    <div class="sec">添加能力</div>
+    <div class="add">
+      <span class="cap on">生活场景</span>
+      <span class="cap">笔记 · Obsidian</span>
+      <span class="cap">系统基础能力</span>
+    </div>
+    <div class="hint">官方能力</div>
+
+    <div class="add" style="margin-top:8px">
+      <span class="cap">相机<span class="n">2</span></span>
+      <span class="cap">日历<span class="n">2</span></span>
+      <span class="cap">设备<span class="n">5</span></span>
+      <span class="cap">12306</span>
+      <span class="cap">效率增强</span>
+    </div>
+    <div class="hint">第三方 · 市场包 / 第三方 MCP</div>
+  </div>
+</div>
+</body>
+</html>

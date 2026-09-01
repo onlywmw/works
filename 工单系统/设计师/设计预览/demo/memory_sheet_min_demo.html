@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>我的记忆 · 半屏 Sheet 极简版</title>
+<style>
+  :root{
+    --s0:#F3F4F7; --s1:#FFFFFF; --s2:#EDEFF3;
+    --text:#191B21; --text2:#565C6B; --text3:#8B91A1;
+    --line:rgba(22,28,48,.08); --primary:#0E7C5B;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{margin:0; background:#1A1C22; font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    display:flex; align-items:flex-end; justify-content:center; min-height:100vh;}
+
+  .sheet{width:375px; max-width:100%; background:var(--s0);
+    border-radius:16px 16px 0 0; overflow:hidden; box-shadow:0 -8px 32px rgba(0,0,0,.35);}
+  .sheet-inner{padding:10px 16px 20px;}
+  .handle{width:44px; height:5px; border-radius:99px; background:#D8D8DC; margin:0 auto 8px;}
+
+  /* 标题：居左，克制 */
+  .head{display:flex; align-items:baseline; gap:10px; padding:2px 2px 0;}
+  .head h1{margin:0; font-size:17px; font-weight:600; color:var(--text);}
+  .head .count{font-size:12px; color:var(--text3);}
+
+  /* 搜索框：灰底极简 */
+  .search{display:flex; align-items:center; gap:6px; background:var(--s2); height:38px;
+    border-radius:8px; padding:0 12px; margin-top:12px;}
+  .search svg{width:15px;height:15px; color:var(--text3); flex:none;}
+  .search input{flex:1; border:0; outline:0; background:transparent; font-size:14px; color:var(--text);}
+  .search input::placeholder{color:var(--text3);}
+
+  /* 分区标题：左靠灰小号 */
+  .sec{font-size:12px; color:var(--text3); margin:18px 2px 4px; letter-spacing:.3px;}
+
+  /* 行：内容 + 副题 + chevron，扁平无卡片 */
+  .row{display:flex; align-items:center; gap:12px; padding:13px 2px; border-bottom:1px solid var(--line); cursor:pointer;}
+  .row:last-child{border-bottom:0;}
+  .txt{flex:1; min-width:0;}
+  .content{font-size:14px; color:var(--text); line-height:1.5;}
+  .sub{font-size:11px; color:var(--text3); margin-top:2px;}
+  .chev{flex:none; color:#C6CAD2;}
+  .chev svg{width:16px; height:16px;}
+
+  /* 空态 */
+  .empty{padding:36px 0 20px; text-align:center; color:var(--text3); font-size:13px;}
+
+  /* 撤销条（功能保留，极简深条） */
+  .undo{display:flex; align-items:center; gap:12px; background:#2E333B; border-radius:8px;
+    padding:11px 14px; color:#fff; font-size:13px; margin:0 0 12px;}
+  .undo .t{flex:1;}
+  .undo button{border:0; background:transparent; color:#9BD3B3; font-size:13px; font-weight:600; cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="sheet-inner">
+    <div class="handle"></div>
+    <div class="head">
+      <h1>我的记忆</h1><span class="count">12 条</span>
+    </div>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input placeholder="搜索记忆…">
+    </div>
+
+    <div class="sec">已记住</div>
+    <div class="row">
+      <div class="txt">
+        <div class="content">我喜欢简洁的界面</div>
+        <div class="sub">MOV 会优先参考</div>
+      </div>
+      <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+    </div>
+    <div class="row">
+      <div class="txt">
+        <div class="content">工作日早上 9 点开始处理订单类消息</div>
+      </div>
+      <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="sec">待确认</div>
+    <div class="row">
+      <div class="txt">
+        <div class="content">我最近在学习运动健康…</div>
+      </div>
+      <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+    </div>
+    <div class="row">
+      <div class="txt">
+        <div class="content">用户更喜欢极简的交互方式</div>
+      </div>
+      <div class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+--------- beginning of main
+08-29 16:57:54.227 16521 16587 D JavaheapMonitor: Java heap used=20M max=384M, proc: com.baidu.input_mi
+08-29 16:57:54.229 16521 16587 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:57:54.345  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787993873900736100 start torch.on
+08-29 16:57:54.382  4261  4261 I MOVTEST : MOVTEST_MARK_1787993873900736100 start torch.on
+08-29 16:57:54.481  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 16:57:54.644 25852  4266 D CameraInjector: updateCloudCameraControllerInfoAsync: has aleardy start update task.
+08-29 16:57:54.645 25852  4266 D CameraInjector: waitForResult: 
+08-29 16:57:54.645 25852  4266 W libc    : Access denied finding property "vendor.camera.aux.packagelist"
+08-29 16:57:54.645 25852  4266 W libc    : Access denied finding property "vendor.camera.aux.packagelistext"
+08-29 16:57:54.651 16795 16876 D JavaheapMonitor: Java heap used=2M max=512M, proc: com.xiaomi.aicr:searchDataService
+08-29 16:57:54.655 16795 16876 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:57:54.660 25852  4266 D CameraInjector: updateCloudCameraControllerInfoAsync: has aleardy start update task.
+08-29 16:57:54.660 25852  4266 D CameraInjector: waitForResult: 
+08-29 16:57:54.660 25852  4266 W libc    : Access denied finding property "vendor.camera.aux.packagelist"
+08-29 16:57:54.660 25852  4266 W libc    : Access denied finding property "vendor.camera.aux.packagelistext"
+08-29 16:57:54.666  2258  2258 E CamX    : [ERROR][CORE   ] camxhal3module.cpp:278 XiaoMiCheckApkChange() stat error
+08-29 16:57:54.667  2121  2121 I SDM     : ResourceImpl::SetMaxBandwidthMode: new bandwidth mode=1
+08-29 16:57:54.670  2258  2258 E CHIUSECASE: [ERROR  ] chxextensionmodule.cpp:6581 InitializeOverrideSession() xiaomi.ai.misd.motionCaptureEnabled is NULL
+08-29 16:57:54.673  2258 29543 I vendor.qti.camera.provider-service_64: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:1002: Successfully opened file libbitml_nsp_v2_skel.so
+08-29 16:57:54.681  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 16:57:54.680  5847  6086 D JavaheapMonitor: Java heap used=12M max=384M, proc: com.android.phone
+08-29 16:57:54.682  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:57:54.683  5847  6086 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:57:54.710  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.h:1493 Dump() --------------------
+08-29 16:57:54.710  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.h:1494 Dump()     Key      Cost   
+08-29 16:57:54.710  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.h:1495 Dump() --------------------
+08-29 16:57:54.715  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.h:1493 Dump() --------------------
+08-29 16:57:54.715  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.h:1494 Dump()     Key      Cost   
+08-29 16:57:54.715  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.h:1495 Dump() --------------------
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [IPEHw : 0], AvailableResource = 100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [IFEHw : 0], AvailableResource = 100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [IFEHw : 1], AvailableResource = 100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [SensorHw : 0], AvailableResource = 100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [SensorHw : 1], AvailableResource = 0
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [SensorHw : 2], AvailableResource = 100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [CSIPHYHw : 3], AvailableResource = 100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [CSIPHYHw : 4], AvailableResource = 0
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:106 DumpState() [CSIPHYHw : 1], AvailableResource = 100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:180 DumpState() 
+08-29 16:57:54.716  2258  2258 I CamX    : 
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:181 DumpState() client {AONPipeline_1, 0xb400007316b1a220}
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:182 DumpState() -------------------------
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:183 DumpState()     Key     Allocation
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:184 DumpState() -------------------------
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:193 DumpState()   {1, 1} :   100
+08-29 16:57:54.716  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:193 DumpState()   {5, 4} :   100
+08-29 16:57:54.717  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:180 DumpState() 
+08-29 16:57:54.717  2258  2258 I CamX    : 
+08-29 16:57:54.717  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:181 DumpState() client {TorchPipeline_0, 0xb400007316fba6c0}
+08-29 16:57:54.717  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:182 DumpState() -------------------------
+08-29 16:57:54.717  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:183 DumpState()     Key     Allocation
+08-29 16:57:54.717  2258  2258 I CamX    : [ DUMP][CORE   ] camxresourcemanager.cpp:184 DumpState() -------------------------
+08-29 16:57:54.719  3120  4043 I CameraProviderManager: Camera device device@1.1/vendor_qti/0 torch status is now AVAILABLE_ON
+08-29 16:57:54.719  3120  4043 I CameraService: onTorchStatusChangedLocked: Torch status changed for cameraId=0, newStatus=2
+08-29 16:57:54.720  3120  4043 I CameraService: Torch for camera id 0 turned on for client PID 25852
+--------- beginning of system
+08-29 16:57:54.721  5911  6621 D FlashlightController: TorchCallback: onTorchModeChanged: enabled: true, lastState: false
+08-29 16:57:54.722  2759  2922 I AutomaticBrightnessControllerImpl: onTorchModeChanged, mIsTorchOpen=true
+08-29 16:57:54.722  5911  6621 D FlashlightController: setTorchState: enabled: true
+08-29 16:57:54.780  2258  4270 I vendor.qti.camera.provider-service_64: vendor/qcom/proprietary/adsprpc/src/fastrpc_apps_user.c:1576: remote_handle64_open: Successfully opened handle 0xb400007376d07bd0 (remote handle 0x48c425b0) for file:///libbitml_nsp_v2_skel.so?bitml_nsp_v2_domains_skel_handle_invoke&_modver=1.0&_dom=cdsp on domain 3 (spawn time 0 us, load time 0 us), num of open han
+08-29 16:57:54.784  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787993873900736100 end torch.on
+08-29 16:57:54.833  4278  4278 I MOVTEST : MOVTEST_MARK_1787993873900736100 end torch.on
+08-29 16:57:54.897  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

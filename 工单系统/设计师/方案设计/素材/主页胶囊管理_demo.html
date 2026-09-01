@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 主页胶囊 + MCP 独立胶囊 Demo</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;--line:rgba(22,28,48,.08);
+    --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--primary:#0E7C5B;--blue:#3b6fd4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#e9ebf0;color:var(--text);display:flex;justify-content:center;font-size:14px}
+  .phone{width:400px;background:var(--bg);border:1px solid var(--line);padding:14px;margin:20px 0}
+  .chat{background:#fff;border:1px solid var(--line);border-radius:14px;height:120px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;color:var(--text3)}
+  .lbl{font-size:12px;font-weight:700;color:var(--text3);margin:0 2px 8px}
+  .dock{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 10px}
+  .row{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;justify-content:center;height:34px;padding:0 13px;font-size:12.5px;font-weight:600;color:var(--text2);
+    background:var(--s2);border:1px solid var(--line);border-radius:999px;cursor:pointer}
+  .chip.model{color:var(--text)}
+  .chip.mcp{color:var(--blue);border-color:rgba(59,111,212,.3)}
+  .chip.plus{width:34px;padding:0;color:var(--text3);font-size:18px}
+  .note{font-size:11.5px;color:var(--text3);margin-top:10px;line-height:1.6}
+  .note b{color:var(--text2)}
+
+  .overlay{position:fixed;inset:0;background:rgba(12,16,28,.45);display:none;align-items:flex-end;justify-content:center;z-index:60}
+  .overlay.show{display:flex}
+  .sheet{width:100%;max-width:400px;background:#fff;border-radius:18px 18px 0 0;padding:16px 0 20px;max-height:72vh;overflow-y:auto}
+  .tt{text-align:center;font-size:16px;font-weight:700}
+  .sub{text-align:center;font-size:11.5px;color:var(--text3);margin:4px 0 8px}
+  .grp{font-size:11.5px;font-weight:700;color:var(--text3);padding:12px 16px 4px}
+  .srow{display:flex;align-items:center;gap:10px;padding:9px 16px}
+  .srow:hover{background:var(--s2)}
+  .srow .ic{width:26px;height:26px;border-radius:7px;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+  .srow .nm{flex:1;font-size:13.5px;font-weight:600}
+  .srow .ds{font-size:10.5px;color:var(--text3);flex:1}
+  .sw{flex:none;width:38px;height:22px;border-radius:99px;background:var(--s3);position:relative;cursor:pointer}
+  .sw.on{background:var(--primary)}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.15s}
+  .sw.on::after{left:19px}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="chat">聊天区</div>
+  <div class="lbl">主页 · 输入框上方胶囊区</div>
+  <div class="dock">
+    <div class="row">
+      <span class="chip model">Deepseek V4</span>
+      <span class="chip mcp">MCP 工具</span>
+      <span class="chip">订单</span>
+      <span class="chip mcp">🚄 12306</span>
+      <span class="chip plus" onclick="openSheet()">＋</span>
+    </div>
+  </div>
+  <div class="note">←「🚄 12306」= <b>第三方 MCP 工具单独钉成胶囊</b>(不用折在 MCP 工具里);「MCP 工具」= 没单独钉的工具聚合入口;「＋」= 管主页胶囊</div>
+</div>
+
+<div class="overlay" id="ov">
+  <div class="sheet">
+    <div class="tt">主页胶囊管理</div>
+    <div class="sub">哪些能力显示在主页 · 上限5 · 可排序</div>
+    <div class="grp">内置能力</div>
+    <div class="srow"><div class="ic">📦</div><div class="nm">订单</div><div class="sw on"></div></div>
+    <div class="srow"><div class="ic">🔐</div><div class="nm">信息</div><div class="sw on"></div></div>
+    <div class="srow"><div class="ic">🧠</div><div class="nm">记忆</div><div class="sw"></div></div>
+    <div class="grp">MCP 工具 · 单独钉成胶囊</div>
+    <div class="srow"><div class="ic">🚄</div><div class="nm">12306</div><div class="ds">scene-tools</div><div class="sw on"></div></div>
+    <div class="srow"><div class="ic">📝</div><div class="nm">Obsidian 笔记</div><div class="ds">obsidian-tools</div><div class="sw on"></div></div>
+    <div class="srow"><div class="ic">🌐</div><div class="nm">浏览器自动化</div><div class="ds">browser-tools</div><div class="sw"></div></div>
+    <div class="srow"><div class="ic">🧰</div><div class="nm">更多 MCP 工具</div><div class="ds">仍折在「MCP 工具」胶囊</div><div class="sw"></div></div>
+  </div>
+</div>
+<script>
+function openSheet(){document.getElementById('ov').classList.add('show')}
+document.getElementById('ov').addEventListener('click',e=>{if(e.target.id==='ov')document.getElementById('ov').classList.remove('show')});
+document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>s.classList.toggle('on'));
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+=== MOV 正式签名凭据（上架/后续更新 App 必须使用同一 keystore）===
+keystore 文件：mov-release.jks（同目录）
+alias: mov
+storePassword: mov@2026
+keyPassword: mov@2026
+CN: JiangXi PiDan Technology
+有效期：10000 天（约 27 年）
+生成日期：2026-08-26
+说明：此签名对应应用包名 com.mov.android；后续更新版本必须继续用此 keystore 签名，
+否则应用宝/所有商店视为不同应用，无法覆盖更新！！！此文件请妥善备份。

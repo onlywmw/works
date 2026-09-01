@@ -1,0 +1,61 @@
+﻿15 ： 55 8 月 50 日 周 日
+MCP 工 具 市 场
+本 地
+设 备 控 制 0
+网 络 / 存 储 / 应 用 / 日 历 / 相 机 / 扫 码 / 截 屏 / 计 时 器
+． 正 常
+市 场
+回
+这 能 干 嘛
+怎 么 用
+设 备 控 制 ． 网 络 / 存 储 / 应 用 / 日 历 / 相 机 / 扫 码 / 截 屏 / 计 时 器
+“ 帮 我 看 看 设 备 的 存 储 空 间 还 剩 多 少 "
+0
+它 会 调 用 ： calendar.add / calendar.list / camera ℃ apture / camera.ocrCapture / device.appLaunch /
+device.appList / device.network / device.storage / device.timer / device.toast / qr.scan / screen ℃ apture
+/ sensor.list
+工 具 一 览
+calendar.add 新 建 日 程 到 系 统 日 历 （ 标 题 / 起 止 时 间 / 地 占 写 入 系 统 日 历 应 用 ）
+calendar.list 查 询 近 期 日 程 （ 未 来 N 天 ， 按 开 始 时 间 排 序 ）
+C a me r a
+C a me r a
+device
+device
+device
+device
+device
+device
+.capture 调 用 系 统 相 机 拍 照 ， 照 片 存 应 用 私 有 目 录 并 返 回 文 件 路 径 。
+.ocrcapture 调 用 系 统 相 机 拍 照 并 直 接 OCR 识 别 文 字 （ 返 回 识 别 文 本 ）
+.appLaunch 启 动 设 备 上 的 指 定 应 用 （ 按 包 名 ）
+.appList
+． network
+． storage
+列 出 设 备 上 已 安 装 应 用 （ 包 名 / 显 示 名 / 版 本 号 ） 。
+查 询 设 备 网 络 状 态 ： 在 线 / 离 线 、 网 络 类 型 （ wifi / 蜂 窝 / 以 太 网 ） 、 是 否 计 费 网 络 。 零 权 限 只 读 。
+查 询 设 备 存 储 空 间 ： 内 部 存 储 可 用 / 总 量 字 节 ， 外 部 存 储 （ 若 有 ） 可 用 / 总 量 。
+． t ime r 定 时 提 醒 ： 设 定 N 秒 后 通 过 系 统 通 知 提 醒 （ 支 持 set/cancel/list)
+.toast 在 设 备 上 弹 出 临 时 提 示 (Toast, 约 5 秒 自 动 消 失 ）
+q r ． s c a n 调 用 系 统 相 机 拍 摄 二 维 码 / 条 码 并 解 码 返 回 内 容 。
+screen.capture 截 取 当 前 屏 幕 ， 图 片 存 应 用 私 有 目 录 并 返 回 路 径 （ 需 屏 幕 录 制 授 权 ）
+常 驻
+用 它
+需 确 认
+需 确 认
+需 确 认
+需 确 认
+需 确 认
+免 审 批
+免 审 批
+免 审 批
+需 确 认
+需 确 认
+需 确 认
+需 确 认
+免 审 批
+S e n S O r .IiSt
+权 限 分 布
+． 免 审 批 4
+列 出 设 备 全 部 传 感 器 （ 名 称 / 类 型 / 厂 商 / 量 程 ） 。
+． 需 确 认 9
+． 拦 截 0

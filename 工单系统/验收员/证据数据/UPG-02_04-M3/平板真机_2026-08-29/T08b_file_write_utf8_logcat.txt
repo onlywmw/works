@@ -1,0 +1,37 @@
+--------- beginning of system
+08-29 17:23:09.465  2759  4869 I SmartPower: com.miui.voicetrigger/10181(9870): background->idle(3004ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=200.
+08-29 17:23:09.470  2759  4869 I SmartPower: com.miui.systemAdSolution/10165(22369): background->idle(3001ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=100.
+08-29 17:23:09.471  2759  4869 I SmartPower: com.miui.video/10286(25249): background->idle(3000ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:23:09.474  2759  4869 I SmartPower: com.xiaomi.market/10163(19212): background->idle(3001ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:23:09.474  2759  4869 I SmartPower: com.kugou.android.lite/10407(7835): background->idle(3000ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+--------- beginning of main
+08-29 17:23:09.548  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995389210922600 start obsidian.file.write
+08-29 17:23:09.576  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:09.582 12008 12008 I MOVTEST : MOVTEST_1787995389210922600 start obsidian.file.write
+08-29 17:23:09.607  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:23:09.741  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{91308a3 com.termux/10304} BLOCKED
+08-29 17:23:09.741  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{44c3ff1 com.tencent.qqlive/10419} BLOCKED
+08-29 17:23:09.742  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{d8117b5 com.tencent.news/10423} BLOCKED
+08-29 17:23:09.742  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{bfb0498 com.google.android.documentsui/10091} BLOCKED
+08-29 17:23:09.756  2759  6582 I SmartPower: com.android.externalstorage/10086(9010): idle->background(98124ms) R(content provider start ContentProviderRecord{9e6b042 u0 com.android.externalstorage/.ExternalStorageProvider}) adj=0.
+08-29 17:23:09.757  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10086, uidState = 3
+08-29 17:23:09.757 22231 22231 D HidDeviceService: handleMessage(): msg.what=8
+08-29 17:23:09.761  2759  4515 I MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic uid=10086,add=true
+08-29 17:23:09.762  2759  4515 D MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic rst=true
+08-29 17:23:09.778  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:09.792  7122 18933 W MediaProvider: isAppCloneUserPair for user 0: false
+08-29 17:23:09.832  7122  7122 I MediaProvider: receive action = android.intent.action.MEDIA_SCANNER_SCAN_FILE schemeSpecificPart = ///storage/emulated/0/Documents/MovTestVault/验收测试笔记-平板.md
+08-29 17:23:09.833  2759  6594 W JobInfo : Job 'com.android.providers.media.module/com.android.providers.media.MediaService#-300' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+08-29 17:23:09.839  2759  6582 D BroadcastQueue: Logging broadcast for com.miui.securitycore, stopped=false, firstLaunch=false
+08-29 17:23:09.848  2759  6594 D ActivityManager: Logging bindService for com.android.providers.media.module, stopped=false, firstLaunch=false
+08-29 17:23:09.849  2759  6594 I whetstone.activity: Power Event callback listener is empty for resId=256
+08-29 17:23:09.849  2759  6594 D BatteryStatsManagerStub: notifyEvent for resId=256 used 0ms
+08-29 17:23:09.851  2759  6582 D BroadcastQueue: Logging broadcast for com.android.providers.media.module, stopped=false, firstLaunch=false
+08-29 17:23:09.854  7122  8703 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1000010 xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+08-29 17:23:09.865  7122  8703 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1000010 xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+08-29 17:23:09.866  2759  6582 I whetstone.activity: Power Event callback listener is empty for resId=256
+08-29 17:23:09.866  2759  6582 D BatteryStatsManagerStub: notifyEvent for resId=256 used 0ms
+08-29 17:23:09.867  2759  6582 I ActivityManager: unbindService com.android.server.am.ActiveServices@4d8afd3 conn=android.app.LoadedApk$ServiceDispatcher$InnerConnection@8f8d247 callingPid=2759 callers: com.android.server.job.JobServiceContext.handleFinishedLocked:1412 com.android.server.job.JobServiceContext.doCallbackLocked:1288 com.android.server.job.JobServiceContext.doDequeueWork:938 com.android.server.job.JobServiceContext$JobCallback.dequeueWork:305 android.app.job.IJobCallback$Stub.onTransact:289 android.os.Binder.execTransactInternal:1428 android.os.Binder.execTransact:1372 <bottom of call stack> <bottom of call stack> <bottom of call stack> 
+08-29 17:23:09.871  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995389210922600 end obsidian.file.write
+08-29 17:23:09.900 12013 12013 I MOVTEST : MOVTEST_1787995389210922600 end obsidian.file.write
+08-29 17:23:09.931  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

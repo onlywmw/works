@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":10,"result":{"content":[{"type":"text","text":"[code: APPROVAL_REQUIRED] 需要确认: 默认权限：screen.capture 超出安全范围，请求允许（requestId=req-1，调 permission.approve 放行 / permission.deny 拒绝）"}],"isError":true}}

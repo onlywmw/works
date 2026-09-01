@@ -1,0 +1,51 @@
+--------- beginning of main
+08-29 17:20:55.595  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:20:55.598 13384 15714 D JavaheapMonitor: Java heap used=7M max=512M, proc: com.xiaomi.aicr:cognitionService
+08-29 17:20:55.599 13384 15714 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:20:55.600  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:55
+08-29 17:20:55.600  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:20:55.601  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 17:20:55.602  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:20:55.644  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785965905881770, lux: 3.0
+08-29 17:20:55.646  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785965905881770, sensor=5, temperature(K)=   0.0000
+08-29 17:20:55.646  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:20:55.662  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:20:55.691  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:20:55.708  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995255221081100 start obsidian.vault.check
+08-29 17:20:55.743 11734 11734 I MOVTEST : MOVTEST_MARK_1787995255221081100 start obsidian.vault.check
+--------- beginning of system
+08-29 17:20:55.755  2759  2892 I ThermalObserver: Temperature control has been released.
+08-29 17:20:55.794  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:20:55.814  6804  7071 D JavaheapMonitor: Java heap used=2M max=384M, proc: com.miui.thirdappassistant:persistent
+08-29 17:20:55.816  6804  7071 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:20:55.865  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:20:55.953  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995255221081100 end obsidian.vault.check
+08-29 17:20:55.977  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:20:55.979  3128  3128 I wificond: station_bandwidth:  
+08-29 17:20:55.984 11739 11739 I MOVTEST : MOVTEST_MARK_1787995255221081100 end obsidian.vault.check
+08-29 17:20:55.992  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 17:20:55.993  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 17:20:55.995  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 17:20:55.995  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:20:55.995  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 17:20:55.995 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 17:20:55.996  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 17:20:55.996 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 17:20:55.996  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 17:20:55.996  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 17:20:55.996  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 17:20:55.997  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 17:20:55.998  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:20:55.999 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 17:20:55.999 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 17:20:56.004  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 17:20:56.004  5847  6976 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:20:56.004  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:20:56.005  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=6035Kbps LinkDnBandwidth>=113652Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -56, Link speed: 1729Mbps, Tx Link speed: 1729Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 1729Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -56 UnderlyingNetworks: Null]
+08-29 17:20:56.010  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=çš®**5G}
+08-29 17:20:56.010  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 17:20:56.038  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:20:56.044  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785966105881093, lux: 2.0
+08-29 17:20:56.046  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785966105881093, sensor=5, temperature(K)=   0.0000
+08-29 17:20:56.047  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:20:56.068  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM

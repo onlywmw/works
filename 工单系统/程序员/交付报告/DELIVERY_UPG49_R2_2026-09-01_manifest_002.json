@@ -1,0 +1,55 @@
+{
+  "ticket_id": "UPG-49",
+  "delivery_id": "DEL-UPG49-20260901-002",
+  "standard_id": "我的记忆_验收方案_v1（SYS-01 冻结区未收录，沿用归档版）",
+  "code_commit_sha": "3751a990f951b90bc02c867878dfce9aff897c73",
+  "artifact_sha": "bd09deb6de15dc2dad3b43ab709de309794d9f6a59482e27bf30fcddcf011820",
+  "delivered_at": "2026-09-01T18:22:00",
+  "delivered_by": "程序员-C",
+  "evidence_manifest_sha": "65693f77b1f231f60994bf0c16b716cbcef31d97a1e0f73879e74675549fd4cf",
+  "supersedes": "DEL-UPG49-20260901-001（code_commit 5640bce→3751a99 变化，旧 delivery 按交付绑定规范标失效）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG49-R2-evidence/07-search-highlight-fixed.png",
+      "sha256": "2f3b93a1c89b5c5a2d40562325e31ecc34af9295760cb53a88a382d53d94bcd1",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:18:00"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG49-R2-evidence/05-search-highlight.png",
+      "sha256": "a19544b7209249e448e5f18397c3b50f3eefe264e417bad01f838c8f447bf3c0",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:03:00"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "app/src/main/java/com/mov/android/MemorySheet.kt",
+      "sha256": "462f7a8a11895d76a325fadf5045d3789acf15ac7aeab845b3096b1b8a4bba77",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:15:00"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "app/src/main/java/com/mov/android/memory/MemoryRows.kt",
+      "sha256": "e391e5fbb185ecc7fedbb6b24ad98199dd8c73d4d7450726c9cd5274b49c310e",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:15:00"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "app/src/test/java/com/mov/android/memory/MemoryRowsTest.kt",
+      "sha256": "53ceb43a67ae0f463f6a1cfafd69c36aeffe01b68ded6762f7e9f467aa0a95a2",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:15:00"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "app/src/test/java/com/mov/android/MemoryPageContractTest.kt",
+      "sha256": "45cfa5fedc03e25fb6c15b009abeff7ecd4889b628fdbaffa609b85edd29b6ec",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:15:00"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · chips 命名与排版 Demo</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--line:rgba(22,28,48,.08);
+    --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--primary:#0E7C5B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;background:#e9ebf0;color:var(--text);
+    display:flex;justify-content:center;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:420px;min-height:100vh;background:var(--bg);border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 0 30px}
+  .sec{font-size:13px;font-weight:600;color:var(--text3);padding:22px 18px 10px}
+  .sec .tag{font-size:11px;color:var(--primary);font-weight:700;margin-left:6px}
+  .dock{background:var(--s1);border-top:1px solid var(--line);padding:10px 14px 14px}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{display:inline-flex;align-items:center;flex:none;font-size:12px;font-weight:600;color:var(--text2);
+    background:var(--s2);border:1px solid var(--line);border-radius:999px;padding:0 12px;height:30px;cursor:pointer;
+    overflow:hidden;white-space:nowrap;max-width:120px}
+  .chip:hover{background:#e6e9ee}
+  .chip.wide{max-width:260px}
+  .hint{font-size:11px;color:var(--text3);margin-top:6px}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="sec">❌ 修复前（固定 118dp · 裸 ellipsis 硬截）<span class="tag">截成残缺/单字</span></div>
+  <div class="dock">
+    <div class="chips">
+      <span class="chip">DeepSeek V4 Flash（快速对话）</span>
+      <span class="chip">MCP 工具</span>
+      <span class="chip">我的能力</span>
+      <span class="chip">我的订单</span>
+      <span class="chip">我的信息</span>
+    </div>
+    <div class="hint">👀 模型名截成"DeepSeek V..."、"我的能力→我"只剩单字。</div>
+  </div>
+
+  <div class="sec">✅ 修复后（短显示名 · 宽度自适应 · 「…」收尾）<span class="tag">不再残缺单字</span></div>
+  <div class="dock">
+    <div class="chips">
+      <span class="chip" title="DeepSeek V4 Flash（快速对话）">DeepSeek V4</span>
+      <span class="chip" title="MCP 工具市场">MCP 工具</span>
+      <span class="chip">我的能力</span>
+      <span class="chip">我的订单</span>
+      <span class="chip">我的信息</span>
+    </div>
+    <div class="hint">✔ 模型显短名"DeepSeek"、完整名悬浮；功能名留语义前缀，完整名悬浮看。</div>
+  </div>
+
+  <div class="sec">📐 超长 chip 「…」收尾（宽度自适应到上限后，保留语义前缀）</div>
+  <div class="dock">
+    <div class="chips">
+      <span class="chip wide" title="非常非常长的某个功能模块名称完整显示在这里">非常非常长的某个功能模块名称完整显示在这里</span>
+      <span class="chip" title="网页自动化">网页自动化</span>
+    </div>
+    <div class="hint">超上限 → 统一「…」收尾（如"非常非常长的某个功能模块…"），完整名悬浮看；不裸截到单字符。</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+--------- beginning of main
+08-29 17:20:55.055  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:20:55.070  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995254600325100 start obsidian.vault.register
+08-29 17:20:55.078 12755 12755 W [GT]ColdPool#15: type=1400 audit(0.0:2982331): avc:  denied  { getattr } for  path="/sys/kernel/tracing/trace_marker" dev="tracefs" ino=7822 scontext=u:r:untrusted_app:s0:c47,c257,c512,c768 tcontext=u:object_r:debugfs_trace_marker:s0 tclass=file permissive=0 app=com.tencent.mm
+08-29 17:20:55.099 11722 11722 I MOVTEST : MOVTEST_MARK_1787995254600325100 start obsidian.vault.register
+08-29 17:20:55.151  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:20:55.256  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:20:55.314  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995254600325100 end obsidian.vault.register
+08-29 17:20:55.341 11727 11727 I MOVTEST : MOVTEST_MARK_1787995254600325100 end obsidian.vault.register
+08-29 17:20:55.350 10561 10858 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.xiaomi.joyose
+08-29 17:20:55.350 10561 10858 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:20:55.352  9870 15235 D JavaheapMonitor: Java heap used=10M max=384M, proc: com.miui.voicetrigger
+08-29 17:20:55.353  9870 15235 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:20:55.383  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

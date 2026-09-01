@@ -1,0 +1,2 @@
+{"type":"session","version":0,"id":"android-session","createdAt":1787994016815,"delegationDepth":0}
+{"type":"approval/policy","seq":0,"time":1787994099485,"ignorable":true,"data":{"policy":"never"}}

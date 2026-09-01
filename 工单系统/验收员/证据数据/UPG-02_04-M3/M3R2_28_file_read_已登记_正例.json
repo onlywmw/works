@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":42,"result":{"content":[{"type":"text","text":"{ok=true, path=验收测试笔记.md, content=# UPG-04 真机验收\nM3 接线实证：SAF 授权→登记→读写闭环。\n}"}],"isError":false}}

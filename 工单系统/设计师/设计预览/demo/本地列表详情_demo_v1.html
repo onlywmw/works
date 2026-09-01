@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 本机能力 —— 列表/详情 Demo v1</title>
+<style>
+  :root{
+    --bg:#0a0c10;          /* 视口背景 */
+    --s1:#14161b;          /* 卡片画布 */
+    --s2:#1b1e24;          /* 内嵌面板 */
+    --s3:#24272e;          /* 悬停/次级 */
+    --line:rgba(255,255,255,.07);
+    --text:#e6e8ed;
+    --text2:#a3a9b8;
+    --text3:#6f7686;
+    --acc:#eef1f5;         /* 强调/主操作 */
+    --on-acc:#14161b;
+    --blue:#5b8dee;        /* 市场 badge */
+    --gray:#41444d;        /* 系统 badge */
+    --ok:#3fbf7f;          /* 健康绿 */
+    --warn:#e0a03a;        /* 注意黄 */
+    --danger:#e5675b;      /* 危险红 */
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#05070a;color:var(--text);
+    display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+  /* 手机框 */
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  @media(min-width:421px){.phone{margin:24px 0;border-radius:18px;min-height:calc(100vh-48px);box-shadow:0 20px 60px rgba(0,0,0,.6)}}
+
+  /* 顶栏 */
+  .top{height:54px;display:flex;align-items:center;gap:8px;padding:0 8px;
+    border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+  .top .back{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+  .top .back:active{background:var(--s3)}
+  .top .ttl{flex:1;text-align:center;font-size:17px;font-weight:600;margin-right:38px}
+  .top .sp{width:38px}
+
+  .wrap{padding:12px 14px 40px}
+  .muted{color:var(--text3);font-size:12.5px}
+
+  /* 轻量统计条（一级，克制一行） */
+  .stat{margin:2px 2px 14px;color:var(--text3);font-size:12.5px;display:flex;gap:10px;align-items:center}
+  .stat b{color:var(--acc);font-weight:600}
+
+  .sec{margin:4px 2px 8px;color:var(--text3);font-size:12.5px;font-weight:600;letter-spacing:.02em}
+
+  /* 一级：列表行（只有名称+副题+入口chevron+克制的状态点） */
+  .list{display:flex;flex-direction:column;gap:8px}
+  .row{
+    display:flex;align-items:center;gap:12px;padding:13px 14px;
+    background:var(--s1);border-radius:14px;cursor:pointer;border:1px solid var(--line);
+    transition:background .12s;
+  }
+  .row:active{background:var(--s3)}
+  .ic{width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;font-size:21px}
+  .ic.builtin{background:var(--acc);color:var(--on-acc)}
+  .ic.market{background:rgba(91,141,238,.16)}
+  .ic.system{background:var(--s3)}
+  .row .mid{flex:1;min-width:0}
+  .row .nm{font-size:15px;font-weight:600;display:flex;align-items:center;gap:6px}
+  .badge{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:99px;flex:none}
+  .badge.builtin{background:var(--acc);color:var(--on-acc)}
+  .badge.market{background:rgba(91,141,238,.2);color:#8fb0f2}
+  .badge.system{background:var(--gray);color:var(--text2)}
+  .row .ds{font-size:12.5px;color:var(--text3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .rgt{display:flex;align-items:center;gap:8px;flex:none}
+  .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .dot.ok{background:var(--ok)}
+  .dot.warn{background:var(--warn)}
+  .dot.err{background:var(--danger)}
+  .chev{color:var(--text3);font-size:15px}
+
+  /* 空态 */
+  .empty{padding:60px 20px;text-align:center;color:var(--text3);font-size:13.5px}
+
+  /* 二级：详情 */
+  .hd{display:flex;gap:14px;align-items:center;padding:8px 0 4px}
+  .hd .ic{width:52px;height:52px;font-size:26px;border-radius:14px}
+  .hd .ttls{flex:1;min-width:0}
+  .hd .nm{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .hd .ds{font-size:13px;color:var(--text3);margin-top:3px}
+  .sw{flex:none;width:44px;height:26px;border-radius:99px;background:var(--s3);position:relative;transition:.18s}
+  .sw.on{background:var(--acc)}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.18s}
+  .sw.on::after{left:21px;background:var(--on-acc)}
+
+  .stat-h{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text2)}
+  .stat-h .dot{width:7px;height:7px}
+
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+  .card .ct{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .card .ct a{color:var(--text3);font-weight:500;font-size:12px;cursor:pointer}
+
+  /* 预设指令 */
+  .preset{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:13.5px;display:flex;gap:8px;align-items:flex-start}
+  .preset .q{font-size:12px;color:var(--text3);margin-top:1px}
+  .preset btn{margin-left:auto}
+  .btn{cursor:pointer;font-weight:600;font-size:13px;padding:7px 12px;border-radius:9px;flex:none;white-space:nowrap}
+  .btn.pr{background:var(--acc);color:var(--on-acc)}
+  .btn.gh{background:var(--s2);color:var(--text2);border:1px solid var(--line)}
+
+  /* 工具清单 */
+  .tool{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .tool:last-child{border-bottom:none}
+  .tool .tn{font-family:"SF Mono",ui-monospace,monospace;font-size:12.3px;color:var(--acc);flex:none;min-width:118px}
+  .tool .td{flex:1;font-size:12.5px;color:var(--text2);min-width:0}
+  .perm{flex:none;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:99px}
+  .perm.free{background:rgba(63,191,127,.14);color:#57d391}
+  .perm.ask{background:rgba(224,160,58,.15);color:#eab36d}
+  .perm.gate{background:rgba(229,103,91,.16);color:#ef8577}
+
+  /* 权限说明 */
+  .perm-guide{display:flex;gap:14px;margin-top:12px;font-size:11.5px;color:var(--text3);flex-wrap:wrap}
+  .perm-guide span{display:inline-flex;align-items:center;gap:5px}
+
+  /* 底部操作 */
+  .foot{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .btn.block{width:100%;text-align:center;padding:13px;border-radius:12px;font-size:14px}
+  .btn.danger{background:rgba(229,103,91,.12);color:var(--danger);border:1px solid rgba(229,103,91,.22)}
+
+  .auth{display:flex;align-items:center;gap:10px;background:var(--s2);border:1px solid rgba(224,160,58,.25);border-radius:10px;padding:11px 12px;margin-top:10px}
+  .auth .tx{flex:1;font-size:12.8px;color:var(--text2)}
+
+  /* 视图切换（preview 用） */
+  .modebar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;
+    background:rgba(0,0,0,.62);border:1px solid var(--line);padding:6px;border-radius:99px;backdrop-filter:blur(8px);z-index:20}
+  .modebar button{color:var(--text2);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:99px;cursor:pointer}
+  .modebar button.on{background:var(--acc);color:var(--on-acc)}
+
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <!-- 顶栏：随视图切换标题 -->
+  <div class="top">
+    <button class="back" id="backBtn">‹</button>
+    <div class="ttl" id="topTitle">本机能力</div>
+    <div class="sp"></div>
+  </div>
+
+  <div class="wrap">
+    <!-- ===== 一级：简约列表 ===== -->
+    <div id="viewList">
+      <div class="stat">
+        <span>共 <b>4</b> 个来源 · <b>31</b> 个工具</span>
+        <span class="dot ok" style="display:none"></span>
+      </div>
+
+      <div class="sec">已安装</div>
+      <div class="list" id="listMount"></div>
+
+      <div class="sec" style="margin-top:18px">AI 基础能力</div>
+      <div class="list" id="listSys"></div>
+    </div>
+
+    <!-- ===== 二级：详情 ===== -->
+    <div id="viewDetail" hidden>
+      <div class="hd">
+        <div class="ic" id="d_ic"></div>
+        <div class="ttls">
+          <div class="nm"><span id="d_name">—</span><span class="badge" id="d_badge"></span></div>
+          <div class="ds" id="d_desc">—</div>
+        </div>
+        <div class="sw" id="d_sw" title="启用/停用"></div>
+      </div>
+
+      <div class="stat-h" id="d_health"></div>
+
+      <!-- 预设指令 -->
+      <div class="card">
+        <div class="ct">快捷指令 <a id="d_resetPreset">重设</a></div>
+        <div class="preset">
+          <div class="q" id="d_preset">—</div>
+          <button class="btn pr" id="d_presetBtn">点它回填</button>
+        </div>
+      </div>
+
+      <!-- 工具清单 -->
+      <div class="card">
+        <div class="ct">工具清单 <span class="muted" id="d_toolCount"></span></div>
+        <div id="d_toolList"></div>
+      </div>
+
+      <!-- 权限分布 -->
+      <div class="card" style="margin-top:12px">
+        <div class="ct">权限分布</div>
+        <div class="tool" style="cursor:default">
+          <span class="tn">自由执行 free</span>
+          <span class="td" id="d_permfree">无需弹窗，直接放行</span>
+        </div>
+        <div class="tool" style="cursor:default">
+          <span class="tn">询问 ask</span>
+          <span class="td" id="d_permask">执行前弹窗确认</span>
+        </div>
+        <div class="tool" style="cursor:default">
+          <span class="tn">拦截 gate</span>
+          <span class="td" id="d_permgate">写入/高危，网关拦</span>
+        </div>
+        <div class="perm-guide">
+          <span><i class="dot ok"></i>健康</span>
+          <span><i class="dot warn"></i>需授权</span>
+          <span><i class="dot err"></i>不可达</span>
+        </div>
+      </div>
+
+      <!-- SAF 授权 -->
+      <div class="auth" id="d_auth" hidden>
+        <div class="tx">需要 SAF 授权才能读写 Obsidian 仓库</div>
+        <button class="btn pr" id="d_authBtn">去授权</button>
+      </div>
+
+      <!-- 底部操作 -->
+      <div class="foot" id="d_foot"></div>
+    </div>
+
+    <div class="empty" id="empty" hidden>本地暂无已安装能力</div>
+  </div>
+</div>
+
+<div class="modebar">
+  <button id="mList" class="on">一级 · 列表</button>
+  <button id="mDetail">二级 · 详情</button>
+</div>
+
+<script>
+/* —— Demo 数据（源：LocalOverview.kt 真实结构）—— */
+const PACKS = [
+  {
+    id:'device-control', kind:'builtin', badge:'内置', icon:'🛠️',
+    name:'设备控制', desc:'网络 / 存储 / 应用 / 日历 / 相机 / 扫码 / 截屏 / 计时器',
+    health:'ok', enabled:true, on:(id)=>console.log('toggle',id),
+    preset:'帮我看看设备的存储空间还剩多少',
+    tools:[
+      ['device.getStorage','查看存储使用情况','free'],
+      ['device.getNetwork','网络状态与连接信息','free'],
+      ['device.listApps','已安装应用清单','free'],
+      ['device.getBattery','电池与电量信息','free'],
+      ['camera.capture','拍照','ask'],
+      ['qr.scan','扫描二维码','ask'],
+      ['screen.capture','截屏','ask'],
+      ['sensor.list','传感器数据','free'],
+      ['calendar.query','查看日历日程','free'],
+    ],
+  },
+  {
+    id:'scene-12306', kind:'builtin', badge:'内置', icon:'🚄',
+    name:'生活场景 · 12306', desc:'查车票 / 站点 / 行程',
+    health:'ok', enabled:true, preset:'帮我查北京到上海的高铁',
+    tools:[
+      ['scene.searchTrains','余票/车次查询','free'],
+      ['scene.queryStations','站点解析','free'],
+    ],
+  },
+  {
+    id:'obsidian', kind:'builtin', badge:'内置', icon:'📓',
+    name:'笔记 · Obsidian', desc:'读写你的 Obsidian 仓库（SAF 授权）',
+    health:'warn', enabled:true, auth:false, preset:'把这条建议记到笔记',
+    tools:[
+      ['obsidian.file.read','读取笔记','free'],
+      ['obsidian.file.write','写入/新建笔记','gate'],
+      ['obsidian.vault','列出仓库笔记','ask'],
+    ],
+  },
+  {
+    id:'mcp.example', kind:'market', badge:'市场', icon:'📦',
+    name:'示例市场包 · mcp.example', desc:'来自市场安装 · server 名示例',
+    health:'err', enabled:true, preset:'帮我使用「示例市场包」',
+    tools:[
+      ['mcp.example.query','示例查询','free'],
+      ['mcp.example.list','示例列表','free'],
+    ],
+  },
+];
+
+const SYS = {
+  id:'system-core', kind:'system', badge:'系统', icon:'⚙️',
+  name:'系统基础能力', desc:'AI 基本功（不可关闭）',
+  health:'ok', enabled:true, locked:true, preset:'',
+  tools:[
+    ['file.read','读文件','free'],
+    ['file.write','写文件','ask'],
+    ['note.create','写便签','free'],
+    ['memory.save','记住事情','free'],
+    ['memory.load','读取记忆','free'],
+    ['memory.list','记忆清单','free'],
+    ['memory.search','检索记忆','free'],
+    ['memory.delete','移除记忆','gate'],
+  ],
+};
+
+const allMount = PACKS.filter(p=>p.kind!=='system');
+const listMount = document.getElementById('listMount');
+const listSys = document.getElementById('listSys');
+const topTitle = document.getElementById('topTitle');
+const backBtn = document.getElementById('backBtn');
+
+function rowHTML(p){
+  const dot = p.health==='ok'?'ok':p.health==='warn'?'warn':'err';
+  return `<div class="row" data-id="${p.id}">
+    <div class="ic ${p.kind}">${p.icon}</div>
+    <div class="mid">
+      <div class="nm">${p.name}<span class="badge ${p.kind}">${p.badge}</span></div>
+      <div class="ds">${p.desc}</div>
+    </div>
+    <div class="rgt"><span class="dot ${dot}"></span><span class="chev">›</span></div>
+  </div>`;
+}
+listMount.innerHTML = allMount.map(rowHTML).join('');
+listSys.innerHTML = rowHTML(SYS);
+document.querySelectorAll('.row').forEach(el=>{
+  el.addEventListener('click',()=>openDetail(el.dataset.id));
+});
+
+/* —— 一级/二级 视图切换 —— */
+const mode = {list:true};
+function show(v){
+  document.getElementById('viewList').hidden = v!=='list';
+  document.getElementById('viewDetail').hidden = v!=='detail';
+  document.getElementById('mList').classList.toggle('on',v==='list');
+  document.getElementById('mDetail').classList.toggle('on',v==='detail');
+}
+
+/* —— 详情渲染 —— */
+const permTxt={free:'自由',ask:'询问',gate:'拦截'};
+function permCls(c){return c==='free'?'perm free':c==='ask'?'perm ask':'perm gate'}
+function openDetail(id){
+  const p = [...allMount, SYS].find(x=>x.id===id);
+  if(!p) return;
+  document.getElementById('d_ic').className = 'ic '+p.kind;
+  document.getElementById('d_ic').textContent = p.icon;
+  const bn=document.getElementById('d_badge'); bn.textContent=p.badge; bn.className='badge '+p.kind;
+  document.getElementById('d_name').textContent=p.name;
+  document.getElementById('d_desc').textContent=p.desc;
+  const sw=document.getElementById('d_sw'); sw.classList.toggle('on',p.enabled); sw.style.pointerEvents=p.locked?'none':'auto'; sw.style.opacity=p.locked?0.4:1; sw.onclick=()=>{ if(p.locked)return; p.enabled=!p.enabled; sw.classList.toggle('on',p.enabled); };
+  const hstat=document.getElementById('d_health');
+  if(p.health==='ok') hstat.innerHTML='<span class="dot ok"></span>运行正常 · 全部工具就绪';
+  else if(p.health==='warn') hstat.innerHTML='<span class="dot warn"></span>未授权 · 部分能力待激活';
+  else hstat.innerHTML='<span class="dot err"></span>服务不可达 · 请检查安装';
+  document.getElementById('d_preset').textContent = p.preset || '（该包无预设指令）';
+  document.getElementById('d_presetBtn').style.display = p.preset?'inline-block':'none';
+  // 工具清单
+  let fs=0,as=0,ga=0;
+  document.getElementById('d_toolList').innerHTML = p.tools.map(([n,d,c])=>{
+    if(c==='free')fs++;else if(c==='ask')as++;else ga++;
+    return `<div class="tool"><span class="tn">${n}</span><span class="td">${d}</span><span class="${permCls(c)}">${permTxt[c]}</span></div>`;
+  }).join('');
+  document.getElementById('d_toolCount').textContent = `${p.tools.length} 个工具`;
+  document.getElementById('d_permfree').textContent = `${fs} 个 · 无需弹窗直接放行`;
+  document.getElementById('d_permask').textContent = `${as} 个 · 执行前弹窗确认`;
+  document.getElementById('d_permgate').textContent = `${ga} 个 · 写入/高危网关拦截`;
+  // SAF 授权
+  const auth=document.getElementById('d_auth'); auth.hidden = !(p.auth===false);
+  // 底部操作
+  let foot='';
+  if(!p.locked){ foot += `<button class="btn block ${p.enabled?'danger':''}" id="footToggle">${p.enabled?'停用':'启用'}该包</button>`; }
+  if(p.kind==='market'){ foot += `<button class="btn block danger">卸载</button>`; }
+  document.getElementById('d_foot').innerHTML=foot;
+  const ft=document.getElementById('footToggle'); if(ft) ft.onclick=()=>{ p.enabled=!p.enabled; sw.classList.toggle('on',p.enabled); };
+  document.getElementById('d_presetBtn').onclick=()=>topTitle.textContent=p.name+' · 已回填输入框✓';
+  document.getElementById('d_authBtn').onclick=()=>{ auth.hidden=true; p.auth=null; };
+  topTitle.textContent = p.name;
+  show('detail');
+}
+function goList(){ show('list'); topTitle.textContent='本机能力'; }
+backBtn.onclick=goList;
+document.getElementById('mList').onclick=goList;
+document.getElementById('mDetail').onclick=()=>openDetail(allMount[0].id);
+</script>
+</body>
+</html>

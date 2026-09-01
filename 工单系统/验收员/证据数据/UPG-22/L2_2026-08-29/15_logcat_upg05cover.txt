@@ -1,0 +1,2 @@
+--------- beginning of main
+08-29 12:20:29.022 13768 13844 I UPG05COVER: cover sess=765-059f fp=-234924519 entries=2

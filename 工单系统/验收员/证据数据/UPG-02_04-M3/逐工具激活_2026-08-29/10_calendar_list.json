@@ -1,0 +1,17 @@
+{
+ "tool": "calendar.list",
+ "args": {},
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 45,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=false, error=需要系统日历权限（READ_CALENDAR），请在系统设置中授权后重试}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

@@ -1,0 +1,4 @@
+判据3 同投影对比（抽 file.read）：
+tools/list desc: 读取指定路径的文件内容（限沙盒根目录内，拒绝路径穿越）
+代码登记层 BuiltinMcpTools.kt:114 description: 读取指定路径的文件内容（限沙盒根目录内，拒绝路径穿越）
+→ 逐字一致，MCP 面与登记层单源投影同文 ✓

@@ -1,0 +1,7 @@
+UPG-13 追加#9 真机三段 dump 重放（emulator-5554, feat/upg13 @ 6410cb3, 2026-08-27）
+
+【段1 重启在·code 模式】 sendBtn(获取验证码)="[733,1707][1006,1844]" passField=无
+【段2 点密码 tab】       sendBtn=null(已隐藏)                    passField=可见
+【段3 切回验证码 tab】   sendBtn="[733,1707][1006,1844]"(恢复)    passField=无
+
+结论: 切回验证码模式后发码按钮恢复，bounds 与初始一致；「只藏不回」病根(upg09 预存)修复实证。

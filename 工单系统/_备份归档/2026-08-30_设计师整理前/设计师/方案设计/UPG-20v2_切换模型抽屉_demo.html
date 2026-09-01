@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chips 气泡 Demo · UPG-20 v5（切换模型 + MCP 工具）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system,"PingFang SC","Inter",sans-serif; }
+  body { background:#e5e5e8; min-height:100vh; display:flex; align-items:center; justify-content:center; }
+  .phone { width:375px; height:720px; background:#f7f7f8; border-radius:28px; overflow:hidden; position:relative; box-shadow:0 12px 40px rgba(0,0,0,.18); display:flex; flex-direction:column; }
+  .statusbar { height:44px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; color:#1a1a1a; }
+  .chat { flex:1; padding:16px; }
+  .bubble { background:#fff; border:1px solid #e6e6e9; border-radius:14px; padding:12px 14px; margin-bottom:10px; color:#3a3a3e; font-size:13px; }
+  .dock { padding:10px 0 18px; position:relative; }
+  .chips { display:flex; gap:8px; margin-bottom:10px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; padding:0 12px; }
+  .chips::-webkit-scrollbar { display:none; }
+  .chip { display:flex; align-items:center; justify-content:center; gap:5px; background:#fff; border:1px solid #e0e0e3; border-radius:999px; padding:6px 0; font-size:12px; color:#4a4a4e; cursor:pointer; user-select:none; width:118px; min-width:118px; flex-shrink:0; }
+  .chip span.lbl { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:88px; }
+  .chip.on { border-color:#1a1a1a; color:#1a1a1a; font-weight:600; }
+  .composer { background:#fff; border:1px solid #e0e0e3; border-radius:20px; height:44px; display:flex; align-items:center; padding:0 14px; color:#b0b0b5; font-size:13px; margin:0 12px; }
+
+  /* chip 上方小气泡 */
+  .pop { position:absolute; bottom:118px; width:236px; background:#fff; border:1px solid #e8e8eb; border-radius:14px; box-shadow:0 8px 28px rgba(0,0,0,.12); padding:5px; opacity:0; pointer-events:none; transform:translateY(6px); transition:all .16s ease; z-index:9; }
+  .pop.show { opacity:1; pointer-events:auto; transform:translateY(0); }
+  .pop .pt { font-size:11px; color:#9a9aa0; padding:7px 10px 3px; display:flex; align-items:center; gap:4px; }
+  .pop .pt .bk { cursor:pointer; color:#4a4a4e; font-weight:600; }
+  .opt { display:flex; align-items:center; justify-content:space-between; padding:9px 10px; border-radius:9px; cursor:pointer; }
+  opt:active, .opt:hover { background:#f3f3f5; }
+  .opt .on { font-size:13px; color:#1a1a1a; display:flex; align-items:center; gap:6px; }
+  .opt .od { font-size:10px; color:#9a9aa0; margin-top:1px; }
+  .opt .ck { font-size:12px; font-weight:700; color:#1a1a1a; }
+  .opt .ar { color:#c0c0c4; font-size:12px; }
+  .tag { font-size:9px; padding:1px 4px; border-radius:4px; background:#1a1a1a; color:#fff; font-weight:500; }
+  .radio { width:14px; height:14px; border-radius:50%; border:1.5px solid #c8c8cc; flex-shrink:0; }
+  .opt.sel .radio { border:4.5px solid #1a1a1a; }
+  /* 工具状态点 */
+  .st { width:7px; height:7px; border-radius:50%; background:#1a1a1a; flex-shrink:0; }
+  .st.off { background:#d4d4d8; }
+  .sttxt { font-size:10px; color:#9a9aa0; flex-shrink:0; }
+  /* 底部市场入口 */
+  .mk { margin-top:4px; border-top:1px solid #f2f2f4; padding:10px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; border-radius:9px; }
+  .mk:hover { background:#f3f3f5; }
+  .mk .t { font-size:13px; font-weight:600; color:#1a1a1a; }
+  .dim { position:absolute; inset:0; z-index:8; display:none; }
+  body.haspop .dim { display:block; }
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+  <div class="statusbar">MOV</div>
+  <div class="chat"><div class="bubble">你好，我是 MOV AI。</div></div>
+
+  <div class="dock" id="dock">
+    <div class="pop" id="pop">
+      <div class="pt" id="popTitle"></div>
+      <div id="popBody"></div>
+      <div id="popFoot"></div>
+    </div>
+
+    <div class="chips">
+      <div class="chip" id="modelChip" onclick="togglePop('model')">
+        <span class="lbl" id="chipLabel">DeepSeek V4 Flash · 快速</span><span>▾</span>
+      </div>
+      <div class="chip" id="mcpChip" onclick="togglePop('mcp')">
+        <span class="lbl">MCP 工具</span><span>▾</span>
+      </div>
+      <div class="chip"><span class="lbl">拍照 OCR</span></div>
+      <div class="chip"><span class="lbl">总结文件</span></div>
+      <div class="chip"><span class="lbl">语音输入</span></div>
+    </div>
+    <div class="composer">给 MOV AI 发消息…</div>
+  </div>
+  <div class="dim" onclick="closePop()"></div>
+</div>
+
+<script>
+/* ========== 数据 ========== */
+const MODELS = [
+  { id:'ds-flash', name:'DeepSeek V4 Flash', desc:'日常问答更快', free:false },
+  { id:'ds-pro',   name:'DeepSeek V4',       desc:'复杂任务更强', free:false },
+  { id:'glm',      name:'GLM-5.3-Flash',     desc:'不限量', free:true },
+  { id:'kimi',     name:'Kimi K2',           desc:'长文本写作', free:false },
+];
+const TOOL_GROUPS = [
+  { id:'sys',   name:'系统工具',   on:true,  tools:[['文件读写',1],['拍照 OCR',1],['打开 App',1],['系统信息',0]] },
+  { id:'browser', name:'浏览器自动化', on:true, tools:[['打开网页',1],['点击/输入',1],['截图',1],['读取内容',1]] },
+  { id:'travel', name:'出行服务',  on:true,  tools:[['12306 查票',1],['车站查询',1]] },
+  { id:'vault', name:'信息库',     on:false, tools:[['保存信息',0],['查询信息',0]] },
+  { id:'market', name:'市场包',    on:true,  tools:[['（暂无已安装工具包）',0]] },
+];
+let current = { model:'ds-flash', mode:'快速' };
+let candModel = null;
+let popType = null;
+
+const pop = document.getElementById('pop');
+const popTitle = document.getElementById('popTitle');
+const popBody = document.getElementById('popBody');
+const popFoot = document.getElementById('popFoot');
+
+/* ========== 切换模型（两级） ========== */
+function renderL1() {
+  popTitle.innerHTML = '切换模型';
+  popFoot.innerHTML = '';
+  popBody.innerHTML = '';
+  MODELS.forEach(m => {
+    const isCur = current.model === m.id;
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = `
+      <div>
+        <div class="on">${m.name}${m.free ? ' <span class="tag">免费</span>' : ''}</div>
+        <div class="od">${m.desc}${isCur ? ` · 当前:${current.mode}` : ''}</div>
+      </div>
+      ${isCur ? '<span class="ck">✓</span>' : '<span class="ar">›</span>'}`;
+    div.onclick = () => renderL2(m.id);
+    popBody.appendChild(div);
+  });
+}
+function renderL2(id) {
+  candModel = id;
+  const m = MODELS.find(x => x.id === id);
+  popTitle.innerHTML = `<span class="bk" onclick="renderL1()">‹</span> ${m.name}`;
+  popFoot.innerHTML = '';
+  popBody.innerHTML = '';
+  [['快速','日常问答，响应更快'], ['深度思考','复杂推理更稳']].forEach(([md, desc]) => {
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = `<div><div class="on">${md}</div><div class="od">${desc}</div></div><div class="radio"></div>`;
+    div.onclick = () => pickMode(md);
+    popBody.appendChild(div);
+  });
+}
+function pickMode(md) {
+  current = { model: candModel, mode: md };
+  const m = MODELS.find(x => x.id === candModel);
+  document.getElementById('chipLabel').textContent = `${m.name} · ${md}`;
+  closePop();
+}
+
+/* ========== MCP 工具（两级 + 市场入口） ========== */
+function renderMcpL1() {
+  popTitle.innerHTML = 'MCP 工具';
+  popBody.innerHTML = '';
+  TOOL_GROUPS.forEach(g => {
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="st ${g.on ? '' : 'off'}"></span>
+        <div>
+          <div class="on">${g.name}</div>
+          <div class="od">${g.tools.length} 个工具 · ${g.on ? '已启用' : '已停用'}</div>
+        </div>
+      </div>
+      <span class="ar">›</span>`;
+    div.onclick = () => renderMcpL2(g.id);
+    popBody.appendChild(div);
+  });
+  popFoot.innerHTML = `
+    <div class="mk" onclick="alert('跳转：工具市场（MarketPageActivity）')">
+      <span class="t">打开工具市场</span><span class="ar">›</span>
+    </div>`;
+}
+function renderMcpL2(gid) {
+  const g = TOOL_GROUPS.find(x => x.id === gid);
+  popTitle.innerHTML = `<span class="bk" onclick="renderMcpL1()">‹</span> ${g.name}`;
+  popFoot.innerHTML = '';
+  popBody.innerHTML = '';
+  g.tools.forEach(([name, on]) => {
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="st ${on ? '' : 'off'}"></span>
+        <div class="on" style="${on ? '' : 'color:#9a9aa0;'}">${name}</div>
+      </div>
+      <span class="sttxt">${on ? '启用' : '停用'}</span>`;
+    popBody.appendChild(div);
+  });
+}
+
+/* ========== 气泡开关 ========== */
+function togglePop(type) {
+  const wasOpen = pop.classList.contains('show') && popType === type;
+  closePop();
+  if (wasOpen) return;
+  popType = type;
+  // 气泡跟随 chip 水平位置（防越界）
+  const chip = document.getElementById(type === 'model' ? 'modelChip' : 'mcpChip');
+  const dockRect = document.getElementById('dock').getBoundingClientRect();
+  const chipRect = chip.getBoundingClientRect();
+  let left = chipRect.left - dockRect.left;
+  left = Math.max(8, Math.min(left, dockRect.width - 236 - 8));
+  pop.style.left = left + 'px';
+  if (type === 'model') renderL1(); else renderMcpL1();
+  pop.classList.add('show');
+  document.body.classList.add('haspop');
+  chip.classList.add('on');
+}
+function closePop() {
+  pop.classList.remove('show');
+  document.body.classList.remove('haspop');
+  document.getElementById('modelChip').classList.remove('on');
+  document.getElementById('mcpChip').classList.remove('on');
+  popType = null;
+}
+</script>
+</body>
+</html>

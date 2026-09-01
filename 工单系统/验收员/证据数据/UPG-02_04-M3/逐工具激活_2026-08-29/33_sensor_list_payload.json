@@ -1,0 +1,18 @@
+{
+ "tool": "sensor.list",
+ "args": {},
+ "ts": "2026-08-29T17:04:41",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 94281,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, count=18, sensors=[{name=Goldfish 3-axis Accelerometer, type=android.sensor.accelerometer, vendor=The Android Open Source Project, maxRange=39.300102}, {name=Goldfish 3-axis Gyroscope, type=android.sensor.gyroscope, vendor=The Android Open Source Project, maxRange=16.46}, {name=Goldfish 3-axis Magnetic field sensor, type=android.sensor.magnetic_field, vendor=The Android Open Source Project, maxRange=2000.0}, {name=Goldfish Orientation sensor, type=android.sensor.orientation, vendor=The Android Open Source Project, maxRange=360.0}, {name=Goldfish Ambient Temperature sensor, type=android.sensor.ambient_temperature, vendor=The Android Open Source Project, maxRange=80.0}, {name=Goldfish Proximity sensor, type=android.sensor.proximity, vendor=The Android Open Source Project, maxRange=1.0}, {name=Goldfish Light sensor, type=android.sensor.light, vendor=The Android Open Source Project, maxRange=40000.0}, {name=Goldfish Pressure sensor, type=android.sensor.pressure, vendor=The Android Open Source Project, maxRange=800.0}, {name=Goldfish Humidity sensor, type=android.sensor.relative_humidity, vendor=The Android Open Source Project, maxRange=100.0}, {name=Goldfish 3-axis Magnetic field sensor (uncalibrated), type=android.sensor.magnetic_field_uncalibrated, vendor=The Android Open Source Project, maxRange=2000.0}, {name=Goldfish 3-axis Gyroscope (uncalibrated), type=android.sensor.gyroscope_uncalibrated, vendor=The Android Open Source Project, maxRange=16.46}, {name=Goldfish 3-axis Accelerometer Uncalibrated, type=android.sensor.accelerometer_uncalibrated, vendor=The Android Open Source Project, maxRange=39.300102}, {name=Game Rotation Vector Sensor, type=android.sensor.game_rotation_vector, vendor=AOSP, maxRange=1.0}, {name=GeoMag Rotation Vector Sensor, type=android.sensor.geomagnetic_rotation_vector, vendor=AOSP, maxRange=1.0}, {name=Gravity Sensor, type=android.sensor.gravity, vendor=AOSP, maxRange=19.6133}, {name=Linear Acceleration Sensor, type=android.sensor.linear_acceleration, vendor=AOSP, maxRange=19.6133}, {name=Rotation Vector Sensor, type=android.sensor.rotation_vector, vendor=AOSP, maxRange=1.0}, {name=Orientation Sensor, type=android.sensor.orientation, vendor=AOSP, maxRange=360.0}]}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "tool": "device.timer",
+ "args": {
+  "delaySec": 60,
+  "message": "UPG02验收timer_0829"
+ },
+ "ts": "2026-08-29T17:13:19",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 94799,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, id=timer-1787994793924, fireAt=2026-08-29 09:14:13}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

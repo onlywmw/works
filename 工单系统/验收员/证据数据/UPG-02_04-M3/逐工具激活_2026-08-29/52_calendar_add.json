@@ -1,0 +1,21 @@
+{
+ "tool": "calendar.add",
+ "args": {
+  "title": "UPG02 probe event",
+  "beginMs": 1787993166594,
+  "endMs": 1787996766594
+ },
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 52,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, eventUri=content://com.android.calendar/events/1}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

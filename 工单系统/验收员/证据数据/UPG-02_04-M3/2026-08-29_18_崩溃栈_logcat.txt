@@ -1,0 +1,913 @@
+--------- beginning of main
+08-29 02:57:22.773   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:22.781   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:22.782   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:22.802   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:22.804   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:22.805   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:22.806   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+--------- beginning of system
+08-29 02:57:22.809   705   705 D BatterySaverPolicy: accessibility changed to false, updating policy.
+08-29 02:57:23.566   705  2294 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:23.567   705  2294 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:23.570   705  2294 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:24.423   979  1046 V WindowManagerShell: Transition requested (#188): android.os.BinderProxy@aeecba3 TransitionRequestInfo { type = CLOSE, triggerTask = null, pipChange = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 188 }
+08-29 02:57:24.428   705   950 W AS.PlaybackActivityMon: No piid assigned for invalid/internal port id 15
+08-29 02:57:24.448   555   659 D AudioFlinger: mixer(0x779e2229c770) throttle end: throttle time(20)
+08-29 02:57:24.456   979   979 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.app.Dialog$$ExternalSyntheticLambda2@60fa033
+08-29 02:57:24.466   705  1680 D CoreBackPreview: Window{f5cdc07 u0 com.android.systemui}: Setting back callback null
+08-29 02:57:24.481   979  1046 W Looper  : Slow dispatch took 43ms wmshell.main app=com.android.systemui main=false group=TOP_APP h=android.os.Handler c=com.android.wm.shell.transition.Transitions$ShellTransitionImpl$$ExternalSyntheticLambda1@973aa59 m=0
+08-29 02:57:24.522   559   559 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-29 02:57:24.546   979  1129 D HWUI    : endAllActiveAnimators on 0x7814c49383e0 (InsetDrawable) with handle 0x7814e47bc6d0
+08-29 02:57:24.586   705  1680 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:24.586   705  1680 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:24.596   559   599 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-29 02:57:24.621   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:24.639   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:24.658   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:24.669   705  1624 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:24.679   979  1444 V WindowManagerShell: onTransitionReady(transaction=3027951953155)
+08-29 02:57:24.684   705   761 V WindowManager: Sent Transition (#188) createdAt=08-29 02:57:24.421 via request=TransitionRequestInfo { type = CLOSE, triggerTask = null, pipChange = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 188 }
+08-29 02:57:24.701   979  1046 V WindowManagerShell: onTransitionReady (#188) android.os.BinderProxy@aeecba3: {id=188 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+08-29 02:57:24.701   979  1046 V WindowManagerShell:         {m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{187873402 u0 com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity)/@0x7187eff sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 bc=ffeeedf4 component=com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity opt={t=FROM_STYLE mUserId=0}}
+08-29 02:57:24.701   979  1046 V WindowManagerShell:     ]}
+08-29 02:57:24.701   979  1046 V WindowManagerShell: Playing animation for (#188) android.os.BinderProxy@aeecba3@0
+08-29 02:57:24.701   979  1046 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+08-29 02:57:24.701   979  1046 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=188 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{187873402 u0 com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity)/@0x7187eff sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 bc=ffeeedf4 component=com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity opt={t=FROM_STYLE mUserId=0}}]}
+08-29 02:57:24.702   979  1046 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null taskFragmentToken=android.os.BinderProxy@a890d0b windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@fd617e8, appThread = android.app.IApplicationThread$Stub$Proxy@ee10e01, debugName = overlayBackTransition }}
+08-29 02:57:24.702   979  1046 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@ddd74a6, appThread = android.app.IApplicationThread$Stub$Proxy@f396ee7, debugName = LauncherToDream }}
+08-29 02:57:24.710   705   761 V WindowManager:     startWCT=WindowContainerTransaction { changes= {} hops= [] errorCallbackToken=null taskFragmentOrganizer=null }
+08-29 02:57:24.713   979  1046 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null windowingMode=undefined},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined},{NOT atype=undefined independent=true modes=[] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null customAnim=true windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@8e8ca94, appThread = android.app.IApplicationThread$Stub$Proxy@b4f893d, debugName = QuickstepLaunchHome }}
+08-29 02:57:24.713   979  1046 V WindowManagerShell:  Delegate animation for (#188) to null
+08-29 02:57:24.713   979  1046 V WindowManagerShell: start default transition animation, info = {id=188 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{187873402 u0 com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity)/@0x7187eff sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 bc=ffeeedf4 component=com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity opt={t=FROM_STYLE mUserId=0}}]}
+08-29 02:57:24.714   979  1046 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@59791b8 animAttr=0x7 type=CLOSE isEntrance=false
+08-29 02:57:24.715   705   761 V WindowManager:     info={id=188 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+08-29 02:57:24.715   705   761 V WindowManager:         {m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{187873402 u0 com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity)/@0xf8ed4f7 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 bc=ffeeedf4 component=com.android.systemui/.mediaprojection.permission.MediaProjectionPermissionActivity opt={t=FROM_STYLE mUserId=0}}
+08-29 02:57:24.715   705   761 V WindowManager:     ]}
+08-29 02:57:24.721   705   764 V WindowManager: Unknown focus tokens, dropping reportFocusChanged
+08-29 02:57:24.723   705  1624 I ActivityManager: Background started FGS: Allowed [callingPackage: com.mov.android; callingUid: 10252; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=com.mov.android/.ScreenCaptureService (has extras) }; code:PROC_STATE_TOP; tempAllowListReason:<null>; allowWiu:12; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+08-29 02:57:24.726   979  1046 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@5ef3daf
+08-29 02:57:24.811   614   693 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:24.811   614   693 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:24.873   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:24.887   487   538 I netd    : tetherGetStats() -> {[]} <2.46ms>
+08-29 02:57:24.888   705  1624 W ForegroundServiceTypeLoggerModule: Foreground service start for UID: 10252 does not have any types
+08-29 02:57:24.905   705  1680 V MediaProjectionManagerService: Start the token instance com.android.server.media.projection.MediaProjectionManagerService$MediaProjection@134c153
+08-29 02:57:24.961 17993 17993 E MediaProjection: Content Recording: no callback registered for virtual display
+08-29 02:57:24.961 17993 17993 E MediaProjection: java.lang.IllegalStateException: Must register a callback before starting capture, to manage resources in response to MediaProjection states.
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.media.projection.MediaProjection.createVirtualDisplay(MediaProjection.java:247)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at com.mov.android.ScreenCaptureService.onStartCommand(ScreenCaptureService.kt:58)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:5453)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.app.ActivityThread.-$$Nest$mhandleServiceArgs(Unknown Source:0)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2647)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.os.Handler.dispatchMessage(Handler.java:110)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.os.Looper.loopOnce(Looper.java:248)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.os.Looper.loop(Looper.java:338)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at android.app.ActivityThread.main(ActivityThread.java:9067)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at java.lang.reflect.Method.invoke(Native Method)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+08-29 02:57:24.961 17993 17993 E MediaProjection: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+08-29 02:57:24.964 17993 17993 D AndroidRuntime: Shutting down VM
+--------- beginning of crash
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: FATAL EXCEPTION: main
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: Process: com.mov.android, PID: 17993
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: java.lang.RuntimeException: Unable to start service com.mov.android.ScreenCaptureService@d7eaf06 with Intent { xflg=0x4 cmp=com.mov.android/.ScreenCaptureService (has extras) }: java.lang.IllegalStateException: Must register a callback before starting capture, to manage resources in response to MediaProjection states.
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:5471)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.app.ActivityThread.-$$Nest$mhandleServiceArgs(Unknown Source:0)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2647)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:110)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:248)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:338)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:9067)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: Caused by: java.lang.IllegalStateException: Must register a callback before starting capture, to manage resources in response to MediaProjection states.
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.media.projection.MediaProjection.createVirtualDisplay(MediaProjection.java:247)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at com.mov.android.ScreenCaptureService.onStartCommand(ScreenCaptureService.kt:58)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:5453)
+08-29 02:57:24.971 17993 17993 E AndroidRuntime: 	... 9 more
+08-29 02:57:25.030   979  1046 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#188) android.os.BinderProxy@aeecba3@0
+08-29 02:57:25.052   705   761 V WindowManager: Finish Transition (#188): created at 08-29 02:57:24.421 collect-started=0.106ms request-sent=0.175ms started=43.707ms ready=235.192ms sent=252.376ms commit=199.102ms finished=630.791ms
+08-29 02:57:25.064   979  1046 V WindowManagerShell: Track 0 became idle
+08-29 02:57:25.070   979  1046 V WindowManagerShell: All active transition animations finished
+08-29 02:57:25.073   979  1046 W Looper  : Slow dispatch took 42ms wmshell.main app=com.android.systemui main=false group=FOREGROUND h=android.os.Handler c=com.android.wm.shell.transition.DefaultSurfaceAnimator$$ExternalSyntheticLambda0@1094ef7 m=0
+08-29 02:57:25.145   705 18833 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
+08-29 02:57:25.232   705  1680 W ActivityTaskManager:   Force finishing activity com.mov.android/.MainActivity
+08-29 02:57:25.263   705   705 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
+08-29 02:57:25.320   979  1046 V WindowManagerShell: Transition requested (#189): android.os.BinderProxy@1101164 TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=288 effectiveUid=10252 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.mov.android/.PrivacyGateActivity } baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} origActivity=null realActivity=ComponentInfo{com.mov.android/com.mov.android.PrivacyGateActivity} numActivities=1 lastActiveTime=42903077 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@7c0fcd} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{7316082 com.mov.android.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(284, 660 - 796, 1740) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false isLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1080, 2400) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} topActivityMainWindowFrame=null}, pipChange = null, remoteTransition = null, displayChange = null, flags = 16, debugId = 189 }
+08-29 02:57:25.410   705   705 W Looper  : Slow dispatch took 227ms main app=system_server main=true group=FOREGROUND h=com.android.server.notification.NotificationManagerService$WorkerHandler c=com.android.server.notification.NotificationManagerService$PostNotificationRunnable@cc56533 m=0
+08-29 02:57:25.412   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:25.457   559   559 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-29 02:57:25.468 17993 17993 I Process : Sending signal. PID: 17993 SIG: 9
+08-29 02:57:25.469   979  1046 W Looper  : Slow delivery took 83ms wmshell.main app=com.android.systemui main=false group=FOREGROUND h=android.os.Handler c=com.android.wm.shell.transition.Transitions$ShellTransitionImpl$$ExternalSyntheticLambda1@1f9e393 m=0
+08-29 02:57:25.469   979  1046 W Looper  : Slow dispatch took 148ms wmshell.main app=com.android.systemui main=false group=FOREGROUND h=android.os.Handler c=com.android.wm.shell.transition.Transitions$ShellTransitionImpl$$ExternalSyntheticLambda1@1f9e393 m=0
+08-29 02:57:25.500   705   762 W Looper  : Slow dispatch took 120ms android.ui app=system_server main=false group=TOP_APP h=com.android.server.am.ActivityManagerService$UiHandler c=null m=1
+08-29 02:57:25.516   979   979 D VRI[MediaProjectionPermissionActivity]: visibilityChanged oldVisibility=true newVisibility=false
+08-29 02:57:25.535  1492  1895 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+08-29 02:57:25.537  1492  1895 I AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+08-29 02:57:25.541   705   705 W Looper  : Slow delivery took 213ms main app=system_server main=true group=FOREGROUND h=com.android.server.notification.NotificationManagerService$WorkerHandler c=com.android.server.notification.NotificationManagerService$$ExternalSyntheticLambda16@5e7218f m=0
+08-29 02:57:25.543   705   705 W Looper  : Slow dispatch took 129ms main app=system_server main=true group=FOREGROUND h=com.android.server.notification.NotificationManagerService$WorkerHandler c=com.android.server.notification.NotificationManagerService$$ExternalSyntheticLambda16@5e7218f m=0
+08-29 02:57:25.589   705  2141 I ActivityManager: Process com.mov.android (pid 17993) has died: fg  TOP 
+08-29 02:57:25.600   705  1911 D TextToSpeechManagerPerUserService: Unbinding TTS engine: com.google.android.tts. Reason: client process death is reported
+08-29 02:57:25.600   705  2290 I WindowManager: WIN DEATH: Window{bced3c5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 02:57:25.601 13364 13364 I adbd    : Remote process closed the socket (on MSG_PEEK)
+08-29 02:57:25.604   705  2292 D MediaProjectionManagerService: Content Recording: MediaProjection stopped by Binder death - id= -1
+08-29 02:57:25.606   705  2292 D MediaProjectionManagerService: Content Recording: handling stopping this projection token createTime= 42902879 countStarts= 1
+08-29 02:57:25.606   705  2292 D MediaProjectionManagerService: Content Recording: Stopped active MediaProjection and dispatching stop to callbacks
+08-29 02:57:25.667   705  2292 D MediaProjectionMetricsLogger: logStopped: wasCaptureInProgress=false stopReason=2
+08-29 02:57:25.690   705  2301 I ImeTracker: com.mov.android:f493e218: onRequestHide at ORIGIN_SERVER reason HIDE_REMOVE_CLIENT fromUser false
+08-29 02:57:25.691   705  2141 W ActivityManager: Scheduling restart of crashed service com.mov.android/.ScreenCaptureService in 1830ms for start-requested
+08-29 02:57:25.691   705   886 D ConnectivityService: releasing NetworkRequest [ REQUEST id=220, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10252 RequestorUid: 10252 RequestorPkg: com.mov.android UnderlyingNetworks: Null] ] (release request)
+08-29 02:57:25.693   705  2290 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:25.696   705  2290 W BestClock: java.time.DateTimeException: No network time available
+--------- beginning of kernel
+08-29 02:57:25.678     0     0 I binder  : undelivered transaction 4173227, process died.
+08-29 02:57:25.686     0     0 I binder_alloc: 18027: binder_alloc_buf, no vma
+08-29 02:57:25.688     0     0 I binder  : undelivered transaction 4173222, process died.
+08-29 02:57:25.708  1132  1132 I NotificationListener: received notification posted event - com.mov.android#UserHandle{0},category=-1
+08-29 02:57:25.710  1047  1047 I Zygote  : Process 18027 exited cleanly (0)
+08-29 02:57:25.694     0     0 I binder  : cannot allocate buffer: vma cleared, target dead or dying
+08-29 02:57:25.694     0     0 I binder  : 705:2141 transaction async to 18027:0 failed 4173237/29189/-3, size 84-0 line 3548
+08-29 02:57:25.721   705  2301 I ImeTracker: com.mov.android:f493e218: onCancelled at PHASE_SERVER_SHOULD_HIDE
+08-29 02:57:25.726   490   490 I Zygote  : Process 17993 exited due to signal 9 (Killed)
+08-29 02:57:25.730   705  2290 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:25.731   705   772 I libprocessgroup: Removed cgroup /sys/fs/cgroup/apps/uid_10252/pid_17993
+08-29 02:57:25.733   705  2141 E IPCThreadState: Binder transaction failure. id: 4173237, BR_*: 29189, error: -3 (No such process)
+08-29 02:57:25.733   705  2141 W ActivityManager: pid 705 system sent binder code 41 with flags 1 to frozen apps and got error -32
+08-29 02:57:25.737   705  2141 I ActivityManager: Killing 18027:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a252i8 (adj 0): isolated not needed
+08-29 02:57:25.745   244   244 W lowmemorykiller: Failed to open /proc/18027/oom_score_adj; errno=2: process 18027 might have been killed
+08-29 02:57:25.801   979  1046 W Looper  : Drained
+08-29 02:57:25.811   705   772 I libprocessgroup: Removed cgroup /sys/fs/cgroup/apps/uid_99008/pid_18027
+08-29 02:57:25.817   705   762 D MediaProjectionManagerService: Content Recording: Stopped MediaProjection due to foreground service change
+08-29 02:57:25.817  1132  1132 D ViewRootImpl: Skipping stats log for color mode
+08-29 02:57:25.818   705   762 W Looper  : Slow dispatch took 225ms android.ui app=system_server main=false group=TOP_APP h=com.android.server.am.ActivityManagerService$UiHandler c=null m=31
+08-29 02:57:25.825   705   705 W system_server: Long monitor contention with owner binder:705_12 (2141) at void com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied()(ActivityManagerService.java:1527) waiters=1 in boolean com.android.server.am.ActivityManagerService.unbindService(android.app.IServiceConnection) for 195ms
+08-29 02:57:25.837   979   979 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.app.Activity$$ExternalSyntheticLambda0@756cd08
+08-29 02:57:25.841   705   762 W Looper  : Slow delivery took 230ms android.ui app=system_server main=false group=TOP_APP h=com.android.server.am.ActivityManagerService$UiHandler c=null m=81
+08-29 02:57:25.857   705  2141 I AppWidgetServiceImpl: startListening() 0
+08-29 02:57:25.875   705  2294 D CoreBackPreview: Window{146f41e u0 com.android.systemui/com.android.systemui.mediaprojection.permission.MediaProjectionPermissionActivity}: Setting back callback null
+08-29 02:57:25.884   705   762 W Looper  : Drained
+08-29 02:57:25.885  1132  1132 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=6}
+08-29 02:57:25.901   979  1046 D WindowManagerShell: setLauncherKeepClearAreaHeight: visible=true, height=527
+08-29 02:57:25.904   979   979 D ViewRootImpl: Skipping stats log for color mode
+08-29 02:57:25.916   705   705 W TextToSpeechManagerPerUserService: Disconnected from TTS engine
+08-29 02:57:25.917   705   705 W ActivityManager: pid 705 system sent binder code 2 with flags 1 to frozen apps and got error -32
+08-29 02:57:25.917   705   705 D ActivityManager: Too many transaction errors, throttling freezer binder callback.
+08-29 02:57:25.917   705   705 I TextToSpeechManagerPerUserService: Failed running callback method: android.os.DeadObjectException
+08-29 02:57:25.918   705   705 W ServiceConnector.Impl: mayInterruptIfRunning not supported - ignoring
+08-29 02:57:25.940   487   538 I netd    : tetherGetStats() -> {[]} <8.60ms>
+08-29 02:57:25.940  1132  1132 D BaseDepthController: setSurface:
+08-29 02:57:25.940  1132  1132 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+08-29 02:57:25.940  1132  1132 D BaseDepthController: 	mBaseSurface: Surface(name=com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity)/@0x7afa70a
+08-29 02:57:25.946   705   705 W Looper  : Slow dispatch took 293ms main app=system_server main=true group=FOREGROUND h=android.os.Handler c=com.android.internal.infra.ServiceConnector$Impl$$ExternalSyntheticLambda0@e083a52 m=0
+08-29 02:57:25.985   705   765 W ActivityTaskManager: Unable to send transaction to client proc com.mov.android: no app thread
+08-29 02:57:26.033   705   764 W ActivityManager: setHasOverlayUi called on unknown pid: 17993
+08-29 02:57:26.038   705   764 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{223706843 u0 com.mov.android/.MainActivity t288 f} isExiting}
+08-29 02:57:26.073   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:26.085   705   705 W Looper  : Drained
+08-29 02:57:26.122  1132  1132 D StatsLog: LAUNCHER_ONRESUME
+08-29 02:57:26.129   559   600 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-29 02:57:26.153   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:26.153   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:26.154   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:26.161   705   780 D BatteryStatsImpl: Reading cpu stats took 113ms
+08-29 02:57:26.243   979  1108 V WindowManagerShell: onTransitionReady(transaction=3027951953188)
+08-29 02:57:26.248   705   761 V WindowManager: Sent Transition (#189) createdAt=08-29 02:57:25.235 via request=TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=288 effectiveUid=10252 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.mov.android/.PrivacyGateActivity } baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} origActivity=null realActivity=ComponentInfo{com.mov.android/com.mov.android.PrivacyGateActivity} numActivities=1 lastActiveTime=42903077 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{7597af5 Task{6eedf82 #288 type=standard A=10252:com.mov.android}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{7726924 com.mov.android.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(284, 660 - 796, 1740) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false isLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1080, 2400) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} topActivityMainWindowFrame=null}, pipChange = null, remoteTransition = null, displayChange = null, flags = 16, debugId = 189 }
+08-29 02:57:26.255   979  1046 V WindowManagerShell: onTransitionReady (#189) android.os.BinderProxy@1101164: {id=189 t=CLOSE f=0x10 trk=0 r=[0@Point(0, 0)] c=[
+08-29 02:57:26.255   979  1046 V WindowManagerShell:         {m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0xe9902ce sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1},
+08-29 02:57:26.255   979  1046 V WindowManagerShell:         {m=CLOSE f=NONE leash=Surface(name=Task=288)/@0xf5525ef sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1},
+08-29 02:57:26.255   979  1046 V WindowManagerShell:         {m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{f429f1e showWhenLocked=false})/@0xeaa28fc sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0}
+08-29 02:57:26.255   979  1046 V WindowManagerShell:     ]}
+08-29 02:57:26.256   979  1046 V WindowManagerShell: Playing animation for (#189) android.os.BinderProxy@1101164@0
+08-29 02:57:26.257   979  1046 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+08-29 02:57:26.257   979  1046 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=189 t=CLOSE f=0x10 trk=0 r=[0@Point(0, 0)] c=[{m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0xe9902ce sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1},{m=CLOSE f=NONE leash=Surface(name=Task=288)/@0xf5525ef sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1},{m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{f429f1e showWhenLocked=false})/@0xeaa28fc sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0}]}
+08-29 02:57:26.257   979  1046 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null taskFragmentToken=android.os.BinderProxy@a890d0b windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@fd617e8, appThread = android.app.IApplicationThread$Stub$Proxy@ee10e01, debugName = overlayBackTransition }}
+08-29 02:57:26.258   979  1046 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@ddd74a6, appThread = android.app.IApplicationThread$Stub$Proxy@f396ee7, debugName = LauncherToDream }}
+08-29 02:57:26.258   979  1046 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null windowingMode=undefined},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined},{NOT atype=undefined independent=true modes=[] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null customAnim=true windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@8e8ca94, appThread = android.app.IApplicationThread$Stub$Proxy@b4f893d, debugName = QuickstepLaunchHome }}
+08-29 02:57:26.258   979  1046 D RemoteTransitionHandler: Found filterPair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null windowingMode=undefined},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined},{NOT atype=undefined independent=true modes=[] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null customAnim=true windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@8e8ca94, appThread = android.app.IApplicationThread$Stub$Proxy@b4f893d, debugName = QuickstepLaunchHome }}
+08-29 02:57:26.258   979  1046 V WindowManagerShell:  Delegate animation for (#189) to RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@8e8ca94, appThread = android.app.IApplicationThread$Stub$Proxy@b4f893d, debugName = QuickstepLaunchHome }
+08-29 02:57:26.258   705   761 V WindowManager:     startWCT=WindowContainerTransaction { changes= {} hops= [] errorCallbackToken=null taskFragmentOrganizer=null }
+08-29 02:57:26.265   705   761 V WindowManager:     info={id=189 t=CLOSE f=0x10 trk=0 r=[0@Point(0, 0)] c=[
+08-29 02:57:26.265   705   761 V WindowManager:         {WCT{RemoteToken{f287aa9 Task{241eb78 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0xbf82191 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1},
+08-29 02:57:26.265   705   761 V WindowManager:         {WCT{RemoteToken{7597af5 Task{6eedf82 #288 type=standard A=10252:com.mov.android}}} m=CLOSE f=NONE leash=Surface(name=Task=288)/@0x6f76bdf sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1},
+08-29 02:57:26.265   705   761 V WindowManager:         {m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{f429f1e showWhenLocked=false})/@0x43a1f83 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0}
+08-29 02:57:26.265   705   761 V WindowManager:     ]}
+08-29 02:57:26.298   979  1046 V WindowManagerShell:  animated by com.android.wm.shell.transition.RemoteTransitionHandler@f0f542b
+08-29 02:57:26.300   979  1046 W Looper  : Slow dispatch took 44ms wmshell.main app=com.android.systemui main=false group=FOREGROUND h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda0@4c9b94 m=0
+08-29 02:57:26.301   979  1046 W Looper  : Slow delivery took 36ms wmshell.main app=com.android.systemui main=false group=FOREGROUND h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda4@7d863d m=0
+08-29 02:57:26.301   979  1046 W Looper  : Drained
+08-29 02:57:26.316  1132  1180 D QuickstepModelDelegate: notifyAppTargetEvent action=1 launchLocation=workspace/0/[-1,-1]/[1,1]
+08-29 02:57:26.317  1132  1132 I NotificationListener: received notification removed event - com.mov.android#UserHandle{0},category=-1
+08-29 02:57:26.317   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.329   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.332   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.353   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.353   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.354   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.354   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.368   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.370   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.370   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.382  1492  1496 W ogle.android.as: Suspending all threads took: 27.640ms
+08-29 02:57:26.385   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.386  1132  1132 D StateManager: createAtomicAnimation - fromState: Background, toState: Normal, partial trace:
+08-29 02:57:26.386  1132  1132 D StateManager: 	at com.android.quickstep.util.ScalingWorkspaceRevealAnim.<init>(go/retraceme 43e00d9cd0eb17b3d9dd30fc1741b1c71445c4c0f7c8c9b81300265c86c5b873:39)
+08-29 02:57:26.386  1132  1132 D StateManager: 	at com.android.launcher3.QuickstepTransitionManager.createWallpaperOpenAnimations(go/retraceme 43e00d9cd0eb17b3d9dd30fc1741b1c71445c4c0f7c8c9b81300265c86c5b873:168)
+08-29 02:57:26.386  1132  1132 D StateManager: 	at com.android.launcher3.QuickstepTransitionManager$WallpaperOpenLauncherAnimationRunner.onAnimationStart(go/retraceme 43e00d9cd0eb17b3d9dd30fc1741b1c71445c4c0f7c8c9b81300265c86c5b873:17)
+08-29 02:57:26.386   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.387   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.388  1132  1132 D b/311077782: LauncherAnimationRunner.setAnimation
+08-29 02:57:26.388   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.389   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.394   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.395   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.395   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.396   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.396   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.397   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.397   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.397   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.408   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.416   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.418   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.425   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.429   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.437   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.439   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.441   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.445   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.445   559   559 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-29 02:57:26.446   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.457  1132  1180 I s.nexuslauncher: AssetManager2(0x781394716658) locale list changing from [] to [en-US]
+08-29 02:57:26.460   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.467   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.468   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.468   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.468   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.469   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.469   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.469   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.470   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.470   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.470   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.470   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.472   705   851 I ImeTracker: com.google.android.apps.nexuslauncher:9c0fd27e: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+08-29 02:57:26.485   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.485   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.486   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.489  1132  1180 W HWUI    : Image decoding logging dropped!
+08-29 02:57:26.490   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.496  1373  1373 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2043 
+08-29 02:57:26.496   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.503  1373  1373 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes = 0, locked = false
+08-29 02:57:26.508   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.509  1373  1373 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1293 onStartInput(EditorInfo{EditorInfo{packageName=com.google.android.apps.nexuslauncher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+08-29 02:57:26.511   705   764 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:26.513   705  2290 I ImeTracker: system_server:2a72eccb: onRequestHide at ORIGIN_SERVER reason IME_REQUESTED_CHANGED_LISTENER fromUser false
+08-29 02:57:26.521  1373  1373 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes = 1, locked = false
+08-29 02:57:26.537   705   764 I ImeTracker: system_server:2a72eccb: onCancelled at PHASE_SERVER_SHOULD_HIDE
+08-29 02:57:26.548   705  1701 W PackageConfigPersister: App-specific configuration not found for packageName: com.google.android.apps.nexuslauncher and userId: 0
+08-29 02:57:26.549  1373  1373 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [kig->jjs] takes 26ms
+08-29 02:57:26.556   705   765 W ActivityTaskManager: Unable to send transaction to client proc com.mov.android: no app thread
+08-29 02:57:26.581  1132  1132 D InsetsController: hide(ime(), fromIme=false)
+08-29 02:57:26.582  1132  1132 I ImeTracker: com.google.android.apps.nexuslauncher:9c0fd27e: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+08-29 02:57:26.659   979  2406 I HWUI    : Davey! duration=803ms; Flags=0, FrameTimelineVsyncId=1466435, IntendedVsync=42904287673520, Vsync=42904654340172, InputEventId=0, HandleInputStart=42904662313800, AnimationStart=42904663354400, PerformTraversalsStart=42904671622600, DrawStart=42904887016900, FrameDeadline=42904304340186, FrameStartTime=42904660771400, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=42904887289200, SyncStart=42904887933400, IssueDrawCommandsStart=42904900439500, SwapBuffers=42905044366600, FrameCompleted=42905091698600, DequeueBufferDuration=9374800, QueueBufferDuration=314000, GpuCompleted=42905091698600, SwapBuffersCompleted=42905087819200, DisplayPresentTime=0, CommandSubmissionCompleted=42905044366600, 
+08-29 02:57:26.660   705   821 D ActivityManager: sync unfroze 3510 com.google.android.apps.photos for 6
+08-29 02:57:26.721   979   979 I ndroid.systemui: AssetManager2(0x781394709e58) locale list changing from [] to [en-US]
+08-29 02:57:26.747  1492  1813 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+08-29 02:57:26.747  1492  1813 I AiAiEcho: EchoTargets: 
+08-29 02:57:26.747  1492  1813 I AiAiEcho: Filtered by AiAi flag check: 
+08-29 02:57:26.747  1492  1813 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+08-29 02:57:26.764  1492  1813 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+08-29 02:57:26.797  1492  1813 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+08-29 02:57:26.857   705  1680 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:26.861   705  1680 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:26.878   705  2290 W ProcessStats: Tracking association SourceState{b9b49b2 system/1000 ImpBg #14786} whose proc state 6 is better than process ProcessState{73aa822 com.google.android.apps.photos/10161 pkg=com.google.android.apps.photos} proc state 15 (0 skipped)
+08-29 02:57:26.892   705  1680 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:26.911   979   979 W HWUI    : Image decoding logging dropped!
+08-29 02:57:26.969  1132  1132 D SsBaseTemplateCard: No text view can be set up
+08-29 02:57:26.977  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:26.978  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:26.978  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:26.979  1132  1132 I SsBaseTemplateCard: Secondary card pane is null
+08-29 02:57:27.500   498  3705 D android.hardware.audio@7.1-impl.ranchu: threadLoop: entering standby, frames: 9101120
+08-29 02:57:27.501   498  3705 D android.hardware.audio@7.1-impl.ranchu: ~TinyalsaSink: joining consumeThread
+08-29 02:57:27.568   498 18831 D android.hardware.audio@7.1-impl.ranchu: consumeThread: exiting
+08-29 02:57:27.571   498  3705 D android.hardware.audio@7.1-impl.ranchu: ~TinyalsaSink: stopping PCM stream
+08-29 02:57:27.596   705   770 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10252, packageName = null, attributionTag = null, token = android.os.Binder@bfa727f, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+08-29 02:57:27.622   490   490 D Zygote  : Forked child process 18840
+08-29 02:57:27.670  1132  1132 D ScalingWorkspaceRevealAnim: alpha of workspace at the end of animation: 1.0
+08-29 02:57:27.681   487   538 I netd    : tetherGetStats() -> {[]} <44.50ms>
+08-29 02:57:27.690   705   771 W ActivityManager: Slow operation: 94ms so far, now at startProcess: done updating battery stats
+08-29 02:57:27.697   705   771 W ActivityManager: Slow operation: 100ms so far, now at startProcess: building log message
+08-29 02:57:27.697   705   771 I ActivityManager: Start proc 18840:com.mov.android/u0a252 for service {com.mov.android/com.mov.android.ScreenCaptureService}
+08-29 02:57:27.697   705   771 W ActivityManager: Slow operation: 101ms so far, now at startProcess: starting to update pids map
+08-29 02:57:27.700   705   771 I ActivityManager: ProcessObserver broadcast disabled
+08-29 02:57:27.701   705   771 W ActivityManager: Slow operation: 105ms so far, now at startProcess: done updating pids map
+08-29 02:57:27.753 18840 18840 I com.mov.android: Late-enabling -Xcheck:jni
+08-29 02:57:27.848   705   705 W system_server: Long monitor contention with owner appscheduling.default (821) at boolean com.android.server.job.controllers.QuotaController.isUidInForeground(int)(QuotaController.java:821) waiters=0 in void com.android.server.job.JobServiceContext.onServiceConnected(android.content.ComponentName, android.os.IBinder) for 1.007s
+08-29 02:57:27.857   705   705 W Looper  : Slow dispatch took 1015ms main app=system_server main=true group=FOREGROUND h=android.app.ActivityThread$H c=android.app.LoadedApk$ServiceDispatcher$RunConnection@e616df8 m=0
+08-29 02:57:27.857   705   705 W Looper  : Slow delivery took 945ms main app=system_server main=true group=FOREGROUND h=com.android.server.power.Notifier$NotifierHandler c=null m=7
+08-29 02:57:27.861   979  1046 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#189) android.os.BinderProxy@1101164@0
+08-29 02:57:27.876   705   761 V WindowManager: Finish Transition (#189): created at 08-29 02:57:25.235 collect-started=0.11ms request-sent=0.295ms started=133.339ms ready=553.727ms sent=899.483ms commit=240.222ms finished=2637.229ms
+08-29 02:57:27.885   705  1265 E IPCThreadState: Binder transaction failure. id: 4174314, BR_*: 29189, error: -22 (Invalid argument)
+08-29 02:57:27.885   705  1265 W ActivityManager: pid 705 system sent binder code 7 with flags 1 to frozen apps and got error -32
+08-29 02:57:27.885   705  1265 D ActivityManager: Too many transaction errors, throttling freezer binder callback.
+08-29 02:57:27.886   705  1265 W WindowManager: Exception thrown during dispatchAppVisibility Window{bced3c5 u0 com.mov.android/com.mov.android.MainActivity EXITING}
+08-29 02:57:27.886   705  1265 W WindowManager: android.os.DeadObjectException
+08-29 02:57:27.886   705  1265 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:592)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at android.view.IWindow$Stub$Proxy.dispatchAppVisibility(IWindow.java:557)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.WindowState.sendAppVisibilityToClients(WindowState.java:3151)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.WindowContainer.sendAppVisibilityToClients(WindowContainer.java:1311)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.WindowToken.setClientVisible(WindowToken.java:389)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.ActivityRecord.setClientVisible(ActivityRecord.java:6650)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.ActivityRecord.commitVisibility(ActivityRecord.java:5561)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.Transition.finishTransition(Transition.java:1391)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.TransitionController.finishTransition(TransitionController.java:1029)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.finishTransition(WindowOrganizerController.java:496)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at android.window.IWindowOrganizerController$Stub.onTransact(IWindowOrganizerController.java:261)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.onTransact(WindowOrganizerController.java:223)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at android.os.Binder.execTransactInternal(Binder.java:1426)
+08-29 02:57:27.886   705  1265 W WindowManager: 	at android.os.Binder.execTransact(Binder.java:1365)
+08-29 02:57:27.886   705  1265 W Process : Unable to open /proc/17993/status
+08-29 02:57:27.865     0     0 I binder  : 1265:705 cannot find target node
+08-29 02:57:27.872     0     0 I binder  : 705:1265 transaction async to 0:0 failed 4174314/29189/-22, size 64-0 line 3348
+08-29 02:57:27.966 18840 18840 I com.mov.android: Using CollectorTypeCMC GC.
+08-29 02:57:27.974 18840 18840 W com.mov.android: Unexpected CPU variant for x86: x86_64.
+08-29 02:57:27.974 18840 18840 W com.mov.android: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+08-29 02:57:27.985   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:27.986   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:27.989   705  2298 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:28.001   979  1046 V WindowManagerShell: Track 0 became idle
+08-29 02:57:28.005   979  1046 V WindowManagerShell: All active transition animations finished
+08-29 02:57:28.006   979  1046 W Looper  : Slow dispatch took 145ms wmshell.main app=com.android.systemui main=false group=FOREGROUND h=android.os.Handler c=com.android.wm.shell.transition.RemoteTransitionHandler$1$$ExternalSyntheticLambda0@8e361c7 m=0
+08-29 02:57:28.114 18840 18840 I berberis: Initialized Berberis (aarch64), version 16.0.0
+08-29 02:57:28.129  1132  1132 D RecentsView: onTaskRemoved: 288, not handling task stack changes
+08-29 02:57:28.138  1132  1132 D RecentsView: onTaskRemoved: 288, not handling task stack changes
+08-29 02:57:28.208  1127  1299 D SatelliteController: iisInCarrierRoamingNbIotNtn: satellite is disabled
+08-29 02:57:28.236   559   559 E BpTransactionCompletedListener: Failed to transact (-32)
+08-29 02:57:28.284   705  2301 W JobScheduler: Job didn't exist in JobStore: d4c9802 #u0a161/1034 com.google.android.apps.photos/com.google.android.libraries.social.mediamonitor.MediaMonitorJobSchedulerService
+08-29 02:57:28.327 13364 13373 I adbd    : jdwp connection from 18840
+08-29 02:57:28.339   705  1680 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+08-29 02:57:28.339   705  1680 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+08-29 02:57:28.346 18840 18840 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+08-29 02:57:28.416  1132  1994 I HWUI    : Davey! duration=910ms; Flags=0, FrameTimelineVsyncId=1466806, IntendedVsync=42905671006798, Vsync=42906104340114, InputEventId=0, HandleInputStart=42906126992700, AnimationStart=42906127053400, PerformTraversalsStart=42906168026500, DrawStart=42906229919700, FrameDeadline=42906187673444, FrameStartTime=42906114981900, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=42906229981900, SyncStart=42906330066000, IssueDrawCommandsStart=42906333741700, SwapBuffers=42906383578200, FrameCompleted=42906681739000, DequeueBufferDuration=979900, QueueBufferDuration=809000, GpuCompleted=42906681739000, SwapBuffersCompleted=42906492482900, DisplayPresentTime=0, CommandSubmissionCompleted=42906383578200, 
+08-29 02:57:28.444   979  6746 I HWUI    : Davey! duration=707ms; Flags=0, FrameTimelineVsyncId=1466843, IntendedVsync=42905987673452, Vsync=42906304340106, InputEventId=0, HandleInputStart=42906319863100, AnimationStart=42906319960300, PerformTraversalsStart=42906334679700, DrawStart=42906334817400, FrameDeadline=42906704340090, FrameStartTime=42906319241200, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=42906334849900, SyncStart=42906519206500, IssueDrawCommandsStart=42906519472700, SwapBuffers=42906615334500, FrameCompleted=42906879808800, DequeueBufferDuration=220302700, QueueBufferDuration=1019400, GpuCompleted=42906878902300, SwapBuffersCompleted=42906879808800, DisplayPresentTime=0, CommandSubmissionCompleted=42906615334500, 
+08-29 02:57:28.457  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466574, 88051436, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.458  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466574, 88051436, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.458  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466588, 87121604, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.461  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466588, 87121604, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.461  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466610, 113198872, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.461  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466610, 113198872, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.466  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466618, 139918806, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.466  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466618, 139918806, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.466  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466649, 129213842, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.466  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466649, 129213842, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.466  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466679, 127281778, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.468  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466679, 127281778, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.468  1132  1132 W FrameTracker: Missed SF frame:JANK_COMPOSER, 1466701, 85441380, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.468  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466716, 170357314, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.468  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466716, 170357314, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.468  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466724, 236714316, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.468  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466724, 236714316, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.468  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466739, 297866352, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466739, 297866352, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466747, 350899254, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466747, 350899254, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466776, 311116194, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466776, 311116194, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466784, 329005698, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466784, 329005698, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed App frame:UNKNOWN: 3, 1466806, 652634002, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.469  1132  1132 W FrameTracker: Missed SF frame:UNKNOWN: 3, 1466806, 652634002, CUJ=J<LAUNCHER_APP_CLOSE_TO_HOME>
+08-29 02:57:28.471  1132  1169 V PerfettoTrigger: Triggering /system/bin/trigger_perfetto com.android.telemetry.interaction-jank-monitor-9
+08-29 02:57:28.585   705   829 W CpuMonitorService: Current CPU frequency (1811513) is greater than maximum CPU frequency (2) for policy ID (0). Skipping CPU frequency policy
+08-29 02:57:28.585   705   829 W CpuMonitorService: Current CPU frequency (1643092) is greater than maximum CPU frequency (2) for policy ID (1). Skipping CPU frequency policy
+08-29 02:57:28.586   705   829 W CpuMonitorService: Current CPU frequency (1811683) is greater than maximum CPU frequency (2) for policy ID (2). Skipping CPU frequency policy
+08-29 02:57:28.586   705   829 W CpuMonitorService: Current CPU frequency (1811473) is greater than maximum CPU frequency (2) for policy ID (3). Skipping CPU frequency policy
+08-29 02:57:28.675   705  2292 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+08-29 02:57:28.677   705  2292 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+08-29 02:57:28.834   705   750 I system_server: NativeAlloc concurrent mark compact GC freed 18MB AllocSpace bytes, 139(2900KB) LOS objects, 43% free, 30MB/54MB, paused 5.019ms,22.573ms total 760.982ms
+08-29 02:57:29.022   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:29.024   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:29.034   705  1680 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:29.077   705  1680 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+08-29 02:57:29.094   705  1680 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+08-29 02:57:29.199 18860 18860 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+08-29 02:57:29.222 18860 18860 I AndroidRuntime: Using default boot image
+08-29 02:57:29.222 18860 18860 I AndroidRuntime: Leaving lock profiling enabled
+08-29 02:57:29.245 18860 18860 I app_process: Core platform API reporting enabled, enforcing=false
+08-29 02:57:29.246 18860 18860 I app_process: Using CollectorTypeCMC GC.
+08-29 02:57:29.345  3510  3515 W oid.apps.photos: Reducing the number of considered missed Gc histogram windows from 114 to 100
+08-29 02:57:29.369 18840 18840 D nativeloader: Configuring clns-9 for other apk /data/app/~~d7wAbqc2EgBpoqk17VlQ4g==/com.mov.android-yh55MSaCVM-M548XGUdUOg==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~d7wAbqc2EgBpoqk17VlQ4g==/com.mov.android-yh55MSaCVM-M548XGUdUOg==/lib/arm64:/data/app/~~d7wAbqc2EgBpoqk17VlQ4g==/com.mov.android-yh55MSaCVM-M548XGUdUOg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.mov.android
+08-29 02:57:29.471 18860 18860 D nativeloader: InitDefaultPublicLibraries for_preload=1: libandroid.so:libaaudio.so:libamidi.so:libbinder_ndk.so:libc.so:libcamera2ndk.so:libdl.so:libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libicu.so:libicui18n.so:libicuuc.so:libjnigraphics.so:liblog.so:libmediandk.so:libm.so:libnativehelper.so:libnativewindow.so:libOpenMAXAL.so:libOpenSLES.so:libRS.so:libstdc++.so:libsync.so:libvulkan.so:libwebviewchromium_plat_support.so:libz.so
+08-29 02:57:29.488 18840 18840 I com.mov.android: AssetManager2(0x7813946f01d8) locale list changing from [] to [en-US]
+08-29 02:57:29.498 18860 18860 D nativeloader: Load libicu_jni.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+08-29 02:57:29.498 18860 18860 D app_process: u_setTimeZoneFilesDirectory("/apex/com.android.tzdata/etc/tz/versioned/9/icu") succeeded. 
+08-29 02:57:29.498 18860 18860 D app_process: I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt76l.dat
+08-29 02:57:29.500 18860 18860 D nativeloader: Load libjavacore.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+08-29 02:57:29.503 18860 18860 D nativeloader: Load libopenjdk.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+08-29 02:57:29.505 18860 18860 W app_process: Unexpected CPU variant for x86: x86_64.
+08-29 02:57:29.505 18860 18860 W app_process: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+08-29 02:57:29.511 18860 18860 W app_process: ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*2789897741]#PCL[/system/framework/android.test.mock.jar*3361312393]} | PCL[])
+08-29 02:57:29.514 18860 18860 W app_process: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[]{PCL[/system/framework/android.test.runner.jar*895143020]#PCL[/system/framework/android.test.base.jar*2789897741]} | PCL[/system/framework/android.test.runner.jar*895143020])
+08-29 02:57:29.521 18840 18840 V GraphicsEnvironment: Currently set values for:
+08-29 02:57:29.523 18840 18840 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+08-29 02:57:29.525 18840 18840 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+08-29 02:57:29.526 18840 18840 V GraphicsEnvironment: com.mov.android is not listed in per-application setting
+08-29 02:57:29.529 18840 18840 V GraphicsEnvironment: ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+08-29 02:57:29.529 18840 18840 V GraphicsEnvironment: com.mov.android is not listed in ANGLE allowlist or settings, returning default
+08-29 02:57:29.531 18840 18840 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+08-29 02:57:29.566 18860 18860 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+08-29 02:57:29.567 18860 18860 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+08-29 02:57:29.574 18860 18860 I AconfigPackage: android.media.swcodec.flags is mapped to com.android.media.swcodec
+08-29 02:57:29.577 18860 18860 I AconfigPackage: com.google.android.settings.simplemode.flags is mapped to system_ext
+08-29 02:57:29.577 18860 18860 I AconfigPackage: com.google.android.systemui is mapped to system_ext
+08-29 02:57:29.578 18860 18860 I AconfigPackage: com.google.android.apps.nexuslauncher is mapped to system_ext
+08-29 02:57:29.579 18860 18860 I AconfigPackage: com.android.settings.accessibility is mapped to system_ext
+08-29 02:57:29.579 18860 18860 I AconfigPackage: com.android.settings.flags is mapped to system_ext
+08-29 02:57:29.579 18860 18860 I AconfigPackage: com.google.android.apps.miphone.aiai.matchmaker.overview.ui is mapped to system_ext
+08-29 02:57:29.579 18860 18860 I AconfigPackage: com.google.android.settings.flags is mapped to system_ext
+08-29 02:57:29.580 18860 18860 I AconfigPackage: com.android.launcher3 is mapped to system_ext
+08-29 02:57:29.580 18860 18860 I AconfigPackage: com.android.wallpaper is mapped to system_ext
+08-29 02:57:29.580 18860 18860 I AconfigPackage: com.android.settings.media_drm is mapped to system_ext
+08-29 02:57:29.580 18860 18860 I AconfigPackage: com.android.systemui.accessibility.accessibilitymenu is mapped to system_ext
+08-29 02:57:29.580 18860 18860 I AconfigPackage: com.android.settings.keyboard is mapped to system_ext
+08-29 02:57:29.581 18860 18860 I AconfigPackage: com.android.server.policy.feature.flags is mapped to system_ext
+08-29 02:57:29.581 18860 18860 I AconfigPackage: com.android.settings.factory_reset is mapped to system_ext
+08-29 02:57:29.581 18860 18860 I AconfigPackage: com.google.android.haptics.flags is mapped to system_ext
+08-29 02:57:29.582 18860 18860 I AconfigPackage: com.android.permission.flags is mapped to com.android.permission
+08-29 02:57:29.585 18860 18860 I AconfigPackage: com.android.icu is mapped to com.android.i18n
+08-29 02:57:29.585 18860 18860 I AconfigPackage: com.android.appsearch.flags is mapped to com.android.appsearch
+08-29 02:57:29.588 18860 18860 I AconfigPackage: android.uprobestats.mainline.flags is mapped to com.android.uprobestats
+08-29 02:57:29.588 18860 18860 I AconfigPackage: android.provider.flags is mapped to com.android.configinfrastructure
+08-29 02:57:29.589 18860 18860 I AconfigPackage: com.android.server.deviceconfig is mapped to com.android.configinfrastructure
+08-29 02:57:29.589 18860 18860 I AconfigPackage: com.android.nfc.flags is mapped to system
+08-29 02:57:29.589 18860 18860 I AconfigPackage: android.app.admin.flags is mapped to system
+08-29 02:57:29.590 18860 18860 I AconfigPackage: android.database.sqlite is mapped to system
+08-29 02:57:29.590 18860 18860 I AconfigPackage: com.android.providers.calendar is mapped to system
+08-29 02:57:29.590 18860 18860 I AconfigPackage: com.android.server.power.feature.flags is mapped to system
+08-29 02:57:29.593 18860 18860 I AconfigPackage: com.android.media.performance.flags is mapped to system
+08-29 02:57:29.593 18860 18860 I AconfigPackage: android.app.contextualsearch.flags is mapped to system
+08-29 02:57:29.593 18860 18860 I AconfigPackage: android.app.ondeviceintelligence.flags is mapped to system
+08-29 02:57:29.593 18860 18860 I AconfigPackage: com.android.media.projection.flags is mapped to system
+08-29 02:57:29.594 18860 18860 I AconfigPackage: android.companion is mapped to system
+08-29 02:57:29.594 18860 18860 I AconfigPackage: android.service.controls.flags is mapped to system
+08-29 02:57:29.594 18860 18860 I AconfigPackage: com.android.text.flags is mapped to system
+08-29 02:57:29.595 18860 18860 I AconfigPackage: com.android.providers.contactkeys.flags is mapped to system
+08-29 02:57:29.597 18860 18860 I AconfigPackage: com.android.intentresolver is mapped to system
+08-29 02:57:29.598 18860 18860 I AconfigPackage: android.companion.virtualdevice.flags is mapped to system
+08-29 02:57:29.598 18860 18860 I AconfigPackage: android.uprobestats.flags is mapped to system
+08-29 02:57:29.598 18860 18860 I AconfigPackage: com.android.net.thread.platform.flags is mapped to system
+08-29 02:57:29.598 18860 18860 I AconfigPackage: android.view.contentprotection.flags is mapped to system
+08-29 02:57:29.599 18860 18860 I AconfigPackage: com.android.server.dreams is mapped to system
+08-29 02:57:29.599 18860 18860 I AconfigPackage: com.android.graphics.surfaceflinger.flags is mapped to system
+08-29 02:57:29.603 18860 18860 I AconfigPackage: com.android.hardware.input is mapped to system
+08-29 02:57:29.605 18860 18860 I AconfigPackage: android.sdk is mapped to system
+08-29 02:57:29.605 18860 18860 I AconfigPackage: com.android.input.flags is mapped to system
+08-29 02:57:29.606 18860 18860 I AconfigPackage: android.tracing is mapped to system
+08-29 02:57:29.606 18860 18860 I AconfigPackage: com.android.server.biometrics is mapped to system
+08-29 02:57:29.606 18860 18860 I AconfigPackage: android.view.contentcapture.flags is mapped to system
+08-29 02:57:29.606 18860 18860 I AconfigPackage: android.app.job is mapped to system
+08-29 02:57:29.608 18860 18860 I AconfigPackage: android.content.res is mapped to system
+08-29 02:57:29.608 18860 18860 I AconfigPackage: android.net.platform.flags is mapped to system
+08-29 02:57:29.608 18860 18860 I AconfigPackage: com.android.aconfig.flags is mapped to system
+08-29 02:57:29.608 18860 18860 I AconfigPackage: com.android.graphics.flags is mapped to system
+08-29 02:57:29.609 18860 18860 I AconfigPackage: android.server.app is mapped to system
+08-29 02:57:29.609 18860 18860 I AconfigPackage: android.speech.flags is mapped to system
+08-29 02:57:29.609 18860 18860 I AconfigPackage: com.android.server.stats is mapped to system
+08-29 02:57:29.609 18860 18860 I AconfigPackage: android.hardware.biometrics is mapped to system
+08-29 02:57:29.612 18860 18860 I AconfigPackage: android.car.feature is mapped to system
+08-29 02:57:29.612 18860 18860 I AconfigPackage: android.adpf is mapped to system
+08-29 02:57:29.613 18860 18860 I AconfigPackage: android.location.flags is mapped to system
+08-29 02:57:29.614 18860 18860 I AconfigPackage: com.android.settingslib.flags is mapped to system
+08-29 02:57:29.614 18860 18860 I AconfigPackage: com.android.managedprovisioning.flags is mapped to system
+08-29 02:57:29.616 18860 18860 I AconfigPackage: android.app.assist.flags is mapped to system
+08-29 02:57:29.616 18860 18860 I AconfigPackage: com.android.server.net is mapped to system
+08-29 02:57:29.616 18860 18860 I AconfigPackage: com.android.settingslib.widget.flags is mapped to system
+08-29 02:57:29.617 18860 18860 I AconfigPackage: com.android.internal.camera.flags is mapped to system
+08-29 02:57:29.617 18860 18860 I AconfigPackage: com.android.hardware.libsensor.flags is mapped to system
+08-29 02:57:29.617 18860 18860 I AconfigPackage: com.android.internal.jank is mapped to system
+08-29 02:57:29.618 18860 18860 I AconfigPackage: com.android.providers.settings is mapped to system
+08-29 02:57:29.618 18860 18860 I AconfigPackage: android.multiuser is mapped to system
+08-29 02:57:29.618 18860 18860 I AconfigPackage: com.android.server.power.optimization is mapped to system
+08-29 02:57:29.618 18860 18860 I AconfigPackage: com.android.calllogbackup is mapped to system
+08-29 02:57:29.620 18860 18860 I AconfigPackage: com.android.media.flags is mapped to system
+08-29 02:57:29.620 18860 18860 I AconfigPackage: com.android.server.flags is mapped to system
+08-29 02:57:29.620 18860 18860 I AconfigPackage: com.android.graphics.libvulkan.flags is mapped to system
+08-29 02:57:29.620 18860 18860 I AconfigPackage: android.app.appfunctions.flags is mapped to system
+08-29 02:57:29.620 18860 18860 I AconfigPackage: android.app.smartspace.flags is mapped to system
+08-29 02:57:29.621 18860 18860 I AconfigPackage: com.android.providers.contacts.flags is mapped to system
+08-29 02:57:29.621 18860 18860 I AconfigPackage: com.android.shell.flags is mapped to system
+08-29 02:57:29.622 18860 18860 I AconfigPackage: com.android.media.aaudio is mapped to system
+08-29 02:57:29.622 18860 18860 I AconfigPackage: android.hardware.radio is mapped to system
+08-29 02:57:29.622 18860 18860 I AconfigPackage: com.google.wear.services.infra.flags is mapped to system
+08-29 02:57:29.622 18860 18860 I AconfigPackage: suspend_service.flags is mapped to system
+08-29 02:57:29.622 18860 18860 I AconfigPackage: android.media.midi is mapped to system
+08-29 02:57:29.622 18860 18860 I AconfigPackage: com.android.libcore.readonly is mapped to system
+08-29 02:57:29.623 18860 18860 I AconfigPackage: com.android.settingslib.widget.selectorwithwidgetpreference.flags is mapped to system
+08-29 02:57:29.624 18860 18860 I AconfigPackage: android.service.notification is mapped to system
+08-29 02:57:29.624 18860 18860 I AconfigPackage: com.android.systemui.shared is mapped to system
+08-29 02:57:29.625 18860 18860 I AconfigPackage: android.app.jank is mapped to system
+08-29 02:57:29.625 18860 18860 I AconfigPackage: android.app.wearable is mapped to system
+08-29 02:57:29.625 18860 18860 I AconfigPackage: com.android.media.audio is mapped to system
+08-29 02:57:29.625 18860 18860 I AconfigPackage: android.service.chooser is mapped to system
+08-29 02:57:29.625 18860 18860 I AconfigPackage: com.android.server.compat is mapped to system
+08-29 02:57:29.626 18860 18860 I AconfigPackage: com.android.server.alarm is mapped to system
+08-29 02:57:29.626 18860 18860 I AconfigPackage: com.android.apex.flags is mapped to system
+08-29 02:57:29.626 18860 18860 I AconfigPackage: android.service.quickaccesswallet is mapped to system
+08-29 02:57:29.631 18860 18860 I AconfigPackage: android.app.usage is mapped to system
+08-29 02:57:29.632 18860 18860 I AconfigPackage: com.android.server.accessibility is mapped to system
+08-29 02:57:29.633 18860 18860 I AconfigPackage: android.app.supervision.flags is mapped to system
+08-29 02:57:29.633 18860 18860 I AconfigPackage: com.android.server.utils is mapped to system
+08-29 02:57:29.633 18860 18860 I AconfigPackage: android.chre.flags is mapped to system
+08-29 02:57:29.634 18860 18860 I AconfigPackage: android.content.flags is mapped to system
+08-29 02:57:29.634 18860 18860 I AconfigPackage: android.media.codec is mapped to system
+08-29 02:57:29.634 18860 18860 I AconfigPackage: com.android.internal.os is mapped to system
+08-29 02:57:29.634 18860 18860 I AconfigPackage: com.android.nfc.nci.flags is mapped to system
+08-29 02:57:29.634 18860 18860 I AconfigPackage: android.app is mapped to system
+08-29 02:57:29.634 18860 18860 I AconfigPackage: android.security.keystore2 is mapped to system
+08-29 02:57:29.634 18860 18860 I AconfigPackage: android.crashrecovery.flags is mapped to system
+08-29 02:57:29.636 18860 18860 I AconfigPackage: com.android.tradeinmode.flags is mapped to system
+08-29 02:57:29.637 18860 18860 I AconfigPackage: android.hardware.flags is mapped to system
+08-29 02:57:29.637 18860 18860 I AconfigPackage: com.android.server.telecom.flags is mapped to system
+08-29 02:57:29.638 18860 18860 I AconfigPackage: com.android.settingslib.media.flags is mapped to system
+08-29 02:57:29.638 18860 18860 I AconfigPackage: com.android.server.policy is mapped to system
+08-29 02:57:29.639 18860 18860 I AconfigPackage: android.media.audiopolicy is mapped to system
+08-29 02:57:29.639 18860 18860 I AconfigPackage: com.android.egg.flags is mapped to system
+08-29 02:57:29.639 18860 18860 I AconfigPackage: com.android.internal.compat.flags is mapped to system
+08-29 02:57:29.639 18860 18860 I AconfigPackage: android.security is mapped to system
+08-29 02:57:29.639 18860 18860 I AconfigPackage: android.service.autofill is mapped to system
+08-29 02:57:29.639 18860 18860 I AconfigPackage: com.example.android.aconfig.demo.flags is mapped to system
+08-29 02:57:29.640 18860 18860 I AconfigPackage: android.view.flags is mapped to system
+08-29 02:57:29.640 18860 18860 I AconfigPackage: android.companion.virtual.flags is mapped to system
+08-29 02:57:29.640 18860 18860 I AconfigPackage: com.android.aconfig_new_storage is mapped to system
+08-29 02:57:29.640 18860 18860 I AconfigPackage: com.android.server.feature.flags is mapped to system
+08-29 02:57:29.640 18860 18860 I AconfigPackage: com.android.systemui is mapped to system
+08-29 02:57:29.640 18860 18860 I AconfigPackage: com.android.server.power.batterysaver is mapped to system
+08-29 02:57:29.640 18860 18860 I AconfigPackage: android.widget.flags is mapped to system
+08-29 02:57:29.641 18860 18860 I AconfigPackage: com.android.media.editing.flags is mapped to system
+08-29 02:57:29.641 18860 18860 I AconfigPackage: com.android.media.codec.flags is mapped to system
+08-29 02:57:29.641 18860 18860 I AconfigPackage: com.android.server.powerstats is mapped to system
+08-29 02:57:29.641 18860 18860 I AconfigPackage: com.android.graphics.egl.flags is mapped to system
+08-29 02:57:29.641 18860 18860 I AconfigPackage: com.android.media.audioserver is mapped to system
+08-29 02:57:29.641 18860 18860 I AconfigPackage: com.android.server.deviceidle is mapped to system
+08-29 02:57:29.641 18860 18860 I AconfigPackage: android.nfc is mapped to system
+08-29 02:57:29.642 18860 18860 I AconfigPackage: android.permission.flags is mapped to system
+08-29 02:57:29.642 18860 18860 I AconfigPackage: android.service.voice.flags is mapped to system
+08-29 02:57:29.644 18860 18860 I AconfigPackage: android.content.pm is mapped to system
+08-29 02:57:29.645 18860 18860 I AconfigPackage: com.android.server.power.hint is mapped to system
+08-29 02:57:29.645 18860 18860 I AconfigPackage: android.os is mapped to system
+08-29 02:57:29.646 18860 18860 I AconfigPackage: android.service.dreams is mapped to system
+08-29 02:57:29.646 18860 18860 I AconfigPackage: com.android.graphics.libgui.flags is mapped to system
+08-29 02:57:29.646 18860 18860 I AconfigPackage: android.hardware.usb.flags is mapped to system
+08-29 02:57:29.648 18860 18860 I AconfigPackage: android.provider is mapped to system
+08-29 02:57:29.648 18860 18860 I AconfigPackage: com.android.server.job is mapped to system
+08-29 02:57:29.648 18860 18860 I AconfigPackage: com.android.internal.foldables.flags is mapped to system
+08-29 02:57:29.648 18860 18860 I AconfigPackage: com.android.internal.telephony.flags is mapped to system
+08-29 02:57:29.648 18860 18860 I AconfigPackage: android.webkit is mapped to system
+08-29 02:57:29.648 18860 18860 I AconfigPackage: android.credentials.flags is mapped to system
+08-29 02:57:29.649 18860 18860 I AconfigPackage: com.android.server.display.feature.flags is mapped to system
+08-29 02:57:29.649 18860 18860 I AconfigPackage: com.android.server.notification is mapped to system
+08-29 02:57:29.649 18860 18860 I AconfigPackage: android.appwidget.flags is mapped to system
+08-29 02:57:29.649 18860 18860 I AconfigPackage: com.android.frameworks.sensorservice.flags is mapped to system
+08-29 02:57:29.649 18860 18860 I AconfigPackage: com.android.printspooler.flags is mapped to system
+08-29 02:57:29.649 18860 18860 I AconfigPackage: com.android.window.flags is mapped to system
+08-29 02:57:29.651 18860 18860 I AconfigPackage: android.adaptiveauth is mapped to system
+08-29 02:57:29.651 18860 18860 I AconfigPackage: android.net.wifi.flags is mapped to system
+08-29 02:57:29.651 18860 18860 I AconfigPackage: android.media.tv.flags is mapped to system
+08-29 02:57:29.651 18860 18860 I AconfigPackage: com.android.server.usb.flags is mapped to system
+08-29 02:57:29.652 18860 18860 I AconfigPackage: android.os.vibrator is mapped to system
+08-29 02:57:29.652 18860 18860 I AconfigPackage: android.hardware.devicestate.feature.flags is mapped to system
+08-29 02:57:29.652 18860 18860 I AconfigPackage: com.android.server.usage is mapped to system
+08-29 02:57:29.652 18860 18860 I AconfigPackage: android.server is mapped to system
+08-29 02:57:29.652 18860 18860 I AconfigPackage: com.android.wm.shell is mapped to system
+08-29 02:57:29.654 18860 18860 I AconfigPackage: android.view.inputmethod is mapped to system
+08-29 02:57:29.654 18860 18860 I AconfigPackage: com.android.graphics.hwui.flags is mapped to system
+08-29 02:57:29.654 18860 18860 I AconfigPackage: com.android.server.backup is mapped to system
+08-29 02:57:29.654 18860 18860 I AconfigPackage: com.android.internal.pm.pkg.component.flags is mapped to system
+08-29 02:57:29.654 18860 18860 I AconfigPackage: android.view.accessibility is mapped to system
+08-29 02:57:29.654 18860 18860 I AconfigPackage: com.google.wear.sdk is mapped to system
+08-29 02:57:29.655 18860 18860 I AconfigPackage: android.media.audio is mapped to system
+08-29 02:57:29.655 18860 18860 I AconfigPackage: com.android.server.am is mapped to system
+08-29 02:57:29.656 18860 18860 I AconfigPackage: com.android.media.playback.flags is mapped to system
+08-29 02:57:29.656 18860 18860 I AconfigPackage: com.android.art.flags is mapped to com.android.art
+08-29 02:57:29.656 18860 18860 I AconfigPackage: com.android.libcore is mapped to com.android.art
+08-29 02:57:29.664 18860 18860 I AconfigPackage: com.android.media.extractor.flags is mapped to com.android.media
+08-29 02:57:29.666 18860 18860 I AconfigPackage: com.android.media.mainline.flags is mapped to com.android.media
+08-29 02:57:29.667 18860 18860 I AconfigPackage: com.android.wifi.flags is mapped to com.android.wifi
+08-29 02:57:29.668 18860 18860 I AconfigPackage: com.android.org.conscrypt.flags is mapped to com.android.conscrypt
+08-29 02:57:29.668 18860 18860 I AconfigPackage: com.android.healthfitness.flags is mapped to com.android.healthfitness
+08-29 02:57:29.670 18860 18860 I AconfigPackage: com.google.android.input.twoshay.flags is mapped to vendor
+08-29 02:57:29.671 18860 18860 I AconfigPackage: libgooglecamerahal.flags is mapped to vendor
+08-29 02:57:29.673 18860 18860 I AconfigPackage: com.android.ipsec.flags is mapped to com.android.ipsec
+08-29 02:57:29.674 18860 18860 I AconfigPackage: com.android.nfc.module.flags is mapped to com.android.nfcservices
+08-29 02:57:29.676 18860 18860 I AconfigPackage: com.android.adservices.ondevicepersonalization.flags is mapped to com.android.ondevicepersonalization
+08-29 02:57:29.677 18860 18860 I AconfigPackage: com.android.bluetooth.flags is mapped to com.android.bt
+08-29 02:57:29.680 18860 18860 I AconfigPackage: com.android.devicelock.flags is mapped to com.android.devicelock
+08-29 02:57:29.681 18860 18860 I AconfigPackage: android.os.profiling is mapped to com.android.profiling
+08-29 02:57:29.682 18860 18860 I AconfigPackage: com.android.os.statsd.flags is mapped to com.android.os.statsd
+08-29 02:57:29.682 18860 18860 I AconfigPackage: com.android.cellbroadcastreceiver.flags is mapped to com.android.cellbroadcast
+08-29 02:57:29.683 18860 18860 I AconfigPackage: com.android.adservices.flags is mapped to com.android.adservices
+08-29 02:57:29.683 18860 18860 I AconfigPackage: com.android.sdksandbox.flags is mapped to com.android.adservices
+08-29 02:57:29.685 18860 18860 I AconfigPackage: com.android.uwb.flags is mapped to com.android.uwb
+08-29 02:57:29.685 18860 18860 I AconfigPackage: com.android.ranging.flags is mapped to com.android.uwb
+08-29 02:57:29.687 18860 18860 I AconfigPackage: android.graphics.pdf.flags is mapped to com.android.mediaprovider
+08-29 02:57:29.688 18860 18860 I AconfigPackage: com.android.providers.media.flags is mapped to com.android.mediaprovider
+08-29 02:57:29.688 18860 18860 I AconfigPackage: android.graphics.pdf.flags.readonly is mapped to com.android.mediaprovider
+08-29 02:57:29.688 18860 18860 I AconfigPackage: com.android.net.ct.flags is mapped to com.android.tethering
+08-29 02:57:29.689 18860 18860 I AconfigPackage: com.android.net.flags is mapped to com.android.tethering
+08-29 02:57:29.689 18860 18860 I AconfigPackage: android.net.vcn is mapped to com.android.tethering
+08-29 02:57:29.689 18860 18860 I AconfigPackage: com.android.nearby.flags is mapped to com.android.tethering
+08-29 02:57:29.689 18860 18860 I AconfigPackage: android.net.http is mapped to com.android.tethering
+08-29 02:57:29.692 18860 18860 I AconfigPackage: com.android.net.thread.flags is mapped to com.android.tethering
+08-29 02:57:29.696 18860 18860 I AconfigPackage: com.android.system.virtualmachine.flags is mapped to com.android.virt
+08-29 02:57:29.696 18860 18860 E FeatureFlagsImplExport: android.os.flagging.AconfigStorageReadException: ERROR_PACKAGE_NOT_FOUND: package android.xr cannot be found on the device
+08-29 02:57:29.705 18860 18860 D UiAutomationConnection: Created on user UserHandle{0}
+08-29 02:57:29.706 18860 18860 I UiAutomation: Initialized for user 0 on display 0
+08-29 02:57:29.708 18860 18860 W UiAutomation: Created with deprecatead constructor, assumes DEFAULT_DISPLAY
+08-29 02:57:29.716   705  2301 D AccessibilityManagerService: changeCurrentUserForTestAutomationIfNeededLocked(0): ignoring because device doesn't support visible background users
+08-29 02:57:29.716   705  2301 I UiAutomationManager: Registering UiTestAutomationService (id=com.android.server.accessibility/UiAutomation, flags=0x0) when called by user 0
+08-29 02:57:29.720   705  2301 V AccessibilityManagerService: onUserStateChangedLocked for userId: 0, forceUpdate: false
+08-29 02:57:29.726   705  2301 W MagnificationConnectionManager: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+08-29 02:57:29.734  1492  3129 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+08-29 02:57:29.740  1492  1813 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+08-29 02:57:29.741  1492  1813 I AiAiEcho: EchoTargets: 
+08-29 02:57:29.741  1492  1813 I AiAiEcho: Filtered by AiAi flag check: 
+08-29 02:57:29.741  1492  1813 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+08-29 02:57:29.745   705   705 W Looper  : Drained
+08-29 02:57:29.746   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.753 18860 18873 V UiAutomation: Init UiAutomation@4408f1[id=78, displayId=0, flags=0]
+08-29 02:57:29.753   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.753   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.754   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.754   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.756  1492  1813 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+08-29 02:57:29.759  1492  1813 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+08-29 02:57:29.762   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.762  1492  1813 I AiAiEcho: EchoTargets: 
+08-29 02:57:29.762  1492  1813 I AiAiEcho: Filtered by AiAi flag check: 
+08-29 02:57:29.762  1492  1813 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+08-29 02:57:29.763   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.763  1492  1813 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+08-29 02:57:29.767   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.767  1492  1813 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+08-29 02:57:29.767   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.768   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.768   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.768  1492  1813 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+08-29 02:57:29.770   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.772   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.772   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.773   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.773  1132  1132 D SsBaseTemplateCard: No text view can be set up
+08-29 02:57:29.773  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:29.773   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.773  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:29.773  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:29.773   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.773  1132  1132 I SsBaseTemplateCard: Secondary card pane is null
+08-29 02:57:29.774   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.781   705  1680 V AccessibilityManagerService: onUserStateChangedLocked for userId: 0, forceUpdate: false
+08-29 02:57:29.781   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.782   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.784   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.784   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.785   979   979 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+08-29 02:57:29.796   705  1680 W MagnificationConnectionManager: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+08-29 02:57:29.797  1492  3129 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+08-29 02:57:29.801   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.801   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.805   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.805  1492  1813 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+08-29 02:57:29.809  1492  1813 I AiAiEcho: EchoTargets: 
+08-29 02:57:29.809  1492  1813 I AiAiEcho: Filtered by AiAi flag check: 
+08-29 02:57:29.809  1492  1813 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+08-29 02:57:29.810   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.814   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.815   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.816   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.817  1492  1813 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+08-29 02:57:29.817   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.817   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.817   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.819   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.820  1492  1813 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+08-29 02:57:29.821  1492  1813 I AiAiEcho: EchoTargets: 
+08-29 02:57:29.821  1492  1813 I AiAiEcho: Filtered by AiAi flag check: 
+08-29 02:57:29.821  1492  1813 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+08-29 02:57:29.821  1492  1813 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+08-29 02:57:29.822  1492  1813 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+08-29 02:57:29.829   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.829   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.830   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.830   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.830   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.832   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.833   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.837   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.838   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.841   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.841   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.842   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.842   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.842   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.845  1132  1132 D SsBaseTemplateCard: No text view can be set up
+08-29 02:57:29.845   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.845  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:29.845  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:29.846  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:29.846  1132  1132 I SsBaseTemplateCard: Secondary card pane is null
+08-29 02:57:29.847   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.848  1492  1813 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+08-29 02:57:29.848   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.848   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.853   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.853   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.853   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.854   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:29.857   979   979 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+08-29 02:57:29.857   705   705 D BatterySaverPolicy: accessibility changed to true, updating policy.
+08-29 02:57:30.038   705  2292 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:30.039   705  2292 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:30.040   705  2292 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:30.087   487   538 I netd    : tetherGetStats() -> {[]} <0.53ms>
+08-29 02:57:30.115   705  2292 V MediaProjectionManagerService: Start the token instance com.android.server.media.projection.MediaProjectionManagerService$MediaProjection@134c153
+08-29 02:57:30.133 18840 18840 E MediaProjection: Content Recording: no callback registered for virtual display
+08-29 02:57:30.133 18840 18840 E MediaProjection: java.lang.IllegalStateException: Must register a callback before starting capture, to manage resources in response to MediaProjection states.
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.media.projection.MediaProjection.createVirtualDisplay(MediaProjection.java:247)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at com.mov.android.ScreenCaptureService.onStartCommand(ScreenCaptureService.kt:58)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:5453)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.app.ActivityThread.-$$Nest$mhandleServiceArgs(Unknown Source:0)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2647)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.os.Handler.dispatchMessage(Handler.java:110)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.os.Looper.loopOnce(Looper.java:248)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.os.Looper.loop(Looper.java:338)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at android.app.ActivityThread.main(ActivityThread.java:9067)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at java.lang.reflect.Method.invoke(Native Method)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+08-29 02:57:30.133 18840 18840 E MediaProjection: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+08-29 02:57:30.134 18840 18840 D AndroidRuntime: Shutting down VM
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: FATAL EXCEPTION: main
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: Process: com.mov.android, PID: 18840
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: java.lang.RuntimeException: Unable to start service com.mov.android.ScreenCaptureService@cb22d2a with Intent { xflg=0x4 cmp=com.mov.android/.ScreenCaptureService (has extras) }: java.lang.IllegalStateException: Must register a callback before starting capture, to manage resources in response to MediaProjection states.
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:5471)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.app.ActivityThread.-$$Nest$mhandleServiceArgs(Unknown Source:0)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2647)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:110)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:248)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:338)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:9067)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: Caused by: java.lang.IllegalStateException: Must register a callback before starting capture, to manage resources in response to MediaProjection states.
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.media.projection.MediaProjection.createVirtualDisplay(MediaProjection.java:247)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at com.mov.android.ScreenCaptureService.onStartCommand(ScreenCaptureService.kt:58)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:5453)
+08-29 02:57:30.142 18840 18840 E AndroidRuntime: 	... 9 more
+08-29 02:57:30.151   705 18876 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
+08-29 02:57:30.152   705   762 I ActivityManager: Showing crash dialog for package com.mov.android u0
+08-29 02:57:30.279   705   762 W Looper  : Slow dispatch took 119ms android.ui app=system_server main=false group=TOP_APP h=com.android.server.am.ActivityManagerService$UiHandler c=com.android.server.am.ErrorDialogController$$ExternalSyntheticLambda5@a86e556 m=0
+08-29 02:57:30.283   705   762 D CoreBackPreview: Window{fe45c83 u0 Application Error: com.mov.android}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.WindowOnBackInvokedDispatcher$OnBackInvokedCallbackWrapper@d656c73, mPriority=-1, mIsAnimationCallback=false, mOverrideBehavior=0}
+08-29 02:57:30.340   705   705 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
+08-29 02:57:30.345   705   936 D BackgroundInstallControlService: Package event received: 0
+08-29 02:57:30.367  1492  1895 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+08-29 02:57:30.368  1492  1895 I AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+08-29 02:57:30.369  1132  1132 I NotificationListener: received notification posted event - com.mov.android#UserHandle{0},category=-1
+08-29 02:57:30.378  1132  1132 I NotificationListener: received notification posted event - com.mov.android#UserHandle{0},category=-1
+08-29 02:57:30.380  1492  1895 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+08-29 02:57:30.381  1492  1895 I AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+08-29 02:57:31.332   705  1639 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+08-29 02:57:31.340   705 18879 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(wmsSync-VRI[android]#0) as ready
+08-29 02:57:31.340   705 18879 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(VRI[android]#1) as ready
+08-29 02:57:31.346   705  2298 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:31.351   705  2298 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:31.354   979  2700 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+08-29 02:57:31.354   705  1701 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:31.355   979  2700 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+08-29 02:57:31.381   979  1304 W HWUI    : Image decoding logging dropped!
+08-29 02:57:31.401   705   762 W Looper  : Slow dispatch took 1120ms android.ui app=system_server main=false group=TOP_APP h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@f5b4689 m=0
+08-29 02:57:31.404   705   762 W Looper  : Slow delivery took 1129ms android.ui app=system_server main=false group=TOP_APP h=com.android.server.wm.DisplayPolicy$PolicyHandler c=com.android.server.wm.DisplayPolicy$$ExternalSyntheticLambda14@d6c6eaf m=0
+08-29 02:57:31.405   705   762 I Choreographer: Skipped 66 frames!  The application may be doing too much work on its main thread.
+08-29 02:57:31.413   979  1304 W HWUI    : Image decoding logging dropped!
+08-29 02:57:31.446 18860 18860 W AccessibilityNodeInfoDumper: Fetch time: 12ms
+08-29 02:57:31.449   705  1680 V AccessibilityManagerService: onUserStateChangedLocked for userId: 0, forceUpdate: false
+08-29 02:57:31.451   705  1701 I HWUI    : Davey! duration=1114ms; Flags=1, FrameTimelineVsyncId=1467059, IntendedVsync=42908721006676, Vsync=42908737673342, InputEventId=0, HandleInputStart=42908744823900, AnimationStart=42908744853100, PerformTraversalsStart=42908744901400, DrawStart=42909006165300, FrameDeadline=42908737673342, FrameStartTime=42908744806300, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=42909008110800, SyncStart=42909048393900, IssueDrawCommandsStart=42909048561700, SwapBuffers=42909852797500, FrameCompleted=42909875701400, DequeueBufferDuration=28000, QueueBufferDuration=1237200, GpuCompleted=42909875701400, SwapBuffersCompleted=42909858307700, DisplayPresentTime=0, CommandSubmissionCompleted=42909852797500, 
+08-29 02:57:31.461   705  1680 W MagnificationConnectionManager: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+08-29 02:57:31.461   705  1680 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+08-29 02:57:31.462   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.462   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.466 18860 18860 D AndroidRuntime: Shutting down VM
+08-29 02:57:31.466 18860 18871 W IPCThreadState: call to talkWithDriver in joinThreadPool returned error: -9 (Bad file descriptor), FD: -1
+08-29 02:57:31.467 18860 18870 W IPCThreadState: call to talkWithDriver in joinThreadPool returned error: -9 (Bad file descriptor), FD: -1
+08-29 02:57:31.468 18860 18883 W IPCThreadState: call to talkWithDriver in joinThreadPool returned error: -9 (Bad file descriptor), FD: -1
+08-29 02:57:31.468   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.469 18860 18882 W IPCThreadState: call to talkWithDriver in joinThreadPool returned error: -9 (Bad file descriptor), FD: -1
+08-29 02:57:31.469   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.473   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.473   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.473   705   769 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.487   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.504   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.504   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.504   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.532   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.533   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.533   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.533   705  2295 I HWUI    : Davey! duration=1156ms; Flags=0, FrameTimelineVsyncId=1467075, IntendedVsync=42908754340008, Vsync=42909854339964, InputEventId=0, HandleInputStart=42909868125300, AnimationStart=42909868152800, PerformTraversalsStart=42909868362400, DrawStart=42909870671100, FrameDeadline=42909904339962, FrameStartTime=42909867517300, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=42909871168300, SyncStart=42909871419400, IssueDrawCommandsStart=42909871539100, SwapBuffers=42909879297700, FrameCompleted=42909910974200, DequeueBufferDuration=27900, QueueBufferDuration=4659000, GpuCompleted=42909908590000, SwapBuffersCompleted=42909910974200, DisplayPresentTime=28429393554571269, CommandSubmissionCompleted=42909879297700, 
+08-29 02:57:31.536   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.538   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.542   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.542   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.546   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.547  1492  3129 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+08-29 02:57:31.549   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.549   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.550   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.550   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.566   705   762 W Looper  : Slow dispatch took 107ms android.ui app=system_server main=false group=TOP_APP h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@f5b4689 m=0
+08-29 02:57:31.571  1492  1813 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+08-29 02:57:31.571  1492  1813 I AiAiEcho: EchoTargets: 
+08-29 02:57:31.571  1492  1813 I AiAiEcho: Filtered by AiAi flag check: 
+08-29 02:57:31.571  1492  1813 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+08-29 02:57:31.571  1492  1813 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+08-29 02:57:31.573   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.578  1492  1813 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+08-29 02:57:31.579  1492  1813 I AiAiEcho: EchoTargets: 
+08-29 02:57:31.579  1492  1813 I AiAiEcho: Filtered by AiAi flag check: 
+08-29 02:57:31.579  1492  1813 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+08-29 02:57:31.579   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.580   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.581   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.581   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.581   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.582   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.581  1492  1813 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+08-29 02:57:31.583   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.583   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.584   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.584   705   705 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.584   705   705 D BatterySaverPolicy: accessibility changed to false, updating policy.
+08-29 02:57:31.585  1492  1813 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+08-29 02:57:31.588  1492  1813 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+08-29 02:57:31.589   705   762 W Looper  : Drained
+08-29 02:57:31.589  1132  1132 D SsBaseTemplateCard: No text view can be set up
+08-29 02:57:31.590  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:31.590  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:31.590  1132  1132 D SsBaseTemplateCard: Passed-in item info is null
+08-29 02:57:31.590  1132  1132 I SsBaseTemplateCard: Secondary card pane is null
+08-29 02:57:31.615   705   769 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:31.646   979   979 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+08-29 02:57:31.757   705   762 W Looper  : Slow dispatch took 106ms android.ui app=system_server main=false group=TOP_APP h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@f5b4689 m=0
+08-29 02:57:31.925   705   762 W Looper  : Slow dispatch took 166ms android.ui app=system_server main=false group=TOP_APP h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@f5b4689 m=0
+08-29 02:57:31.925   705   762 W Looper  : Slow delivery took 262ms android.ui app=system_server main=false group=TOP_APP h=android.view.ViewRootImpl$ViewRootHandler c=null m=25
+08-29 02:57:31.951   705   762 W Looper  : Drained
+08-29 02:57:32.359   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:32.359   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:32.361   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:32.605   705   769 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:33.367   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:33.367   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:33.370   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:34.377   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:34.378   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:34.385   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:35.389   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:35.390   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:35.391   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:36.397   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:36.397   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:36.398   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:36.772   705   833 D ActivityManager: freezing 2803 com.google.android.tts
+08-29 02:57:37.401   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:37.401   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:37.401   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:38.171  1127  1299 D SatelliteController: iisInCarrierRoamingNbIotNtn: satellite is disabled
+08-29 02:57:38.309   705   833 D ActivityManager: freezing 3510 com.google.android.apps.photos
+08-29 02:57:38.405   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:38.405   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:38.407   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:39.413   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:39.413   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:39.416   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:39.739   705   769 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:39.799   705   769 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:40.422   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:40.422   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:40.423   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:41.427   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:41.427   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:41.428   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:41.556   705   769 W IPCThreadState: Sending oneway calls to frozen process.
+08-29 02:57:42.433   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:42.433   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:42.434   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:43.439   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:43.440   705  2295 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:43.441   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:44.448   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:44.448   705  2301 W BestClock: java.time.DateTimeException: No network time available
+08-29 02:57:44.449   705  2295 W BestClock: java.time.DateTimeException: No network time available

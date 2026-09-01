@@ -1,0 +1,2 @@
+{"jsonrpc":"2.0","id":1,"result":{"content":[{"type":"text","text":"{ok=true, path=验收测试笔记-平板.md, content=# UPG-02 平板真机验收\n设备: Xiaomi Pad 6S Pro (21770d7d, API 36)\n闭环标记: movtest-pad-8791\nSAF 授权→登记→写入→读回→搜索→rescan。\n}"}],"isError":false}}
+HTTP 200

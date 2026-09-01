@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 输入框外观 Demo(经典/极简 · 外观接口第一步)</title>
+<style>
+  :root{
+    --s0:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;--line:rgba(22,28,48,.08);
+    --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--acc:#23272f;--on:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#e9ebf0;color:var(--text);display:flex;flex-direction:column;align-items:center;font-size:14px;padding:24px}
+  .h{font-size:13px;font-weight:700;color:var(--text2);margin-bottom:14px}
+  .bar{display:flex;gap:6px;background:var(--s2);border-radius:99px;padding:4px;margin-bottom:14px}
+  .bar button{flex:none;text-align:center;font-size:12.5px;font-weight:600;color:var(--text2);padding:8px 16px;border-radius:99px;cursor:pointer;border:none;background:transparent}
+  .bar button.on{background:var(--s1);color:var(--text);box-shadow:0 1px 4px rgba(22,28,48,.1)}
+
+  .phone{width:380px;background:var(--s0);border:1px solid var(--line);border-radius:20px;overflow:hidden;min-height:420px}
+  .chat{height:250px;padding:16px;display:flex;flex-direction:column;gap:10px}
+  .bub{max-width:75%;padding:9px 12px;border-radius:12px;font-size:13px}
+  .bub.u{align-self:flex-end;background:#e4e7ed;border-top-right-radius:4px}
+  .bub.a{align-self:flex-start;border:1px solid var(--line)}
+  .bub.a .pr{font-size:11px;color:var(--text3);margin-top:5px}
+
+  /* 输入区 · 经典 */
+  .dock{padding:10px 12px;border-top:1px solid var(--line);background:var(--s1)}
+  .composer{display:flex;align-items:flex-end;gap:8px;padding:5px 6px;border-radius:24px;border:1px solid var(--line);background:#f5f6f8}
+  .composer .cam{flex:none;width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text3)}
+  .composer .ipt{flex:1;font-size:13px;color:var(--text3);padding:7px 2px}
+  .composer .mic,.composer .send{flex:none;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .composer .mic{color:var(--text3)}
+  .composer .send{background:var(--acc);color:var(--on)}
+  .hint{text-align:center;font-size:10px;color:var(--text3);margin-top:6px}
+
+  /* 极简：无底色留白 + 嵌入式输入线 + 更素 */
+  .composer.minimal{background:transparent;border:none;border-bottom:1px solid var(--line);border-radius:0;padding:6px 2px;gap:2px}
+  .composer.minimal .cam{display:none}
+  .composer.minimal .ipt{color:var(--text3);padding:5px 0 4px}
+  .composer.minimal .mic{width:28px;height:28px;color:var(--text3)}
+  .composer.minimal .send{background:var(--acc)}
+  /* 经典 */
+  .composer.classic{background:#f5f6f8;border:1px solid var(--line);border-radius:24px;padding:5px 6px;gap:8px}
+  .composer.classic .cam{display:flex}
+  .composer.classic .ipt{color:var(--text3);padding:7px 2px}
+  .composer.classic .mic{width:30px;height:30px}
+  .composer.classic .send{width:30px;height:30px}
+  .note1{font-size:11px;color:var(--text3);margin-top:6px;text-align:center}
+</style>
+</head>
+<body>
+  <div class="h">外观接口 · 第一步：输入框(composer)样式 A/B</div>
+  <div class="bar" id="bar">
+    <button data-m="classic" class="on">经典(现有)</button>
+    <button data-m="minimal">极简(方案)</button>
+  </div>
+  <div class="phone">
+    <div class="chat">
+      <div class="bub u">帮我看看存储还剩多少</div>
+      <div class="bub a">好的，我看下设备存储<br><span class="pr">已调用 device.getStorage</span></div>
+    </div>
+    <div class="dock">
+      <div class="composer classic" id="comp">
+        <span class="cam">📷</span>
+        <span class="ipt">给 MOV 发消息…</span>
+        <span class="mic">🎤</span>
+        <span class="send">➤</span>
+      </div>
+      <div class="hint">内容由 AI 生成，请注意甄别</div>
+    </div>
+  </div>
+  <div class="note1" id="note">点击上方切换「经典 / 极简」→ 输入框样式变(这就是 data-appearance 控制输入框的接口效果)</div>
+
+<script>
+document.getElementById('bar').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  const m=b.dataset.m;
+  document.querySelectorAll('#bar button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  const comp=document.getElementById('comp');
+  comp.className='composer '+m;
+  document.getElementById('note').textContent = m==='classic'
+    ? '经典(现有)：圆角24胶囊 + 底色 + 相机/输入/语音'
+    : '极简(方案)：去底色/去相机 + 下划线输入线 + 更素 — 差异明显，可一键切';
+});
+</script>
+</body>
+</html>

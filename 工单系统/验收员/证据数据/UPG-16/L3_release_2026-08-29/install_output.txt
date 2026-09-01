@@ -1,0 +1,7 @@
+== uninstall ==
+Success
+== install release ==
+Performing Streamed Install
+Success
+== pm path ==
+package:/data/app/~~QuGyWx8k64IKXfA3dM3prw==/com.mov.android-XPSeRIDeZUHDdLu112w9mg==/base.apk

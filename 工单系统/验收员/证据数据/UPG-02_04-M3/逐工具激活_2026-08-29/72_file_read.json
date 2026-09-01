@@ -1,0 +1,20 @@
+{
+ "tool": "file.read",
+ "args": {
+  "path": "upg02_acceptance_probe.txt"
+ },
+ "ts": "2026-08-29T16:07:49",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 90869,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, path=upg02_acceptance_probe.txt, content=UPG-02 acceptance probe 2026-08-29 file.write/read closed loop, via=mov}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

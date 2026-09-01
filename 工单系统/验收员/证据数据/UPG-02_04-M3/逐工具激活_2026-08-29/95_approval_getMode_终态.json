@@ -1,0 +1,18 @@
+{
+ "tool": "approval.getMode",
+ "args": {},
+ "ts": "2026-08-29T16:27:15",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 92035,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, mode=ask}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

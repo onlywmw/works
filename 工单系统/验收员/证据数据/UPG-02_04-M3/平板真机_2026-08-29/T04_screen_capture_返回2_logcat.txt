@@ -1,0 +1,340 @@
+--------- beginning of main
+08-29 17:07:50.754  5241 19806 D RecentsTaskManager: onTaskStackChangedBackground
+08-29 17:07:50.754  5241  5969 D SystemUiProxyWrapper: SystemUiProxyWrapper onRecentTasksChanged
+08-29 17:07:50.754  5241  5969 D RecentsModel: checkBoostLoadPlanThread dock bindcore info : 6077
+08-29 17:07:50.754  8509  3626 I SCTaskStackListener: onTaskStackChanged! inSplit = false
+08-29 17:07:50.754  5241  5969 I MiBridge: requestThreadLevelPro ret: 481086
+08-29 17:07:50.754  5241  5969 D Launcher_CPUBooster: requestThreadLevelPriority : 481086
+08-29 17:07:50.754  5241  5969 V RecentsModel: checkBoostLoadPlanThread boost load plan success
+08-29 17:07:50.754  5241  5969 D Launcher.Boost: setTurboSchedActionWithPriority::threadIds = [6077]
+08-29 17:07:50.754  3160  3177 W MiuiBooster: "MiuiBoosterService requestThreadPriority: 10141, 2, 2000, 481086"
+08-29 17:07:50.755  5241  5969 V RecentsModel: setDynamicVIPTaskIfNeeded success
+08-29 17:07:50.755  5241  5969 D RecentsTaskManager: onTaskStackChangedBackground
+08-29 17:07:50.755  8389 13977 I MultiScreenObserver: onTaskStackChanged, splitScreenMode: false isSmallScreen: false
+08-29 17:07:50.755  5241  5241 D HotSeatsListRecentsAppProvider: onTaskStackChangedBackground called from RecentTasksChangedEvent true
+08-29 17:07:50.756  8509  9680 I SCTaskStackListener: onTaskStackChanged! inSplit = false
+--------- beginning of system
+08-29 17:07:50.758  2759  6584 I MiuiEmbeddingWindow: isActivityEmbedded ActivityRecord{243620088 u0 com.kugou.android.lite/com.kugou.android.app.MediaActivity t3579} true Rect(0, 0 - 2032, 3048) Rect(0, 0 - 2032, 3048) 1.0 true
+08-29 17:07:50.759  5241  6077 W RecentsModel: getRunningTask   taskInfo=TaskInfo{userId=0 taskId=3585 effectiveUid=10429 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity } baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} origActivity=null realActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} numActivities=1 lastActiveTime=785181126 supportsSplitScreenMultiWindow=true mSoScDisplayMode=-1 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=200 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@c982f71} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{da6d156 com.mov.android.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(501, 632 - 1531, 2462) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false topActivityInMiuiSizeCompat=false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 2032, 3048) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} isImmersive=false mTopActivityRequestOrientation=-1 mStatusBarParent=null mNavBarParent=null mBehindAppLockPkg=null mOriginatingUid=0 isEmbedded=false shouldBeVisible=true isCreatedByOrganizer=false mIsCastMode=false mTopActivityMediaSize=Rect(0, 0 - 0, 0) mTopActivityRecordName=ActivityRecord{44325015 u0 com.mov.android/.MainActivity t3585} mTopActivityOrientation=-1 topActivityMainWindowFrame=null}
+08-29 17:07:50.759  5241  6077 D RuntimeMeasurement: getRunningTaskId: 3585: cost 1ms
+08-29 17:07:50.759  5241  6077 E MiuiPadHome_ActivityManagerWrapper: get all recent tasks force including 3585
+08-29 17:07:50.759  5911  5911 D KeyguardEditorHelper: onTopActivityMayChanged, topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity}; mState=IDEL
+08-29 17:07:50.760  2759  6629 I MiuiEmbeddingWindow: isActivityEmbedded ActivityRecord{243620088 u0 com.kugou.android.lite/com.kugou.android.app.MediaActivity t3579} true Rect(0, 0 - 2032, 3048) Rect(0, 0 - 2032, 3048) 1.0 true
+08-29 17:07:50.761  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 17:07:50.761  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 17:07:50.761  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 17:07:50.762  5241  6077 E MiuiPadHome_ActivityManagerWrapper: getRecentTasksForceIncludingTaskIdIfValid: getRecentTasks: size=3
+08-29 17:07:50.762  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3585   userId=0   windowMode=1   baseIntent=Intent { act=null flag=268435456 cmp=ComponentInfo{com.mov.android/com.mov.android.MainActivity} }
+08-29 17:07:50.762  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3581   userId=0   windowMode=1   baseIntent=Intent { act=android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY flag=335544320 cmp=ComponentInfo{com.android.settings/com.android.settings.homepage.DeepLinkHomepageActivity} }
+08-29 17:07:50.762  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3579   userId=0   windowMode=1   baseIntent=Intent { act=android.intent.action.MAIN flag=270532608 cmp=ComponentInfo{com.kugou.android.lite/com.kugou.android.app.splash.SplashActivity} }
+08-29 17:07:50.762  5241  6077 D RuntimeMeasurement: loadRecentTasks: cost 3ms
+08-29 17:07:50.762  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.763  5911  6158 I MultiTaskingTaskRepository: try to update multiTaskingTaskInfo taskInfo taskId = 3585
+08-29 17:07:50.763  5911  6158 I MultiTaskingTaskInfo: MultiTaskingBaseTaskInfo::update::mTaskBounds = Rect(0, 0 - 2032, 3048), mTaskId = 3585
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: setAnimParam bounds: Rect(0, 0 - 2032, 3048) scaleX: 1.0 scaleY: 1.0
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: java.lang.Throwable
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.animation.MultiTaskingAnimTarget.setAnimParam(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:36)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.animation.MultiTaskingFolmeControl.updateBaseAnimParam(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:15)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.taskmanager.MultiTaskingTaskInfo.update(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:23)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.taskmanager.MultiTaskingTaskRepository.updateAllPendingBaseAnimParam(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:60)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.taskmanager.MultiTaskingTransitionObserver.onTransitionFinished(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:27)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.transition.Transitions.onFinish(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:151)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.transition.Transitions.lambda$playTransition$3(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:1)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.transition.Transitions.$r8$lambda$96XCaSAhJXxB3nlVJy1TNPeH46k(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:1)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.transition.Transitions$$ExternalSyntheticLambda4.onTransitionFinished(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:10)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.transition.DefaultTransitionHandler$$ExternalSyntheticLambda0.run(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:51)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.transition.DefaultSurfaceAnimator$$ExternalSyntheticLambda1.run(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:15)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:07:50.764  5911  6158 D MultiTaskingAnimTarget: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:07:50.764  5911  6158 D MultiTaskingFolmeControl: updateBaseAnimParam taskId = 3585 taskBounds : Rect(0, 0 - 2032, 3048)
+08-29 17:07:50.764  5911  6158 D MultiTaskingTransitionObserver: onTransitionFinished::mRunningTransitions = 0 mRemoteOpenFreeformTransitions = []
+08-29 17:07:50.764  5911  6158 D SoScUtils: monitorTransitionFinished transition:android.os.BinderProxy@26f98e9 transaction: android.view.SurfaceControl$Transaction@1335daf mRequestCloseTransition:null mRequestOpenTransition:null mPairsOpenTransition:null mPairsOpenTransitionNull:null mRequestOpenTriggerTask:-1 mRequestCloseTriggerTask:-1 mOrientationTransition: null mPendingChange:null mMainStartingTask:-1 mSideStartingTask:-1
+08-29 17:07:50.764  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 2ms
+08-29 17:07:50.764  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3585, stackId=0, baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity }, userId=0, lastActiveTime=785181010, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity}, mHashCode=107724287}, title=MOV, titleDescription=MOV, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=false, isDockable=true, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 17:07:50.765  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 1ms
+08-29 17:07:50.765  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3581, stackId=0, baseIntent=Intent { act=android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY flg=0x14000000 cmp=com.android.settings/.homepage.DeepLinkHomepageActivity }, userId=0, lastActiveTime=782908905, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=null, mHashCode=107605123}, title=设置, titleDescription=设置, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=true, isDockable=false, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 17:07:50.765  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 0ms
+08-29 17:07:50.765  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3579, stackId=0, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.kugou.android.lite/com.kugou.android.app.splash.SplashActivity }, userId=0, lastActiveTime=782829207, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=ComponentInfo{com.kugou.android.lite/com.kugou.android.app.MediaActivity}, mHashCode=107545541}, title=酷狗概念版, titleDescription=酷狗概念版, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=false, isDockable=true, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 17:07:50.765  5241  6077 D RuntimeMeasurement: RecentsTaskManager.reloadTaskStack: cost 7ms
+08-29 17:07:50.765  5241  6077 E TaskSnapshotCompatVS: new TaskSnapshotCompatVS failed, taskSnapshot is null
+08-29 17:07:50.765  5241  6077 E TaskSnapshotCompatVS: getTaskThumbnailInfo failed, mTaskSnapshot: null, mHardwareBuffer: null
+08-29 17:07:50.765  5241  6077 E TaskSnapshotCompatVS: getBitmap failed, mHardwareBuffer is null
+08-29 17:07:50.765  5241  6077 D RuntimeMeasurement: RecentsTaskLoader.refreshResourceCache: cost 0ms
+08-29 17:07:50.766  2759  6186 I TransitionImpl: home mode = 6
+08-29 17:07:50.766  2759  6186 D BarFollowAnimation: onTaskInfoChanedForCaptionBar Task{41d426d #3585 type=standard A=10429:com.mov.android} shouldbeVisible:true isVisible:true isOnTop:true windowMode:1 preDisplayId:-1 displayId:0 mCaptionAssociatedTask:Task{41d426d #3585 type=standard A=10429:com.mov.android} mIsTouchedInCaption:false
+08-29 17:07:50.767  2759  6186 D SystemPerformanceHinter: endSession#HighPerfSession-d0-Transition
+08-29 17:07:50.767  2322  6170 W VsyncModulator: setTransactionSchedule: Unexpected EarlyEnd
+08-29 17:07:50.767  5911  6158 I RemoteTransitionHandlerStubImpl: invokeAndRemoveWctCB transition is null, curWctCB: null
+08-29 17:07:50.767  2322  6170 D MI-SF   : updateScene: module = 268 (Animation), value = 0, pkg = perf_interaction, Vrr = 1, mSetTpIdleFlag = 0
+08-29 17:07:50.767  2322  6170 D MI-SF   : updateScene mSetAnimationFlag status 0, vsync 60
+08-29 17:07:50.767  2759  5116 D BarFollowAnimation:  showAppNavBar  packageName = com.mov.android mHasHideAppSurface = false mIsKeyguardGoingAway = false mNavBarState = -1
+08-29 17:07:50.768  2759  5116 D BarFollowAnimation:  navBarVisible source = InsetsSource: {d8d70001 mType=navigationBars mFrame=[0,3008][2032,3048] mVisible=true mFlags=SUPPRESS_SCRIM mSideHint=BOTTOM mBoundingRects=null}
+08-29 17:07:50.768  2759  5116 D BarFollowAnimation: calculateAppSurface: task=Task{41d426d #3585 type=standard A=10429:com.mov.android} appSurface=Surface(name=NavigationBar Container of Task = 3585#33672)/@0x800aea2
+08-29 17:07:50.769  5911  5911 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.app.Activity$$ExternalSyntheticLambda0@f9c77dc
+08-29 17:07:50.769  5911  5911 D DecorViewImmersiveImpl: onDetachedFromWindow
+08-29 17:07:50.769  2759  2881 I WindowManager: wms.hideSurface mWin:Window{85e14ac u0 com.android.systemui/com.android.systemui.mediaprojection.permission.MediaProjectionPermissionActivity} reason:(prepareSurfaceLocked) in Surface(name=com.android.systemui/com.android.systemui.mediaprojection.permission.MediaProjectionPermissionActivity#33754)/@0x5b0b686
+08-29 17:07:50.769  5673 20042 W DynamicDDSService: appName is not found in cache: com.android.systemui
+08-29 17:07:50.770  5911  8060 E ContentCatcherManager: failed to get ContentCatcherService.
+08-29 17:07:50.770  5911  6496 W ndroid.systemui: Binder 0xb400007658ea2e00 destroyed after setInheritRt before being parceled.
+08-29 17:07:50.770  5911  5911 D ViewRootImpl: Skipping stats log for color mode
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.770  2759  6629 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:07:50.771  2759  6629 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.771  2759  6629 E DisplayModeDirectorImpl: Invalid displayId: 22, only 0 and 1 are supported
+08-29 17:07:50.771  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.771  2759  6629 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{df5bef4 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:07:50.771  2759  6629 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.771  2759  4871 I DisplayModeDirectorImpl: SmartDisplayPolicyEnd
+08-29 17:07:50.773  2759  6572 W WindowManager: Failed looking up window session=Session{2d66f58 5911:1000} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:7308 com.android.server.wm.Session.setOnBackInvokedCallbackInfo:1165 android.view.IWindowSession$Stub.onTransact:1258 
+08-29 17:07:50.773  2759  6572 I WindowManager: setOnBackInvokedCallback(): No window state for package:com.android.systemui
+08-29 17:07:50.773 31728  7596 I com.mov.android: This is non sticky GC, maxfree is 33554432 minfree is 8388608
+08-29 17:07:50.773     1     1 I libc    : kill: send 9 to pid -8463
+08-29 17:07:50.774     1     1 I libc    : debug pid reuse, real pid -8463
+08-29 17:07:50.774  2759  5591 D BarFollowAnimation: onTaskInfoChanedForCaptionBar Task{41d426d #3585 type=standard A=10429:com.mov.android} shouldbeVisible:true isVisible:true isOnTop:true windowMode:1 preDisplayId:-1 displayId:0 mCaptionAssociatedTask:Task{41d426d #3585 type=standard A=10429:com.mov.android} mIsTouchedInCaption:false
+08-29 17:07:50.775  2759  5591 D BarFollowAnimation: onTaskInfoChanedForCaptionBar Task{41d426d #3585 type=standard A=10429:com.mov.android} shouldbeVisible:true isVisible:true isOnTop:true windowMode:1 preDisplayId:-1 displayId:0 mCaptionAssociatedTask:Task{41d426d #3585 type=standard A=10429:com.mov.android} mIsTouchedInCaption:false
+08-29 17:07:50.776  2759  2880 I DisplayModeDirectorImpl: updateRefreshRateResultIfNeeded after:baseModeId=4 allowGroupSwitching=false primary=physical: (0.0 Infinity) render:  (0.0 60.0) appRequest=physical: (0.0 Infinity) render:  (0.0 60.0) idleScreenRefreshRateConfig=null mNormalModeSkipOveride: false
+08-29 17:07:50.777  2759  2880 I DisplayModeDirectorImpl: onDesiredDisplayModeSpecsChanged:baseModeId=4 allowGroupSwitching=false primary=physical: (0.0 Infinity) render:  (0.0 60.0) appRequest=physical: (0.0 Infinity) render:  (0.0 60.0) idleScreenRefreshRateConfig=null noVotes=false isautomode false
+08-29 17:07:50.777  2322  2420 D MI-SF   : updateScene: module = 276 (fps_switch_reason), value = 4, pkg = reason, Vrr = 1, mSetTpIdleFlag = 0
+08-29 17:07:50.777  2322  2420 D MI-SF   : FPS_SWITCH_REASON statue set to 4 by reason 
+08-29 17:07:50.777  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:07:50.777  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:07:50.777  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:07:50.777  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:07:50.777  2759  2880 I DisplayModeDirectorImpl: updateRefreshRateResultIfNeeded after:baseModeId=28 allowGroupSwitching=false primary=physical: (0.0 Infinity) render:  (0.0 60.0) appRequest=physical: (0.0 Infinity) render:  (0.0 60.0) idleScreenRefreshRateConfig=null mNormalModeSkipOveride: false
+08-29 17:07:50.777  2759  2880 I DisplayModeDirectorImpl: onDesiredDisplayModeSpecsChanged:baseModeId=28 allowGroupSwitching=false primary=physical: (0.0 Infinity) render:  (0.0 60.0) appRequest=physical: (0.0 Infinity) render:  (0.0 60.0) idleScreenRefreshRateConfig=null noVotes=false isautomode false
+08-29 17:07:50.778  2322  6170 D MI-SF   : updateScene: module = 276 (fps_switch_reason), value = 4, pkg = reason, Vrr = 1, mSetTpIdleFlag = 0
+08-29 17:07:50.778  2322  6170 D MI-SF   : FPS_SWITCH_REASON statue set to 4 by reason 
+08-29 17:07:50.779  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.779  5241  5969 D TaskStackChangeListeners: onTaskDescriptionChanged =  taskId = 3585
+08-29 17:07:50.780  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.780  2759  2881 E DisplayModeDirectorImpl: Invalid displayId: 22, only 0 and 1 are supported
+08-29 17:07:50.780  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{df5bef4 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:07:50.780  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.781  2322  6170 D SurfaceFlinger: setDesiredDisplayModeSpecs: DisplayModeSpecs{defaultMode: 3, allowGroupSwitching: false, primaryRanges: RefreshRateRanges{physical: RefreshRateRange{min: 0.000000, max: inf}, render: RefreshRateRange{min: 0.000000, max: 60.000000}}, appRequestRanges: RefreshRateRanges{physical: RefreshRateRange{min: 0.000000, max: inf}, render: RefreshRateRange{min: 0.000000, max: 60.000000}}, idleScreenRefreshRateConfig: (null)}
+08-29 17:07:50.781  5911  6158 I MultiTaskingTaskInfo: MultiTaskingBaseTaskInfo::update::mTaskBounds = Rect(0, 0 - 2032, 3048), mTaskId = 3585
+08-29 17:07:50.781  2322  2322 W SurfaceFlinger: setDesiredDisplayModeSpecsInternal form 1036, just do nothing
+08-29 17:07:50.781  2322  2322 I RefreshRateSelector: Display 4630947038039379843 policy changed
+08-29 17:07:50.781  2322  2322 I RefreshRateSelector: Previous: {defaultModeId=0, allowGroupSwitching=false, primaryRanges={physical=[0.00 Hz, inf Hz], render=[0.00 Hz, 120.00 Hz]}, appRequestRanges={physical=[0.00 Hz, inf Hz], render=[0.00 Hz, 120.00 Hz]} idleScreenConfig=nullptr}
+08-29 17:07:50.781  2322  2322 I RefreshRateSelector: Current:  DisplayManagerPolicy{defaultModeId=3, allowGroupSwitching=false, primaryRanges={physical=[0.00 Hz, inf Hz], render=[0.00 Hz, 60.00 Hz]}, appRequestRanges={physical=[0.00 Hz, inf Hz], render=[0.00 Hz, 60.00 Hz]} idleScreenConfig=nullptr}
+08-29 17:07:50.781  2322  2322 I RefreshRateSelector: 3 mode changes were performed under the previous policy, result = 2
+08-29 17:07:50.781  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:07:50.781  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:07:50.781  2322  2322 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-29 17:07:50.781  2322  2322 D DisplayModeController: setDesiredMode 4630947038039379843 {mode={fps=60.00 Hz, modePtr={id=3, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=true, force=false}
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: setAnimParam bounds: Rect(0, 0 - 2032, 3048) scaleX: 1.0 scaleY: 1.0
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: java.lang.Throwable
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.animation.MultiTaskingAnimTarget.setAnimParam(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:36)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.animation.MultiTaskingFolmeControl.updateBaseAnimParam(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:15)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.taskmanager.MultiTaskingTaskInfo.update(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:23)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.taskmanager.MultiTaskingTaskRepository.onTaskInfoChanged(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:133)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.multitasking.common.taskmanager.MultiTaskingTaskListener.onTaskInfoChanged(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:3)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at com.android.wm.shell.ShellTaskOrganizer.onTaskInfoChanged(go/retraceme 5667f434e03d64a5cfc27d98a9fbaac557cf6a606fd214bd0e63144848c1157f:136)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.window.TaskOrganizer$1.lambda$onTaskInfoChanged$6(TaskOrganizer.java:300)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.window.TaskOrganizer$1.$r8$lambda$ymyF3xZeY830CRyp4eBo81WJpe0(Unknown Source:0)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.window.TaskOrganizer$1$$ExternalSyntheticLambda6.run(D8$$SyntheticClass:0)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:07:50.781  5911  6158 D MultiTaskingAnimTarget: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:07:50.782  5911  6158 D MultiTaskingFolmeControl: updateBaseAnimParam taskId = 3585 taskBounds : Rect(0, 0 - 2032, 3048)
+08-29 17:07:50.782  5911  6158 I MultiTaskingTaskRepository: onTaskInfoChanged::taskId = 3585, windowingMode = 1, mMultiWindowTaskIdsInZOrder = [5, 4], mFullscreenTaskIdsInZOrder = [3585, 3579], mFreeformTaskIdsInZOrder = [], mTasks: 3585, 3579, 8, 7, 6, 5, 4, 3, 1, 
+08-29 17:07:50.782  5911  6158 D MiuiInfinityModeTaskRepository: onTaskInfoChanged  taskinfo:taskId:3585 activityname:.MainActivity windowMode:fullscreen
+08-29 17:07:50.782  5911  6158 D MiuiDecorationController: relayout:: taskId=3585 mRunningTaskInfo.mStatusBarParent=Surface(name=StatusBar Container of Task = 3585#33673)/@0xdfb609c taskInfo.mStatusBarParent=Surface(name=StatusBar Container of Task = 3585#33673)/@0x794e89a
+08-29 17:07:50.782  5911  6158 D MiuiDecorationController: relayout:: taskId=3585 mRunningTaskInfo.mNavBarParent=Surface(name=NavigationBar Container of Task = 3585#33672)/@0x1fdaa5 taskInfo.mNavBarParent=Surface(name=NavigationBar Container of Task = 3585#33672)/@0xa6225cb
+08-29 17:07:50.782  5911  6158 D MiuiDecorationController: relayout::taskId=3585, visible=true, bounds=Rect(0, 0 - 2032, 3048), focused=true, oldImmersive=false, newImmersive=false, windowMode=1, activityType=1, displayId=0, baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity}, topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity}, callers=com.android.wm.shell.multitasking.miuimultiwinswitch.miuiwindowdecor.decoration.MiuiDecorationController.relayout:4 com.android.wm.shell.multitasking.miuimultiwinswitch.miuiwindowdecor.MulWinSwitchDecorViewModel.onTaskInfoChanged:18 com.android.wm.shell.multitasking.common.taskmanager.MultiTaskingTaskListener.onTaskInfoChanged:47 com.android.wm.shell.ShellTaskOrganizer.onTaskInfoChanged:136 android.window.TaskOrganizer$1.lambda$onTaskInfoChanged$6:300 
+08-29 17:07:50.783  5911  6158 D MiuiDecorationDot: needTopCaption: isFullscreen = true isPadDevice = true isFoldInnerScreen = false canShowCaptionWhenCasting = false
+08-29 17:07:50.783  5911  6158 D MiuiDecorationDot: updateRootView_TopCaption: taskId = 3585 needTopCaption = true topCaptionView = java.lang.Object@88f05f7
+08-29 17:07:50.783  5911  6158 D MiuiDecorationDot: updateViews_TopCaption: taskId=3585 scale=1.0 captionBottomPadding=15 dotY=43 outResult=RelayoutResult{mRoot=java.lang.Object@88f05f7, mCaptionX=991, mCaptionY=38, mCaptionWidth=155.0, mCaptionHeight=86.0, mCaptionOffsetY=0, mSamplingOffsetY=38}
+08-29 17:07:50.783  5911  6158 D MiuiDecorationBase: updateFocus: same focus
+08-29 17:07:50.783  5911  6158 D MiuiDecorationBase: updateSampling_TopCaption: taskId = 3585 scale = 1.0 mTaskBounds = Rect(0, 0 - 2032, 3048) mCaptionVisibility = true mIsFsgestureEntered = false isRunningAnim = false isDraggingRecent = false isFreeformElude = false isDecorationShowing = true shouldEnableSampling = true
+08-29 17:07:50.783  5911  6158 D MiuiDecorationBase: updateSampling_TopCaption: samplingRect = Rect(991, 38 - 1041, 48)
+08-29 17:07:50.783  5911  6158 D MiuiDecorationBase: updateVisibility_TopCaption: taskId=3585, isRotationAnimationRunning=false, mCaptionVisible=true, isCaptionVisible=true
+08-29 17:07:50.783  5911  6158 D MiuiDecorationBottom: needBottomCaption: needShow = true
+08-29 17:07:50.784  5911  6158 D MiuiDecorationBottom: updateRootView_BottomCaption: taskId = 3585 needBottomCaption = true bottomCaptionView = java.lang.Object@ec37ad0
+08-29 17:07:50.784  5911  6158 D MiuiDecorationBottom: updateViews_BottomCaption: taskId=3585 scale=1.0 outResult = RelayoutResult{mRoot=java.lang.Object@ec37ad0, mCaptionX=660, mCaptionY=3023, mCaptionWidth=711.2, mCaptionHeight=40.0}
+08-29 17:07:50.784  5911  6158 D MiuiDecorationBase: updateFocus: same focus
+08-29 17:07:50.784  5911  6158 D MiuiDecorationBase: updateSampling_BottomCaption: taskId = 3585 scale = 1.0 mTaskBounds = Rect(0, 0 - 2032, 3048) mCaptionVisibility = true mIsFsgestureEntered = false isRunningAnim = false isDraggingRecent = false isFreeformElude = false isDecorationShowing = true shouldEnableSampling = true
+08-29 17:07:50.784  5911  6158 D MiuiDecorationBase: updateSampling_BottomCaption: samplingRect = Rect(660, 3023 - 1371, 3033)
+08-29 17:07:50.784  5911  6158 D MiuiDecorationBase: updateVisibility_BottomCaption: taskId=3585, isRotationAnimationRunning=false, mCaptionVisible=true, isCaptionVisible=true
+08-29 17:07:50.784  2759  5591 E TransitionChain: Can't collect into a chain with no transition
+08-29 17:07:50.784  2759  5591 D ActivityTaskManager:  setSkipCaptureLayers tr: Task{41d426d #3585 type=standard A=10429:com.mov.android}
+08-29 17:07:50.787  2121  2701 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:07:50.787  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.788  5911  6272 D VRI[Miui Caption of Task=3585]: getMiuiFreeformStackInfo mTmpFrames.miuiFreeFormStackInfo: null
+08-29 17:07:50.788  5911  6272 D VRI[Miui Bottom Caption of Task=3585]: getMiuiFreeformStackInfo mTmpFrames.miuiFreeFormStackInfo: null
+08-29 17:07:50.789  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:07:50.789  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:07:50.789  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:07:50.789  2322  2322 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-29 17:07:50.789  2121  2701 I SDM     : HWCFunctionTimer::noticeTimerFps: displayid:65, fps: 60
+08-29 17:07:50.789  2121  2701 I SDM     : HWCDisplay::SetActiveConfigWithConstraints: display:65-0, config: 3, WxH 3048x2032, fps 60
+08-29 17:07:50.789  2121  2701 W SDM     : HWDeviceDRM::GetSupportedBitClkRate: Requested rate not supported: 1190090000
+08-29 17:07:50.789  2121  2701 I SDM     : HWDeviceDRM::UpdateMixerAttributes: Mixer WxH 3048x2032-1 for Peripheral
+08-29 17:07:50.790  2121  2701 I SDM     : HWCDisplay::SubmitDisplayConfig: Active configuration changed from config 0 to 3
+08-29 17:07:50.790  2121  2701 I SDM     : HWCDisplay::SubmitDisplayConfig: Active WxH 3048x2032 ,ddic_mode:normal, timing_fps: 120, sf_fps: 120
+08-29 17:07:50.793  2313  2313 D AudioFlingerImpl: setGameParameters keyvalue: gamebooster=false
+08-29 17:07:50.793  1968  4602 D AHAL: AudioDeviceCustom: SetParameters: 96: Enter: kvpairs is gamebooster=false
+08-29 17:07:50.793  1968  4602 D AHAL: AudioDevice: SetParameters: 1616: Enter: kvpairs is gamebooster=false
+08-29 17:07:50.793  1968  4602 D AHAL: AudioVoice: VoiceSetParameters: 122: Enter params: gamebooster=false
+08-29 17:07:50.793  1968  4602 D AHAL: AudioVoice: VoiceSetParameters: 379: Exit ret: 0
+08-29 17:07:50.793  1968  4602 D AHAL: hfp: hfp_set_parameters: 444: enter
+08-29 17:07:50.793  1968  4602 D AHAL: FM: fm_set_parameters: 261: Enter
+08-29 17:07:50.793  1968  4602 D AHAL: FM: fm_set_parameters: 319: Exit
+08-29 17:07:50.793  1968  4602 D AHAL: Loopback_karaoke: karaoke_set_parameters: 394: Enter
+08-29 17:07:50.793  1968  4602 D AHAL: Loopback_karaoke: karaoke_set_parameters: 501: Exit
+08-29 17:07:50.793  1968  4602 D AHAL: AudioDevice: SetParameters: 1721: enter fcsam_setParameters_v2
+08-29 17:07:50.793  1968  4602 D AHAL: AudioDevice: SetParameters: 2386: Exit: -2
+08-29 17:07:50.794  1968  4602 D r_submix: adev_set_parameters() kvpairs='gamebooster=false'
+08-29 17:07:50.795  2121  2224 I SDM     : HWDeviceDRM::SetDisplaySwitchMode: Mode 3 already set
+08-29 17:07:50.795  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.796  2759  2880 I DisplayDeviceRepository: Display device changed render timings: "内置屏幕", renderFrameRate=60.000004, presentationDeadlineNanos=16666666, appVsyncOffsetNanos=1000000, frameRateOverrides=[]
+08-29 17:07:50.797  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:07:50.797  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:07:50.797  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:07:50.797  2322  2322 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-29 17:07:50.797  2759  2881 I WindowManager: wms.hideSurface mWin:Window{9a1955a u0 com.android.systemui EXITING} reason:(onExitAnimationDone) in Surface(name=#33753)/@0x418b8f3
+08-29 17:07:50.797  2759  2878 D WindowManager: DeferredDisplayUpdater: partially applying DisplayInfo(2032 x 3048) immediately
+08-29 17:07:50.797  2759  2878 W DisplayContentStubImpl:  displayMetricsChanged=false physicalDisplayChanged=false displayId=0 newUniqueId=local:4630947038039379843 currentUnique=local:4630947038039379843
+08-29 17:07:50.797  2759  2878 D DisplayContentStubImpl: Display{#0 state=ON size=2032x3048 ROTATION_0} isActivityEmbeddingSplitEnable false
+08-29 17:07:50.798  2759  2878 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.798  2759  2878 E DisplayModeDirectorImpl: Invalid displayId: 22, only 0 and 1 are supported
+08-29 17:07:50.798  2759  2878 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{df5bef4 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:07:50.798  5911  5911 V AutoDensityController: on display changed 0 context dpi:386 origin dpi:400 target dpi:386
+08-29 17:07:50.798  5911  5911 D ControlCenterWindowViewController: on display changed 0
+08-29 17:07:50.798  2759  2878 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.799  2313  2313 D AudioFlingerImpl: setGameParameters keyvalue: screen_state=on
+08-29 17:07:50.799  1968  4602 D AHAL: AudioDeviceCustom: SetParameters: 96: Enter: kvpairs is screen_state=on
+08-29 17:07:50.799  1968  4602 D AHAL: AudioDevice: SetParameters: 1616: Enter: kvpairs is screen_state=on
+08-29 17:07:50.799  1968  4602 D AHAL: AudioVoice: VoiceSetParameters: 122: Enter params: screen_state=on
+08-29 17:07:50.799  1968  4602 D AHAL: AudioVoice: VoiceSetParameters: 379: Exit ret: 0
+08-29 17:07:50.799  1968  4602 D AHAL: hfp: hfp_set_parameters: 444: enter
+08-29 17:07:50.799  1968  4602 D AHAL: FM: fm_set_parameters: 261: Enter
+08-29 17:07:50.799  1968  4602 D AHAL: FM: fm_set_parameters: 319: Exit
+08-29 17:07:50.799  1968  4602 D AHAL: Loopback_karaoke: karaoke_set_parameters: 394: Enter
+08-29 17:07:50.799  1968  4602 D AHAL: Loopback_karaoke: karaoke_set_parameters: 501: Exit
+08-29 17:07:50.799  1968  4602 D AHAL: AudioDevice: SetParameters: 1721: enter fcsam_setParameters_v2
+08-29 17:07:50.799  1968  4602 D AHAL: AudioDevice: SetParameters: 1751:  - screen = on
+08-29 17:07:50.799  1968  4602 D PAL: API: pal_set_param: 1133: Enter: param id 8 (PAL_PARAM_ID_SCREEN_STATE)
+08-29 17:07:50.799  1968  4602 D PAL: ResourceManager: setParameter: 9202: Enter param id: 0x8 (PAL_PARAM_ID_SCREEN_STATE)
+08-29 17:07:50.799  1968  4602 I PAL: ResourceManager: setParameter: 9225: Screen State:1
+08-29 17:07:50.799  1968  4602 D PAL: ResourceManager: setParameter: 10305: Exit status: 0
+08-29 17:07:50.799  1968  4602 D PAL: API: pal_set_param: 1148: Exit, status 0
+08-29 17:07:50.799  1968  4602 D AHAL: AudioDevice: SetParameters: 2386: Exit: -2
+08-29 17:07:50.800  1968  4602 D r_submix: adev_set_parameters() kvpairs='screen_state=on'
+08-29 17:07:50.801  5241  5241 W Launcher.DeviceConfig: onDisplayChanged: newRotation=0, oldRotation=0, launcherRotation=0
+08-29 17:07:50.801  5241  6120 W GestureStubView_Left: onDisplayChanged
+08-29 17:07:50.801  5241  5241 D Launcher.DeviceConfig: setIsFixedRotating=false
+08-29 17:07:50.801  5241  6120 W GestureStubView_Left: adaptRotation   currentRotation=0   mRotation=0
+08-29 17:07:50.801  5241  5241 D Launcher:  onDisplayChanged, workspace loading? false, soscing? false
+08-29 17:07:50.801  5241  6120 W GestureStubView_Right: onDisplayChanged
+08-29 17:07:50.801  5241  6120 W GestureStubView_Right: adaptRotation   currentRotation=0   mRotation=0
+08-29 17:07:50.801  5241  5241 D DockUtilities: resolveFinalScreenSize: isHorizontal = false, realScreenHeight = 3048, realScreenWidth = 2032
+08-29 17:07:50.801  5241  5241 D DockTouchHelper: updateInterceptingRegion: left = 288.0, top = 2963.5625, right = 613.0, bottom = 3048.0, homeHandleWidth = 806, dockIndicatorWidth = 325
+08-29 17:07:50.804  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.812  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.821  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.821  2759  2881 E DisplayModeDirectorImpl: Invalid displayId: 22, only 0 and 1 are supported
+08-29 17:07:50.822  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{df5bef4 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:07:50.822  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.823  2121  2701 I MiClstc : DropLayers erase layer 7457
+08-29 17:07:50.823  2759  2881 D SystemPerformanceHinter: endSession#HighPerfSession-d0-WindowAnimation
+08-29 17:07:50.824  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.824  2759  2881 E DisplayModeDirectorImpl: Invalid displayId: 22, only 0 and 1 are supported
+08-29 17:07:50.824  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{df5bef4 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:07:50.824  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:07:50.828  5626  5722 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.android.networkstack.process
+08-29 17:07:50.828  5626  5722 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:07:50.829  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.845  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.846  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:07:50.851  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:07:50.861  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:07:50.861  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:54
+08-29 17:07:50.861  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:07:50.861  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:53
+08-29 17:07:50.862  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:07:50.862  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.877  5241  5241 D Launcher.Dock_GlobalGestureDispatcher: set isRecognizing=false
+08-29 17:07:50.890  2759  2759 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
+08-29 17:07:50.891  5911  5911 D FocusPlugin: plugin onNotificationPosted: 0|com.mov.android|4711|null|10429 com.mov.android
+08-29 17:07:50.891  5911  5911 D FocusPlugin: 0|com.mov.android|4711|null|10429 is not focus notification, isMedia: false
+08-29 17:07:50.892  5911  5911 D AlarmScheduler-fold: addAlarm, key=0|com.mov.android|4711|null|10429, triggerTime=806781257
+08-29 17:07:50.892  5911  5911 D AlarmScheduler-TIMEOUT: addAlarm, key=0|com.mov.android|4711|null|10429, triggerTime=1044381257
+08-29 17:07:50.892  5911  5911 D MiuiBubbleManager: onEntryAdded: com.android.systemui.statusbar.notification.collection.NotificationEntry@648f466
+08-29 17:07:50.893  5911  5911 I MiuiBubbleSettings: com.mov.android 0isAppEnableBubbleNotification: false
+08-29 17:07:50.894 10561 10858 I HeavyPackageIdentify: splitMode: false, splitPackages: null, foregroundPkg: com.mov.android
+08-29 17:07:50.894 10561 10858 I HeavyPackageIdentify: sendBroadCast, overloadStatus: 1
+08-29 17:07:50.894 10561 10858 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1280 android.content.ContextWrapper.sendBroadcast:522 com.xiaomi.joyose.smartop.gamebooster.scenerecognize.b.m:45 com.xiaomi.joyose.smartop.gamebooster.scenerecognize.b.f:1 com.xiaomi.joyose.smartop.gamebooster.scenerecognize.b$a.handleMessage:172 
+08-29 17:07:50.907  5911  5911 E backgroundBlur: setMiViewBlurMode disable com.android.systemui.statusbar.notification.row.NotificationBackgroundView
+08-29 17:07:50.907  5911  5911 D HWUI    : setMiShadow closed
+08-29 17:07:50.907  5911  5911 D EmptyNotif: setContractedChild:   null
+08-29 17:07:50.908  5911  5911 D NotificationRowContentBinderInjectorImpl: changeToFullAodContext: not need change full aod style
+08-29 17:07:50.911  5911  5911 W BitmapDrawable: BitmapDrawable created with null Bitmap
+08-29 17:07:50.911  5911  5911 W BitmapDrawable: BitmapDrawable created with null Bitmap
+08-29 17:07:50.914  5911  5911 W BitmapDrawable: BitmapDrawable created with null Bitmap
+08-29 17:07:50.914  5911  5911 W BitmapDrawable: BitmapDrawable created with null Bitmap
+08-29 17:07:50.914  5911  5911 D EmptyNotif: setContractedChild:   android.widget.FrameLayout{ec9c305 V.E...... ......I. 0,0-0,0 #7f0b0b3f app:id/status_bar_latest_event_content}
+08-29 17:07:50.915  5911  5911 E backgroundBlur: setMiViewBlurMode disable com.android.systemui.statusbar.notification.row.NotificationBackgroundView
+08-29 17:07:50.915  5911  5911 D HWUI    : setMiShadow closed
+08-29 17:07:50.915  5911  5911 D HWUI    : setMiShadow parameter is same
+08-29 17:07:50.915  5911  5911 D AlertCoordinator: onViewBound, buzzBeep for 0|com.mov.android|4711|null|10429
+08-29 17:07:50.921  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:07:50.921  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:07:50.921  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:07:50.921  2322  2322 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-29 17:07:50.929  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.940  5911  5911 D backgroundBlur: setSelfBlurRadius radius(30) com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:50.940  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:50.943  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785181305885541, lux: 3.0
+08-29 17:07:50.943  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785181305885541, sensor=5, temperature(K)=   0.0000
+08-29 17:07:50.943  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:07:50.962  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.971  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:50.979  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:50.988  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:50.995  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.004  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.012  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.021  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.029  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.038  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.045  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.046  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:07:51.052  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:07:51.055  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.062  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.071  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.079  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.088  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.095  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787994449334917300 end screen.capture
+08-29 17:07:51.096  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.105  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.112  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.121  8475  8475 I MOVTEST : MOVTEST_MARK_1787994449334917300 end screen.capture
+08-29 17:07:51.121  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.129  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.139  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.146  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.155  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.163  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.171  5911  5911 D backgroundBlur: setSelfColorModes has setted com.android.systemui.statusbar.StatusBarIconView hashcode 262600150
+08-29 17:07:51.179  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:07:51.180  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:07:51.196  2121  2694 W SDM-histogram: Discarding event blob-id: C9

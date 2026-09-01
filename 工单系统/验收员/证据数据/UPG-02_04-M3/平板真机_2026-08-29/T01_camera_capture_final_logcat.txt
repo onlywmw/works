@@ -1,0 +1,308 @@
+--------- beginning of main
+08-29 16:56:32.694  5241  5969 V RecentsModel: setDynamicVIPTaskIfNeeded success
+08-29 16:56:32.694  5241  5969 D RecentsTaskManager: onTaskStackChangedBackground
+08-29 16:56:32.694  5241  5241 D HotSeatsListRecentsAppProvider: onTaskStackChangedBackground called from RecentTasksChangedEvent true
+08-29 16:56:32.694  3160 19801 W MiuiBooster: "MiuiBoosterService requestThreadPriority: 10141, 2, 2000, 946074"
+08-29 16:56:32.694 25852 25852 D VRI[MainActivity]: vri.reportNextDraw 0 Rect(0, 0 - 2032, 3048) android.view.ViewRootImpl.handleResized:3278 android.view.ViewRootImpl.-$$Nest$mhandleResized:0 android.view.ViewRootImpl$W.resized:13762 android.app.servertransaction.WindowStateResizeItem.execute:93 android.app.servertransaction.WindowStateTransactionItem.execute:62 
+08-29 16:56:32.694  8509  3626 I SCTaskStackListener: onTaskStackChanged! inSplit = false
+08-29 16:56:32.695 25852 25852 D InsetsController: default animation onReady types: 1 controller=android.view.InsetsAnimationControlImpl@cbbd43
+--------- beginning of system
+08-29 16:56:32.695  2759  6625 I MiuiEmbeddingWindow: isActivityEmbedded ActivityRecord{243620088 u0 com.kugou.android.lite/com.kugou.android.app.MediaActivity t3579} true Rect(0, 0 - 2032, 3048) Rect(0, 0 - 2032, 3048) 1.0 true
+08-29 16:56:32.695 25852 25852 D ViewRootImplStubImpl: requestedTypes: 1
+08-29 16:56:32.696  5241  6077 W RecentsModel: getRunningTask   taskInfo=TaskInfo{userId=0 taskId=3584 effectiveUid=10429 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity } baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} origActivity=null realActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} numActivities=1 lastActiveTime=784503061 supportsSplitScreenMultiWindow=true mSoScDisplayMode=-1 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=200 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@347eb64} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{2afe1cd com.mov.android.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(501, 632 - 1531, 2462) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false topActivityInMiuiSizeCompat=false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 2032, 3048) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} isImmersive=false mTopActivityRequestOrientation=-1 mStatusBarParent=null mNavBarParent=null mBehindAppLockPkg=null mOriginatingUid=0 isEmbedded=false shouldBeVisible=true isCreatedByOrganizer=false mIsCastMode=false mTopActivityMediaSize=Rect(0, 0 - 0, 0) mTopActivityRecordName=ActivityRecord{227171483 u0 com.mov.android/.MainActivity t3584} mTopActivityOrientation=-1 topActivityMainWindowFrame=null}
+08-29 16:56:32.696  5241  6077 D RuntimeMeasurement: getRunningTaskId: 3584: cost 5ms
+08-29 16:56:32.696  5241  6077 E MiuiPadHome_ActivityManagerWrapper: get all recent tasks force including 3584
+08-29 16:56:32.696  5911  6251 D ShellTransitions: speed ui!!!!!!!!!!!
+08-29 16:56:32.698  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.698  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.698  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.698  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.698  8509 10833 I SCTaskStackListener: onTaskStackChanged! inSplit = false
+08-29 16:56:32.698  8389 13975 I MultiScreenObserver: onTaskStackChanged, splitScreenMode: false isSmallScreen: false
+08-29 16:56:32.701  2759  6626 I MiuiEmbeddingWindow: isActivityEmbedded ActivityRecord{243620088 u0 com.kugou.android.lite/com.kugou.android.app.MediaActivity t3579} true Rect(0, 0 - 2032, 3048) Rect(0, 0 - 2032, 3048) 1.0 true
+08-29 16:56:32.701 25852 25852 D VRI[MainActivity]: vri.Setup new sync=wmsSync-VRI[MainActivity]#12
+08-29 16:56:32.703  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 16:56:32.703  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 16:56:32.703  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:56:32.703  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 16:56:32.704  5241  6077 E MiuiPadHome_ActivityManagerWrapper: getRecentTasksForceIncludingTaskIdIfValid: getRecentTasks: size=3
+08-29 16:56:32.704  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3584   userId=0   windowMode=1   baseIntent=Intent { act=null flag=268435456 cmp=ComponentInfo{com.mov.android/com.mov.android.MainActivity} }
+08-29 16:56:32.704  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3581   userId=0   windowMode=1   baseIntent=Intent { act=android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY flag=335544320 cmp=ComponentInfo{com.android.settings/com.android.settings.homepage.DeepLinkHomepageActivity} }
+08-29 16:56:32.704  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3579   userId=0   windowMode=1   baseIntent=Intent { act=android.intent.action.MAIN flag=270532608 cmp=ComponentInfo{com.kugou.android.lite/com.kugou.android.app.splash.SplashActivity} }
+08-29 16:56:32.704  5241  6077 D RuntimeMeasurement: loadRecentTasks: cost 8ms
+08-29 16:56:32.704  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 0ms
+08-29 16:56:32.704  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3584, stackId=0, baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity }, userId=0, lastActiveTime=784502947, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity}, mHashCode=107694496}, title=MOV, titleDescription=MOV, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=false, isDockable=true, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 16:56:32.705  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 1ms
+08-29 16:56:32.705  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3581, stackId=0, baseIntent=Intent { act=android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY flg=0x14000000 cmp=com.android.settings/.homepage.DeepLinkHomepageActivity }, userId=0, lastActiveTime=782908905, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=null, mHashCode=107605123}, title=设置, titleDescription=设置, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=true, isDockable=false, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 16:56:32.646  2322  2322 W binder:2322_4: type=1400 audit(0.0:2979909): avc:  denied  { search } for  name="mcd" dev="dm-56" ino=574 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+08-29 16:56:32.650 25852 25852 W com.mov.android: type=1400 audit(0.0:2979910): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=505 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.mov.android
+08-29 16:56:32.705  5911  5911 D KeyguardEditorHelper: onTopActivityMayChanged, topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity}; mState=IDEL
+08-29 16:56:32.706  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 1ms
+08-29 16:56:32.706  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3579, stackId=0, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.kugou.android.lite/com.kugou.android.app.splash.SplashActivity }, userId=0, lastActiveTime=782829207, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=ComponentInfo{com.kugou.android.lite/com.kugou.android.app.MediaActivity}, mHashCode=107545541}, title=酷狗概念版, titleDescription=酷狗概念版, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=false, isDockable=true, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 16:56:32.706  5241  6077 D RuntimeMeasurement: RecentsTaskManager.reloadTaskStack: cost 15ms
+08-29 16:56:32.707  5847  6614 D HingeNetworkManager: EVENT_SET_LEVEL
+08-29 16:56:32.707 10561 13031 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1670 android.content.ContextWrapper.sendStickyBroadcast:714 com.xiaomi.joyose.smartop.gamebooster.control.i.b:1993 com.xiaomi.joyose.smartop.smartp.SmartPPkgStatusManager.e:19 com.xiaomi.joyose.smartop.smartp.SmartPPkgStatusManager.a:1 
+08-29 16:56:32.709  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 16:56:32.709  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 16:56:32.709  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 16:56:32.709  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 16:56:32.708  2759  3198 I MiuiEmbeddingWindow: isActivityEmbedded ActivityRecord{243620088 u0 com.kugou.android.lite/com.kugou.android.app.MediaActivity t3579} true Rect(0, 0 - 2032, 3048) Rect(0, 0 - 2032, 3048) 1.0 true
+08-29 16:56:32.710  5241  6077 W RecentsModel: getRunningTask   taskInfo=TaskInfo{userId=0 taskId=3584 effectiveUid=10429 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity } baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} origActivity=null realActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} numActivities=1 lastActiveTime=784503075 supportsSplitScreenMultiWindow=true mSoScDisplayMode=-1 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=200 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@d3dca82} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{98f0593 com.mov.android.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(501, 632 - 1531, 2462) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false topActivityInMiuiSizeCompat=false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 2032, 3048) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} isImmersive=false mTopActivityRequestOrientation=-1 mStatusBarParent=null mNavBarParent=null mBehindAppLockPkg=null mOriginatingUid=0 isEmbedded=false shouldBeVisible=true isCreatedByOrganizer=false mIsCastMode=false mTopActivityMediaSize=Rect(0, 0 - 0, 0) mTopActivityRecordName=ActivityRecord{227171483 u0 com.mov.android/.MainActivity t3584} mTopActivityOrientation=-1 topActivityMainWindowFrame=null}
+08-29 16:56:32.710  5241  6077 D RuntimeMeasurement: getRunningTaskId: 3584: cost 4ms
+08-29 16:56:32.710  5241  6077 E MiuiPadHome_ActivityManagerWrapper: get all recent tasks force including 3584
+08-29 16:56:32.711  2759  6626 I MiuiEmbeddingWindow: isActivityEmbedded ActivityRecord{243620088 u0 com.kugou.android.lite/com.kugou.android.app.MediaActivity t3579} true Rect(0, 0 - 2032, 3048) Rect(0, 0 - 2032, 3048) 1.0 true
+08-29 16:56:32.711  3881  3881 W libc    : Access denied finding property "persist.vendor.track.malloc.enable"
+08-29 16:56:32.711  3881  3881 W libc    : Access denied finding property "persist.vendor.fd.monitor.enable"
+08-29 16:56:32.711  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 16:56:32.711  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 16:56:32.711  5241  6077 I nihao   : GroupedTaskInfo calle1
+08-29 16:56:32.712  5241  6077 E MiuiPadHome_ActivityManagerWrapper: getRecentTasksForceIncludingTaskIdIfValid: getRecentTasks: size=3
+08-29 16:56:32.712  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3584   userId=0   windowMode=1   baseIntent=Intent { act=null flag=268435456 cmp=ComponentInfo{com.mov.android/com.mov.android.MainActivity} }
+08-29 16:56:32.712  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3581   userId=0   windowMode=1   baseIntent=Intent { act=android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY flag=335544320 cmp=ComponentInfo{com.android.settings/com.android.settings.homepage.DeepLinkHomepageActivity} }
+08-29 16:56:32.712  5241  6077 E MiuiPadHome_ActivityManagerWrapper:  mainTaskId=3579   userId=0   windowMode=1   baseIntent=Intent { act=android.intent.action.MAIN flag=270532608 cmp=ComponentInfo{com.kugou.android.lite/com.kugou.android.app.splash.SplashActivity} }
+08-29 16:56:32.712  5241  6077 D RuntimeMeasurement: loadRecentTasks: cost 2ms
+08-29 16:56:32.712  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 0ms
+08-29 16:56:32.712 10561 13031 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1670 android.content.ContextWrapper.sendStickyBroadcast:714 com.xiaomi.joyose.smartop.gamebooster.control.i.b:2001 com.xiaomi.joyose.smartop.smartp.SmartPPkgStatusManager.e:19 com.xiaomi.joyose.smartop.smartp.SmartPPkgStatusManager.a:1 
+08-29 16:56:32.712  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3584, stackId=0, baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity }, userId=0, lastActiveTime=784502947, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity}, mHashCode=107694496}, title=MOV, titleDescription=MOV, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=false, isDockable=true, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 16:56:32.712  5847  6614 D HingeNetworkManager: enableDualLink alwaysOn=false,isRoaming=false,isDualLinkEnabled=falseScene=1
+08-29 16:56:32.712  5847  6614 D HingeNetworkManager: enableDualLink enter
+08-29 16:56:32.712  5847  6614 D HingeNetworkManager: setMobileDataAlwaysOn , isEnabled= true, sceneType = 1
+08-29 16:56:32.712  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 0ms
+08-29 16:56:32.712  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3581, stackId=0, baseIntent=Intent { act=android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY flg=0x14000000 cmp=com.android.settings/.homepage.DeepLinkHomepageActivity }, userId=0, lastActiveTime=782908905, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=null, mHashCode=107605123}, title=设置, titleDescription=设置, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=true, isDockable=false, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 16:56:32.712  5241  6077 D RuntimeMeasurement: updateTaskKey: cost 0ms
+08-29 16:56:32.712  5241  6077 D RecentsTaskManager: diffTasks onUpdate: [TaskKey{id=3579, stackId=0, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.kugou.android.lite/com.kugou.android.app.splash.SplashActivity }, userId=0, lastActiveTime=782829207, windowingMode=1, isThumbnailBlur=false, isScreening=false, topActivity=ComponentInfo{com.kugou.android.lite/com.kugou.android.app.MediaActivity}, mHashCode=107545541}, title=酷狗概念版, titleDescription=酷狗概念版, bounds=null, isLaunchTarget=true, isStackTask=true, isSystemApp=false, isDockable=true, isLocked=false, isAccessLocked=false, mNeedHide=false, hasMultipleTasks=false, cti1Key=, cti2Key=] 
+08-29 16:56:32.712  5241  6077 D RuntimeMeasurement: RecentsTaskManager.reloadTaskStack: cost 6ms
+08-29 16:56:32.712  5253  5253 D MiuiFastConnectService_Plugin: onReceive(): action = com.xiaomi.joyose.GAME_START
+08-29 16:56:32.712  5253  5253 D MiuiFastConnectService_Plugin: game_start_state: true
+08-29 16:56:32.713  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.bluetooth, stopped=false, firstLaunch=false
+08-29 16:56:32.713  5253  5253 D MiuiFastConnectService_Plugin: stopBleScan: scanning: false
+08-29 16:56:32.713  2121  2700 I MiClstc : StageLayers update cached layer 7376
+08-29 16:56:32.713  2121  2700 I MiClstc : DropLayers erase layer 7400
+08-29 16:56:32.713  5241  6077 E TaskSnapshotCompatVS: new TaskSnapshotCompatVS failed, taskSnapshot is null
+08-29 16:56:32.713  5241  6077 E TaskSnapshotCompatVS: getTaskThumbnailInfo failed, mTaskSnapshot: null, mHardwareBuffer: null
+08-29 16:56:32.713  5241  6077 E TaskSnapshotCompatVS: getBitmap failed, mHardwareBuffer is null
+08-29 16:56:32.713  5241  6077 D RuntimeMeasurement: RecentsTaskLoader.refreshResourceCache: cost 1ms
+08-29 16:56:32.713  5241  6077 E TaskSnapshotCompatVS: new TaskSnapshotCompatVS failed, taskSnapshot is null
+08-29 16:56:32.713  5241  6077 E TaskSnapshotCompatVS: getTaskThumbnailInfo failed, mTaskSnapshot: null, mHardwareBuffer: null
+08-29 16:56:32.713  5241  6077 E TaskSnapshotCompatVS: getBitmap failed, mHardwareBuffer is null
+08-29 16:56:32.713  5241  6077 D RuntimeMeasurement: RecentsTaskLoader.refreshResourceCache: cost 0ms
+08-29 16:56:32.713  3881  3881 I octvm   : model:24018RPACC
+08-29 16:56:32.713  3881  3881 I octvm   : device:sheng
+08-29 16:56:32.714  3881  3881 I octvm   : mod_device:sheng
+08-29 16:56:32.714  3881  3881 I octvm   : total memory:15826908
+08-29 16:56:32.714 10561 13031 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1670 android.content.ContextWrapper.sendStickyBroadcast:714 com.xiaomi.joyose.smartop.gamebooster.control.i.b:2009 com.xiaomi.joyose.smartop.smartp.SmartPPkgStatusManager.e:19 com.xiaomi.joyose.smartop.smartp.SmartPPkgStatusManager.a:1 
+08-29 16:56:32.715  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 16:56:32.715  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 16:56:32.715  2759  6323 D ProcessManager: pms : packageName = com.mov.android gameScene =0 appState = 3
+08-29 16:56:32.715  2759  3198 D MiuiMultiFingerGestureManager: ganme name: com.mov.android ganme uid: 10429
+08-29 16:56:32.715  2759  3198 D MiuiMultiFingerGestureManager: isGameForeground: true
+08-29 16:56:32.715  2759  4523 W MiuiAntiIF: AntiIF did not start
+08-29 16:56:32.715 22231 24725 D BtGatt.ScanManagerInjector: onEvent() - mForegroundGameUid = 10429
+08-29 16:56:32.716  2759  5191 I NetworkBoostStatusManager: handle: 116
+08-29 16:56:32.716  2759  5100 D WifiFeatureControl: gameState: false, battleState: false
+08-29 16:56:32.716 10561 13031 I GameSceneIdSender: sendGameSceneId, gamePackage: com.mov.android, sceneId: SCENE_ID_DEFAULT-0, gameStatus: GAME_GOTO_FOREGROUND-3
+08-29 16:56:32.716 10561 13031 I CurrentGameInfo: isGaming, mSceneId = -1
+08-29 16:56:32.716  2759  5191 D NetworkBoostStatusManager: register joyose success
+08-29 16:56:32.716 10561 13031 E g_AT    : is not perf version
+08-29 16:56:32.718  2759  4542 D ConnectivityServiceImpl: teardown wifi type 1 state: CONNECTED primary: true
+08-29 16:56:32.718  2322  2322 I MI-SF   : surfaceflinger setAffinity mode=1
+08-29 16:56:32.718  2322  2322 E MI-SF   : surfaceflinger setAffinity failed, error=22
+08-29 16:56:32.718  2322  2322 E MI-SF   : surfaceflinger setAffinity failed.
+08-29 16:56:32.718  2322  2322 I MI-SF   : surfaceflinger setreAffinity reTid=2429
+08-29 16:56:32.718  2322  2322 E MI-SF   : surfaceflinger setAffinity failed, error=22
+08-29 16:56:32.718  2322  2322 E MI-SF   : surfaceflinger setreAffinity failed.
+08-29 16:56:32.719 25852 25852 D VRI[MainActivity]: vri.reportDrawFinished 0 0 Rect(0, 0 - 2032, 3048)
+08-29 16:56:32.720  2759  4542 D ConnectivityServiceImpl: nai type 1 state: CONNECTED primary: true
+08-29 16:56:32.721  2759  2881 W AppCompatLetterboxPolicy: start not layout letterbox Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 16:56:32.721  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{20eff50 u0 com.android.camera/com.android.camera.OneShotImageCapture} 8
+08-29 16:56:32.721  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 16:56:32.722  2759  4542 D ConnectivityServiceImpl: teardown wifi type 1 state: CONNECTED primary: true
+08-29 16:56:32.722  2759  4542 D ConnectivityServiceImpl: nai type 1 state: CONNECTED primary: true
+08-29 16:56:32.723  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.723  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.723  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.723  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.723  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 16:56:32.723  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 16:56:32.723  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 16:56:32.723  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 16:56:32.726  2759  4542 D ConnectivityService: NetReassign [no changes] [c 1] [a 4] [i 4]
+08-29 16:56:32.728 25852 25852 I HandWritingStubImpl: refreshLastKeyboardType: 1
+08-29 16:56:32.728 25852 25852 I HandWritingStubImpl: getCurrentKeyboardType: 1
+08-29 16:56:32.728 22231  3885 D BtGatt.ScanManagerInjector: suspend background scans when game start
+08-29 16:56:32.728 22231 22367 I ScanManager: msg.what = MSG_SUSPEND_BACKGROUND_SCANS, msg.arg1 = GAME_MODE
+08-29 16:56:32.728 22231 22367 D ScanManager: track LE scan event: callerPackage = [com.xiaomi.mi_connect_service], scanMode = [0], reportDelayMillis = [0], behavior = [771], scannerId = [1], duration = [20929]
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729 22231 22367 D ScanManager: handling stopping scan  [ScanClient scanModeApp 0 scanModeUsed 0 scannerId 1 [appScanStats android.uid.system:1000]]
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.729  2759  4491 I ImeTracker: com.mov.android:d5e020d: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+08-29 16:56:32.729  2759  4491 I InputMethodManagerServiceImpl: Skip shouldIgnoreHideCurrentInputForBackDisplay check.
+08-29 16:56:32.729  2759  4491 W SecurityInputMethodSwitcher: first check switch to security ime: false
+08-29 16:56:32.730  2759  4491 W SecurityInputMethodSwitcher: double check switch to security ime: false
+08-29 16:56:32.730 10561 27543 I SmartPhoneTag_a: MSG_GAME_FOREGROUND
+08-29 16:56:32.730  2759  4491 W SecurityInputMethodSwitcher: switch to other input method from security ime:false mayChangeToMiuiSecurityInputMethod: false current focus window: android.os.BinderProxy@683ac2c
+08-29 16:56:32.730 10561 27543 I SmartPhoneTag_a: onCompositeSceneChanged, pkg: com.mov.android, hasSmallWindow: false, isCGame: false, compositeSceneType: 0
+08-29 16:56:32.730  2759  4491 D InputMethodManagerService: startInputUncheckedLocked:set client state as:ClientState{a14eb7d mUid=10429 mPid=25852 mSelfReportedDisplayId=0}
+08-29 16:56:32.730 25852 25852 D InsetsController: hide(ime(), fromIme=false)
+08-29 16:56:32.730 25852 25852 I ImeTracker: com.mov.android:d5e020d: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+08-29 16:56:32.731  2759  4491 D InputMethodManagerServiceImpl: ime switch to security: false , switch to normal ime: false , switch from security: false
+08-29 16:56:32.731 22231 22367 E BluetoothUtils: isDeepDozeMode? false
+08-29 16:56:32.731 16521 16521 I bdmiime : onUnbindInput
+08-29 16:56:32.732  2175  3880 D RHYEYECARE: timerCallback enter caseId 13, value 254, generation 15003, mGeneration 15003
+08-29 16:56:32.732  2175  3880 D RHYEYECARE: setPCCConfigRhyEyeC rhythmic eye cct 7495 mRhyEyeCoeff:R[r 0.839375, g 0.000000, b 0.000000], G[r 0.000000, g 0.893787, b 0.000000], B[r -0.000000, g 0.000000, b 1.000000]
+08-29 16:56:32.732 16521 16521 I bdmiime : onStartInput called,  restarting：false, fieldId： 0, inputType：0, imeOptions： 0
+08-29 16:56:32.732  2121 28224 I MiStcImpl: Dispatching command: 3 PCC
+08-29 16:56:32.733  2759  6610 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 16:56:32.736  2313 11320 D AudioFlingerImpl: setGameParameters keyvalue: gamebooster=false
+08-29 16:56:32.736  1968  4603 D AHAL: AudioDeviceCustom: SetParameters: 96: Enter: kvpairs is gamebooster=false
+08-29 16:56:32.736  1968  4603 D AHAL: AudioDevice: SetParameters: 1616: Enter: kvpairs is gamebooster=false
+08-29 16:56:32.736  1968  4603 D AHAL: AudioVoice: VoiceSetParameters: 122: Enter params: gamebooster=false
+08-29 16:56:32.736  1968  4603 D AHAL: AudioVoice: VoiceSetParameters: 379: Exit ret: 0
+08-29 16:56:32.736  1968  4603 D AHAL: hfp: hfp_set_parameters: 444: enter
+08-29 16:56:32.736  1968  4603 D AHAL: FM: fm_set_parameters: 261: Enter
+08-29 16:56:32.736  1968  4603 D AHAL: FM: fm_set_parameters: 319: Exit
+08-29 16:56:32.736  1968  4603 D AHAL: Loopback_karaoke: karaoke_set_parameters: 394: Enter
+08-29 16:56:32.736  1968  4603 D AHAL: Loopback_karaoke: karaoke_set_parameters: 501: Exit
+08-29 16:56:32.736  1968  4603 D AHAL: AudioDevice: SetParameters: 1721: enter fcsam_setParameters_v2
+08-29 16:56:32.736  1968  4603 D AHAL: AudioDevice: SetParameters: 2386: Exit: -2
+08-29 16:56:32.738  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10277, uidState = 17
+08-29 16:56:32.738  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10158, uidState = 4
+08-29 16:56:32.738  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10143, uidState = 4
+08-29 16:56:32.738  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10140, uidState = 19
+08-29 16:56:32.740  2759  4868 W ActivityManager: pid 2759 system sent binder code 31101 with flags 0 to frozen apps and got error -74
+08-29 16:56:32.740  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 16:56:32.740  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 16:56:32.740  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 16:56:32.740  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 16:56:32.742  2121  2700 I MiClstc : StageLayers update cached layer 7376
+08-29 16:56:32.745 22231 22303 D BT_OneTrack_I/F: region:CN
+08-29 16:56:32.745 22231 22231 D HidDeviceService: handleMessage(): msg.what=8
+08-29 16:56:32.745 22231 22231 D HidDeviceService: unregisterAppUid(): uid=10140
+08-29 16:56:32.745 22231 22231 D HidDeviceService: unregisterAppUid(): caller UID doesn't match user UID
+08-29 16:56:32.745 22231 22367 D ScanManager: stop gattClientScanNative
+08-29 16:56:32.745  2759  4515 I MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic uid=10140,add=false
+08-29 16:56:32.745 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:153 Scan: in shim layer stopped
+08-29 16:56:32.745 22231 22323 I bluetooth: system/gd/hci/le_address_manager.cc:278 unregister_client: Client unregistered
+08-29 16:56:32.745  1968  4603 D r_submix: adev_set_parameters() kvpairs='gamebooster=false'
+08-29 16:56:32.745 22231 22367 W ScanManager: trackLeScan() - mLastNativeScanParams = 0
+08-29 16:56:32.746  2759  4515 D MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic rst=true
+08-29 16:56:32.746 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:186 ScanFilterParamSetup: in shim layer, clientIf=1
+08-29 16:56:32.747 16521 16521 I GlobalHandwriting: =====onStartInput initialToolType = 0
+08-29 16:56:32.747 31570 31570 I ImeTracker: com.android.camera:6bf57a8f: onRequestHide at ORIGIN_CLIENT reason HIDE_WINDOW_LOST_FOCUS fromUser false
+08-29 16:56:32.748 22231 22347 D ScanController: onScanFilterParamsConfigured() - clientIf=1, status=0, action=0, availableSpace=0
+08-29 16:56:32.748 22231 22347 D ScanManager: callback done for scannerId - 1 status - 0
+08-29 16:56:32.748 31570 31570 D InsetsController: hide(ime(), fromIme=false)
+08-29 16:56:32.748 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:186 ScanFilterParamSetup: in shim layer, clientIf=1
+08-29 16:56:32.748 31570 31570 I ImeTracker: com.android.camera:6bf57a8f: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+08-29 16:56:32.748 16521 16521 I GlobalHandwriting: initParamsFromEditorInfoExtras: stylusHandwritingSupported=false stylusHandwritingUndoRedoDisabled=false
+08-29 16:56:32.748 16521 16521 I InputMethodService: inputmethod dismissSystemCLipBoard
+08-29 16:56:32.748 22231 22347 D ScanController: onScanFilterParamsConfigured() - clientIf=1, status=0, action=0, availableSpace=0
+08-29 16:56:32.748 22231 22347 D ScanManager: callback done for scannerId - 1 status - 0
+08-29 16:56:32.748 22231 22367 D ScanManager: configureRegularScanParams() - queue=0
+08-29 16:56:32.748 22231 22367 D ScanManager: configureRegularScanParams() - queue empty, scan stopped
+08-29 16:56:32.748 16521 16521 D dz8     : refreshData: LogoMenuActivitiesData(logoMenuData=[], sceneMap={})
+08-29 16:56:32.749 16521 16521 D dz8     : isShowLogoAnimation: triggers is null, return false
+08-29 16:56:32.749 16521 16521 I bdmiime :  tempDarkMode = false ,darkMode = false
+08-29 16:56:32.754  2759  6610 I ImeTracker: system_server:2c0491c7: onRequestHide at ORIGIN_SERVER reason IME_REQUESTED_CHANGED_LISTENER fromUser false
+08-29 16:56:32.755  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{20eff50 u0 com.android.camera/com.android.camera.OneShotImageCapture} 8
+08-29 16:56:32.755 31570   757 W RenderInspector: DequeueBuffer time out on com.android.camera/com.android.camera.OneShotImageCapture, count=1, avg=8 ms, max=8 ms.
+08-29 16:56:32.755  2759  2880 I DisplayManagerServiceImpl: updateInputScene: , status: 0 targetPkg: input, cookie: 270
+08-29 16:56:32.755  2322  6935 D MI-SF   : updateScene: module = 270 (Input), value = 0, pkg = input, Vrr = 1, mSetTpIdleFlag = 0
+08-29 16:56:32.755  2759  2880 I ImeTracker: system_server:2c0491c7: onCancelled at PHASE_SERVER_SHOULD_HIDE
+08-29 16:56:32.755  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 16:56:32.757 16521 16521 I bdmiime : updateForNightMode  isNight false
+08-29 16:56:32.757 16521 16521 I bdmiime : getSysParam -> orientation isPortrait = true
+08-29 16:56:32.757 16521 16521 I bdmiime : getKeyboardWidth sW=2032 bW=2032
+08-29 16:56:32.758  8389 13980 D MirrorManager:  sendAcceptInput 0 0
+08-29 16:56:32.758 16521 16521 I bdmiime : initGlobal bw:2032, bl:29, br:3019, bh:822, lsh:0, sw:2032, sh:3048, 2032, rw:2032, rh:3048, as:2.5, ss: 2.5, pad:true,cd:05D68C-7F29D3-84G1G7-41754E-7272CE-1C|WLQ-CITTI4, way:0, mini0
+08-29 16:56:32.759 16521 16521 I bdmiime : SkinRender#currentSkinType:0
+08-29 16:56:32.759 16521 16521 I bdmiime : setIsNight = false, isNightFollowSystemSetByUser true, isNightFollowSystem = true, userManualNightMode = -1, isDarkMode = false
+08-29 16:56:32.759 16521 16521 I bdmiime : loadPref: isFloatingMode : false, isPcMode : false, model : com.baidu.lo4@38e3793
+08-29 16:56:32.761 16521 16521 I bdmiime : is sys vibra:true
+08-29 16:56:32.761 16521 16521 I bdmiime : switchPcMode newPcMode = false
+08-29 16:56:32.763  2759  6217 D ActivityManager: Logging startService for com.miui.analytics, stopped=false, firstLaunch=false, intent=Intent { act=onetrack.action.TRACK_EVENT flg=0x2 xflg=0x4 pkg=com.miui.analytics (has extras) }, r.app=ProcessRecord{58e29e6 20990:com.miui.analytics/u0a143}
+08-29 16:56:32.765  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.765  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.765  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.765  2759  2881 I TransitionImpl: home mode = 6
+08-29 16:56:32.766  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 16:56:32.766  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 16:56:32.769     1     1 I libc    : kill: send 9 to pid -3881
+08-29 16:56:32.769     1     1 I libc    : debug pid reuse, real pid -3881
+08-29 16:56:32.773  2759  2881 I DisplayPolicyStubImpl: com.android.server.wm.WindowState hide ime, enable touchboost
+08-29 16:56:32.774  2759  2881 I DisplayPolicyStubImpl: com.android.server.wm.WindowState hide ime, enable touchboost
+08-29 16:56:32.788  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787993770480510500 end camera.capture
+08-29 16:56:32.794  5241  5241 D Launcher.Dock_GlobalGestureDispatcher: set isRecognizing=false
+08-29 16:56:32.804  2759  4515 I MiuiNetworkPolicy: Thermal wifi disableIngressRateLimit on wlan0
+08-29 16:56:32.804  2759  4515 E MiuiNetworkPolicy: TcUtils.tcFilterDelDev(ifaceIndex=16, ingress=true, PRIO_POLICE, ETH_P_ALL) failure: java.io.IOException: com_android_net_module_util_TcUtils_tcFilterDelDev error: : No such file or directory
+08-29 16:56:32.804  1892  1934 E traffic : updateWifiUploadLimiter, 522, limit is invalid.
+08-29 16:56:32.805  2759  4515 I MiuiNetworkPolicy: thermal networkPriorityMode = 1 mNetworkPriorityMode =2 mWifiConnected=true mThermalForceMode=0
+08-29 16:56:32.805  2759  4515 I NetworkBoostStatusManager: onNetworkPriorityChanged: 1 0 0
+08-29 16:56:32.805  2759  5191 I NetworkBoostStatusManager: handle: 112
+08-29 16:56:32.805  2759  5191 I NetworkBoostStatusManager: CALLBACK_NETWORK_PRIORITY_CHANGED enter
+08-29 16:56:32.805  2759  6674 I NetworkSDKService: networkPriorityCallBackNotice: 1 0 0
+08-29 16:56:32.805  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 200 KB/s
+08-29 16:56:32.805  2759  4515 D MiuiNetworkPolicy: updateLimit mLimitEnabled=true,enabled=false,mNetworkPriorityMode=1,mThermalForceMode=0
+08-29 16:56:32.807  2759  4515 I MiuiNetworkPolicy: getDisableLimitTimeout when thermal mode is:0
+08-29 16:56:32.810  2175  3888 D RHYEYECARE: timerCallback enter caseId 13, value 255, generation 15004, mGeneration 15004
+08-29 16:56:32.810  2175  3888 D RHYEYECARE: setPCCConfigRhyEyeC rhythmic eye cct 7486 mRhyEyeCoeff:R[r 0.841229, g 0.000000, b 0.000000], G[r 0.000000, g 0.895279, b 0.000000], B[r -0.000000, g 0.000000, b 1.000000]
+08-29 16:56:32.810  3889  3889 I MOVTEST : MOVTEST_MARK_1787993770480510500 end camera.capture
+08-29 16:56:32.811  2121 28224 I MiStcImpl: Dispatching command: 3 PCC
+08-29 16:56:32.813  2759  4868 W ActivityManager: pid 2759 system sent binder code 31101 with flags 0 to frozen apps and got error -74
+08-29 16:56:32.825 10561 10858 I HeavyPackageIdentify: splitMode: false, splitPackages: null, foregroundPkg: com.mov.android
+08-29 16:56:32.858  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.861  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.862  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.862  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.862  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.862  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.863  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.863  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.863  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.863  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.864  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.864  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.864  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.865  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.865  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.865  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.865  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.866  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.866  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.866  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.867  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.869  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.869  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.870  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.870  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.870  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.870  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.871  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.871  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.871  5911  6158 D MiuiDesktopModeStatus: Failed to read MIUI_DESKTOP_MODE settings android.provider.Settings$SettingNotFoundException: miui_dkt_mode
+08-29 16:56:32.877  2175  3892 D RHYEYECARE: timerCallback enter caseId 13, value 255, generation 15005, mGeneration 15005
+08-29 16:56:32.877  2175  3892 D RHYEYECARE: setPCCConfigRhyEyeC rhythmic eye cct 7477 mRhyEyeCoeff:R[r 0.843070, g 0.000000, b 0.000000], G[r 0.000000, g 0.896755, b 0.000000], B[r -0.000000, g 0.000000, b 1.000000]
+08-29 16:56:32.878  2121 28224 I MiStcImpl: Dispatching command: 3 PCC
+08-29 16:56:32.879  2759  4868 W ActivityManager: pid 2759 system sent binder code 31101 with flags 0 to frozen apps and got error -74
+08-29 16:56:32.903  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:56:32.928 32037 32078 E chromium: [ERROR:cc/tiles/tile_manager.cc:998] WARNING: tile memory limits exceeded, some content may not draw
+08-29 16:56:32.929 32037 32078 E chromium: [ERROR:cc/tiles/tile_manager.cc:998] WARNING: tile memory limits exceeded, some content may not draw
+08-29 16:56:32.943  2175  3894 D RHYEYECARE: timerCallback enter caseId 13, value 255, generation 15006, mGeneration 15006
+08-29 16:56:32.943  2175  3894 D RHYEYECARE: setPCCConfigRhyEyeC rhythmic eye cct 7468 mRhyEyeCoeff:R[r 0.844897, g 0.000000, b 0.000000], G[r 0.000000, g 0.898216, b 0.000000], B[r -0.000000, g 0.000000, b 1.000000]
+08-29 16:56:32.944  2121 28224 I MiStcImpl: Dispatching command: 3 PCC
+08-29 16:56:32.945  2759  4868 W ActivityManager: pid 2759 system sent binder code 31101 with flags 0 to frozen apps and got error -74
+08-29 16:56:32.958  2759  3874 E CamOpt_Service: read /proc/sys/vm/watermark_scale_factor fail
+08-29 16:56:32.962  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

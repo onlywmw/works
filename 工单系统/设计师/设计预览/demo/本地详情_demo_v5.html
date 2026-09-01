@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 本机能力 —— 内置/市场双模板 Demo v5</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;
+    --line:rgba(22,28,48,.08);--text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+    --acc:#23272f;--on-acc:#ffffff;--ok:#2b8158;--warn:#a5711f;--danger:#d92d20;--blue:#3b6fd4;--gray:#c7ccd6;
+    --star:#e2a33a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#e9ebf0;color:var(--text);display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  @media(min-width:421px){.phone{margin:24px 0;border-radius:18px;min-height:calc(100vh-48px);box-shadow:0 20px 60px rgba(0,0,0,.12);overflow:hidden}}
+
+  .top{height:54px;display:flex;align-items:center;gap:8px;padding:0 8px;
+    border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+  .top .back{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+  .top .back:active{background:var(--s3)}
+  .top .ttl{flex:1;text-align:center;font-size:17px;font-weight:600;margin-right:38px}
+  .top .sp{width:38px}
+
+  .wrap{padding:8px 14px 60px}
+  .muted{color:var(--text3);font-size:12.5px}
+
+  /* 通用行 */
+  .row{display:flex;align-items:center;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+  .row:last-child{border-bottom:none}
+  .row .nm{font-size:15.5px;font-weight:600}
+  .row .ds{font-size:12.5px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .chev{color:var(--text3);opacity:.6;font-size:17px}
+  .sec{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;color:var(--text3);margin:18px 2px 4px;padding-bottom:6px}
+
+  /* 头卡 */
+  .hd{display:flex;gap:14px;align-items:center;padding:10px 0 4px}
+  .hd .ic{width:52px;height:52px;border-radius:14px;font-size:26px;flex:none;display:flex;align-items:center;justify-content:center}
+  .hd .ic.builtin{background:var(--acc);color:var(--on-acc)}
+  .hd .ic.market{background:rgba(59,111,212,.14)}
+  .hd .ic.system{background:var(--s3)}
+  .hd .ttls{flex:1;min-width:0}
+  .hd .nm{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .badge{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:99px;flex:none}
+  .badge.builtin{background:var(--acc);color:var(--on-acc)}
+  .badge.market{background:rgba(59,111,212,.16);color:var(--blue)}
+  .badge.system{background:var(--gray);color:#3c4552}
+  .badge.installed{background:rgba(43,129,88,.14);color:var(--ok)}
+  .hd .sub1{font-size:12.5px;color:var(--text3);margin-top:4px}
+  .hd .tagline{font-size:13.5px;color:var(--text2);margin-top:5px;line-height:1.45}
+  .sw{flex:none;width:44px;height:26px;border-radius:99px;background:var(--s3);position:relative;transition:.18s}
+  .sw.on{background:var(--acc)}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.18s;box-shadow:0 0 0 1px var(--line)}
+  .sw.on::after{left:21px}
+  .permhealth{margin-top:8px;font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.err{background:var(--danger)}
+
+  /* 商店信息条 */
+  .info{display:flex;gap:10px;background:var(--s2);border-radius:12px;padding:12px;margin-top:12px}
+  .info .it{flex:1;text-align:center}
+  .info .iv{font-size:15px;font-weight:700;color:var(--text)}
+  .info .il{font-size:11px;color:var(--text3);margin-top:2px}
+  .info .iv.rt .star{color:var(--star)}
+
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+  .ct{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .ct .muted{font-weight:400}
+  .usecase{font-size:14.5px;line-height:1.6;color:var(--text);font-weight:500}
+  .usecase em{font-style:normal;color:var(--acc);font-weight:700}
+
+  .ex{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .ex:last-child{border-bottom:none}
+  .ex .what{flex:none;width:34px;height:34px;border-radius:9px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .ex .body{flex:1;min-width:0}
+  .ex .ask{font-size:13.5px;color:var(--text);font-weight:600}
+  .ex .do{font-size:12.5px;color:var(--text3);margin-top:3px}
+  .ex .copy{flex:none;align-self:center;color:var(--text3);font-size:12px;cursor:pointer;font-weight:600}
+
+  .tool{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .tool:last-child{border-bottom:none}
+  .tool .tn{font-family:"SF Mono",ui-monospace,monospace;font-size:12.3px;color:var(--text);flex:none;min-width:118px}
+  .tool .td{flex:1;font-size:12.5px;color:var(--text2);min-width:0}
+  .perm{flex:none;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:99px}
+  .perm.free{background:rgba(43,129,88,.14);color:#2b8158}
+  .perm.ask{background:rgba(165,113,31,.15);color:#a5711f}
+  .perm.gate{background:rgba(217,45,32,.13);color:#d92d20}
+
+  /* 市场包：权限声明 */
+  .permdecl{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .permdecl:last-child{border-bottom:none}
+  .permdecl .pn{flex:none;width:88px;font-size:12.5px;color:var(--text);font-weight:600}
+  .permdecl .py{flex:1;font-size:12px;color:var(--text3)}
+  .permdecl .ptag{flex:none;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:99px;align-self:center}
+  .permdecl .ptag.hi{background:rgba(217,45,32,.12);color:var(--danger)}
+  .permdecl .ptag.mid{background:rgba(165,113,31,.14);color:#a5711f}
+  .permdecl .ptag.low{background:rgba(43,129,88,.12);color:#2b8158}
+
+  /* 来源可信度 */
+  .src{display:flex;align-items:center;gap:12px;padding:4px 0 2px}
+  .src .av{width:38px;height:38px;border-radius:50%;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .src .sn{font-size:13.5px;font-weight:600}
+  .src .sd{font-size:11.5px;color:var(--text3);margin-top:2px}
+  .src .check{margin-left:auto;font-size:11.5px;color:var(--ok);font-weight:600}
+
+  .foot{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .btn{cursor:pointer;font-weight:600;font-size:13px;padding:7px 12px;border-radius:9px;flex:none;white-space:nowrap}
+  .btn.pr{background:var(--acc);color:var(--on-acc)}
+  .btn.gh{background:var(--s2);color:var(--text2);border:1px solid var(--line)}
+  .btn.block{width:100%;text-align:center;padding:13px;border-radius:12px;font-size:14px}
+  .btn.danger{background:rgba(217,45,32,.09);color:var(--danger);border:1px solid rgba(217,45,32,.2)}
+  .auth{display:flex;align-items:center;gap:10px;background:var(--s2);border:1px solid rgba(165,113,31,.22);border-radius:10px;padding:11px 12px;margin-top:10px}
+  .auth .tx{flex:1;font-size:12.8px;color:var(--text2)}
+  .tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--s2);color:var(--text2)}
+
+  .modebar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;
+    background:rgba(255,255,255,.85);border:1px solid var(--line);padding:6px;border-radius:99px;backdrop-filter:blur(8px);z-index:20;box-shadow:0 4px 16px rgba(22,28,48,.1)}
+  .modebar button{color:var(--text2);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:99px;cursor:pointer}
+  .modebar button.on{background:var(--acc);color:var(--on-acc)}
+  .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--acc);color:var(--on-acc);
+    padding:8px 16px;border-radius:99px;font-size:12.5px;font-weight:600;opacity:0;transition:.2s;z-index:50;pointer-events:none}
+  .toast.show{opacity:1}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top">
+    <button class="back" id="backBtn">‹</button>
+    <div class="ttl" id="topTitle">本机能力</div>
+    <div class="sp"></div>
+  </div>
+
+  <div class="wrap">
+    <!-- 一级 -->
+    <div id="viewList">
+      <div class="sec">内置能力 <span class="muted" id="c1"></span></div>
+      <div id="listBuiltin"></div>
+      <div class="sec">市场已安装 <span class="muted" id="c2"></span></div>
+      <div id="listMarket"></div>
+      <div class="sec">系统基础能力 <span class="muted" id="c3"></span></div>
+      <div id="listSystem"></div>
+    </div>
+
+    <!-- 二级：内置工具模板 -->
+    <div id="viewBuiltin" hidden>
+      <div class="hd">
+        <div class="ic" id="b_ic"></div>
+        <div class="ttls">
+          <div class="nm"><span id="b_name">—</span><span class="badge" id="b_badge"></span></div>
+          <div class="tagline" id="b_tagline">—</div>
+        </div>
+        <div class="sw" id="b_sw"></div>
+      </div>
+      <div class="permhealth" id="b_health"></div>
+      <div class="card"><div class="ct">这能干嘛</div><div class="usecase" id="b_usecase"></div></div>
+      <div class="card"><div class="ct">怎么用 <span class="muted">像聊天那样说一句就行</span></div><div id="b_examples"></div></div>
+      <div class="card"><div class="ct">工具一览 <span class="muted" id="b_toolCount"></span></div><div id="b_tools"></div></div>
+      <div class="card"><div class="ct">权限分布</div>
+        <div class="tool" style="cursor:default"><span class="tn">自由 free</span><span class="td" id="b_pf"></span></div>
+        <div class="tool" style="cursor:default"><span class="tn">询问 ask</span><span class="td" id="b_pa"></span></div>
+        <div class="tool" style="cursor:default"><span class="tn">拦截 gate</span><span class="td" id="b_pg"></span></div>
+      </div>
+      <div class="auth" id="b_auth" hidden>
+        <div class="tx">需要 SAF 授权才能读写 Obsidian 仓库</div>
+        <button class="btn pr" id="b_authBtn">去授权</button>
+      </div>
+      <div class="foot" id="b_foot"></div>
+    </div>
+
+    <!-- 二级：市场包模板(商店式) -->
+    <div id="viewMarket" hidden>
+      <div class="hd">
+        <div class="ic market" id="m_ic">📦</div>
+        <div class="ttls">
+          <div class="nm"><span id="m_name">—</span><span class="badge" id="m_badge"></span></div>
+          <div class="sub1" id="m_meta">—</div>
+          <div class="tagline" id="m_tagline">—</div>
+        </div>
+        <span class="badge installed" id="m_inst"></span>
+      </div>
+
+      <!-- 商店信息条 -->
+      <div class="info">
+        <div class="it"><div class="iv" id="m_installs">—</div><div class="il">装量</div></div>
+        <div class="it"><div class="iv rt" id="m_rating">—</div><div class="il">评分</div></div>
+        <div class="it"><div class="iv" id="m_updated">—</div><div class="il">更新</div></div>
+      </div>
+      <div class="tags" id="m_tags"></div>
+
+      <div class="card"><div class="ct">简介</div><div class="usecase" id="m_intro"></div></div>
+      <div class="card"><div class="ct">这能干嘛</div><div class="usecase" id="m_usecase"></div></div>
+      <div class="card"><div class="ct">怎么用 <span class="muted">像聊天那样说一句就行</span></div><div id="m_examples"></div></div>
+      <div class="card"><div class="ct">包含的工具 <span class="muted" id="m_toolCount"></span></div><div id="m_tools"></div></div>
+
+      <!-- 权限声明(信任要素) -->
+      <div class="card"><div class="ct">权限请求 <span class="muted">本包会用到这些</span></div><div id="m_perms"></div></div>
+
+      <!-- 来源可信度 -->
+      <div class="card">
+        <div class="ct">来源</div>
+        <div class="src">
+          <div class="av" id="m_author_ic">👤</div>
+          <div><div class="sn" id="m_author">—</div><div class="sd" id="m_src">—</div></div>
+          <span class="check" id="m_verify">✓ 已核验</span>
+        </div>
+      </div>
+
+      <div class="foot" id="m_foot"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modebar">
+  <button id="mList" class="on">一级</button>
+  <button id="mDetail">内置详情</button>
+  <button id="mMarket">市场详情</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const BUILTIN=[
+  {type:'builtin',kind:'builtin',badge:'内置',icon:'🛠️',name:'设备控制',
+   tagline:'控制手机：查网络 / 存储 / 应用 / 日历，拍照 / 扫码 / 截屏',
+   usecase:'让 AI 直接操作你手机上的<em>设备和系统</em>——不用自己进设置翻，说一句就能查存储、看网络、开日历、拍照扫码截屏。',
+   examples:[{ask:'帮我看看存储空间还剩多少',do:'读取存储使用情况，返回占用 / 剩余'},{ask:'现在网络信号怎么样',do:'返回网络类型、信号与连接信息'},{ask:'帮我截个屏',do:'调起截屏并保存图片'}],
+   health:'ok',enabled:true,
+   tools:[['device.getStorage','查看存储使用情况','free'],['device.getNetwork','网络状态','free'],['device.listApps','已装应用清单','free'],['camera.capture','拍照','ask'],['qr.scan','扫二维码','ask'],['screen.capture','截屏','ask'],['sensor.list','传感器数据','free'],['calendar.query','查看日历日程','free']]},
+  {type:'builtin',kind:'builtin',badge:'内置',icon:'🚄',name:'生活场景 · 12306',
+   tagline:'查火车票：中文一句话查车次 / 余票 / 站点',
+   usecase:'不用打开 12306，直接对 AI 说<em>你想哪天去哪</em>，它帮你查车次、余票、站点。',
+   examples:[{ask:'帮我查北京到上海的高铁，明天上午',do:'返回车次 / 时间 / 余票'},{ask:'重庆到广州现在有哪些车',do:'列出车次与票价'}],
+   health:'ok',enabled:true,
+   tools:[['scene.searchTrains','余票/车次查询','free'],['scene.queryStations','站点解析','free']]},
+  {type:'builtin',kind:'builtin',badge:'内置',icon:'📓',name:'笔记 · Obsidian',
+   tagline:'读写笔记：往仓库记录 / 检索 / 整理',
+   usecase:'把 MOV 和你的<em>Obsidian 仓库</em>打通——让 AI 记笔记、读笔记、搜笔记，你只管说。',
+   examples:[{ask:'把这条建议记到我的笔记',do:'新建 / 追加到 Obsidian 仓库'},{ask:'我上周记了什么',do:'读仓库，检索写入的笔记'}],
+   health:'warn',enabled:true,auth:false,
+   tools:[['obsidian.file.read','读取笔记','free'],['obsidian.file.write','写入/新建笔记','gate'],['obsidian.vault','列出仓库笔记','ask']]},
+];
+const MARKET=[
+  {type:'market',kind:'market',badge:'市场',icon:'📦',name:'效率增强包 · mcp.example',
+   version:'1.2.1',author:'某开发者',installs:'1.2k',rating:'4.6',updated:'2026-08-28',tags:['效率','移动','自动化'],
+   tagline:'把杂活儿交给 AI 自动跑',
+   intro:'这是一个第三方能力包，安装后 MOV 就能帮你批量处理日常杂务，省去手动一个个点。',
+   usecase:'把<em>重复的杂活</em>交给 AI——装上这个包，说一句就能让 AI 按它定义的规则自动干活。',
+   examples:[{ask:'帮我把这周的重复任务整理成清单',do:'按包内规则批量处理并返回结果'},{ask:'用它跑一下我的自动化流程',do:'执行定义好的操作'}],
+   tools:[['mcp.example.query','示例查询','free'],['mcp.example.list','示例列表','free']],
+   perms:[{n:'读取文件',y:'读取你明确指定的文件内容',t:'mid'},{n:'写文件',y:'把结果写回指定位置',t:'hi'},{n:'网络请求',y:'访问你要求的外部接口',t:'mid'},{n:'本地数据',y:'读写 MOV 的本地状态',t:'low'}],
+   installed:true},
+];
+const SYSTEM=[
+  {type:'builtin',kind:'system',badge:'系统',icon:'⚙️',name:'系统基础能力',
+   tagline:'AI 基本功：读文件 / 写便签 / 记忆',
+   usecase:'MOV 的<em>底子能力</em>，始终开启——读文件、记笔记、存记忆，AI 离不开；不可关闭。',
+   examples:[{ask:'记住我下周要开会',do:'写入记忆，之后能检索'},{ask:'把我上次记的进展找出来',do:'检索记忆并返回'}],
+   health:'ok',enabled:true,locked:true,
+   tools:[['file.read','读文件','free'],['file.write','写文件','ask'],['note.create','写便签','free'],['memory.save','记住事情','free'],['memory.load','读取记忆','free'],['memory.list','记忆清单','free'],['memory.search','检索记忆','free'],['memory.delete','移除记忆','gate']]},
+];
+const topTitle=document.getElementById('topTitle'),backBtn=document.getElementById('backBtn');
+const toast=document.getElementById('toast');
+function doToast(m){toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500)}
+function render(sel,cntId,list){
+  document.getElementById(cntId).textContent=`${list.length} 项`;
+  document.getElementById(sel).innerHTML=list.map(p=>`
+    <div class="row" data-id="${p.id}">
+      <div style="flex:1;min-width:0"><div class="nm">${p.name}</div><div class="ds">${p.tagline}</div></div>
+      <span class="chev">›</span>
+    </div>`).join('');
+}
+// 给数据补 id
+[...BUILTIN,...MARKET,...SYSTEM].forEach((p,i)=>p.id=p.id||p.name);
+render('listBuiltin','c1',BUILTIN); render('listMarket','c2',MARKET); render('listSystem','c3',SYSTEM);
+document.querySelectorAll('.row').forEach(el=>el.addEventListener('click',()=>openDetail(el.dataset.id)));
+
+function show(listV,bV,mV){
+  document.getElementById('viewList').hidden=!listV;
+  document.getElementById('viewBuiltin').hidden=!bV;
+  document.getElementById('viewMarket').hidden=!mV;
+  document.getElementById('mList').classList.toggle('on',listV);
+  document.getElementById('mDetail').classList.toggle('on',bV);
+  document.getElementById('mMarket').classList.toggle('on',mV);
+}
+const permTxt={free:'自由',ask:'询问',gate:'拦截'};
+const permCls=c=>c==='free'?'perm free':c==='ask'?'perm ask':'perm gate';
+
+function openDetail(id){
+  const p=all(id); if(!p)return;
+  if(p.type==='market'){renderMarket(p);}
+  else{renderBuiltin(p);}
+  topTitle.textContent=p.name;
+}
+function all(id){return [...BUILTIN,...MARKET,...SYSTEM].find(x=>x.id===id)}
+
+/* 内置工具详情 */
+function renderBuiltin(p){
+  const ic=document.getElementById('b_ic'); ic.className='ic '+p.kind; ic.textContent=p.icon;
+  document.getElementById('b_badge').textContent=p.badge; document.getElementById('b_badge').className='badge '+p.kind;
+  document.getElementById('b_name').textContent=p.name;
+  document.getElementById('b_tagline').textContent=p.tagline;
+  document.getElementById('b_usecase').innerHTML=p.usecase;
+  const sw=document.getElementById('b_sw'); sw.classList.toggle('on',p.enabled);
+  sw.style.pointerEvents=p.locked?'none':'auto'; sw.style.opacity=p.locked?0.4:1;
+  sw.onclick=()=>{if(p.locked)return;p.enabled=!p.enabled;sw.classList.toggle('on',p.enabled);};
+  const h=document.getElementById('b_health');
+  h.innerHTML=p.health==='ok'?'<span class="dot ok"></span>运行正常 · 工具就绪'
+    :p.health==='warn'?'<span class="dot warn"></span>未授权 · 部分能力待激活'
+    :'<span class="dot err"></span>服务不可达 · 检查安装';
+  document.getElementById('b_examples').innerHTML=p.examples.map((e,i)=>
+    `<div class="ex"><div class="what">💬</div><div class="body"><div class="ask">“${e.ask}”</div><div class="do">→ ${e.do}</div></div><span class="copy" data-i="${i}">用它</span></div>`).join('');
+  document.querySelectorAll('#b_examples .copy').forEach(b=>b.onclick=()=>doToast('已把「'+p.examples[b.dataset.i].ask+'」填进输入框'));
+  let fs=0,as=0,ga=0;
+  document.getElementById('b_tools').innerHTML=p.tools.map(([n,d,c])=>{if(c==='free')fs++;else if(c==='ask')as++;else ga++;return`<div class="tool"><span class="tn">${n}</span><span class="td">${d}</span><span class="${permCls(c)}">${permTxt[c]}</span></div>`}).join('');
+  document.getElementById('b_toolCount').textContent=`${p.tools.length} 个`;
+  document.getElementById('b_pf').textContent=`${fs} 个 · 无需弹窗直接放行`;
+  document.getElementById('b_pa').textContent=`${as} 个 · 执行前弹窗确认`;
+  document.getElementById('b_pg').textContent=`${ga} 个 · 写入/高危网关拦截`;
+  const auth=document.getElementById('b_auth'); auth.hidden=!(p.auth===false);
+  document.getElementById('b_foot').innerHTML='';
+  document.getElementById('b_authBtn').onclick=()=>{auth.hidden=true;p.auth=null;doToast('已授权')};
+  show(false,true,false);
+}
+
+/* 市场包详情(商店式) */
+function renderMarket(p){
+  document.getElementById('m_name').textContent=p.name;
+  document.getElementById('m_badge').textContent=p.badge; document.getElementById('m_badge').className='badge market';
+  document.getElementById('m_meta').textContent=`v${p.version} · ${p.author}`;
+  document.getElementById('m_tagline').textContent=p.tagline;
+  document.getElementById('m_inst').textContent=p.installed?'已安装':'未安装';
+  document.getElementById('m_installs').textContent=p.installs;
+  document.getElementById('m_rating').innerHTML=`${p.rating}<span class="star">★</span>`;
+  document.getElementById('m_updated').textContent=p.updated;
+  document.getElementById('m_tags').innerHTML=p.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+  document.getElementById('m_intro').innerHTML=p.intro;
+  document.getElementById('m_usecase').innerHTML=p.usecase;
+  document.getElementById('m_examples').innerHTML=p.examples.map((e,i)=>
+    `<div class="ex"><div class="what">💬</div><div class="body"><div class="ask">“${e.ask}”</div><div class="do">→ ${e.do}</div></div><span class="copy" data-i="${i}">用它</span></div>`).join('');
+  document.querySelectorAll('#m_examples .copy').forEach(b=>b.onclick=()=>doToast('已把「'+p.examples[b.dataset.i].ask+'」填进输入框'));
+  document.getElementById('m_tools').innerHTML=p.tools.map(([n,d,c])=>`<div class="tool"><span class="tn">${n}</span><span class="td">${d}</span><span class="${permCls(c)}">${permTxt[c]}</span></div>`).join('');
+  document.getElementById('m_toolCount').textContent=`${p.tools.length} 个`;
+  const pt={hi:'高',mid:'中',low:'低'};
+  document.getElementById('m_perms').innerHTML=p.perms.map(x=>`<div class="permdecl"><span class="pn">${x.n}</span><span class="py">${x.y}</span><span class="ptag ${x.t}">${pt[x.t]}</span></div>`).join('');
+  document.getElementById('m_author_ic').textContent=p.author.slice(0,1);
+  document.getElementById('m_author').textContent=p.author;
+  document.getElementById('m_src').textContent=`来源：mow.kim · 市场安装`;
+  document.getElementById('m_verify').textContent='✓ 已核验';
+  document.getElementById('m_foot').innerHTML=p.installed
+    ?`<button class="btn block pr" id="m_update">更新</button><button class="btn block danger" id="m_uninstall">卸载</button>`
+    :`<button class="btn block pr" id="m_install">安装</button>`;
+  const fu=document.getElementById('m_uninstall'); if(fu)fu.onclick=()=>doToast('确认卸载 '+p.name);
+  const fi=document.getElementById('m_install'); if(fi)fi.onclick=()=>{p.installed=true;renderMarket(p);doToast('已安装')};
+  const fup=document.getElementById('m_update'); if(fup)fup.onclick=()=>doToast('已更新到最新版');
+  show(false,false,true);
+}
+
+function goList(){show(true,false,false);topTitle.textContent='本机能力';}
+backBtn.onclick=goList;
+document.getElementById('mList').onclick=goList;
+document.getElementById('mDetail').onclick=()=>openDetail(BUILTIN[0].id);
+document.getElementById('mMarket').onclick=()=>openDetail(MARKET[0].id);
+</script>
+</body>
+</html>

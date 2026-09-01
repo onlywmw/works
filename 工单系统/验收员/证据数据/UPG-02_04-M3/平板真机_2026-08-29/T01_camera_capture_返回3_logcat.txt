@@ -1,0 +1,302 @@
+--------- beginning of main
+08-29 16:51:12.300  1968  4603 D AHAL: AudioDevice: SetParameters: 2386: Exit: -2
+08-29 16:51:12.300  1968  4603 D r_submix: adev_set_parameters() kvpairs='screen_state=on'
+08-29 16:51:12.300  5911  5911 V AutoDensityController: on display changed 0 context dpi:386 origin dpi:400 target dpi:386
+08-29 16:51:12.300  5911  5911 D ControlCenterWindowViewController: on display changed 0
+08-29 16:51:12.369  5911  5911 D MiuiHomePrivacyController: hidePrivacyView onComplete: 
+08-29 16:51:12.370  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:12.386  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:12.403  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:12.405  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:51:12.430  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:12.430  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:12.586  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+--------- beginning of system
+08-29 16:51:12.586  3128  3128 I wificond: station_bandwidth:  
+08-29 16:51:12.591  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 16:51:12.591  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 16:51:12.591  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 16:51:12.591  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 16:51:12.593  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 16:51:12.595  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 16:51:12.595  5847  6562 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 16:51:12.595  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 16:51:12.595 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 16:51:12.596  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 16:51:12.596  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 16:51:12.596 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 16:51:12.596  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 16:51:12.597  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 16:51:12.599  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=çš®**5G}
+08-29 16:51:12.599  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 16:51:12.599  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 16:51:12.599  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 16:51:12.601 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 16:51:12.601 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 16:51:12.604  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=10993Kbps LinkDnBandwidth>=269064Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -54, Link speed: 2401Mbps, Tx Link speed: 2401Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 2401Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -54 UnderlyingNetworks: Null]
+08-29 16:51:12.605  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:51:12.606  2306  3070 I [THP-DAE]: thp_set_doze_mode_func:enable doze mode
+08-29 16:51:12.632  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:12.632  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:12.705  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 16:51:12.705  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 16:51:12.834  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:12.834  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:12.862  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 16:51:12.862  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:54
+08-29 16:51:12.862  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 16:51:12.862  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 16:51:12.863  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 16:51:13.035  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.035  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.237  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.237  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.320  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.7/s) Done(0.000/s Avg=1.719/s)| Stream: 24.00fps 2.4Mbps
+08-29 16:51:13.320  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 16:51:13.408  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 16:51:13.437  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.437  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.536  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 16:51:13.536  2322  2322 D DisplayModeController: setDesiredMode 4630947038039379843 {mode={fps=50.00 Hz, modePtr={id=4, vsyncRate=50.00 Hz, peakRefreshRate=50.00 Hz}}, emitEvent=false, force=false}
+08-29 16:51:13.537  2322  2322 E Dolphin.BufferLayerTracker: unexpected vsync recevied: ld
+08-29 16:51:13.537  2322  2322 E Dolphin.BufferLayerTracker: unexpected vsync recevied: ld
+08-29 16:51:13.537  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 16:51:13.553  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 16:51:13.553  2121  2700 I SDM     : HWCFunctionTimer::noticeTimerFps: displayid:65, fps: 50
+08-29 16:51:13.553  2121  2700 I SDM     : HWCDisplay::SetActiveConfigWithConstraints: display:65-0, config: 4, WxH 3048x2032, fps 50
+08-29 16:51:13.554  2121  2700 W SDM     : HWDeviceDRM::GetSupportedBitClkRate: Requested rate not supported: 1190090000
+08-29 16:51:13.554  2121  2700 I SDM     : HWDeviceDRM::UpdateMixerAttributes: Mixer WxH 3048x2032-1 for Peripheral
+08-29 16:51:13.554  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active configuration changed from config 3 to 4
+08-29 16:51:13.554  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active WxH 3048x2032 ,ddic_mode:normal, timing_fps: 90, sf_fps: 90
+08-29 16:51:13.555  2121  2224 I SDM     : HWDeviceDRM::SetDisplaySwitchMode: Mode 4 already set
+08-29 16:51:13.556  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:51:13.639  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.639  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.728  2306  2352 I [THP-DAE]: set_doze_timer_check:tp is in active, need to resend cmd
+08-29 16:51:13.757  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:51:13.840  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:13.841  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.042  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.042  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.119 10820 10982 D AudioManager: getMode: mode=0, callApp=com.tencent.mm
+08-29 16:51:14.138  2759  6572 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 16:51:14.148  2759  6572 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 16:51:14.159  2759  6572 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 16:51:14.243  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.243  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.289  2306  3070 I [THP-DAE]: thp_set_doze_mode_func:enable doze mode
+08-29 16:51:14.445  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.445  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.594 15875 17138 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.milink.service:audio
+08-29 16:51:14.594 15875 17138 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:14.646  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.646  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.799  9870 15235 D JavaheapMonitor: Java heap used=6M max=384M, proc: com.miui.voicetrigger
+08-29 16:51:14.800  9870 15235 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:14.848  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:14.848  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.008  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 16:51:15.049  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.049  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.170  2759  6572 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 16:51:15.176  2759  6626 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 16:51:15.244   759  1279 D JavaheapMonitor: Java heap used=8M max=512M, proc: com.sohu.inputmethod.sogou.xiaomi
+08-29 16:51:15.244   759  1279 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:15.251  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.251  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.274  2759  2892 I ThermalObserver: Temperature control has been released.
+08-29 16:51:15.384  8389  8919 D JavaheapMonitor: Java heap used=12M max=384M, proc: com.miui.powerkeeper
+08-29 16:51:15.384 10561 10858 D JavaheapMonitor: Java heap used=5M max=384M, proc: com.xiaomi.joyose
+08-29 16:51:15.385  8389  8919 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:15.385 10561 10858 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:15.452  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.452  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.607  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 16:51:15.608  3128  3128 I wificond: station_bandwidth:  
+08-29 16:51:15.618  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 16:51:15.618  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 16:51:15.619  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 16:51:15.619  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 16:51:15.621  5847  5899 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 16:51:15.621  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 16:51:15.622  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 16:51:15.623  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 16:51:15.623  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 16:51:15.624  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 16:51:15.624  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 16:51:15.625  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 16:51:15.626 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 16:51:15.626 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 16:51:15.627  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=çš®**5G}
+08-29 16:51:15.627  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 16:51:15.628 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 16:51:15.628 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 16:51:15.631  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 16:51:15.631  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=6035Kbps LinkDnBandwidth>=113652Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -56, Link speed: 1729Mbps, Tx Link speed: 1729Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 1729Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -56 UnderlyingNetworks: Null]
+08-29 16:51:15.632  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 16:51:15.654  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.654  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.828  5626  5722 D JavaheapMonitor: Java heap used=7M max=384M, proc: com.android.networkstack.process
+08-29 16:51:15.829  5626  5722 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:15.855  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.856  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:15.867  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 16:51:15.868  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 16:51:15.868  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 16:51:15.868  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 16:51:15.868  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 16:51:16.058  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.058  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.259  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.259  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.460  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.461  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.495  3590  4101 D JavaheapMonitor: Java heap used=5M max=384M, proc: com.xiaomi.mi_connect_service:idm
+08-29 16:51:16.495  3590  4101 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:16.610 16521 16587 D JavaheapMonitor: Java heap used=17M max=384M, proc: com.baidu.input_mi
+08-29 16:51:16.610 16521 16587 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:16.662  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.662  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.712  9349  9787 D JavaheapMonitor: Java heap used=18M max=512M, proc: com.xiaomi.aicr
+08-29 16:51:16.712  9349  9787 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:16.812 31570 32258 D JavaheapMonitor: Java heap used=8M max=512M, proc: com.android.camera
+08-29 16:51:16.812 31570 32258 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:16.863  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.863  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:16.928  2759  4515 D MiuiNetworkPolicy: updateLimit mLimitEnabled=false,enabled=true,mNetworkPriorityMode=2,mThermalForceMode=3
+08-29 16:51:17.026 31665 32357 D JavaheapMonitor: Java heap used=10M max=384M, proc: com.miui.phrase
+08-29 16:51:17.027 31665 32357 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.045  2759  2892 D JavaheapMonitor: Java heap used=119M max=512M, proc: system_server
+08-29 16:51:17.046  2759  2892 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+08-29 16:51:17.064  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.064  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.248 24203 24665 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.xiaomi.account
+08-29 16:51:17.248 24203 24665 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.265  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.266  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.330  2759  5191 I NetworkBoostStatusManager: handle: 107
+08-29 16:51:17.335  5847  5899 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 16:51:17.335  2759  5191 D NetworkBoostStatusManager: isModemSingnalStrengthStatus signalStrength or serviceState is null
+08-29 16:51:17.367  7658 15717 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.xiaomi.metoknlp
+08-29 16:51:17.367  7658 15717 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.466  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.467  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.534  5714 14481 D JavaheapMonitor: Java heap used=25M max=384M, proc: .qtidataservices
+08-29 16:51:17.535  5714 14481 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.559  7524  8807 D JavaheapMonitor: Java heap used=19M max=384M, proc: com.miui.personalassistant
+08-29 16:51:17.560  7524  8807 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.637 32624  2617 D JavaheapMonitor: Java heap used=12M max=512M, proc: com.miui.guardprovider
+08-29 16:51:17.638 32624  2617 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.650  6230 14486 D JavaheapMonitor: Java heap used=8M max=384M, proc: com.xiaomi.mirror
+08-29 16:51:17.650  6230 14486 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.667  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.668  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.705  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 16:51:17.706  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 16:51:17.810 21526 23216 D JavaheapMonitor: Java heap used=8M max=384M, proc: android.ext.services
+08-29 16:51:17.812 21526 23216 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.818  7133 14507 D JavaheapMonitor: Java heap used=8M max=512M, proc: com.miui.voiceassist:core
+08-29 16:51:17.818  7133 14507 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:17.869  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:17.870  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.071  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.072  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.082 11211 11870 D JavaheapMonitor: Java heap used=16M max=384M, proc: com.xiaomi.xmsf:services
+08-29 16:51:18.083 11211 11870 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:18.136  7122  7534 D JavaheapMonitor: Java heap used=4M max=512M, proc: com.android.providers.media.module
+08-29 16:51:18.136  7122  7534 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:18.152  8078 14720 D JavaheapMonitor: Java heap used=10M max=384M, proc: com.lbe.security.miui
+08-29 16:51:18.153  8078 14720 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:18.273  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.273  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.321  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.7/s) Done(0.000/s Avg=1.718/s)| Stream: 24.00fps 2.4Mbps
+08-29 16:51:18.321  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 16:51:18.450  7236  8143 D JavaheapMonitor: Java heap used=21M max=384M, proc: com.miui.daemon
+08-29 16:51:18.451  7236  8143 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:18.474  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.475  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.630  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 16:51:18.631  3128  3128 I wificond: station_bandwidth:  
+08-29 16:51:18.637  5847  5899 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 16:51:18.637  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 16:51:18.675  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.676  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.872  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 16:51:18.873  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 16:51:18.873  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 16:51:18.873  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 16:51:18.873  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 16:51:18.877  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:18.877  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.079  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.079  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.281  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.281  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.481  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.481  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.685  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.685  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.884  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:19.884  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.087  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.088  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.110 19418 19917 D JavaheapMonitor: Java heap used=7M max=512M, proc: com.android.thememanager
+08-29 16:51:20.110 19418 19917 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:20.134  8389 13902 D powerkeeper.dfsobserve: board ready to handle temperature change
+08-29 16:51:20.135  8389 15906 D powerkeeper.dfscpucol: handleTemperatureChange: temp=34580
+08-29 16:51:20.289  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.289  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.301  5485 13700 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.miui.miwallpaper
+08-29 16:51:20.301  5485 13700 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:20.452  7133  8203 I VA_AliveCore:AssistInteractionService: onProcessChanged: processName=com.miui.voiceassist;isRunning=true
+08-29 16:51:20.488  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.488  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.692  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.692  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.891  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:20.891  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.095  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.095  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.294  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.294  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.375  5847  6086 D JavaheapMonitor: Java heap used=28M max=384M, proc: com.android.phone
+08-29 16:51:21.375  5847  6086 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 16:51:21.496  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.496  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.590  8397  8397 E adbd    : failed to connect to socket 'tcp:8389': Connection refused
+08-29 16:51:21.639  2759  6639 D SLM-SRV-SLAService: checktemp temperature = 34580 temperature_average = 34532 isPerformanceMode = false thermal_enable_slm = true
+08-29 16:51:21.653  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 16:51:21.654  3128  3128 I wificond: station_bandwidth:  
+08-29 16:51:21.655  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787993449429112000 end camera.capture
+08-29 16:51:21.660  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 16:51:21.660  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 16:51:21.661  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 16:51:21.661  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 16:51:21.666  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 16:51:21.667  5847  5899 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 16:51:21.667  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 16:51:21.670  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 16:51:21.672  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 16:51:21.672  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 16:51:21.672  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 16:51:21.674 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 16:51:21.674 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 16:51:21.674  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:21.674  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:21.675  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:21.675  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 16:51:21.675 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 16:51:21.675  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 16:51:21.675 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 16:51:21.675  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 16:51:21.676  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 16:51:21.678  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=çš®**5G}
+08-29 16:51:21.678  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 16:51:21.680  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=10993Kbps LinkDnBandwidth>=269064Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -55, Link speed: 2401Mbps, Tx Link speed: 2401Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 2401Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -55 UnderlyingNetworks: Null]
+08-29 16:51:21.684  1705  1705 I MOVTEST : MOVTEST_MARK_1787993449429112000 end camera.capture
+08-29 16:51:21.691  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 16:51:21.695  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:21.695  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.695  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:51:21.717  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 16:51:21.736  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

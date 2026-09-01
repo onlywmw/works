@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 审批弹窗 UI · 直观版 Demo v4</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;
+    --line:rgba(22,28,48,.08);--text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+    --acc:#23272f;--on-acc:#ffffff;--danger:#d92d20;--ok:#2b8158;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#e9ebf0;color:var(--text);display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .wrap{padding:14px 14px 40px}
+  .h{font-size:13px;font-weight:600;color:var(--text3);margin:6px 2px 12px}
+  .seg{display:flex;gap:4px;background:var(--s2);border-radius:11px;padding:4px;margin-bottom:12px}
+  .seg button{flex:1;text-align:center;font-size:12.5px;font-weight:600;color:var(--text2);padding:9px 0;border-radius:8px;cursor:pointer}
+  .seg button.on{background:var(--s1);color:var(--text);box-shadow:0 1px 4px rgba(22,28,48,.08)}
+  .trigger{width:100%;padding:13px;border-radius:12px;border:1px dashed var(--text3);background:var(--s1);
+    color:var(--text2);font-weight:600;font-size:14px;cursor:pointer;font-family:inherit}
+  .trigger:hover{background:var(--s2)}
+  .showbar{margin-top:12px;font-size:12px;color:var(--text3)}
+
+  .mask{position:fixed;inset:0;background:rgba(12,16,28,.5);display:none;align-items:center;justify-content:center;padding:28px;z-index:60;backdrop-filter:blur(2px)}
+  .mask.show{display:flex}
+  .dlg{width:100%;max-width:300px;background:#fff;border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.32);overflow:hidden;animation:pop .2s ease}
+  @keyframes pop{from{transform:scale(.95) translateY(6px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+
+  /* 视觉锚：大图标居中 */
+  .vicon{width:78px;height:78px;border-radius:22px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:40px;margin:26px auto 0}
+  /* 主文案：居中大字 */
+  .main{text-align:center;padding:0 22px;margin-top:16px}
+  .main .k{font-size:19px;font-weight:700;color:var(--text);line-height:1.35}
+  .main .k em{font-style:normal;color:var(--acc)}
+  .main .sub{font-size:13px;color:var(--text3);margin-top:8px;line-height:1.5}
+
+  .divider{height:1px;background:var(--line);margin:18px 22px 0}
+  .cd{text-align:center;font-size:12px;color:var(--text3);margin-top:12px}
+  .cd b{color:var(--text);font-weight:600}
+
+  .acts{padding:16px 22px 22px;display:flex;gap:10px}
+  .btn{flex:1;text-align:center;padding:13px 0;border-radius:13px;font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:inherit}
+  .btn.ok{background:var(--acc);color:#fff}
+  .btn.no{background:rgba(217,45,32,.1);color:var(--danger)}
+  .auto{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;color:var(--text2);padding:0 22px 20px;cursor:pointer}
+  .auto .cb{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--text3);display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#fff}
+  .auto.on .cb{background:var(--acc);border-color:var(--acc)}
+  .note{margin-top:14px;font-size:12px;color:var(--text3);line-height:1.6}
+  .note b{color:var(--text2)}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="wrap">
+    <div class="h">审批弹窗 · 直观版 · 切换"AI 想做的事"看主文案</div>
+    <div class="seg" id="seg">
+      <button data-i="0" class="on">存笔记</button>
+      <button data-i="1">读文件</button>
+      <button data-i="2">截屏</button>
+      <button data-i="3">发消息</button>
+    </div>
+    <button class="trigger" id="trig">⚡ 模拟：AI 想替你做事</button>
+    <div class="showbar" id="sb">（点上方按钮切换场景，再点这里弹出审批弹窗）</div>
+  </div>
+
+  <div class="mask" id="mask">
+    <div class="dlg">
+      <div class="vicon" id="vIcon">📝</div>
+      <div class="main">
+        <div class="k" id="vKey"></div>
+        <div class="sub" id="vSub"></div>
+      </div>
+      <div class="divider"></div>
+      <div class="cd"><b id="cd">20</b> 后 AI 会自动取消这次操作</div>
+      <div class="acts">
+        <button class="btn ok" data-r="1">同意</button>
+        <button class="btn no" data-r="0">拒绝</button>
+      </div>
+      <div class="auto" id="auto"><span class="cb">✓</span>这次对话里，同类操作都直接同意</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ACTS=[
+  {em:'📝', k:'AI 想帮你<em>存一条笔记</em>', sub:'把这段会议纪要存成 Markdown，以后方便查看。'},
+  {em:'📄', k:'AI 想帮你<em>读一个文件</em>', sub:'读取你指定的那个文件的内容。'},
+  {em:'🖼️', k:'AI 想帮你<em>截个屏</em>', sub:'截取当前屏幕，把图片发给你。'},
+  {em:'✉️', k:'AI 想帮你<em>发一条消息</em>', sub:'会以你的名义发出这条消息。'},
+];
+let cur=0, autoOn=false, timer=null;
+function startCount(){clearInterval(timer);let s=20;const c=document.getElementById('cd');c.textContent=s;timer=setInterval(()=>{s--;c.textContent=s;if(s<=0)autoCancel();},1000);}
+function autoCancel(){clearInterval(timer);document.getElementById('mask').classList.remove('show');const sb=document.getElementById('sb');sb.textContent='⏳ 已自动取消，AI 没做';}
+function openDlg(){const a=ACTS[cur];document.getElementById('vIcon').textContent=a.em;document.getElementById('vKey').innerHTML=a.k;document.getElementById('vSub').textContent=a.sub;document.getElementById('mask').classList.add('show');startCount();}
+document.getElementById('seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cur=+b.dataset.i;document.querySelectorAll('#seg button').forEach(x=>x.classList.remove('on'));b.classList.add('on');const sb=document.getElementById('sb');sb.textContent='（当前：'+ACTS[cur].em+' 点上面弹出）';});
+document.getElementById('trig').onclick=openDlg;
+document.getElementById('auto').onclick=()=>{autoOn=!autoOn;document.getElementById('auto').classList.toggle('on',autoOn);};
+document.getElementById('mask').addEventListener('click',e=>{const b=e.target.closest('.btn');if(!b)return;clearInterval(timer);document.getElementById('mask').classList.remove('show');const sb=document.getElementById('sb');sb.textContent=b.dataset.r==='1'?'✅ 已同意，AI 继续做'+(autoOn?'（本次对话免询）':''):'❌ 已拒绝，AI 停下';});
+</script>
+</body>
+</html>

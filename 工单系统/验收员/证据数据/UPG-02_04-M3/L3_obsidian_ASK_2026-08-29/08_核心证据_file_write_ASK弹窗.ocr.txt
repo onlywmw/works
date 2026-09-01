@@ -1,0 +1,30 @@
+﻿9 ： 09 囗
+vaulto
+PIease run a shell c..
+5G 0
+0
+PIease call obsidian.vault.register with the
+sa m e uri O n ce m O re right now.
+好 的 ， 马 上 再 试 一 次 。 登 记 成 功 了 。 现 在 把 笔 记 写 入
+已 全 部 完 成 ：
+vault 登 记 成 功 (MovTestVault 目 录 ）
+审 批 请 求
+AI 请 求 执 行 ： obsidian.flle.write
+原 因 ： 默 认 权 限 ： obsidian.file.write 超 出 安
+全 范 围 ， 请 求 允 许
+参 数 摘 要 ：
+content = MOV acceptance probe L3 v3
+path = /upg02 」 3-probe-v3.md
+60 秒 无 响 应 将 自 动 拒 绝 。
+允 许 本 轮
+accep ance p ro e
+拒 绝
+允 许 本 次
+Please write the note again using
+obsidian.file.write with absolute path
+/upg02—13—probe—v3.md and content MOV
+acceptance probe L3 v3.
+DeepSeek V4...
+MCP 工 具 '
+给 MO\/ 发 消 息 “
+内 容 由

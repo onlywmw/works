@@ -1,0 +1,5 @@
+08-27 02:34:01.153  8860  8860 I WebViewFactory: Loading com.google.android.webview version 133.0.6943.137 (code 694313738)
+08-27 02:34:01.405  8860  8860 D nativeloader: Load /data/app/~~v82MS9mV5GOehYVBTfSQkw==/com.google.android.trichromelibrary_694313738-YlGSQSTSn4eSsB2la3dCOw==/TrichromeLibrary.apk!/lib/x86_64/libmonochrome_64.so using class loader ns clns-11 (caller=/data/app/~~PoU3U9gN-_yXtJ_SQ-Kq-g==/com.google.android.webview-W3dzfxUrXR4vCq__X8uhNg==/WebViewGoogle.apk): ok
+08-27 02:34:01.415  8860  8891 E chromium: [0827/023401.414883:ERROR:variations_seed_loader.cc(39)] Seed missing signature.
+08-27 02:34:01.416  8860  8891 I chromium: [0827/023401.415620:INFO:variations_seed_loader.cc(67)] Failed to open file for reading.: No such file or directory (2)
+08-27 02:34:02.069  8860  8928 W chromium: [WARNING:viz_main_impl.cc(85)] VizNullHypothesis is disabled (not a warning)

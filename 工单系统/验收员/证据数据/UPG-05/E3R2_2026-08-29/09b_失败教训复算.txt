@@ -1,0 +1,6 @@
+失败段 room-1787970924488-4023 journal 复算（复刻 FailureEventSourceImpl.collectFailures + MemoryGeneCompactor.toAvoid/failureAvoids 逻辑，本地 Python 重放）：
+失败事件(isError=true)总数: 2
+教训 occurrences=2: 避免: code: APPROVAL_DENIED 审批未通过rejected: 默认权限：shell.exec 超出安全范围，
+两次失败 tool/result 原文（UTF-8 一致）:
+  [code: APPROVAL_DENIED] 审批未通过(rejected): 默认权限：shell.exec 超出安全范围，请求允许
+  [code: APPROVAL_DENIED] 审批未通过(rejected): 默认权限：shell.exec 超出安全范围，请求允许

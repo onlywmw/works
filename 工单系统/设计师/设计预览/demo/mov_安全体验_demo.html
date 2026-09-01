@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV · 安全体验优化</title>
+<style>
+  :root{--s0:#F3F4F7;--s1:#fff;--s2:#EDEFF3;--text:#191B21;--text2:#565C6B;--text3:#8B91A1;
+    --line:rgba(22,28,48,.08);--primary:#0E7C5B;--ptint:rgba(14,124,91,.08);--danger:#D92D20;--warn:#B45309;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#E9EBF0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);padding:24px 14px}
+  .wrap{max-width:960px;margin:0 auto}
+  .h1{font-size:19px;font-weight:800}.sub{font-size:13px;color:var(--text2);margin:6px 0 4px}
+  .sub b{color:var(--primary)}
+  .principle{font-size:12.5px;color:var(--text2);background:#f4fbf8;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0 18px;line-height:1.6}
+  .principle b{color:var(--primary)}
+
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+  @media(max-width:560px){.cmp{grid-template-columns:1fr}}
+  .side{border-radius:12px;padding:12px 14px;font-size:12.5px;line-height:1.6}
+  .side.old{border:1px solid #F3DCDC;background:#FDF4F4}
+  .side.old .st{color:var(--danger);font-weight:800;font-size:13px;margin-bottom:6px}
+  .side.new{border:1px solid #D8ECDF;background:#F3FBF6}
+  .side.new .st{color:var(--primary);font-weight:800;font-size:13px;margin-bottom:6px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+  .sc{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .sc .n{font-size:11px;color:var(--text3);font-weight:700;letter-spacing:.3px}
+  .sc .t{font-size:13.5px;font-weight:800;margin:3px 0 8px;display:flex;align-items:center;gap:6px}
+  .sc .t .ic{font-size:16px}
+  .sc .hl{font-size:12px;color:var(--primary);font-weight:600;margin-bottom:6px}
+  .sc .how{font-size:12px;color:var(--text2);line-height:1.6}
+  .how small{color:var(--text3)}
+  .mock{background:var(--s2);border-radius:10px;padding:8px 10px;margin-top:8px;font-size:11.5px;color:var(--text);line-height:1.5}
+  .mock .b{color:var(--primary);font-weight:700}
+  .mock .g{color:var(--text3)}
+  .note{font-size:12px;color:var(--text3);margin-top:16px;line-height:1.6}
+  .arrow{color:var(--primary);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="h1">MOV · 安全体验优化 <small style="font-size:11px;color:var(--text3)">用户视角 · 安全让体验更好，而非负担</small></div>
+  <div class="sub">原则：<b>该守才守、守得舒服</b>——日常零打扰；真要确认，一次秒懂；拒绝不降级；可撤、透明、不吓人。</div>
+
+  <div class="principle">🎯 <b>安全体验的目标</b>：不是"越安全越烦"，而是——<br>
+  ① <b>0 打扰</b>：绝大部分时候用户感觉不到安全（自动加密、无害静默）；<br>
+  ② <b>1 次秒懂确认</b>：只有该守时才出现，一眼看懂、2 键决定；<br>
+  ③ <b>可控</b>：拒绝不降级、可撤销、能看"数据去了哪"；<br>
+  ④ <b>不吓人</b>：人话提示、给可操作建议，绝不恐慌文案/技术报错。</div>
+
+  <div class="cmp">
+    <div class="side old"><div class="st">❌ 普通安全体验</div>频繁弹窗打断 · 技术黑话（ApiKey invalid/SQL 错误）· "危险⚠️"恐吓 · 拒绝就砍功能 · 点了就没了 · 换机一串报错 · 数据去哪不知道</div>
+    <div class="side new"><div class="st">✅ MOV 安全体验</div>日常零打扰 · 一次大白话秒懂 · 2 键决定 · 拒绝不降级 · 5s 可撤 · 换机人话提示 · 安全状态一屏·可查不吓人 · 越用越顺</div>
+  </div>
+
+  <div class="grid">
+    <div class="sc"><div class="n">场景 1</div><div class="t"><span class="ic">🔒</span> 平时 · 零打扰</div>
+      <div class="hl">用户毫无感觉</div>
+      <div class="how">本机数据<b>自动加密</b>、无害调用<b>静默放行</b>——用户正常聊、正常用，不知道也不需知道安全在后台跑。</div>
+      <div class="mock">(无弹窗 · 无提示 · 无感知)<br><span class="g">后台：本机 AES-GCM · free 级静默</span></div></div>
+
+    <div class="sc"><div class="n">场景 2</div><div class="t"><span class="ic">🛡️</span> 该守时才 · 一次秒懂确认</div>
+      <div class="hl">理解而同意，不是盲点</div>
+      <div class="how">写类/敏感/对外才弹一次<b>大白话</b>：一句"它要做什么/影响什么" + <b>同意/拒绝 2 键</b>；<b>同类记住</b>、30s 自动取消（不处理=安全取消）。</div>
+      <div class="mock">📝 AI 想帮你保存这份会议纪要 → <span class="b">[同意] [拒绝]</span><br><span class="g">30s 后自动取消 · 已同类记住</span></div></div>
+
+    <div class="sc"><div class="n">场景 3</div><div class="t"><span class="ic">🙅</span> 拒绝 · 不降级</div>
+      <div class="hl">这次不做，功能照常</div>
+      <div class="how">拒绝 = 仅这次不做 + 一句"好的，这次不执行"；<b>不影响其它功能</b>，不因拒绝砍能力。</div>
+      <div class="mock">[拒绝] → <span class="g">这次不保存 · 你仍可正常用其它</span></div></div>
+
+    <div class="sc"><div class="n">场景 4</div><div class="t"><span class="ic">↩️</span> 误触 · 5s 可撤</div>
+      <div class="hl">不留"点了就没了"</div>
+      <div class="how">删除/移动等<b>可逆操作 5 秒撤销</b>；安全吊销（授权/凭据）则<b>立即生效</b>——两类分开，该快快、该慢慢。</div>
+      <div class="mock">已移除「会议纪要」 · <span class="b">5s 内可撤销</span></div></div>
+
+    <div class="sc"><div class="n">场景 5</div><div class="t"><span class="ic">🧭</span> 换机/异常 · 人话提示</div>
+      <div class="hl">不是技术报错，是可操作建议</div>
+      <div class="how">换机提示"部分数据需重新录入"；异常给<b>人话 + 可操作</b>（"检测到你的某个账号密码可能泄露，建议修改"），**不吓人**、**不抛技术码**。</div></div>
+
+    <div class="sc"><div class="n">场景 6</div><div class="t"><span class="ic">🩺</span> 安全状态一屏</div>
+      <div class="hl">一眼"我很安全"，零操作</div>
+      <div class="how">隐私设置一个<b>安全状态</b>：①本机已加密保护 ②数据足迹可查（去哪了/谁访问）——透明，但<b>绝不主动弹安全通知惊吓</b>；只看一眼就放心。</div>
+      <div class="mock">🔒 本机数据已加密保护 · ✅ 无异常访问</div></div>
+
+    <div class="sc"><div class="n">场景 7</div><div class="t"><span class="ic">⚡</span> 越用越顺 · 智能记住</div>
+      <div class="hl">高频安全确认自动收敛</div>
+      <div class="how">某类操作你总同意 → <b>自动记住偏好</b>（"以后这类自动放行"）；确认越来越少，<b>安全不成为重复负担</b>；敏感/高危仍每次确认。</div></div>
+
+    <div class="sc"><div class="n">场景 8</div><div class="t"><span class="ic">🚀</span> 决策毫秒级 · 不拖累</div>
+      <div class="hl">安全不阻塞</div>
+      <div class="how">安全检查<b>后台毫秒级</b>（DecisionToken 生成/验证），可逆操作照常进行；<b>安全不拖慢</b>、不打断思绪、不砍功能、不做复杂"安全设置大礼包"。</div></div>
+  </div>
+
+  <div class="note">
+    <b>一句话</b>：安全体验 = <b>该守才守（0 打扰）· 守得舒服（1 次秒懂）· 可控（可撤/不降级/透明）· 不吓人（人话）</b>。安全在后台复杂，用户界面极简——安全让体验<b>更顺</b>，而不是更烦。
+  </div>
+</div>
+</body>
+</html>

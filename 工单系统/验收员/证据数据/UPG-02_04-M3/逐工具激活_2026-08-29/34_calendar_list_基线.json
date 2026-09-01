@@ -1,0 +1,18 @@
+{
+ "tool": "calendar.list",
+ "args": {},
+ "ts": "2026-08-29T17:05:29",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 94329,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, count=0, events=[]}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

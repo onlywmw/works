@@ -1,0 +1,1 @@
+OCR_ERROR: 使用“0”个参数调用“GetResult”时发生异常:“无法找不到组件。 (异常来自 HRESULT:0x88982F50)”

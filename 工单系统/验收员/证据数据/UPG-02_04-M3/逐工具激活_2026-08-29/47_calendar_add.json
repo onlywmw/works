@@ -1,0 +1,21 @@
+{
+ "tool": "calendar.add",
+ "args": {
+  "title": "UPG02 probe event",
+  "start": 1787993064472,
+  "end": 1787996664472
+ },
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 47,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=false, error=begin/end 时间非法（epoch ms，end>begin）}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

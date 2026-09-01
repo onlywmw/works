@@ -1,0 +1,143 @@
+{
+ "nodes": [
+  {
+   "id": "n84",
+   "type": "file",
+   "file": "设计师/设计网络/方向/内部基建.md",
+   "x": 805.0,
+   "y": 0,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n85",
+   "type": "file",
+   "file": "设计师/设计网络/方向/工作台.md",
+   "x": 650.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n87",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-08.md",
+   "x": 0,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n89",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-10.md",
+   "x": 310,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n91",
+   "type": "file",
+   "file": "设计师/设计网络/工单/W-09.md",
+   "x": 620,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n93",
+   "type": "file",
+   "file": "设计师/设计网络/工单/W-10.md",
+   "x": 930,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n95",
+   "type": "file",
+   "file": "设计师/设计网络/工单/W-12.md",
+   "x": 1240,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n97",
+   "type": "file",
+   "file": "设计师/设计网络/方向/账号服务.md",
+   "x": 1580.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n99",
+   "type": "file",
+   "file": "设计师/设计网络/工单/W-11.md",
+   "x": 1550,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  }
+ ],
+ "edges": [
+  {
+   "id": "n86",
+   "fromNode": "n84",
+   "fromSide": "bottom",
+   "toNode": "n85",
+   "toSide": "top"
+  },
+  {
+   "id": "n88",
+   "fromNode": "n85",
+   "fromSide": "bottom",
+   "toNode": "n87",
+   "toSide": "top"
+  },
+  {
+   "id": "n90",
+   "fromNode": "n85",
+   "fromSide": "bottom",
+   "toNode": "n89",
+   "toSide": "top"
+  },
+  {
+   "id": "n92",
+   "fromNode": "n85",
+   "fromSide": "bottom",
+   "toNode": "n91",
+   "toSide": "top"
+  },
+  {
+   "id": "n94",
+   "fromNode": "n85",
+   "fromSide": "bottom",
+   "toNode": "n93",
+   "toSide": "top"
+  },
+  {
+   "id": "n96",
+   "fromNode": "n85",
+   "fromSide": "bottom",
+   "toNode": "n95",
+   "toSide": "top"
+  },
+  {
+   "id": "n98",
+   "fromNode": "n84",
+   "fromSide": "bottom",
+   "toNode": "n97",
+   "toSide": "top"
+  },
+  {
+   "id": "n100",
+   "fromNode": "n97",
+   "fromSide": "bottom",
+   "toNode": "n99",
+   "toSide": "top"
+  }
+ ]
+}

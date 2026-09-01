@@ -1,0 +1,320 @@
+--------- beginning of main
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: range after ABF = (204, 651)
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: range after Bayer GTM = (204, 651)
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: range after Bayer LTM = (204, 651)
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: range after LCAC = (204, 651)
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: range after Demosaic = (204, 651)
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: CDS precrop = (0, 447)
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: range after CDS precrop = (204, 651)
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: ==== now xStart and xEnd are in output FOV domain ====
+08-29 16:53:22.117  2258  2816 I STRIPINGLIB: scaleForwardV20: R = 2097152 (1.000), input: [204, 651], output: [204, 651]
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: scaleForwardV20: frame rounding option (h, v) = (0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: scaleForwardV20: stripe rounding option (h, v) = (0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: pStripe->module1d.chroma_down_c_out_1d: (input_l, output_l, phase_init, pixel_offset) = (448, 448, 0, 0)
+08-29 16:53:22.118  1968  8716 D PAL: SessionAlsaUtils: getModuleInstanceId: 1203: num of tags associated with stream 126 is 8
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after HNR = (204, 651)
+08-29 16:53:22.118  1968  8716 D PAL: SessionAlsaUtils: getModuleInstanceId: 1210: tag id[0] = 0xc000340, num_modules = 0x1
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range before SCALE4 = (204, 651)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after SCALE4 = (52, 161)
+08-29 16:53:22.118  1968  8716 D PAL: SessionAlsaUtils: getModuleInstanceId: 1210: tag id[1] = 0xc0000001, num_modules = 0x1
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: CROP4 = (4, 99)
+08-29 16:53:22.118  1968  8716 D PAL: SessionAlsaUtils: getModuleInstanceId: 1218: MIID is 0x4b28
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after CROP4 = (56, 151)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: input: (stripeInStart, stripeOutStart, stripeOutEnd, frameWidth) = (204, 56, 151, 1020)
+08-29 16:53:22.118  1968  8716 D PAL: ResourceManager: getDeviceNameFromID: 1523: pcm id name is PCM126 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: frameLevelParam: (bg_enabled, bg_rgn_h_num, bg_rgn_width, bg_roi_h_offset) = (0, 0, 0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: --> (regionCnt, regionWidth, roiEnd) = (1, 1, 0)
+08-29 16:53:22.118  1968  8716 D PAL: SessionAlsaUtils: registerMixerEvent: 1407: - mixer -PCM126 event-
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: fetch start/end index = 204, 651
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: DS4DS16OutFirst, fullDS4OutFirst, regOutFirst = 16, 56, 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: BPS QoS counter: (horizParams.qosBPScounter_1d, vertParams.qosBPScounter_1d, currStripe->qosBPScounter) = (448, 766, 343168)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:         currStripe->simplepdpcbpc.pd_global_offset_x = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:         currStripe->simplepdpcbpc.pd_table_x_offset = 12
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:         currStripe->simplepdpcbpc.pd_x_end = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             prevStripe: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             bihist_enabled = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             bihist_active_roi_en = 0 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             roi_h_offset[0-3] = [68, 68, 68, 68]
+08-29 16:53:22.118  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x79fe, opcode 0x100100e
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: stripeIdx = 2
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: MNDSv2.3 overlap = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: (DS4DS16OutStart, DS4DS16OutEnd, pParams->cummulativeDS4DS16Out, pParams->DS4DS16OutMaxDim) = (0, 15, 15, 448)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: (fullDS4OutStart, fullDS4OutEnd, pParams->cummulativeFullDS4Out, pParams->fullDS4OutMaxDim) = (0, 55, 55, 448)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  HNR out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  HNR in/chroma down out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  chroma down in/after ARGB tapping point,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  Demosaic out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  Demosaic in,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  LCAC out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  Bayer LTM out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  Bayer GTM out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  ABF out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  GIC out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  WB out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  LSC out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check HDRRECON out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check PDPC out,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check clampToBuffer in,  xstart, xend = -10, 265
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: apply input format constraint = 4.
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check again after clampToBuffer,  fetch, xend = 0, 267
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: dimension check  left/right = 1,0, fetchFirst/fetchLast= 0, 267
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range before cadlInToOutMap = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: start from input: (    0,   267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: with padding: (    0,   267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: with precrop: (    0,   267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: with scaling: (    0,   267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: with filters: (    0,   267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: with postcrop: (    0,   267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: input: (    0,   267) --> output: (    0,   267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after cadlInToOutMap = (0, 267)
+08-29 16:53:22.118 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:186 ScanFilterParamSetup: in shim layer, clientIf=2
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: fetch range = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after ROI alignment = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: (stripeStartX, pdaf_global_offset, pdaf_table_offset) = (0, 0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after PDPC = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after BPCPDPC = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after HDRRecon = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after LSC = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after simpleBPC = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after WB = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after GIC = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after ABF = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after Bayer GTM = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after Bayer LTM = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after LCAC = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after Demosaic = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: CDS precrop = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after CDS precrop = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: ==== now xStart and xEnd are in output FOV domain ====
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: scaleForwardV20: R = 2097152 (1.000), input: [0, 267], output: [0, 267]
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: scaleForwardV20: frame rounding option (h, v) = (0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: scaleForwardV20: stripe rounding option (h, v) = (0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: pStripe->module1d.chroma_down_c_out_1d: (input_l, output_l, phase_init, pixel_offset) = (268, 268, 0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after HNR = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range before SCALE4 = (0, 267)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after SCALE4 = (0, 65)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: CROP4 = (0, 55)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: range after CROP4 = (0, 55)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: input: (stripeInStart, stripeOutStart, stripeOutEnd, frameWidth) = (0, 0, 55, 1020)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: frameLevelParam: (bg_enabled, bg_rgn_h_num, bg_rgn_width, bg_roi_h_offset) = (0, 0, 0, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: --> (regionCnt, regionWidth, roiEnd) = (1, 1, 0)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: fetch start/end index = 0, 267
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: DS4DS16OutFirst, fullDS4OutFirst, regOutFirst = 0, 0, 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: BPS QoS counter: (horizParams.qosBPScounter_1d, vertParams.qosBPScounter_1d, currStripe->qosBPScounter) = (268, 766, 205288)
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:         currStripe->simplepdpcbpc.pd_global_offset_x = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:         currStripe->simplepdpcbpc.pd_table_x_offset = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:         currStripe->simplepdpcbpc.pd_x_end = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             prevStripe: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             bihist_enabled = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             bihist_active_roi_en = 0 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             roi_h_offset[0-3] = [64, 64, 64, 64]
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             currStripe: 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             bihist_enabled = 0
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             bihist_active_roi_en = 0 
+08-29 16:53:22.118  2258  2816 I STRIPINGLIB:             roi_h_offset[0-3] = [0, 0, 0, 0]
+08-29 16:53:22.118  1968  8716 D PAL: ResourceManager: getDeviceNameFromID: 1523: pcm id name is PCM126 
+08-29 16:53:22.118  1968  8716 D PAL: SessionAlsaUtils: setMixerParameter: 1309: - mixer -PCM126-
+08-29 16:53:22.118  1968  8716 D PAL: SessionAlsaUtils: setMixerParameter: 1317: - mixer -PCM126 setParam-
+08-29 16:53:22.118  1968  8716 D AGM: graph: graph_set_config: 1145: entry graph_handle 0x47534c
+08-29 16:53:22.118  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x79ff, opcode 0x100100c
+08-29 16:53:22.118 22231 22347 D ScanController: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+08-29 16:53:22.118 22231 22347 D ScanManager: callback done for scannerId - 2 status - 0
+08-29 16:53:22.118 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:186 ScanFilterParamSetup: in shim layer, clientIf=2
+08-29 16:53:22.118  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x7a00, opcode 0x1001006
+08-29 16:53:22.119 22231 22347 D ScanController: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+08-29 16:53:22.119 22231 22347 D ScanManager: callback done for scannerId - 2 status - 0
+08-29 16:53:22.119  2121  2700 W SDM     : HWDeviceDRM::GetSupportedBitClkRate: Requested rate not supported: 1190090000
+08-29 16:53:22.119 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:186 ScanFilterParamSetup: in shim layer, clientIf=2
+08-29 16:53:22.119 22231 22347 D ScanController: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+08-29 16:53:22.119  2121  2700 I SDM     : HWDeviceDRM::UpdateMixerAttributes: Mixer WxH 3048x2032-1 for Peripheral
+08-29 16:53:22.119 22231 22347 D ScanManager: callback done for scannerId - 2 status - 0
+08-29 16:53:22.119  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active configuration changed from config 3 to 0
+08-29 16:53:22.119  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active WxH 3048x2032 ,ddic_mode:normal, timing_fps: 120, sf_fps: 120
+--------- beginning of system
+08-29 16:53:22.119  2759  6572 D ActivityManager: Logging startService for com.miui.analytics, stopped=false, firstLaunch=false, intent=Intent { act=onetrack.action.TRACK_EVENT flg=0x2 xflg=0x4 pkg=com.miui.analytics (has extras) }, r.app=ProcessRecord{58e29e6 20990:com.miui.analytics/u0a143}
+08-29 16:53:22.119 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:186 ScanFilterParamSetup: in shim layer, clientIf=2
+08-29 16:53:22.120 22231 22347 D ScanController: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+08-29 16:53:22.120 22231 22347 D ScanManager: callback done for scannerId - 2 status - 0
+08-29 16:53:22.120 22231 24725 D ScanController: unregisterScanner() - scannerId=3
+08-29 16:53:22.120 22231 22367 D ScanManager: configureRegularScanParams() - queue=2
+08-29 16:53:22.120 22231 22367 D ScanManager: configureRegularScanParams() - queue empty, scan stopped
+08-29 16:53:22.120 22231 24725 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:147 Unregister: in shim layer, scannerId=3
+08-29 16:53:22.120 22231 22367 I ScanManager: msg.what = MSG_STOP_BLE_SCAN, msg.arg1 = None
+08-29 16:53:22.120 22231 22367 D ScanManager: track LE scan event: callerPackage = [com.xiaomi.bluetooth], scanMode = [0], reportDelayMillis = [0], behavior = [2], scannerId = [3], duration = [59945]
+08-29 16:53:22.120 22231 22367 D ScanManager: handling stopping scan  [ScanClient scanModeApp 0 scanModeUsed 0 scannerId 3 [appScanStats android.uid.bluetooth:1002]]
+08-29 16:53:22.120 22231 22303 D BT_OneTrack_I/F: region:CN
+08-29 16:53:22.121 22231 22367 E BluetoothUtils: isDeepDozeMode? false
+08-29 16:53:22.121 22231 22367 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:186 ScanFilterParamSetup: in shim layer, clientIf=3
+08-29 16:53:22.121 22231 22347 D ScanController: onScanFilterParamsConfigured() - clientIf=3, status=0, action=0, availableSpace=0
+08-29 16:53:22.121 22231 22347 D ScanManager: callback done for scannerId - 3 status - 0
+08-29 16:53:22.121 22231 22367 D ScanManager: configureRegularScanParams() - queue=1
+08-29 16:53:22.121 22231 22367 D ScanManager: configureRegularScanParams() - queue empty, scan stopped
+08-29 16:53:22.121  2121  2224 I SDM     : HWDeviceDRM::SetDisplaySwitchMode: Mode 0 already set
+08-29 16:53:22.122  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x7a01, opcode 0x100100d
+08-29 16:53:22.122  1968  8716 D AGM: graph: graph_set_config: 1156: exit, graph handle 0x47534c, ret 0
+08-29 16:53:22.122  1968  8716 D PAL: SessionAlsaUtils: setMixerParameter: 1326: ret = 0, cnt = 168368
+08-29 16:53:22.122  1968  8716 D AGM: graph: graph_prepare: 840: entry graph_handle 0x47534c
+08-29 16:53:22.122  1968  8716 D AGM: graph_module: configure_hw_ep_media_config: 719: entry mod tag c0000005 miid 43b0 mid 7001024
+08-29 16:53:22.122  1968  8716 D AGM: graph_module: configure_hw_ep_media_config: 749: rate 16000 bw 16 ch 2, data_fmt 1
+08-29 16:53:22.122  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x7a02, opcode 0x1001006
+08-29 16:53:22.123  1968  8716 D AGM: graph_module: configure_hw_ep_media_config: 759: exit, ret 0
+08-29 16:53:22.123  1968  8716 D AGM: graph_module: configure_codec_dma_ep: 327: cdc_dma intf cfg lpaif 3 indx 1 ch_msk 3
+08-29 16:53:22.123  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x7a03, opcode 0x1001006
+08-29 16:53:22.123  1968  8716 D AGM: graph_module: configure_codec_dma_ep: 342: exit, ret 0
+08-29 16:53:22.123  1968  8716 D AGM: graph_module: configure_output_media_format: 849: entry mod tag c000000f miid 4b25 mid 7001004
+08-29 16:53:22.123  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x7a04, opcode 0x1001006
+08-29 16:53:22.123  1968  8716 D AGM: graph_module: configure_output_media_format: 980: exit, ret 0
+08-29 16:53:22.123  1968  8716 D AGM: graph: configure_buffer_params: 199: configure buf params already done
+08-29 16:53:22.123  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x7a05, opcode 0x1001001
+08-29 16:53:22.125  2759  2881 I WindowManager: wms.showSurfaceRobustly mWin:Window{354bc9d u0 Toast} in Surface(name=Toast#33530)/@0x6206d36
+08-29 16:53:22.125  2759  2881 D SystemPerformanceHinter: startSession#HighPerfSession-d0-WindowAnimation
+08-29 16:53:22.125  1968  8716 D AGM: graph: graph_prepare: 922: exit, ret 0
+08-29 16:53:22.125  1968  8716 D AGM: graph: graph_start: 936: entry graph_handle 0x47534c
+08-29 16:53:22.125  1968  8716 I gsl     : gsl_send_spf_cmd:162 sending pkt with token 0x7a06, opcode 0x1001002
+08-29 16:53:22.126  2759  6572 D ActivityManager: Logging startService for com.miui.analytics, stopped=false, firstLaunch=false, intent=Intent { act=onetrack.action.TRACK_EVENT flg=0x2 xflg=0x4 pkg=com.miui.analytics (has extras) }, r.app=ProcessRecord{58e29e6 20990:com.miui.analytics/u0a143}
+08-29 16:53:22.126  3120  1804 E CameraImpl: reportSdkRequest 661 0xb400007d4d6b7080
+08-29 16:53:22.129  1968  8716 D AGM: graph: graph_start: 948: exit, ret 0
+08-29 16:53:22.133  2759  2880 I DisplayDeviceRepository: Display device changed render timings: "内置屏幕", renderFrameRate=120.00001, presentationDeadlineNanos=11333333, appVsyncOffsetNanos=1000000, frameRateOverrides=[]
+08-29 16:53:22.134  2759  2878 D WindowManager: DeferredDisplayUpdater: partially applying DisplayInfo(2032 x 3048) immediately
+08-29 16:53:22.134  2759  2878 W DisplayContentStubImpl:  displayMetricsChanged=false physicalDisplayChanged=false displayId=0 newUniqueId=local:4630947038039379843 currentUnique=local:4630947038039379843
+08-29 16:53:22.134  2759  2878 D DisplayContentStubImpl: Display{#0 state=ON size=2032x3048 ROTATION_0} isActivityEmbeddingSplitEnable false
+08-29 16:53:22.134  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 16:53:22.134  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 16:53:22.134  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 16:53:22.134  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 16:53:22.134  2759  2878 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{6cd6130 u0 com.android.camera/com.android.camera.OneShotImageCapture} 8
+08-29 16:53:22.135  2759  2878 D MiuiRefreshRatePolicy: reset
+08-29 16:53:22.135  2313  2364 D AudioFlingerImpl: setGameParameters keyvalue: screen_state=on
+08-29 16:53:22.135  1968  4603 D AHAL: AudioDeviceCustom: SetParameters: 96: Enter: kvpairs is screen_state=on
+08-29 16:53:22.135  1968  4603 D AHAL: AudioDevice: SetParameters: 1616: Enter: kvpairs is screen_state=on
+08-29 16:53:22.135  1968  4603 D AHAL: AudioVoice: VoiceSetParameters: 122: Enter params: screen_state=on
+08-29 16:53:22.135  1968  4603 D AHAL: AudioVoice: VoiceSetParameters: 379: Exit ret: 0
+08-29 16:53:22.135  1968  4603 D AHAL: hfp: hfp_set_parameters: 444: enter
+08-29 16:53:22.135  1968  4603 D AHAL: FM: fm_set_parameters: 261: Enter
+08-29 16:53:22.135  1968  4603 D AHAL: FM: fm_set_parameters: 319: Exit
+08-29 16:53:22.135  1968  4603 D AHAL: Loopback_karaoke: karaoke_set_parameters: 394: Enter
+08-29 16:53:22.135  1968  4603 D AHAL: Loopback_karaoke: karaoke_set_parameters: 501: Exit
+08-29 16:53:22.135  1968  4603 D AHAL: AudioDevice: SetParameters: 1721: enter fcsam_setParameters_v2
+08-29 16:53:22.135  1968  4603 D AHAL: AudioDevice: SetParameters: 1751:  - screen = on
+08-29 16:53:22.135  1968  4603 D PAL: API: pal_set_param: 1133: Enter: param id 8 (PAL_PARAM_ID_SCREEN_STATE)
+08-29 16:53:22.135  1968  4603 D PAL: ResourceManager: setParameter: 9202: Enter param id: 0x8 (PAL_PARAM_ID_SCREEN_STATE)
+08-29 16:53:22.135  1968  4603 I PAL: ResourceManager: setParameter: 9225: Screen State:1
+08-29 16:53:22.135  1968  4603 D PAL: ResourceManager: setParameter: 10305: Exit status: 0
+08-29 16:53:22.135  1968  4603 D PAL: API: pal_set_param: 1148: Exit, status 0
+08-29 16:53:22.135  1968  4603 D AHAL: AudioDevice: SetParameters: 2386: Exit: -2
+08-29 16:53:22.135  5241  6120 W GestureStubView_Left: onDisplayChanged
+08-29 16:53:22.135  5241  6120 W GestureStubView_Left: adaptRotation   currentRotation=0   mRotation=0
+08-29 16:53:22.135  5241  6120 W GestureStubView_Right: onDisplayChanged
+08-29 16:53:22.136  5241  6120 W GestureStubView_Right: adaptRotation   currentRotation=0   mRotation=0
+08-29 16:53:22.136  5241  5241 W Launcher.DeviceConfig: onDisplayChanged: newRotation=0, oldRotation=0, launcherRotation=0
+08-29 16:53:22.136  5241  5241 D Launcher.DeviceConfig: setIsFixedRotating=false
+08-29 16:53:22.136  5241  5241 D Launcher:  onDisplayChanged, workspace loading? false, soscing? false
+08-29 16:53:22.136  5241  5241 D DockUtilities: resolveFinalScreenSize: isHorizontal = false, realScreenHeight = 3048, realScreenWidth = 2032
+08-29 16:53:22.136  5241  5241 D DockTouchHelper: updateInterceptingRegion: left = 288.0, top = 2963.5625, right = 613.0, bottom = 3048.0, homeHandleWidth = 806, dockIndicatorWidth = 325
+08-29 16:53:22.137  1968  4603 D r_submix: adev_set_parameters() kvpairs='screen_state=on'
+08-29 16:53:22.138  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:53:22.138  2759  4182 I MiSensorServiceImpl: user found in check list, getPackageName  android.view.OrientationEventListener
+08-29 16:53:22.139  5911  5911 V AutoDensityController: on display changed 0 context dpi:386 origin dpi:400 target dpi:386
+08-29 16:53:22.139  5911  5911 D ControlCenterWindowViewController: on display changed 0
+08-29 16:53:22.143  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 16:53:22.147  2258  2821 E CamX    : [ERROR][STATS_AF] camxcafioutil.cpp:14170 GetSATShiftforAF() get afAppliedShift fail! Set shift and ID to zero
+08-29 16:53:22.150  2258  2821 E CamX    : [ERROR][STATS_AF ] af_haf.cpp:5415: af_haf_get_algo_type CID:[0] Get haf algo type failed
+08-29 16:53:22.151 31570 31605 I MCAM_MiCamera2MIVIStill: [K_PROCESS][CAPTURE-3][IMG_20260829_165321.jpg] onCaptureCompleted: timestamp: 784312281676169
+08-29 16:53:22.151 31570 31605 W MCAM_MiCamera2MIVIStill: [IMG_20260829_165321.jpg] handleRawImageDataIfNeed: no image, this O4.d0@b3a8a26
+08-29 16:53:22.152  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 16:53:22.152  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 16:53:22.152  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 16:53:22.152  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 16:53:22.154  1968  8716 D PAL: SessionAlsaPcm: start: 1845: Exit status: 0
+08-29 16:53:22.154  1968  8716 D PLUGIN: pcm: agm_pcm_plugin_reset: 441: agm_pcm_plugin_reset: reset hw_ptr to 0 
+08-29 16:53:22.154  1968  8716 I PAL: SoundTriggerEngineGsl: UpdateFoldState: 2380: Enter, FoldState is :0,
+08-29 16:53:22.154  1968  8716 I PAL: SoundTriggerEngineGsl: UpdateState: 1142: Engine state transitioned from 1 (ENG_LOADED) to 2 (ENG_ACTIVE)
+08-29 16:53:22.154  1968  8716 D PAL: ResourceManager: releaseWakeLock: 1335: wake lock count: 1
+08-29 16:53:22.154  1968  8716 I PAL: ResourceManager: releaseWakeLock: 1337: Releasing wake lock audio_pal_wl
+08-29 16:53:22.154  1968  8716 I PAL: SoundTriggerEngineGsl: ProcessStartRecognition: 1636: Exit, status 0
+08-29 16:53:22.154  1968  8716 I PAL: SoundTriggerEngineGsl: StartRecognition: 1662: Exit, status = 0
+08-29 16:53:22.154  1968  8716 I PAL: StreamSoundTrigger: TransitTo: 1809: Stream instance 1: state transitioned from ST_STATE_LOADED to ST_STATE_ACTIVE
+08-29 16:53:22.154  1968  8716 I PAL: StreamSoundTrigger: HandleConcurrentStream: 663: LPI->NLPI switch takes 62ms
+08-29 16:53:22.154  1968  8716 I PAL: StreamSoundTrigger: HandleConcurrentStream: 668: Exit, status 0
+08-29 16:53:22.154  1968  8716 D PAL: ResourceManager: isStreamActive: 3572: Enter.
+08-29 16:53:22.154  1968  8716 D PAL: ResourceManager: isStreamActive: 3579: Exit, ret 1
+08-29 16:53:22.154  1968  8716 D PAL: ResourceManager: HandleDetectionStreamAction: 5110: Exit, status 0
+08-29 16:53:22.154  1968  8716 D PAL: ResourceManager: handleConcurrentStreamSwitch: 5248: load/start stream type 23 (PAL_STREAM_ACD)
+08-29 16:53:22.154  1968  8716 D PAL: ResourceManager: handleConcurrentStreamSwitch: 5248: load/start stream type 25 (PAL_STREAM_SENSOR_PCM_DATA)
+08-29 16:53:22.154  1968  8716 D PAL: ResourceManager: HandleConcurrencyForSoundTriggerStreams: 5394: Exit
+08-29 16:53:22.154  1968  8716 I PAL: API: pal_stream_open: 269: Exit. Value of stream_handle 0xb4000079362c2010K, status 0
+08-29 16:53:22.154  1968  8716 D AHAL: AudioStream: GetBufferSize: 3012: type 1
+08-29 16:53:22.154  1968  8716 D AHAL: AudioStream: Open: 3372: fragment_size_ 1152 fragments_ 2
+08-29 16:53:22.154  1968  8716 D PAL: API: pal_stream_set_buffer_size: 873: Enter. Stream handle :0xb4000079362c2010K
+08-29 16:53:22.154  1968  8716 D PAL: Stream: setBufInfo: 739: Out Buffer size 1152 and Out Buffer count 2 metaData sz 0
+08-29 16:53:22.154  1968  8716 D PAL: Stream: setBufInfo: 753: no of buf 2 and send buf 1152
+08-29 16:53:22.154  1968  8716 D PAL: API: pal_stream_set_buffer_size: 881: Exit. status 0
+08-29 16:53:22.154  1968  8716 D AHAL: AudioStream: Open: 3402: Exit ret: 0
+08-29 16:53:22.154  1968  8716 V android.hardware.audio.service_64: getCurrentDate
+08-29 16:53:22.154  1968  8716 V android.hardware.audio.service_64: current time is : 2026 year, 8 month, 29 daty
+08-29 16:53:22.154  1968  8716 D android.hardware.audio.service_64: do not need to seed data to xlog
+08-29 16:53:22.154  1968  8716 D android.hardware.audio.service_64: send_EarsCompensation_dailyuse_to_xlog
+08-29 16:53:22.154  1968  8716 D android.hardware.audio.service_64:  send_EarsCompensation_dailyuse_to_xlog: usecase is not playback
+08-29 16:53:22.154  1968  8716 D android.hardware.audio.service_64:  send_misound_dailyuse_to_xlog: usecase is not playback
+08-29 16:53:22.154  1968  8716 D AHAL: AudioStreamCustom: Open: 609: usecase_ is 1
+08-29 16:53:22.154  1968  8716 D AHAL: AudioStream: ~AutoPerfLock: 196: (release) perf_lock_handle: 0x11ef3, count: 1
+08-29 16:53:22.154  1968  8716 D AHAL: AudioStream: ~AutoPerfLock: 200: Releasing perf_lock_handle: 0x11ef3
+08-29 16:53:22.155  1968  8716 D AHAL: AudioStream: AutoPerfLock: 186: (Acquired) perf_lock_handle: 0x11ef5, count: 1
+08-29 16:53:22.155  1968  8716 I PAL: API: pal_stream_start: 376: Enter. Stream handle 0xb4000079362c2010K
+08-29 16:53:22.155  1968  8716 D PAL: StreamPCM: start: 387: Enter. session handle - 0xb400007a362b3fa0K mStreamAttr->direction - 1 state 1 (STREAM_INIT)
+08-29 16:53:22.155  1968  8716 D PAL: Stream: handleBTDeviceNotReady: 988: BT A2DP/BLE output device is good to go
+08-29 16:53:22.155  1968  8716 E PAL: StreamPCM: start: 428: Rx device id is 8
+08-29 16:53:22.155  1968  8716 D PAL: Bluetooth: startPlayback: 1729: a2dp_start_playback start
+08-29 16:53:22.155  1968  8716 D PAL: Bluetooth: startPlayback: 1746: calling BT module stream start
+08-29 16:53:22.155  1968  8716 I btaudio_offload_aidl: Set_SoftWare_SessionType: session type = 2
+08-29 16:53:22.155  1968  8716 I btaudio_offload_aidl: audio_stream_start: session type: 2
+08-29 16:53:22.155  1968  8716 D btaudio_offload_aidl: audio_stream_start: state = AUDIO_STATE_STANDBY
+08-29 16:53:22.155  1968  8716 E btaudio_offload_aidl: audio_stream_start: issues Start stream to stack
+08-29 16:53:22.155 22231 24725 I BTAudioA2dpAIDL: system/audio_hal_interface/aidl/a2dp/a2dp_encoding_aidl.cc:179 StartRequest: 
+08-29 16:53:22.155 22231 24725 I bluetooth: system/stack/btm/btm_iso_impl.h:341 get_number_of_active_iso: Current number of active_iso is 0
+08-29 16:53:22.155 22231 24725 I bluetooth-a2dp: system/btif/src/btif_av.cc:4780 btif_av_stream_started_ready: active_peer=xx:xx:xx:xx:2c:c6 state=2 flags=0x0(None) ready=false
+08-29 16:53:22.155 22231 24725 I bluetooth-a2dp: system/btif/src/btif_av.cc:4735 btif_av_stream_ready: active_peer=xx:xx:xx:xx:2c:c6 state=2 flags=0x0(None)
+08-29 16:53:22.155 22231 24725 I bluetooth-a2dp: system/btif/src/btif_av.cc:4674 btif_av_stream_start_with_latency: peer=xx:xx:xx:xx:2c:c6 use_latency_mode=false
+08-29 16:53:22.155 22231 24725 I bluetooth-a2dp: system/btif/src/btif_av.cc:4683 btif_av_stream_start_with_latency: peer_address=xx:xx:xx:xx:2c:c6 event=BTIF_AV_START_STREAM_REQ_EVT(0x1c) use_latency_mode=false
+08-29 16:53:22.155 22231 24725 I bluetooth-a2dp: system/btif/src/btif_av.cc:5354 btif_av_set_start_suspend_timer: active_peer=xx:xx:xx:xx:2c:c6
+08-29 16:53:22.155 22231 22347 I BluetoothAdapterService: getActiveDevices: A2dp device: XX:XX:XX:XX:2C:C6
+08-29 16:53:22.155  1968  8716 D btaudio_offload_aidl: wait_for_stack_response
+08-29 16:53:22.155  1968  8716 I btaudio_offload_aidl: Set_SoftWare_SessionType: session type = 2
+08-29 16:53:22.155  1968  8716 W btaudio_offload_aidl: wait_for_stack_response: entering conditional wait: ack_recvd = 0
+08-29 16:53:22.155 22231 22318 I bluetooth-a2dp: system/btif/src/btif_av.cc:3803 btif_av_handle_event: peer=xx:xx:xx:xx:2c:c6 handle=0x0 event=BTIF_AV_START_STREAM_REQ_EVT(0x1c)
+08-29 16:53:22.155 22231 22347 D A2dpService: getCodecStatus(XX:XX:XX:XX:2C:C6)
+08-29 16:53:22.155 22231 22318 I bluetooth-a2dp: system/btif/src/btif_av.cc:2675 ProcessEvent: state=Opened peer=xx:xx:xx:xx:2c:c6 event=BTIF_AV_START_STREAM_REQ_EVT(0x1c) flags=0x0(None) active_peer=true
+08-29 16:53:22.155 22231 22318 I bluetooth-a2dp: system/btif/src/btif_av.cc:2694 ProcessEvent: Peer xx:xx:xx:xx:2c:c6 : event=BTIF_AV_START_STREAM_REQ_EVT(0x1c) flags=0x0(None)
+08-29 16:53:22.155 22231 22318 I bluetooth-a2dp: system/btif/src/btif_av.cc:2699 ProcessEvent: Stream use_latency_mode=false
+08-29 16:53:22.156 22231 22318 I bluetooth: system/btif/avrcp/avrcp_service.cc:595 MetadataChanged: a2dp_status=1 for addr xx:xx:xx:xx:2c:c6, a2dp_playing =1
+08-29 16:53:22.156 22231 22318 I bluetooth: system/btif/avrcp/avrcp_service.cc:639 MetadataChanged: update status now
+08-29 16:53:22.156 22231 22318 I bluetooth-a2dp: system/bta/av/bta_av_api.cc:238 BTA_AvStart: Starting audio/video stream data transfer bta_handle:65, use_latency_mode:false
+08-29 16:53:22.156 22231 22318 I bluetooth-a2dp: system/bta/av/bta_av_aact.cc:1990 bta_av_do_start: A2dp stream start peer:xx:xx:xx:xx:2c:c6 sco_occupied:false av_role:0x0 started:false wait:0x0 p_scb->hdi:0
+08-29 16:53:22.156 22231 22318 I bt_btm_pm: system/stack/acl/btm_pm.cc:262 BTM_SetPowerMode: Setting power mode for peer:xx:xx:xx:xx:2c:c6 current_mode:immediate:sniff[2] new_mode:forced:active[0]
+08-29 16:53:22.156 22231 22318 I bt_btm_pm: system/stack/acl/btm_pm.cc:555 btm_pm_snd_md_req: Switching from immediate:sniff[0x02] to immediate:active[0x00]
+08-29 16:53:22.156 22231 22318 I bluetooth-a2dp: system/stack/avdt/avdt_api.cc:568 AVDT_StartReq: num_handles=1
+08-29 16:53:22.156 22231 22318 I bluetooth-a2dp: system/stack/avdt/avdt_scb.cc:983 avdt_scb_verify: i=0, p_seid=2, state=0, p_scb->state=3
+08-29 16:53:22.156 22231 22318 I bt_l2cap: system/stack/l2cap/l2c_api.cc:1030 L2CA_UseLatencyMode: BDA: xx:xx:xx:xx:2c:c6, use_latency_mode: false
+08-29 16:53:22.156 22231 22318 I bluetooth-a2dp: system/bta/av/bta_av_aact.cc:2052 bta_av_do_start: peer xx:xx:xx:xx:2c:c6 start requested: sco_occupied:false role:0x10 started:false wait:0x0
+08-29 16:53:22.156 22231 22347 D AvrcpNativeInterface: getPlayStatus
+08-29 16:53:22.157 22231 22347 D InteropUtil: interopMatchAddrOrName: feature=INTEROP_AVRCP_FORCE_UPDATE_PAUSE_STATE, address=XX:XX:XX:XX:2C:C6
+08-29 16:53:22.157 22231 22347 D InteropUtil: interopMatchAddrOrName: matched=false
+08-29 16:53:22.157 22231 22347 D AvrcpCoverArtService: storeImage(image='<Image source=2>')
+08-29 16:53:22.158 22231 22347 D AvrcpCoverArtStorage: storeImage(CoverArt='{handle=null, size=160000 }')
+08-29 16:53:22.158 22231 22347 D CoverArt: GetImage(native)
+08-29 16:53:22.158 22231 22347 I SkJpegEncoder: [mId: 632179] skia-debug Enter SkJpegEncoder::Encode.
+08-29 16:53:22.158 22231 22347 I SkJpegEncoder: [mId: 632179] skia-debug Enter SkJpegEncoder::Make and Options: { fQuality = 100 fDownsample = 0 fAlphaOption = 0};.
+08-29 16:53:22.158 22231 22347 I SkJpegEncoder: [mId: 632179] skia-debug src.info is SkImageInfo: {IsRGB = 1, ColorType = 4, AlphaType = 2, Dimensions.width = 200, Dimensions.height = 200};.
+08-29 16:53:22.158 22231 22347 I SkJpegEncoder: [mId: 632179] skia-debug Create a new SkJpegEncoderImpl.
+08-29 16:53:22.158 22231 22347 I SkJpegEncoder: [mId: 632179] skia-debug Enter SkJpegEncoderImpl::onEncodeRows and numRows is 200
+08-29 16:53:22.159 22231 22318 E bt_btu_hcif: system/stack/btu/btu_hcif.cc:995 btu_hcif_hdl_command_complete: Command complete for opcode:0x80d should not be handled here
+08-29 16:53:22.160 22231 22347 I SkJpegEncoder: [mId: 632179] skia-debug Out SkJpegEncoder::Encode with original encode.
+08-29 16:53:22.160  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 16:53:22.160  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 16:53:22.160  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 16:53:22.160  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0

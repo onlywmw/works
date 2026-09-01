@@ -1,0 +1,23 @@
+{
+ "tool": "calendar.add",
+ "args": {
+  "title": "UPG02验收事件_0829",
+  "desc": "验收员补验",
+  "beginMs": 1788001905744,
+  "endMs": 1788005505744
+ },
+ "ts": "2026-08-29T17:11:46",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 94705,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, eventUri=content://com.android.calendar/events/4}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

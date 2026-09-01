@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 本机能力 —— 列表/详情 Demo v3</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;
+    --line:rgba(22,28,48,.08);--text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+    --acc:#23272f;--on-acc:#ffffff;--ok:#2b8158;--warn:#a5711f;--danger:#d92d20;--blue:#3b6fd4;--gray:#c7ccd6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#e9ebf0;color:var(--text);display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  @media(min-width:421px){.phone{margin:24px 0;border-radius:18px;min-height:calc(100vh-48px);box-shadow:0 20px 60px rgba(0,0,0,.6)}}
+
+  .top{height:54px;display:flex;align-items:center;gap:8px;padding:0 8px;
+    border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+  .top .back{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+  .top .back:active{background:var(--s3)}
+  .top .ttl{flex:1;text-align:center;font-size:17px;font-weight:600;margin-right:38px}
+  .top .sp{width:38px}
+
+  .wrap{padding:8px 14px 40px}
+  .muted{color:var(--text3);font-size:12.5px}
+
+  /* 一级：分类分组 + 简约行 */
+  .sec{display:flex;align-items:center;justify-content:space-between;
+    font-size:12.5px;font-weight:600;color:var(--text3);
+    letter-spacing:.02em;margin:18px 2px 4px;padding-bottom:6px}
+  .sec:first-child{margin-top:6px}
+  .sec .cnt{font-weight:400;color:var(--text3);opacity:.7}
+  .list{width:100%}
+  .row{display:flex;align-items:center;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+  .row:last-child{border-bottom:none}
+  .row:active .nm{opacity:.6}
+  .row .mid{flex:1;min-width:0}
+  .row .nm{font-size:15.5px;font-weight:600;transition:opacity .1s}
+  .row .ds{font-size:12.5px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .chev{color:var(--text3);font-size:17px;flex:none;opacity:.6}
+
+  .empty{padding:60px 20px;text-align:center;color:var(--text3);font-size:13.5px}
+
+  /* 二级：详情 */
+  .hd{display:flex;gap:14px;align-items:center;padding:8px 0 4px}
+  .hd .ic{width:52px;height:52px;border-radius:14px;font-size:26px;flex:none;display:flex;align-items:center;justify-content:center}
+  .hd .ic.builtin{background:var(--acc);color:var(--on-acc)}
+  .hd .ic.market{background:rgba(91,141,238,.16)}
+  .hd .ic.system{background:var(--s3)}
+  .hd .ttls{flex:1;min-width:0}
+  .hd .nm{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .badge{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:99px;flex:none}
+  .badge.builtin{background:var(--acc);color:var(--on-acc)}
+  .badge.market{background:rgba(91,141,238,.2);color:#8fb0f2}
+  .badge.system{background:var(--gray);color:var(--text2)}
+  .hd .ds{font-size:13px;color:var(--text3);margin-top:3px}
+  .sw{flex:none;width:44px;height:26px;border-radius:99px;background:var(--s3);position:relative;transition:.18s}
+  .sw.on{background:var(--acc)}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.18s;box-shadow:0 0 0 1px var(--line)}
+  .sw.on::after{left:21px;background:var(--on-acc)}
+  .stat-h{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text2)}
+  .stat-h .dot{width:7px;height:7px}
+  .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.err{background:var(--danger)}
+
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+  .card .ct{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .card .ct a{color:var(--text3);font-weight:500;font-size:12px;cursor:pointer}
+  .preset{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:13.5px;display:flex;gap:8px;align-items:flex-start}
+  .preset .q{font-size:12px;color:var(--text3);margin-top:1px}
+  .btn{cursor:pointer;font-weight:600;font-size:13px;padding:7px 12px;border-radius:9px;flex:none;white-space:nowrap}
+  .btn.pr{background:var(--acc);color:var(--on-acc)}
+  .btn.gh{background:var(--s2);color:var(--text2);border:1px solid var(--line)}
+  .tool{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .tool:last-child{border-bottom:none}
+  .tool .tn{font-family:"SF Mono",ui-monospace,monospace;font-size:12.3px;color:var(--acc);flex:none;min-width:118px}
+  .tool .td{flex:1;font-size:12.5px;color:var(--text2);min-width:0}
+  .perm{flex:none;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:99px}
+  .perm.free{background:rgba(63,191,127,.14);color:#57d391}
+  .perm.ask{background:rgba(224,160,58,.15);color:#eab36d}
+  .perm.gate{background:rgba(229,103,91,.16);color:#ef8577}
+  .foot{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .btn.block{width:100%;text-align:center;padding:13px;border-radius:12px;font-size:14px}
+  .btn.danger{background:rgba(229,103,91,.12);color:var(--danger);border:1px solid rgba(229,103,91,.22)}
+  .auth{display:flex;align-items:center;gap:10px;background:var(--s2);border:1px solid rgba(224,160,58,.25);border-radius:10px;padding:11px 12px;margin-top:10px}
+  .auth .tx{flex:1;font-size:12.8px;color:var(--text2)}
+
+  .modebar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;
+    background:rgba(255,255,255,.85);border:1px solid var(--line);padding:6px;border-radius:99px;backdrop-filter:blur(8px);z-index:20;box-shadow:0 4px 16px rgba(22,28,48,.1)}
+  .modebar button{color:var(--text2);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:99px;cursor:pointer}
+  .modebar button.on{background:var(--acc);color:var(--on-acc)}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top">
+    <button class="back" id="backBtn">‹</button>
+    <div class="ttl" id="topTitle">本机能力</div>
+    <div class="sp"></div>
+  </div>
+
+  <div class="wrap">
+    <!-- 一级：分类分组 + 简约行 -->
+    <div id="viewList">
+      <div class="sec">内置能力 <span class="cnt" id="c1"></span></div>
+      <div class="list" id="listBuiltin"></div>
+
+      <div class="sec">市场已安装 <span class="cnt" id="c2"></span></div>
+      <div class="list" id="listMarket"></div>
+
+      <div class="sec">系统基础能力 <span class="cnt" id="c3"></span></div>
+      <div class="list" id="listSystem"></div>
+
+      <div class="empty" id="empty" hidden>本地暂无已安装能力</div>
+    </div>
+
+    <!-- 二级：详情 -->
+    <div id="viewDetail" hidden>
+      <div class="hd">
+        <div class="ic" id="d_ic"></div>
+        <div class="ttls">
+          <div class="nm"><span id="d_name">—</span><span class="badge" id="d_badge"></span></div>
+          <div class="ds" id="d_desc">—</div>
+        </div>
+        <div class="sw" id="d_sw" title="启用/停用"></div>
+      </div>
+      <div class="stat-h" id="d_health"></div>
+      <div class="card">
+        <div class="ct">快捷指令 <a id="d_resetPreset">重设</a></div>
+        <div class="preset"><div class="q" id="d_preset">—</div><button class="btn pr" id="d_presetBtn">点它回填</button></div>
+      </div>
+      <div class="card">
+        <div class="ct">工具清单 <span class="muted" id="d_toolCount"></span></div>
+        <div id="d_toolList"></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="ct">权限分布</div>
+        <div class="tool" style="cursor:default"><span class="tn">自由 free</span><span class="td" id="d_permfree"></span></div>
+        <div class="tool" style="cursor:default"><span class="tn">询问 ask</span><span class="td" id="d_permask"></span></div>
+        <div class="tool" style="cursor:default"><span class="tn">拦截 gate</span><span class="td" id="d_permgate"></span></div>
+      </div>
+      <div class="auth" id="d_auth" hidden>
+        <div class="tx">需要 SAF 授权才能读写 Obsidian 仓库</div>
+        <button class="btn pr" id="d_authBtn">去授权</button>
+      </div>
+      <div class="foot" id="d_foot"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modebar">
+  <button id="mList" class="on">一级</button>
+  <button id="mDetail">二级</button>
+</div>
+
+<script>
+const BUILTIN=[
+  {id:'device-control',kind:'builtin',badge:'内置',icon:'🛠️',name:'设备控制',desc:'网络/存储/应用/日历/相机/扫码',health:'ok',enabled:true,
+   preset:'帮我看看设备的存储空间还剩多少',
+   tools:[['device.getStorage','查看存储使用情况','free'],['device.getNetwork','网络状态与连接信息','free'],['camera.capture','拍照','ask'],['qr.scan','扫描二维码','ask'],['screen.capture','截屏','ask'],['sensor.list','传感器数据','free']]},
+  {id:'scene-12306',kind:'builtin',badge:'内置',icon:'🚄',name:'生活场景 · 12306',desc:'查车票/站点/行程',health:'ok',enabled:true,
+   preset:'帮我查北京到上海的高铁',
+   tools:[['scene.searchTrains','余票/车次查询','free'],['scene.queryStations','站点解析','free']]},
+  {id:'obsidian',kind:'builtin',badge:'内置',icon:'📓',name:'笔记 · Obsidian',desc:'读写你的 Obsidian 仓库',health:'warn',enabled:true,auth:false,
+   preset:'把这条建议记到笔记',
+   tools:[['obsidian.file.read','读取笔记','free'],['obsidian.file.write','写入/新建笔记','gate'],['obsidian.vault','列出仓库笔记','ask']]},
+];
+const MARKET=[
+  {id:'mcp.example',kind:'market',badge:'市场',icon:'📦',name:'示例市场包',desc:'来自市场安装 · mcp.example',health:'err',enabled:true,
+   preset:'帮我使用「示例市场包」',
+   tools:[['mcp.example.query','示例查询','free'],['mcp.example.list','示例列表','free']]},
+];
+const SYSTEM=[
+  {id:'system-core',kind:'system',badge:'系统',icon:'⚙️',name:'系统基础能力',desc:'AI 基本功（不可关闭）',health:'ok',enabled:true,locked:true,preset:'',
+   tools:[['file.read','读文件','free'],['file.write','写文件','ask'],['note.create','写便签','free'],['memory.save','记住事情','free'],['memory.load','读取记忆','free'],['memory.list','记忆清单','free'],['memory.search','检索记忆','free'],['memory.delete','移除记忆','gate']]},
+];
+const all=[...BUILTIN,...MARKET,...SYSTEM];
+const topTitle=document.getElementById('topTitle');
+const backBtn=document.getElementById('backBtn');
+const GC={builtin:3,market:4,system:5};
+function render(sel,cntId,list){
+  document.getElementById(cntId).textContent=`${list.length} 项`;
+  document.getElementById(sel).innerHTML=list.map(p=>`
+    <div class="row" data-id="${p.id}">
+      <div class="mid"><div class="nm">${p.name}</div><div class="ds">${p.desc}</div></div>
+      <span class="chev">›</span>
+    </div>`).join('');
+}
+render('listBuiltin','c1',BUILTIN); render('listMarket','c2',MARKET); render('listSystem','c3',SYSTEM);
+document.querySelectorAll('.row').forEach(el=>el.addEventListener('click',()=>openDetail(el.dataset.id)));
+
+function show(v){
+  document.getElementById('viewList').hidden=v!=='list';
+  document.getElementById('viewDetail').hidden=v!=='detail';
+  document.getElementById('mList').classList.toggle('on',v==='list');
+  document.getElementById('mDetail').classList.toggle('on',v==='detail');
+}
+const permTxt={free:'自由',ask:'询问',gate:'拦截'};
+const permCls=c=>c==='free'?'perm free':c==='ask'?'perm ask':'perm gate';
+function openDetail(id){
+  const p=all.find(x=>x.id===id); if(!p)return;
+  const ic=document.getElementById('d_ic'); ic.className='ic '+p.kind; ic.textContent=p.icon;
+  const bn=document.getElementById('d_badge'); bn.textContent=p.badge; bn.className='badge '+p.kind;
+  document.getElementById('d_name').textContent=p.name;
+  document.getElementById('d_desc').textContent=p.desc;
+  const sw=document.getElementById('d_sw'); sw.classList.toggle('on',p.enabled);
+  sw.style.pointerEvents=p.locked?'none':'auto'; sw.style.opacity=p.locked?0.4:1;
+  sw.onclick=()=>{if(p.locked)return;p.enabled=!p.enabled;sw.classList.toggle('on',p.enabled);};
+  const h=document.getElementById('d_health');
+  h.innerHTML=p.health==='ok'?'<span class="dot ok"></span>运行正常 · 全部工具就绪'
+    :p.health==='warn'?'<span class="dot warn"></span>未授权 · 部分能力待激活'
+    :'<span class="dot err"></span>服务不可达 · 请检查安装';
+  document.getElementById('d_preset').textContent=p.preset||'（该包无预设指令）';
+  document.getElementById('d_presetBtn').style.display=p.preset?'inline-block':'none';
+  let fs=0,as=0,ga=0;
+  document.getElementById('d_toolList').innerHTML=p.tools.map(([n,d,c])=>{
+    if(c==='free')fs++;else if(c==='ask')as++;else ga++;
+    return `<div class="tool"><span class="tn">${n}</span><span class="td">${d}</span><span class="${permCls(c)}">${permTxt[c]}</span></div>`;}).join('');
+  document.getElementById('d_toolCount').textContent=`${p.tools.length} 个工具`;
+  document.getElementById('d_permfree').textContent=`${fs} 个 · 无需弹窗直接放行`;
+  document.getElementById('d_permask').textContent=`${as} 个 · 执行前弹窗确认`;
+  document.getElementById('d_permgate').textContent=`${ga} 个 · 写入/高危网关拦截`;
+  const auth=document.getElementById('d_auth'); auth.hidden=!(p.auth===false);
+  let foot='';
+  if(!p.locked)foot+=`<button class="btn block ${p.enabled?'danger':''}" id="footToggle">${p.enabled?'停用':'启用'}该包</button>`;
+  if(p.kind==='market')foot+=`<button class="btn block danger">卸载</button>`;
+  document.getElementById('d_foot').innerHTML=foot;
+  const ft=document.getElementById('footToggle'); if(ft)ft.onclick=()=>{p.enabled=!p.enabled;sw.classList.toggle('on',p.enabled);};
+  document.getElementById('d_presetBtn').onclick=()=>{topTitle.textContent=p.name+' · 已回填✓'};
+  document.getElementById('d_authBtn').onclick=()=>{auth.hidden=true;p.auth=null;};
+  topTitle.textContent=p.name;
+  show('detail');
+}
+function goList(){show('list');topTitle.textContent='本机能力';}
+backBtn.onclick=goList;
+document.getElementById('mList').onclick=goList;
+document.getElementById('mDetail').onclick=()=>openDetail(all[0].id);
+</script>
+</body>
+</html>

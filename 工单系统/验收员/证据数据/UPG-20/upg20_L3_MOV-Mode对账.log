@@ -1,0 +1,3 @@
+--------- beginning of main
+08-28 16:52:43.193  3585  3700 I MOV-Mode: chat mode=QUICK model=deepseek-v4-flash effort=none
+08-28 16:54:49.431  3585  3651 I MOV-Mode: chat mode=DEEP model=deepseek-v4-pro effort=high

@@ -1,0 +1,336 @@
+--------- beginning of main
+08-29 17:00:22.528  1681  1681 I tombstoned: received crash request for pid 5673
+08-29 17:00:22.528  1681  1681 I tombstoned: found intercept fd 512 for pid 5673 and type kDebuggerdJavaBacktrace
+08-29 17:00:22.530  5673  5691 I .dataservices: Wrote stack traces to tombstoned
+08-29 17:00:22.530  1681  1681 W tombstoned: skipping tombstone file creation due to intercept
+08-29 17:00:22.530  2759  6717 I system_server: libdebuggerd_client: done dumping process 5673
+--------- beginning of system
+08-29 17:00:22.532  2759  6717 I ActivityManager: Collecting stacks for pid 5626
+08-29 17:00:22.532  2759  6717 E system_server: Could not open /dev/binderfs/binder_logs/transactions. Likely a permissions issue. errno: 2
+08-29 17:00:22.532  2759  6717 E android.os.Debug: Failed to get binder state info for pid: 5626 status: -2: No such file or directory
+08-29 17:00:22.537  2759  6717 I system_server: libdebuggerd_client: started dumping process 5626
+08-29 17:00:22.539  1681  1681 I tombstoned: registered intercept for pid 5626 and type kDebuggerdJavaBacktrace
+08-29 17:00:22.539  5626  5638 I rkstack.process: Thread[6,tid=5638,WaitingInMainSignalCatcherLoop,Thread*=0xb4000075e8dcaf00,peer=0x2ac0328,"Signal Catcher"]: reacting to signal 3
+08-29 17:00:22.539  5626  5638 I rkstack.process: 
+08-29 17:00:22.570 16521 16567 E xcrash  : processErrorList is null !!!! poll = 50, i = 5
+08-29 17:00:22.617  1681  1681 I tombstoned: received crash request for pid 5626
+08-29 17:00:22.617  1681  1681 I tombstoned: found intercept fd 512 for pid 5626 and type kDebuggerdJavaBacktrace
+08-29 17:00:22.619  5626  5638 I rkstack.process: Wrote stack traces to tombstoned
+08-29 17:00:22.619  1681  1681 W tombstoned: skipping tombstone file creation due to intercept
+08-29 17:00:22.619  2759  6717 I system_server: libdebuggerd_client: done dumping process 5626
+08-29 17:00:22.621  2759  6717 I ActivityManager: dumpStackTraces nativepids=[]
+08-29 17:00:22.621  2759  6717 I ActivityManager: dumpStackTraces extraPids=[16372]
+08-29 17:00:22.621  2759  6717 I ActivityManager: Collecting stacks for extra pid 16372
+08-29 17:00:22.622  2759  6717 E system_server: Could not open /dev/binderfs/binder_logs/transactions. Likely a permissions issue. errno: 2
+08-29 17:00:22.622  2759  6717 E android.os.Debug: Failed to get binder state info for pid: 16372 status: -2: No such file or directory
+08-29 17:00:22.647  2759  6717 I system_server: libdebuggerd_client: started dumping process 16372
+08-29 17:00:22.648  1681  1681 I tombstoned: registered intercept for pid 16372 and type kDebuggerdJavaBacktrace
+08-29 17:00:22.660 16372 16382 I nt.mm:appbrand0: Thread[6,tid=16382,WaitingInMainSignalCatcherLoop,Thread*=0x75e8dcaf00,peer=0x2140468,"Signal Catcher"]: reacting to signal 3
+08-29 17:00:22.661 16372 16382 I nt.mm:appbrand0: 
+08-29 17:00:22.811  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:00:22.812  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:00:22.934  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:00:22.934  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:00:22.934  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:00:22.934  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:54
+08-29 17:00:22.935  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:00:23.073 16521 16567 E xcrash  : processErrorList is null !!!! poll = 50, i = 6
+08-29 17:00:23.143  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=784733505723231, lux: 18.0
+08-29 17:00:23.144  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<  18.0225,   0.0000,   0.0000>,time=784733505723231, sensor=5, temperature(K)=   0.0000
+08-29 17:00:23.144  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 19, lux = 18, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:00:23.145  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:00:23.146  3128  3128 I wificond: station_bandwidth: �
+08-29 17:00:23.156  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 17:00:23.156  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 17:00:23.157  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 17:00:23.158 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 17:00:23.158 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 17:00:23.159  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:00:23.159  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 17:00:23.159  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 17:00:23.160  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:00:23.161  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:00:23.162  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 17:00:23.163  5847  6213 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:00:23.163  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:00:23.164  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 17:00:23.166  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 17:00:23.166 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 17:00:23.167 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 17:00:23.173  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=10993Kbps LinkDnBandwidth>=269064Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -55, Link speed: 2401Mbps, Tx Link speed: 2401Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 2401Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -55 UnderlyingNetworks: Null]
+08-29 17:00:23.174  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=皮**5G}
+08-29 17:00:23.174  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 17:00:23.175  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:00:23.175  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:00:23.176  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:00:23.179  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 17:00:23.179  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 17:00:23.190  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:00:23.209  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:00:23.211  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:00:23.400  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.6/s) Done(0.000/s Avg=1.622/s)| Stream: 24.00fps 2.4Mbps
+08-29 17:00:23.400  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 17:00:23.575 16521 16567 E xcrash  : processErrorList is null !!!! poll = 50, i = 7
+08-29 17:00:23.878 15875 17138 D JavaheapMonitor: Java heap used=4M max=384M, proc: com.milink.service:audio
+08-29 17:00:23.878 15875 17138 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:00:24.043  2759  4897 W MiuiMagicPointerService: Not process visibility state in native pointer mode, visibility = false
+08-29 17:00:24.077 16521 16567 E xcrash  : processErrorList is null !!!! poll = 50, i = 8
+08-29 17:00:24.103  1681  1681 I tombstoned: received crash request for pid 16372
+08-29 17:00:24.104  1681  1681 I tombstoned: found intercept fd 512 for pid 16372 and type kDebuggerdJavaBacktrace
+08-29 17:00:24.150  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 200 KB/s
+08-29 17:00:24.160 25852 25852 W MessageMonitor: PerfMonitor: Slow Operation: Activity com.mov.android/.MainActivity onActivityResult took 15106ms
+08-29 17:00:24.161 25852 25852 D Activity: Activity = ActivityInfo{da5fc41 com.mov.android.MainActivity}, Resume onConfigurationChanged = {1.0 ?mcc0mnc [zh_CN] ldltr sw813dp w813dp h1219dp 400dpi xlrg hdr widecg port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 2032, 3048) mAppBounds=Rect(0, 0 - 2032, 3048) mMaxBounds=Rect(0, 0 - 2032, 3048) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0 mInSplitScreen=false letterBoxed=false foScaled=false isSpecificEmbedded=false embeddingScale=1.0} s.3 fontWeightAdjustment=0/d/0 themeChanged=0 themeChangedFlags=0 display=0 extraData = Bundle[{}] screenType=0/0}
+08-29 17:00:24.163 25852 25852 D SecurityManager: checkAccessControl flag0
+08-29 17:00:24.163 25852 32014 I ContentCatcher: SettingTrigger : register screen QA status observer com.mov.android.MainActivity
+08-29 17:00:24.167  2759  4242 I InputDispatcher: a8de6f5 com.mov.android/com.mov.android.MainActivity spent 10135ms processing FocusEvent(hasFocus=true)
+08-29 17:00:24.167  5241  5969 I ActivityObserverLauncherImpl: activityResumed class=com.mov.android.MainActivity
+08-29 17:00:24.168  5241  5241 D RecentsImpl: mActivityStateObserver com.mov.android.MainActivity
+08-29 17:00:24.168 11211 11233 D services: [XMS][observer] ActivityObserver activityResumed packageName: com.mov.android
+08-29 17:00:24.168 19501 19527 D auth    : [XMS][Auth] ActivityObserver activityResumed packageName: com.mov.android
+08-29 17:00:24.168  5241  5241 W RecentsImpl: onResumed className=com.mov.android.MainActivity   forceUpdate=false   mIsInBackGroundUserSpace=false   mIsStatusBarExpansion=false   isKeyguardLocked=false
+08-29 17:00:24.168 25852 32014 I ContentCatcher: SettingTrigger : register global collect status observer com.mov.android.MainActivity
+08-29 17:00:24.168  5241  5241 D RecentsImpl: showNavStubView
+08-29 17:00:24.168  5241  6120 W RecentsImpl: disableTouchBySwipeStatusBar    disable=false
+08-29 17:00:24.169 11211 11343 D AppUpdateXmsfLauncher: activityResumed intent : Intent { cmp=com.mov.android/.MainActivity (has extras) }
+08-29 17:00:24.169  5241  6120 D GestureStubView_Left: disableTouchBySwipeStatusBar    old=false   new=false
+08-29 17:00:24.169  5241  6120 D GestureStubView_Right: disableTouchBySwipeStatusBar    old=false   new=false
+08-29 17:00:24.169  5241  6120 W RecentsImpl: disableBackStubWindow    disableTouch=false
+08-29 17:00:24.169  5241  6120 D GestureStubView_Left: disableTouch    old=false   new=false
+08-29 17:00:24.169  5241  6120 D GestureStubView_Right: disableTouch    old=false   new=false
+08-29 17:00:24.169  5241  6120 D RecentsImpl: showBackStubWindow  hasNavigationBar=true
+08-29 17:00:24.169 11211 11272 D AppUpdateXmsfLauncher: activityResumed appUpdateEnable is false.
+08-29 17:00:24.170 25852 25852 I Choreographer: Skipped 1816 frames!  The application may be doing too much work on its main thread.
+08-29 17:00:24.170 25852 32014 I ContentCatcher: SettingTrigger : registerUIAgentListener com.mov.android.MainActivity, uid:10429
+08-29 17:00:24.170  5241  6120 D GestureStubView_Left: setKeepHidden    old=false   new=false
+08-29 17:00:24.170  5241  6120 W GestureStubView_Left: adaptRotation   currentRotation=0   mRotation=0
+08-29 17:00:24.170  5241  6120 D GestureStubView_Left: getGestureStubWindowParam: mScreenWidth = 2032
+08-29 17:00:24.170  5241  6120 D GestureStubView_Left: resetRenderProperty: showGestureStub   isLayoutParamChanged=false
+08-29 17:00:24.170  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:00:24.171  5241  6120 D GestureStubView_Left: disableTouch    old=false   new=false
+08-29 17:00:24.171  5241  6120 D GestureStubView_Left: showGestureStub
+08-29 17:00:24.171  5241  6120 D GestureStubView_Right: setKeepHidden    old=false   new=false
+08-29 17:00:24.171  5241  6120 W GestureStubView_Right: adaptRotation   currentRotation=0   mRotation=0
+08-29 17:00:24.171  5241  6120 D GestureStubView_Right: getGestureStubWindowParam: mScreenWidth = 2032
+08-29 17:00:24.171  5241  6120 D GestureStubView_Right: resetRenderProperty: showGestureStub   isLayoutParamChanged=false
+08-29 17:00:24.171  5241  6120 D GestureStubView_Right: disableTouch    old=false   new=false
+08-29 17:00:24.171  5241  6120 D GestureStubView_Right: showGestureStub
+08-29 17:00:24.172  2759  6634 I DataHub : registerUIAgentListener packageName: com.mov.android~10429, client:miui.security.IUIAgentInteractionClient$Stub$Proxy@e65e1c5
+08-29 17:00:24.173  2759  6634 I RemoteCallbackList: register success, put callback for com.mov.android~10429
+08-29 17:00:24.173  2759  6626 W AppCompatLetterboxPolicy: start not layout letterbox Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.173  2759  6626 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:00:24.174  5241  6120 D GestureStubView_Left: gatherTransparentRegion: need render w:54  h:2652
+08-29 17:00:24.174  5241  6120 D GestureStubView_Right: gatherTransparentRegion: need render w:54  h:2652
+08-29 17:00:24.174  2759  6626 D MiuiRefreshRatePolicy: reset
+08-29 17:00:24.177 32560  6742 I VA_ActivityStateHelper: activityResumed componentName ComponentInfo{com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.177 32560  6742 I VA_ActivityStateHelper: activityResumed mAiSkillPush is false
+08-29 17:00:24.180 25852 25852 D InsetsController: default animation onReady types: 1 controller=android.view.InsetsAnimationControlImpl@9e489b6
+08-29 17:00:24.180 25852 25852 D ViewRootImplStubImpl: requestedTypes: 1
+08-29 17:00:24.182 11211 11432 E captain : match failed, caused by java.util.regex.PatternSyntaxException: Syntax error in regexp pattern near index 1
+08-29 17:00:24.182 11211 11432 E captain : *.activity.StartActivity
+08-29 17:00:24.182 11211 11432 E captain :  ^
+08-29 17:00:24.182 11211 11432 E captain : 	at com.android.icu.util.regex.PatternNative.compileImpl(Native Method)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.android.icu.util.regex.PatternNative.<init>(PatternNative.java:53)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.android.icu.util.regex.PatternNative.create(PatternNative.java:49)
+08-29 17:00:24.182 11211 11432 E captain : 	at java.util.regex.Pattern.compile(Pattern.java:3533)
+08-29 17:00:24.182 11211 11432 E captain : 	at java.util.regex.Pattern.<init>(Pattern.java:1419)
+08-29 17:00:24.182 11211 11432 E captain : 	at java.util.regex.Pattern.compile(Pattern.java:921)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlin.text.Regex.<init>(SourceFile:3)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.xiaomi.xms.captain.engine.repo.TrialRepo.i(Unknown Source:76)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.xiaomi.xms.captain.engine.repo.TrialRepo.h(Unknown Source:129)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.xiaomi.xms.captain.engine.repo.TrialRepo$isTargetPage$1.invokeSuspend(Unknown Source:12)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:11)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlinx.coroutines.v0.run(Unknown Source:130)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlinx.coroutines.internal.m$a.run(Unknown Source:3)
+08-29 17:00:24.182 11211 11432 E captain : 	at fc.k.run(Unknown Source:2)
+08-29 17:00:24.182 11211 11432 E captain : 	at fc.a$a.run(Unknown Source:63)
+08-29 17:00:24.182 11211 11432 E captain : match failed, caused by java.util.regex.PatternSyntaxException: Syntax error in regexp pattern near index 1
+08-29 17:00:24.182 11211 11432 E captain : *.activity.LauncherActivity
+08-29 17:00:24.182 11211 11432 E captain :  ^
+08-29 17:00:24.182 11211 11432 E captain : 	at com.android.icu.util.regex.PatternNative.compileImpl(Native Method)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.android.icu.util.regex.PatternNative.<init>(PatternNative.java:53)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.android.icu.util.regex.PatternNative.create(PatternNative.java:49)
+08-29 17:00:24.182 11211 11432 E captain : 	at java.util.regex.Pattern.compile(Pattern.java:3533)
+08-29 17:00:24.182 11211 11432 E captain : 	at java.util.regex.Pattern.<init>(Pattern.java:1419)
+08-29 17:00:24.182 11211 11432 E captain : 	at java.util.regex.Pattern.compile(Pattern.java:921)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlin.text.Regex.<init>(SourceFile:3)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.xiaomi.xms.captain.engine.repo.TrialRepo.i(Unknown Source:76)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.xiaomi.xms.captain.engine.repo.TrialRepo.h(Unknown Source:129)
+08-29 17:00:24.182 11211 11432 E captain : 	at com.xiaomi.xms.captain.engine.repo.TrialRepo$isTargetPage$1.invokeSuspend(Unknown Source:12)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:11)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlinx.coroutines.v0.run(Unknown Source:130)
+08-29 17:00:24.182 11211 11432 E captain : 	at kotlinx.coroutines.internal.m$a.run(Unknown Source:3)
+08-29 17:00:24.182 11211 11432 E captain : 	at fc.k.run(Unknown Source:2)
+08-29 17:00:24.182 11211 11432 E captain : 	at fc.a$a.run(Unknown Source:63)
+08-29 17:00:24.185  2759  6634 W AppCompatLetterboxPolicy: start not layout letterbox Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.186  2759  6634 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:00:24.186  2759  6634 D MiuiRefreshRatePolicy: reset
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.188  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.188  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.188  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.189  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.190  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.191  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.191  2759  6634 D DisplayContentStubImpl: imeInputTarget is null,but imeLayeringTarget is the focus window imeLayeringTarget=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.194 25852 32004 D com.mov.android: MWDF parse error: Interrupted system call
+08-29 17:00:24.194  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:00:24.190  2322  2322 W binder:2322_4: type=1400 audit(0.0:2980684): avc:  denied  { search } for  name="mcd" dev="dm-56" ino=574 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+08-29 17:00:24.190 25852 25852 W com.mov.android: type=1400 audit(0.0:2980685): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=505 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.mov.android
+08-29 17:00:24.190 25852 25852 W com.mov.android: type=1400 audit(0.0:2980686): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=505 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.mov.android
+08-29 17:00:24.195 25852 25852 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-29 17:00:24.196 25852 25852 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-29 17:00:24.197 25852 25852 D VRI[MainActivity]: vri.reportNextDraw 0 Rect(0, 0 - 2032, 3048) android.view.ViewRootImpl.performTraversals:5606 android.view.ViewRootImpl.doTraversal:4159 android.view.ViewRootImpl$TraversalRunnable.run:12555 android.view.Choreographer$CallbackRecord.run:2040 android.view.Choreographer$CallbackRecord.run:2049 
+08-29 17:00:24.197 25852 25852 D VRI[MainActivity]: vri.Setup new sync=wmsSync-VRI[MainActivity]#20
+08-29 17:00:24.198  2322  2322 W binder:2322_4: type=1400 audit(0.0:2980687): avc:  denied  { search } for  name="mcd" dev="dm-56" ino=574 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+08-29 17:00:24.202 25852 25852 D VRI[MainActivity]: vri.reportDrawFinished 0 0 Rect(0, 0 - 2032, 3048)
+08-29 17:00:24.203  2759  6634 D WindowManager: wms.finishDrawingLocked: mDrawState=COMMIT_DRAW_PENDING Window{5990f33 u0 com.mov.android/com.mov.android.MainActivity} in Surface(name=com.mov.android/com.mov.android.MainActivity#33654)/@0x6c7d541
+08-29 17:00:24.205  2759  2881 W AppCompatLetterboxPolicy: start not layout letterbox Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.205  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:00:24.205  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:00:24.206  2759  2881 D WindowManager: wms.commitFinishDrawingLocked: mDrawState=READY_TO_SHOW Window{5990f33 u0 com.mov.android/com.mov.android.MainActivity} in Surface(name=com.mov.android/com.mov.android.MainActivity#33654)/@0x6c7d541
+08-29 17:00:24.207  2759  2881 W AppCompatLetterboxPolicy: start not layout letterbox Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity}
+08-29 17:00:24.207  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:00:24.207  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:00:24.208  2322  2322 D MI-SF   : isTpIdleScene ,mAverageFrameRate is 0, 0 
+08-29 17:00:24.208  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:00:24.208  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:00:24.208  2322  2322 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-29 17:00:24.208  2759  2881 I WindowManager: wms.showSurfaceRobustly mWin:Window{5990f33 u0 com.mov.android/com.mov.android.MainActivity} in Surface(name=com.mov.android/com.mov.android.MainActivity#33654)/@0x6c7d541
+08-29 17:00:24.211 25852 31972 I HWUI    : Davey! duration=15166ms; Flags=161, FrameTimelineVsyncId=135388299, IntendedVsync=599201073709000, Vsync=599216207041728, InputEventId=0, HandleInputStart=599216212955316, AnimationStart=599216212960889, PerformTraversalsStart=599216213196410, DrawStart=599216223123806, FrameDeadline=599201145709659, FrameStartTime=599216211936774, FrameInterval=8333333, WorkloadTarget=13666666, FlingPosition=0, FlingFrameInterval=0, InputEventTime=0, InputEventAction=-1, FirstTimeForInputEventAction=0, InputEventSignal=-1, WindowMode=1, SyncQueued=599216223546097, SyncStart=599216223804118, IssueDrawCommandsStart=599216223923754, SwapBuffers=599216226407764, FrameCompleted=599216240704847, DequeueBufferDuration=17760, QueueBufferDuration=622240, GpuCompleted=599216240704847, SwapBuffersCompleted=599216236900316, DisplayPresentTime=0, CommandSubmissionCompleted=599216226407764, 
+08-29 17:00:24.211 25852 31972 I HWUI    : Davey! duration=15170ms; Flags=161, FrameTimelineVsyncId=135388299, IntendedVsync=599201073709000, Vsync=599216207041728, InputEventId=0, HandleInputStart=599216212955316, AnimationStart=599216212960889, PerformTraversalsStart=599216213196410, DrawStart=599216239907816, FrameDeadline=599201087375666, FrameStartTime=599216211936774, FrameInterval=8333333, WorkloadTarget=13666666, FlingPosition=0, FlingFrameInterval=0, InputEventTime=0, InputEventAction=-1, FirstTimeForInputEventAction=0, InputEventSignal=-1, WindowMode=1, SyncQueued=599216241338545, SyncStart=599216241448545, IssueDrawCommandsStart=599216241590420, SwapBuffers=599216243946201, FrameCompleted=599216244784379, DequeueBufferDuration=7032, QueueBufferDuration=193802, GpuCompleted=599216244784379, SwapBuffersCompleted=599216244436410, DisplayPresentTime=0, CommandSubmissionCompleted=599216243946201, 
+08-29 17:00:24.211 25852 25852 I HandWritingStubImpl: refreshLastKeyboardType: 1
+08-29 17:00:24.211 25852 25852 I HandWritingStubImpl: getCurrentKeyboardType: 1
+08-29 17:00:24.210  2322  2322 W binder:2322_4: type=1400 audit(0.0:2980688): avc:  denied  { search } for  name="mcd" dev="dm-56" ino=574 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.213  2759  4491 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.214  2759  4491 I ImeTracker: com.mov.android:4f19e881: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+08-29 17:00:24.214  2759  4491 I InputMethodManagerServiceImpl: Skip shouldIgnoreHideCurrentInputForBackDisplay check.
+08-29 17:00:24.214  2759  4491 W SecurityInputMethodSwitcher: first check switch to security ime: false
+08-29 17:00:24.215  2759  4491 W SecurityInputMethodSwitcher: double check switch to security ime: false
+08-29 17:00:24.215  2759  4491 W SecurityInputMethodSwitcher: switch to other input method from security ime:false mayChangeToMiuiSecurityInputMethod: false current focus window: android.os.BinderProxy@683ac2c
+08-29 17:00:24.215  2759  4491 D InputMethodManagerService: startInputUncheckedLocked:set client state as:ClientState{a14eb7d mUid=10429 mPid=25852 mSelfReportedDisplayId=0}
+08-29 17:00:24.215 16521 16521 I bdmiime : onUnbindInput
+08-29 17:00:24.216 25852 25852 D InsetsController: hide(ime(), fromIme=false)
+08-29 17:00:24.216 25852 25852 I ImeTracker: com.mov.android:4f19e881: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+08-29 17:00:24.217  2759  4491 D InputMethodManagerServiceImpl: ime switch to security: false , switch to normal ime: false , switch from security: false
+08-29 17:00:24.218  2759  6625 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:00:24.218 16521 16521 I bdmiime : onStartInput called,  restarting：false, fieldId： 0, inputType：0, imeOptions： 0
+08-29 17:00:24.219 16521 16521 I GlobalHandwriting: =====onStartInput initialToolType = 0
+08-29 17:00:24.221 16521 16521 I GlobalHandwriting: initParamsFromEditorInfoExtras: stylusHandwritingSupported=false stylusHandwritingUndoRedoDisabled=false
+08-29 17:00:24.221 16521 16521 I InputMethodService: inputmethod dismissSystemCLipBoard
+08-29 17:00:24.221 16521 16521 D dz8     : refreshData: LogoMenuActivitiesData(logoMenuData=[], sceneMap={})
+08-29 17:00:24.221 16521 16521 D dz8     : isShowLogoAnimation: triggers is null, return false
+08-29 17:00:24.221  2759  6625 I ImeTracker: system_server:ed385d18: onRequestHide at ORIGIN_SERVER reason IME_REQUESTED_CHANGED_LISTENER fromUser false
+08-29 17:00:24.221 16521 16521 I bdmiime :  tempDarkMode = false ,darkMode = false
+08-29 17:00:24.221  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{a8de6f5 u0 com.mov.android/com.mov.android.MainActivity} 0
+08-29 17:00:24.221  2759  2880 I DisplayManagerServiceImpl: updateInputScene: , status: 0 targetPkg: input, cookie: 270
+08-29 17:00:24.221  2322  6170 D MI-SF   : updateScene: module = 270 (Input), value = 0, pkg = input, Vrr = 1, mSetTpIdleFlag = 0
+08-29 17:00:24.221  2759  2880 I ImeTracker: system_server:ed385d18: onCancelled at PHASE_SERVER_SHOULD_HIDE
+08-29 17:00:24.222  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:00:24.223 16521 16521 I bdmiime : updateForNightMode  isNight false
+08-29 17:00:24.223  8389  8536 D MirrorManager:  sendAcceptInput 0 0
+08-29 17:00:24.223 16521 16521 I bdmiime : getSysParam -> orientation isPortrait = true
+08-29 17:00:24.223 16521 16521 I bdmiime : getKeyboardWidth sW=2032 bW=2032
+08-29 17:00:24.223 16521 16521 I bdmiime : initGlobal bw:2032, bl:29, br:3019, bh:822, lsh:0, sw:2032, sh:3048, 2032, rw:2032, rh:3048, as:2.5, ss: 2.5, pad:true,cd:05D68C-7F29D3-84G1G7-41754E-7272CE-1C|WLQ-CITTI4, way:0, mini0
+08-29 17:00:24.224  2322  2322 D MI-SF   : isTpIdleScene ,mAverageFrameRate is 0, 0 
+08-29 17:00:24.224  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 1025(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:00:24.224  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:00:24.224  2322  2322 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-29 17:00:24.225 16521 16521 I bdmiime : SkinRender#currentSkinType:0
+08-29 17:00:24.225 16521 16521 I bdmiime : setIsNight = false, isNightFollowSystemSetByUser true, isNightFollowSystem = true, userManualNightMode = -1, isDarkMode = false
+08-29 17:00:24.225 16521 16521 I bdmiime : loadPref: isFloatingMode : false, isPcMode : false, model : com.baidu.lo4@38e3793
+08-29 17:00:24.226 16521 16521 I bdmiime : is sys vibra:true
+08-29 17:00:24.226 16521 16521 I bdmiime : switchPcMode newPcMode = false
+08-29 17:00:24.241  2759  2881 I DisplayPolicyStubImpl: com.android.server.wm.WindowState hide ime, enable touchboost
+08-29 17:00:24.241  2759  2881 I DisplayPolicyStubImpl: com.android.server.wm.DisplayContent$RemoteInsetsControlTarget hide ime, enable touchboost
+08-29 17:00:24.255  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787993973094644400 end qr.scan
+08-29 17:00:24.280  6746  6746 I MOVTEST : MOVTEST_MARK_1787993973094644400 end qr.scan
+08-29 17:00:24.324  7236 13615 D MiEvent : MiEvent: this 0x745c7fdb30, paylod=0xb400007488e26550
+08-29 17:00:24.328 22231 22316 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.android.bluetooth
+08-29 17:00:24.328 22231 22316 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:00:24.329  7236 13615 D MiEvent : flatten EventId 902001003 -t 1787994024 -paraList {"Delay":15133,"LayerName":"allSame","PackageName":"com.xiaomi.scanner","Scene":"FocusApp-Animating"}
+08-29 17:00:24.329  7236 13615 D MiEvent : report:EventId 902001003 -t 1787994024 -paraList {"Delay":15133,"LayerName":"allSame","PackageName":"com.xiaomi.scanner","Scene":"FocusApp-Animating"} success
+08-29 17:00:24.329  7236 13615 D MiEvent : ~MiEvent: this 0x745c7fdb30, paylod=0xb400007488e26550
+08-29 17:00:24.329  7236 13615 D com.miui.daemon: pid:25852:layer:allSame, rjf 1814, VsyncId:135388299, msg:15133, dF:16, tu:0, sf:4,                    scene:4096, core_scene:To_be_identified, sys_scene:FocusApp-Animating
+08-29 17:00:24.329  7236 13615 D com.miui.daemon: Ldf GPU app:1, sf:0
+08-29 17:00:24.329  7236 13615 D MiEvent : MiEvent: this 0x745c7fdb30, paylod=0xb400007488e26550
+08-29 17:00:24.330  3129  3922 I misight : OnEvent EventPrivacyCompliance event=902001003
+08-29 17:00:24.330  7236 13615 D MiEvent : flatten EventId 902001003 -t 1787994024 -paraList {"Delay":15133,"LayerName":"allSame","PackageName":"com.xiaomi.scanner","Scene":"FocusApp-Animating"}
+08-29 17:00:24.330  7236 13615 D MiEvent : report:EventId 902001003 -t 1787994024 -paraList {"Delay":15133,"LayerName":"allSame","PackageName":"com.xiaomi.scanner","Scene":"FocusApp-Animating"} success
+08-29 17:00:24.330  3129  3922 I misight : OnEvent EventStorageManager event=902001003,2
+08-29 17:00:24.330  7236 13615 D MiEvent : ~MiEvent: this 0x745c7fdb30, paylod=0xb400007488e26550
+08-29 17:00:24.330  7236 13615 D com.miui.daemon: Report critical jank!
+08-29 17:00:24.330  3129  3922 I misight : CheckAndGetLogTime event =902001003 0
+08-29 17:00:24.342  3129  3922 I misight : OnEvent HighProbFaultDetect 902001003
+08-29 17:00:24.343  3129  3922 I misight : CanProcessHplEvent CanProcessHplEvent openTime=1783929053 period=60 1787994024
+08-29 17:00:24.343  3129  3922 I misight : OnEvent EventLogProcessor event=902001003,2
+08-29 17:00:24.343  3129  3922 I misight : OnEvent EventInfoPack event 902001003
+08-29 17:00:24.343  3129  3922 I misight : OnEvent EventPrivacyCompliance event=902001003
+08-29 17:00:24.343  3129  3922 I misight : OnEvent EventStorageManager event=902001003,2
+08-29 17:00:24.344  3129  3922 I misight : CheckAndGetLogTime event =902001003 0
+08-29 17:00:24.353  3129  3922 I misight : OnEvent HighProbFaultDetect 902001003
+08-29 17:00:24.353  3129  3922 I misight : CanProcessHplEvent CanProcessHplEvent openTime=1783929053 period=60 1787994024
+08-29 17:00:24.353  3129  3922 I misight : OnEvent EventLogProcessor event=902001003,2
+08-29 17:00:24.353  3129  3922 I misight : OnEvent EventInfoPack event 902001003
+08-29 17:00:24.369  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:00:24.384  1681  1681 W tombstoned: skipping tombstone file creation due to intercept
+08-29 17:00:24.384 16372 16382 I nt.mm:appbrand0: Wrote stack traces to tombstoned
+08-29 17:00:24.386  2759  6717 I system_server: libdebuggerd_client: done dumping process 16372
+08-29 17:00:24.392  2759  6717 I ActivityManager: Done dumping
+08-29 17:00:24.395  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)

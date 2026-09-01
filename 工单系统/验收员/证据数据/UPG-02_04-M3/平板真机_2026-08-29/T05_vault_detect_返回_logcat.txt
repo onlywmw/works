@@ -1,0 +1,302 @@
+--------- beginning of main
+08-29 17:10:11.644  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.645  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.645  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.645  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.653  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.653  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.654  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.654  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.661  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.661  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.661  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.661  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.670  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.670  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.670  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.670  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.678  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.678  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.678  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.678  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.686  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.686  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.687  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.687  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.694  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.694  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.694  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.694  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.702  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.703  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.703  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.703  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.708  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+--------- beginning of system
+08-29 17:10:11.710  2759  6573 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 17:10:11.711  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.712  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.712  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.712  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.717  2759  5601 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 17:10:11.719  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.720  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.720  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.720  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.727  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.728  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.728  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.728  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.733  2759  5601 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 17:10:11.736  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.736  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.736  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.736  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.744  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.745  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChanged
+08-29 17:10:11.746  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onDarkChangedWithContrast
+08-29 17:10:11.746  5911  5911 D ShadeDarkIconDispatcher: receiver delegate onLightDarkTintChanged
+08-29 17:10:11.747  5911  5911 I MiuiStatusBarHoverH: update bg,hover=0, light mode -> false
+08-29 17:10:11.753  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.761  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.769  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.777  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.786  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.794  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.802  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.804  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:11.811  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.819  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.824  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10304, uidState = 19
+08-29 17:10:11.828  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.835  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.844  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.852  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.861  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.869  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.872  2759  5601 D FileUtils: Rounded bytes from 16206753792 to 32000000000
+08-29 17:10:11.878  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.886  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.895  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.903  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.909  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:11.911  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.919  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.928  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.936  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.944  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.953  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.961  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.971  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.978  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.986  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:11.994  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.003  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.005  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:12.012  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.019  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.027  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.030  8701  8803 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:10:12.030  8701  8803 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:10:12.036  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.044  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785322305886432, lux: 3.0
+08-29 17:10:12.045  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.045  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785322305886432, sensor=5, temperature(K)=   0.0000
+08-29 17:10:12.045  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:10:12.052  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.061  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.070  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.078  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.086  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.095  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.103  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.111  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.113  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:12.115  2306  3070 I [THP-DAE]: thp_set_doze_mode_func:enable doze mode
+08-29 17:10:12.119  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.128  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.131  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10423, uidState = 19
+08-29 17:10:12.136  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.137  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10419, uidState = 19
+08-29 17:10:12.144  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.153  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.158  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:10:12.158  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:52
+08-29 17:10:12.158  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:10:12.158  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:54
+08-29 17:10:12.159  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:10:12.161  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.169  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.179  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.186  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.194  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.203  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.206  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:12.211  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.220  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.228  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.236  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.244  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:12.266 22369 23294 D JavaheapMonitor: Java heap used=11M max=384M, proc: com.miui.systemAdSolution
+08-29 17:10:12.266 22369 23294 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:10:12.314  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:12.406  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:12.443  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785322705885964, lux: 2.0
+08-29 17:10:12.444  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785322705885964, sensor=5, temperature(K)=   0.0000
+08-29 17:10:12.444  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:10:12.515  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:12.718  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:12.743  2759  6573 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 17:10:12.748  2759  6573 D Aurogon :  packageName = com.tencent.mm isAllowWakeUpList 
+08-29 17:10:12.884  2759  4515 I MiuiNetworkPolicy: bandwidth: 5 KB/s, Max bandwidth: 830 KB/s
+08-29 17:10:12.920  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:12.959  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:10:12.959  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:10:12.977  2759  6639 D SLM-SRV-SLAService: checktemp temperature = 34601 temperature_average = 34695 isPerformanceMode = false thermal_enable_slm = true
+08-29 17:10:13.026  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:10:13.038  2322  2322 W binder:2322_1: type=1400 audit(0.0:2981714): avc:  denied  { search } for  name="mcd" dev="dm-56" ino=574 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+08-29 17:10:13.053  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:10:13.053  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:10:13.053  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:10:13.053  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:10:13.063  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:13.070  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.079  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.086  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.094  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.095 24865  8634 W RenderInspector: DequeueBuffer time out on com.google.android.documentsui/com.android.documentsui.picker.PickActivity, count=1, avg=8 ms, max=8 ms.
+08-29 17:10:13.103  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.111  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.120  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.121  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:13.128  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.136  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.145  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.154  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.163  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.170  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.178  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.188  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.196  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.203  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.212  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.220  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.229  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.238  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.245  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.255  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.263  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.270  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.271  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:13.279  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.287  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.295  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.303  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.311  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.320  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.322  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:13.328  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:13.376  2759  4893 D PerfStubImpl: perfLockReleaseHandler: 0
+08-29 17:10:13.376  2759  4893 D QcomSchedBoost: stopBoostInternal
+08-29 17:10:13.377  2759  4893 D SchedBoost: thread tid=24865, priority is set to -10
+08-29 17:10:13.377  2759  4893 D PerfStubImpl: perfLockReleaseHandler: 0
+08-29 17:10:13.377  2759  4893 D QcomSchedBoost: stopBoostInternal
+08-29 17:10:13.377  2759  4893 D SchedBoost: thread tid=8634, priority is set to -10
+08-29 17:10:13.475  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:13.514  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.5/s) Done(0.000/s Avg=1.529/s)| Stream: 24.00fps 2.4Mbps
+08-29 17:10:13.515  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 17:10:13.524  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:13.543  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785323905784714, lux: 3.0
+08-29 17:10:13.544  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785323905784714, sensor=5, temperature(K)=   0.0000
+08-29 17:10:13.544  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:10:13.615  9880  9880 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-29 17:10:13.615  9880  9880 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-29 17:10:13.615  9880  9880 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerNames:(no_layer_names), blurRadius:0, scale:(1.000000,1.000000), blends:(no_color_mode)
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:com.google.android.documentsui/com.android.documentsui.picker.PickActivity#33784
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:Dim Layer for - Task=3585#33796
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:com.google.android.documentsui/com.android.documentsui.picker.PickActivity#33794
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:Miui Caption of Task=3585#33691
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:Miui Bottom Caption of Task=3585#33693
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:StatusBar#135
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:GestureStubLeft#64
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:GestureStubRight#69
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:RoundCornerTop#123
+08-29 17:10:13.616  2322  2322 I SurfaceFlinger: SF-MICapture: mode:0, layerName:RoundCornerBottom#124
+08-29 17:10:13.619  2322  2420 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:13.662  9880  9882 I AdrenoUtils: <ReadGpuID:407>: Reading chip ID through GSL
+08-29 17:10:13.726  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:13.735  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:10:13.736  3128  3128 I wificond: station_bandwidth:  
+08-29 17:10:13.739  5847  6977 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:10:13.740  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:10:13.929  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:13.951  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:10:14.018  8701  8803 D AdCoreConfigService: getShiplyKey, key: /root/controller/xLogLevel, shiplyKey: splash_xLogLevel
+08-29 17:10:14.019  8701  8803 D AdCoreConfigService: use old config, path: /root/controller/xLogLevel, value: null
+08-29 17:10:14.132  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:14.277 22231 22316 D JavaheapMonitor: Java heap used=4M max=384M, proc: com.android.bluetooth
+08-29 17:10:14.279 22231 22316 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:10:14.334  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:14.346  5847  6086 D JavaheapMonitor: Java heap used=25M max=384M, proc: com.android.phone
+08-29 17:10:14.346  5847  6086 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:10:14.401  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 17:10:14.401  2322  2322 D DisplayModeController: setDesiredMode 4630947038039379843 {mode={fps=50.00 Hz, modePtr={id=4, vsyncRate=50.00 Hz, peakRefreshRate=50.00 Hz}}, emitEvent=false, force=false}
+08-29 17:10:14.402  2322  2322 E Dolphin.BufferLayerTracker: unexpected vsync recevied: ld
+08-29 17:10:14.402  2322  2322 E Dolphin.BufferLayerTracker: unexpected vsync recevied: ld
+08-29 17:10:14.403  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:10:14.406  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 17:10:14.407  2121  2700 I SDM     : HWCFunctionTimer::noticeTimerFps: displayid:65, fps: 50
+08-29 17:10:14.407  2121  2700 I SDM     : HWCDisplay::SetActiveConfigWithConstraints: display:65-0, config: 4, WxH 3048x2032, fps 50
+08-29 17:10:14.408  2121  2700 W SDM     : HWDeviceDRM::GetSupportedBitClkRate: Requested rate not supported: 1190090000
+08-29 17:10:14.409  2121  2700 I SDM     : HWDeviceDRM::UpdateMixerAttributes: Mixer WxH 3048x2032-1 for Peripheral
+08-29 17:10:14.409  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active configuration changed from config 0 to 4
+08-29 17:10:14.409  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active WxH 3048x2032 ,ddic_mode:normal, timing_fps: 90, sf_fps: 90
+08-29 17:10:14.413  2121  2224 I SDM     : HWDeviceDRM::SetDisplaySwitchMode: Mode 4 already set
+08-29 17:10:14.415  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:10:14.420  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:14.438  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:10:14.459  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 17:10:14.537  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:14.604 22231 22231 D HidDeviceService: handleMessage(): msg.what=8
+08-29 17:10:14.604  2759  4515 D MiuiNetworkPolicy: updateLimit mLimitEnabled=false,enabled=true,mNetworkPriorityMode=1,mThermalForceMode=0
+08-29 17:10:14.604 22231 22231 D HidDeviceService: unregisterAppUid(): uid=10086
+08-29 17:10:14.604 22231 22231 D HidDeviceService: unregisterAppUid(): caller UID doesn't match user UID
+08-29 17:10:14.610  2759  4515 I MiuiNetworkPolicy: getEnableLimitTimeout when thermal mode is:0
+08-29 17:10:14.610  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10086, uidState = 15
+08-29 17:10:14.612  2759  4515 I MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic uid=10086,add=false
+08-29 17:10:14.613  2759  4515 D MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic rst=true
+08-29 17:10:14.740  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:14.743  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785325105716953, lux: 2.0
+08-29 17:10:14.744  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785325105716953, sensor=5, temperature(K)=   0.0000
+08-29 17:10:14.744  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:10:14.943  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:15.017  2306  3070 I [THP-DAE]: thp_set_doze_mode_func:enable doze mode
+08-29 17:10:15.144  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:15.163  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:10:15.163  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:55
+08-29 17:10:15.163  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:10:15.163  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:54
+08-29 17:10:15.164  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:10:15.244  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785325505620912, lux: 3.0
+08-29 17:10:15.245  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785325505620912, sensor=5, temperature(K)=   0.0000
+08-29 17:10:15.245  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:10:15.345  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:15.352 14568 15371 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.milink.crossdeviceservice
+08-29 17:10:15.352 14568 15371 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:10:15.548  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:10:15.564  2759  2892 I ThermalObserver: Temperature control has been released.
+08-29 17:10:15.570  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787994544093714200 end obsidian.vault.detect
+08-29 17:10:15.589  9887  9887 I MOVTEST : MOVTEST_MARK_1787994544093714200 end obsidian.vault.detect
+08-29 17:10:15.645  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785325705723984, lux: 2.0
+08-29 17:10:15.645  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785325905703932, lux: 3.0
+08-29 17:10:15.647  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785325705723984, sensor=5, temperature(K)=   0.0000
+08-29 17:10:15.647  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:10:15.647  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785325905703932, sensor=5, temperature(K)=   0.0000
+08-29 17:10:15.647  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:10:15.649  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:10:15.663  2306  3072 I [THP-DAE]: user_cmd_set_cur_value:charging status:1
+08-29 17:10:15.663  2306  2353 D TouchFeatureImpl: poll_common_data_thread_run 1010
+08-29 17:10:15.663  2306  2353 I TouchFeatureImpl: poll wait
+08-29 17:10:15.666 20990 22504 D JavaheapMonitor: Java heap used=6M max=384M, proc: com.miui.analytics
+08-29 17:10:15.668 20990 22504 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000

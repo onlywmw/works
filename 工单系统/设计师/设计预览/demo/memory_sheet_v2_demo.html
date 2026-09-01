@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>我的记忆 · 半屏 Sheet 设计稿 v2</title>
+<style>
+  :root{
+    --s0:#F3F4F7; --s1:#FFFFFF; --s2:#EDEFF3; --s3:#E2E5EB;
+    --text:#191B21; --text2:#565C6B; --text3:#8B91A1;
+    --line:rgba(22,28,48,.08); --primary:#0E7C5B; --primary-strong:#0A6649;
+    --ptint:rgba(14,124,91,.10); --danger:#D92D20; --ok:#0F8A5F; --warn:#B45309;
+    --r:8px; --r-lg:14px;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{margin:0; background:#1A1C22; font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    display:flex; align-items:flex-end; justify-content:center; min-height:100vh;}
+
+  /* 半屏 sheet：贴底、顶部圆角 16 */
+  .sheet{width:375px; max-width:100%; background:var(--s0);
+    border-radius:16px 16px 0 0; overflow:hidden; box-shadow:0 -8px 32px rgba(0,0,0,.35);}
+  .sheet-inner{padding:10px 16px 20px;}
+
+  /* 手柄条 */
+  .handle{width:44px; height:5px; border-radius:99px; background:#D8D8DC; margin:0 auto 6px;}
+
+  /* 标题 + 计数 */
+  .head{display:flex; align-items:flex-end; justify-content:center; position:relative; padding:2px 0 6px;}
+  .head h1{margin:0; font-size:17px; font-weight:700; color:var(--text); letter-spacing:.2px;}
+  .head .count{font-size:12px; color:var(--text3); margin-top:6px; text-align:center;}
+
+  /* 搜索框 */
+  .search{display:flex; align-items:center; gap:8px; background:var(--s1); height:40px;
+    border-radius:var(--r); padding:0 12px; margin-top:8px; box-shadow:0 0 0 1px var(--line);}
+  .search .ic{width:16px;height:16px; color:var(--text3); flex:none;}
+  .search input{flex:1; border:0; outline:0; background:transparent; font-size:14px; color:var(--text);}
+  .search input::placeholder{color:var(--text3);}
+
+  /* 分段控件（已记住 / 待确认 / 全部） */
+  .seg{display:flex; background:var(--s2); border-radius:var(--r); padding:3px; margin-top:10px;}
+  .seg b{flex:1; text-align:center; font-size:13px; font-weight:600; color:var(--text2);
+    padding:7px 0; border-radius:6px; cursor:pointer;}
+  .seg b.on{background:var(--s1); color:var(--primary); box-shadow:0 1px 3px rgba(0,0,0,.08);}
+
+  /* 分区标题 */
+  .sec{display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--text2);
+    margin:16px 2px 8px; letter-spacing:.3px;}
+  .sec::before{content:""; width:3px; height:12px; border-radius:2px; background:var(--primary);}
+  .sec b{color:var(--text3); font-weight:600;}
+
+  /* 卡片行 */
+  .card{background:var(--s1); border-radius:var(--r); padding:12px 14px; margin-bottom:8px;
+    box-shadow:0 0 0 1px var(--line);}
+  .card .row1{display:flex; align-items:center; gap:8px;}
+  .pin{font-size:12px; color:#C99700; flex:none;}
+  .content{font-size:14px; color:var(--text); line-height:1.5; flex:1; font-weight:500;}
+  .state{flex:none; display:inline-flex; align-items:center; gap:3px; font-size:10px; color:var(--ok);}
+  .state .dot{width:7px;height:7px;border-radius:50%; background:var(--ok);}
+  .card .meta{font-size:11px; color:var(--text3); margin-top:4px; display:flex; gap:10px;}
+  .card .meta i{font-style:normal;}
+  .card .ops{display:flex; align-items:center; gap:6px; margin-top:10px; padding-top:8px; border-top:1px solid var(--line);}
+  .op{font-size:12px; padding:5px 10px; border-radius:6px; cursor:pointer; border:0; background:transparent;}
+  .op.primary{color:var(--primary); font-weight:600; background:var(--ptint);}
+  .op.danger{color:var(--danger); font-weight:500;}
+  .op.plain{color:var(--text3);}
+  .spacer{flex:1;}
+
+  /* 空态 */
+  .empty{text-align:center; padding:32px 16px 20px; color:var(--text3);}
+  .empty .ic{font-size:26px; margin-bottom:10px;}
+  .empty .t{font-size:13px;}
+  .empty .n{font-size:12px; margin-top:4px;}
+  .empty button{margin-top:12px; font-size:13px; font-weight:600; color:var(--primary);
+    background:var(--ptint); border:0; border-radius:6px; padding:8px 16px;}
+
+  /* 撤销条（贴底安全区上方） */
+  .undo{position:sticky; bottom:0; margin-top:6px; display:flex; align-items:center; gap:10px;
+    background:#2E333B; border-radius:var(--r); padding:11px 14px; color:#fff;}
+  .undo .t{flex:1; font-size:13px;}
+  .undo button{border:0; background:transparent; color:#7FD1A8; font-size:13px; font-weight:600; cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="sheet-inner">
+    <div class="handle"></div>
+    <div class="head">
+      <h1>我的记忆</h1>
+    </div>
+    <div class="count">共 12 条 · 已记住 4 · 待确认 8</div>
+
+    <div class="search">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input placeholder="搜索记忆…">
+    </div>
+
+    <div class="seg">
+      <b class="on">已记住</b><b>待确认</b><b>全部</b>
+    </div>
+
+    <div class="sec">已记住 <b>4</b></div>
+    <div class="card">
+      <div class="row1">
+        <span class="pin">📌</span>
+        <span class="content">我喜欢简洁的界面</span>
+        <span class="state"><span class="dot"></span>已记住</span>
+      </div>
+      <div class="meta"><i>MOV 会优先参考</i><i>最近使用 2026-08-30</i></div>
+      <div class="ops"><span class="spacer"></span><button class="op plain">取消置顶</button><button class="op danger">移除</button></div>
+    </div>
+
+    <div class="card">
+      <div class="row1">
+        <span class="content">工作日早上 9 点开始处理订单类消息</span>
+      </div>
+      <div class="meta"><i>来自对话「教你怎么用」</i><i>首次记录 2026-08-28</i></div>
+      <div class="ops"><span class="spacer"></span><button class="op primary">置顶</button><button class="op danger">移除</button></div>
+    </div>
+
+    <div class="sec">待确认 <b>8</b></div>
+    <div class="card">
+      <div class="row1">
+        <span class="content">我最近在学习运动健康…</span>
+      </div>
+      <div class="meta"><i>待你确认是否长期保留</i><i>2026-08-29</i></div>
+      <div class="ops"><span class="spacer"></span><button class="op primary">设为重要</button><button class="op danger">移除</button></div>
+    </div>
+  </div>
+
+  <!-- 撤销条示意（默认收起，演示用常显） -->
+  <div class="undo" style="margin:0 16px 12px;">
+    <span class="t">已移除「我最近在学习运动健康…」 · 5s 内可撤销</span>
+    <button>撤销</button>
+  </div>
+</div>
+</body>
+</html>

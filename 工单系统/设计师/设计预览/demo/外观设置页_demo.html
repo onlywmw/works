@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 外观 · 简约逐组件 Demo</title>
+<style>
+  :root{--bg:#f3f4f7;--s1:#fff;--s2:#edeff3;--s3:#e2e5eb;--line:rgba(22,28,48,.08);
+    --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--primary:#0E7C5B;--acc:#23272f;--on:#fff}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#e9ebf0;color:var(--text);display:flex;justify-content:center;font-size:14px;padding:20px}
+  .phone{width:380px;background:var(--bg);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .top{height:48px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid var(--line);background:var(--bg)}
+  .top .bb{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text2);cursor:pointer}
+  .top .tt{flex:1;text-align:center;font-size:15px;font-weight:600}
+  .wrap{padding:6px 14px 20px}
+  .note{font-size:11.5px;color:var(--text3);line-height:1.5;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin:6px 0 10px}
+  .note b{color:var(--text2)}
+  /* 组件区块:三字标题 + 横滑样式卡 */
+  .blk{margin-bottom:14px}
+  .bt{font-size:16px;font-weight:700;color:var(--text);padding:2px 2px 8px}
+  .slider{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:none}
+  .slider::-webkit-scrollbar{display:none}
+  .card{flex:none;width:150px;border:1.5px solid var(--line);border-radius:14px;background:var(--s1);padding:10px;cursor:pointer}
+  .card.on{border-color:var(--primary)}
+  .card .nm{font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px}
+  .card .nm .ok{color:var(--primary);font-size:12px}
+  .card .pv{height:66px;border-radius:8px;background:var(--bg);border:1px solid var(--line);margin-top:8px;padding:7px;display:flex;flex-direction:column;gap:5px}
+  .pchip{height:11px;border-radius:6px;background:var(--s3);width:65%}
+  .pinp{height:14px;border-radius:8px;background:var(--s2);border:1px solid var(--line)}
+  /* 样式变体 */
+  .card.v2 .pchip{border-radius:0;background:var(--s2)}
+  .card.v2 .pinp{background:transparent;border:none;border-bottom:1px solid var(--line)}
+  .card.v3 .pchip{background:var(--s3);border-radius:3px}
+  .card.v3 .pinp{border-radius:4px}
+  .note2{font-size:11px;color:var(--text3);text-align:center;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top"><span class="bb">‹</span><div class="tt">外观</div><span style="width:32px"></span></div>
+  <div class="wrap">
+    <div class="note">极简/经典 = <b>主页右上角</b> 一键切;本页逐组件换(GIF:样式卡<b>左右滑动</b>查看,点选)</div>
+
+    <!-- 输入框:三字标题 + 横滑样式卡 -->
+    <div class="blk">
+      <div class="bt">输入框</div>
+      <div class="slider">
+        <div class="card on" onclick="pk(this)"><div class="nm">全圆胶囊 <span class="ok">✓</span></div><div class="pv"><div class="pchip"></div><div class="pinp"></div></div></div>
+        <div class="card v2" onclick="pk(this)"><div class="nm">下划线素</div><div class="pv"><div class="pchip"></div><div class="pinp"></div></div></div>
+        <div class="card v3" onclick="pk(this)"><div class="nm">小圆角</div><div class="pv"><div class="pchip"></div><div class="pinp"></div></div></div>
+        <div class="card v2" onclick="pk(this)"><div class="nm">无边框</div><div class="pv"><div class="pchip"></div><div class="pinp"></div></div></div>
+      </div>
+    </div>
+
+    <!-- 胶囊 -->
+    <div class="blk">
+      <div class="bt">胶囊</div>
+      <div class="slider">
+        <div class="card on" onclick="pk(this)"><div class="nm">全圆 <span class="ok">✓</span></div><div class="pv"><div class="pchip"></div></div></div>
+        <div class="card v3" onclick="pk(this)"><div class="nm">圆角方</div><div class="pv"><div class="pchip"></div></div></div>
+      </div>
+    </div>
+
+    <!-- 按钮 -->
+    <div class="blk">
+      <div class="bt">按钮</div>
+      <div class="slider">
+        <div class="card on" onclick="pk(this)"><div class="nm">填充 <span class="ok">✓</span></div><div class="pv"><div class="pchip"></div></div></div>
+        <div class="card v2" onclick="pk(this)"><div class="nm">描边</div><div class="pv"><div class="pchip"></div></div></div>
+      </div>
+    </div>
+
+    <!-- 工作台 -->
+    <div class="blk">
+      <div class="bt">工作台</div>
+      <div class="slider">
+        <div class="card on" onclick="pk(this)"><div class="nm">完整 <span class="ok">✓</span></div><div class="pv"><div class="pchip"></div><div class="pchip" style="width:45%"></div></div></div>
+        <div class="card v3" onclick="pk(this)"><div class="nm">精简</div><div class="pv"><div class="pchip" style="width:45%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="note2">← 每组件三字标题,下方横滑样式卡(可滑多个,点选) — 简约逐组件换</div>
+  </div>
+</div>
+<script>
+function pk(el){
+  el.parentNode.querySelectorAll('.card').forEach(x=>x.classList.remove('on')); el.classList.add('on');
+  el.querySelectorAll('.ok').forEach(x=>x.remove());
+  const nm=el.querySelector('.nm'); nm.innerHTML=el.querySelector('.nm').textContent+' <span class="ok">✓</span>';
+}
+</script>
+</body>
+</html>

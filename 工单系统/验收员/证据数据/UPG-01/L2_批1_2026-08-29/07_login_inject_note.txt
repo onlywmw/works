@@ -1,0 +1,1 @@
+登录态注入说明：UPG-16 收尾已卸载旧包，本次新装无登录态。登录流程非本次验收项（验收项=工具面/MCP面）。采用 debug 包 run-as 直写 shared_prefs/mov_login.xml（token=占位串，非真实凭据；phone_tail=0000）。仅打通 MainActivity 前置条件，不改仓库源码、不改 app 代码。

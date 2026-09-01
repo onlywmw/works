@@ -1,0 +1,20 @@
+{
+ "tool": "device.appLaunch",
+ "args": {
+  "packageName": "com.android.settings"
+ },
+ "ts": "2026-08-29T17:04:08",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 94248,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, launched=com.android.settings}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

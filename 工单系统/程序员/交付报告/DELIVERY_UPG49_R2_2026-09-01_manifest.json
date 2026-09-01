@@ -1,0 +1,68 @@
+{
+  "ticket_id": "UPG-49",
+  "delivery_id": "DEL-UPG49-20260901-001",
+  "standard_id": "我的记忆_验收方案_v1（SYS-01 冻结区未收录，沿用归档版）",
+  "code_commit_sha": "5640bce1696e297f137d2bb2e9dc9806078d2708",
+  "artifact_sha": "4524b9f5b9abcbc90489e0e1f3acacdbec00e5ad8212c5e6edbc559c8bf83cf6",
+  "delivered_at": "2026-09-01T18:10:00",
+  "delivered_by": "程序员-C",
+  "evidence_manifest_sha": "16004595a85209be330b9e3100bc52bdfae4ed4450d06af4af202d48b105766d",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG49-R2-evidence/02-memory-sheet-3items.png",
+      "sha256": "ee4d5f98e9d963ac24dec31343929c0e312e3d592f25fa5f18885fd4e7487629",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:00:00"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG49-R2-evidence/03-undobar.png",
+      "sha256": "7542982b155e44a33b3b80be4e91c8fce322a83d5b8a8d92b5a67324294d5d22",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:01:00"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG49-R2-evidence/04-undobar-expired.png",
+      "sha256": "019ad4b2009c0ffd8a0b64e75f2330948b47dc210eacd1c8bd44cfa8bfb7c243",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:02:00"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG49-R2-evidence/05-search-highlight.png",
+      "sha256": "a19544b7209249e448e5f18397c3b50f3eefe264e417bad01f838c8f447bf3c0",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:03:00"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG49-R2-evidence/06-restored-3items.png",
+      "sha256": "3d39697b55646213c96f902466564b34084eb9235ae81a13c264519aed0c3494",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T18:04:00"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "app/src/test/java/com/mov/android/memory/MemoryRowsTest.kt",
+      "sha256": "2045601205b1bd79f93dc5f1c7f92837fc8c329fd0e7833ebf414aa51c782120",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T17:07:00"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "app/src/test/java/com/mov/android/MemoryPageContractTest.kt",
+      "sha256": "035121302431983e5c24d98fb43e2fb8770580438a39f4cfd330e7cfd68d099b",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T17:07:00"
+    },
+    {
+      "evidence_id": "E-008",
+      "path": "app/src/main/java/com/mov/android/MemorySheet.kt",
+      "sha256": "466eedeb910a5ae798645233bc97702cdaffae1c242715a05486d71383db5979",
+      "producer": "程序员-C",
+      "created_at": "2026-09-01T17:07:00"
+    }
+  ]
+}

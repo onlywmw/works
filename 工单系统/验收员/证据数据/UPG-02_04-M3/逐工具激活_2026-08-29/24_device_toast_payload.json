@@ -1,0 +1,20 @@
+{
+ "tool": "device.toast",
+ "args": {
+  "message": "UPG02验收toast_0829"
+ },
+ "ts": "2026-08-29T17:02:49",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 94169,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, shown=UPG02验收toast_0829}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

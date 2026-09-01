@@ -1,0 +1,4 @@
+callers of setCameraCapture:
+callers of setOcrCapture:
+callers of setQrCapture:
+callers of setScreenCapture:

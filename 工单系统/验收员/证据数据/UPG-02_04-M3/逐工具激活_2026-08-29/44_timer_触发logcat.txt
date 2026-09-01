@@ -1,0 +1,6 @@
+08-29 09:02:27.752 V/WifiConnectivityManager(  710): schedulePeriodicScanTimer intervalMs 160000
+08-29 09:05:07.791 V/WifiConnectivityManager(  710): schedulePeriodicScanTimer intervalMs 160000
+08-29 09:07:47.895 V/WifiConnectivityManager(  710): schedulePeriodicScanTimer intervalMs 160000
+08-29 09:10:27.961 V/WifiConnectivityManager(  710): schedulePeriodicScanTimer intervalMs 160000
+08-29 09:13:07.993 V/WifiConnectivityManager(  710): schedulePeriodicScanTimer intervalMs 160000
+08-29 09:14:13.929 E/NotificationService(  710): No Channel found for pkg=com.mov.android, channelId=mov_general, id=2145556625, tag=null, opPkg=com.mov.android, callingUid=10257, userId=0, incomingUserId=0, notification

@@ -1,0 +1,17 @@
+# UPG-42 批1 L1 复跑（node --test）
+运行: node --test official-web/dev/tests/mov-page-server.test.mjs
+dir: mov-upg42
+---
+  duration_ms: 1.2549
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 785.6522
+exit=0

@@ -1,0 +1,27 @@
+﻿8 ： 09 囗
+新 对 话
+5G 0
+0
+Please run a shell command fo r me: echo
+he110_upg05_new—session using the
+shell.exec tool.
+审 批 请 求
+AI 请 求 执 行 ： shell.exec
+原 因 ： 默 认 权 限 ： shell.exec 超 出 安 全 范
+围 ， 请 求 允 许
+参 数 摘 要 ：
+command = echO
+heIIo-upg05-new-session
+60 秒 无 响 应 将 自 动 拒 绝 。
+允 许 本 轮
+DeepSeek V4...
+拒 绝
+允 许 本 次
+MCP 工 具 '
+0
+我
+0
+我
+我
+给 MO\/ 发 消 息 “
+内 容 由

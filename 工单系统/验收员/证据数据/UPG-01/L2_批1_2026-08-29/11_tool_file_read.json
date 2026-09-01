@@ -1,0 +1,16 @@
+{
+  "name": "file.read",
+  "description": "读取指定路径的文件内容（限沙盒根目录内，拒绝路径穿越）",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "文件路径"
+      }
+    },
+    "required": [
+      "path"
+    ]
+  }
+}

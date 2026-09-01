@@ -1,0 +1,8 @@
+{
+  "name": "device.network",
+  "description": "查询设备网络状态：在线/离线、网络类型（wifi/蜂窝/以太网）、是否计费网络。零权限只读。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

@@ -1,0 +1,7 @@
+# UPG-42 批1 L2 线上可达性验证（curl mow.kim）
+---
+llms.txt -> HTTP 200:1904
+spec.md -> HTTP 200:6603
+spec.html -> HTTP 200:13124
+quick-start.html -> HTTP 200:8821
+exit=0

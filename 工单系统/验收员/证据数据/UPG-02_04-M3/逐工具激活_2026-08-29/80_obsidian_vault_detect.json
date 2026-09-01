@@ -1,0 +1,18 @@
+{
+ "tool": "obsidian.vault.detect",
+ "args": {},
+ "ts": "2026-08-29T16:26:25",
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 91985,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "[code: TOOL_NOT_FOUND] 未知工具: obsidian.vault.detect"
+    }
+   ],
+   "isError": true
+  }
+ }
+}

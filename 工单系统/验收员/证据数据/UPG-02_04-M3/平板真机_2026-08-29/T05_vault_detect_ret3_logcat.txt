@@ -1,0 +1,314 @@
+--------- beginning of main
+08-29 17:13:33.645  3590  4101 D JavaheapMonitor: Java heap used=6M max=384M, proc: com.xiaomi.mi_connect_service:idm
+08-29 17:13:33.647  3590  4101 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:33.702  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+--------- beginning of system
+08-29 17:13:33.704  3128  3128 I wificond: station_bandwidth:  
+08-29 17:13:33.710  5847  5699 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:13:33.710  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:13:33.807  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:33.890 26677 26843 D JavaheapMonitor: Java heap used=3M max=512M, proc: com.miui.mediaeditor
+08-29 17:13:33.891 26677 26843 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:34.005  5626 22378 D TcpSocketTracker/114: data stall suspected, uids: {0, 10143, 10195, 10303, 10407}
+08-29 17:13:34.006  2759  2859 D ConnectivityService: Data stall detected with methods: 2
+08-29 17:13:34.007  5626 22378 D NetworkMonitor/114: isDataStall: result=2, tcp packets received=0, latest tcp fail rate=100, consecutive dns timeout count=0
+08-29 17:13:34.007  5626 22378 D NetworkMonitor/114: Suspecting data stall, reevaluate
+08-29 17:13:34.007  2759  4542 D MiuiNM  : L3 datastall on netId: 114, type: 2
+08-29 17:13:34.007  2759  4542 D WifiDfs : Try report event.
+08-29 17:13:34.007  2759  4542 D WifiDfs : Current priority is 2, last priority is 2
+08-29 17:13:34.007  2759  4542 D WifiDfs : Not timeout, should not report event.
+08-29 17:13:34.008  2759  4542 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1280 android.content.ContextWrapper.sendBroadcast:522 com.android.server.wifi.MiuiNetworkMonitor.sendBroadcastForNetwork:775 com.android.server.wifi.MiuiNetworkMonitor.notifyNetworkEmergency:733 com.android.server.wifi.MiuiNetworkMonitor.-$$Nest$mnotifyNetworkEmergency:0 
+08-29 17:13:34.008  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:34.011  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:13:34.012  7236 17622 E WcnsEventManager: network blocked
+08-29 17:13:34.006  7236  7236 W WcnsEventManage: type=1400 audit(0.0:2981821): avc:  denied  { read } for  name="u:object_r:wifi_hal_prop:s0" dev="tmpfs" ino=653 scontext=u:r:system_app:s0 tcontext=u:object_r:wifi_hal_prop:s0 tclass=file permissive=0
+08-29 17:13:34.013  7236  7994 W libc    : Access denied finding property "wifi.interface"
+08-29 17:13:34.014  7236  7994 E WcnsEventManager: Network diagnostic start
+08-29 17:13:34.021  7236 10262 E NetworkDiagnostics: Network diagnostics start
+08-29 17:13:34.064  2759  4220 W ActivityManagerServiceImpl: Sending non-protected broadcast miui.intent.action.CYCLE_CHECK from system uid 1000 pkg android. Callers=com.android.server.am.BroadcastController.checkBroadcastFromSystem:2218 com.android.server.am.BroadcastController.broadcastIntentLockedTraced:1703 com.android.server.am.BroadcastController.broadcastIntentLocked:857 com.android.server.am.BroadcastController.broadcastIntentInPackage:824 com.android.server.am.ActivityManagerService$LocalService.broadcastIntentInPackage:18692 
+08-29 17:13:34.065  2759  4220 D AlarmManager: mBroadcastRefCount -> 1
+08-29 17:13:34.080  2759  2759 E AlarmManager: not align this alarm: Alarm{5aa5102 type 2 origWhen 785554444 whenElapsed 785554444 android}, reason=0
+08-29 17:13:34.081  2759  2759 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:13:34.083  2759  2759 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:13:34.084  2759  2759 D AlarmManager: mBroadcastRefCount -> 0
+08-29 17:13:34.084  2759  2759 D AlarmManager: mPendingIntent -> PendingIntent{1842f06: PendingIntentRecord{4009c7 android broadcastIntent}}
+08-29 17:13:34.088  2759  2868 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:13:34.089  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/battery/temp value = 326
+08-29 17:13:34.091  2759  2868 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:13:34.092  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/battery/charge_control_limit value = 7
+08-29 17:13:34.143  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785524505881881, lux: 4.0
+08-29 17:13:34.145  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   3.9825,   0.0000,   0.0000>,time=785524505881881, sensor=5, temperature(K)=   0.0000
+08-29 17:13:34.145  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 3, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:13:34.148  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:13:34.158  7870 15512 D JavaheapMonitor: Java heap used=21M max=384M, proc: com.xiaomi.xmsf
+08-29 17:13:34.159  7870 15512 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:34.186  5626 10258 D NetworkMonitor/114: PROBE_DNS www.baidu.com 174ms OK 183.2.172.177,240e:ff:e020:98c:0:ff:b061:c306,240e:ff:e020:99b:0:ff:b099:cff1
+08-29 17:13:34.211  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:34.280  5626 10255 D NetworkMonitor/114: PROBE_DNS connect.rom.miui.com 269ms OK 220.181.104.183,202.69.4.32
+08-29 17:13:34.287  5626 10254 D NetworkMonitor/114: PROBE_DNS connect.rom.miui.com 274ms OK 202.69.4.32,220.181.104.183
+08-29 17:13:34.341  5626 10258 D NetworkMonitor/114: PROBE_HTTPS https://www.baidu.com time=152ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36]} headers={null=[HTTP/1.1 200 OK], Cache-Control=[private, no-cache, no-store, proxy-revalidate, no-transform], Connection=[close], Content-Type=[text/html], Date=[Sat, 29 Aug 2026 09:13:34 GMT], Pragma=[no-cache], Server=[bfe], Set-Cookie=[BDORZ=27315; max-age=86400; domain=.baidu.com; path=/], X-Android-Received-Millis=[1787994814340], X-Android-Response-Source=[NETWORK 200], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1787994814280]}
+08-29 17:13:34.346  5626 10252 D NetworkMonitor/114: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=338ms
+08-29 17:13:34.353  2759  4542 D WifiAssistant: handleNetworkValidationResult: 114 | true | true | true
+08-29 17:13:34.360  2759  4542 D WifiAssistant: getAssociatedWifiConfiguration: 114 | 14
+08-29 17:13:34.364  2759  4542 D WifiAssistant: getAssociatedWifiConfiguration: 114 | 14
+08-29 17:13:34.364  2759  4542 D WifiAssistant: maybeClearNotification: 114
+08-29 17:13:34.365  2759  4542 D WifiAssistant: maybeClearNotification: no eventId 114
+08-29 17:13:34.365  2759  4542 D WifiAssistant: handleNetworkValidationResult: abort for validated: true, hasDone: false
+08-29 17:13:34.365  2759  4542 D MiuiWifiRecoveryEngine: network: 114 ,valid: true ,type: 0
+08-29 17:13:34.365  2759  4542 D ConnectivityService: [114 WIFI] validation passed
+08-29 17:13:34.366  2759  4542 D AmlWifiScoreReportInjector: suspect data stall: false actual:false
+08-29 17:13:34.367  7236 10262 W BpBinder: PerfMonitor binderTransact: time=342ms interface=android.net.wifi.IMiuiWifiManager code=91
+08-29 17:13:34.367  7236 10262 E NetworkDiagnostics: type=null ret=false trace=  TYPE=null
+08-29 17:13:34.371  7236 10262 E NetworkDiagnostics: Network diagnostics end
+08-29 17:13:34.372  7236  7994 E WcnsEventManager: Network diagnostic end
+08-29 17:13:34.374  5626 10254 D NetworkMonitor/114: PROBE_HTTP http://connect.rom.miui.com/generate_204 time=85ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36]} headers={null=[HTTP/1.1 204 No Content], Connection=[close], Date=[Sat, 29 Aug 2026 09:13:34 GMT], Server=[MiFE/3.5.10], X-Android-Received-Millis=[1787994814373], X-Android-Response-Source=[NETWORK 204], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1787994814333]}
+08-29 17:13:34.414  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:34.486  5626 10255 D NetworkMonitor/114: PROBE_HTTPS https://connect.rom.miui.com/generate_204 Probe failed with exception java.io.InterruptedIOException: thread interrupted
+08-29 17:13:34.617  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:34.626  5253 14488 D JavaheapMonitor: Java heap used=7M max=384M, proc: com.xiaomi.bluetooth
+08-29 17:13:34.628  5253 14488 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:34.647  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785524705804433, lux: 2.0
+08-29 17:13:34.647  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785524905884224, lux: 3.0
+08-29 17:13:34.650  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785524705804433, sensor=5, temperature(K)=   0.0000
+08-29 17:13:34.650  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 3, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:13:34.650  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785524905884224, sensor=5, temperature(K)=   0.0000
+08-29 17:13:34.650  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:13:34.818  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:35.020  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:35.222  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:35.424  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:35.425  2759  2892 D JavaheapMonitor: Java heap used=182M max=512M, proc: system_server
+08-29 17:13:35.425  2759  2892 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+08-29 17:13:35.541  5626  5722 D JavaheapMonitor: Java heap used=6M max=384M, proc: com.android.networkstack.process
+08-29 17:13:35.541  5626  5722 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:35.623  2759  2892 I ThermalObserver: Temperature control has been released.
+08-29 17:13:35.626  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:35.829  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:35.921  5241  6253 D JavaheapMonitor: Java heap used=31M max=512M, proc: com.miui.home
+08-29 17:13:35.921  5241  6253 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:35.922 31570 32258 D JavaheapMonitor: Java heap used=10M max=512M, proc: com.android.camera
+08-29 17:13:35.923 31570 32258 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:36.035  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:36.238  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:36.444  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:36.602  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:13:36.604  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:13:36.604  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:13:36.604  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 17:13:36.606  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:13:36.647  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:36.729  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:13:36.731  3128  3128 I wificond: station_bandwidth:  
+08-29 17:13:36.743  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:13:36.744  5847  5699 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:13:36.744  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:13:36.753  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 17:13:36.754  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 17:13:36.754  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:13:36.757  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 17:13:36.758  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 17:13:36.759  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 17:13:36.761  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 17:13:36.763 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 17:13:36.763 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 17:13:36.763  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 17:13:36.765  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 17:13:36.769  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=çš®**5G}
+08-29 17:13:36.769  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 17:13:36.770 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 17:13:36.771 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 17:13:36.771  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 17:13:36.772  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 17:13:36.774  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=10993Kbps LinkDnBandwidth>=269064Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -55, Link speed: 2401Mbps, Tx Link speed: 2401Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 2401Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -55 UnderlyingNetworks: Null]
+08-29 17:13:36.849  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:37.051  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:37.153  2759  4515 I MiuiNetworkPolicy: bandwidth: 1 KB/s, Max bandwidth: 830 KB/s
+08-29 17:13:37.253  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:37.459  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:37.662  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:37.679 15875 17138 D JavaheapMonitor: Java heap used=5M max=384M, proc: com.milink.service:audio
+08-29 17:13:37.679 15875 17138 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:37.865  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:38.005  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:13:38.006  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:13:38.068  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:38.273  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:38.475  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:38.556  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.5/s) Done(0.000/s Avg=1.499/s)| Stream: 24.00fps 2.4Mbps
+08-29 17:13:38.557  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 17:13:38.605 26455 27395 D JavaheapMonitor: Java heap used=7M max=512M, proc: cn.wps.moffice_eng.xiaomi.lite
+08-29 17:13:38.607 26455 27395 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:38.678  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:38.685 22473  7502 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.android.deskclock
+08-29 17:13:38.687 22473  7502 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:13:38.881  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:38.936  8397  8397 E adbd    : failed to connect to socket 'tcp:8389': Connection refused
+08-29 17:13:38.937  8397  8397 I adbd    : in ShellService: input tap 1016 2949
+08-29 17:13:38.988  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787994786823188800 end obsidian.vault.detect
+08-29 17:13:38.994  2759  5601 W MIUIInput: Input event injection from package: null action ACTION_DOWN
+08-29 17:13:38.995  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600011035, channel 'aefe834 com.google.android.documentsui/com.android.documentsui.picker.PickActivity'
+08-29 17:13:38.995  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600011035, channel '[Gesture Monitor] WMShell'
+08-29 17:13:38.996  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600011035, channel '[Gesture Monitor] swipe-up'
+08-29 17:13:38.996  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x0, deviceId=-1, 600011035, channel '[Gesture Monitor] miui-gesture'
+08-29 17:13:38.997  5911  6158 D MiuiInfinityModeThermalArea: onInputEvent action=0
+08-29 17:13:38.997  5911  6158 D MiuiInfinityModeThermalArea: freeformHotSpotDetection isInFreeform:false
+08-29 17:13:38.997  5911  6158 D MiuiFreeformModeGestureHandler: start handle MotionEvents:(1016.0,2949.0)
+08-29 17:13:38.997  5911  6158 D MiuiFreeformModeGestureHandler: handleMotionEvents mActiveMiuiFreeformTask null x: 1016.0 y: 2949.0 current miuiFreeformModeTaskInfo: 
+08-29 17:13:38.997  5911  6158 D MultiTaskingTaskRepository: getTopFullscreenTaskInfo: taskId=3585 windowingMode=1 isVisible=true isTopActivityTransparent=false
+08-29 17:13:38.998  5241  5241 D MiuiPadHome_GestureInputHelper: onInputEvent action=ACTION_DOWN
+08-29 17:13:38.998  5911  6158 D MiuiDecorationDot: isTouchedInTopCaption: taskId = 3585,  captionTouchRegion = RectF(938.5, 0.0, 1093.5, 101.0) pointRelativeToTask=PointF(1016.0, 2949.0) isSplitTask=false eventX=1016.0 eventY=2949.0
+08-29 17:13:38.998  5911  6158 D MiuiDecorationDot: isTouchedInTopCaption: taskId = 3585, point not in captionTouchRegion
+08-29 17:13:38.998  5911  6158 D MulWinSwitchEventHandler: dispatchToFullOrSplitDecorationDot: touchedTaskId=-1
+08-29 17:13:38.998  5911  6158 D MulWinSwitchEventHandler: handleReceivedMotionEvent: mTouchedBottomTaskId=-1
+08-29 17:13:38.998  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:13:39.000  5241  5241 W RecentsModel: getRunningTaskContainHome containHome : true
+08-29 17:13:39.000  2322  2322 D MI-SF   : setIdleFps choose FPS:50, mode:0
+08-29 17:13:39.000  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:13:39.000  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:13:39.000  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:13:39.000  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:13:39.000  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:13:39.000  2322  2322 D DisplayModeController: setDesiredMode 4630947038039379843 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-29 17:13:39.000 24865 24865 I MIUIInput: [MotionEvent] ViewRootImpl windowName 'com.google.android.documentsui/com.android.documentsui.picker.PickActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=600011035, downTime=600011035, phoneEventTime=17:13:38.993 } moveCount:0
+08-29 17:13:39.001  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:13:39.001 24865 24865 D VRI[PickActivity]: getMiuiFreeformStackInfo mTmpFrames.miuiFreeFormStackInfo: null
+08-29 17:13:39.003  2121  2700 I SDM     : HWCFunctionTimer::noticeTimerFps: displayid:65, fps: 120
+08-29 17:13:39.003  2121  2700 I SDM     : HWCDisplay::SetActiveConfigWithConstraints: display:65-0, config: 0, WxH 3048x2032, fps 120
+08-29 17:13:39.004  5241  5241 W RecentsModel: getRunningTask return tasks.get(0)= TaskInfo{userId=0 taskId=3585 effectiveUid=10429 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.mov.android/.MainActivity } baseActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} topActivity=ComponentInfo{com.google.android.documentsui/com.android.documentsui.picker.PickActivity} origActivity=null realActivity=ComponentInfo{com.mov.android/com.mov.android.MainActivity} numActivities=2 lastActiveTime=785377713 supportsSplitScreenMultiWindow=true mSoScDisplayMode=-1 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=200 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@b360378} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{1de3a51 com.android.documentsui.picker.PickActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(501, 632 - 1531, 2462) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false topActivityInMiuiSizeCompat=false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 2032, 3048) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} isImmersive=false mTopActivityRequestOrientation=-1 mStatusBarParent=null mNavBarParent=null mBehindAppLockPkg=null mOriginatingUid=0 isEmbedded=false shouldBeVisible=true isCreatedByOrganizer=false mIsCastMode=false mTopActivityMediaSize=Rect(0, 0 - 0, 0) mTopActivityRecordName=ActivityRecord{24389185 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity t3585} mTopActivityOrientation=-1 topActivityMainWindowFrame=null}
+08-29 17:13:39.004  5241  5241 D MiuiPadHome_GestureModeApp: isReadyToQuickSwitch11Mode: 1
+08-29 17:13:39.004  2121  2700 W SDM     : HWDeviceDRM::GetSupportedBitClkRate: Requested rate not supported: 1190090000
+08-29 17:13:39.005  2121  2700 I SDM     : HWDeviceDRM::UpdateMixerAttributes: Mixer WxH 3048x2032-1 for Peripheral
+08-29 17:13:39.005  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active configuration changed from config 4 to 0
+08-29 17:13:39.005  2121  2700 I SDM     : HWCDisplay::SubmitDisplayConfig: Active WxH 3048x2032 ,ddic_mode:normal, timing_fps: 120, sf_fps: 120
+08-29 17:13:39.005  2759  2878 D MiuiMultiWindowServiceImpl: Event x is in dot region, fullscreenTask=Task{41d426d #3585 type=standard A=10429:com.mov.android}
+08-29 17:13:39.006  2759  2878 D WindowManager: on down in dot capation bar
+08-29 17:13:39.008  2121  2224 I SDM     : HWDeviceDRM::SetDisplaySwitchMode: Mode 0 already set
+08-29 17:13:39.008  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:13:39.008  5241  5241 D GestureModeHelper: isGoogleOverlay=false   process=-1.0   isUseGoogleMinusScreenMode=false
+08-29 17:13:39.009  5241  5241 D MiuiPadHome_GestureModeApp: isReadyToQuickSwitch11Mode: 1
+08-29 17:13:39.009  5241  5241 D GestureModeHelper: createGes11tureMode: false===false===false===false===false===false
+08-29 17:13:39.009  5241  5241 D MiuiPadHome_GestureModeApp: isReadyToQuickSwitch11Mode: 1
+08-29 17:13:39.009  5241  5241 D MiuiPadHome_GestureInputHelper: onInputEvent, lastGestureMode=com.miui.home.recents.GestureModeApp@cb9a6e1, newGestureMode=com.miui.home.recents.GestureModeApp@cb9a6e1
+08-29 17:13:39.009  5241  5241 D MiuiPadHome_GestureMode: setGestureTouchE1ventTracker: com.miui.home.recents.GestureTouchEventTracker@31a1caf
+08-29 17:13:39.009  2759  4893 I ProcessManager: getRenderThreadTidByPid, caller=2759
+08-29 17:13:39.011  2759  5601 W MIUIInput: Input event injection from package: null action ACTION_UP
+08-29 17:13:39.011  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600011035, channel 'aefe834 com.google.android.documentsui/com.android.documentsui.picker.PickActivity'
+08-29 17:13:39.011  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600011035, channel '[Gesture Monitor] WMShell'
+08-29 17:13:39.011  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600011035, channel '[Gesture Monitor] swipe-up'
+08-29 17:13:39.011  2759  4242 I MIUIInput: [MotionEvent] publisher action=0x1, deviceId=-1, 600011035, channel '[Gesture Monitor] miui-gesture'
+08-29 17:13:39.012 24865 24865 I HandWritingStubImpl: setCurrentKeyboardType: 1
+08-29 17:13:39.012 24865 24865 I MIUIInput: [MotionEvent] ViewRootImpl windowName 'com.google.android.documentsui/com.android.documentsui.picker.PickActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=600011035, downTime=600011035, phoneEventTime=17:13:38.993 } moveCount:0
+08-29 17:13:39.014  5241  5241 D GestureTouchEventTracker: use Rotation : displayRotation = 1
+08-29 17:13:39.014  5241  5241 I GestureTouchEventTracker: initValues: isDockNeedFollowGesture=true
+08-29 17:13:39.014  5241  5241 D Dock_MainStateManager: appState onDown
+08-29 17:13:39.014  5241  5241 D MiuiPadHome_GestureModeApp: WithoutDock, runningTaskTopActivityComponentName=com.android.documentsui.picker.PickActivity, withoutDock=false
+08-29 17:13:39.014  5241  5241 I MiuiPadHome_GestureInputHelper: onInputEvent: mIsUseNewDock = true getDockController =  +true
+08-29 17:13:39.014  5241  5241 D MiuiPadHome_GestureInputHelper: mIsStartGesture is false, mIsUseNewDock is true, isTouchCountAndHotSeatSupport is truemGestureMode = com.miui.home.recents.GestureModeApp@cb9a6e1
+08-29 17:13:39.015  5241  5241 D MiuiPadHome_GestureInputHelper: onInputEvent action=ACTION_UP
+08-29 17:13:39.015  5241  5241 D Dock_GlobalGestureDispatcher: dispatchUp 10
+08-29 17:13:39.015  5241  5241 D LauncherOrientationController: requestedOrientation -1 post delay=1000
+08-29 17:13:39.015  5241  5241 D GestureTouchEventTracker: stopTailCatcher
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: onTouchEvent: ACTION_UP
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: mPivotLocX=1016	mFollowTailX=1016.0	deltaTailX=0.0
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: mPivotLocY=3048	mFollowTailY=3048.0	deltaTailY=0.0
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: mVelocityPxPerMs=PointF(0.0, 0.0)	XY=0.0
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: mDownY=2949.0	mWindowMoveStartY=2949.0	mCurrentY=2817.7998
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: mDownX=1016.0	mWindowMoveStartX=1016.0	mCurrentX=577.5996
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: isSafeArea=true
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: isSafeArea(mWindowMoveStartY - mCurrentY)=131.2002
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: isSafeArea2(mDownY - mCurrentY)=131.2002
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: isDockNotShowedInApp=false
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: isLeaveSafeArea=false
+08-29 17:13:39.016  5241  5241 I GestureTouchEventTracker: mUpType=10
+08-29 17:13:39.016  5241  5241 D MiuiPadHome_GestureInputHelper: mIsStartGesture is false, mIsUseNewDock is true, isTouchCountAndHotSeatSupport is truemGestureMode = com.miui.home.recents.GestureModeApp@cb9a6e1
+08-29 17:13:39.019  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:13:39.019  2759  2880 I MiuiSplitInputMethodImpl: Skip onPointerDownOutsideFocusLocked
+08-29 17:13:39.027 10291 10291 I MOVTEST : MOVTEST_MARK_1787994786823188800 end obsidian.vault.detect
+08-29 17:13:39.027  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.036 24865 24865 W WindowOnBackDispatcher: OnBackInvokedCallback is not enabled for the application.
+08-29 17:13:39.036 24865 24865 W WindowOnBackDispatcher: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+08-29 17:13:39.030  2322  2322 W binder:2322_2: type=1400 audit(0.0:2981822): avc:  denied  { search } for  name="mcd" dev="dm-56" ino=574 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+08-29 17:13:39.043  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:13:39.043  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:13:39.043  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:13:39.043  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:13:39.045  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.052 24865 24865 D DecorView: updateFreeformOutlineFromActivity, inFreeform=false,inFreeformWindowMode=false
+08-29 17:13:39.053  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.056 24865 24865 D ScrollerOptimizationManager: registerConfigChangedListener
+08-29 17:13:39.058 24865 24865 D ScrollerOptimizationManager: registerConfigChangedListener
+08-29 17:13:39.063 24865  8634 D HWUI    : TAG_DDRE, CanvasContext::setDdreActivities: 
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.069  2759  5601 I MiuiSplitInputMethodImpl: Skpi check shouldUpdateImeTargetForBackScreen.
+08-29 17:13:39.070  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.071  2759  5601 D BarFollowAnimation: reparentCaptionBar2Task reparent caption to task
+08-29 17:13:39.071  2759  5601 D BarFollowAnimation: onAppTaskBarLeashCreate task=Task{41d426d #3585 type=standard A=10429:com.mov.android}
+08-29 17:13:39.072  2759  5601 D BarFollowAnimation: reparentCaptionBar2StatusBarLeash topwindow=Window{aefe834 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity}
+08-29 17:13:39.072  2759  5601 D WindowManager: wms.Input focus has changed to Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} display=0 updateInputWindows = false
+08-29 17:13:39.072  2759  5601 I MultiSenceManagerInternalStub: getInstance
+08-29 17:13:39.073  2759  4914 I MultiSenceManagerInternalStubImpl: packageName = com.google.android.documentsui
+08-29 17:13:39.073  2759  2881 D WindowManager: wms.Focus not requested for window=Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} because it has no surface or is not focusable.
+08-29 17:13:39.073  2759  4914 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1280 com.android.server.wm.MultiSenceManagerInternalStubImpl.sendFocusWindowsBroadcast:151 com.android.server.wm.MultiSenceManagerInternalStubImpl$UpdateScreenStatus.run:96 android.os.Handler.handleCallback:1029 android.os.Handler.dispatchMessage:107 
+08-29 17:13:39.074 24865 24865 I ComputilityLevel: getComputilityLevel(): 4
+08-29 17:13:39.074  2759  4914 W ActivityManagerServiceImpl: Sending non-protected broadcast com.xiaomi.multisence.action.FOCUSED_CHANGE from system 2759:system/1000 pkg android. Callers=com.android.server.am.BroadcastController.checkBroadcastFromSystem:2218 com.android.server.am.BroadcastController.broadcastIntentLockedTraced:1703 com.android.server.am.BroadcastController.broadcastIntentLocked:857 com.android.server.am.BroadcastController.broadcastIntentWithFeature:779 com.android.server.am.ActivityManagerService.broadcastIntentWithFeature:15832 
+08-29 17:13:39.075  2759  5601 D CoreBackPreview: Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@fa13d29, mPriority=0, mIsAnimationCallback=false, mOverrideBehavior=0}
+08-29 17:13:39.076  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.powerkeeper, stopped=false, firstLaunch=false
+08-29 17:13:39.077  2759  5601 W AppCompatLetterboxPolicy: start not layout letterbox Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity}
+08-29 17:13:39.078  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.078  2759  5601 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{aefe834 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} 8
+08-29 17:13:39.078  2759  5601 D MiuiRefreshRatePolicy: reset
+08-29 17:13:39.080 24865 24865 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-29 17:13:39.080 24865 24865 W libc    : Access denied finding property "vendor.gpp.create_frc_extension"
+08-29 17:13:39.080 24865 24865 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-29 17:13:39.080 24865 24865 W libc    : Access denied finding property "vendor.gpp.create_frc_extension"
+08-29 17:13:39.074 24865 24865 W oid.documentsui: type=1400 audit(0.0:2981823): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=505 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.google.android.documentsui
+08-29 17:13:39.074 24865 24865 W oid.documentsui: type=1400 audit(0.0:2981824): avc:  denied  { read } for  name="u:object_r:vendor_frc_prop:s0" dev="tmpfs" ino=516 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:vendor_frc_prop:s0 tclass=file permissive=0 app=com.google.android.documentsui
+08-29 17:13:39.074 24865 24865 W oid.documentsui: type=1400 audit(0.0:2981825): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=505 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.google.android.documentsui
+08-29 17:13:39.074 24865 24865 W oid.documentsui: type=1400 audit(0.0:2981826): avc:  denied  { read } for  name="u:object_r:vendor_frc_prop:s0" dev="tmpfs" ino=516 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:vendor_frc_prop:s0 tclass=file permissive=0 app=com.google.android.documentsui
+08-29 17:13:39.082 24865 24865 D VRI[PickActivity]: vri.reportNextDraw 0 Rect(284, 1325 - 1747, 1768) android.view.ViewRootImpl.performTraversals:5606 android.view.ViewRootImpl.doTraversal:4159 android.view.ViewRootImpl$TraversalRunnable.run:12555 android.view.Choreographer$CallbackRecord.run:2040 android.view.Choreographer$CallbackRecord.run:2049 
+08-29 17:13:39.083 24865 24865 D VRI[PickActivity]: vri.Setup new sync=wmsSync-VRI[PickActivity]#6
+08-29 17:13:39.083  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:13:39.085 24865 24865 D VRI[PickActivity]: vri.reportDrawFinished 0 0 Rect(284, 1325 - 1747, 1768)
+08-29 17:13:39.085 24865 24865 E NativeTurboSchedManagerJni: open /dev/metis failed!
+08-29 17:13:39.085 24865 24865 E NativeTurboSchedManagerJni: open /dev/metis failed!
+08-29 17:13:39.086  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:13:39.086  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.086  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:13:39.086  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:13:39.086  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:13:39.086 24865  8634 D HWUI    : [HWUI] Flag vulkan_enhance_pipeline_cache enabled
+08-29 17:13:39.086 24865  8634 D HWUI    : [HWUI] EnhanceVkPipelineCache is disabled
+08-29 17:13:39.086 24865  8634 D HWUI    : [HWUI] Flag ddre enabled
+08-29 17:13:39.088  2759  5995 D WindowManager: wms.finishDrawingLocked: mDrawState=COMMIT_DRAW_PENDING Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} in Surface(name=com.google.android.documentsui/com.android.documentsui.picker.PickActivity#33819)/@0x1bad64f
+08-29 17:13:39.088  2759  2881 I DisplayPolicyStubImpl: com.android.server.wm.WindowState hide ime, enable touchboost
+08-29 17:13:39.089  2759  2881 I DisplayPolicyStubImpl: com.android.server.wm.WindowState hide ime, enable touchboost
+08-29 17:13:39.089  2759  2881 W AppCompatLetterboxPolicy: start not layout letterbox Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity}
+08-29 17:13:39.089  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{aefe834 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} 8
+08-29 17:13:39.090  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:13:39.090  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:13:39.090  2759  2881 D WindowManager: wms.commitFinishDrawingLocked: mDrawState=READY_TO_SHOW Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} in Surface(name=com.google.android.documentsui/com.android.documentsui.picker.PickActivity#33819)/@0x1bad64f
+08-29 17:13:39.093  2759  2881 W AppCompatLetterboxPolicy: start not layout letterbox Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity}
+08-29 17:13:39.093  2759  2881 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{aefe834 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} 8
+08-29 17:13:39.093  2759  2881 D MiuiRefreshRatePolicy: reset
+08-29 17:13:39.094  2759  2881 I WindowManager: wms.showSurfaceRobustly mWin:Window{db0e4d6 u0 com.google.android.documentsui/com.android.documentsui.picker.PickActivity} in Surface(name=com.google.android.documentsui/com.android.documentsui.picker.PickActivity#33819)/@0x1bad64f
+08-29 17:13:39.094  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.095  2759  2881 D SystemPerformanceHinter: startSession#HighPerfSession-d0-WindowAnimation
+08-29 17:13:39.103  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:13:39.111  2322  2322 D RefreshRateSelector: Touch Boost
+08-29 17:13:39.111  2322  2322 D MI-SF   : modeGroup0 mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 2047(0), mIsKeepAutoMode 0 isAutoModeAllowed() 1
+08-29 17:13:39.111  2322  2322 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-29 17:13:39.111  2322  2322 D RefreshRateSelector: find max refresh rate:120, mode Group:0
+08-29 17:13:39.112  2121  2694 W SDM-histogram: Discarding event blob-id: C9

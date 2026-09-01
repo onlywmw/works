@@ -1,0 +1,17 @@
+{
+ "tool": "device.storage",
+ "args": {},
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 42,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{internalFreeBytes=4930056192, internalTotalBytes=6228115456, externalFreeBytes=4930056192, externalTotalBytes=6228115456, ok=true}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

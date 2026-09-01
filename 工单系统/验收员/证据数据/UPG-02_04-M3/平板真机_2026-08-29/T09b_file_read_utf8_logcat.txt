@@ -1,0 +1,18 @@
+--------- beginning of main
+08-29 17:23:10.177  2759  4515 D MiuiNetworkPolicy: updateLimit mLimitEnabled=true,enabled=false,mNetworkPriorityMode=1,mThermalForceMode=0
+08-29 17:23:10.183  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:10.186  2759  4515 I MiuiNetworkPolicy: getDisableLimitTimeout when thermal mode is:0
+08-29 17:23:10.273  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995389955095600 start obsidian.file.read
+08-29 17:23:10.304 12022 12022 I MOVTEST : MOVTEST_1787995389955095600 start obsidian.file.read
+08-29 17:23:10.333  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:23:10.385  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+--------- beginning of system
+08-29 17:23:10.434  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{91308a3 com.termux/10304} BLOCKED
+08-29 17:23:10.436  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{44c3ff1 com.tencent.qqlive/10419} BLOCKED
+08-29 17:23:10.437  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{d8117b5 com.tencent.news/10423} BLOCKED
+08-29 17:23:10.437  2759  6582 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{bfb0498 com.google.android.documentsui/10091} BLOCKED
+08-29 17:23:10.488  7122  6758 D MediaProvider: Open with FUSE. FilePath: /storage/emulated/0/Documents/MovTestVault/验收测试笔记-平板.md. Uid: 10086. Media Capabilities Uid: 0. ShouldRedact: false. ShouldTranscode: false
+08-29 17:23:10.531  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_1787995389955095600 end obsidian.file.read
+08-29 17:23:10.562 12028 12028 I MOVTEST : MOVTEST_1787995389955095600 end obsidian.file.read
+08-29 17:23:10.588  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:23:10.601  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

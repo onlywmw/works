@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":1,"result":{"content":[{"type":"text","text":"{ok=false, error=模型未下载（model.gguf/mmproj.gguf 不在 /data/user/0/com.mov.android/files/models/unlimited-ocr）。请先下载模型。}"}],"isError":false}}

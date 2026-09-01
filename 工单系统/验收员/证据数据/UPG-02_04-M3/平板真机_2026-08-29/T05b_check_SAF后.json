@@ -1,0 +1,2 @@
+{"jsonrpc":"2.0","id":20,"result":{"content":[{"type":"text","text":"{ok=true, registered=false, hint=未登记 vault——先调用 obsidian.vault.detect 授权}"}],"isError":false}}
+HTTP 200

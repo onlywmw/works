@@ -1,0 +1,26 @@
+{
+  "name": "scene.trainQuery",
+  "description": "查询 12306 余票车次：日期/出发/到达站，返回车次、时间、历时、各席别票价与余票。用于出行规划。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "date": {
+        "type": "string",
+        "description": "查询日期 yyyy-MM-dd，如 2026-08-26"
+      },
+      "fromStation": {
+        "type": "string",
+        "description": "出发站中文名或站码，如 北京"
+      },
+      "toStation": {
+        "type": "string",
+        "description": "到达站中文名或站码，如 上海"
+      }
+    },
+    "required": [
+      "date",
+      "fromStation",
+      "toStation"
+    ]
+  }
+}

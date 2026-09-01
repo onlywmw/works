@@ -1,0 +1,109 @@
+--------- beginning of main
+08-29 17:21:28.403  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995287901023400 start obsidian.file.write
+08-29 17:21:28.434 11846 11846 I MOVTEST : MOVTEST_MARK_1787995287901023400 start obsidian.file.write
+08-29 17:21:28.449  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:28.492  8397  8397 I adbd    : in ShellService: run-as com.mov.android cat files/mcp_token.txt
+08-29 17:21:28.582  7133 14507 D JavaheapMonitor: Java heap used=7M max=512M, proc: com.miui.voiceassist:core
+08-29 17:21:28.589  7133 14507 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+--------- beginning of system
+08-29 17:21:28.618  2759  5995 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{91308a3 com.termux/10304} BLOCKED
+08-29 17:21:28.619  2759  5995 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{44c3ff1 com.tencent.qqlive/10419} BLOCKED
+08-29 17:21:28.619  2759  5995 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{d8117b5 com.tencent.news/10423} BLOCKED
+08-29 17:21:28.620  2759  5995 I AppsFilter: interaction: PackageSetting{d8a711c com.mov.android/10429} -> PackageSetting{bfb0498 com.google.android.documentsui/10091} BLOCKED
+08-29 17:21:28.624  2759  4869 I SmartPower: com.kugou.android.lite/10407(7835): background->idle(3002ms) R(content provider start ContentProviderRecord{bc1289f u0 com.kugou.android.lite/com.kugou.common.database.CommonProvider}) adj=200.
+08-29 17:21:28.629  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.4/s) Done(0.000/s Avg=1.434/s)| Stream: 24.00fps 2.4Mbps
+08-29 17:21:28.629  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 17:21:28.629  2759  5995 I SmartPower: com.android.externalstorage/10086(9010): idle->background(54574ms) R(content provider start ContentProviderRecord{9e6b042 u0 com.android.externalstorage/.ExternalStorageProvider}) adj=0.
+08-29 17:21:28.636 22231 22231 D HidDeviceService: handleMessage(): msg.what=8
+08-29 17:21:28.637  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10086, uidState = 3
+08-29 17:21:28.645  2759  4515 I MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic uid=10086,add=true
+08-29 17:21:28.645  2759  4515 D MiuiNetworkPolicyTrafficLimit: updateWhiteListUidForMobileTraffic rst=true
+08-29 17:21:28.650  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:28.667  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:21:28.668  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:54
+08-29 17:21:28.668  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:21:28.668  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:54
+08-29 17:21:28.669  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:21:28.677  7122  7672 W MediaProvider: isAppCloneUserPair for user 0: false
+08-29 17:21:28.678  7122  7672 W MediaProvider: isAppCloneUserPair for user 0: false
+08-29 17:21:28.694  7122  7303 V MediaProvider: Created relation b/w 456 and com.android.externalstorage::0
+08-29 17:21:28.709  7122  7122 I MediaProvider: receive action = android.intent.action.MEDIA_SCANNER_SCAN_FILE schemeSpecificPart = ///storage/emulated/0/Documents/MovTestVault/���ղ��Աʼ�-ƽ��.md
+08-29 17:21:28.710  2759  2897 D MiuiEmbeddingWindow: MiuiEmbeddingWindowService: updateApplicationInfo for com.miui.securitycore, blacklistedAppRunningOnPhone updated: clear
+08-29 17:21:28.710  2759  5995 W JobInfo : Job 'com.android.providers.media.module/com.android.providers.media.MediaService#-300' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+08-29 17:21:28.710  8078  8461 I PermissionManagerProvider: call method : 14 Binder.getCallingUid() 10200 Binder.getCallingUid() 8078
+08-29 17:21:28.711  2759  2897 I ActivityManager: Posting procStart msg for 0:com.miui.securitycore.remote/1000
+08-29 17:21:28.711  2759  2898 W ActivityManager: Unknown package:com.xiaomi.aiservice
+08-29 17:21:28.717  2759  5995 D ActivityManager: Logging bindService for com.android.providers.media.module, stopped=false, firstLaunch=false
+08-29 17:21:28.717  2759  5995 I whetstone.activity: Power Event callback listener is empty for resId=256
+08-29 17:21:28.717  2759  5995 D BatteryStatsManagerStub: notifyEvent for resId=256 used 0ms
+08-29 17:21:28.718  2759  6323 D BroadcastQueue: Logging broadcast for com.android.providers.media.module, stopped=false, firstLaunch=false
+08-29 17:21:28.721  7122  8703 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1000010 xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+08-29 17:21:28.724  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:21:28.733  1895  1895 D Zygote  : Forked child process 11851
+08-29 17:21:28.734  2759  2898 D MiuiProcessPolicyManager: promote com.miui.securitycore.remote maxAdj to svcb  , maxProcState to + PER 
+08-29 17:21:28.735  7122  8703 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1000010 xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+08-29 17:21:28.735  2759  2898 I ActivityManager: Start proc 11851:com.miui.securitycore.remote/1000 for broadcast {com.miui.securitycore/com.miui.xspace.receiver.MediaScannerReceiver} caller=com.android.externalstorage
+08-29 17:21:28.735  2759  2898 I ActivityManager: ProcessObserver broadcast disabled
+08-29 17:21:28.737  2759  6323 I whetstone.activity: Power Event callback listener is empty for resId=256
+08-29 17:21:28.737  2759  6323 D BatteryStatsManagerStub: notifyEvent for resId=256 used 1ms
+08-29 17:21:28.737 11851 11851 E Zygote  : process_name_ptr:11851 com.miui.securitycore.remote
+08-29 17:21:28.737 11851 11851 E Zygote  : SetMemoryProtected process_name_ptr:11851 com.miui.securitycore.remote
+08-29 17:21:28.739  2759  6323 I ActivityManager: unbindService com.android.server.am.ActiveServices@4d8afd3 conn=android.app.LoadedApk$ServiceDispatcher$InnerConnection@2763c62 callingPid=2759 callers: com.android.server.job.JobServiceContext.handleFinishedLocked:1412 com.android.server.job.JobServiceContext.doCallbackLocked:1288 com.android.server.job.JobServiceContext.doDequeueWork:938 com.android.server.job.JobServiceContext$JobCallback.dequeueWork:305 android.app.job.IJobCallback$Stub.onTransact:289 android.os.Binder.execTransactInternal:1428 android.os.Binder.execTransact:1372 <bottom of call stack> <bottom of call stack> <bottom of call stack> 
+08-29 17:21:28.750 11851 11851 I ritycore.remote: Using CollectorTypeCC GC.
+08-29 17:21:28.755 11851 11851 E ritycore.remote: Not starting debugger since process cannot load the jdwp agent.
+08-29 17:21:28.756  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787995287901023400 end obsidian.file.write
+08-29 17:21:28.759 11851 11851 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+08-29 17:21:28.762  2759  5995 D MiuiForceVkService: shouldUseVk, pkg=com.miui.securitycore useVk 0
+08-29 17:21:28.762 11851 11851 I ActivityThread: Current dynamic renderEngine type=0
+08-29 17:21:28.767  2759  5995 I SmartPower: com.miui.securitycore.remote/1000(11851): died->invisible(182395692ms) R(process start ) adj=-10000.
+08-29 17:21:28.768  2759  5995 D CompatibilityInfo: mCompatibilityFlags - 4
+08-29 17:21:28.768  2759  5995 D CompatibilityInfo: applicationDensity - 400
+08-29 17:21:28.768  2759  5995 D CompatibilityInfo: applicationScale - 1.0
+08-29 17:21:28.774 11851 11872 D MiuiDownscaleImpl: set override inverted scale : 1.0
+08-29 17:21:28.776 11851 11851 I RENDER_TURBO: onActivityThreadCreate not in white list, pkg=com.miui.securitycore.remote, type=sheng
+08-29 17:21:28.779 11851 11851 D ActivityThread: setEmbeddedParam packageName=com.miui.securitycore processName=com.miui.securitycore.remote isEmbedded=false isIsolated=false
+08-29 17:21:28.782 11851 11851 D nativeloader: Configuring clns-10 for other apk /system_ext/app/miuisystem/miuisystem.apk. target_sdk_version=35, uses_libraries=ALL, library_path=/product/app/SecurityCoreAdd/lib/arm64:/product/app/SecurityCoreAdd/SecurityCoreAdd.apk!/lib/arm64-v8a:/system_ext/app/miuisystem/miuisystem.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.miui.securitycore
+08-29 17:21:28.782 11851 11851 D nativeloader: Extending system_exposed_libraries: libbinauralrenderer_wrapper.qti.so:libhoaeffects.qti.so:libmisys_jni.xiaomi.so:libpag.hyperos.so:libffavc.hyperos.so:libxiaomi_modemdumpsdx55_jni.modem.so:libxiaomi_modemdump_jni.modem.so:libmodemsmartengine_jni.modem.so:libupdateprof.qti.so:libthermalclient.qti.so:libdiag_system.qti.so:libqape.qti.so:libqesdk_ndk_platform.qti.so:liblistenjni.qti.so:libtflite_interface_wrap.touch.so:libestimate_interface.touch.so:libbrushstroke_interface.touch.so:librecognize_interface.touch.so:libgesture_interface.touch.so:libautoui_image.xiaomi.so
+08-29 17:21:28.786 11851 11851 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+08-29 17:21:28.787 11851 11851 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+08-29 17:21:28.797 11868 11868 I MOVTEST : MOVTEST_MARK_1787995287901023400 end obsidian.file.write
+08-29 17:21:28.804 11851 11851 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libapexsupport.so:libavf.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libcom.android.tethering.connectivity_native.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libselinux.so:libsync.so:libvendorsupport.so:libvndksupport.so:libvulkan.so
+08-29 17:21:28.804 11851 11851 D nativeloader: Configuring product-clns-11 for unbundled product apk /product/app/SecurityCoreAdd/SecurityCoreAdd.apk. target_sdk_version=35, uses_libraries=, library_path=/product/app/SecurityCoreAdd/lib/arm64:/product/app/SecurityCoreAdd/SecurityCoreAdd.apk!/lib/arm64-v8a:/system_ext/app/miuisystem/miuisystem.apk!/lib/arm64-v8a:/product/lib64:/system/product/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.miui.securitycore:/product/lib64:/system/product/lib64
+08-29 17:21:28.805 11851 11851 D nativeloader: InitVndkspLibrariesProduct: VNDK is deprecated with product
+08-29 17:21:28.809 11851 11851 D CompatChangeReporter: Compat change id reported: 202956589; UID 1000; state: ENABLED
+08-29 17:21:28.812 11851 11851 I ritycore.remote: AssetManager2(0xb4000074a8db0778) locale list changing from [] to [zh-CN]
+08-29 17:21:28.813 11851 11851 D MiuiMonitorThread: Shared singleton Thread for stability monitor start
+08-29 17:21:28.817 11851 11851 D HWUI    : [HWUI] Flag vulkan_enhance_pipeline_cache enabled
+08-29 17:21:28.817 11851 11851 D HWUI    : [HWUI] EnhanceVkPipelineCache is disabled
+08-29 17:21:28.817 11851 11851 D HWUI    : [HWUI] Flag ddre enabled
+08-29 17:21:28.817 11851 11851 V GraphicsEnvironment: Currently set values for:
+08-29 17:21:28.817 11851 11851 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+08-29 17:21:28.817 11851 11851 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+08-29 17:21:28.817 11851 11851 V GraphicsEnvironment: com.miui.securitycore is not listed in per-application setting
+08-29 17:21:28.817 11851 11851 V GraphicsEnvironment: ANGLE allowlist from config: 
+08-29 17:21:28.817 11851 11851 V GraphicsEnvironment: com.miui.securitycore is not listed in ANGLE allowlist or settings, returning default
+08-29 17:21:28.818 11851 11878 D ActivityThread: the event that target app starts is : AppLaunchEvent{mType='441', mProcessName='com.miui.securitycore.remote', mPackageName='com.miui.securitycore', mIsMainProcess='false', mVersionCode='40000322', mVersionName='', mLaunchTime='2026-08-29'}
+08-29 17:21:28.819 11851 11851 E SmartArtRuntime: pkg or process null,not main process.
+08-29 17:21:28.819  7236 17622 W MQSEventManager: occur
+08-29 17:21:28.820 11851 11873 I Perf    : Connecting to perf service.
+08-29 17:21:28.822 11851 11879 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+08-29 17:21:28.823 11851 11851 D ResMonitorStub: The current process type is: system_app, process name is: com.miui.securitycore.remote
+08-29 17:21:28.824 11851 11851 I JavaheapMonitor: Java heap leak ratio threshold from RMS: 80%, Max: 512M, Process name: com.miui.securitycore.remote
+08-29 17:21:28.825 11851 11873 I ActivityThread: TrafficStats init done
+08-29 17:21:28.825 11851 11851 I JavaheapMonitor: Java heap loop intervals: (Count: 5)
+08-29 17:21:28.825 11851 11851 I JavaheapMonitor: 0: 0.0, 300s
+08-29 17:21:28.825 11851 11851 I JavaheapMonitor: 1: 0.2, 180s
+08-29 17:21:28.825 11851 11851 I JavaheapMonitor: 2: 0.4, 60s
+08-29 17:21:28.825 11851 11851 I JavaheapMonitor: 3: 0.6, 30s
+08-29 17:21:28.825 11851 11851 I JavaheapMonitor: 4: 0.8, 10s
+08-29 17:21:28.825 11851 11851 I JavaheapMonitor: Java heap monitor start in proc: com.miui.securitycore.remote
+08-29 17:21:28.825 11851 11851 D ResMonitorStub: The current process type supports enabling Java heap monitoring
+08-29 17:21:28.827 11851 11873 I ForceDarkHelperStubImpl: initialize for com.miui.securitycore , ForceDarkOrigin
+08-29 17:21:28.829 11851 11873 D nativeloader: Load libforcedarkimpl.so using system ns (caller=/system_ext/framework/miui-framework.jar): ok
+08-29 17:21:28.829 11851 11873 D HWUI    : JNI_OnLoad success
+08-29 17:21:28.830 11851 11873 I MiuiForceDarkConfig: setConfig density:2.500000, mainRule:0, secondaryRule:0, tertiaryRule:0
+08-29 17:21:28.835  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'
+08-29 17:21:28.837 11851 11873 I ActivityThread: Miui Feature Init done
+08-29 17:21:28.851  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:21:28.855 11851 11851 D AutoDensity: autodensity debugEnable = 
+08-29 17:21:28.859 11851 11851 D AutoDensity: 	getAccessibilityDpi Exception: android.provider.Settings$SettingNotFoundException: display_density_forced

@@ -1,0 +1,302 @@
+--------- beginning of main
+08-29 17:16:50.603  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:50.672  8389 13902 D powerkeeper.dfsobserve: board ready to handle temperature change
+08-29 17:16:50.675  8389 16260 D powerkeeper.dfscpucol: handleTemperatureChange: temp=34444
+08-29 17:16:50.805  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:51.008  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:51.211  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:51.343  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785721705881862, lux: 2.0
+08-29 17:16:51.344  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785721705881862, sensor=5, temperature(K)=   0.0000
+08-29 17:16:51.344  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:51.413  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+--------- beginning of system
+08-29 17:16:51.557  2759  2897 D OomAdjuster: App adj change from previous state to cached state : 7835 com.kugou.android.lite
+08-29 17:16:51.561  2139  2232 E ANDR-PERF-RESOURCEQS: ANDR-PERF-RESOURCEQS: AddAndApply() 167: Failed to apply optimization [10, 9]
+08-29 17:16:51.616  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:51.651  7133  8203 I VA_AliveCore:AssistInteractionService: onProcessChanged: processName=com.miui.voiceassist;isRunning=true
+08-29 17:16:51.819  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:51.829  3590  4101 D JavaheapMonitor: Java heap used=6M max=384M, proc: com.xiaomi.mi_connect_service:idm
+08-29 17:16:51.830  3590  4101 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:51.847  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785721905882904, lux: 3.0
+08-29 17:16:51.849  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785721905882904, sensor=5, temperature(K)=   0.0000
+08-29 17:16:51.849  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:52.023  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:52.047  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:16:52.048  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:16:52.048  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:16:52.048  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 17:16:52.049  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:16:52.226  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:52.391  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:16:52.428  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:52.631  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:52.836  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:53.040  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:53.046  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:16:53.046  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:16:53.243  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:53.373  7236  8143 D JavaheapMonitor: Java heap used=12M max=384M, proc: com.miui.daemon
+08-29 17:16:53.375  7236  8143 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:53.388  6230 14486 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.xiaomi.mirror
+08-29 17:16:53.388  6230 14486 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:53.445  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:53.468  2759  6639 D SLM-SRV-SLAService: checktemp temperature = 34444 temperature_average = 34493 isPerformanceMode = false thermal_enable_slm = true
+08-29 17:16:53.559  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:16:53.561  3128  3128 I wificond: station_bandwidth:  
+08-29 17:16:53.571  5847  6197 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:16:53.571  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:16:53.584  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.5/s) Done(0.000/s Avg=1.471/s)| Stream: 24.00fps 2.4Mbps
+08-29 17:16:53.584  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 17:16:53.648  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:53.851  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:53.860 16521 16587 D JavaheapMonitor: Java heap used=20M max=384M, proc: com.baidu.input_mi
+08-29 17:16:53.863 16521 16587 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:54.054  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:54.190  5253 14488 D JavaheapMonitor: Java heap used=8M max=384M, proc: com.xiaomi.bluetooth
+08-29 17:16:54.191  5253 14488 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:54.255  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:54.457  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:54.544  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785724905883112, lux: 2.0
+08-29 17:16:54.546  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785724905883112, sensor=5, temperature(K)=   0.0000
+08-29 17:16:54.547  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:54.572  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 99197, uidState = 15
+08-29 17:16:54.573  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10429, uidState = 15
+08-29 17:16:54.655  8509  9681 D JavaheapMonitor: Java heap used=16M max=384M, proc: com.miui.securitycenter.remote
+08-29 17:16:54.656  8509  9681 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:54.660  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:54.790  5911  6334 D JavaheapMonitor: Java heap used=74M max=384M, proc: com.android.systemui
+08-29 17:16:54.791  5911  6334 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:54.863  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:55.047  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785725105802019, lux: 3.0
+08-29 17:16:55.049  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785725105802019, sensor=5, temperature(K)=   0.0000
+08-29 17:16:55.049  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:55.053  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:16:55.054  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:16:55.054  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:16:55.054  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:55
+08-29 17:16:55.056  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:16:55.065  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:55.163  5847  6086 D JavaheapMonitor: Java heap used=8M max=384M, proc: com.android.phone
+08-29 17:16:55.164  5847  6086 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:55.204 16273 16849 D JavaheapMonitor: Java heap used=5M max=384M, proc: com.milink.service:ui
+08-29 17:16:55.205 16273 16849 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:55.267  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:55.394  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:16:55.470  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:55.673  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:55.684  2759  2892 I ThermalObserver: Temperature control has been released.
+08-29 17:16:55.840  5626  5722 D JavaheapMonitor: Java heap used=7M max=384M, proc: com.android.networkstack.process
+08-29 17:16:55.840  5626  5722 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:55.875  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:56.078  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:56.281  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:56.484  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:56.587  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:16:56.589  3128  3128 I wificond: station_bandwidth:  
+08-29 17:16:56.597  5847  6197 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:16:56.598  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:16:56.650 13384 15714 D JavaheapMonitor: Java heap used=7M max=512M, proc: com.xiaomi.aicr:cognitionService
+08-29 17:16:56.653 13384 15714 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:56.687  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:56.732  2759  6015 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:16:56.732  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 99191, uidState = 10
+08-29 17:16:56.733  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10303, uidState = 10
+08-29 17:16:56.734  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 99191, uidState = 10
+08-29 17:16:56.734  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10303, uidState = 10
+08-29 17:16:56.889  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:56.931  5714 14481 D JavaheapMonitor: Java heap used=4M max=384M, proc: .qtidataservices
+08-29 17:16:56.931  5714 14481 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:56.944  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785727305881602, lux: 4.0
+08-29 17:16:56.946  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   3.9825,   0.0000,   0.0000>,time=785727305881602, sensor=5, temperature(K)=   0.0000
+08-29 17:16:56.946  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 3, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:57.008 21526 23216 D JavaheapMonitor: Java heap used=9M max=384M, proc: android.ext.services
+08-29 17:16:57.009 21526 23216 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:57.077 20990 22504 D JavaheapMonitor: Java heap used=4M max=384M, proc: com.miui.analytics
+08-29 17:16:57.078 20990 22504 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:57.092  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:57.186  8389  8919 D JavaheapMonitor: Java heap used=13M max=384M, proc: com.miui.powerkeeper
+08-29 17:16:57.187  8389  8919 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:57.296  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:57.417  9742 15229 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.xiaomi.mi_connect_service
+08-29 17:16:57.417  9742 15229 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:57.445  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785727505801706, lux: 3.0
+08-29 17:16:57.447  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785727505801706, sensor=5, temperature(K)=   0.0000
+08-29 17:16:57.447  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 3, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:57.499  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:57.702  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:57.908  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:58.046  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:16:58.047  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:16:58.059  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:16:58.060  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:16:58.060  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:16:58.060  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:56
+08-29 17:16:58.062  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:16:58.112  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:58.265 31570 32258 D JavaheapMonitor: Java heap used=11M max=512M, proc: com.android.camera
+08-29 17:16:58.268 31570 32258 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:58.308 22231 22316 D JavaheapMonitor: Java heap used=5M max=384M, proc: com.android.bluetooth
+08-29 17:16:58.310 22231 22316 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:16:58.315  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:58.397  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:16:58.518  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:58.585  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.5/s) Done(0.000/s Avg=1.471/s)| Stream: 24.00fps 2.4Mbps
+08-29 17:16:58.585  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 17:16:58.721  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:58.928  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:58.947  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785729305800225, lux: 4.0
+08-29 17:16:58.950  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   3.9825,   0.0000,   0.0000>,time=785729305800225, sensor=5, temperature(K)=   0.0000
+08-29 17:16:58.950  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 3, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:59.131  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:59.333  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:59.446  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785729505882621, lux: 3.0
+08-29 17:16:59.448  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785729505882621, sensor=5, temperature(K)=   0.0000
+08-29 17:16:59.448  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 3, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:16:59.536  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:59.620  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:16:59.622  3128  3128 I wificond: station_bandwidth:  
+08-29 17:16:59.634  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:16:59.638  5847  6197 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:16:59.639  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:16:59.657  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:16:59.659  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:16:59.660  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:16:59.677  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:16:59.702  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:16:59.702  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:16:59.717  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:16:59.738  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:59.750  2759  2892 D JavaheapMonitor: Java heap used=196M max=512M, proc: system_server
+08-29 17:16:59.750  2759  2892 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+08-29 17:16:59.941  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:16:59.996  7658 15717 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.xiaomi.metoknlp
+08-29 17:16:59.997  7658 15717 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:00.002  2759  4220 E AlarmManager: not align this alarm: Alarm{a866462 type 3 origWhen 785790365 whenElapsed 785790365 android}, reason=0
+08-29 17:17:00.006  2759  4220 D AlarmManager: mBroadcastRefCount -> 1
+08-29 17:17:00.007  2759  2897 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+08-29 17:17:00.007  2759  2897 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+08-29 17:17:00.009  2759  2897 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+08-29 17:17:00.009  2759  2897 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+08-29 17:17:00.010  2759  2897 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+08-29 17:17:00.017  2759  2759 D AlarmManager: mBroadcastRefCount -> 0
+08-29 17:17:00.017  2759  2759 D AlarmManager: mPendingIntent -> null
+08-29 17:17:00.028  5911  5911 D NotificationHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:00.030  5911  5911 D NotificationHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:00.031  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:00.031  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10423, uidState = 19
+08-29 17:17:00.032  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:00.034  5911  5911 D MiuiClockController: Listener updateTime
+08-29 17:17:00.038  5911  5911 E AnimationHelper: updateTime sToAod:false mHasNotification: true, mClockType: classic_max
+08-29 17:17:00.038  5911  5911 D MiuiClockController: Listener updateTime
+08-29 17:17:00.041  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10419, uidState = 19
+08-29 17:17:00.042 19501 19587 D JavaheapMonitor: Java heap used=10M max=384M, proc: com.xiaomi.xmsf:persistent
+08-29 17:17:00.042 19501 19587 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:00.044  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10086, uidState = 19
+08-29 17:17:00.048  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:00.050  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:17:00.057  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:00.063  1969  1969 D vendor.qti.bluetooth@1.1-wake_lock: Acquire wakelock is acquired 
+08-29 17:17:00.065 22231 22318 I bluetooth: system/bta/le_audio/client.cc:1786 IsInStreaming: audio_sender_state_: IDLE, audio_receiver_state_: IDLE
+08-29 17:17:00.065 22231 22347 V BluetoothAdapterService: energyInfoCallback() status = 0 txTime = 902 rxTime = 4415 idleTime = 3639 energyUsed = 482954 ctrlState = 0x00021000 traffic = []
+08-29 17:17:00.066  2759  2909 D BatteryStatsImpl: setBluetoothActivityInfoReport info.setIdleTimeMillis(): 10805409
+08-29 17:17:00.066  2759  2909 D BatteryStatsImpl: setBluetoothActivityInfoReport info.setRxTimeMillis(): 2785112
+08-29 17:17:00.067  2759  2909 D BatteryStatsImpl: setBluetoothActivityInfoReport info.setTxTimeMillis(): 4134905
+08-29 17:17:00.067  2759  2909 D BatteryStatsImpl: updateBluetoothStateLocked !mOnBatteryInternal || mIgnoreNextExternalStats return info: BluetoothActivityEnergyInfo{ mTimestamp=785730430 mBluetoothStackState=135168 mControllerTxTimeMs=4134905 mControllerRxTimeMs=2785112 mControllerIdleTimeMs=10805409 mControllerEnergyUsed=813892097 mUidTraffic=[] }
+08-29 17:17:00.076  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:17:00.098  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:17:00.144  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:00.343  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785730705881892, lux: 2.0
+08-29 17:17:00.345  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785730705881892, sensor=5, temperature(K)=   0.0000
+08-29 17:17:00.345  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:17:00.346  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:00.508  2759  2897 I SmartPower: com.kugou.android.lite/10407(7835): idle->background(11190ms) R(broadcast start Intent { act=android.intent.action.TIME_TICK flg=0x50200010 xflg=0x4 }) adj=905.
+08-29 17:17:00.511  2759  2897 D BroadcastQueue: Logging broadcast for com.kugou.android.lite, stopped=false, firstLaunch=false
+08-29 17:17:00.527  5485 13700 D JavaheapMonitor: Java heap used=3M max=384M, proc: com.miui.miwallpaper
+08-29 17:17:00.528  5485 13700 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:00.549  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:00.752  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:00.847  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785731105799496, lux: 3.0
+08-29 17:17:00.848  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785731105799496, sensor=5, temperature(K)=   0.0000
+08-29 17:17:00.849  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:17:00.955  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:01.064  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:17:01.066  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:17:01.066  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:17:01.067  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:56
+08-29 17:17:01.068  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:17:01.160  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:01.219  1969 22329 D vendor.qti.bluetooth@1.1-wake_lock: Release wakelock is released 
+08-29 17:17:01.363  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:01.399  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:17:01.450 32624  2617 D JavaheapMonitor: Java heap used=12M max=512M, proc: com.miui.guardprovider
+08-29 17:17:01.451 32624  2617 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:01.566  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:01.660  7133  8203 I VA_AliveCore:AssistInteractionService: onProcessChanged: processName=com.miui.voiceassist;isRunning=true
+08-29 17:17:01.770  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:01.974  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:01.979  9349  9787 D JavaheapMonitor: Java heap used=18M max=512M, proc: com.xiaomi.aicr
+08-29 17:17:01.979  9349  9787 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:02.176  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:02.380  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:02.585  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:02.654  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:17:02.656  3128  3128 I wificond: station_bandwidth:  
+08-29 17:17:02.666  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:17:02.668  5847  6197 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:17:02.669  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:17:02.686  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:02.688  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:02.689  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:02.697  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:02.722  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:17:02.724  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:17:02.739  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:17:02.789  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:02.992  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:03.047  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:17:03.048  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:17:03.195  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:03.271 15875 17138 D JavaheapMonitor: Java heap used=5M max=384M, proc: com.milink.service:audio
+08-29 17:17:03.271 15875 17138 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:03.330  9870 15235 D JavaheapMonitor: Java heap used=10M max=384M, proc: com.miui.voicetrigger
+08-29 17:17:03.331  9870 15235 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:03.397  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:03.482  2759  6639 D SLM-SRV-SLAService: checktemp temperature = 34506 temperature_average = 34510 isPerformanceMode = false thermal_enable_slm = true
+08-29 17:17:03.510  2759  4869 I SmartPower: com.kugou.android.lite/10407(7835): background->idle(3003ms) R(broadcast start Intent { act=android.intent.action.TIME_TICK flg=0x50200010 xflg=0x4 }) adj=905.
+08-29 17:17:03.586  2156 20403 I QC2Comp : [avcD_229] Stats: Pending(3) i/p-done(3) Works: Q: 15711/Done 15709|Work-Rate: Q(0.0/s Avg=1.5/s) Done(0.000/s Avg=1.470/s)| Stream: 24.00fps 2.4Mbps
+08-29 17:17:03.586  2156 20403 I QC2Comp : [avcD_229] Mem-usage:  [In-1D: 6 bufs 40.500 MB] [1D-373: 14 bufs 0.219 MB] [2D-374: 18 bufs 52.172 MB] | Total: 92.891 MB
+08-29 17:17:03.599  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:03.801  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:04.004  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:04.056 22369 23294 D JavaheapMonitor: Java heap used=11M max=384M, proc: com.miui.systemAdSolution
+08-29 17:17:04.056 22369 23294 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:17:04.071  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:17:04.072  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:56
+08-29 17:17:04.072  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:17:04.072  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:56
+08-29 17:17:04.073  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:17:04.147  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785734505882257, lux: 4.0
+08-29 17:17:04.149  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   3.9825,   0.0000,   0.0000>,time=785734505882257, sensor=5, temperature(K)=   0.0000
+08-29 17:17:04.149  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 3, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:17:04.177  2759  4220 W ActivityManagerServiceImpl: Sending non-protected broadcast miui.intent.action.CYCLE_CHECK from system uid 1000 pkg android. Callers=com.android.server.am.BroadcastController.checkBroadcastFromSystem:2218 com.android.server.am.BroadcastController.broadcastIntentLockedTraced:1703 com.android.server.am.BroadcastController.broadcastIntentLocked:857 com.android.server.am.BroadcastController.broadcastIntentInPackage:824 com.android.server.am.ActivityManagerService$LocalService.broadcastIntentInPackage:18692 
+08-29 17:17:04.178  2759  4220 D AlarmManager: mBroadcastRefCount -> 1
+08-29 17:17:04.190  2759  2759 E AlarmManager: not align this alarm: Alarm{7c1dba type 2 origWhen 785764553 whenElapsed 785764553 android}, reason=0
+08-29 17:17:04.190  2759  2759 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:17:04.191  2759  2759 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:17:04.195  2759  2868 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:17:04.197  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/battery/temp value = 326
+08-29 17:17:04.197  2759  2759 D AlarmManager: mBroadcastRefCount -> 0
+08-29 17:17:04.197  2759  2759 D AlarmManager: mPendingIntent -> PendingIntent{1842f06: PendingIntentRecord{4009c7 android broadcastIntent}}
+08-29 17:17:04.199  2759  2868 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:17:04.200  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/battery/charge_control_limit value = 7
+08-29 17:17:04.206  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:04.299  2759  2854 I system_server: This is sticky GC, maxfree is 33554432 minfree is 8388608
+08-29 17:17:04.404  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:17:04.408  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:04.573  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787994953177854000 end obsidian.vault.detect
+08-29 17:17:04.611 10790 10790 I MOVTEST : MOVTEST_MARK_1787994953177854000 end obsidian.vault.detect
+08-29 17:17:04.611  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:17:04.644  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785734705800538, lux: 3.0
+08-29 17:17:04.645  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785734705800538, sensor=5, temperature(K)=   0.0000
+08-29 17:17:04.645  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 3, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:17:04.659  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

@@ -1,0 +1,432 @@
+--------- beginning of main
+08-29 17:12:14.103  6230 14486 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:14.147  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:14.349  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:14.445  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785444705722896, lux: 2.0
+08-29 17:12:14.447  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785444705722896, sensor=5, temperature(K)=   0.0000
+08-29 17:12:14.447  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:12:14.532  5847  6086 D JavaheapMonitor: Java heap used=27M max=384M, proc: com.android.phone
+08-29 17:12:14.533  5847  6086 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:14.554  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:14.684  2759  4515 D MiuiNetworkPolicy: updateLimit mLimitEnabled=false,enabled=true,mNetworkPriorityMode=1,mThermalForceMode=0
+08-29 17:12:14.692  2759  4515 I MiuiNetworkPolicy: getEnableLimitTimeout when thermal mode is:0
+08-29 17:12:14.757  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:14.844  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785445105703573, lux: 3.0
+08-29 17:12:14.846  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785445105703573, sensor=5, temperature(K)=   0.0000
+08-29 17:12:14.846  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:12:14.851  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+--------- beginning of system
+08-29 17:12:14.853  3128  3128 I wificond: station_bandwidth: �
+08-29 17:12:14.861  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:12:14.861  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:12:14.862  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 17:12:14.862  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 17:12:14.864  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 17:12:14.864  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 17:12:14.864 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 17:12:14.864 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 17:12:14.865  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 17:12:14.866  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 17:12:14.866  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 17:12:14.867 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 17:12:14.867 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 17:12:14.869  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:12:14.871  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 17:12:14.875  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=10993Kbps LinkDnBandwidth>=269064Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -55, Link speed: 2401Mbps, Tx Link speed: 2401Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 2401Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -55 UnderlyingNetworks: Null]
+08-29 17:12:14.876  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=皮**5G}
+08-29 17:12:14.876  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 17:12:14.878  5847  6197 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:12:14.878  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:12:14.880  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 17:12:14.880  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 17:12:14.890  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:14.891  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:14.891  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:14.910  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:14.934  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:14.934  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:12:14.950  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:12:14.960  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:15.163  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:15.344  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785445705703625, lux: 2.0
+08-29 17:12:15.347  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785445705703625, sensor=5, temperature(K)=   0.0000
+08-29 17:12:15.347  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:12:15.365  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:15.422  2759  6689 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+08-29 17:12:15.424  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:55
+08-29 17:12:15.424  2759  6689 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+08-29 17:12:15.424  2759  6689 I NetworkAccelerateSwitchService: getAverageWifiRssi:54
+08-29 17:12:15.425  2759  6689 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+08-29 17:12:15.432  9870 15235 D JavaheapMonitor: Java heap used=10M max=384M, proc: com.miui.voicetrigger
+08-29 17:12:15.433  9870 15235 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:15.569  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:15.602  2759  2892 I ThermalObserver: Temperature control has been released.
+08-29 17:12:15.707  2306  2353 D TouchFeatureImpl: poll_common_data_thread_run 1010
+08-29 17:12:15.707  2306  3072 I [THP-DAE]: user_cmd_set_cur_value:charging status:1
+08-29 17:12:15.707  2306  2353 I TouchFeatureImpl: poll wait
+08-29 17:12:15.771  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:15.787  2759  2897 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+08-29 17:12:15.787  2759  2897 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+08-29 17:12:15.787  5911  5911 I MiuiChargeManager: notifyBatteryStatusChanged:  status: 2 isPlugged: 1 level: 3 wireState: 11 chargeSpeed: 1 mChargeType: 1 chargeDeviceType: 1 maxChargingWattage: 33 isCarCharge: 0 isReverseCharging: 0 SUPPORT_BROADCAST_QUICK_CHARGE: true
+08-29 17:12:15.788  5911  5911 I MIUIStrongToastControl: checkBatteryStatus: {status=2,plugged=1,level=3,wireState=11,chargeSpeed=1,chargeDeviceType=1,chargingStatus=0,maxChargingWattage=33,present=false,incompatibleCharger=Optional.empty}
+08-29 17:12:15.788  5911  5911 D MIUIStrongToastControl: mWireState :11  wireState :11, mChargeShowing :false
+08-29 17:12:15.788  5911  5911 I MIUIStrongToastControl: The charging method has not changed and the charging animation is not displayed
+08-29 17:12:15.788  5911  5911 D MIUIStrongToastControl: mWireState :11
+08-29 17:12:15.788  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.789  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.789  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.789  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.789  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.789  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.790  2759  2922 D BatterySaverStateMachine: updateStateLocked mState 1, manual false, enable false isPowerSaveModeEnabled false mIsPowered true
+08-29 17:12:15.790  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.791  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.791  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.791  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.792  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.793  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.793  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.793  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.793  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.794  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.795  2759  2759 D UiModeManager: updateConfigurationLocked: mDockState=0; mCarMode=false; mCar=false; mPowerSave=false; mOverrideNightModeOn=false; mOverrideNightModeOff=false; mComputedNightMode=false; mWaitForDeviceInactive=false; mNightModeValue=1; uiMode=17
+08-29 17:12:15.796  2759  2759 D WifiFeatureControl: isCharging = true mInWifiBclMode = false chargePercent = 3
+08-29 17:12:15.796  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.797  2759  2897 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+08-29 17:12:15.798  2759  2897 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+08-29 17:12:15.798  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.daemon, stopped=false, firstLaunch=false
+08-29 17:12:15.799  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.bluetooth, stopped=false, firstLaunch=false
+08-29 17:12:15.800  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:12:15.800  5253  5253 D OfflineFindBroadcastManager: onReceive: action = android.intent.action.BATTERY_CHANGED
+08-29 17:12:15.800  5253  5253 D OfflineFindBroadcastManager: mBatteryPercentage = 3 mBatteryVolage 3684 mBatteryTemperature 32
+08-29 17:12:15.800  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:12:15.801  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:12:15.801  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:12:15.802  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.securitycenter, stopped=false, firstLaunch=false
+08-29 17:12:15.802  5911  5911 I MiuiChargeController: checkBatteryStatus: wireState 11 status 2 plugged 1 chargeSpeed 1 maxChargingWattage 33 isRapidCharge true isSuperCharge false isStrongSuperCharge false isCarMode false mChargeDeviceType 1 mChargeDeviceForAnalytic -1 mReverseChargingState 0 isChargeAnimationDisabled false
+08-29 17:12:15.802  5911  5911 I MiuiChargeController: dealWithAnimationShow mWireState=11, wireState=11, mFastChargeChanged=false, mIsFastCharge=false, hasShowedChargeAnim=true
+08-29 17:12:15.802  5911  5911 I MiuiChargeController:  dealWithAnimationShow same 
+08-29 17:12:15.802  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.powerkeeper, stopped=false, firstLaunch=false
+08-29 17:12:15.803  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.powerkeeper, stopped=false, firstLaunch=false
+08-29 17:12:15.803  2121  2700 I SDM     : HWEventsDRM::SetEventState: Setup vsync event for CRTC 176, Connector 65
+08-29 17:12:15.804  8509  8509 I PowerSaveService: onReceive: android.intent.action.BATTERY_CHANGED
+08-29 17:12:15.804  8509  8509 D ChargeWarningManager: checkBatteryErrorState: mChargeWarningMap is null
+08-29 17:12:15.804  8509  8509 I SmartChargeManager: Battery changed from 2 to 3	isPogoConnected=false
+08-29 17:12:15.804  2759  2897 D BroadcastQueue: Logging broadcast for com.android.bluetooth, stopped=false, firstLaunch=false
+08-29 17:12:15.804  8509  8509 I PowerNoticeUI: handleBatteryChanged oldPlugType 1 mPlugType 1 oldBatteryLevel 2 mBatteryLevel 3 temperature 326
+08-29 17:12:15.805  8509  8509 I ChargerBatteryIntelligenceReceiver: onBatteryChanged temperature：32,plugType:1
+08-29 17:12:15.804  8389 13892 D SM_S_SubsystemN: notify msgId=7
+08-29 17:12:15.805  8509 10239 W BatteryHistoryLoadMgr: getHistoryInfo begin
+08-29 17:12:15.805  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.joyose, stopped=false, firstLaunch=false
+08-29 17:12:15.805  8389 13900 D DFS-BatteryDataManager: notifyBatteryLevelChanged level:3
+08-29 17:12:15.805  2759  2868 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:12:15.806  8389 10551 D PowerKeeper.Thermal: mBatteryTemperature: 32
+08-29 17:12:15.806  8389 13895 D PowerCheckerService: onBatteryChanged, mBatteryLevel = 2, status = 2, level = 3, plug = 1, scale = 100
+08-29 17:12:15.807  8389 13902 D powerkeeper.dfscollect: plug type 1
+08-29 17:12:15.807  8509 13873 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:12:15.808  2178  2178 E vendor.xiaomi.hardware.micharge@1.0-service: Failed to open node /sys/class/qcom-battery/board_sensor_temp
+08-29 17:12:15.808  2178  2178 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/board_sensor_temp value = 
+08-29 17:12:15.809  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/night_charging value = 0
+08-29 17:12:15.810  8509 13873 I ChargeProtectionUtils: getNightChargingState: 0
+08-29 17:12:15.811  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.811  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.811  2759  4557 D AS.AudioService: received ACTION_AUDIO_LOWTEMP_SWITCH
+08-29 17:12:15.811  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.812  2759  2897 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+08-29 17:12:15.812  2759  2922 I DisplayPowerControllerImpl: updateBatteryThermalBrightness: level: 2, limitBrightness: 0.49975574
+08-29 17:12:15.812  2759  2759 D WifiFeatureControl: mCurrentBcasLevel is 2
+08-29 17:12:15.813  2759  2922 D DisplayPowerControllerImpl: updateBrightnessChangeStatus: animating: true, displayState: 2, slowChange: false, appliedDimming: false, currentBrightness: 0.25001925, currentSdrBrightness: 0.25001925, targetBrightness: 0.49975565, targetSdrBrightness: 0.49975565, previousDisplayPolicy: 3, currentDisplayPolicy: 3
+08-29 17:12:15.813  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:15.814  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:15.814  2759  2922 D BrightnessDataProcessor: actualBrightness: 0.49975565originalBrightness: 0.49975565
+08-29 17:12:15.814  2759  2922 I DisplayPowerController[0]: Brightness [0.49975565] reason changing to: 'manual', previous reason: 'manual [ low_battery ]'.
+08-29 17:12:15.814  2759  2922 I DisplayPowerController[0]: BrightnessEvent: brt=0.49975565 (100.0%), nits= 699.9999, lux=-1.0, reason=manual, strat=InvalidBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.25001925, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=false (default), unclampedBrt=0.49975565, hbmMax=0.49975574, hbmMode=off, thrmMax=1.0, rbcStrength=50, powerFactor=1.0, physDisp=内置屏幕(local:4630947038039379843), logicalId=0, slowChange=false, rampSpeed=1.0
+08-29 17:12:15.829  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:15.829  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1049 (25.602064 percent)
+08-29 17:12:15.842  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785446105637011, lux: 3.0
+08-29 17:12:15.843  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785446105637011, sensor=5, temperature(K)=   0.0000
+08-29 17:12:15.843  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:12:15.846  2322  2715 E HWComposer: getLuts: getLuts failed for display 4630947038039379843: UNSUPPORTED (8)
+08-29 17:12:15.848  2121  2694 W SDM-histogram: Discarding event blob-id: C9
+08-29 17:12:15.849  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1084 (26.441813 percent)
+08-29 17:12:15.849  5911  5911 D ControlCenterHeaderExpandController: onExpansionChanged: progress =  0.0
+08-29 17:12:15.869  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1118 (27.273619 percent)
+08-29 17:12:15.879  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10296/pid_26493/cgroup.procs
+08-29 17:12:15.879  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10296/pid_26493/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:12:15.879  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:12:15.879  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10286/pid_25524/cgroup.procs
+08-29 17:12:15.879  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10286/pid_25524/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:12:15.879  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:12:15.879  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:12:15.879  8389 13895 D PowerCheckerService: power check cycle start...
+08-29 17:12:15.880  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10165/pid_22522/cgroup.procs
+08-29 17:12:15.880  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10165/pid_22522/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:12:15.880  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:12:15.880  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10303/pid_13699/cgroup.procs
+08-29 17:12:15.880  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10303/pid_13699/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:12:15.880  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:12:15.880  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:12:15.881  2759  2909 W ActivityManager: Unable to open /sys/fs/cgroup/apps/uid_10429/pid_7698/cgroup.procs
+08-29 17:12:15.881  2759  2909 W ActivityManager: java.io.FileNotFoundException: /sys/fs/cgroup/apps/uid_10429/pid_7698/cgroup.procs: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at java.io.FileInputStream.<init>(FileInputStream.java:133)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList$Injector.openCgroupProcs(PhantomProcessList.java:616)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:150)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.lookForPhantomProcessesLocked(PhantomProcessList.java:130)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.am.PhantomProcessList.updateProcessCpuStatesLocked(PhantomProcessList.java:564)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.am.AppProfiler.updateCpuStatsNow(AppProfiler.java:2252)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.updateCpuStatsNow(ActivityManagerService.java:3154)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.am.ActivityManagerService.batteryNeedsCpuUpdate(ActivityManagerService.java:3159)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryStatsImpl.updateCpuDetails(BatteryStatsImpl.java:12135)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider.update(BatteryHistoryStepDetailsProvider.java:94)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at com.android.server.power.stats.BatteryHistoryStepDetailsProvider$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:1029)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at android.os.Looper.loopOnce(Looper.java:267)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at android.os.Looper.loop(Looper.java:360)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-29 17:12:15.881  2759  2909 W ActivityManager: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at libcore.io.Linux.open(Native Method)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+08-29 17:12:15.881  2759  2909 W ActivityManager: 	... 17 more
+08-29 17:12:15.884  8389 13895 D PowerCheckerService: rawUptime = 599927921000 us
+08-29 17:12:15.884  8389 13895 D PowerCheckerService: rawRealtime = 785446244000 us
+08-29 17:12:15.884  8389 13895 D PowerCheckerService: batteryUptime = 48030496000 us
+08-29 17:12:15.884  8389 13895 D PowerCheckerService: batteryRealtime = 84087439000 us
+08-29 17:12:15.884  8389 13895 D PowerCheckerService: whichBatteryUptime = 48030496000 us
+08-29 17:12:15.884  8389 13895 D PowerCheckerService: whichBatteryRealtime = 84087439000 us
+08-29 17:12:15.885  8389 13895 D PowerCheckerService: startClockTime = 1787889163669000 us mLastStartClockTime = 1787889163669000 us mLastRawUTCTime = 1787992401983000 us
+08-29 17:12:15.885  8389 13895 D PowerCheckerService: mLastBatteryRealTime = 84087439000 us whichBatteryRealtime = 84087439000 us
+08-29 17:12:15.885  8389 13895 W PowerCheckerService: Time on battery is not increased since last check
+08-29 17:12:15.885  8389 13895 D PowerCheckerService: power check cycle done, consume time 7ms
+08-29 17:12:15.890  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1152 (28.105427 percent)
+08-29 17:12:15.902  7236  8143 D JavaheapMonitor: Java heap used=12M max=384M, proc: com.miui.daemon
+08-29 17:12:15.902  7236  8143 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:15.911  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1186 (28.937233 percent)
+08-29 17:12:15.931  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1220 (29.770365 percent)
+08-29 17:12:15.949  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1254 (30.602360 percent)
+08-29 17:12:15.970  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1288 (31.434355 percent)
+08-29 17:12:15.973  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:15.990  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1322 (32.266350 percent)
+08-29 17:12:16.011  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1356 (33.098343 percent)
+08-29 17:12:16.018  8509  9681 D JavaheapMonitor: Java heap used=14M max=384M, proc: com.miui.securitycenter.remote
+08-29 17:12:16.018  8509  9681 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:16.024  8509 10239 W BpBinder: PerfMonitor binderTransact: time=219ms interface=com.android.internal.app.IBatteryStats code=29
+08-29 17:12:16.030  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1390 (33.930336 percent)
+08-29 17:12:16.045  8509 10239 D BatteryHistory: batteryState : 3927956755_100_0_5,3927956751_100_0_3,3976193177_42_1_3,3976193456_42_1_2,3995031634_28_0_2,3995031832_28_0_3,4012911484_18_1_2,4012934552_19_0_2,4012934943_19_0_3,4030905708_7_1_3,4030905834_7_1_2,
+08-29 17:12:16.045  8509 10239 I BatteryHistoryLoadMgr: lastIncreasingIntervalStartIndex=0
+08-29 17:12:16.045  8509 10239 W BatteryHistoryLoadMgr: get firstHistoryInfo time: 3927956755
+08-29 17:12:16.045  8509 10239 I BatteryDataUtils: usageRealTime = 84087439000
+08-29 17:12:16.045  8509 10239 D BatteryHistoryLoadMgr: getHistoryInfo end
+08-29 17:12:16.047  8509 10239 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:12:16.047  2759  4515 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 830 KB/s
+08-29 17:12:16.049  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1424 (34.762333 percent)
+08-29 17:12:16.050  8509  8567 I tycenter.remote: This is sticky GC, maxfree is 33554432 minfree is 8388608
+08-29 17:12:16.051  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/quick_charge_type value = 1
+08-29 17:12:16.052  8509 10239 I IMiChargeUtils: getIMiChargeStringValue method:getQuickChargeType,value:1
+08-29 17:12:16.052  8509 10239 I BatteryChargeTimeHelper: calculateTimeByHistory chargeDetail leftChargeTime: 0  startLevel: 0  endLevel: 6
+08-29 17:12:16.054  8509 10239 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.xiaomi.hardware.micharge@1.0::IMiCharge/default
+08-29 17:12:16.058  2178  2214 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/qcom-battery/quick_charge_type value = 1
+08-29 17:12:16.058  8509 10239 I IMiChargeUtils: getIMiChargeStringValue method:getQuickChargeType,value:1
+08-29 17:12:16.058  8509 10239 I BatteryChargeTimeHelper: Use history time, 0.97 17h9m30s332ms
+08-29 17:12:16.058  8509 10239 I BatteryChargeTimeHelper: Left charge time in if, 0.97 17h9m30s332ms
+08-29 17:12:16.071  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1458 (35.594326 percent)
+08-29 17:12:16.092  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1492 (36.426319 percent)
+08-29 17:12:16.112  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1526 (37.258316 percent)
+08-29 17:12:16.131  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1560 (38.090309 percent)
+08-29 17:12:16.138  5241  6253 D JavaheapMonitor: Java heap used=31M max=512M, proc: com.miui.home
+08-29 17:12:16.140  5241  6253 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:16.151  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1594 (38.922302 percent)
+08-29 17:12:16.171  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1629 (39.754299 percent)
+08-29 17:12:16.175  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:16.191  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1663 (40.586292 percent)
+08-29 17:12:16.200  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:12:16.200  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:12:16.207  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 99191, uidState = 10
+08-29 17:12:16.211  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1697 (41.418285 percent)
+08-29 17:12:16.212  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10303, uidState = 10
+08-29 17:12:16.214  2759  5591 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:12:16.218  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 99191, uidState = 10
+08-29 17:12:16.218  2759  4515 I MiuiNetworkPolicy: updateUidState uid = 10303, uidState = 10
+08-29 17:12:16.229  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1731 (42.250282 percent)
+08-29 17:12:16.244  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785446505722375, lux: 2.0
+08-29 17:12:16.245  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.0250,   0.0000,   0.0000>,time=785446505722375, sensor=5, temperature(K)=   0.0000
+08-29 17:12:16.245  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:12:16.250  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1765 (43.082275 percent)
+08-29 17:12:16.271  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1799 (43.914268 percent)
+08-29 17:12:16.284  2759  2897 I SmartPower: com.miui.voicetrigger/10181(9870): idle->background(17017ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=200.
+08-29 17:12:16.285  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.voicetrigger, stopped=false, firstLaunch=false
+08-29 17:12:16.286  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:12:16.286  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:12:16.287  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.xmsf, stopped=false, firstLaunch=false
+08-29 17:12:16.288  2759  2897 I SmartPower: com.miui.systemAdSolution/10165(22369): idle->background(17018ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=100.
+08-29 17:12:16.288  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.systemAdSolution, stopped=false, firstLaunch=false
+08-29 17:12:16.289  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.gallery, stopped=false, firstLaunch=false
+08-29 17:12:16.290  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.gallery, stopped=false, firstLaunch=false
+08-29 17:12:16.290  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1833 (44.746265 percent)
+08-29 17:12:16.291  2759  2897 I SmartPower: com.miui.video/10286(25249): idle->background(17021ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=915.
+08-29 17:12:16.291  2759  2897 D BroadcastQueue: Logging broadcast for com.miui.video, stopped=false, firstLaunch=false
+08-29 17:12:16.292  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:12:16.292  2759  2897 I SmartPower: com.xiaomi.market/10163(19212): idle->background(17017ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:12:16.292  2759  2897 D BroadcastQueue: Logging broadcast for com.xiaomi.market, stopped=false, firstLaunch=false
+08-29 17:12:16.293  2759  2897 D BroadcastQueue: Logging broadcast for com.tencent.mm, stopped=false, firstLaunch=false
+08-29 17:12:16.293  2759  2897 I SmartPower: com.kugou.android.lite/10407(7835): idle->background(17018ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-29 17:12:16.294  2759  2897 D BroadcastQueue: Logging broadcast for com.kugou.android.lite, stopped=false, firstLaunch=false
+08-29 17:12:16.295  2759  2897 D BroadcastQueue: Logging broadcast for com.android.providers.downloads, stopped=false, firstLaunch=false
+08-29 17:12:16.295  2759  2897 D BroadcastQueue: Logging broadcast for com.android.camera, stopped=false, firstLaunch=false
+08-29 17:12:16.298  2047 30235 I libusbconfigfs: event=1 on fd=5
+08-29 17:12:16.304 31570 31570 W MCAM_Camera@20516204: onLowBatteryNotification: isActivityPaused=true,isSwitchingModule=false
+08-29 17:12:16.310  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1867 (45.578259 percent)
+08-29 17:12:16.330  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1901 (46.410255 percent)
+08-29 17:12:16.350  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1935 (47.242249 percent)
+08-29 17:12:16.370  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 1969 (48.074242 percent)
+08-29 17:12:16.376  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:16.391  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2003 (48.906239 percent)
+08-29 17:12:16.402 18740 18881 D JavaheapMonitor: Java heap used=9M max=384M, proc: com.miui.screenshot
+08-29 17:12:16.402 18740 18881 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:16.411  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2037 (49.738232 percent)
+08-29 17:12:16.431  2759  2922 D BrightnessDataProcessor: actualBrightness: 0.49975565originalBrightness: 0.49975565
+08-29 17:12:16.432  2121  2700 D SDM     : DisplayBuiltIn::SetPanelBrightness: Primary: Display Setting brightness to level 2047 (49.975567 percent)
+08-29 17:12:16.578  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:16.645  2025 29615 I sensors-hal: handle_sns_std_sensor_event:65, light_event: ts=785446905704406, lux: 3.0
+08-29 17:12:16.647  2175  2175 D SRE     : sensorCallback mDisplayId = 0 dataCallback value=<   2.9700,   0.0000,   0.0000>,time=785446905704406, sensor=5, temperature(K)=   0.0000
+08-29 17:12:16.647  2175  2175 D SRE     : setSREStrength mDisplayId = 0, mLastLux = 2, lux = 2, mSREEnabled = 1, mLastFreezeStatus = 0, freeze = 0
+08-29 17:12:16.781  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:16.984  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:17.106  2759  2892 D JavaheapMonitor: Java heap used=159M max=512M, proc: system_server
+08-29 17:12:17.107  2759  2892 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+08-29 17:12:17.186  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:17.203  5828 14454 D JavaheapMonitor: Java heap used=2M max=384M, proc: vendor.qti.frameworks.utils
+08-29 17:12:17.203  5828 14454 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:17.388  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:17.591  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:17.629 15875 17138 D JavaheapMonitor: Java heap used=4M max=384M, proc: com.milink.service:audio
+08-29 17:12:17.629 15875 17138 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:17.655 31904 32302 D JavaheapMonitor: Java heap used=4M max=384M, proc: com.android.soundrecorder
+08-29 17:12:17.656 31904 32302 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+08-29 17:12:17.773  2759  5191 I NetworkBoostStatusManager: handle: 107
+08-29 17:12:17.779  5847  6197 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:12:17.780  2759  5191 D NetworkBoostStatusManager: isModemSingnalStrengthStatus signalStrength or serviceState is null
+08-29 17:12:17.793  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:17.885  2759  4523 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-29 17:12:17.887  3128  3128 I wificond: station_bandwidth: �
+08-29 17:12:17.900  5847  6500 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:12:17.901  5714  7056 D QCNEJ/NativeHalConnector: -> SND notifyDefaultNetworkChanged(1)
+08-29 17:12:17.901  5847  6555 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+08-29 17:12:17.902  5847  5847 D QtiLinkBandwidthEstimator-0: handleMessage: 4
+08-29 17:12:17.902  5847  5847 D QtiLinkBandwidthEstimator-1: handleMessage: 4
+08-29 17:12:17.908  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged Cellular
+08-29 17:12:17.909  6230  9515 I IDMManager: onCapabilitiesChanged: network is 114
+08-29 17:12:17.909  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI isPrimary = true
+08-29 17:12:17.910  5847  6197 E PhoneInterfaceManager: getServiceStateForSlot retuning null for invalid slotIndex=-1
+08-29 17:12:17.911  2759  4537 V AmlWifiScoreReportInjector: isMobileDataSignalPoor return false
+08-29 17:12:17.911  9742 10087 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-29 17:12:17.913 10561 10913 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-29 17:12:17.913  6230  9515 I IDMManager: network is not MiuiCarSoftAp
+08-29 17:12:17.913 10561 10913 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-29 17:12:17.914 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged#network=114
+08-29 17:12:17.914 15875 15961 I Cir_Miplay_NetworkListenerHelper: onCapabilitiesChanged network type wifi
+08-29 17:12:17.915  9742 10087 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mIsSupportTdls=true, mNetworkType=0, mIpAddress=192.*.*.3, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0, mSsid=皮**5G}
+08-29 17:12:17.915  9742 10087 I NetBusNetworkMonitor: onCapabilitiesChanged WIFI handle=493031968781, mediumType=256, ifName=wlan0
+08-29 17:12:17.917  2759  5191 I NetworkBoostStatusManager: handle: 102
+08-29 17:12:17.917  2759  5191 I NetworkBoostStatusManager: interfaceOnCapabilitiesChanged interface name:wlan0
+08-29 17:12:17.923  7080  7255 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=6035Kbps LinkDnBandwidth>=113652Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.2.3, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -56, Link speed: 1729Mbps, Tx Link speed: 1729Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 1729Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5200MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -56 UnderlyingNetworks: Null]
+08-29 17:12:17.984  2156 30142 I QC2Comp : [avcD_223] Stats: Pending(2) i/p-done(2) Works: Q: 10/Done 9|Work-Rate: Q(0.0/s Avg=0.0/s) Done(0.000/s Avg=0.000/s)| Stream: 24.00fps 3.5Mbps
+08-29 17:12:17.985  2156 30142 I QC2Comp : [avcD_223] Mem-usage:  [In-1D: 5 bufs 33.750 MB] [1D-361: 13 bufs 0.203 MB] [2D-362: 16 bufs 57.875 MB] | Total: 91.828 MB
+08-29 17:12:17.992  8397  8397 I adbd    : in ShellService: log -p i -t MOVTEST MOVTEST_MARK_1787994666608029100 end obsidian.vault.detect
+08-29 17:12:17.995  2121 28224 I MiStcImpl: Dispatching command: 35 SET_HISTOGRAM
+08-29 17:12:18.037 10175 10175 I MOVTEST : MOVTEST_MARK_1787994666608029100 end obsidian.vault.detect
+08-29 17:12:18.102  8397  8397 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '300'

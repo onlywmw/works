@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 我的记忆（分层管理）Demo</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;--line:rgba(22,28,48,.08);
+    --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--ok:#0F8A5F;--warn:#B45309;--danger:#d92d20;--acc:#23272f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;background:#e9ebf0;color:var(--text);
+    display:flex;justify-content:center;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:420px;min-height:100vh;background:var(--bg);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .top{height:52px;display:flex;align-items:center;gap:8px;padding:0 8px;border-bottom:1px solid var(--line);background:var(--bg)}
+  .top .bb{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+  .top .tt{flex:1;text-align:center;font-size:16px;font-weight:600;margin-right:34px}
+  .wrap{padding:12px 14px 40px}
+
+  .search{display:flex;align-items:center;gap:8px;background:var(--s1);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:13px;color:var(--text3)}
+  .tabs{display:flex;gap:4px;background:var(--s2);border-radius:11px;padding:4px;margin:12px 0}
+  .tabs button{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--text2);padding:9px 0;border-radius:8px;cursor:pointer;background:transparent;border:none}
+  .tabs button.on{background:var(--s1);color:var(--text);box-shadow:0 1px 4px rgba(22,28,48,.08)}
+
+  .ghead{display:flex;align-items:center;gap:6px;margin:18px 2px 8px;font-size:13px;font-weight:700}
+  .ghead .cnt{font-size:11px;color:var(--text3);font-weight:400;margin-left:auto}
+  .ghead .tag{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:99px}
+  .tag.fix{background:rgba(15,138,95,.12);color:var(--ok)}
+  .tag.dft{background:rgba(180,83,9,.12);color:#a5711f}
+
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+  .mbody{display:flex;gap:12px;padding:13px 14px}
+  .del{flex:none;width:26px;height:26px;border-radius:8px;background:var(--s2);font-size:14px;display:flex;align-items:center;justify-content:center}
+  .mo{flex:1;min-width:0}
+  .mtext{font-size:15px;color:var(--text);line-height:1.5}
+  .mtag{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:var(--text3);margin-top:6px;flex-wrap:wrap}
+  .mtag .star{color:#e2a33a}
+  .macts{display:flex;border-top:1px solid var(--line)}
+  .mact{flex:1;text-align:center;padding:10px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;border-right:1px solid var(--line)}
+  .mact:last-child{border-right:none}
+  .mact.pr{color:var(--ok)}
+  .mact.dang{color:var(--danger)}
+  .mact:active{background:var(--s2)}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top"><span class="bb">‹</span><div class="tt">我的记忆</div><span style="width:34px"></span></div>
+  <div class="wrap">
+    <div class="search">🔍 搜索记忆…</div>
+    <div class="tabs" id="tabs">
+      <button data-t="all" class="on">全部</button>
+      <button data-t="fix">已固化</button>
+      <button data-t="draft">草稿</button>
+    </div>
+
+    <!-- 已固化(晋升) -->
+    <div id="gfix">
+      <div class="ghead">📌 已固化 <span class="tag fix">重要 · 长期</span><span class="cnt">2 条</span></div>
+      <div class="card">
+        <div class="mbody"><div class="del">🍎</div><div class="mo"><div class="mtext">对花生过敏，规划餐食要避开</div><div class="mtag"><span class="star">★ 已固定</span> · 来自「健康饮食」对话</div></div></div>
+        <div class="macts"><div class="mact" onclick="toast('已取消固定')">取消固定</div><div class="mact dang" onclick="toast('确认移除？')">移除</div></div>
+      </div>
+      <div class="card">
+        <div class="mbody"><div class="del">🏃</div><div class="mo"><div class="mtext">每周三晚上健身，周末晨跑</div><div class="mtag">来自「运动计划」对话 · 5 天前</div></div></div>
+        <div class="macts"><div class="mact" onclick="toast('已固定 ★')">固定</div><div class="mact dang" onclick="toast('确认移除？')">移除</div></div>
+      </div>
+    </div>
+
+    <!-- 草稿(待整理) -->
+    <div id="gdraft">
+      <div class="ghead">📝 草稿 <span class="tag dft">待整理</span><span class="cnt">3 条</span></div>
+      <div class="card">
+        <div class="mbody"><div class="del">📌</div><div class="mo"><div class="mtext">下周要交季度报告，记得提前准备数据</div><div class="mtag">来自「工作」对话 · 今天 · <span class="star">3 次被使用</span></div></div></div>
+        <div class="macts"><div class="mact pr" onclick="toast('已晋升为固化 ✓')">晋升</div><div class="mact dang" onclick="toast('确认移除？')">移除</div></div>
+      </div>
+      <div class="card">
+        <div class="mbody"><div class="del">☕</div><div class="mo"><div class="mtext">朋友推荐了一家不错的咖啡店，周末去看看</div><div class="mtag">来自「闲聊」对话 · 昨天</div></div></div>
+        <div class="macts"><div class="mact pr" onclick="toast('已晋升为固化 ✓')">晋升</div><div class="mact dang" onclick="toast('确认移除？')">移除</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById('tabs').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  const t=b.dataset.t;
+  document.getElementById('gfix').style.display=(t==='all'||t==='fix')?'':'none';
+  document.getElementById('gdraft').style.display=(t==='all'||t==='draft')?'':'none';
+});
+function toast(m){const d=document.createElement('div');d.textContent=m;d.style.cssText='position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:rgba(26,26,26,.9);color:#fff;padding:10px 16px;border-radius:8px;font-size:13px;z-index:99';document.body.appendChild(d);setTimeout(()=>d.remove(),1600)}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+ "tool": "device.timer",
+ "args": {
+  "op": "set",
+  "delaySec": 300,
+  "message": "upg02probe"
+ },
+ "response": {
+  "jsonrpc": "2.0",
+  "id": 57,
+  "result": {
+   "content": [
+    {
+     "type": "text",
+     "text": "{ok=true, id=timer-1787989696776, fireAt=2026-08-29 07:53:16}"
+    }
+   ],
+   "isError": false
+  }
+ }
+}

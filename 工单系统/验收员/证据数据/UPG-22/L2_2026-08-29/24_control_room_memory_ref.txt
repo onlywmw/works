@@ -1,0 +1,1 @@
+{"type":"memory/ref","seq":164,"time":1788006566449,"ignorable":true,"data":{"draft":"用户的猫名叫 Yuanshuai（元帅）","source":"cover","turnId":"cover--234924519"}}
