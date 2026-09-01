@@ -108,10 +108,19 @@ const hangMore = hanging.slice(5).map(h => `<div class="bg-surface border border
 </div>`).join("");
 
 const renderFn = `
+if(location.protocol==="file:"){const b=document.getElementById("file-banner");if(b)b.classList.remove("hidden");}
+function assertWritable(){
+  if(location.protocol === "file:"){
+    alert("当前为离线预览模式——回炉等写操作不可用，请通过本地服务打开看板（双击 看板.bat）");
+    return false;
+  }
+  return true;
+}
 async function rejectRow(no){
+  if(!assertWritable())return;
   if(!confirm(no + " 改回施工·回炉？"))return;
   try{
-    const r = await fetch("http://127.0.0.1:8787/api/reject",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({no})});
+    const r = await fetch("/api/reject",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({no})});
     const j = await r.json();
     if(r.ok && j.ok){ location.reload(); }
     else alert("回炉失败：" + (j.msg || r.status));

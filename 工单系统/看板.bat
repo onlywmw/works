@@ -1,3 +1,4 @@
 @echo off
 chcp 65001 >nul
-start "" http://localhost:8787
+cd /d "%~dp0"
+node run.mjs
