@@ -1,0 +1,52 @@
+{
+  "ticket_id": "UPG-68",
+  "delivery_id": "DEL-UPG68-20260901-001",
+  "standard_id": "STD-UPG68-v1（设计文 05_审批 §四 + A7 + V68-8/V69-4 增补 @2026-09-02）",
+  "code_commit_sha": "35b0008（feat/upg68；合入仍待——R1 复验 cc6e179）",
+  "artifact_sha": "待合 main 后计算（红线 23：未合前不固化）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "0027-mov/ACCEPTANCE_LOG.md §P22-R1",
+      "producer": "验收员",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "0027-mov/app/src/main/java/com/mov/android/MainActivity.kt:4803-4815（ensurePartnerToken 绑 X-Device-Token/Id；null 直接 return）",
+      "producer": "C",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "0027-mov/app/src/main/kotlin/com/mov/android/McpToolScheduler.kt:312-355（only-once 前置+只认 allowed-once）",
+      "producer": "C",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "0027-mov/app/src/main/kotlin/com/mov/android/McpToolScheduler.kt:222-252（uiOnlyTools 硬拒+dispatch 入口硬拒）",
+      "producer": "C",
+      "created_at": "2026-09-01"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "设计师/方案设计/05_审批/审批白名单机器可读化与注册即校验_设计_v1_2026-09-01.md（§四 V68-1~7 + V68-8/V69-4 增补）",
+      "producer": "设计师",
+      "created_at": "2026-09-02"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "设计师/派单/UPG-68_商业安全闸_派单_2026-09-02.md",
+      "producer": "设计师",
+      "created_at": "2026-09-02"
+    }
+  ],
+  "known_gaps": [
+    "P3-申报精度：vault 系三键仍 free（PermissionRegistryData:195/200/201）——建议双保险改 ask（不阻塞）",
+    "P3-红线23：本 manifest 迟到补（2026-09-02）",
+    "P3-MEDIUM-1/2 确认收口",
+    "P1-新判据：V68-8/V69-4 增补（2026-09-02 安全审查补位）——B 线需按新判据补验"
+  ],
+  "status": "带缺陷通过（integrity_review=confirmed）@2026-09-02；待 V68-8/V69-4 补验 + 合 main"
+}

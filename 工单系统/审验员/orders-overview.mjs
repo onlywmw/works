@@ -266,6 +266,8 @@ function detectStage(row, txt) {
     return { stage: "merged" };
   }
   if (mergePos) return { stage: "merged" };
+  // 作废/销卡（用户拍板废单——如 UPG-24 被 UPG-50 接替）
+  if (/已作废|销卡|已销|作废/.test(txt)) return { stage: "archived" };
   if (rejectF) return REJECTED; // 未合即被打回 → 回炉
   // 验收通过：inspector 列命中；或 merge 列实为「验收通过+待设计师合 main」指令（G 段无「已合」→ 归 accepted，非 unknown）
   const accText = [F ? F.text : "", G ? G.text : ""].join(" | ");
@@ -297,6 +299,7 @@ function columns(stage, overdue) {
     case "delivering": return { d: "🔨", a: "—", m: "—" };
     case "assigned": return { d: "📌", a: "—", m: "—" };
     case "queued": return { d: "⏳", a: "—", m: "—" };
+    case "archived": return { d: "❌", a: "—", m: "—" };
     default: return { d: "⚠️ 无法解析", a: "⚠️", m: "⚠️" };
   }
 }
@@ -359,6 +362,7 @@ function keypoint(p) {
   else if (p.stage === "delivering") s = p.rejected ? "❌ 验收打回·回炉修复" + ts : (p.overdue ? `⚠️ 超期：交付（>${p.overdue.days}d 未交付，@${p.ts} 起）` : "🔨 施工中/待交付" + ts);
   else if (p.stage === "assigned") s = p.overdue ? `⚠️ 超期：已派未认领（>${p.overdue.days}d 未认领，@${p.ts} 起）` : "📌 已派·待认领" + ts;
   else if (p.stage === "queued") s = "⏳ 排队/待前置（主动等待）" + ts;
+  else if (p.stage === "archived") s = "❌ 已作废（用户拍板销卡——被接替/淘汰）" + ts;
   else s = "⚠️ 无法解析·手动复核（状态文本异常）";
   if (p.tsMissing) s += " ｜ ⚠️ ts 缺失（超期未计算）";
   if (p.conflicts.length) s += " ｜ ⚠️ 数据源冲突";
