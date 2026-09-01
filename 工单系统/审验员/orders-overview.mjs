@@ -199,7 +199,7 @@ function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
     if (p) row[key] = p;
   }
   const dm = txt.match(DEL_RE);
-  return { cardNo, title: cardTitle, statusText: txt, row, priority: extractPriority(txt), delId: dm ? dm[dm.length - 1] : null };
+  return { cardNo, title: cardTitle, statusText: txt, raw: libLines.slice(idx, end).join(String.fromCharCode(10)), row, priority: extractPriority(txt), delId: dm ? dm[dm.length - 1] : null };
 }
 
 function readLib(libPath) {
@@ -331,17 +331,17 @@ function dateNumToStr(t) {
 // 单卡投影（E1 → Projection Model）
 function analyzeCard(card, nowMs) {
   const txt = card.statusText;
+  const kdT = card.raw || txt;
   const det = detectStage(card.row, txt);
   const stage = det.stage;
   const tsNum = maxDate(txt);
   const ts = tsNum >= 0 ? dateNumToStr(tsNum) : null;
   const overdueEligible = stage === "delivering" || stage === "accepted" || stage === "assigned";
   const overdue = computeOverdue(stage, tsNum, nowMs);
-  const kd = txt.indexOf(String.fromCharCode(42,42,21345,28857,42,42,65306));
-  const kdEnd = kd >= 0 ? txt.indexOf(String.fromCharCode(65372), kd) : -1;
-  const blocker = kd >= 0 && kdEnd > kd ? txt.slice(kd + 7, kdEnd).trim().slice(0, 40) : null;
-  
-  if (card.cardNo === "UPG-68") console.error("DBG2", JSON.stringify(blocker));
+  const kd = kdT.indexOf(String.fromCharCode(42,42,21345,28857,42,42,65306));
+  const kdEnd = kd >= 0 ? kdT.indexOf(String.fromCharCode(65372), kd) : -1;
+  const blocker = kd >= 0 && kdEnd > kd ? kdT.slice(kd + 7, kdEnd).trim().slice(0, 40) : null;
+
     return {
     blocker,
     no: card.cardNo,title: card.title,
