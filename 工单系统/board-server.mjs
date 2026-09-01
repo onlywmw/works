@@ -92,6 +92,41 @@ const server = http.createServer(async (req, res) => {
       }));
       return;
     }
+    if (url === "/api/reject" && req.method === "POST") {
+      let body = "";
+      req.on("data", (ch) => { body += ch; if (body.length > 4096) req.destroy(); });
+      req.on("end", () => {
+        try {
+          const { no } = JSON.parse(body || "{}");
+          if (!no || !/^UPG-\d+[A-Z]?$/.test(no)) { res.writeHead(400); res.end("bad no"); return; }
+          let lib = fs.readFileSync(LIB, "utf8");
+          const idx = lib.indexOf("# " + no + " ");
+          if (idx < 0) { res.writeHead(404); res.end("no card"); return; }
+          const end = lib.indexOf("\n# ", idx + 4);
+          const blk = lib.slice(idx, end < 0 ? undefined : end);
+          if (blk.includes("【看板回炉】")) {
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ ok: true, already: true }));
+            return;
+          }
+          const stPos = blk.indexOf("**状态**：");
+          const mark = "→ ⚠️ **回炉 @2026-09-02（【看板回炉】·用户操作——回炉重修） ｜ ";
+          const newBlk = stPos >= 0 ? blk.slice(0, stPos + 6) + mark + blk.slice(stPos + 6) : blk;
+          lib = lib.slice(0, idx) + newBlk + lib.slice(idx + blk.length);
+          fs.writeFileSync(LIB, lib);
+          // 库→表 同步
+          const sync = execFile(process.execPath, ["审验员/sync-orders.mjs", "--sync", "--table", "工单表.xlsx"], { encoding: "utf8", env: { ...process.env, PYTHONUTF8: "1" }, cwd: __dir, timeout: 60000 }, (err, so, se) => {
+            const ok = !err;
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ ok, no, msg: ok ? "回炉已登记" : "sync 失败：" + (se || so || "").slice(0, 120) }));
+          });
+        } catch (e) {
+          res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
+          res.end("reject 失败：" + e.message);
+        }
+      });
+      return;
+    }
     res.writeHead(404); res.end("not found");
   } catch (e) {
     res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });

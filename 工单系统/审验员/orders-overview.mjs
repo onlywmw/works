@@ -262,6 +262,8 @@ function readHanging(hangPath) {
 //   → 已派/认领(已派待认领) → ⏳/待前置(排队) → 未知(⚠️ 无法解析，不静默降级)
 function detectStage(row, txt) {
   const G = row.G, F = row.F;
+  // 看板操作标记（用户拍板：看板回炉重修）——最高优先
+  if (/【看板回炉】/.test(txt)) return { stage: "delivering", rejected: true };
   
     const mergePos = G && /已合 main|合并提交|合流|合 main/.test(G.text) && !/待设计师合|等前置|待前置|前置合/.test(G.text);
   const rejectF = F && /打回|驳回/.test(F.text) && !/全闭环|复验通过|复核通过|已修复/.test(F.text);
