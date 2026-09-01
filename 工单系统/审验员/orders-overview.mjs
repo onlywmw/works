@@ -256,8 +256,8 @@ function readHanging(hangPath) {
 //   → 已派/认领(已派待认领) → ⏳/待前置(排队) → 未知(⚠️ 无法解析，不静默降级)
 function detectStage(row, txt) {
   const G = row.G, F = row.F;
-  const mergePos = G && /已合 main|已合并|合流|合并提交/.test(G.text) && !/待设计师合/.test(G.text);
-  const rejectF = F && /打回|驳回/.test(F.text);
+  const mergePos = G && /合 main|已合并|合流|合并提交/.test(G.text) && !/待设计师合/.test(G.text);
+  const rejectF = F && /打回|驳回/.test(F.text) && !/全闭环|复验通过|复核通过|已修复/.test(F.text);
   // 打回/驳回 → 归 delivering + rejected 标志（回炉修复），避免落入 unknown 假「无法解析」
   const REJECTED = { stage: "delivering", rejected: true };
   if (mergePos && rejectF) {
