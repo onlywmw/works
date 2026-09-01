@@ -51,12 +51,12 @@ const urgent = projections
   .sort((a, b) => idx(a) - idx(b) || (b.priority === "P0" ? 1 : 0) - (a.priority === "P0" ? 1 : 0))
   .slice(0, 5).map(p => {
     const st = ST[p.stage] || ST.unknown;
-    return `<div class="bg-surface-container-lowest border-l-4 ${p.rejected ? "border-red-600" : p.overdue ? "border-red-500" : "border-blue-600"} border border-outline-variant rounded p-sm shadow-sm">
+    return `<div onclick="focusRow('${p.no}')" style="cursor:pointer" class="bg-surface-container-lowest border-l-4 ${p.rejected ? "border-red-600" : p.overdue ? "border-red-500" : "border-blue-600"} border border-outline-variant rounded p-sm shadow-sm">
   <div class="flex justify-between items-start mb-xs">
     <span class="font-mono text-mono font-bold">${esc(p.no)}</span>
     <span class="flex items-center gap-1">
       <span class="text-[10px] px-1 rounded ${p.priority === "P0" ? "bg-red-100 text-red-800" : p.priority === "P1" ? "bg-orange-100 text-orange-800" : "bg-gray-100 text-gray-500"}">${esc(p.priority || "未排")}</span>
-      <button class="copy-btn text-[11px] px-1.5 py-0.5 rounded border border-outline-variant hover:bg-surface-container" onclick="copyCard('${p.no}')">复制</button>
+      <button class="copy-btn text-[11px] px-1.5 py-0.5 rounded border border-outline-variant hover:bg-surface-container" onclick="event.stopPropagation();copyCard('${p.no}')">复制</button>
     </span>
   </div>
   <p class="font-body-sm text-body-sm text-on-surface line-clamp-2">${esc(p.title)}</p>
@@ -140,6 +140,18 @@ function initSel() {
     nos.forEach(n => { const o = document.createElement("option"); o.value = n; o.textContent = n; noSel.appendChild(o); });
   }
   applyF();
+}
+function focusRow(no) {
+  // 先清筛选（保证目标可见）
+  const noSel = document.getElementById("sel-no"), priSel = document.getElementById("sel-pri");
+  if (noSel) noSel.value = "";
+  if (priSel) priSel.value = "";
+  document.querySelectorAll("#main-table-body > tr:not(.row-detail)").forEach(r => r.classList.remove("hidden"));
+  const row = document.querySelector('#main-table-body tr[data-no="' + no + '"]');
+  if (!row) return;
+  row.scrollIntoView({ behavior: "smooth", block: "center" });
+  row.classList.add("focus-flash");
+  setTimeout(() => row.classList.remove("focus-flash"), 2200);
 }
 function toggleRow(tr){
   const det = tr.nextElementSibling;
