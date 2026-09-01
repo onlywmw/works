@@ -69,7 +69,7 @@ const TITLES={"UPG-01":"工具描述补全（AI 看到真说明）","UPG-02":"�
 const rows = projections.map((p, i) => {
   const st = ST[p.stage] || ST.unknown;
   const ov = p.overdue ? "overdue-row" : "";
-  const badge = `<select class="stage-select bg-surface border border-outline-variant rounded text-[11px] py-0.5 px-1" onchange="stageChange(this)" data-no-select="${esc(p.no)}"><option value="">${st.zh} ${p.stage === "merged" ? "✓" : ""}</option><option value="reject">🔨 施工·回炉</option><option value="restore">↩ 恢复</option></select>`;
+  const badge = `<span class="${st.zh === "终态" ? "green-100 text-green-800 border-green-200" : st.zh === "待合" ? "yellow-100 text-yellow-800 border-yellow-200" : st.zh === "施工" ? "orange-100 text-orange-800 border-orange-200" : st.zh === "作废" ? "gray-100 text-gray-700 border-gray-200" : st.zh === "已派" ? "blue-100 text-blue-800 border-blue-200" : st.zh === "排队" ? "gray-100 text-gray-600 border-gray-200" : "purple-100 text-purple-800 border-purple-200"} font-label-xs px-2 py-1 rounded-full border">${st.zh}${p.rejected ? "·回炉" : ""}${ov ? "·超期" : ""}</span>`;
   const CATN={M1:"安全",M2:"体系",M3:"基建",M4:"工具",M5:"商业",M6:"记忆",M7:"资产",M8:"UI"};
   const CATS={M1:"bg-red-100 text-red-800",M2:"bg-purple-100 text-purple-800",M3:"bg-sky-100 text-sky-800",M4:"bg-teal-100 text-teal-800",M5:"bg-amber-100 text-amber-800",M6:"bg-green-100 text-green-800",M7:"bg-orange-100 text-orange-800",M8:"bg-slate-100 text-slate-700"};
   const pri = p.priority && PRI[p.priority] ? `<span class="text-[10px] px-1 rounded ${p.stage === "merged" ? "bg-surface-container-high text-on-surface-variant" : PRI[p.priority]} ml-1">${p.priority}</span>` : "";
