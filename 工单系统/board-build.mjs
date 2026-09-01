@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('expand-hold');
   btn.textContent = '展开全部（'+DATA.hanging.length+'）';
   btn.addEventListener('click', ()=>{ more.classList.toggle('hidden'); btn.textContent = more.classList.contains('hidden') ? '展开全部（'+DATA.hanging.length+'）' : '收起'; });
-  document.getElementById('summary-line').textContent = '总数 '+DATA.stats.total+' · 终态 '+DATA.stats.finished+' · 在流 '+DATA.stats.inflow+' · 超期 '+DATA.stats.overdue+' · 挂账 '+DATA.stats.onhold+' ｜ sha '+DATA.meta.libSha.slice(0,8)+'…';
   initSel();
 });
 `;
