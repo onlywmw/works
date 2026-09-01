@@ -379,31 +379,113 @@ function sha256(p) {
   return createHash("sha256").update(fs.readFileSync(p)).digest("hex").slice(0, 16);
 }
 
+function renderHtml(projections, hanging, meta, md) {
+  const short = (p) => {
+    if (p.stage === "merged") return ["✅ 终态", "#16a34a"];
+    if (p.stage === "archived") return ["❌ 作废", "#64748b"];
+    if (p.stage === "delivering") return [p.rejected ? "❌ 回炉" : "🔨 施工", p.rejected ? "#dc2626" : "#d97706"];
+    if (p.stage === "accepted") return [p.overdue ? "⚠️ 超期待合" : "🟡 待合", "#b45309"];
+    if (p.stage === "assigned") return ["📌 已派", "#2563eb"];
+    if (p.stage === "queued") return ["⏳ 排队", "#64748b"];
+    return ["⚠️ 待查", "#dc2626"];
+  };
+  const sorted = [...projections].sort((a, b) => a.rank - b.rank || cardNum(a.no) - cardNum(b.no));
+  const active = projections.filter((p) => !["merged", "archived"].includes(p.stage));
+  const topBlockers = projections.filter((p) => ["delivering", "accepted", "assigned", "queued"].includes(p.stage)).slice(0, 5)
+    .map((p) => `${p.no} ${p.stage === "delivering" ? (p.rejected ? "打回回炉" : "施工中") : p.stage === "accepted" ? "待合" : p.stage === "assigned" ? "待认领" : "等前置"}`).join(" · ");
+  const rows = sorted.map((p, i) => {
+    const [st, color] = short(p);
+    const blk = p.stage === "merged" || p.stage === "archived" ? "—" : keypoint(p).replace(/^[^：:]*[:：]/, "").slice(0, 34);
+    return `<tr><td>${i + 1}</td><td><b>${p.no}</b></td><td title="${p.title.replace(/"/g, "&quot;")}">${p.title.length > 20 ? p.title.slice(0, 20) + "…" : p.title}</td><td><span class="st" style="background:${color}1a;color:${color}">${st}</span></td><td>${blk}</td><td>${p.line}</td></tr>`;
+  }).join("\n");
+  const hangExtra = hanging.length > 5 ? '<button class="more" onclick="showHang()">展开全部（' + hanging.length + '）</button><div id="hangMore" style="display:none"><table><tbody>' + hRowsAll.slice(5).join("
+") + '</tbody></table></div>' : '';
+  const hRowsAll = hanging.map((h, i) => `<tr><td>${i + 1}</td><td>${h.id}</td><td>${(h.title || "").slice(0, 30)}</td><td>${h.priority || "—"}</td><td>⏳ ${h.who} @${h.date || "?"}</td></tr>`).join("\n");
+  const overdueN = projections.filter((p) => p.overdue).length;
+  const unknown = projections.filter((p) => p.stage === "unknown").length;
+  return `<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>MOV 工单看板</title><style>
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding:24px;background:#f1f5f9;color:#0f172a}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:#64748b;font-size:12px;margin-bottom:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.card{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card b{display:block;font-size:24px;margin-bottom:2px}
+.card span{color:#64748b;font-size:12px}
+.block{border-left:4px solid #2563eb;background:#eff6ff;padding:10px 14px;border-radius:8px;margin-bottom:20px;font-size:13px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+th{background:#f8fafc;text-align:left;padding:9px 12px;font-size:12px;color:#475569;border-bottom:1px solid #e2e8f0}
+td{padding:8px 12px;font-size:13px;border-bottom:1px solid #f1f5f9}
+tr:hover td{background:#f8fafc}
+.st{font-size:12px;padding:3px 8px;border-radius:99px;white-space:nowrap}
+h2{font-size:16px;margin:28px 0 10px}
+.gray{color:#94a3b8;font-size:12px}.more{margin:8px 0;padding:6px 12px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;cursor:pointer}
+</style></head><body><div class="wrap">
+<h1>🧭 MOV 工单全局看板</h1><div class="sub">${meta.date} · E1 负责真相·E4 只投影 · sha ${meta.libSha.slice(0, 8)}… / ${meta.tblSha.slice(0, 8)}…</div>
+<div class="cards">
+<div class="card"><b>${projections.length}</b><span>总卡数</span></div>
+<div class="card"><b style="color:#d97706">${active.length}</b><span>在流（未终态）</span></div>
+<div class="card"><b style="color:#16a34a">${projections.filter((p) => p.stage === "merged").length}</b><span>✅ 终态</span></div>
+<div class="card"><b style="color:#dc2626">${overdueN}</b><span>⚠️ 超期</span></div>
+<div class="card"><b style="color:#2563eb">${hanging.length}</b><span>挂账待审</span></div>
+</div>
+<div class="block"><b>⚡ 当前重点：</b>${topBlockers || "无"}　<b>告警：</b>超期 ${overdueN} · 无法解析 ${unknown}　</div>
+<h2>主看板（${projections.length} 卡）</h2>
+<table><thead><tr><th>#</th><th>单</th><th>名称</th><th>状态</th><th>卡点/下一步</th><th>线</th></tr></thead><tbody>
+${rows}</tbody></table>
+<h2>挂账待审池（${hanging.length} 条）</h2>
+<table><thead><tr><th>#</th><th>挂账号</th><th>标题</th><th>优先级</th><th>状态</th></tr></thead><tbody>
+${hRowsAll.slice(0, 5).join("
+")}</tbody></table>${hangExtra}
+<div class="gray">点击刷新：node 审验员/orders-overview.mjs --html</div>
+</div></body></html>`;
+}
+
 function renderBoard(projections, hanging, meta) {
   const sorted = [...projections].sort((a, b) => a.rank - b.rank || cardNum(a.no) - cardNum(b.no));
-  const rows = sorted.map((p, i) => `| ${i + 1} | ${p.no} ${p.title} | ${p.cols.d} | ${p.cols.a} | ${p.cols.m} | ${p.line} | ${keypoint(p)} |`);
-  const hRows = hanging.map((h, i) => `| ${i + 1} | ${h.id} | ${h.title} | ${h.priority || "—"} | ⏳ 挂账待审（${h.who} @${h.date || "?"}） |`);
-
+  const short = (p) => {
+    if (p.stage === "merged") return "✅ 终态";
+    if (p.stage === "archived") return "❌ 作废";
+    if (p.stage === "delivering") return p.rejected ? "❌ 回炉" : "🔨 施工";
+    if (p.stage === "accepted") return p.overdue ? "⚠️ 超期待合" : "🟡 待合";
+    if (p.stage === "assigned") return "📌 已派";
+    if (p.stage === "queued") return "⏳ 排队";
+    return "⚠️ 待查";
+  };
+  const blk = (p) => (p.stage !== "merged" && p.stage !== "archived" ? keypoint(p).replace(/^[^：:]*[:：]/, "").slice(0, 34) : "—");
+  const rows = sorted.map((p, i) => {
+    const name = p.title.length > 22 ? p.title.slice(0, 22) + "…" : p.title;
+    return `| ${i + 1} | ${p.no} | ${name} | ${short(p)} | ${blk(p)} | ${p.line} |`;
+  });
+  const hRows = hanging.map((h, i) => `| ${i + 1} | ${h.id} | ${(h.title || "").length > 28 ? h.title.slice(0, 28) + "…" : h.title} | ${h.priority || "—"} | ⏳ 挂账待审（${h.who} @${h.date || "?"}） |`);
   const unknown = projections.filter((p) => p.stage === "unknown");
   const unRanked = projections.filter((p) => p.priority === "—" || p.priority === "");
-  const priNote = unRanked.length ? `优先级未排定（库状态区无优先级字段——诚实「未排定」，不回落默认 P2）：${unRanked.map((p) => p.no).join("、")}` : "优先级全部可解析";
-
+  const priNote = unRanked.length ? `优先级未排定：${unRanked.map((p) => p.no).join("、")}` : "";
+  const active = projections.filter((p) => !["merged", "archived"].includes(p.stage));
+  const topBlockers = projections
+    .filter((p) => ["delivering", "accepted", "assigned", "queued"].includes(p.stage))
+    .slice(0, 5)
+    .map((p) => `${p.no} ${p.stage === "delivering" ? (p.rejected ? "打回回炉" : "施工中") : p.stage === "accepted" ? "验收通过待合" : p.stage === "assigned" ? "已派待认领" : "排队等前置"}`)
+    .join(" · ");
+  const overdueN = projections.filter((p) => p.overdue).length;
   return `# MOV 工单全局看板 · ${meta.date}
 
-> **E1 负责真相，E4 负责投影** ｜ 状态列唯一来源 = 工单库.md 状态行（只读投影，不写库/表）｜ 只计算允许的派生告警，不重新创造状态
-> **图例**：${LEGEND_LINE} ｜ ✅已合终态 · 🔨施工/待交付 · 🟡待合 · 📌已派 · ⏳排队/挂账 · ⚠️超期/无法解析 · —未达
-> **排序**：⚠️超期/无法解析 → 🔨施工 → 🟡待合 → 📌已派 → ⏳排队 → ✅终态（severity_rank ASC → 卡号 ASC，稳定）
-> **超期**：当前态 ts（=状态区最后更新时间，非 created_at）> 阈值（已派 2d / 施工 3d / 待合 1d）→ ⚠️；ts 缺失 → 不算超期 + ⚠️ ts 缺失（不阻塞整板）
-> **✅ 仅已合 main 终态** ｜ 验收通过未合 main=🟡（超期变 ⚠️） ｜ ⚠️ 超期覆盖状态列（非关键点） ｜ 未知状态=⚠️ 无法解析（不静默降级）
-> **源绑定**：工单库.md sha256=\`${meta.libSha}\` ｜ 工单表.xlsx sha256=\`${meta.tblSha}\` ｜ 跑前=跑后 hash 一致（只读实证）
+## ⚡ 一眼摘要（30 秒）
 
-## 主看板 · 工单库 ${projections.length} 卡（${meta.date} 快照）
+- **总量**：${projections.length} 卡 ｜ **在流** ${active.length}（🔨施工/回炉 ${projections.filter((p) => p.stage === "delivering").length} · 🟡待合 ${projections.filter((p) => p.stage === "accepted").length} · 📌已派 ${projections.filter((p) => p.stage === "assigned").length} · ⏳排队 ${projections.filter((p) => p.stage === "queued").length}）｜ **终态** ${projections.filter((p) => p.stage === "merged").length} ｜ ❌作废 ${projections.filter((p) => p.stage === "archived").length}
+- **当前重点（前 5 在流）**：${topBlockers || "无"}
+- **告警**：超期 ${overdueN} ｜ 无法解析 ${unknown.length} ｜ 挂账 ${hanging.length} 条
+- **卡点/下一步**：见下表「卡点/下一步」列（= 当前阻塞/待办，截 34 字）
 
-| # | 单 | 交付 | 验收 | 合main | 线 | 关键点 |
-|---|---|---|---|---|---|---|
+> **E1 负责真相，E4 只投影** ｜ 状态唯一来源=工单库.md ｜ sha：${meta.libSha.slice(0, 8)}… / ${meta.tblSha.slice(0, 8)}…（跑前=跑后一致）
+
+## 主看板 · 工单库 ${projections.length} 卡（排：超期/回炉 → 施工 → 待合 → 已派 → 排队 → 终态）
+
+| # | 单 | 名称 | 状态 | 卡点/下一步 | 线 |
+|---|---|---|---|---|---|
 ${rows.join("\n")}
 
-## 挂账待审池 · 活跃 ${hanging.length} 条（E 类 · ⏳ 排队，不参与交付流水线判定）
+## 挂账待审池 · 活跃 ${hanging.length} 条（E 类 · 不参与流水线判定）
 
 | # | 挂账号 | 标题 | 优先级 | 关键点 |
 |---|---|---|---|---|
@@ -411,18 +493,12 @@ ${hRows.length ? hRows.join("\n") : "（无活跃挂账）"}
 
 ## 完整性对账
 
-- 工单库卡数：${projections.length} ｜ 呈现：${projections.length}/${projections.length}（100%）
-- 状态不可解析：${unknown.length} 卡（${unknown.length ? unknown.map((p) => p.no).join("、") + "——⚠️ 无法解析·手动复核" : "无"}）
-- ${meta.tblRows != null ? `工单表行数：${meta.tblRows} ｜ 表缺行（库有表无）：${meta.tblMissing} ｜ 库缺卡（表有库无）：${meta.tblExtra}` : "工单表未读取（仅完整性校验需要，主看板不依赖）"}
+- 工单库卡数：${projections.length} ｜ 呈现 100%
+- 状态不可解析：${unknown.length}（${unknown.length ? unknown.map((p) => p.no).join("、") + "——手动复核" : "无"}）
+- ${meta.tblRows != null ? `工单表行数：${meta.tblRows} ｜ 表缺行：${meta.tblMissing} ｜ 库缺卡：${meta.tblExtra}` : ""}
 - ${priNote}
 `;
 }
-
-// ---------------- fixture 自测（S2-10~13/15/16/18~20，不读真实数据）----------------
-const NOW_FIX = Date.UTC(2026, 8, 2, 6, 0, 0); // 2026-09-02 06:00 UTC
-const FIX_DATE = "2026-09-02";
-
-let passCount = 0, failCount = 0;
 function check(name, cond, detail) {
   if (cond) { passCount++; console.log(`  ✅ ${name}`); }
   else { failCount++; console.log(`  ❌ ${name} ${detail ? "→ " + detail : ""}`); }
@@ -517,17 +593,20 @@ function main() {
 
   const now = new Date();
   const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-  const md = renderBoard(projections, hanging, {
+  const meta = {
     date: dateStr,
     libSha: libShaBefore,
     tblSha: tblShaBefore || "—",
     tblRows: tblNums ? tblNums.size : null,
     tblMissing,
     tblExtra,
-  });
+  };
+  const md = renderBoard(projections, hanging, meta);
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, md, "utf8");
+
+  fs.writeFileSync(outPath.replace(/.md$/, ".html"), renderHtml(projections, hanging, meta, md), "utf8");
 
   // 只读实证：跑后 hash 必须与跑前一致（E4 不写库/表）
   const libShaAfter = sha256(DEFAULT_LIB);
