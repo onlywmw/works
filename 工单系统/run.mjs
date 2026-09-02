@@ -4,6 +4,18 @@ import { spawn, execFile } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import path from "node:path";
 
+// 连击防抖：60 秒内重复双击不弹新页（防误触/连击双开）
+import os from "node:os";
+import fs from "node:fs";
+const LOCK = path.join(os.tmpdir(), "board-launcher.lock");
+try {
+  const t = Number(fs.readFileSync(LOCK, "utf8") || 0);
+  if (Date.now() - t < 60000) {
+    console.log("[run] 60 秒内已打开过（防抖）——不重复弹页。若页面未出现，手动访问 http://localhost:" + PORT);
+    process.exit(0);
+  }
+} catch {}
+fs.writeFileSync(LOCK, String(Date.now()));
 const __dir = path.dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.BOARD_PORT || 8787);
 const HEALTH = `http://127.0.0.1:${PORT}/health`;
@@ -42,6 +54,12 @@ if (alive) {
   console.log("[run] 服务已拉起");
 }
 
-// 打开浏览器（PowerShell — Unicode 安全）
-execFile("powershell", ["-NoProfile", "-Command", "Start-Process 'http://localhost:" + PORT + "'"]);
-console.log(`[run] 打开 → http://localhost:${PORT}`);
+// 打开浏览器：Edge app 模式（同 URL 复用单窗口）；无 Edge 回退默认浏览器
+const edgeWin = "CProgram Files (x86)MicrosoftEdgeApplicationmsedge.exe";
+const edge64 = "CProgram FilesMicrosoftEdgeApplicationmsedge.exe";
+execFile("powershell", ["-NoProfile", "-Command",
+  `if (Test-Path '${edgeWin}') { Start-Process '${edgeWin}' -ArgumentList '--app=http://localhost:${PORT}' }
+  elseif (Test-Path '${edge64}') { Start-Process '${edge64}' -ArgumentList '--app=http://localhost:${PORT}' }
+  else { Start-Process 'http://localhost:${PORT}' }`
+]);
+console.log(`[run] 打开 → http://localhost:${PORT}（Edge app 窗）`);
