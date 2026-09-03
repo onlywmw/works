@@ -1,7 +1,8 @@
 # UPG-93 派单：MainActivity 拆分·阶段 1（工具注册面搬移 + 拆分蓝图落档）
 
 > **派单时间**：2026-09-03 ｜ **派单人**：设计师B ｜ **优先级**：P1（架构债主线——架构图实证：7666 行/185 注册点一锅）
-> **验收标准**：`STD-UPG-93-v1`（content_sha256=`5dfd1a3d190bff63d13da4ec0cfa226967537aee6805ad580674cc80b73e6b1f`）
+> **验收标准**：`STD-UPG-93-v2`（content_sha256=`39d1aaa01d33ab73fedfe3659899969e284478a64d56338fb42193f309df8a5b`）——v2=大神终审 3×P0 钉入（v1 留档）
+> **计划书（唯一施工口径）**：`设计师\方案设计\MainActivity拆分计划书_v1.2_2026-09-03.md`（大神终审 9.1/10 定稿）
 > **已查坑位库/复用件库**：是。命中：坑 #2/#6（登记/测试纪律）；复用=UPG-79 拆分先例（approval/ 包：ApprovalSurface+ApprovalLogic 已拆出——本单同模式）
 > **溯源实测**（@main fea2fae）：MainActivity.kt **7666 行 / 185 个 mcpHandlers 注册点**；区域图（行号锚）：工具注册（大头）/chips 气泡 :945/胶囊 :1352/模型管理 :2352/Memory OS :2671/页面桥 :2906/对话模式 :4352/预审单 :5317-5337/Markwon 视图 :6839-7028/市场总览 :7266
 > **防撞**：本单动 MainActivity.kt 大头——**与 UPG-88/89 同面，须 88 已合（已合 43e5756）且 89 挂单中不并行**；与 86/90/92 零重叠
@@ -12,9 +13,11 @@
 
 ## 二、范围
 
-1. **搬移**：185 个 `mcpHandlers[...]` 注册 + handler 实现 → 新模块（建议 `app/.../tools/ToolsRegistry.kt` 注册器模式：`fun registerAll(ctx: ToolDeps): MutableMap<String, Handler>` 或同等）；MainActivity 只留 `mcpHandlers = ToolsRegistry.registerAll(...)` 一行装配。**handler 体内代码原样搬**（只允许可见性/依赖注入的必要调整——禁顺手优化、禁改逻辑、禁改名）。
-2. **蓝图落档**：`设计师\方案设计\MainActivity拆分蓝图_v1.md`——全量盘点（每区域行号+行数+依赖）+分批计划（建议序：①工具注册[本单] → ②市场面 → ③页面桥 → ④chips/胶囊 → ⑤Markwon 视图 → ⑥启动序列收尾），含新文件行尾约定。
-3. **锚**：工具面全集计数+名单断言（185）；注册唯一写点静态锚；5 代表工具直呼契约（file.read/vault.get/shell.exec/market.status/tool.help）。
+1. **搬移**：185 个 `mcpHandlers[...]` 注册 + handler 实现 → `tools/` 目录：**`ToolsRegistry.kt` 只聚合（聚合/顺序/公共注册契约，P0-1 防二次上帝文件）+ 分域 Registrar**（chat/memory/model/market/page…按业务域天然分组承载实现）；MainActivity 只留 `mcpHandlers = ToolsRegistry.registerAll(ctx)` 一行装配。**handler 体内代码原样搬**（只允许可见性/依赖注入的必要调整——禁顺手优化、禁改逻辑、禁改名）。
+2. **前置盘点（P0 钉）**：185 个 handler 形态分类（纯 lambda/函数引用/带状态闭包）落蓝图——同构一次搬、异构单列风险；**Activity 持有边界（P0-3）**：Registrar 不得长期持有 Activity，交互走 Host/Bridge 接口。
+3. **测试金字塔（P0-2 证据三层）**：185=注册完整性直呼（脚本化全量，拆前绿→搬→拆后绿，沉淀常驻契约测试）/ 关键域=行为契约抽样（20-30 个）/ 核心链路=真机冒烟（8-10 条）——185 直呼不得单独充当零行为变化证明。
+4. **蓝图落档**：`设计师\方案设计\MainActivity拆分蓝图_v1.md`——全量盘点（每区域行号+行数+依赖）+分批计划（建议序：①工具注册[本单] → ②市场面 → ③页面桥 → ④chips/胶囊 → ⑤Markwon 视图 → ⑥启动序列收尾），含新文件行尾约定。
+5. **锚**：工具面全集计数+名单断言（185）；注册唯一写点静态锚；5 代表工具直呼契约（file.read/vault.get/shell.exec/market.status/tool.help）。
 
 ## 三、红线（违反=打回）
 
