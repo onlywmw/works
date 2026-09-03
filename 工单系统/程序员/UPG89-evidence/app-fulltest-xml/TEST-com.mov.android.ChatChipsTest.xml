@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ChatChipsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:50.600Z" hostname="苟富贵" time="0.006">
+  <properties/>
+  <testcase name="modelRows 副文字为 provider·model 真实字段不编造" classname="com.mov.android.ChatChipsTest" time="0.003"/>
+  <testcase name="modelRows 当前模型带勾选且副行无当前标注" classname="com.mov.android.ChatChipsTest" time="0.001"/>
+  <testcase name="工具短名剥 ext 前缀" classname="com.mov.android.ChatChipsTest" time="0.0"/>
+  <testcase name="mcpGroupRows 启用组带实挂工具数停用组空" classname="com.mov.android.ChatChipsTest" time="0.001"/>
+  <testcase name="mcpGroupRows 旧投影无 name enabled 字段时回退兼容" classname="com.mov.android.ChatChipsTest" time="0.0"/>
+  <testcase name="modelRows 免key模型带免费标" classname="com.mov.android.ChatChipsTest" time="0.0"/>
+  <testcase name="mcpGroupRows 总览投影带 name 与 enabled 真值优先" classname="com.mov.android.ChatChipsTest" time="0.0"/>
+  <testcase name="modelRows 过滤停用模型并保留启用" classname="com.mov.android.ChatChipsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

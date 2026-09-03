@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.compaction.distill.LessonPoolTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:48.108Z" hostname="苟富贵" time="0.277">
+  <properties/>
+  <testcase name="render 空选择返回空串 有选择含恒定前缀" classname="com.hermes.dsh.compaction.distill.LessonPoolTest" time="0.049"/>
+  <testcase name="B5 PROPOSED低confidence教训不进注入面" classname="com.hermes.dsh.compaction.distill.LessonPoolTest" time="0.03"/>
+  <testcase name="B6 机制链 A会话犯错入池 新会话注入含教训" classname="com.hermes.dsh.compaction.distill.LessonPoolTest" time="0.021"/>
+  <testcase name="配额硬上限 3条与字节预算 超配额落库不进prompt" classname="com.hermes.dsh.compaction.distill.LessonPoolTest" time="0.106"/>
+  <testcase name="字节预算裁剪 单条超预算的教训不进prompt只落库" classname="com.hermes.dsh.compaction.distill.LessonPoolTest" time="0.032"/>
+  <testcase name="B7 registryHash变更 相关教训自动降RE_EVALUATE" classname="com.hermes.dsh.compaction.distill.LessonPoolTest" time="0.038"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

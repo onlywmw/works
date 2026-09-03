@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.memory.MemoryAggregatorTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:50.413Z" hostname="苟富贵" time="0.011">
+  <properties/>
+  <testcase name="链路断言——打点函数存在定义处之外的调用点" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.002"/>
+  <testcase name="sum 与去重区分——两 session 各两轮 sum 为 4" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.003"/>
+  <testcase name="tombstone 后 ref 打点不再出现在有效面" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.001"/>
+  <testcase name="tombstone 后 list_search 两面同步消失" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.0"/>
+  <testcase name="跨 session 引用聚合取 sum" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.0"/>
+  <testcase name="search 打点经 recordSearchHits 真实写入 ref 事件（接线冒烟）" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.004"/>
+  <testcase name="晋升优先且引用计数降序" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.001"/>
+  <testcase name="同 session 不同 turnId 各计一次" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.0"/>
+  <testcase name="tombstone 后重存草稿复活" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.0"/>
+  <testcase name="search 大小写不敏感包含匹配" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.0"/>
+  <testcase name="同 session 同 turnId 同条多次 ref 只计一次" classname="com.hermes.mov.memory.MemoryAggregatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

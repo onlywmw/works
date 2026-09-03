@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.personalization.MemoryPreferenceExtractorTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:52.094Z" hostname="苟富贵" time="0.01">
+  <properties/>
+  <testcase name="消费与偏好提炼" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.005"/>
+  <testcase name="多值同维度 - 置信度随命中提升" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.001"/>
+  <testcase name="无生日信息不推算 IDENTITY" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.0"/>
+  <testcase name="星座推算 - 公历生日" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.001"/>
+  <testcase name="敏感条目整条跳过 - 不提炼" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.0"/>
+  <testcase name="敏感词条目不影响其他安全条目" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.001"/>
+  <testcase name="深色主题偏好提炼" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.0"/>
+  <testcase name="星座推算 - 无年份八月十八" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.001"/>
+  <testcase name="DRAFT 条目低置信" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.0"/>
+  <testcase name="生肖推算 - 1990 马" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.0"/>
+  <testcase name="饮食提炼 - ACTIVE 高置信" classname="com.mov.android.personalization.MemoryPreferenceExtractorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

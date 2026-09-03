@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.browser.BrowserMcpToolsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:49.866Z" hostname="苟富贵" time="0.004">
+  <properties/>
+  <testcase name="TOOLS 与 AI_BROWSER_TOOLS 对齐（14 全集、零差异）" classname="com.hermes.mov.browser.BrowserMcpToolsTest" time="0.002"/>
+  <testcase name="客户端命名 mcp__browser__ 映射互逆" classname="com.hermes.mov.browser.BrowserMcpToolsTest" time="0.0"/>
+  <testcase name="connectProxy 转发给 server 实现，缺实现跳过" classname="com.hermes.mov.browser.BrowserMcpToolsTest" time="0.001"/>
+  <testcase name="isClientTool 判定" classname="com.hermes.mov.browser.BrowserMcpToolsTest" time="0.0"/>
+  <testcase name="rawName 边界拒绝" classname="com.hermes.mov.browser.BrowserMcpToolsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

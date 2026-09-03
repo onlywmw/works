@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ComposerFocusContractTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:50.608Z" hostname="苟富贵" time="0.009">
+  <properties/>
+  <testcase name="U62 锚1 markstream WebView 三行焦点屏蔽在 MarkstreamView init 内" classname="com.mov.android.ComposerFocusContractTest" time="0.005"/>
+  <testcase name="U62 锚2 修复位于 WebView 创建 apply 块 与 settings javascriptEnabled 同域" classname="com.mov.android.ComposerFocusContractTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

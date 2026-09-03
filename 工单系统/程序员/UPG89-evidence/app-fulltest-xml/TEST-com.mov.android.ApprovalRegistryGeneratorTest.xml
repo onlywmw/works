@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ApprovalRegistryGeneratorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:50.555Z" hostname="苟富贵" time="0.037">
+  <properties/>
+  <testcase name="生成 Approval Registry 并断言 L1" classname="com.mov.android.ApprovalRegistryGeneratorTest" time="0.037"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

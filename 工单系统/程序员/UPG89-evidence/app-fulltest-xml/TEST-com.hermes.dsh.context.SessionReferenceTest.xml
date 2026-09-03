@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.context.SessionReferenceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:48.389Z" hostname="苟富贵" time="0.014">
+  <properties/>
+  <testcase name="resolve 空引用返回空文本" classname="com.hermes.dsh.context.SessionReferenceTest" time="0.001"/>
+  <testcase name="resolve 超限抛错（MAX_REFERENCES=8）" classname="com.hermes.dsh.context.SessionReferenceTest" time="0.007"/>
+  <testcase name="resolve 注入 user 与 assistant 文本（问答成对）" classname="com.hermes.dsh.context.SessionReferenceTest" time="0.004"/>
+  <testcase name="空日志会话不存在抛REFERENCE_NOT_FOUND" classname="com.hermes.dsh.context.SessionReferenceTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.market.HostBuiltinPackTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-03T19:23:49.901Z" hostname="苟富贵" time="0.004">
+  <properties/>
+  <testcase name="未知组返回空 - 防御不误摘" classname="com.hermes.mov.market.HostBuiltinPackTest" time="0.003"/>
+  <testcase name="scene 组与 obsidian 组推导 - 含未入审批登记表的 scene 工具（universe 由调用方注入）" classname="com.hermes.mov.market.HostBuiltinPackTest" time="0.0"/>
+  <testcase name="device-control 组名单完备 - prefixes 全覆盖含 device_timer qr_scan screen_capture（锚③）" classname="com.hermes.mov.market.HostBuiltinPackTest" time="0.001"/>
+  <testcase name="HOST_PACK_IDS 与 BUILTIN_PACKS 同源 - 组定义唯一（禁双写）" classname="com.hermes.mov.market.HostBuiltinPackTest" time="0.0"/>
+  <testcase name="禁用集合推导 - 按禁用组过滤后其余组保持启用" classname="com.hermes.mov.market.HostBuiltinPackTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
