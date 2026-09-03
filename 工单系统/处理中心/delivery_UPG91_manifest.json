@@ -1,0 +1,33 @@
+{
+  "ticket_id": "UPG-91",
+  "delivery_id": "DEL-UPG91-20260904-001",
+  "standard_id": "STD-UPG-91-v1（content_sha256=03b497ecd4dbc74ae77ab1ca0de9aab3523bacf5abbd9a8a548edb78450456ae）",
+  "code_commit_sha": "34a2dda（feat/upg91，基 main 43e5756；施工 4d1449b→R1 形态消费修复 34a2dda→锚④强化）",
+  "artifact_sha": "（R1 后 assembleDebug 绿——APK hash 验收构建时重算）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG91-evidence/app-fulltest-xml/（全量 103 套件 752/0/1 全绿；目录聚合 sha256=sorted 文件名+内容）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/交付报告/DELIVERY_UPG91_2026-09-04.md §三（变异亲杀 4 锚实录：M1 恢复 demoBridge→红/M2 塞回 hex→红/M3 opened 初始展开→红/M4 删 tab 计数渲染→红[锚④断言强化补杀过程在案]；还原复绿 752/0/1）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/交付报告/DELIVERY_UPG91_2026-09-04.md §二（R1 修复：UPG-50 1C 形态消费恢复 acardCls/alistCls+ui.getProfile 回读——AppearanceContractTest L2-9 零回归）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "app/src/main/assets/pages/assets/（产物入库：vite build+sync-pages 103 文件；Icon chunk 消失=零图标实证；git show 34a2dda 可验）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    }
+  ]
+}
