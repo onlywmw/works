@@ -7,35 +7,45 @@
   "evidence_manifest": [
     {
       "evidence_id": "E-001",
-      "path": "程序员/UPG85-evidence/app-fulltest-xml/（:app:testDebugUnitTest --rerun-tasks 全量 98 套件 730/2/1——2 失败=AppearanceContractTest L1-10/M-U50-5 基线预存[UPG-81 未合 main]，724[U82 时点]+6[本单新增测试]=730 零新增失败；PlanApproval 家族 35 全绿=既有 32 零回归+新增 3；目录聚合 sha256=sorted 文件名+内容）",
+      "path": "程序员/UPG85-evidence/app-fulltest-xml/",
       "sha256": "47c0f3029724717e80473ddcc63a28723b0fbdacc1d9768574fa5690f8567caa",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "原 path 说明: :app:testDebugUnitTest --rerun-tasks 全量 98 套件 730/2/1——2 失败=AppearanceContractTest L1-10/M-U50-5 基线预存[UPG-81 未合 main]，724[U82 时点]+6[本单新增测试]=730 零新增失败；PlanApproval 家族 35 全绿=既有 32 零回归+新增 3；目录聚合 sha256=sorted 文件名+内容"
     },
     {
       "evidence_id": "E-002",
-      "path": "0027-mov/app/build/outputs/apk/debug/app-debug.apk（装配级 assembleDebug BUILD SUCCESSFUL）",
-      "sha256": "a1132fa8572e543f03cd7e3f6898a0b92a090fe5c45e25afc807ce0f4bb5f0a1",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "path": "C:/Users/Administrator/0027-mov/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": null,
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "missing：交付时点 APK（56125103B sha=a1132fa8572e543f03cd7e3f6898a0b92a090fe5c45e25afc807ce0f4bb5f0a1）已被 UPG-87 后续构建覆盖（产物滚动），时点 hash 不可重算，如实标注；原 path 说明: 装配级 assembleDebug BUILD SUCCESSFUL；治理时重算=253da9606f8d…（原声明 a1132fa8572e…，以当前文件内容为准）"
     },
     {
       "evidence_id": "E-003",
-      "path": "程序员/交付报告/DELIVERY_UPG85_2026-09-03.md §五（变异亲杀实录：M1 恢复 removeAll→契约 3 红；M2 改 indexOfLast→契约 2 红；还原后定向+全量复绿，commit 8609d69 保护下 checkout 还原）",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "path": "程序员/交付报告/DELIVERY_UPG85_2026-09-03.md",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "sha256": "c5fed088548e78cc76aebb505b69239d464f71ae44e24cd7568e30f0446b05ef",
+      "note": "定位：§五（变异亲杀实录）；原 path 说明: 变异亲杀实录：M1 恢复 removeAll→契约 3 红；M2 改 indexOfLast→契约 2 红；还原后定向+全量复绿，commit 8609d69 保护下 checkout 还原；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-004",
-      "path": "程序员/交付报告/DELIVERY_UPG85_2026-09-03.md §四（缺陷前后行为对比：缺陷态=同 tool 后续步骤被静默移除[单少行，b 不可勾选执行]；修复态=b 保留在单[可勾 HIT/未勾 DENIED/漂移 MISS]——PlanApprovalBindingTest 三案 + 契约锚 3 测试）",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "path": "程序员/交付报告/DELIVERY_UPG85_2026-09-03.md",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "sha256": "c5fed088548e78cc76aebb505b69239d464f71ae44e24cd7568e30f0446b05ef",
+      "note": "定位：§四（缺陷前后行为对比）；原 path 说明: 缺陷前后行为对比：缺陷态=同 tool 后续步骤被静默移除[单少行，b 不可勾选执行]；修复态=b 保留在单[可勾 HIT/未勾 DENIED/漂移 MISS]——PlanApprovalBindingTest 三案 + 契约锚 3 测试；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-005",
-      "path": "审验独立复现（UPG-80 审验发现①：ed5088c:5543 与 main:5267 同逻辑 removeAll 误移除）——本单修复点即该发现，工单库 UPG-85 卡依据段",
+      "path": "工单库.md",
       "producer": "审验员",
-      "created_at": "2026-09-03"
+      "created_at": "2026-09-03",
+      "sha256": null,
+      "note": "missing：审验独立复现引用条目（UPG-80 审验发现①——工单库 UPG-85 卡依据段可查），工单库为活文档，如实标注；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     }
-  ]
+  ],
+  "evidence_manifest_sha": "a53e19d193379bf9c22c6a1f35f6865ea4380b7d93c6a0fd6abe358ac853d2d4",
+  "_upg86_governed": "2026-09-03（UPG-86 治理：path 裸串化+sha256 补算/missing 声明+绑定值写入；历史交付内容零改动）"
 }

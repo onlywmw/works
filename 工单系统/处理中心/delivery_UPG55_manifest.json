@@ -4,31 +4,38 @@
   "standard_id": "STD-UPG55-v1",
   "code_commit_sha": "30c0d4b",
   "artifact_sha": "c4f928d1a2c9d108",
-  "evidence": [
+  "evidence_manifest_sha": "f04cb13a9558b46434084245636526458f743488ef4e57b358b8cc01558018be",
+  "_upg86_governed": "2026-09-03（UPG-86 治理：path 裸串化+sha256 补算/missing 声明+绑定值写入；历史交付内容零改动）",
+  "evidence_manifest": [
     {
       "evidence_id": "E-001",
       "path": "程序员/交付报告/DELIVERY_UPG55_2026-09-01.md",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": "ff49da2748ee8d8bc4cb61cc9917abe49cf2015d19252847607f7f358acb4cfd"
     },
     {
       "evidence_id": "E-002",
-      "path": "tool-orch/test-results/AssetFrameworksTest（J1-J9 覆盖 8/0）",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "path": "C:/Users/Administrator/0027-mov/tool-orch/build/test-results/test",
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": null,
+      "note": "missing：滚动构建目录且 AssetFrameworksTest 为类名定位非路径；交付时点结果不可重算，如实标注；原 path 说明: J1-J9 覆盖 8/0；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-003",
-      "path": "审验员/证据数据/2026-09-01/UPG55（变异 5/5 复杀）",
+      "path": "审验员/证据数据/2026-09-01/UPG55",
       "producer": "审验员",
-      "created_at": "2026-09-01"
+      "created_at": "2026-09-01",
+      "sha256": null,
+      "note": "原 path 说明: 变异 5/5 复杀；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-004",
       "path": "处理中心/验收标准冻结区/UPG-55/STD-UPG55-v1.md",
       "producer": "设计师",
-      "created_at": "2026-09-01"
+      "created_at": "2026-09-01",
+      "sha256": "5cf6a59acb977d329242d4ea1efeea905624bc11bcded3c745fc3f7bec05fbeb"
     }
-  ],
-  "evidence_manifest_sha": "dd456ce4384777fc496cb33fe55e6f3c2cbf15367d763b882c079dc36d05e78a"
+  ]
 }

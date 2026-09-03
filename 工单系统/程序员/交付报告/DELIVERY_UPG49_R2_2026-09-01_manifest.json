@@ -6,7 +6,7 @@
   "artifact_sha": "4524b9f5b9abcbc90489e0e1f3acacdbec00e5ad8212c5e6edbc559c8bf83cf6",
   "delivered_at": "2026-09-01T18:10:00",
   "delivered_by": "程序员-C",
-  "evidence_manifest_sha": "16004595a85209be330b9e3100bc52bdfae4ed4450d06af4af202d48b105766d",
+  "evidence_manifest_sha": "b29c4ce7de5db79a7f19bc3931827d2ef902a0e1e94da1785069728711d8adb8",
   "evidence_manifest": [
     {
       "evidence_id": "E-001",
@@ -45,24 +45,27 @@
     },
     {
       "evidence_id": "E-006",
-      "path": "app/src/test/java/com/mov/android/memory/MemoryRowsTest.kt",
-      "sha256": "2045601205b1bd79f93dc5f1c7f92837fc8c329fd0e7833ebf414aa51c782120",
+      "path": "C:/Users/Administrator/0027-mov/app/src/test/java/com/mov/android/memory/MemoryRowsTest.kt",
+      "sha256": null,
       "producer": "程序员-C",
-      "created_at": "2026-09-01T17:07:00"
+      "created_at": "2026-09-01T17:07:00",
+      "note": "missing：交付时点源码（@交付分支 git 可取）——主仓当前工作区分支不同（分支态内容非交付时点），时点 hash 不可重算，如实标注；原声明 sha=…保留于本声明"
     },
     {
       "evidence_id": "E-007",
-      "path": "app/src/test/java/com/mov/android/MemoryPageContractTest.kt",
-      "sha256": "035121302431983e5c24d98fb43e2fb8770580438a39f4cfd330e7cfd68d099b",
+      "path": "C:/Users/Administrator/0027-mov/app/src/test/java/com/mov/android/MemoryPageContractTest.kt",
+      "sha256": null,
       "producer": "程序员-C",
-      "created_at": "2026-09-01T17:07:00"
+      "created_at": "2026-09-01T17:07:00",
+      "note": "missing：交付时点源码（@交付分支 git 可取）——主仓当前工作区分支不同（分支态内容非交付时点），时点 hash 不可重算，如实标注；原声明 sha=…保留于本声明"
     },
     {
       "evidence_id": "E-008",
-      "path": "app/src/main/java/com/mov/android/MemorySheet.kt",
-      "sha256": "466eedeb910a5ae798645233bc97702cdaffae1c242715a05486d71383db5979",
+      "path": "C:/Users/Administrator/0027-mov/app/src/main/java/com/mov/android/MemorySheet.kt",
+      "sha256": null,
       "producer": "程序员-C",
-      "created_at": "2026-09-01T17:07:00"
+      "created_at": "2026-09-01T17:07:00",
+      "note": "missing：交付时点源码（@交付分支 git 可取）——主仓当前工作区分支不同（分支态内容非交付时点），时点 hash 不可重算，如实标注；原声明 sha=…保留于本声明"
     }
   ]
 }

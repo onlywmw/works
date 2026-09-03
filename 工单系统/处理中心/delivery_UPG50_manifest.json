@@ -8,68 +8,81 @@
     {
       "evidence_id": "E-001",
       "path": "程序员/交付报告/DELIVERY_UPG50_2026-09-01.md",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": "57fa7b403fc3f68adaa7b19552cb801813076bf2ec53f97ea98091a7d64d6643"
     },
     {
       "evidence_id": "E-002",
-      "path": "0027-mov/app/build/test-results/testDebugUnitTest（UPG-50 专项 31 用例：AppearanceContract 11 + Profile 8 + Resolver 7 + Catalog 5，全 0 失败；全量 590/0/1skip）",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "path": "C:/Users/Administrator/0027-mov/app/build/test-results/testDebugUnitTest",
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": null,
+      "note": "missing：滚动构建目录（test-results 随每次测试跑动刷新），交付时点（2026-09-01）内容不可重算，如实标注；missing：滚动构建目录（test-results 随每次测试跑动刷新），交付时点（2026-09-01）内容不可重算，如实标注；原 path 说明: UPG-50 专项 31 用例：AppearanceContract 11 + Profile 8 + Resolver 7 + Catalog 5，全 0 失败；全量 590/0/1skip"
     },
     {
       "evidence_id": "E-003",
-      "path": "0027-mov/upg50_screens/（L2-1~7 真机截图 + L3 端到端截图 + 验证脚本 .mjs）",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "path": "C:/Users/Administrator/0027-mov/upg50_screens/",
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": "3f99c47882de10ef43c08b138e8474a0424daa5d05c018219ddad47ed08eab79",
+      "note": "原 path 说明: L2-1~7 真机截图 + L3 端到端截图 + 验证脚本 .mjs"
     },
     {
       "evidence_id": "E-004",
       "path": "处理中心/验收标准冻结区/UPG-50/STD-UPG50-v1_2026-09-02.md",
       "producer": "设计师",
-      "created_at": "2026-09-02"
+      "created_at": "2026-09-02",
+      "sha256": "898405b4be3a1959bba897b819c5397c19f51c30553b580e47deb2d9535c12eb"
     },
     {
       "evidence_id": "E-005",
-      "path": "工单表.xlsx（UPG-50 行 ✅C 交付 + DEL-UPG50-20260901-001）+ 工单库.md（UPG-50 卡片交付段）",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "path": "工单表.xlsx",
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": "7542ab589029ea52882463e28dbc75c1e1233b684253098549e99cc777ee25b7",
+      "note": "原 path 说明: UPG-50 行 ✅C 交付 + DEL-UPG50-20260901-001）+ 工单库.md（UPG-50 卡片交付段；missing：活文档（sync/登记随时演进），交付时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-006",
       "path": "程序员/交付报告/DELIVERY_UPG50_PH1_1A_2026-09-02.md",
-      "sha256": "73a530e666b20fc956b56c460f844254d54a13585521379176bb3b91f04b42bb",
-      "producer": "C",
-      "created_at": "2026-09-02"
+      "sha256": "adfcb9b898d30dc1f381b4554677b21a4de1cfca2a0162d6d3029b1627df26a0",
+      "producer": "程序员",
+      "created_at": "2026-09-02",
+      "note": "治理时重算=adfcb9b898d3…（原声明 73a530e666b2…，以当前文件内容为准）"
     },
     {
       "evidence_id": "E-007",
       "path": "程序员/交付报告/DELIVERY_UPG50_PH1_1B_2026-09-02.md",
-      "sha256": "e9c2d7ca4049c1ec35f560440672e71f65ce0a58e71ff1a5084782a55bc93ef6",
-      "producer": "C",
-      "created_at": "2026-09-02"
+      "sha256": "1819138d5eaec224ee57bb37747151e3ba4b5c98ab70ca0704c119d21d033650",
+      "producer": "程序员",
+      "created_at": "2026-09-02",
+      "note": "治理时重算=1819138d5eae…（原声明 e9c2d7ca4049…，以当前文件内容为准）"
     },
     {
       "evidence_id": "E-008",
-      "path": "0027-mov/upg50_screens/（1B 截图证据 18 张 + probe_bubble_v2/probe_settings_v2/press_hold.mjs）",
-      "sha256": "b3761017a5eca596b464564d72acc7201ed22f51375e3c9b9b958276f35a7606",
-      "producer": "C",
-      "created_at": "2026-09-02"
+      "path": "C:/Users/Administrator/0027-mov/upg50_screens/",
+      "sha256": "3f99c47882de10ef43c08b138e8474a0424daa5d05c018219ddad47ed08eab79",
+      "producer": "程序员",
+      "created_at": "2026-09-02",
+      "note": "原 path 说明: 1B 截图证据 18 张 + probe_bubble_v2/probe_settings_v2/press_hold.mjs；治理时目录重算=3f99c47882de…（原声明 b3761017a5ec…，以当前目录内容为准）"
     },
     {
       "evidence_id": "E-009",
       "path": "程序员/交付报告/DELIVERY_UPG50_PH1_1C_2026-09-02.md",
       "sha256": "1caf4dfe690b59ea30c1026bd4b12ea2d7f52b307a986ef19445dea1bca5d92b",
-      "producer": "C",
+      "producer": "程序员",
       "created_at": "2026-09-02"
     },
     {
       "evidence_id": "E-010",
-      "path": "0027-mov/upg50_screens/（1C 截图证据 20 张：1C 12 + P2-A wcard 2 + P2-B 资产 pressed 6，不含作废废图）",
-      "sha256": "fdf60d99426826fb9f81e0c5a35b54c1cc72cdf2259404d6c8d83fa7ed1cc660",
-      "producer": "C",
-      "created_at": "2026-09-02"
+      "path": "C:/Users/Administrator/0027-mov/upg50_screens/",
+      "sha256": "3f99c47882de10ef43c08b138e8474a0424daa5d05c018219ddad47ed08eab79",
+      "producer": "程序员",
+      "created_at": "2026-09-02",
+      "note": "原 path 说明: 1C 截图证据 20 张：1C 12 + P2-A wcard 2 + P2-B 资产 pressed 6，不含作废废图；治理时目录重算=3f99c47882de…（原声明 fdf60d994268…，以当前目录内容为准）"
     }
   ],
-  "evidence_manifest_sha": "9b3118d37c1296e5725277165c64f1dabb52b72a8d105a7f70ac208fc7bc3041"
+  "evidence_manifest_sha": "5346213c585cff560d1f4690668600bea391ca3c80fb05b38da35c8f912ecb9f",
+  "_upg86_governed": "2026-09-03（UPG-86 治理：path 裸串化+sha256 补算/missing 声明+绑定值写入；历史交付内容零改动）"
 }

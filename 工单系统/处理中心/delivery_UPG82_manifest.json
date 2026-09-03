@@ -7,49 +7,61 @@
   "evidence_manifest": [
     {
       "evidence_id": "E-001",
-      "path": "程序员/UPG82-evidence/engine-test-xml/（mov-exec-engine 模块测试 14 套件 88/0/0，--rerun-tasks 真跑；目录聚合 sha256=目录内 sorted 文件名+内容 sha256）",
+      "path": "程序员/UPG82-evidence/engine-test-xml/",
       "sha256": "01d01788ea7529282838b0ad44fcc2361027e1086a1fdcb195c57b001dcd7d6b",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "原 path 说明: mov-exec-engine 模块测试 14 套件 88/0/0，--rerun-tasks 真跑；目录聚合 sha256=目录内 sorted 文件名+内容 sha256"
     },
     {
       "evidence_id": "E-002",
-      "path": "程序员/UPG82-evidence/app-fulltest-xml/（:app:testDebugUnitTest --rerun-tasks 全量 724/2/1——2 失败=AppearanceContractTest L1-10/M-U50-5 基线预存[UPG-81 3339c4b 未合 main，git merge-base 实证]，与 UPG-84 验收「未开工口径 724/2/1」一致，零新增失败；目录聚合 sha256 同 E-001 算法）",
+      "path": "程序员/UPG82-evidence/app-fulltest-xml/",
       "sha256": "857f9bff72df1bb19ee8775ee9963e4bfbfe978e36446ad006d48aefa31cd645",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "原 path 说明: :app:testDebugUnitTest --rerun-tasks 全量 724/2/1——2 失败=AppearanceContractTest L1-10/M-U50-5 基线预存[UPG-81 3339c4b 未合 main，git merge-base 实证]，与 UPG-84 验收「未开工口径 724/2/1」一致，零新增失败；目录聚合 sha256 同 E-001 算法"
     },
     {
       "evidence_id": "E-003",
-      "path": "程序员/UPG82-evidence/chain-dump/（G11 事件链真实输出样本：3 卡建组→逐条授权→partially_decided×2→group_completed→POLICY_VALIDATED→DISPATCHED，含状态迁移序列与单调时间戳；临时导出测试类已删，不入库）",
+      "path": "程序员/UPG82-evidence/chain-dump/",
       "sha256": "37a6ef8de38d61d915938acf9c69025f7ed5f7b8ef1f890bef1e965e668ed890",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "原 path 说明: G11 事件链真实输出样本：3 卡建组→逐条授权→partially_decided×2→group_completed→POLICY_VALIDATED→DISPATCHED，含状态迁移序列与单调时间戳；临时导出测试类已删，不入库"
     },
     {
       "evidence_id": "E-004",
-      "path": "0027-mov/app/build/outputs/apk/debug/app-debug.apk（装配级 assembleDebug BUILD SUCCESSFUL）",
-      "sha256": "25fad4bafc1c605095f5b3f84c1eba95a7fae739935a13b997c46db237d7db23",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "path": "C:/Users/Administrator/0027-mov/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": null,
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "missing：交付时点 APK（56157871B sha=25fad4bafc1c605095f5b3f84c1eba95a7fae739935a13b997c46db237d7db23）已被 UPG-85/87 后续构建覆盖（产物滚动），时点 hash 不可重算，如实标注；原 path 说明: 装配级 assembleDebug BUILD SUCCESSFUL；治理时重算=253da9606f8d…（原声明 25fad4bafc1c…，以当前文件内容为准）"
     },
     {
       "evidence_id": "E-005",
-      "path": "程序员/交付报告/DELIVERY_UPG82_2026-09-03.md §七（变异亲杀 M1-M4 实录：四锚全红→还原全量复绿 88/0/0，XML 计数口径）",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "path": "程序员/交付报告/DELIVERY_UPG82_2026-09-03.md",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "sha256": "6da16f3e83c661616039a489ea07f56117755918e3191bfae43d858b837b087e",
+      "note": "定位：§七（变异亲杀 M1-M4 实录）；原 path 说明: 变异亲杀 M1-M4 实录：四锚全红→还原全量复绿 88/0/0，XML 计数口径；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-006",
-      "path": "工单系统侧 git merge-base 实证 + 报告 §六·注（UPG-81 3339c4b 非 origin/main 祖先——基线预存 2 失败归属归属说明；与 0027-mov docs/ACCEPTANCE_LOG.md §P37[UPG-81 验收]同源对照）",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "path": "工单库.md",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "sha256": null,
+      "note": "missing：git 实证型引用条目（merge-base --is-ancestor 3339c4b origin/main——可随时重跑复核，非文件证据），工单库为活文档，如实标注；原说明：UPG-81 3339c4b 非 origin/main 祖先——基线预存 2 失败归属说明；原 path 说明: UPG-81 3339c4b 非 origin/main 祖先——基线预存 2 失败归属归属说明；与 0027-mov docs/ACCEPTANCE_LOG.md §P37[UPG-81 验收]同源对照；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-007",
-      "path": "mov-exec-engine/src/test/kotlin/com/hermes/mov/exec/approval/（守卫锚源码位：ApprovalGroupTest G4 组级+禁入口反射锚 / EdgePolicyTest 值集冻结+G8 默认断流 / ApprovalGroupGuardTest EXPIRED 复活双通道+G11 漏记检测自证 / ApprovalExpiryTest MONEY 三不）",
-      "producer": "C",
-      "created_at": "2026-09-03"
+      "path": "C:/Users/Administrator/0027-mov/mov-exec-engine/src/test/kotlin/com/hermes/mov/exec/approval",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "sha256": null,
+      "note": "missing：交付时点目录 @origin/main fe8cd45（主仓当前 checkout 旧分支不含——git show origin/main:<path> 可取；验收以合后 main 为准），如实标注；原 path 说明: 守卫锚源码位：ApprovalGroupTest G4 组级+禁入口反射锚 / EdgePolicyTest 值集冻结+G8 默认断流 / ApprovalGroupGuardTest EXPIRED 复活双通道+G11 漏记检测自证 / ApprovalExpiryTest MONEY 三不；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     }
-  ]
+  ],
+  "evidence_manifest_sha": "c4a5348d6262cea5fa2c116be502d96e527f19a26eb1f0ae03583e9745430050",
+  "_upg86_governed": "2026-09-03（UPG-86 治理：path 裸串化+sha256 补算/missing 声明+绑定值写入；历史交付内容零改动）"
 }

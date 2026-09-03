@@ -49,6 +49,30 @@ EVIDENCE_ROOTS = [
 
 KNOWN_PRODUCERS = ("验收员", "程序员", "审验员", "设计师", "检查证据")
 
+# UPG-86：路径嵌注释检测词表（path 应为纯路径；说明性内容须移 note 字段）
+_PATH_NOTE_MARKERS = re.compile(r"[（）｜§]|——|sha256=")
+# UPG-86：合法 sha256 形态（64 位十六进制）
+_SHA256_RE = re.compile(r"^[0-9a-fA-F]{64}$")
+
+
+def _dir_sha256(dirpath: Path) -> str:
+    """目录聚合 sha256（UPG-86 口径：sorted 文件名+内容 依次摘要）——与交付报告声明口径一致。"""
+    h = hashlib.sha256()
+    for f in sorted(os.listdir(dirpath)):
+        fp = os.path.join(dirpath, f)
+        if os.path.isfile(fp):
+            h.update(f.encode("utf-8"))
+            h.update(Path(fp).read_bytes())
+    return h.hexdigest()
+
+
+def _has_missing_declare(ev: dict) -> bool:
+    """显式 missing 声明：sha256=null 且 note 字段含 missing 标注（如实标注不造假——STD-UPG-86-v1）。"""
+    if ev.get("sha256") is not None:
+        return False
+    note = str(ev.get("note", "")) + str(ev.get("missing_declare", ""))
+    return "missing" in note.lower() or "missing" in note
+
 # 强断言词（报告声称"已支持/已实现"类）—— semantic_vagueness 启发式
 STRONG_CLAIM_RE = re.compile(r"已支持|已实现|已接入|已完成|已修复|可正常|全绿|验收通过|达成")
 # 弱断言词（只查"存在/非空"类）—— benchmark_overfit 启发式
@@ -321,12 +345,33 @@ def verify_manifest(manifest_path):
     for i, ev in enumerate(mlist, 1):
         for field in ("evidence_id", "path", "sha256", "producer", "created_at"):
             if field not in ev or not str(ev.get(field, "")).strip():
+                # UPG-86：sha256 显式 null + missing 声明 = 如实标注（不造假），不算缺字段
+                if field == "sha256" and ev.get("sha256") is None and _has_missing_declare(ev):
+                    continue
                 problems.append(f"EVID-{i} 缺字段 {field}")
+    # UPG-86 检测 A：路径嵌注释（path 应为纯路径——说明性内容须移 note 字段）
+    for i, ev in enumerate(mlist, 1):
+        p = str(ev.get("path", ""))
+        if _PATH_NOTE_MARKERS.search(p):
+            problems.append(f"EVID-{i} 路径嵌注释：path 含说明性内容（（）/｜/§/——/sha256=），须移 note 字段后裸串化")
+    # UPG-86 检测 B：缺 sha256（空串/缺字段/非 64hex 且无显式 missing 声明 → 应填未填，红）
+    for i, ev in enumerate(mlist, 1):
+        sha = ev.get("sha256")
+        if sha is None:
+            if not _has_missing_declare(ev):
+                problems.append(f"EVID-{i} 缺 sha256 且无 missing 声明（如实标注须 sha256=null + note 含 missing）")
+            continue
+        sv = str(sha).strip()
+        if not sv or not _SHA256_RE.match(sv):
+            problems.append(f"EVID-{i} sha256 非法（空串或非 64 位十六进制）：{sv[:20]}")
     # manifest_sha 重算
     recomputed = _sha256_hex(_canon_manifest(mlist))
     bound = data.get("evidence_manifest_sha")
     match = None
-    if bound:
+    # UPG-86 检测 C：绑定值未写入（manifest 文件须自带 evidence_manifest_sha=清单内容重算值，可重算对账）
+    if not bound:
+        problems.append("绑定值未写入：manifest 文件缺 evidence_manifest_sha 字段（清单内容 canonical sha256，可重算对账）")
+    else:
         match = (str(bound).strip().lower() == recomputed)
         if not match:
             problems.append("evidence_manifest_sha 与重算值不一致（清单内容已变或声明过期）")
@@ -335,10 +380,12 @@ def verify_manifest(manifest_path):
     for ev in mlist:
         p = ROOT / str(ev.get("path", ""))
         exists = p.exists()
+        is_dir = exists and p.is_dir()
+        declared_missing = _has_missing_declare(ev) or (not exists and "missing" in str(ev.get("note", "")).lower())
         hash_ok = None
         if exists and ev.get("sha256"):
             try:
-                actual = _sha256_hex(p.read_bytes())
+                actual = _dir_sha256(p) if is_dir else _sha256_hex(p.read_bytes())
                 hash_ok = (actual == str(ev["sha256"]).lower())
             except OSError:
                 hash_ok = False
@@ -346,11 +393,13 @@ def verify_manifest(manifest_path):
             "evidence_id": ev.get("evidence_id"),
             "path": str(ev.get("path")),
             "exists": exists,
+            "is_dir": is_dir,
             "hash_matches": hash_ok,
             "producer": ev.get("producer"),
             "producer_known": str(ev.get("producer", "")) in KNOWN_PRODUCERS,
+            "missing_declared": declared_missing,
         })
-        if not exists:
+        if not exists and not declared_missing:
             problems.append(f"{ev.get('evidence_id')} 路径不存在")
     res.update({
         "delivery_id": data.get("delivery_id"),
@@ -509,6 +558,67 @@ def verify_hash_self_test(repo=None):
     return {
         "mode": "verify-hash-self-test",
         "repo": repo,
+        "cases": cases,
+        "ok": all(c["passed"] for c in cases),
+    }
+
+
+# ---------------------------------------------------------------- UPG-86 manifest 治理（三类失效检测自测）
+
+def manifest_self_test():
+    """UPG-86 亲杀锚自测：三坏案（路径嵌注释/缺 sha256/绑定值未写入）全红 + 好案绿。fixture 临时目录生成即弃。"""
+    import tempfile
+
+    def write_manifest(evs, bound):
+        arr = json.dumps(evs, ensure_ascii=False)
+        return "{\n  \"delivery_id\": \"DEL-TEST\",\n  \"evidence_manifest\": " + arr + ",\n  \"evidence_manifest_sha\": " + (
+            json.dumps(bound) if bound else "null") + "\n}"
+
+    def good_ev(**kw):
+        base = {"evidence_id": "E-1", "path": "p.bin", "sha256": "a" * 64, "producer": "程序员", "created_at": "2026-09-03", "note": ""}
+        base.update(kw)
+        return base
+
+    cases = []
+    with tempfile.TemporaryDirectory() as td:
+        # 好案素材：真实文件（绝对路径——verify_manifest 以 ROOT 基准拼接，绝对路径 pathlib 语义直取）+ 真实 sha256
+        bin_path = Path(td) / "p.bin"
+        bin_path.write_bytes(b"upg86-fixture")
+        real_sha = _sha256_hex(bin_path.read_bytes())
+        good = [good_ev(path=str(bin_path), sha256=real_sha)]
+        good_manifest = Path(td) / "good.json"
+        good_manifest.write_text(write_manifest(good, _sha256_hex(_canon_manifest(good))), encoding="utf-8")
+
+        # 坏案①：路径嵌注释
+        bad1 = [good_ev(path="0027-mov/ACCEPTANCE_LOG.md §P22-R1")]
+        bad1_f = Path(td) / "bad1.json"
+        bad1_f.write_text(write_manifest(bad1, _sha256_hex(_canon_manifest(bad1))), encoding="utf-8")
+
+        # 坏案②：缺 sha256（空串无 missing 声明）
+        bad2 = [good_ev(sha256="")]
+        bad2_f = Path(td) / "bad2.json"
+        bad2_f.write_text(write_manifest(bad2, _sha256_hex(_canon_manifest(bad2))), encoding="utf-8")
+
+        # 坏案③：绑定值未写入（bound=null）
+        bad3_f = Path(td) / "bad3.json"
+        bad3_f.write_text(write_manifest(good, None), encoding="utf-8")
+
+        for name, f, expect_ok in (
+            ("好案（规范 manifest）", good_manifest, True),
+            ("坏案①路径嵌注释", bad1_f, False),
+            ("坏案②缺 sha256", bad2_f, False),
+            ("坏案③绑定值未写入", bad3_f, False),
+        ):
+            r = verify_manifest(f)
+            cases.append({
+                "case": name,
+                "expected_ok": expect_ok,
+                "actual_ok": r["ok"],
+                "passed": r["ok"] == expect_ok,
+                "problems": r.get("problems", [])[:3],
+            })
+    return {
+        "mode": "manifest-self-test",
         "cases": cases,
         "ok": all(c["passed"] for c in cases),
     }
@@ -875,6 +985,8 @@ def main():
     ap.add_argument("--repo", help="--verify-hash / --verify-hash-self-test 目标 git 仓库（默认主仓库）")
     ap.add_argument("--verify-hash-self-test", action="store_true",
                     help="SYS-02 E2 回归自测：重放 U-49 fixture（9fd39b6→REJECT missing / 2a13dcd→OK）")
+    ap.add_argument("--manifest-self-test", action="store_true",
+                    help="UPG-86 亲杀锚自测：三坏案（路径嵌注释/缺 sha256/绑定值未写入）全红 + 好案绿")
     ap.add_argument("--json", action="store_true", help="JSON 输出")
     args = ap.parse_args()
 
@@ -891,6 +1003,20 @@ def main():
                 print(f"        期望 {c['expected']} / 实际 {c['actual']}")
                 print(f"        {c['signal']}")
             print(f"结论: {'PASS 2/2' if res['ok'] else 'FAIL'}（机器只出 flag，人裁决）")
+        return
+
+    if args.manifest_self_test:
+        res = manifest_self_test()
+        if args.json:
+            print(json_dumps(res))
+        else:
+            print("═══ UPG-86 manifest 治理自测（三坏案红 + 好案绿）═══")
+            for c in res["cases"]:
+                mark = "PASS" if c["passed"] else "FAIL"
+                print(f"  [{mark}] {c['case']}  (ok={c['actual_ok']})")
+                for p in c["problems"][:2]:
+                    print(f"        - {p}")
+            print(f"结论: {'PASS 4/4' if res['ok'] else 'FAIL'}（机器只出 flag，人裁决）")
         return
 
     if args.verify_hash:

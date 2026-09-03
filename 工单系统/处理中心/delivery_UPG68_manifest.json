@@ -7,39 +7,50 @@
   "evidence_manifest": [
     {
       "evidence_id": "E-001",
-      "path": "0027-mov/ACCEPTANCE_LOG.md §P22-R1",
+      "path": "C:/Users/Administrator/0027-mov/docs/ACCEPTANCE_LOG.md",
       "producer": "验收员",
-      "created_at": "2026-09-01"
+      "created_at": "2026-09-01",
+      "sha256": null,
+      "note": "missing：ACCEPTANCE_LOG 为 append-only 活文档，时点文件 hash 不可重算，如实标注（行内容可经 git 历史 @交付时点取）；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-002",
-      "path": "0027-mov/app/src/main/java/com/mov/android/MainActivity.kt:4803-4815（ensurePartnerToken 绑 X-Device-Token/Id；null 直接 return）",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "path": "C:/Users/Administrator/0027-mov/app/src/main/java/com/mov/android/MainActivity.kt",
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": null,
+      "note": "missing：源码随 UPG-73/77/82/84/85/87 持续演进，交付时点行号锚（:4803-4815）与文件 hash 均不可重算，行内容可经 git @交付分支取，如实标注；原 path 说明: ensurePartnerToken 绑 X-Device-Token/Id；null 直接 return；行号锚: 4803-4815"
     },
     {
       "evidence_id": "E-003",
-      "path": "0027-mov/app/src/main/kotlin/com/mov/android/McpToolScheduler.kt:312-355（only-once 前置+只认 allowed-once）",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "path": "C:/Users/Administrator/0027-mov/app/src/main/kotlin/com/hermes/dsh/tools/McpToolScheduler.kt",
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": null,
+      "note": "missing：原 path 误写 app/src/main/java/com/mov/android/（真实=app/src/main/kotlin/com/hermes/dsh/tools/，治理修正）；源码持续演进，时点 hash 不可重算，如实标注；原 path 说明: only-once 前置+只认 allowed-once；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-004",
-      "path": "0027-mov/app/src/main/kotlin/com/mov/android/McpToolScheduler.kt:222-252（uiOnlyTools 硬拒+dispatch 入口硬拒）",
-      "producer": "C",
-      "created_at": "2026-09-01"
+      "path": "C:/Users/Administrator/0027-mov/app/src/main/kotlin/com/hermes/dsh/tools/McpToolScheduler.kt",
+      "producer": "程序员",
+      "created_at": "2026-09-01",
+      "sha256": null,
+      "note": "missing：同 E-003（真实路径治理修正+源码演进），如实标注；原 path 说明: uiOnlyTools 硬拒+dispatch 入口硬拒；missing：路径当前不存在/历史引用条目，时点 hash 不可重算，如实标注"
     },
     {
       "evidence_id": "E-005",
-      "path": "设计师/方案设计/05_审批/审批白名单机器可读化与注册即校验_设计_v1_2026-09-01.md（§四 V68-1~7 + V68-8/V69-4 增补）",
+      "path": "设计师/方案设计/05_审批/审批白名单机器可读化与注册即校验_设计_v1_2026-09-01.md",
       "producer": "设计师",
-      "created_at": "2026-09-02"
+      "created_at": "2026-09-02",
+      "sha256": "c0ad24cec5561d9ba20e47f49e0c671b3e0673815c29bcf528b054b80b98be63",
+      "note": "原 path 说明: §四 V68-1~7 + V68-8/V69-4 增补"
     },
     {
       "evidence_id": "E-006",
       "path": "设计师/派单/UPG-68_商业安全闸_派单_2026-09-02.md",
       "producer": "设计师",
-      "created_at": "2026-09-02"
+      "created_at": "2026-09-02",
+      "sha256": "66c6ecbde7187344ece350d74d0ee4bad79b860d20e91ad143cd9feae7316134"
     }
   ],
   "known_gaps": [
@@ -48,5 +59,7 @@
     "P3-MEDIUM-1/2 确认收口",
     "P1-新判据：V68-8/V69-4 增补（2026-09-02 安全审查补位）——B 线需按新判据补验"
   ],
-  "status": "带缺陷通过（integrity_review=confirmed）@2026-09-02；待 V68-8/V69-4 补验 + 合 main"
+  "status": "带缺陷通过（integrity_review=confirmed）@2026-09-02；待 V68-8/V69-4 补验 + 合 main",
+  "evidence_manifest_sha": "c53c27c34877c90d0cbcfeeb97ed0700e0c7d8a88b3aa47f08294e315bdb8b2a",
+  "_upg86_governed": "2026-09-03（UPG-86 治理：path 裸串化+sha256 补算/missing 声明+绑定值写入；历史交付内容零改动）"
 }
