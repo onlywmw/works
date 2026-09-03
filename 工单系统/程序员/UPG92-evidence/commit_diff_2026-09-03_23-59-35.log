@@ -1,0 +1,14 @@
+# UPG-92 代码变更快照 ｜ 2026-09-03_23-59-35
+commit 39039ef9854b594cccbd8f44b61489b96527b660
+Author: wmw0027 <1378667125@qq.com>
+Date:   Thu Sep 3 23:58:24 2026 +0800
+
+    UPG-92 manifest 硬闸化：deliver-gen 源头合规（路径裸串/条带 sha256 实算/绑定值写入可重算）+ 自检内置硬闸（审验.py --manifest ok:False=拒绝产出 exit 1 不留残件）+ --manifest-draft 直通过闸 + --self-test 四案（合规绿/注入红×2/骨架回归）——STD-UPG-92-v1；另修复 worktree 库表基线（sync 投影 78 卡 diff=0，pre-commit 闸要求）
+
+ .../deliver-gen.mjs"                               | 276 +++++++++++++++++++--
+ .../\345\267\245\345\215\225\350\241\250.xlsx"     | Bin 21932 -> 32598 bytes
+ 2 files changed, 256 insertions(+), 20 deletions(-)
+
+== 与升级前 deliver-gen.mjs 的 diff 摘要（行数）==
+ .../deliver-gen.mjs"                               | 276 +++++++++++++++++++--
+ 1 file changed, 256 insertions(+), 20 deletions(-)

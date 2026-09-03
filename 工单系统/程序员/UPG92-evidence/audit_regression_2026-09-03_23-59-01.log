@@ -1,0 +1,45 @@
+# UPG-92 审验.py 全子命令回归 ｜ 2026-09-03_23-59-01
+
+== 1. --manifest-self-test ==
+═══ UPG-86 manifest 治理自测（三坏案红 + 好案绿）═══
+  [PASS] 好案（规范 manifest）  (ok=True)
+  [PASS] 坏案①路径嵌注释  (ok=False)
+        - EVID-1 路径嵌注释：path 含说明性内容（（）/｜/§/——/sha256=），须移 note 字段后裸串化
+        - E-1 路径不存在
+  [PASS] 坏案②缺 sha256  (ok=False)
+        - EVID-1 缺字段 sha256
+        - EVID-1 sha256 非法（空串或非 64 位十六进制）：
+  [PASS] 坏案③绑定值未写入  (ok=False)
+        - 绑定值未写入：manifest 文件缺 evidence_manifest_sha 字段（清单内容 canonical sha256，可重算对账）
+结论: PASS 4/4（机器只出 flag，人裁决）
+exit=0
+
+== 2. --verify-hash-self-test ==
+═══ E2 回归自测（U-49 fixture 重放）═══
+仓库: C:\Users\Administrator\0027-mov
+  [PASS] UPG-49 交付报告 hash 9fd39b6（rebase 重写后已不存在）→ REJECT missing
+        期望 HASH_REJECT missing / 实际 HASH_REJECT missing
+        `9fd39b6` 不存在（git cat-file -t 失败: fatal: Not a valid object name 9fd39b6）——提示: `git log --oneline feat/upg49` 取当前真 hash
+  [PASS] UPG-49 分支第 3 commit 2a13dcd（在 origin/main 祖先链）→ HASH_OK
+        期望 HASH_OK / 实际 HASH_OK
+        `2a13dcd` 存在且在 origin/main 祖先链 → hash 一致性通过（可登记交付）
+结论: PASS 2/2（机器只出 flag，人裁决）
+exit=0
+
+== 3. --list ==
+发现 71 个有证据目录：
+UPG01批3-1  ←  验收员\证据数据\2026-08-30\UPG01批3-1
+UPG01批3-4  ←  验收员\证据数据\2026-08-30\UPG01批3-4
+UPG01批4  ←  验收员\证据数据\2026-08-30\UPG01批4
+UPG01批4R1  ←  验收员\证据数据\2026-08-30\UPG01批4R1
+...(截断)
+
+== 4. --manifest（既有交付 UPG-88 在库 manifest，检测治理前旧件应红）==
+manifest: ../处理中心/delivery_UPG88_manifest.json
+delivery_id: DEL-UPG88-20260903-001  standard_id: STD-UPG-88-v1（content_sha256=f64ec0e288ecbe7ae14abaea2d325dc7036b5d89ccaf121e77ef782892575bec）
+manifest_sha 绑定值: None
+manifest_sha 重算值: 300dfe9149ed2ad5c476d34552cbcb8987aee3cda951b4816680f139d04097a8
+一致? None   ok: False
+  E-001 path=程序员/UPG88-evidence/app-fulltest-xml/（:app:testDebu exists=False hash_matches=None producer_known=False
+  E-002 path=程序员/UPG88-evidence/emulator_home_minimal.png（模拟器：两 exists=False hash_matches=None producer_known=False
+  E-003 path=程序员/UPG88-evidence/emulator_home_reboot_keep.png（f exists=False hash_matches=None producer_known=False

@@ -1,0 +1,66 @@
+{
+  "ticket_id": "UPG-92",
+  "delivery_id": "DEL-UPG92-20260904-001",
+  "standard_id": "STD-UPG-92-v1（content_sha256=a2c0fcd7b2afb725db48172d9a86dd23b188b0005599554c418e09effe1d9bf7）",
+  "code_commit_sha": "39039ef",
+  "artifact_sha": "不适用（工单系统脚本单，无构建产物）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG92-evidence/selftest_2026-09-03_23-58-49.log",
+      "sha256": "8cde51c96a761633a757dfd0f99f0af1014ceed7236ce26abb3314ee24819d4a",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG92-evidence/audit_regression_2026-09-03_23-59-01.log",
+      "sha256": "705a5d4292100547fb096676623da1d15be8d4718f76cfa37036220e0a673720",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG92-evidence/kill_path-note_2026-09-03_23-59-26.log",
+      "sha256": "f524b6754a087826161f66ef24468c61134c06fa7109addd8555d7c647f5870e",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG92-evidence/kill_missing-sha_2026-09-03_23-59-26.log",
+      "sha256": "10fc9c35c49163bf97bf56fe031efcabccae6002608a1b0d003cc522de87e6b8",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG92-evidence/commit_diff_2026-09-03_23-59-35.log",
+      "sha256": "131343a26be2d59c79366cb56cd7fde4f158bc5678dcc5bdf85bc05cadd21c1d",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/UPG92-evidence/inject_draft_path-note.json",
+      "sha256": "c8125cb85d2407dd7b539c1c5d2cfa7f693554ee510697ad736f571e888e9ca1",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "程序员/UPG92-evidence/inject_draft_missing-sha.json",
+      "sha256": "63ee6c9b54c46f84cb606dff2d6499b36e77e780dbe78e909c51a9e3095ea94a",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-008",
+      "path": "程序员/UPG92-evidence/kill_demo_target.txt",
+      "sha256": "a33f1eaa6dde74881fb719324e3255265f37fdfe27291b3253b86099fec6aca0",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    }
+  ],
+  "evidence_manifest_sha": "802d72e65412fc80d21e9801948906dfbf69758240b93f0522f10be3250a889f"
+}

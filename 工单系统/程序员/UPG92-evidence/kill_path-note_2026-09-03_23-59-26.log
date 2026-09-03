@@ -1,0 +1,9 @@
+# 亲杀锚①：注入路径嵌注释 → 硬闸拒绝 ｜ 2026-09-03_23-59-26
+cmd: node deliver-gen.mjs --ticket UPG-92 --branch feat/upg92 --hash 39039ef --manifest-draft ../程序员/UPG92-evidence/inject_draft_path-note.json --manifest-out /tmp/should-not-exist-1.json
+═══ MANIFEST_REJECT（硬闸：不合规=拒绝产出，非警告）═══
+  - EVID-1 路径嵌注释：path 含说明性内容（（）/｜/§/——/sha256=），须移 note 字段后裸串化
+  - E-001 路径不存在
+已删除不合规产出: C:\Users\ADMINI~1\AppData\Local\Temp\should-not-exist-1.json
+交付生成失败（exit 1）——修合规后重跑；机器产出即合规，不靠人记得跑自检
+exit=1
+残件检查: ls: cannot access '/tmp/should-not-exist-1.json': No such file or directory

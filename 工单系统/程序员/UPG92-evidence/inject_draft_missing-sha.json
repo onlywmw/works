@@ -1,0 +1,10 @@
+{
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG92-evidence/kill_demo_target.txt",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# UPG-92 deliver-gen --self-test 实录 ｜ 2026-09-03_23-58-49
+cmd: node deliver-gen.mjs --self-test
+═══ UPG-92 deliver-gen manifest 硬闸自测 ═══
+  [PASS] 源头合规：产出 manifest 审验.py --manifest ok:True 可重算
+        绑定值重算一致=true 路径裸串=true 条带sha256=true
+  [PASS] 硬闸：注入路径嵌注释 → 拒绝产出
+        exit=1 残件清除=true REJECT 输出=true
+  [PASS] 硬闸：注入缺 sha256 → 拒绝产出
+        exit=1 残件清除=true REJECT 输出=true
+  [PASS] 回归：骨架生成零回归（无 manifest 参数照出）
+        exit=0 骨架标题=true 待填栏=true
+结论: PASS 4/4（机器只出 flag，人裁决）
+exit=0

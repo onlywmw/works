@@ -1,0 +1,11 @@
+{
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG92-evidence/kill_demo_target.txt（全量 744/0/1 全绿；目录聚合 sha256=sorted 文件名+内容）",
+      "sha256": "eb9c26baee47f19e4993a77bca936d0ff09e355a82d3db79bf154ebff1a80604",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    }
+  ]
+}
