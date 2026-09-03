@@ -1,0 +1,11 @@
+# 变异锚③：MainActivity 第二写点 → 期望 唯一写点锚红 ｜ 2026-09-04 03:20:08
+M3 injected: second write point in MainActivity
+BUILD FAILED in 31s
+33 actionable tasks: 33 executed
+XML: tests=7 failures=1
+   message="java.lang.AssertionError: MainActivity ���� mcpHandlers[ д�루�ڶ�д�㣩 expected:&lt;0&gt; but was:&lt;1&gt;"
+restored all
+27 actionable tasks: 27 executed
+��ԭ�� XML: tests=7 failures=1
+
+# 勘误 @03:24：M3 循环尾部「还原后 failures=1」为陈旧 XML 读数（mtime 03:20:40 早于还原写入 03:20:41）——03:24 复核 fresh XML：tests=7 failures=0，还原确认干净。

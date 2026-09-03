@@ -1,0 +1,6 @@
+== tool.help(vault.get) id=1 ｜ 03:15:22
+{"jsonrpc":"2.0","id":1,"result":{"content":[{"type":"text","text":"{ok=true, docs=[{name=vault.get, description=读取个人信息明文（唯一 AI 出口，审批门控）。与 vault.peek 差异：peek 页面本地免审批。, parameters={type=object, properties={keys={type=array, description=字段名数组或逗号分隔}}, required=[keys]}, output=（output 声明待登记——批 3 清偿在途）, permissionTier=ask}]}"}],"isError":false}}
+== market.status id=2
+{"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"{ok=true, servers=[{serverId=mock, reachable=false, toolCount=0, lastError=健康检查失败（不可达）, checkedAt=1788462928628}]}"}],"isError":false}}
+== file.read(干净错误形态) id=3
+{"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"{ok=false, error=文件不存在: upg93_probe_nonexist.txt}"}],"isError":false}}

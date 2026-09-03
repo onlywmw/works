@@ -1,0 +1,7 @@
+# å˜å¼‚é”šâ‘¡ï¼štool.help é€»è¾‘ä¸€è¡Œï¼ˆaskâ†’neverï¼‰â†’ æœŸæœ› ä¿çœŸé”šçº¢ ï½œ 2026-09-04 03:18:33
+M2 injected: tool.help tier fallback ask->never
+BUILD FAILED in 1m 16s
+33 actionable tasks: 33 executed
+XML: tests=7 failures=1
+   message="java.lang.AssertionError: handler ÌåÓë°áÒÆÇ°²»Ò»ÖÂ£¨ÒÉËÆÂß¼­¸Ä¶¯£©: [tool.help]"
+restored all

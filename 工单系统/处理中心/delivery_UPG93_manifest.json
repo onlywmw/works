@@ -1,0 +1,122 @@
+{
+  "ticket_id": "UPG-93",
+  "delivery_id": "DEL-UPG93-20260904-001",
+  "standard_id": "STD-UPG-93-v2（content_sha256=5dfd1a3d190bff63d13da4ec0cfa226967537aee6805ad580674cc80b73e6b1f）",
+  "code_commit_sha": "c969b05a（0027-mov feat/upg93，基 main 254d6ca，已 push origin）",
+  "artifact_sha": "不适用（app-debug.apk 为验证副产物——证据见真机实录；APK 不入库）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG93-evidence/final_gate.txt",
+      "sha256": "10f8554671c866e054ca75354be4eb87689746147515ee2e876b4e7338de3985",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "终闸：assembleDebug+全量 762/0/0/105 套件+token 校验通过"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG93-evidence/scan93_report.json",
+      "sha256": "8011290da8bc9713cc4c1f86e5487ca9a2e3e46b8a2070e0349764561beee09b",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "独立扫描器三方对账：172 注册+13 读=185 口径闭合/边界全对账"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG93-evidence/gen93_reconcile.json",
+      "sha256": "52ea6793621857688113400543d4aa9349b531e067c3f3c0fe643eac2c66dabc",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "搬移对账：172 块归一化 sha256 前后全等+48 可见性提升清单"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG93-evidence/mutation_M1_vaultget.log",
+      "sha256": "66b35693db01ca30daa84f38cd273fa6a431648b09bee1989ca91a6d6a75f89b",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "变异锚①摘 vault.get→名单/保真/落域 3 锚齐红→还原复绿"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG93-evidence/mutation_M2_toolhelp.log",
+      "sha256": "a4161d7c0becc87e4aee9ca05dfe7892055cb2251709ec552c699701aee46c98",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "变异锚②tool.help 改一行→保真锚红（精确点名）→还原"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/UPG93-evidence/mutation_M3_writepoint.log",
+      "sha256": "66f6c4e76ea6c86f6c89958474b80abfe2bf16011713215dc6fc5d2b62168e84",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "变异锚③第二写点→唯一写点锚红→还原（含陈旧 XML 勘误注记）"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "程序员/UPG93-evidence/coldstart_anchor.txt",
+      "sha256": "0540b38bf24994401e511205ef759ffd61fc6ed2f3cd9118ce30e7b9aeceb9b0",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "冷启动锚：拆后中位 1673ms vs 拆前 1592ms，Δ+5.1%<10%"
+    },
+    {
+      "evidence_id": "E-008",
+      "path": "程序员/UPG93-evidence/tablet_post_boot.png",
+      "sha256": "cedb8912f24241a8c4e17defa14bad54abbc8a0999d3219fb6065f7b1f0d8c59",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "真机（平板）：拆后包启动首页渲染正常"
+    },
+    {
+      "evidence_id": "E-009",
+      "path": "程序员/UPG93-evidence/tablet_boot_logcat.txt",
+      "sha256": "ac35d4c3beb1a8ea234f9166622b26f59dfcae72ee44af53057bd04750ce74d4",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "真机启动 logcat：工具面 182/158/24 与基线逐字一致"
+    },
+    {
+      "evidence_id": "E-010",
+      "path": "程序员/UPG93-evidence/tablet_direct_calls.txt",
+      "sha256": "c2225b722a78adc34dcf44b4386322cd7c1f15e27d0a8d5b6d0f67181804d4bf",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "直呼锚：tool.help/market.status/file.read MCP 直呼响应"
+    },
+    {
+      "evidence_id": "E-011",
+      "path": "程序员/UPG93-evidence/tablet_approval_card.png",
+      "sha256": "72b647b759c147a4969118dd39cf2aff5508c9e4a4a5cf4c8356a81df5331f0a",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "真机：vault.get 写类审批卡（敏感标+脱敏+审批待办 chip）"
+    },
+    {
+      "evidence_id": "E-012",
+      "path": "程序员/UPG93-evidence/tablet_vaultget_response.txt",
+      "sha256": "e54cef3d6a92f4db34d1446ad36c67c8962333c0fa1fa6c1226c98c71d33d3ac",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "审批拒绝链：APPROVAL_DENIED 干净错误"
+    },
+    {
+      "evidence_id": "E-013",
+      "path": "程序员/UPG93-evidence/tablet_chat_roundtrip.png",
+      "sha256": "03b87909e7f38dbf8e9f03da82474daf3e8f32e3cfed7b5f099b5950cb2525ab",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "真机：对话往返 ping→pong + journal turn 链完整"
+    },
+    {
+      "evidence_id": "E-014",
+      "path": "设计师/方案设计/MainActivity拆分蓝图_v1.md",
+      "sha256": "8043124ba43ed761029269e0a4b15422d5897011d8e4d2ca750fc06c14695c95",
+      "producer": "程序员",
+      "created_at": "2026-09-04",
+      "note": "拆分蓝图落档（全量盘点+形态盘点+分批计划+债务清单）"
+    }
+  ],
+  "evidence_manifest_sha": "26a1d78013af8af55b1b49f24b3b26809727f38bbf9cef8c49436ce0c0025dbf"
+}

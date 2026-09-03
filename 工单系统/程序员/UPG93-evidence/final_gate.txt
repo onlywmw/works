@@ -1,0 +1,6 @@
+# UPG-93 终闸 ｜ 2026-09-04 03:27:56
+cmd: gradle :app:assembleDebug :app:testDebugUnitTest --rerun-tasks
+结果: BUILD SUCCESSFUL（assembleDebug + testDebugUnitTest）
+全量汇总: 762 tests / 0 failures / 0 errors / 105 套件（含新增 ToolsSplitContractTest 7 锚全绿）
+基线对照: 0 失败基线不破（审批系/UPG-84/76/79 契约套件零回归——含在本 762 内）
+Token/KV 机械校验: node scripts/check-token-effect.mjs → 通过（未触及请求链路）

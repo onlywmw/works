@@ -1,0 +1,15 @@
+# UPG-93 拆后启动 logcat（平板 192.168.2.3:5555，post-move 包）｜ 2026-09-04 03:26:37
+09-04 03:16:08.898 23610 23610 W MOV-MCP : 外部 MCP 发现失败: DiscoveryError(serverId=mock, url=http://127.0.0.1:9600/mcp, message=健康检查失败（不可达）)
+09-04 03:16:09.399 23610 23610 I MOV-F2  : 启动重建索引 3629 事件
+09-04 03:16:15.555 23936 23936 I MOV-F2  : 注册 session.search handler
+09-04 03:16:15.567 23936 23936 I MOV-Boot: 工具面=全量（agent 工具面 182 工具；登记层覆盖 158，模板串回落 24）
+09-04 03:16:15.567 23936 23936 I MOV-Boot: 模板串回落清单: account.logout,asset.catalog,asset.credentials,memoryos.core,memoryos.devRun,memoryos.retrieve,memoryos.semanticList,memoryos.timeline,personalization.recommend,personalization.refresh,personalization.setEnabled,personalization.status,security.footprint,security.overview,security.setApprovalMode,security.setDataSync,security.setRememberEnabled,security.setSensitiveDisplay,ui.getProfile,ui.listComponents,ui.openAppearance,ui.openAssets,ui.openMemory,ui.setVariant
+09-04 03:16:15.570 23936 23936 I MOV-Boot: 工具面=全量（agent 工具面 182 工具；登记层覆盖 158，模板串回落 24）
+09-04 03:16:15.570 23936 23936 I MOV-Boot: 模板串回落清单: account.logout,asset.catalog,asset.credentials,memoryos.core,memoryos.devRun,memoryos.retrieve,memoryos.semanticList,memoryos.timeline,personalization.recommend,personalization.refresh,personalization.setEnabled,personalization.status,security.footprint,security.overview,security.setApprovalMode,security.setDataSync,security.setRememberEnabled,security.setSensitiveDisplay,ui.getProfile,ui.listComponents,ui.openAppearance,ui.openAssets,ui.openMemory,ui.setVariant
+09-04 03:16:15.570 23936 23936 I MOV-Boot: 已剔除不可用工具 12 个：vibrate,tts.speak,xiaomi.speak,note.open,xiaomi.assist,bluetooth.on,bluetooth.off,brightness.set,wifi.on,wifi.off,silent.on,package.uninstall
+09-04 03:16:15.571 23936 23936 I MOV-Boot: 工具面=全量（agent 工具面 182 工具；登记层覆盖 158，模板串回落 24）
+09-04 03:16:15.571 23936 23936 I MOV-Boot: 模板串回落清单: account.logout,asset.catalog,asset.credentials,memoryos.core,memoryos.devRun,memoryos.retrieve,memoryos.semanticList,memoryos.timeline,personalization.recommend,personalization.refresh,personalization.setEnabled,personalization.status,security.footprint,security.overview,security.setApprovalMode,security.setDataSync,security.setRememberEnabled,security.setSensitiveDisplay,ui.getProfile,ui.listComponents,ui.openAppearance,ui.openAssets,ui.openMemory,ui.setVariant
+09-04 03:16:15.734 23936 23936 W MOV-MCP : 外部 MCP 发现失败: DiscoveryError(serverId=mock, url=http://127.0.0.1:9600/mcp, message=健康检查失败（不可达）)
+09-04 03:16:16.277 23936 23936 I MOV-F2  : 启动重建索引 3629 事件
+
+== 基线对照（同机同 buffer）：baseline@254d6ca 启动 工具面=全量（agent 工具面 182 工具；登记层覆盖 158，模板串回落 24）——与拆后 182/158/24 逐字一致，同名同数实证 ｜ 2026-09-04 03:27:34

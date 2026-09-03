@@ -1,0 +1,1759 @@
+{
+ "blocks": [
+  {
+   "name": "mov.roomList",
+   "domain": "system",
+   "src_span": [
+    2145,
+    2145
+   ],
+   "sha256": "57d0fd9a3f38c401bc6b2a79c51f1adc1165af19c7361e43457b4e44bd589ab7"
+  },
+  {
+   "name": "mov.subagentList",
+   "domain": "system",
+   "src_span": [
+    2146,
+    2162
+   ],
+   "sha256": "64cc48b28dfcaa71aab55301b4ff37534b2140b3761b426be468bca65a759a7b"
+  },
+  {
+   "name": "mov.journalTail",
+   "domain": "system",
+   "src_span": [
+    2163,
+    2174
+   ],
+   "sha256": "799ed2c36d46d727a1ce318fe01bc133c35cc7bf73e5f6c9d0706fe1375e7d7e"
+  },
+  {
+   "name": "obsidian.vault.detect",
+   "domain": "system",
+   "src_span": [
+    2198,
+    2198
+   ],
+   "sha256": "89e930e57a340fe532137b8fb59428fed521d60ebdefcd0ae07f7735b53139a4"
+  },
+  {
+   "name": "obsidian.vault.register",
+   "domain": "system",
+   "src_span": [
+    2199,
+    2199
+   ],
+   "sha256": "822ebd7fbb3e488c85546fa7d903f852ff470a15e041750ba539e33b2a3f2db9"
+  },
+  {
+   "name": "obsidian.vault.check",
+   "domain": "system",
+   "src_span": [
+    2200,
+    2200
+   ],
+   "sha256": "cbd8996e38c99069c6c83ef4020d62867c91a2cfc9f101bd28a3064e8e49f987"
+  },
+  {
+   "name": "obsidian.vault.rescan",
+   "domain": "system",
+   "src_span": [
+    2201,
+    2201
+   ],
+   "sha256": "6951a098b201447c1744e5aac88996a636d9270aae5ca70c7d4518489d3e9d90"
+  },
+  {
+   "name": "obsidian.file.read",
+   "domain": "system",
+   "src_span": [
+    2202,
+    2202
+   ],
+   "sha256": "004996b0a96184853d8e2a42022bec5008d36b3b536bcdacbd5f8ede519e647c"
+  },
+  {
+   "name": "obsidian.file.write",
+   "domain": "system",
+   "src_span": [
+    2203,
+    2203
+   ],
+   "sha256": "a07b4b67b65b3c935d73373d773dceefbda9f56b03604b7cb11a10895f0c705d"
+  },
+  {
+   "name": "obsidian.file.search",
+   "domain": "system",
+   "src_span": [
+    2204,
+    2204
+   ],
+   "sha256": "f50b83b8387fe36212e6c29a8f3971432a812f5d2e367d26b2fec6a84fa30f38"
+  },
+  {
+   "name": "notification.post",
+   "domain": "system",
+   "src_span": [
+    2248,
+    2250
+   ],
+   "sha256": "4a8088c1b5750c037ee71065a9e98d9f14727ede88f7366eb8adf8f0480418b3"
+  },
+  {
+   "name": "xiaomi.assist",
+   "domain": "system",
+   "src_span": [
+    2256,
+    2261
+   ],
+   "sha256": "cd1decd0efe825aaba03119446555d2d21913c84254609637f8b8b1dda2fcc54"
+  },
+  {
+   "name": "note.create",
+   "domain": "system",
+   "src_span": [
+    2263,
+    2276
+   ],
+   "sha256": "e5ea0e5959b64104d510922e1ef058aba3027467ea40a72e84a97d6c59cec6b9"
+  },
+  {
+   "name": "image.info",
+   "domain": "system",
+   "src_span": [
+    2282,
+    2282
+   ],
+   "sha256": "eacdfa73d19dff81fec99633e8a44a8bbfca996ad4365559da91f6c0f9f6a8de"
+  },
+  {
+   "name": "image.ocr",
+   "domain": "system",
+   "src_span": [
+    2283,
+    2311
+   ],
+   "sha256": "c924bb94a65231fc804d33a84e224fbb83936b9aad38d6fd945c9aca751d9d76"
+  },
+  {
+   "name": "error.classify",
+   "domain": "system",
+   "src_span": [
+    2606,
+    2616
+   ],
+   "sha256": "79f243280cf4484b4ac423d7e25c9755f65f7c06fab503e833dc291a3e15f30c"
+  },
+  {
+   "name": "error.report",
+   "domain": "system",
+   "src_span": [
+    2617,
+    2627
+   ],
+   "sha256": "3d8700e368d1364beaf7057718a6ebc57fb266a07feb168d42f3da3fcc90ca94"
+  },
+  {
+   "name": "approval.getMode",
+   "domain": "system",
+   "src_span": [
+    2982,
+    2985
+   ],
+   "sha256": "26cb44862c879cf7bb46e0d32a7281b1dd1a219633c2a1b8a47fda15699b1885"
+  },
+  {
+   "name": "approval.setMode",
+   "domain": "system",
+   "src_span": [
+    3000,
+    3000
+   ],
+   "sha256": "306cc1cf090cc61f78b32199cb38635eeff054c8d139944240f9df077765d952"
+  },
+  {
+   "name": "account.me",
+   "domain": "system",
+   "src_span": [
+    3118,
+    3124
+   ],
+   "sha256": "e192345fd7502955e698083df9db2d150b5d53091e1e562a25947715062eeb89"
+  },
+  {
+   "name": "account.logout",
+   "domain": "system",
+   "src_span": [
+    3125,
+    3134
+   ],
+   "sha256": "bf9469d10d84ccc04d26c1599fc5b669b9687a8fcdd02386c31c6171d48d5148"
+  },
+  {
+   "name": "tool.help",
+   "domain": "system",
+   "src_span": [
+    3301,
+    3314
+   ],
+   "sha256": "0dffda45e8754e2dfadde6ec03dcd935e1dcbafea3c1bf36956f6438c6dbc8b8"
+  },
+  {
+   "name": "permission.mode",
+   "domain": "system",
+   "src_span": [
+    4134,
+    4136
+   ],
+   "sha256": "980b3cf64e06fff35c9f51a4148720823da80b9335785cdf07a05b113ce39f95"
+  },
+  {
+   "name": "permission.set_mode",
+   "domain": "system",
+   "src_span": [
+    4137,
+    4153
+   ],
+   "sha256": "f22907da566571328baf27fc1ec94a2d40c9d73db0bc1dc31f06d85160815309"
+  },
+  {
+   "name": "torch.on",
+   "domain": "device",
+   "src_span": [
+    2176,
+    2176
+   ],
+   "sha256": "e3cbbed734f2b8a45744e2f53f78adb0da8c81dc3f646ae27b7712969f3167cf"
+  },
+  {
+   "name": "torch.off",
+   "domain": "device",
+   "src_span": [
+    2177,
+    2177
+   ],
+   "sha256": "d9285aeeb46c770e44392662c3ebea9c16a4c8eb8d3788ca924a2bc6f33e5902"
+  },
+  {
+   "name": "torch.status",
+   "domain": "device",
+   "src_span": [
+    2178,
+    2178
+   ],
+   "sha256": "f7c43de673ddc6d0edd8d759fd208a8c5f14446cf6779990082751b0cfae289c"
+  },
+  {
+   "name": "device.network",
+   "domain": "device",
+   "src_span": [
+    2205,
+    2205
+   ],
+   "sha256": "4411ab87b41f2c2d59bc482297cc4c4b813eb904f369853b6fe31d7c1ae58509"
+  },
+  {
+   "name": "device.storage",
+   "domain": "device",
+   "src_span": [
+    2206,
+    2206
+   ],
+   "sha256": "add02d0c24409ba246b7a247f301c7a9be297db155757d2644ef66daef91d8eb"
+  },
+  {
+   "name": "device.toast",
+   "domain": "device",
+   "src_span": [
+    2207,
+    2207
+   ],
+   "sha256": "c1d5a408f53ff833e5c85d7df84689ae454a389916884589318ab78428814f33"
+  },
+  {
+   "name": "device.appList",
+   "domain": "device",
+   "src_span": [
+    2208,
+    2208
+   ],
+   "sha256": "ddeae6a9080c6a3b0ffd5b22f0b7412e8b68ff2173875693267bcc750b393781"
+  },
+  {
+   "name": "device.appLaunch",
+   "domain": "device",
+   "src_span": [
+    2209,
+    2209
+   ],
+   "sha256": "7e9ef94d63e61d0e11961ac5d09f4b32fae1bebe205c1d1debe2a05bc3c4a950"
+  },
+  {
+   "name": "sensor.list",
+   "domain": "device",
+   "src_span": [
+    2210,
+    2210
+   ],
+   "sha256": "bb1ac244d2df596126dbc5af170d5e8a4c471bbcc90bb5967fb9efc29659780c"
+  },
+  {
+   "name": "calendar.list",
+   "domain": "device",
+   "src_span": [
+    2211,
+    2211
+   ],
+   "sha256": "52f5c52e7447983d563ea837826fee9446a05e8e89d677f329b1e00f1ab3159c"
+  },
+  {
+   "name": "calendar.add",
+   "domain": "device",
+   "src_span": [
+    2212,
+    2219
+   ],
+   "sha256": "c6b82fe3cfc17de7508d0ac6b5a4b769e367ee6ed1eab08d7f24248dae905eae"
+  },
+  {
+   "name": "device.timer",
+   "domain": "device",
+   "src_span": [
+    2220,
+    2226
+   ],
+   "sha256": "a4aa4cddb74de4ac0ae6333f9c04a2573538da9d27d4fa8b758e872065b94588"
+  },
+  {
+   "name": "camera.capture",
+   "domain": "device",
+   "src_span": [
+    2227,
+    2227
+   ],
+   "sha256": "77e5e06618da33f7b8e7df46b35f3e6ee992889e9e82f95560d6fac5c303696c"
+  },
+  {
+   "name": "camera.ocrCapture",
+   "domain": "device",
+   "src_span": [
+    2228,
+    2228
+   ],
+   "sha256": "7f7c8cef17bd3d08860391184baeac73042db108fc493265dec122a6103cbe6a"
+  },
+  {
+   "name": "qr.scan",
+   "domain": "device",
+   "src_span": [
+    2229,
+    2229
+   ],
+   "sha256": "478d4e30e1150c79c253f001dd9a1f448dd8b675ce5f1ea862af27ea54fa389d"
+  },
+  {
+   "name": "screen.capture",
+   "domain": "device",
+   "src_span": [
+    2230,
+    2230
+   ],
+   "sha256": "e43679230cba63dc56fff076cf2df75c37c592c12ea9b5faee99eedb034c5865"
+  },
+  {
+   "name": "md.render",
+   "domain": "device",
+   "src_span": [
+    2231,
+    2232
+   ],
+   "sha256": "e58653bb445494efff5cd3ea826f351d601a21506891eb60058c0a09ae2615f9"
+  },
+  {
+   "name": "md.renderFile",
+   "domain": "device",
+   "src_span": [
+    2233,
+    2235
+   ],
+   "sha256": "1d40dc38c8df53af2a514a56ae9b51ee5bd91eb0e6a0e3cfa2c43f57952f4bd2"
+  },
+  {
+   "name": "vibrate",
+   "domain": "device",
+   "src_span": [
+    2241,
+    2241
+   ],
+   "sha256": "b5180ff428be874395e802209f485108be6b40aafcd7d83439821339a0a61451"
+  },
+  {
+   "name": "battery.status",
+   "domain": "device",
+   "src_span": [
+    2245,
+    2245
+   ],
+   "sha256": "d091d428e012984089707cd38ea6e387644dde6d77b2755e8cd9548967e19681"
+  },
+  {
+   "name": "volume.get",
+   "domain": "device",
+   "src_span": [
+    2246,
+    2246
+   ],
+   "sha256": "4c7983a0d42425fe9696cfd2a2fff7eb8d7629c413787a418ddb64117237ab17"
+  },
+  {
+   "name": "volume.set",
+   "domain": "device",
+   "src_span": [
+    2247,
+    2247
+   ],
+   "sha256": "78e189a7db08d208b4d36911aefbd33451637205699092e4a77c0bad81ed9082"
+  },
+  {
+   "name": "text2image",
+   "domain": "device",
+   "src_span": [
+    2279,
+    2281
+   ],
+   "sha256": "6e1f4aefa1c576396cf924525b51cd328c8b2c0c1a820783bd0fbfc6d12cb8b5"
+  },
+  {
+   "name": "http.download",
+   "domain": "device",
+   "src_span": [
+    2335,
+    2337
+   ],
+   "sha256": "3c7def97932b84237adc9324d576bac4642737196ca0a1b91254e5a589fe8257"
+  },
+  {
+   "name": "pdf.read",
+   "domain": "device",
+   "src_span": [
+    2338,
+    2340
+   ],
+   "sha256": "cf9345d81ce6a30e63c41b2ccb3c5735c165c76b0b1adfb5359473ac9a548649"
+  },
+  {
+   "name": "spill.list",
+   "domain": "device",
+   "src_span": [
+    2341,
+    2341
+   ],
+   "sha256": "93ba676f4db81a1fba2eb730704ed410881e03b910dc75d2a9752ecdc2cb22d3"
+  },
+  {
+   "name": "spill.clean",
+   "domain": "device",
+   "src_span": [
+    2342,
+    2342
+   ],
+   "sha256": "b8d2f1440201be26d491557d4cb6f292f330e90fe7f9803434f58dcd7a532451"
+  },
+  {
+   "name": "bluetooth.status",
+   "domain": "device",
+   "src_span": [
+    2632,
+    2642
+   ],
+   "sha256": "bd247fba7b1baeb6dc0285e1ce32946c50328f84daa0a37307da69fc6286c7ac"
+  },
+  {
+   "name": "brightness.get",
+   "domain": "device",
+   "src_span": [
+    2646,
+    2646
+   ],
+   "sha256": "f6b3d1961dd07f8199aa96ad982bec0a5c61fea1226161e3116c9bdb52802a70"
+  },
+  {
+   "name": "brightness.set",
+   "domain": "device",
+   "src_span": [
+    2648,
+    2648
+   ],
+   "sha256": "a2e409a4b56e30101d73794f1c619b9fabc13b6a11f347e57097e9011df2c366"
+  },
+  {
+   "name": "wifi.status",
+   "domain": "device",
+   "src_span": [
+    2652,
+    2652
+   ],
+   "sha256": "3a1ea0988346b4684d6ae7ea3b43f8601cb63ca88fabb867aa7885399d7070a7"
+  },
+  {
+   "name": "silent.on",
+   "domain": "device",
+   "src_span": [
+    2657,
+    2657
+   ],
+   "sha256": "3f551ac099ed1065b59b902ae6c0cce753e164cc2d3c334ba1e121638a2a8dca"
+  },
+  {
+   "name": "silent.off",
+   "domain": "device",
+   "src_span": [
+    2661,
+    2661
+   ],
+   "sha256": "1fea7a46b5cb8bb3c2eac2f47d3213933311853ef03bbeffd236b4ded7b55c58"
+  },
+  {
+   "name": "screen.on",
+   "domain": "device",
+   "src_span": [
+    2662,
+    2662
+   ],
+   "sha256": "b3ea9f517831fcdd4643b060ccc53449c2bcccff539aece2f03eef0a6e461eae"
+  },
+  {
+   "name": "personalization.status",
+   "domain": "device",
+   "src_span": [
+    2728,
+    2736
+   ],
+   "sha256": "29ce748cb36fd647249342cb48ffbabf122c32dec7c1827e33d439e604a0732e"
+  },
+  {
+   "name": "personalization.setEnabled",
+   "domain": "device",
+   "src_span": [
+    2737,
+    2741
+   ],
+   "sha256": "db64df946f83ef16bedf6d5cef19de0db9e6535b61d9bf811c12c541db1aa7d8"
+  },
+  {
+   "name": "personalization.refresh",
+   "domain": "device",
+   "src_span": [
+    2742,
+    2744
+   ],
+   "sha256": "a339eb42f8e148ec9e795f74184f5084ef16306cb17f0f7f2689f2a8f6cf347e"
+  },
+  {
+   "name": "personalization.recommend",
+   "domain": "device",
+   "src_span": [
+    2745,
+    2750
+   ],
+   "sha256": "7345c5ce6f07d46f693815266938e638b6da1b9887012e67bae98ed610f79acc"
+  },
+  {
+   "name": "subagent.run",
+   "domain": "device",
+   "src_span": [
+    2808,
+    2826
+   ],
+   "sha256": "e7966981fe3bde57c04d514eea18a0b193ad24e9f198e6530582b9629834c185"
+  },
+  {
+   "name": "security.setApprovalMode",
+   "domain": "device",
+   "src_span": [
+    3001,
+    3001
+   ],
+   "sha256": "4015082a6c9a0bc9df76a5d36b7813cf7549f6ef2c412270af52b10c2bbd215e"
+  },
+  {
+   "name": "security.overview",
+   "domain": "device",
+   "src_span": [
+    3002,
+    3032
+   ],
+   "sha256": "968aa93895351275609bc8a241c5c0271ee5081028f900474b28800fa5d5fcd5"
+  },
+  {
+   "name": "security.setRememberEnabled",
+   "domain": "device",
+   "src_span": [
+    3033,
+    3043
+   ],
+   "sha256": "8d7250f36eaeb3d9100aadb9326e6912458101c625db582b2d9ec3e273326957"
+  },
+  {
+   "name": "security.setSensitiveDisplay",
+   "domain": "device",
+   "src_span": [
+    3044,
+    3054
+   ],
+   "sha256": "5d5b04c1888d740f7c14ea499a60cd5059d0987c52c75120bb3fa018e9c3c5f1"
+  },
+  {
+   "name": "security.setDataSync",
+   "domain": "device",
+   "src_span": [
+    3055,
+    3064
+   ],
+   "sha256": "0b4c3982466a836c2f853afd77a71e5418114f1d3c39b85ce9789a455cc876e6"
+  },
+  {
+   "name": "security.footprint",
+   "domain": "device",
+   "src_span": [
+    3065,
+    3092
+   ],
+   "sha256": "fecd8c1a98f5dd3614acf7a0f8279f9a481b8cf94d70086ca92f1da4424f918b"
+  },
+  {
+   "name": "usage.summary",
+   "domain": "device",
+   "src_span": [
+    3235,
+    3258
+   ],
+   "sha256": "2ea7a78fd5c804af615f37878e980c32d8399fcaadbedb84265df75616a640de"
+  },
+  {
+   "name": "workflow.run",
+   "domain": "device",
+   "src_span": [
+    3544,
+    3574
+   ],
+   "sha256": "49aef1d1cafe00cf446292417c1dccd5e60643b43099103b70b654ac9119d3aa"
+  },
+  {
+   "name": "workflow.resume",
+   "domain": "device",
+   "src_span": [
+    3575,
+    3608
+   ],
+   "sha256": "0019b32a6a77346c0b938379457625aea40ba902903fda05313db83e3aed9b70"
+  },
+  {
+   "name": "workflow.status",
+   "domain": "device",
+   "src_span": [
+    3609,
+    3626
+   ],
+   "sha256": "074d234e1455164909fa212558c93fb298c471439c7277554e6d72ec9e78d79d"
+  },
+  {
+   "name": "presentation.mode",
+   "domain": "device",
+   "src_span": [
+    4154,
+    4157
+   ],
+   "sha256": "a0601d81f7d012e79f27cdc1a12dd3ab4ccc0e4b43bea976631ae3efb927b8e7"
+  },
+  {
+   "name": "http.get",
+   "domain": "device",
+   "src_span": [
+    4208,
+    4208
+   ],
+   "sha256": "ee24e1a054f673aaa87c884e29719e76ba1d3901f9f74c39686aa9bbb1039bd6"
+  },
+  {
+   "name": "http.post",
+   "domain": "device",
+   "src_span": [
+    4209,
+    4209
+   ],
+   "sha256": "dc3393ac2dd0e150fc868510fef703416e72dee10ffa336e803322fc1657bb63"
+  },
+  {
+   "name": "shell.exec",
+   "domain": "device",
+   "src_span": [
+    4211,
+    4211
+   ],
+   "sha256": "f5e82e4435154c266b7e72ae3a7c57b0a9e5ad427f37f426e482a506a0b66ca4"
+  },
+  {
+   "name": "(local fun modelApiKey)",
+   "domain": "model",
+   "src_span": [
+    2395,
+    2396
+   ],
+   "sha256": "681306839ff3b77770e133469a549b1a474ca872cbbf5cd4405137c9269f2210"
+  },
+  {
+   "name": "model.use",
+   "domain": "model",
+   "src_span": [
+    2343,
+    2351
+   ],
+   "sha256": "1bc68097fd050b51349f746b63869e708a428f0208f4abd67ab808a34d908cbd"
+  },
+  {
+   "name": "model.add",
+   "domain": "model",
+   "src_span": [
+    2397,
+    2422
+   ],
+   "sha256": "a25766aa8fcbacaf3b01f2be223af80e83689861344e30625906cb2d1dfef03a"
+  },
+  {
+   "name": "model.update",
+   "domain": "model",
+   "src_span": [
+    2423,
+    2448
+   ],
+   "sha256": "4848a522f376cd49f24cfb184b2226e45a5785dfa48cd17c011c09592bc99e78"
+  },
+  {
+   "name": "model.delete",
+   "domain": "model",
+   "src_span": [
+    2449,
+    2457
+   ],
+   "sha256": "f17c1af1c5e16a4672492ac249e6cd88dc76cc8571507734b2aba29cb79eb2ce"
+  },
+  {
+   "name": "model.setDefault",
+   "domain": "model",
+   "src_span": [
+    2458,
+    2466
+   ],
+   "sha256": "5bd897ae15f217d693defb36e45afd94f77073219e1355b26adcc9f34ced57e7"
+  },
+  {
+   "name": "model.setEnabled",
+   "domain": "model",
+   "src_span": [
+    2467,
+    2476
+   ],
+   "sha256": "a4d8a338f8088f4f444a3380b8a48fcf14a290dd96c0cc914057d5343079e0df"
+  },
+  {
+   "name": "model.testConnection",
+   "domain": "model",
+   "src_span": [
+    2477,
+    2489
+   ],
+   "sha256": "d2b593f3a444cfb6f46a5bcfe0f57d28aff90be691db61fcf0bd00fb13a4c26a"
+  },
+  {
+   "name": "model.list",
+   "domain": "model",
+   "src_span": [
+    2768,
+    2788
+   ],
+   "sha256": "f3f4ee1509e677b260be2b0764ccba584c927649ccc284a03920de2ca0bb316a"
+  },
+  {
+   "name": "ui.openModels",
+   "domain": "page",
+   "src_span": [
+    2490,
+    2493
+   ],
+   "sha256": "13b251b5157ba92eb647780f96233ffd68bceeb31c84c649281ae5a0add619ce"
+  },
+  {
+   "name": "ui.openAssets",
+   "domain": "page",
+   "src_span": [
+    2494,
+    2501
+   ],
+   "sha256": "991d96a4d66f040dd5c3c2894fce324850f2a61bf6082ad9306d1ad775429c17"
+  },
+  {
+   "name": "ui.openMemory",
+   "domain": "page",
+   "src_span": [
+    2719,
+    2727
+   ],
+   "sha256": "3514f1796358a902ec3c45159b98d332d208abda80352cdf422167dce57f7c10"
+  },
+  {
+   "name": "ui.openMarket",
+   "domain": "page",
+   "src_span": [
+    3109,
+    3116
+   ],
+   "sha256": "d092d025a08644b7fc26260ff0df71af7f33c4db7f95b5c61c4262efebf04b36"
+  },
+  {
+   "name": "ui.openSettings",
+   "domain": "page",
+   "src_span": [
+    3135,
+    3142
+   ],
+   "sha256": "87cbb2664f8aea5f5f531e240fd65305d30b9fd5388ee26050b26b072c843a73"
+  },
+  {
+   "name": "ui.openAppearance",
+   "domain": "page",
+   "src_span": [
+    3143,
+    3151
+   ],
+   "sha256": "28110cbab8935de512dc5a93872804b577a9566aac9ca6d852857ec0f29a6008"
+  },
+  {
+   "name": "ui.getProfile",
+   "domain": "page",
+   "src_span": [
+    3152,
+    3156
+   ],
+   "sha256": "072ec4f3ced4759b50ddfa8c5e1e9e09ea1242c1dfd56cfee7397ebf21cea619"
+  },
+  {
+   "name": "ui.listComponents",
+   "domain": "page",
+   "src_span": [
+    3157,
+    3174
+   ],
+   "sha256": "9947a4486420a39db36e26dd73d9457b5bfa0f2561a4bfea37e55bcc5832e2be"
+  },
+  {
+   "name": "ui.setVariant",
+   "domain": "page",
+   "src_span": [
+    3175,
+    3185
+   ],
+   "sha256": "6f81ba4369ba24bd50d250c112351da55aaa93cb9d3658b26d10a5150a608861"
+  },
+  {
+   "name": "ui.openMarketReview",
+   "domain": "page",
+   "src_span": [
+    3186,
+    3194
+   ],
+   "sha256": "3648cfb678714b49a0055845dbd8db2f91a3fe008b5490cde08606b69389b6ec"
+  },
+  {
+   "name": "ui.openWorkbench",
+   "domain": "page",
+   "src_span": [
+    3212,
+    3219
+   ],
+   "sha256": "fb91eff0d20cc4eb2b80a2bf816c04ea63baa981b6189696d015474c547fdcd3"
+  },
+  {
+   "name": "ui.openOrders",
+   "domain": "page",
+   "src_span": [
+    3220,
+    3226
+   ],
+   "sha256": "767392d356e20d4df17135119dd898a86ab37731ef79298c75f10bbf18a300c0"
+  },
+  {
+   "name": "ui.openVault",
+   "domain": "page",
+   "src_span": [
+    3227,
+    3234
+   ],
+   "sha256": "135cd1058574447ebc0c80d210b6b31a36f701f2a1f5dbc66ac3834d13a24996"
+  },
+  {
+   "name": "ui.prefillInput",
+   "domain": "page",
+   "src_span": [
+    3259,
+    3262
+   ],
+   "sha256": "e438bd28f298a4382f80f25915baaaa45712bf67567e5e553222d58a26aab980"
+  },
+  {
+   "name": "ui.getPins",
+   "domain": "page",
+   "src_span": [
+    3263,
+    3292
+   ],
+   "sha256": "54662aa75334e32d17ebf68df435491ebf20de1e4262184a6663aa9bc669c2ff"
+  },
+  {
+   "name": "ui.setPins",
+   "domain": "page",
+   "src_span": [
+    3293,
+    3300
+   ],
+   "sha256": "47189cff155e5c3264728d2ac44179cbaca4d17627d4a10011dc51c809df788a"
+  },
+  {
+   "name": "ui.setLang",
+   "domain": "page",
+   "src_span": [
+    3637,
+    3646
+   ],
+   "sha256": "5ee4600235b9610ab3a4cdc7cb8ba20cb345f43a7019c58ec2c0d45093c3d7cd"
+  },
+  {
+   "name": "asset.catalog",
+   "domain": "vault",
+   "src_span": [
+    2502,
+    2510
+   ],
+   "sha256": "8b3525899036632646a5bdd3abd21fcf85c1a44676cd41963d98626029d0b180"
+  },
+  {
+   "name": "asset.credentials",
+   "domain": "vault",
+   "src_span": [
+    2511,
+    2519
+   ],
+   "sha256": "ca4230ea07c695ac69b8755b88d93b8c3df62bd1433eb5335f5ee56f4ce0d0d7"
+  },
+  {
+   "name": "asset.peekPhoto",
+   "domain": "vault",
+   "src_span": [
+    2520,
+    2523
+   ],
+   "sha256": "d2bdbf0049a8cf910fd48b80af44dfd2c63ef0a7a874735191d86ea3cca9ea02"
+  },
+  {
+   "name": "asset.credPeek",
+   "domain": "vault",
+   "src_span": [
+    2524,
+    2530
+   ],
+   "sha256": "9beae44cc03558d6cb9c75a2aa2b77dd9f40e815ac341036429774089188824d"
+  },
+  {
+   "name": "credential.getKey",
+   "domain": "vault",
+   "src_span": [
+    3093,
+    3098
+   ],
+   "sha256": "82002361eaadc9ee6c07ac83d4df87a8cfd6cba2c6531e67a793653ef50a6c85"
+  },
+  {
+   "name": "credential.setKey",
+   "domain": "vault",
+   "src_span": [
+    3099,
+    3108
+   ],
+   "sha256": "dec6c5e62772d31cf16d0d149fb5cef7aba717d9ce2e4d8f5058029ca747025f"
+  },
+  {
+   "name": "vault.list",
+   "domain": "vault",
+   "src_span": [
+    3647,
+    3650
+   ],
+   "sha256": "40f029d454104c56c55463c957d81abae748fc435be99db72ba337efc857fdb9"
+  },
+  {
+   "name": "vault.set",
+   "domain": "vault",
+   "src_span": [
+    3651,
+    3670
+   ],
+   "sha256": "daf4543225b2be042db47bbae22ad803f87813beb452fa6acec343f60a842218"
+  },
+  {
+   "name": "vault.delete",
+   "domain": "vault",
+   "src_span": [
+    3671,
+    3687
+   ],
+   "sha256": "b35594786cb6982c915bb13868e96e86e83bbd1f634e763c19e135851113af5c"
+  },
+  {
+   "name": "vault.restore",
+   "domain": "vault",
+   "src_span": [
+    3688,
+    3693
+   ],
+   "sha256": "98bab7e5b1c9420cccd9d3482edcaed0beae1335ea2340e9a8cdf92fc26f12ad"
+  },
+  {
+   "name": "vault.setPhoto",
+   "domain": "vault",
+   "src_span": [
+    3694,
+    3716
+   ],
+   "sha256": "7258003fcef6645c612255e9fd968fceb4532af11d8dc2c67484fac4038f1544"
+  },
+  {
+   "name": "vault.scanPhoto",
+   "domain": "vault",
+   "src_span": [
+    3717,
+    3775
+   ],
+   "sha256": "f610318b5ebc25e053a3e143b638f9eea9a196b0634003f32e0f4810faadcb0f"
+  },
+  {
+   "name": "vault.peek",
+   "domain": "vault",
+   "src_span": [
+    3776,
+    3788
+   ],
+   "sha256": "34dbf8c9b9ea26e6a8dad90061cb0c1d18c13d44bebde4ec47e8333943a98081"
+  },
+  {
+   "name": "vault.peekPhoto",
+   "domain": "vault",
+   "src_span": [
+    3789,
+    3822
+   ],
+   "sha256": "6ce95dbe678c79e2faa7551f78892ca54390083f397a5525660c7cbac4c66220"
+  },
+  {
+   "name": "vault.credSet",
+   "domain": "vault",
+   "src_span": [
+    3823,
+    3832
+   ],
+   "sha256": "db7849c90d74cd5f82f0b37f7806a98e32be231b28f21ede90bd4c0da74d3124"
+  },
+  {
+   "name": "vault.credDelete",
+   "domain": "vault",
+   "src_span": [
+    3833,
+    3838
+   ],
+   "sha256": "fb612f69170ef80f05bbcd62154a77b23bb4b82357be63447f6a2daacf9cdb29"
+  },
+  {
+   "name": "vault.credPeek",
+   "domain": "vault",
+   "src_span": [
+    3839,
+    3844
+   ],
+   "sha256": "8c1c7c7e0868058d419a242008a4b3b583082e4d5917eb5370d805fb999d4f0b"
+  },
+  {
+   "name": "vault.get",
+   "domain": "vault",
+   "src_span": [
+    3845,
+    3879
+   ],
+   "sha256": "3460c3f97727b482f6c0b116312a9646401a84fa6a925b9fc4aa42b22f186057"
+  },
+  {
+   "name": "session.search",
+   "domain": "chat",
+   "src_span": [
+    2533,
+    2549
+   ],
+   "sha256": "f5b0cc7905bae43ae9d6ab3823872c2add2438eeee4780158ea3483321b6dfc0"
+  },
+  {
+   "name": "session.reference",
+   "domain": "chat",
+   "src_span": [
+    2550,
+    2566
+   ],
+   "sha256": "749c4be2e98ca488a072526f5bc0112b4174186af356f734ef9fe35ae467686a"
+  },
+  {
+   "name": "goal.set",
+   "domain": "chat",
+   "src_span": [
+    2567,
+    2581
+   ],
+   "sha256": "e149ea470c2e7628d68ad4273c715f205444d58e96c6ef8ea52897f1238475bb"
+  },
+  {
+   "name": "goal.complete",
+   "domain": "chat",
+   "src_span": [
+    2582,
+    2593
+   ],
+   "sha256": "6a548305b4bb1c4470062b4a5d93c8683c974330f4d26ddf0297daee11b4823e"
+  },
+  {
+   "name": "goal.status",
+   "domain": "chat",
+   "src_span": [
+    2594,
+    2605
+   ],
+   "sha256": "2ab87e6fed5a947137292cef831f57eaf7b020769c40c6f168035785f07beb3c"
+  },
+  {
+   "name": "causal.record",
+   "domain": "chat",
+   "src_span": [
+    2751,
+    2758
+   ],
+   "sha256": "c6200b5b767e7cab1d265f9c3767c755d172f3cbf8c550500daf2b2ad55351a3"
+  },
+  {
+   "name": "causal.link",
+   "domain": "chat",
+   "src_span": [
+    2759,
+    2766
+   ],
+   "sha256": "dde9aa8b238853b76dbb47a8fdcf0f4f5e347923223e908f296c354457c44f71"
+  },
+  {
+   "name": "causal.query",
+   "domain": "chat",
+   "src_span": [
+    2767,
+    2767
+   ],
+   "sha256": "8b1f2937840a828328665be65d250bf7b5a70ec72f16862717c3186f8a9b2c88"
+  },
+  {
+   "name": "agent.stop",
+   "domain": "chat",
+   "src_span": [
+    2827,
+    2832
+   ],
+   "sha256": "96f1b1e032f9e2b5baef7f14937e8f21073597db9cb39c7737046a4e0745e701"
+  },
+  {
+   "name": "room.list",
+   "domain": "chat",
+   "src_span": [
+    2906,
+    2922
+   ],
+   "sha256": "d0f67a7edf182b0276c827293675d80badece775a696d182ddc627e555fa3b4f"
+  },
+  {
+   "name": "room.switch",
+   "domain": "chat",
+   "src_span": [
+    2923,
+    2933
+   ],
+   "sha256": "65323ae575f03b0b60e6d28c3f033069c44a6fdcd68003483dda1c99d60dcbe9"
+  },
+  {
+   "name": "room.create",
+   "domain": "chat",
+   "src_span": [
+    2934,
+    2938
+   ],
+   "sha256": "f560f45aa3f1390bdc52103240bdcde9ffce8318d51974ea382a523cecd83718"
+  },
+  {
+   "name": "room.rename",
+   "domain": "chat",
+   "src_span": [
+    2939,
+    2950
+   ],
+   "sha256": "12812a779a11decea467b4125e959fad3393164fcdf42d3de46d7e89cbb96931"
+  },
+  {
+   "name": "room.pin",
+   "domain": "chat",
+   "src_span": [
+    2951,
+    2960
+   ],
+   "sha256": "ce0ae0b8a1fa4d8d1765553180e9779f2c74f53adc6cac07ea1d09c0257b900e"
+  },
+  {
+   "name": "room.delete",
+   "domain": "chat",
+   "src_span": [
+    2961,
+    2971
+   ],
+   "sha256": "90c374d53eb2402ab568db0d52e13c17a38b655909e2197da5c3820e33863221"
+  },
+  {
+   "name": "room.clearAll",
+   "domain": "chat",
+   "src_span": [
+    2972,
+    2981
+   ],
+   "sha256": "89608c70d778c5705b9ea32c2b183e48fad04cb7bb700ed2b22c7fa4588cc13d"
+  },
+  {
+   "name": "memory.save",
+   "domain": "memory",
+   "src_span": [
+    2663,
+    2666
+   ],
+   "sha256": "5758fa4b8f9a93cdd13b5f664857ae51f52fa0bcc6063e5748736ce1acdb686f"
+  },
+  {
+   "name": "memory.load",
+   "domain": "memory",
+   "src_span": [
+    2667,
+    2667
+   ],
+   "sha256": "ecabcd4434ecad81793a6e494b9228f9c3f6e570eba85e31c1d51aafee12897a"
+  },
+  {
+   "name": "memory.list",
+   "domain": "memory",
+   "src_span": [
+    2668,
+    2668
+   ],
+   "sha256": "a80bb6b9a0953ac584fdc672fa1db39d572646432a7933722deccdbbc4008ce8"
+  },
+  {
+   "name": "memory.judge",
+   "domain": "memory",
+   "src_span": [
+    2669,
+    2669
+   ],
+   "sha256": "7a3c698f69b28c34496dd0ef6492e1702f842657e8ea6aa73728e51fd2953e8d"
+  },
+  {
+   "name": "memory.search",
+   "domain": "memory",
+   "src_span": [
+    2670,
+    2670
+   ],
+   "sha256": "8950a09b6d39a4e043426c495c4f40f786e6f01d4727f9a9454dfbced48bf65d"
+  },
+  {
+   "name": "memoryos.core",
+   "domain": "memory",
+   "src_span": [
+    2671,
+    2674
+   ],
+   "sha256": "a6a92b59567832e1ab5b19813c14ffd7931de225f789c954843002c0cb05d3d3"
+  },
+  {
+   "name": "memoryos.retrieve",
+   "domain": "memory",
+   "src_span": [
+    2675,
+    2679
+   ],
+   "sha256": "a7e3776699d20274d89c5c72b23e00abe5d5f041a685a95ca09cfcafeca0dce2"
+  },
+  {
+   "name": "memoryos.timeline",
+   "domain": "memory",
+   "src_span": [
+    2680,
+    2683
+   ],
+   "sha256": "f39d223dfb010e462e1c7de97515af9150941920417dfde5900f6d42d273d993"
+  },
+  {
+   "name": "memoryos.semanticList",
+   "domain": "memory",
+   "src_span": [
+    2684,
+    2689
+   ],
+   "sha256": "f06f0a0d06c7c565d5b3b132f58aa6a88c1070055a4c079817b0b31b42af0960"
+  },
+  {
+   "name": "memoryos.devRun",
+   "domain": "memory",
+   "src_span": [
+    2690,
+    2712
+   ],
+   "sha256": "e078dbf6421ac1d71b24cc7044758bae84663bc60f43d34f337196c47d436163"
+  },
+  {
+   "name": "memory.delete",
+   "domain": "memory",
+   "src_span": [
+    2713,
+    2717
+   ],
+   "sha256": "3f5dd3b2bfcaa079cb05b78d9afa9141c3156f0e0c805b5da4c4ac3a656aa1c3"
+  },
+  {
+   "name": "memory.cover",
+   "domain": "memory",
+   "src_span": [
+    2718,
+    2718
+   ],
+   "sha256": "20276fe00e71e417197c2b17132cf94f68b940d680732eb4f6f34d5bb9d94f3d"
+  },
+  {
+   "name": "market.refresh",
+   "domain": "market",
+   "src_span": [
+    2848,
+    2848
+   ],
+   "sha256": "b17913053d810b18add589fad42bdffbcdf2ac9b687b4c07fa5b79980a8f8487"
+  },
+  {
+   "name": "market.list",
+   "domain": "market",
+   "src_span": [
+    2849,
+    2849
+   ],
+   "sha256": "d45df729cf0cb5dd8fd3e400dd53f1e5812eb7cb19112f28c5051b49c0be2176"
+  },
+  {
+   "name": "market.install",
+   "domain": "market",
+   "src_span": [
+    2850,
+    2860
+   ],
+   "sha256": "9c7c3ae3ecc299433d449a7616dd201e86160e4aeba6889b2eb8e014e636eaf9"
+  },
+  {
+   "name": "market.uninstall",
+   "domain": "market",
+   "src_span": [
+    2861,
+    2880
+   ],
+   "sha256": "e9ecd19c1b3cb2be8e8f803f55484af4db1221ad01b519faa1ab58c899fb06b6"
+  },
+  {
+   "name": "market.enable",
+   "domain": "market",
+   "src_span": [
+    2881,
+    2890
+   ],
+   "sha256": "b6915496ad7fe194c88c03e19742182894c21a3dfe1b5322e12a2eb9001a6856"
+  },
+  {
+   "name": "market.disable",
+   "domain": "market",
+   "src_span": [
+    2891,
+    2899
+   ],
+   "sha256": "2e90d4743d30688d65d9fcc6051255f5fb76abb92751d001d203554b548842ef"
+  },
+  {
+   "name": "market.status",
+   "domain": "market",
+   "src_span": [
+    2900,
+    2900
+   ],
+   "sha256": "3819013843c2712764dc13165863c46d86c8539fbcab7a3d500087faec4ba3be"
+  },
+  {
+   "name": "market.localOverview",
+   "domain": "market",
+   "src_span": [
+    2901,
+    2905
+   ],
+   "sha256": "25c4580942d56bcf438ef61fa41a851a5b05dae1ed421f9e5b30fffcf62b08d4"
+  },
+  {
+   "name": "marketAdmin.pending",
+   "domain": "market",
+   "src_span": [
+    3197,
+    3201
+   ],
+   "sha256": "18547c46af60cc9436b7b3a984224341075c00b1dde5068d9ebf95b86615aef3"
+  },
+  {
+   "name": "marketAdmin.approve",
+   "domain": "market",
+   "src_span": [
+    3202,
+    3206
+   ],
+   "sha256": "8df06ebb949eb35eb262c2e194f630620915113b5e785e050a28fa3718bb13ba"
+  },
+  {
+   "name": "marketAdmin.reject",
+   "domain": "market",
+   "src_span": [
+    3207,
+    3211
+   ],
+   "sha256": "506727fe3c6010d0376871647d23a3a9f8e8349b974b8ae00f6caf206606ad60"
+  },
+  {
+   "name": "biz.profInfo",
+   "domain": "biz",
+   "src_span": [
+    3880,
+    3891
+   ],
+   "sha256": "b0dc71e9834693cecd568b36c6b7c493a7f2beacc170a3d9c4084ee0fc5b6778"
+  },
+  {
+   "name": "biz.taskOpen",
+   "domain": "biz",
+   "src_span": [
+    3892,
+    3899
+   ],
+   "sha256": "5fbcecf9033d72cfd449a6042a07969596b4ec137dd1627984babee69147fa7b"
+  },
+  {
+   "name": "biz.taskMine",
+   "domain": "biz",
+   "src_span": [
+    3900,
+    3904
+   ],
+   "sha256": "e72d2638ff8658f41cd4f3f213938f38b2b30f73f9934e31c66f8a303c0666de"
+  },
+  {
+   "name": "biz.taskClaim",
+   "domain": "biz",
+   "src_span": [
+    3905,
+    3914
+   ],
+   "sha256": "59b2f0368369dc3c4279c8c97d88f2ffd635018dbaa28a4334e3d2c964215297"
+  },
+  {
+   "name": "biz.taskAction",
+   "domain": "biz",
+   "src_span": [
+    3915,
+    3930
+   ],
+   "sha256": "58738a923350e5871cd3a73aae275a816909960d0a530ad39d7d8ad0ef7abb84"
+  },
+  {
+   "name": "biz.bookingMine",
+   "domain": "biz",
+   "src_span": [
+    3931,
+    3944
+   ],
+   "sha256": "c0d2526431d6d7eb63eec2cb6ee6735672b90b69df827fde863b85a9cf29cebd"
+  },
+  {
+   "name": "biz.bookingAction",
+   "domain": "biz",
+   "src_span": [
+    3945,
+    3961
+   ],
+   "sha256": "487cbcd66b25b05deba9a8f90796007c24db1c48eedfa57019d65daa562ac629"
+  },
+  {
+   "name": "biz.onboardStart",
+   "domain": "biz",
+   "src_span": [
+    3962,
+    3972
+   ],
+   "sha256": "4a0b9471b553a6d4a7d23f045ea5670b785473283195d19ab5b0b677d26a19d5"
+  },
+  {
+   "name": "biz.onboardSet",
+   "domain": "biz",
+   "src_span": [
+    3973,
+    3982
+   ],
+   "sha256": "d6d32167811a46787bd05ce9732a5f968951b39ec1747f57235e202956caf379"
+  },
+  {
+   "name": "biz.onboardPhoto",
+   "domain": "biz",
+   "src_span": [
+    3983,
+    4012
+   ],
+   "sha256": "acf315768db686f115da7b49fbfdb857f8757238ee134a84c1402ef9bed1b756"
+  },
+  {
+   "name": "biz.onboardScan",
+   "domain": "biz",
+   "src_span": [
+    4013,
+    4080
+   ],
+   "sha256": "ca7784c3d39f1d19f84e898ffbf972de1050e50d98cc1527169655c60c9751de"
+  },
+  {
+   "name": "biz.onboardSubmit",
+   "domain": "biz",
+   "src_span": [
+    4081,
+    4103
+   ],
+   "sha256": "4689794bec3a7274e39a2ff681bd1fc0b4dcf294c52c72aa131b651af8e9913d"
+  },
+  {
+   "name": "biz.onboardStatus",
+   "domain": "biz",
+   "src_span": [
+    4104,
+    4128
+   ],
+   "sha256": "46eca56080e21fc0a32d5e9af79cd0bfce94eee27bb66a74c701d34f8fc0c27c"
+  }
+ ],
+ "lifts": [
+  {
+   "member": "agent",
+   "line": 305
+  },
+  {
+   "member": "appendLog",
+   "line": 6030
+  },
+  {
+   "member": "applyComponentAppearance",
+   "line": 5509
+  },
+  {
+   "member": "bizGuard",
+   "line": 4571
+  },
+  {
+   "member": "bizHttp",
+   "line": 4535
+  },
+  {
+   "member": "bizStore",
+   "line": 361
+  },
+  {
+   "member": "buildApplyment",
+   "line": 4883
+  },
+  {
+   "member": "buildLocalOverview",
+   "line": 7273
+  },
+  {
+   "member": "closeRoomDrawer",
+   "line": 5727
+  },
+  {
+   "member": "credentials",
+   "line": 256
+  },
+  {
+   "member": "deviceProvider",
+   "line": 374
+  },
+  {
+   "member": "doDeleteRoom",
+   "line": 5833
+  },
+  {
+   "member": "fts5",
+   "line": 254
+  },
+  {
+   "member": "goalDomain",
+   "line": 307
+  },
+  {
+   "member": "hideSoftKeyboard",
+   "line": 4367
+  },
+  {
+   "member": "humanTime",
+   "line": 5894
+  },
+  {
+   "member": "infoVault",
+   "line": 364
+  },
+  {
+   "member": "keyInput",
+   "line": 250
+  },
+  {
+   "member": "marketGuard",
+   "line": 5972
+  },
+  {
+   "member": "memoryGlobalSource",
+   "line": 309
+  },
+  {
+   "member": "memoryOsLedger",
+   "line": 331
+  },
+  {
+   "member": "memoryOsRetrieval",
+   "line": 333
+  },
+  {
+   "member": "memoryOsSemantic",
+   "line": 332
+  },
+  {
+   "member": "mountExtTools",
+   "line": 5991
+  },
+  {
+   "member": "movStorage",
+   "line": 360
+  },
+  {
+   "member": "msMd",
+   "line": 205
+  },
+  {
+   "member": "obsidianProvider",
+   "line": 375
+  },
+  {
+   "member": "onboardDraft",
+   "line": 362
+  },
+  {
+   "member": "partnerHttp",
+   "line": 4717
+  },
+  {
+   "member": "partnerUploadMedia",
+   "line": 4838
+  },
+  {
+   "member": "permissionGuard",
+   "line": 351
+  },
+  {
+   "member": "pinChipsRefresher",
+   "line": 347
+  },
+  {
+   "member": "prefillInputText",
+   "line": 7305
+  },
+  {
+   "member": "recordApprovalPolicy",
+   "line": 7190
+  },
+  {
+   "member": "roomStore",
+   "line": 186
+  },
+  {
+   "member": "session",
+   "line": 271
+  },
+  {
+   "member": "sessionReferenceResolver",
+   "line": 340
+  },
+  {
+   "member": "startNewChat",
+   "line": 5867
+  },
+  {
+   "member": "store",
+   "line": 251
+  },
+  {
+   "member": "switchToRoom",
+   "line": 5742
+  },
+  {
+   "member": "syncBuiltinPackTools",
+   "line": 7370
+  },
+  {
+   "member": "testModelConnection",
+   "line": 4959
+  },
+  {
+   "member": "toolRegistry",
+   "line": 426
+  },
+  {
+   "member": "uiComponentRegistry",
+   "line": 211
+  },
+  {
+   "member": "unmountExtTools",
+   "line": 6006
+  },
+  {
+   "member": "vaultMigration",
+   "line": 366
+  },
+  {
+   "member": "visionExtractForOnboard",
+   "line": 4775
+  },
+  {
+   "member": "workflowRunner",
+   "line": 368
+  }
+ ],
+ "dyn_span": [
+  4217,
+  4270
+ ]
+}
