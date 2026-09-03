@@ -375,6 +375,37 @@ def verify_manifest(manifest_path):
         match = (str(bound).strip().lower() == recomputed)
         if not match:
             problems.append("evidence_manifest_sha 与重算值不一致（清单内容已变或声明过期）")
+    # UPG-99 检测 D：standard_id 名/指纹交叉校验（UPG-93 型张冠李戴机器拦截）
+    # standard_id 形如「STD-UPG-95-v1（content_sha256=b0ec9498…）」→ 冻结区同版文件重算比对
+    sid_raw = str(data.get("standard_id") or "")
+    cross = {"standard_id": sid_raw, "checked": False}
+    mstd = re.search(r"(STD-(.+?)-v(\d+))", sid_raw)
+    if mstd:
+        std_id, tick, _ver = mstd.group(1), mstd.group(2), mstd.group(3)
+        frozen = ROOT / "处理中心" / "验收标准冻结区" / tick / f"{std_id}.md"
+        mem = re.search(r"content_sha256[=：`]\s*([0-9a-fA-F]{8,64})", sid_raw)
+        embedded = mem.group(1).lower() if mem else None
+        if not frozen.exists():
+            problems.append(f"standard_id 引用冻结区文件不存在：{frozen.relative_to(ROOT)}")
+            cross["checked"] = True; cross["result"] = "frozen_missing"
+        elif not embedded:
+            problems.append("standard_id 未内嵌 content_sha256（名/指纹交叉校验不可执行——须写全「STD-…-vN（content_sha256=<64hex>）」）")
+            cross["checked"] = True; cross["result"] = "no_embedded_sha"
+        else:
+            try:
+                t = frozen.read_text(encoding="utf-8")
+                body = t.split("## 冻结区", 1)[1].split("## 追加说明区", 1)[0]
+                recomputed_std = hashlib.sha256(body.encode("utf-8")).hexdigest()
+                ok_cross = recomputed_std == embedded if len(embedded) == 64 else recomputed_std.startswith(embedded)
+                cross.update({"checked": True, "result": "ok" if ok_cross else "mismatch",
+                              "embedded": embedded, "recomputed": recomputed_std})
+                if not ok_cross:
+                    problems.append(f"standard_id 名/指纹错位：{std_id} 内嵌 {embedded[:12]}… ≠ 冻结区实算 {recomputed_std[:12]}…（张冠李戴——UPG-93 型笔误）")
+            except Exception as e:
+                problems.append(f"standard_id 交叉校验执行失败：{e}")
+                cross["checked"] = True; cross["result"] = "error"
+    res.setdefault("detail", {})["standard_id_crosscheck"] = cross
+
     # 层B逐条
     integ = []
     for ev in mlist:
@@ -603,12 +634,31 @@ def manifest_self_test():
         bad3_f = Path(td) / "bad3.json"
         bad3_f.write_text(write_manifest(good, None), encoding="utf-8")
 
+        # UPG-99 检测 D 自测：standard_id 名/指纹交叉校验（以冻结区真实 STD-UPG-93-v2 为锚）
+        import hashlib as _hl
+        std93 = ROOT / "处理中心" / "验收标准冻结区" / "UPG-93" / "STD-UPG-93-v2.md"
+        if std93.exists():
+            t93 = std93.read_text(encoding="utf-8")
+            real93 = _hl.sha256(t93.split("## 冻结区", 1)[1].split("## 追加说明区", 1)[0].encode("utf-8")).hexdigest()
+            ok_sid = json.loads(good_manifest.read_text(encoding="utf-8"))
+            ok_sid["standard_id"] = f"STD-UPG-93-v2（content_sha256={real93}）"
+            ok_sid_f = Path(td) / "ok_sid.json"
+            ok_sid_f.write_text(json.dumps(ok_sid, ensure_ascii=False), encoding="utf-8")
+            bad_sid = dict(ok_sid)
+            bad_sid["standard_id"] = "STD-UPG-93-v2（content_sha256=5dfd1a3d190bff63d13da4ec0cfa226967537aee6805ad580674cc80b73e6b1f）"
+            bad_sid_f = Path(td) / "bad_sid.json"
+            bad_sid_f.write_text(json.dumps(bad_sid, ensure_ascii=False), encoding="utf-8")
+            sid_cases = (("坏案④standard_id 名/指纹错位（UPG-93 型）", bad_sid_f, False),
+                         ("好案②standard_id 名/指纹一致", ok_sid_f, True))
+        else:
+            sid_cases = ()
+
         for name, f, expect_ok in (
             ("好案（规范 manifest）", good_manifest, True),
             ("坏案①路径嵌注释", bad1_f, False),
             ("坏案②缺 sha256", bad2_f, False),
             ("坏案③绑定值未写入", bad3_f, False),
-        ):
+        ) + sid_cases:
             r = verify_manifest(f)
             cases.append({
                 "case": name,
@@ -1010,13 +1060,14 @@ def main():
         if args.json:
             print(json_dumps(res))
         else:
-            print("═══ UPG-86 manifest 治理自测（三坏案红 + 好案绿）═══")
+            print("═══ manifest 治理自测（UPG-86 三坏案 + UPG-99 交叉校验两案）═══")
             for c in res["cases"]:
                 mark = "PASS" if c["passed"] else "FAIL"
                 print(f"  [{mark}] {c['case']}  (ok={c['actual_ok']})")
                 for p in c["problems"][:2]:
                     print(f"        - {p}")
-            print(f"结论: {'PASS 4/4' if res['ok'] else 'FAIL'}（机器只出 flag，人裁决）")
+            _n = len(res["cases"]); _p = sum(1 for c in res["cases"] if c["passed"])
+            print(f"结论: {'PASS' if res['ok'] else 'FAIL'} {_p}/{_n}（机器只出 flag，人裁决）")
         return
 
     if args.verify_hash:

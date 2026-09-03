@@ -1,0 +1,11 @@
+# å˜å¼‚é”šâ‘ ï¼šåˆ  openBuiltin memory case â†’ æœŸæœ›åˆ†æ´¾é”š+é”®å€¼å¯¹é½é”šçº¢ ï½œ 2026-09-04 06:16:05
+#ï¼ˆå‰ä¸¤è½®ä½œåºŸåœ¨æ¡ˆï¼šâ‘ CRLF å¤±é…æ³¨å…¥æœªç”Ÿæ•ˆ â‘¡restore è¯¯å› HEAD å†²æ‰æ–½å·¥ä»¶â€”â€”å·²æ”¹å®šç‚¹å¿«ç…§è¿˜åŸï¼Œæœ¬è½®ä¸ºæœ‰æ•ˆäº²æ€ï¼‰
+M1 injected: memory case removed from openBuiltin
+27 actionable tasks: 27 executed
+×¢Èëºó XML: tests=4 failures=3
+  RED: ·ÖÅÉÃª¡ª¡ªÎå case ¼üÖµµ½ ui_open ÇÅÈ«½Ó
+  RED: ¶µµ×Ãª¡ª¡ªÎ´½ÓÏß²ÛÎ»×ß showDialog ¿É¼ûÌáÊ¾£¨·ÇÂã toast£©
+  RED: ¼üÖµ¶ÔÆëÃª¡ª¡ªCapsuleResolver ¾²Ì¬±í page Öµ == openBuiltin case ¼ü
+restored to fixed point
+33 actionable tasks: 33 executed
+»¹Ô­ºó XML: tests=4 failures=0

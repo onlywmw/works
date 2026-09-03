@@ -1,0 +1,73 @@
+{
+  "ticket_id": "UPG-97",
+  "delivery_id": "DEL-UPG97-20260904-001",
+  "standard_id": "STD-UPG-97-v1（content_sha256=37c9db0493405ced8eb18d8cb08706714b67c2dd9f6205307ea3c49a86b2464f）",
+  "code_commit_sha": "9010075d",
+  "artifact_sha": "sidebar bundle SidebarNav-B_E4bgD4.js sha256=7e2123640e2a3225（产物链同步件，全量产物入 feat/upg97）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/final_gate.txt",
+      "sha256": "2982d939fc824f5bb7cfa21bdd82b7f6b80662e8f849207717d292cae2df9f1e",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/build_chain.txt",
+      "sha256": "10e403cc4f684c9419134116021cee9e8686579592beea27c692749ca3a2e87c",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/mutation_M1_memory-case.log",
+      "sha256": "adc067a8eb34bb843c75d1346fa1eaa171de08b619a8993e3a103284d903d023",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/mutation_M2_comingsoon-toast.log",
+      "sha256": "25fb10670dc8268d86220b631e6500bb38515cc7253219f42040a66083446e07",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/point1_market.png",
+      "sha256": "e19f56b142cbb73e1e075c997a9fe97ead77d3c762dd509a641431af2a98a8aa",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/point2_orders.png",
+      "sha256": "cf2732a1a3f984b60384fd94a370a9ca88ed6a3e7173e2ba9de9a5cf75060579",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/point3_memory.png",
+      "sha256": "2c5efa4d5552d6d16c6c69c8216c55fac6ec335a05d61015dc0ee1de783cfd39",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-008",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/point4_assets.png",
+      "sha256": "35ff8253e2b321924ffed15bc81a1f7eedcdbfe3930da5974b2b64967f2137f6",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-009",
+      "path": "C:/Users/Administrator/Desktop/MOV/工单系统/程序员/UPG97-evidence/point5_workbench.png",
+      "sha256": "ff1b68180af34969a9e5175390313c9973159e2d48a306121b566f6e24c47665",
+      "producer": "程序员",
+      "created_at": "2026-09-04"
+    }
+  ],
+  "evidence_manifest_sha": "72035bc94192512be0c9d096a4eaee45ce166dc2e760fefaa1e6bd2895a4b445"
+}

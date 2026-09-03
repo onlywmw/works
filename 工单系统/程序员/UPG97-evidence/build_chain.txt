@@ -1,0 +1,7 @@
+# UPG-97 产物链证据 ｜ 2026-09-04 06:39:54
+bun run build（vite）→ dist 成功（3.79s）
+node scripts/sync-pages.mjs → 共 103 个文件，7 目录先清后放完成（sidebar 12 文件）
+sidebar bundle 含新接线证据（grep 产物）：
+app/src/main/assets/pages/sidebar/assets/SidebarNav-B_E4bgD4.js
+bundle sha256:
+  assets\SidebarNav-B_E4bgD4.js 7e2123640e2a3225

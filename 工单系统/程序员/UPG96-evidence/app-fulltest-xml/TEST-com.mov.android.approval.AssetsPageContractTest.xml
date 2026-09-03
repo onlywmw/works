@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.AssetsPageContractTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:28.552Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="UPG91 锚② - 硬编码色值清零（令牌单源 UPG-70 归层纪律）" classname="com.mov.android.approval.AssetsPageContractTest" time="0.002"/>
+  <testcase name="UPG91 锚① - demoBridge 假数据回落整段删除（桥空必空态）" classname="com.mov.android.approval.AssetsPageContractTest" time="0.001"/>
+  <testcase name="UPG91 锚③ - 组行默认收起（opened 初始空态+展开切换）" classname="com.mov.android.approval.AssetsPageContractTest" time="0.001"/>
+  <testcase name="UPG91 锚④ - tab 导航带真实计数（类目+计数+未上线灰显）" classname="com.mov.android.approval.AssetsPageContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

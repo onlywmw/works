@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.guard.AcceptanceJudgeAgentLoopE2ETest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:23.094Z" hostname="苟富贵" time="0.208">
+  <properties/>
+  <testcase name="B1 对拍走真实 AgentLoop——四点断言" classname="com.hermes.dsh.guard.AcceptanceJudgeAgentLoopE2ETest" time="0.193"/>
+  <testcase name="对照组——建议性询问零 acceptance 事件" classname="com.hermes.dsh.guard.AcceptanceJudgeAgentLoopE2ETest" time="0.009"/>
+  <testcase name="对照组——正常闲聊零 acceptance 事件" classname="com.hermes.dsh.guard.AcceptanceJudgeAgentLoopE2ETest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV 极简呈现 · A2UI 风格移植 demo v4</title>
+<style>
+:root{
+  --primary:#23272F;--on-primary:#ffffff;--primary-text:#23272F;
+  --s0:#eef0f4;--s1:#ffffff;--s2:#f3f5f8;--s3:#e7eaf0;
+  --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--line:rgba(22,28,48,.08);
+  --danger:#d92d20;--danger-tint:rgba(217,45,32,.09);
+  --card-shadow:0 8px 24px rgba(20,24,40,.08),0 2px 6px rgba(20,24,40,.04);
+  --card-shadow-lg:0 16px 40px rgba(20,24,40,.12),0 4px 10px rgba(20,24,40,.05);
+}
+.screen[data-theme=dark]{
+  --primary:#F1F3F5;--on-primary:#16181D;--primary-text:#F1F3F5;
+  --s0:#0c0e12;--s1:#171a20;--s2:#1e2128;--s3:#282b33;
+  --text:#e4e5ea;--text2:#a9afbf;--text3:#757b8d;--line:rgba(255,255,255,.08);
+  --danger:#ff6b5e;--danger-tint:rgba(255,107,94,.14);
+  --card-shadow:0 8px 24px rgba(0,0,0,.4);
+  --card-shadow-lg:0 16px 40px rgba(0,0,0,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#05070a;color:#e4e5ea;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:26px 16px 60px;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(70,80,100,.14),transparent 70%)}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit;font-size:inherit}
+
+.demo-bar{width:420px;max-width:100%;display:flex;align-items:center;gap:8px;margin-bottom:14px;z-index:2;position:relative}
+.demo-bar .logo{font-size:13px;font-weight:700}
+.demo-bar .logo small{display:block;font-size:10px;font-weight:400;color:#757b8d;margin-top:2px}
+.demo-bar .sp{flex:1}
+.seg{display:flex;background:#16181d;border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:3px;gap:2px}
+.seg button{padding:5px 10px;border-radius:999px;font-size:11px;color:#a9afbf;white-space:nowrap}
+.seg button.on{background:#F1F3F5;color:#16181D;font-weight:600}
+.theme-btn{width:32px;height:32px;border-radius:50%;background:#16181d;border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:14px}
+
+.phone{width:420px;max-width:100%;height:860px;border-radius:30px;border:1px solid rgba(255,255,255,.1);
+  overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.screen{position:absolute;inset:0;background:var(--s0);color:var(--text);overflow:hidden;transition:background .3s}
+
+/* 底座 */
+.base{position:absolute;inset:0;display:flex;flex-direction:column;z-index:1}
+.base-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:all .4s cubic-bezier(.32,.72,.28,1)}
+.base.docked .base-mid{opacity:0;pointer-events:none;transform:translateY(-6%) scale(.9)}
+.eye{width:128px;height:128px;cursor:pointer;transition:transform .3s;object-fit:contain}
+.eye:active{transform:scale(.94)}
+.eye.listening{animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.hint{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--text3);text-transform:uppercase}
+.base-bar{flex:none;padding:10px 20px 20px;display:flex;justify-content:center}
+.hinput{height:44px;border-radius:999px;background:var(--s1);box-shadow:var(--card-shadow);
+  display:flex;align-items:center;padding:0 8px 0 18px;gap:6px;width:100%;transition:all .3s}
+.base.docked .hinput{width:52px;padding:0;justify-content:center}
+.hinput input{flex:1;border:none;outline:none;background:none;font-size:14px;color:var(--text)}
+.base.docked .hinput input,.base.docked .hinput .send{display:none}
+.hinput input::placeholder{color:var(--text3)}
+.hinput .send{width:32px;height:32px;border-radius:50%;background:var(--primary);color:var(--on-primary);flex:none}
+.dockmic{display:none;position:relative;width:16px;height:18px;flex:none}
+.dockmic::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+  width:8px;height:11px;border-radius:4px;background:var(--primary-text)}
+.dockmic::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:14px;height:8px;border:1.6px solid var(--primary-text);border-top:none;border-radius:0 0 8px 8px}
+.base.docked .dockmic{display:block}
+
+/* A2UI 语言：软投影无描边大卡 */
+.fcard{position:absolute;left:50%;top:45%;transform:translate(-50%,-46%) scale(.96);z-index:11;
+  width:calc(100% - 40px);max-width:380px;max-height:68%;
+  background:var(--s1);border-radius:22px;border:none;box-shadow:var(--card-shadow-lg);
+  padding:20px 20px 16px;display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .3s cubic-bezier(.32,.72,.28,1)}
+.fcard.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.fcard .x{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:13px;background:var(--s2)}
+.caps{font-size:10.5px;font-weight:700;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;margin-bottom:10px}
+.heroimg{height:168px;border-radius:16px;background:var(--s2);display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;flex:none}
+.heroimg::after{content:"";width:52px;height:52px;border-radius:50%;border:1.5px solid var(--line)}
+.offer-name{font-size:21px;font-weight:800;margin-top:14px;letter-spacing:.005em}
+.offer-meta{font-size:12.5px;color:var(--text3);margin-top:6px}
+.hairline{height:1px;background:var(--line);margin:14px 0}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;font-size:13px}
+.kv .k{color:var(--text2)}
+.kv .v{font-variant-numeric:tabular-nums;font-weight:600}
+.kv.total{border-top:1px solid var(--line);margin-top:6px;padding-top:10px}
+.kv.total .v{font-size:19px;font-weight:800}
+.pill{width:100%;height:46px;border-radius:999px;background:var(--primary);color:var(--on-primary);
+  font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:12px;flex:none}
+.pill:active{opacity:.75}
+.pill-ghost{width:100%;height:42px;border-radius:999px;background:var(--s2);color:var(--text2);
+  font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:8px;flex:none}
+
+/* 清单卡 */
+.list-title{font-size:20px;font-weight:800}
+.tl{display:flex;flex-direction:column;position:relative;padding-left:22px;margin-top:6px}
+.tl::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1.5px;background:var(--line)}
+.tl-item{padding:10px 0;position:relative}
+.tl-dot{position:absolute;left:-22px;top:14px;width:14px;height:14px;border-radius:50%;
+  background:var(--s1);border:2px solid var(--primary);box-shadow:var(--card-shadow)}
+.tl-dot.done{background:var(--primary)}
+.tl-item .tt{font-size:14px;font-weight:600}
+.tl-item .ts{font-size:11.5px;color:var(--text3);margin-top:2px}
+
+/* 审批卡（同语言） */
+.scrim{position:absolute;inset:0;background:rgba(238,240,244,.55);backdrop-filter:blur(3px);
+  opacity:0;pointer-events:none;transition:opacity .28s;z-index:20}
+.screen[data-theme=dark] .scrim{background:rgba(0,0,0,.5)}
+.scrim.show{opacity:1;pointer-events:auto}
+.acard{position:absolute;left:50%;top:50%;z-index:21;background:var(--s1);width:calc(100% - 72px);max-width:340px;
+  border-radius:20px;border:none;box-shadow:var(--card-shadow-lg);
+  opacity:0;transform:translate(-50%,-47%) scale(.95);pointer-events:none;
+  transition:opacity .22s,transform .28s cubic-bezier(.32,.72,.28,1);padding:18px 18px 14px}
+.acard.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.acard .ahead{display:flex;gap:11px;align-items:center}
+.aring{position:relative;width:44px;height:44px;flex:none}
+.aring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.aring .track{fill:none;stroke:var(--s3);stroke-width:2.5}
+.aring .prog{fill:none;stroke:var(--primary);stroke-width:2.5;stroke-linecap:round;
+  stroke-dasharray:132;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear,stroke .3s}
+.aring .prog.low{stroke:var(--danger)}
+.aring .aq{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:var(--text2);font-variant-numeric:tabular-nums}
+.acard h2{font-size:15.5px;font-weight:700;line-height:1.35}
+.acard .sub{font-size:11px;color:var(--text3);margin-top:2px}
+.acard .args{margin-top:12px;background:var(--s2);border-radius:12px;padding:9px 12px;font-size:12.5px}
+.acard .args .row{display:flex;gap:10px;line-height:1.5}
+.acard .args .k{flex:none;width:40px;color:var(--text3);font-size:11.5px;padding-top:1px}
+.acard .rem{display:flex;align-items:center;gap:9px;margin-top:12px;cursor:pointer;user-select:none}
+.acard .rem .box{width:18px;height:18px;border-radius:6px;border:1.5px solid var(--text3);
+  display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:all .15s}
+.acard .rem.on .box{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.acard .rem .rt{font-size:12px;color:var(--text2)}
+.acard .acts{display:flex;gap:10px;margin-top:13px}
+.acard .btn{flex:1;height:42px;border-radius:999px;font-size:14px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.acard .btn-yes{background:var(--primary);color:var(--on-primary)}
+.acard .btn-no{background:var(--danger-tint);color:var(--danger)}
+
+.reg{position:absolute;left:12px;right:12px;bottom:12px;z-index:12;background:var(--s1);
+  border-radius:12px;box-shadow:var(--card-shadow);padding:8px 12px;font-size:10px;color:var(--text3);
+  line-height:1.6;font-variant-numeric:tabular-nums;display:none}
+.reg.show{display:block}
+.reg b{color:var(--text2)}
+
+.toast{position:absolute;left:50%;bottom:96px;transform:translate(-50%,20px);z-index:30;
+  background:var(--text);color:var(--s0);font-size:12.5px;padding:9px 16px;border-radius:999px;
+  opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.notes{width:420px;max-width:100%;margin-top:18px;background:#10131a;border-radius:14px;padding:16px 18px;z-index:1;box-shadow:var(--card-shadow)}
+.notes h3{font-size:12px;font-weight:700;color:#a9afbf;letter-spacing:.08em;margin-bottom:10px}
+.notes li{font-size:12px;color:#757b8d;line-height:1.7;list-style:none;padding-left:14px;position:relative}
+.notes li::before{content:"—";position:absolute;left:0;color:#4a5158}
+.notes li b{color:#a9afbf;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <div class="logo">MOV 极简呈现 · A2UI 风格移植<small>demo v4 · 2026-09-04 · 软投影大卡 / caps 题 / pill 钮 / 纯黑守拍板④</small></div>
+  <div class="sp"></div>
+  <div class="seg" id="seg">
+    <button data-sc="hero" class="on">底座</button>
+    <button data-sc="offer">商家卡</button>
+    <button data-sc="list">清单卡</button>
+    <button data-sc="stack">审批叠卡</button>
+    <button data-sc="reg">契约条</button>
+  </div>
+  <button class="theme-btn" id="themeBtn">🌙</button>
+</div>
+
+<div class="phone">
+  <div class="screen" id="screen" data-theme="light">
+
+    <div class="base" id="base">
+      <div class="base-mid">
+        <img class="eye" id="eye" src="assets/MOV_商标图样_竖眼_透明底_V1.png" alt="MOV">
+        <div class="hint">说 出 或 输 入 你 的 需 求</div>
+      </div>
+      <div class="base-bar">
+        <div class="hinput">
+          <input id="heroInput" placeholder="我要吃辣椒炒肉">
+          <button class="send" id="heroSend">↑</button>
+          <span class="dockmic" id="dockMic"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scrim" id="scrim" style="z-index:10"></div>
+
+    <!-- 商家卡 -->
+    <div class="fcard" id="fc-offer">
+      <button class="x" data-x>✕</button>
+      <div class="caps">今日推荐 · OFFER</div>
+      <div class="heroimg"></div>
+      <div class="offer-name">湘味小炒 · 辣椒炒肉</div>
+      <div class="offer-meta">中辣 · 1 人份 · 配送约 30 分钟</div>
+      <div class="hairline"></div>
+      <div class="kv"><span class="k">单品</span><span class="v">¥29.00</span></div>
+      <div class="kv"><span class="k">配送费</span><span class="v">¥3.00</span></div>
+      <div class="kv total"><span class="k">合计</span><span class="v">¥32.00</span></div>
+      <button class="pill" id="payBtn">去付款</button>
+      <button class="pill-ghost" id="swapBtn">换一家</button>
+      <div class="reg" data-reg><b>offer</b> → fcard/immersive · offerCard.v1 ｜ slots←merchant.search.out ｜ LLM 决策=0</div>
+    </div>
+
+    <!-- 清单卡 -->
+    <div class="fcard" id="fc-list">
+      <button class="x" data-x>✕</button>
+      <div class="caps">今日 · CHECKLIST</div>
+      <div class="list-title">今天的安排</div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-dot done"></div><div><div class="tt">整理 Download 报表</div><div class="ts">已完成 · 12 个文件</div></div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div><div class="tt">下午 3 点开会提醒</div><div class="ts">已创建 · 15:00</div></div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div><div class="tt">备份凭据到保险柜</div><div class="ts">待你确认</div></div></div>
+      </div>
+      <div class="reg" data-reg><b>checklist</b> → fcard/immersive · timelineList.v1 ｜ slots←plan.jobs.out ｜ LLM 决策=0</div>
+    </div>
+
+    <!-- 审批叠卡（同语言） -->
+    <div class="scrim" id="scrim2"></div>
+    <div class="acard" id="acard">
+      <div class="caps" style="margin-bottom:8px">需你确认 · APPROVAL</div>
+      <div class="ahead">
+        <div class="aring">
+          <svg viewBox="0 0 48 48"><circle class="track" cx="24" cy="24" r="21"/><circle class="prog" id="ring" cx="24" cy="24" r="21"/></svg>
+          <div class="aq" id="aq"></div>
+        </div>
+        <div style="flex:1;min-width:0">
+          <h2>AI 想帮你备份凭据到保险柜</h2>
+          <div class="sub">vault.set</div>
+        </div>
+      </div>
+      <div class="args">
+        <div class="row"><div class="k">凭据</div><div>商户简称 ········</div></div>
+      </div>
+      <div class="rem" id="remRow"><div class="box">✓</div><div class="rt">记住，同类操作不再问</div></div>
+      <div class="acts">
+        <button class="btn btn-no" id="aNo">拒绝</button>
+        <button class="btn btn-yes" id="aYes">同意</button>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
+
+<div class="notes">
+  <h3>A2UI 风格移植（demo v4 · 用户喜欢其简约漂亮）</h3>
+  <ul>
+    <li><b>无描边软投影大卡</b>——1px 描边退役，柔和大圆角 22px + 双层柔和投影（--card-shadow-lg），卡片像「浮在空气里」</li>
+    <li><b>caps 小字题</b>——「今日推荐 · OFFER」全大写宽字距引导语，层级更洋气</li>
+    <li><b>大字重排版</b>——标题 21px 特粗、合计金额 tabular 大号、kv 行 hairline 分隔（A2UI 的 Email 卡片式）</li>
+    <li><b>pill 按钮</b>——主按钮纯黑 pill（守拍板④纯黑白；灰蓝 #5A6B7A 口子留拍板⑤备用未启用）；次动作=浅灰 pill-ghost</li>
+    <li><b>遮罩带模糊</b>——scrim 改浅色+blur(3px)，叠卡时背景柔化不黑场</li>
+    <li><b>不变的</b>——底座常驻+输入通道、环形倒计时审批卡、纯黑白+功能红、契约条折调试层</li>
+  </ul>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const screen=$('#screen'),base=$('#base'),scrim=$('#scrim'),scrim2=$('#scrim2'),acard=$('#acard'),toast=$('#toast');
+let cd=30,timer=null;
+function show(t){toast.textContent=t;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1800)}
+function go(name){
+  document.querySelectorAll('.fcard').forEach(c=>c.classList.toggle('show',c.id==='fc-'+name));
+  const on=name!=='hero';
+  scrim.classList.toggle('show',on);base.classList.toggle('docked',on);
+  closeAppr();
+  document.querySelectorAll('#seg button').forEach(x=>{if(x.dataset.sc!=='reg')x.classList.toggle('on',x.dataset.sc===name)});
+}
+function openAppr(){scrim2.classList.add('show');acard.classList.add('show');cd=30;ring();clearInterval(timer);
+  timer=setInterval(()=>{if(cd>0){cd--;ring()}else{clearInterval(timer);closeAppr();show('已自动拒绝')}},1000)}
+function ring(){const r=$('#ring');r.style.strokeDashoffset=132*(1-cd/30);r.classList.toggle('low',cd<=10)}
+function closeAppr(){scrim2.classList.remove('show');acard.classList.remove('show');clearInterval(timer)}
+
+$('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.sc==='reg'){document.querySelectorAll('[data-reg]').forEach(r=>r.classList.toggle('show'));b.classList.toggle('on');return}
+  if(b.dataset.sc==='stack'){go('offer');setTimeout(openAppr,450);return}
+  go(b.dataset.sc)});
+document.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>go('hero'));
+scrim.onclick=()=>go('hero');
+$('#themeBtn').onclick=()=>{const d=screen.dataset.theme==='dark';screen.dataset.theme=d?'light':'dark';$('#themeBtn').textContent=d?'🌙':'☀️'};
+
+const eye=$('#eye'),hinput=$('.hinput'),heroInput=$('#heroInput');
+eye.onclick=()=>{eye.classList.add('listening');heroInput.placeholder='正在听…';
+  setTimeout(()=>{eye.classList.remove('listening');heroInput.value='我要吃辣椒炒肉';
+    setTimeout(()=>go('offer'),500)},1500)};
+heroInput.addEventListener('keydown',e=>{if(e.key==='Enter')go('offer')});
+$('#heroSend').onclick=()=>go('offer');
+$('#dockMic').onclick=()=>show('输入通道（说/打）');
+$('#payBtn').onclick=()=>show('付款为占位 · 商业期开放');
+$('#swapBtn').onclick=()=>show('换一家（下一条目）');
+$('#remRow').onclick=()=>$('#remRow').classList.toggle('on');
+$('#aYes').onclick=()=>{closeAppr();show($('#remRow').classList.contains('on')?'已同意 · 同类已记住':'已同意')};
+$('#aNo').onclick=()=>{closeAppr();show('好的，这次不执行')};
+scrim2.onclick=()=>{closeAppr();show('已取消（fail-closed）')};
+
+const init=(location.hash||'#hero').slice(1);
+if(init==='stack'){go('offer');setTimeout(openAppr,450)}else go(init);
+if(init==='reg')document.querySelectorAll('[data-reg]').forEach(r=>r.classList.add('show'));
+</script>
+</body>
+</html>

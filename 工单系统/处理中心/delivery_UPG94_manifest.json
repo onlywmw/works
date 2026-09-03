@@ -1,0 +1,34 @@
+{
+  "ticket_id": "UPG-94",
+  "delivery_id": "DEL-UPG94-20260904-001",
+  "standard_id": "STD-UPG-94-v1（content_sha256=4fca8e5dae1c9d69b27970f6f4f0e2d88b398b5af222e21b5d19043d492ada28）",
+  "code_commit_sha": "746b20ec（feat/upg94，基 main fe258949；施工 033ecc24→修正 746b20ec）",
+  "artifact_sha": "c77d3dc2e1a7a3a9（APK 前 16——全 sha 验收构建时重算；当前 ba3d877d 时代码=746b20ec 构建一致）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG94-evidence/app-fulltest-xml/（全量 106 套件 763/0/1 全绿；目录聚合 sha256=sorted 文件名+内容）",
+      "producer": "C",
+      "created_at": "2026-09-04",
+      "sha256": "8aa960da5701e9fe9f70635380e5ad29c753ad9d2ffe27ce447c484901c66171"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG94-evidence/emulator_classic_restored.png（切回经典后 dock 原样恢复截图）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG94-evidence/emulator_minimal_dockgone.png（极简主页：dock 零元素/logo 零装饰/无 hint/纯黑发送钮——dump texts=MOV/经典/点按说话/↑）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/交付报告/DELIVERY_UPG94_2026-09-04.md §二（变异 2 锚亲杀实录：dock 路由锚删 GONE 行→红/hero 装饰锚还原→红；注释措辞误伤与深色断言匹配修正均在案）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    }
+  ]
+}

@@ -245,6 +245,71 @@ function parseLib(libPath) {
   return { rows, warnings };
 }
 
+// ---------------- UPG-99：DEL 绑定==分支头 机器校验 ----------------
+// 裁决依据（设计师 2026-09-04）：「分支头推进=交付内容变化=DEL 重绑或显式豁免注记；验收/审验/合 main 三处只认分支头」
+// 口径：未合卡→code= 必须==对应仓 feat/<ticket> 分支头；已合卡（状态含「已合 main」）→code= 必须是该仓 main 祖先。
+// DEL 块内同段含「豁免」→ 跳过。git/仓库不可用→跳过并明示。失败不阻断投影，但 --check 退出码非零。
+const DEL_CODE_RE = new RegExp("DEL-([A-Z0-9]+)-(\\d{8})-(\\d+)[^\\n]{0,160}?code=\\**([0-9a-f]{7,40})", "g");
+const MOV_REPO = "C:/Users/Administrator/0027-mov";
+
+function gitAt(repo, args) {
+  const r = spawnSync("git", ["-C", repo, ...args], { encoding: "utf8" });
+  return { ok: r.status === 0, out: (r.stdout || "").trim(), err: (r.stderr || "").trim() };
+}
+
+function delBindingAudit(libPath) {
+  const txt = fs.readFileSync(libPath, "utf8");
+  const repos = [MOV_REPO, path.dirname(libPath)]; // MOV 仓优先，工单系统仓兜底（治理单如 UPG-86/92）
+  const issues = [];
+  let checked = 0;
+  // 卡边界：「# UPG-xx」头到下一张卡头
+  const cardRe = /^# (UPG-[A-Z0-9]+)/gm;
+  const heads = [];
+  let hm;
+  while ((hm = cardRe.exec(txt)) !== null) heads.push({ no: hm[1], at: hm.index });
+  for (let c = 0; c < heads.length; c++) {
+    const cardTxt = txt.slice(heads[c].at, c + 1 < heads.length ? heads[c + 1].at : txt.length);
+    const ticket = heads[c].no.replace("UPG-", "UPG");
+    // 已合卡：验「已合 main @hash」记录的真实落点 ∈ main 祖先（rebase 重写是常态，交付时 DEL 绑定为时点记录不回头验）
+    const mMerged = cardTxt.match(/已合 main[\s\S]{1,40}?([0-9a-f]{7,40})/);
+    if (mMerged) {
+      const mh = mMerged[1];
+      let repo = null;
+      for (const r of repos) {
+        if (fs.existsSync(r) && gitAt(r, ["rev-parse", "--verify", `${mh}^{commit}`]).ok) { repo = r; break; }
+      }
+      // 存量豁免：规则 2026-09-04 起生效；此前 cherry-pick 时代合入的卡 hash 级校验必误报，跳过
+      const mDate = cardTxt.match(/已合 main[^\d]{0,10}(\d{4})-(\d{2})-(\d{2})/);
+      if (mDate && `${mDate[1]}-${mDate[2]}-${mDate[3]}` < "2026-09-04") {
+        issues.push({ no: heads[c].no, type: "存量豁免", detail: `已合 main @${mDate[1]}-${mDate[2]}-${mDate[3]}（规则前 cherry-pick 时代），DEL 绑定校验豁免` });
+        continue;
+      }
+      if (!repo) { issues.push({ no: heads[c].no, type: "DEL校验跳过", detail: `已合 main @${mh} 两仓均不可解析，人工核` }); continue; }
+      const anc = gitAt(repo, ["merge-base", "--is-ancestor", mh, "main"]);
+      if (!anc.ok) issues.push({ no: heads[c].no, type: "DEL绑定失效", detail: `已合 main @${mh} 不在 main 祖先链（${path.basename(repo)}）——合入记录不实，人工核` });
+      else checked++;
+      continue;
+    }
+    // 未合卡：DEL code= 必须 == feat/<ticket> 分支头
+    DEL_CODE_RE.lastIndex = 0;
+    const dm = DEL_CODE_RE.exec(cardTxt);
+    if (!dm) continue; // 无 DEL 绑定（未交付）不验
+    if (/豁免/.test(dm[0])) continue; // 显式豁免注记跳过
+    const hash = dm[4];
+    let repo = null;
+    for (const r of repos) {
+      if (fs.existsSync(r) && gitAt(r, ["rev-parse", "--verify", `${hash}^{commit}`]).ok) { repo = r; break; }
+    }
+    if (!repo) { issues.push({ no: heads[c].no, type: "DEL校验跳过", detail: `DEL code=${hash} 两仓均不可解析，人工核` }); continue; }
+    const br = `feat/${heads[c].no.toLowerCase().replace("upg-", "upg")}`;
+    let head = gitAt(repo, ["rev-parse", "--verify", br]).out;
+    if (!head) head = gitAt(repo, ["rev-parse", "--verify", `origin/${br}`]).out;
+    if (!head) { issues.push({ no: heads[c].no, type: "DEL校验跳过", detail: `${br} 分支不在（已收/未建），人工核` }); continue; }
+    if (!head.startsWith(hash)) issues.push({ no: heads[c].no, type: "DEL绑定失效", detail: `未合卡 DEL code=${hash} ≠ ${br} 头 ${head.slice(0, 12)}（${path.basename(repo)}）——分支头已推进，须重绑或豁免` });
+    else checked++;
+  }
+  return { issues, checked };
+}
 // ---------------- python openpyxl 桥 ----------------
 const PY_READ = `
 import openpyxl, json, sys
@@ -398,7 +463,15 @@ function main() {
     const { rows: tblRows } = readTable(tablePath);
     const { issues, compared } = diffLibVsTable(libRows, tblRows);
     printDiff(issues, compared);
-    process.exit(issues.length === 0 ? 0 : 1);
+    // UPG-99：DEL 绑定==分支头机器校验（失败计入退出码）
+    const delAudit = delBindingAudit(libPath);
+    if (delAudit.issues.length || delAudit.checked) {
+      console.log("═══ DEL 绑定==分支头 校验（UPG-99）═══");
+      console.log(`  通过 ${delAudit.checked} 条`);
+      for (const i of delAudit.issues) console.log(`  [${i.no}] ${i.type}：${i.detail}`);
+      console.log("");
+    }
+    process.exit(issues.length === 0 && delAudit.issues.filter(i => i.type === "DEL绑定失效").length === 0 ? 0 : 1);
   }
 
   if (opts.mode === "sync") {
@@ -409,6 +482,8 @@ function main() {
     }
     writeTable(tablePath, libRows, META_ROW);
     console.log(`已生成 ${tablePath}：${libRows.length} 张卡（库=${libRows.length} 卡 → 表 ${libRows.length} 行）`);
+    const delAuditS = delBindingAudit(libPath);
+    for (const i of delAuditS.issues) console.log(`⚠ [${i.no}] ${i.type}：${i.detail}`);
     if (isReal) console.log("⚠ 红线注记：真实表已 --sync 覆盖——仅在设计评审通过后允许；3A --check 应先行且 diff=0。");
     // 成功条件 = 生成后 check diff=0
     const { rows: tblRows } = readTable(tablePath);

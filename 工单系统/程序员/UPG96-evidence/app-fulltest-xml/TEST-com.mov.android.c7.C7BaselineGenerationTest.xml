@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.c7.C7BaselineGenerationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:28.794Z" hostname="苟富贵" time="0.294">
+  <properties/>
+  <testcase name="Z5 基线产物确定性 - 连跑两遍字节一致" classname="com.mov.android.c7.C7BaselineGenerationTest" time="0.238"/>
+  <testcase name="Z5 采集30会话确认弹窗计数基线并落档" classname="com.mov.android.c7.C7BaselineGenerationTest" time="0.056"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ToolsSplitContractTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:27.616Z" hostname="苟富贵" time="0.119">
+  <properties/>
+  <testcase name="P0-3 锚——tools 零 Activity 长期持有（object 聚合+扩展函数，无实例字段）" classname="com.mov.android.ToolsSplitContractTest" time="0.011"/>
+  <testcase name="动态循环锚——内置+场景工具数据驱动注册住 BuiltinTools" classname="com.mov.android.ToolsSplitContractTest" time="0.007"/>
+  <testcase name="唯一写点锚——MainActivity 零 mcpHandlers 写入 + ToolsRegistry 零 handlers 写入" classname="com.mov.android.ToolsSplitContractTest" time="0.007"/>
+  <testcase name="5 代表工具落域锚" classname="com.mov.android.ToolsSplitContractTest" time="0.003"/>
+  <testcase name="名单锚——172 静态注册名全集冻结" classname="com.mov.android.ToolsSplitContractTest" time="0.012"/>
+  <testcase name="保真锚——172 块 handler 体归一化 sha256 全等（纯搬移零逻辑改动机器证明）" classname="com.mov.android.ToolsSplitContractTest" time="0.071"/>
+  <testcase name="装配顺序锚——registerAll 先于 MCP server 遍历 mcpHandlers" classname="com.mov.android.ToolsSplitContractTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

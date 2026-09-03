@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.HomeDeliveryContractTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:28.560Z" hostname="苟富贵" time="0.023">
+  <properties/>
+  <testcase name="UPG96 锚② - chunk 与完成文本回流 homeWeb（homeDeliveryActive 条件转发）" classname="com.mov.android.approval.HomeDeliveryContractTest" time="0.005"/>
+  <testcase name="UPG96 锚③ - 仲裁路由经原生 journal（appendLog 足迹）" classname="com.mov.android.approval.HomeDeliveryContractTest" time="0.004"/>
+  <testcase name="UPG96 锚① - sendFromHome 无经典切回行（极简发送不跳经典）" classname="com.mov.android.approval.HomeDeliveryContractTest" time="0.011"/>
+  <testcase name="UPG96 94 转出件② - timelineList 骨架 CSS 在场（tl·tl-dot·tt·ts）" classname="com.mov.android.approval.HomeDeliveryContractTest" time="0.001"/>
+  <testcase name="UPG96 94 转出件① - index·html 构造 engine 后合并 MovRegistrySeed（登记簿非空契约）" classname="com.mov.android.approval.HomeDeliveryContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV 极简呈现 · demo v6 —— 生活场景全图（骨架复用视角）</title>
+<style>
+:root{
+  --bg:#eef0f4; --card:#fff; --s2:#f3f5f8;
+  --text:#191b21; --text2:#565c6b; --text3:#8b91a1; --line:rgba(22,28,48,.08);
+  --danger:#d92d20; --danger-tint:rgba(217,45,32,.09);
+  --card-shadow-lg:0 16px 40px rgba(20,24,40,.12),0 4px 10px rgba(20,24,40,.05);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;background:#05070a;color:#e4e5ea;
+  min-height:100vh;padding:26px 20px 70px;-webkit-font-smoothing:antialiased}
+.head{max-width:1240px;margin:0 auto 8px}
+.head h1{font-size:16px;font-weight:700}
+.head p{font-size:12px;color:#8b91a1;margin-top:6px;line-height:1.7}
+.head p b{color:#c9cfdd}
+.sec{max-width:1240px;margin:34px auto 0}
+.sec>h2{font-size:12px;font-weight:700;letter-spacing:.1em;color:#a9afbf;text-transform:uppercase;margin-bottom:6px}
+.sec>p{font-size:11.5px;color:#757b8d;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px}
+.slot{display:flex;flex-direction:column;gap:8px}
+.reg{font-size:10px;color:#5d6370;font-variant-numeric:tabular-nums;padding:0 6px}
+.reg b{color:#8b91a1}
+
+/* ===== 卡面（v1.2 冻结 token） ===== */
+.fcard{background:var(--card);border-radius:22px;box-shadow:var(--card-shadow-lg);padding:20px 20px 16px;color:var(--text)}
+.caps{font-size:10.5px;font-weight:700;letter-spacing:.12em;color:var(--text3);text-transform:uppercase}
+.pill{height:44px;border-radius:999px;background:#23272F;color:#fff;font-size:14px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:14px}
+.pill:active{opacity:.75}
+.pill-ghost{height:40px;border-radius:999px;background:var(--s2);color:var(--text2);font-size:13px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:8px}
+.btnrow{display:flex;gap:10px}.btnrow .pill,.btnrow .pill-ghost{flex:1;margin-top:14px}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;font-size:13px}
+.kv .k{color:var(--text2)} .kv .v{font-variant-numeric:tabular-nums;font-weight:600}
+.kv.total{border-top:1px solid var(--line);margin-top:6px;padding-top:10px}
+.kv.total .v{font-size:19px;font-weight:800}
+.hairline{height:1px;background:var(--line);margin:12px 0 6px}
+
+/* offerCard */
+.offer-name{font-size:20px;font-weight:800;margin-top:12px}
+.offer-meta{font-size:12.5px;color:var(--text3);margin-top:5px}
+
+/* ticketCard.v1（新骨架提案）：路线头部 */
+.route{display:flex;align-items:flex-end;justify-content:space-between;margin-top:14px;gap:8px}
+.route .pt{display:flex;flex-direction:column;gap:3px}
+.route .pt .t{font-size:12px;color:var(--text3);font-variant-numeric:tabular-nums}
+.route .pt .c{font-size:19px;font-weight:800}
+.route .mid{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding-bottom:2px}
+.route .mid .no{font-size:11px;font-weight:700;color:var(--text2);font-variant-numeric:tabular-nums}
+.route .mid .rl{position:relative;width:100%;height:1.5px;background:var(--line)}
+.route .mid .rl::after{content:"";position:absolute;right:0;top:-3px;border:3.5px solid transparent;border-left-color:var(--text3)}
+.route .mid .dur{font-size:10.5px;color:var(--text3)}
+
+/* rideCard.v1（新骨架提案）：司机行 */
+.driver{display:flex;align-items:center;gap:12px;margin-top:14px;background:var(--s2);border-radius:14px;padding:10px 12px}
+.driver .ava{width:38px;height:38px;border-radius:50%;background:#23272F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex:none}
+.driver .who{font-size:13.5px;font-weight:700}
+.driver .car{font-size:11px;color:var(--text3);margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* timelineList */
+.list-title{font-size:19px;font-weight:800;margin-top:10px}
+.tl{display:flex;flex-direction:column;position:relative;padding-left:22px;margin-top:6px}
+.tl::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1.5px;background:var(--line)}
+.tl-item{padding:8px 0;position:relative}
+.tl-dot{position:absolute;left:-22px;top:12px;width:13px;height:13px;border-radius:50%;background:var(--card);border:2px solid #23272F;box-shadow:var(--card-shadow-lg)}
+.tl-dot.done{background:#23272F}
+.tl-item .tt{font-size:13.5px;font-weight:600}
+.tl-item .ts{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* plain */
+.plain-text{font-size:14px;line-height:1.8;margin-top:10px}
+
+/* 决策卡（danger 面） */
+.acard{background:var(--card);border-radius:20px;box-shadow:var(--card-shadow-lg);padding:18px 18px 14px;color:var(--text)}
+.acard h2{font-size:15.5px;font-weight:700;line-height:1.4;margin-top:8px}
+.acard .sub{font-size:11px;color:var(--text3);margin-top:2px;font-variant-numeric:tabular-nums}
+.acard .args{margin-top:12px;background:var(--s2);border-radius:12px;padding:9px 12px;font-size:12.5px}
+.acard .args .row{display:flex;justify-content:space-between;line-height:1.7}
+.acard .args .row .k{color:var(--text3);font-size:11.5px}
+.acard .args .row.pay .v{color:var(--danger);font-weight:800;font-variant-numeric:tabular-nums}
+.acard .acts{display:flex;gap:10px;margin-top:13px}
+.abtn{flex:1;height:42px;border-radius:999px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.abtn.no{background:var(--danger-tint);color:var(--danger)}
+.abtn.yes{background:#23272F;color:#fff}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>MOV 极简呈现 · 生活场景全图 <span style="color:#8b91a1;font-weight:400">demo v6 · 2026-09-04</span></h1>
+  <p>视角=<b>骨架复用</b>：全部场景由 5 个骨架覆盖（3 个已登记 + 2 个新提案），每卡下方灰字=Registry 登记行。LLM 只填内容，<b>选壳/版面/按钮全归引擎</b>（LLM 决策=0）。新骨架走登记制：candidate→≥2 独立消费者→registered。</p>
+</div>
+
+<!-- ═══ offerCard.v1（已登记） ═══ -->
+<div class="sec">
+  <h2>骨架 ① offerCard.v1 —— 「一个东西 + 价格明细 + 主/次动作」</h2>
+  <p>已登记（registered）。覆盖：外卖/商家、酒店、一切「推荐单个选项等你拍板」的场景。</p>
+  <div class="grid">
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">今日推荐 · OFFER</div>
+        <div class="offer-name">湘味小炒 · 辣椒炒肉</div>
+        <div class="offer-meta">中辣 · 1 人份 · 配送约 30 分钟</div>
+        <div class="hairline"></div>
+        <div class="kv"><span class="k">单品</span><span class="v">¥29.00</span></div>
+        <div class="kv"><span class="k">配送费</span><span class="v">¥3.00</span></div>
+        <div class="kv total"><span class="k">合计</span><span class="v">¥32.00</span></div>
+        <div class="btnrow"><div class="pill">去付款</div><div class="pill-ghost" style="margin-top:14px">换一家</div></div>
+      </div>
+      <div class="reg"><b>offer</b> → offerCard.v1 ｜ slots←merchant.search.out ｜ voice=「为你找到一家推荐」｜ LLM 决策=0</div>
+    </div>
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">今晚住宿 · HOTEL</div>
+        <div class="offer-name">全季酒店 · 虹桥枢纽店</div>
+        <div class="offer-meta">4.8 分 · 距虹桥站 800m · 含双早</div>
+        <div class="hairline"></div>
+        <div class="kv"><span class="k">高级大床房</span><span class="v">¥458.00</span></div>
+        <div class="kv"><span class="k">税费与服务费</span><span class="v">¥36.00</span></div>
+        <div class="kv total"><span class="k">合计 / 晚</span><span class="v">¥494.00</span></div>
+        <div class="btnrow"><div class="pill">订这间</div><div class="pill-ghost" style="margin-top:14px">换一家</div></div>
+      </div>
+      <div class="reg"><b>hotel</b> → offerCard.v1（复用）｜ slots←stay.search.out ｜ LLM 决策=0</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ ticketCard.v1（新骨架提案） ═══ -->
+<div class="sec">
+  <h2>骨架 ② ticketCard.v1 —— 「A 地 → B 地 + 班次 + 席位」 <span style="color:#d97757">· 新骨架提案（candidate）</span></h2>
+  <p>火车票/机票/电影/演出同构：路线头 + 明细 kv + 主/次动作。一骨三吃。</p>
+  <div class="grid">
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">火车票 · TICKET</div>
+        <div class="route">
+          <div class="pt"><div class="t">06:43</div><div class="c">北京南</div></div>
+          <div class="mid"><div class="no">G1234</div><div class="rl"></div><div class="dur">6 小时 15 分</div></div>
+          <div class="pt" style="align-items:flex-end"><div class="t">12:58</div><div class="c">上海虹桥</div></div>
+        </div>
+        <div class="hairline"></div>
+        <div class="kv"><span class="k">二等座</span><span class="v">¥553.00</span></div>
+        <div class="kv"><span class="k">乘车人</span><span class="v">张*明</span></div>
+        <div class="kv"><span class="k">余票</span><span class="v">21 张</span></div>
+        <div class="btnrow"><div class="pill">确认购票</div><div class="pill-ghost" style="margin-top:14px">换个班次</div></div>
+      </div>
+      <div class="reg"><b>train_ticket</b> → ticketCard.v1 ｜ slots←rail.search.out ｜ voice=「最早一班 6 点 43」｜ LLM 决策=0</div>
+    </div>
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">机票 · FLIGHT</div>
+        <div class="route">
+          <div class="pt"><div class="t">08:20</div><div class="c">虹桥 T2</div></div>
+          <div class="mid"><div class="no">MU5101</div><div class="rl"></div><div class="dur">2 小时 20 分</div></div>
+          <div class="pt" style="align-items:flex-end"><div class="t">10:40</div><div class="c">首都 T3</div></div>
+        </div>
+        <div class="hairline"></div>
+        <div class="kv"><span class="k">经济舱</span><span class="v">¥780.00</span></div>
+        <div class="kv"><span class="k">机建燃油</span><span class="v">¥90.00</span></div>
+        <div class="kv total"><span class="k">合计</span><span class="v">¥870.00</span></div>
+        <div class="btnrow"><div class="pill">确认订票</div><div class="pill-ghost" style="margin-top:14px">换个航班</div></div>
+      </div>
+      <div class="reg"><b>flight_ticket</b> → ticketCard.v1（复用）｜ slots←flight.search.out ｜ LLM 决策=0</div>
+    </div>
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">电影 · CINEMA</div>
+        <div class="offer-name">流浪地球 3</div>
+        <div class="offer-meta">万达影城 · 今天 19:30 · IMAX 厅</div>
+        <div class="hairline"></div>
+        <div class="kv"><span class="k">座位</span><span class="v">7 排 08 座</span></div>
+        <div class="kv"><span class="k">票价</span><span class="v">¥45.00</span></div>
+        <div class="btnrow"><div class="pill">确认选座</div><div class="pill-ghost" style="margin-top:14px">换个场次</div></div>
+      </div>
+      <div class="reg"><b>movie_ticket</b> → ticketCard.v1（复用，无路线头变体）｜ slots←cinema.search.out ｜ LLM 决策=0</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ rideCard.v1（新骨架提案） ═══ -->
+<div class="sec">
+  <h2>骨架 ③ rideCard.v1 —— 「谁来接你 + 多久到 + 多少钱」 <span style="color:#d97757">· 新骨架提案（candidate）</span></h2>
+  <p>打车/代驾/跑腿同构：司机行 + 行程 kv + 主/次动作。</p>
+  <div class="grid">
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">打车 · RIDE</div>
+        <div class="offer-name">公司 → 家</div>
+        <div class="offer-meta">约 12.4 km · 35 分钟 · 快车</div>
+        <div class="driver">
+          <div class="ava">王</div>
+          <div><div class="who">王师傅 · 4.9 分</div><div class="car">沪A·D88888 · 白色 特斯拉 Model 3</div></div>
+        </div>
+        <div class="kv" style="margin-top:8px"><span class="k">预估价</span><span class="v">¥42.00</span></div>
+        <div class="kv"><span class="k">接驾</span><span class="v">3 分钟 · 800m</span></div>
+        <div class="btnrow"><div class="pill">确认呼叫</div><div class="pill-ghost" style="margin-top:14px">取消</div></div>
+      </div>
+      <div class="reg"><b>ride</b> → rideCard.v1 ｜ slots←ride.estimate.out ｜ voice=「王师傅 3 分钟到」｜ LLM 决策=0</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ timelineList.v1（已登记） ═══ -->
+<div class="sec">
+  <h2>骨架 ④ timelineList.v1 —— 「一串有先后/有状态的事」</h2>
+  <p>已登记（registered）。覆盖：快递跟踪、今日安排、审批步骤进度。</p>
+  <div class="grid">
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">快递 · EXPRESS</div>
+        <div class="list-title">顺丰 SF1388 · 派送中</div>
+        <div class="tl">
+          <div class="tl-item"><div class="tl-dot done"></div><div><div class="tt">已揽收 · 上海虹桥</div><div class="ts">09-03 14:22</div></div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div><div class="tt">运输中 · 杭州转运中心</div><div class="ts">09-03 22:10</div></div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div><div class="tt">派送中 · 张师傅 138****8888</div><div class="ts">09-04 08:41</div></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><div class="tt">签收</div><div class="ts">预计今天 12:00 前</div></div></div>
+        </div>
+        <div class="pill-ghost">提醒师傅放前台</div>
+      </div>
+      <div class="reg"><b>express</b> → timelineList.v1（复用）｜ slots←express.track.out ｜ LLM 决策=0</div>
+    </div>
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">今日 · CHECKLIST</div>
+        <div class="list-title">今天的安排</div>
+        <div class="tl">
+          <div class="tl-item"><div class="tl-dot done"></div><div><div class="tt">整理 Download 报表</div><div class="ts">已完成 · 12 个文件</div></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><div class="tt">下午 3 点开会提醒</div><div class="ts">已创建 · 15:00</div></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><div class="tt">备份凭据到保险柜</div><div class="ts">待你确认</div></div></div>
+        </div>
+      </div>
+      <div class="reg"><b>checklist</b> → timelineList.v1 ｜ slots←plan.jobs.out ｜ LLM 决策=0</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ plain.v1 + 决策卡 ═══ -->
+<div class="sec">
+  <h2>骨架 ⑤ plain.v1 + DecisionSurface —— 「纯回答」与「要你拍板」</h2>
+  <p>plain 已登记；决策卡=UPG-79 ApprovalSurface 复用（唯一允许功能红的地方：拒绝钮/支付行/敏感词）。</p>
+  <div class="grid">
+
+    <div class="slot">
+      <div class="fcard">
+        <div class="caps">天气 · WEATHER</div>
+        <div class="plain-text">今天晴，26～19°C，东南风 3 级。下午紫外线强，出门带件薄外套就行。明天转多云，不影响你订的那班高铁。</div>
+      </div>
+      <div class="reg"><b>weather</b> → plain.v1 ｜ 无动作纯回答 ｜ LLM 决策=0</div>
+    </div>
+
+    <div class="slot">
+      <div class="acard">
+        <div class="caps">需你确认 · APPROVAL</div>
+        <h2>转账给 张三</h2>
+        <div class="sub">payment.transfer · 仅此一次</div>
+        <div class="args">
+          <div class="row"><span class="k">收款人</span><span>张三（尾号 8888）</span></div>
+          <div class="row pay"><span class="k">金额</span><span class="v">¥500.00</span></div>
+          <div class="row"><span class="k">备注</span><span>晚饭 AA</span></div>
+        </div>
+        <div class="acts"><div class="abtn no">拒绝</div><div class="abtn yes">同意</div></div>
+      </div>
+      <div class="reg"><b>approval</b> → ApprovalSurface（UPG-79 复用）｜ 支付行=payment.sensitive 功能红 ｜ 超时自动拒绝</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.math.MathExtractorTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:29.102Z" hostname="苟富贵" time="0.011">
+  <properties/>
+  <testcase name="货币符号不误提取" classname="com.mov.android.math.MathExtractorTest" time="0.002"/>
+  <testcase name="转义美元不触发" classname="com.mov.android.math.MathExtractorTest" time="0.001"/>
+  <testcase name="块级与行内共存且不重叠" classname="com.mov.android.math.MathExtractorTest" time="0.002"/>
+  <testcase name="convertPlainMath 内容符号转 latex" classname="com.mov.android.math.MathExtractorTest" time="0.001"/>
+  <testcase name="块级方括号同行闭合" classname="com.mov.android.math.MathExtractorTest" time="0.0"/>
+  <testcase name="纯点段不算数学" classname="com.mov.android.math.MathExtractorTest" time="0.001"/>
+  <testcase name="块级方括号跨行提取" classname="com.mov.android.math.MathExtractorTest" time="0.0"/>
+  <testcase name="块级美元跨行提取" classname="com.mov.android.math.MathExtractorTest" time="0.0"/>
+  <testcase name="行内圆括号提取" classname="com.mov.android.math.MathExtractorTest" time="0.0"/>
+  <testcase name="convertPlainMath 根号转换" classname="com.mov.android.math.MathExtractorTest" time="0.0"/>
+  <testcase name="行内美元提取" classname="com.mov.android.math.MathExtractorTest" time="0.0"/>
+  <testcase name="convertPlainMath 非根号文本不动" classname="com.mov.android.math.MathExtractorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

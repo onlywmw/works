@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.personalization.PrivacyPolicyContractTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:29.214Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="隐私政策含个性化加工条款" classname="com.mov.android.personalization.PrivacyPolicyContractTest" time="0.001"/>
+  <testcase name="隐私政策版本号更新" classname="com.mov.android.personalization.PrivacyPolicyContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

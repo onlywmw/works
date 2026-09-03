@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.meta.EffectSpecRegistryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:29.168Z" hostname="苟富贵" time="0.012">
+  <properties/>
+  <testcase name="变异锚 resolve未登记工具必须保守缺省WRITE_EXTERNAL" classname="com.mov.android.meta.EffectSpecRegistryTest" time="0.008"/>
+  <testcase name="C6 覆盖率数字落档 首批20低于50线显式记录" classname="com.mov.android.meta.EffectSpecRegistryTest" time="0.002"/>
+  <testcase name="首批读类 WRITE_EXTERNAL 为零（读类不应有外部写）" classname="com.mov.android.meta.EffectSpecRegistryTest" time="0.0"/>
+  <testcase name="C4 缺省裁决接线 未登记readOnlyHint回落 进优先核实" classname="com.mov.android.meta.EffectSpecRegistryTest" time="0.001"/>
+  <testcase name="敏感面锚 vault写类与凭据类 LOCAL化（不得EXTERNAL）" classname="com.mov.android.meta.EffectSpecRegistryTest" time="0.0"/>
+  <testcase name="首批规模20 逐条四元组合法" classname="com.mov.android.meta.EffectSpecRegistryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

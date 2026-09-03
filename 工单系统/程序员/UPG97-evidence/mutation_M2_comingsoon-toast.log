@@ -1,0 +1,8 @@
+# å˜å¼‚é”šâ‘¡ï¼šcomingSoon å…œåº•æ”¹å›è£¸ toast â†’ æœŸæœ›å…œåº•é”šçº¢ ï½œ 2026-09-04 06:17:20
+M2 injected: comingSoonVisible reverted to bare toast
+33 actionable tasks: 33 executed
+×¢Èëºó XML: tests=4 failures=1
+  RED: ¶µµ×Ãª¡ª¡ªÎ´½ÓÏß²ÛÎ»×ß showDialog ¿É¼ûÌáÊ¾£¨·ÇÂã toast£©
+restored to fixed point
+33 actionable tasks: 33 executed
+»¹Ô­ºó XML: tests=4 failures=0

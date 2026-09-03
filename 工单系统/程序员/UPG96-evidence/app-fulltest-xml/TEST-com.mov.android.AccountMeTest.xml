@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.AccountMeTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:26.194Z" hostname="苟富贵" time="0.048">
+  <properties/>
+  <testcase name="已登录返回脱敏尾号与用户名" classname="com.mov.android.AccountMeTest" time="0.001"/>
+  <testcase name="未登录返回未登录且无尾号" classname="com.mov.android.AccountMeTest" time="0.0"/>
+  <testcase name="MainActivity 已注册 account_me 桥" classname="com.mov.android.AccountMeTest" time="0.019"/>
+  <testcase name="vue 源无 demo 假账号残留" classname="com.mov.android.AccountMeTest" time="0.003"/>
+  <testcase name="桥调纯函数且无双实现（R1 打回锚）" classname="com.mov.android.AccountMeTest" time="0.023"/>
+  <testcase name="已登录但尾号空白按未登录脱敏处理" classname="com.mov.android.AccountMeTest" time="0.0"/>
+  <testcase name="设置页白名单放行 account 前缀" classname="com.mov.android.AccountMeTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

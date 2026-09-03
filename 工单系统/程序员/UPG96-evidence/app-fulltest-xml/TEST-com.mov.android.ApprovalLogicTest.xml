@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ApprovalLogicTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T21:55:26.312Z" hostname="苟富贵" time="0.012">
+  <properties/>
+  <testcase name="routeAnswerer 四象限与 fail-closed" classname="com.mov.android.ApprovalLogicTest" time="0.002"/>
+  <testcase name="僵尸窗守卫与冷启动 action 解析" classname="com.mov.android.ApprovalLogicTest" time="0.001"/>
+  <testcase name="remember 行可显性与 gate 永不豁免" classname="com.mov.android.ApprovalLogicTest" time="0.0"/>
+  <testcase name="副作用标签与 only-once 定性文案" classname="com.mov.android.ApprovalLogicTest" time="0.003"/>
+  <testcase name="环心与 chip 角标同源投影" classname="com.mov.android.ApprovalLogicTest" time="0.001"/>
+  <testcase name="planRowKind money锁auto灰step可勾" classname="com.mov.android.ApprovalLogicTest" time="0.002"/>
+  <testcase name="参数卡脱敏与截断" classname="com.mov.android.ApprovalLogicTest" time="0.001"/>
+  <testcase name="副作用分类 money写读敏感兜底" classname="com.mov.android.ApprovalLogicTest" time="0.001"/>
+  <testcase name="auditNotifyDenied 落 error-report 且码可判" classname="com.mov.android.ApprovalLogicTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

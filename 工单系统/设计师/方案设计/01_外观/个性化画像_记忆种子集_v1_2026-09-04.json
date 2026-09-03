@@ -1,0 +1,120 @@
+{
+  "fixture_id": "care_profile_seed_v1",
+  "frozen_at": "2026-09-04",
+  "owner": "设计师B",
+  "usage": "个性化槽位选择测试基件——load 进 Memory OS（或提炼层单测直接消费），按每条 expected 断言。条目 content=自然人话（与「我的记忆」页面可见形态一致）；status 用 Memory API 口径 ACTIVE/DRAFT。",
+  "persona": "测试员A（虚构）——酒店必问早餐、无辣不欢、高铁靠窗、拒绝拼车、性价比优先",
+  "entries": [
+    {
+      "id": "M-01", "status": "ACTIVE",
+      "content": "住酒店一定要有早餐，没有早餐的不考虑",
+      "expected": {
+        "extract_tags": ["饮食/住宿-早餐刚需"],
+        "care": { "hotel.amenities": ["breakfast"] },
+        "slot_effect": "offerCard.amenities 槽第 1 坑=「含双早」类（酒店场景）"
+      }
+    },
+    {
+      "id": "M-02", "status": "ACTIVE",
+      "content": "酒店有浴缸的话会加分，喜欢泡澡",
+      "expected": {
+        "extract_tags": ["住宿-浴缸偏好"],
+        "care": { "hotel.amenities": ["breakfast", "bathtub"] },
+        "slot_effect": "amenities 槽第 2 坑=「独立浴缸」类（breakfast 优先于 bathtub——M-01 语气更强/先记）"
+      }
+    },
+    {
+      "id": "M-03", "status": "ACTIVE",
+      "content": "我无辣不欢，越辣越好",
+      "expected": {
+        "extract_tags": ["辣"],
+        "care": { "food.spice": "high" },
+        "slot_effect": "offerCard.meta/amenities 优先露「辣度/招牌辣菜」（餐饮场景）"
+      }
+    },
+    {
+      "id": "M-04", "status": "ACTIVE",
+      "content": "坐高铁我喜欢靠窗的位置",
+      "expected": {
+        "extract_tags": ["出行-靠窗"],
+        "care": { "rail.seat": "window" },
+        "slot_effect": "ticketCard.seat_pref 槽=「靠窗」（火车票场景）；选座类主行动优先给靠窗余票"
+      }
+    },
+    {
+      "id": "M-05", "status": "ACTIVE",
+      "content": "打车我不拼车，再便宜也不拼",
+      "expected": {
+        "extract_tags": ["出行-不拼车"],
+        "care": { "ride.carpool": "never" },
+        "slot_effect": "rideCard.ride_pref 槽=「独享」；拼车选项不进卡（LLM 编辑层过滤）"
+      }
+    },
+    {
+      "id": "M-06", "status": "ACTIVE",
+      "content": "买东西我最看重性价比",
+      "expected": {
+        "extract_tags": ["性价比优先"],
+        "care": { "shopping.priority": "value" },
+        "slot_effect": "offerCard.kv 排序/亮点=价格优势项前置（通用消费场景）"
+      }
+    },
+    {
+      "id": "M-07", "status": "ACTIVE",
+      "content": "喝咖啡只喝美式，不加糖不加奶",
+      "expected": {
+        "extract_tags": ["饮食-美式无糖"],
+        "care": { "food.coffee": "americano_plain" },
+        "slot_effect": "咖啡/饮品场景 amenities 槽=「美式可选无糖」类"
+      }
+    },
+    {
+      "id": "M-08", "status": "ACTIVE",
+      "content": "出差一般周日晚上走，周五晚上回",
+      "expected": {
+        "extract_tags": ["出行-周日出周五回"],
+        "care": { "travel.pattern": "sun_out_fri_back" },
+        "slot_effect": "ticketCard 默认班次排序=周日/周五晚高峰优先（时间维个性化）"
+      }
+    },
+    {
+      "id": "M-09", "status": "DRAFT",
+      "content": "最近好像有点想看演唱会",
+      "expected": {
+        "extract_tags": [],
+        "care": {},
+        "slot_effect": "负向锚：DRAFT（待确认）绝不驱动画像——演出场景卡=默认槽"
+      }
+    },
+    {
+      "id": "M-10", "status": "DRAFT",
+      "content": "朋友说我可以试试轻断食",
+      "expected": {
+        "extract_tags": [],
+        "care": {},
+        "slot_effect": "负向锚：DRAFT+转述（「朋友说」）双重不驱动——餐饮卡不因本条改变"
+      }
+    },
+    {
+      "id": "M-11", "status": "ACTIVE",
+      "content": "我信仰佛教，初一十五吃素",
+      "expected": {
+        "extract_tags": [],
+        "care": {},
+        "slot_effect": "负向锚（敏感类）：宗教条目绝不进画像（UPG-51 敏感红线）——餐饮卡素偏好不因此条改变；「吃素」关键词命中也被敏感门类拦截"
+      }
+    }
+  ],
+  "domain_default_slots": {
+    "hotel": ["评分", "位置", "价格/晚"],
+    "restaurant": ["评分", "距离", "人均"],
+    "rail": ["班次时间", "时长", "价格"],
+    "ride": ["预估价", "接驾时长", "车型"],
+    "cinema": ["场次", "座位", "票价"]
+  },
+  "assertion_summary": {
+    "positive": "酒店域=amenities[含双早,浴缸]；餐饮域=辣度前置；铁路域=靠窗；打车域=独享",
+    "fallback": "电影域（无画像）=默认槽[场次/座位/票价]",
+    "negative": "M-09/M-10（DRAFT）不驱动；M-11（敏感）绝不进画像"
+  }
+}

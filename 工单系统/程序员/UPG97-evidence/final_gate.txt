@@ -1,0 +1,6 @@
+# UPG-97 终闸 ｜ 2026-09-04 06:40:32
+vite build 3.79s + sync-pages 103 文件 + assembleDebug BUILD SUCCESSFUL + testDebugUnitTest 794/0/0（110 套件）
+bun test（mov-vue）18/18 过
+SidebarDispatchContractTest 4/4 绿（分派锚/键值对齐锚/兜底锚/回归锚）
+真机：平板 192.168.2.3:5555 五点验全过（截图 point1-5）
+Token/KV：纯前端分派接线，请求链路未触及 → 0/0
