@@ -1,0 +1,39 @@
+{
+  "ticket_id": "UPG-95",
+  "delivery_id": "DEL-UPG95-20260904-001",
+  "standard_id": "STD-UPG-95-v1（content_sha256=b0ec94987bd769c403eab5f9f5e5cf76510f6cc5b6fcf19fbd6d1f7bb2b4abea）",
+  "code_commit_sha": "979bf6bf（feat/upg95，基 main 3315bff0；提炼+编辑层 c1cb4404→槽池+渲染器 72f79e19→编辑层接线 979bf6bf）",
+  "artifact_sha": "2ff9131e526a8af5（APK 前 16——assembleDebug 绿后）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG95-evidence/app-fulltest-xml/（全量 108 套件 786/0/1 全绿；目录聚合 sha256=sorted 文件名+内容）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "前端设计/mov-vue/tests/upg95_renderers.test.mjs + upg89_core.test.mjs（bun 18/18：三骨架渲染+槽池闸+三道闸零回归+UPG-89 引擎零回归[信封解包双形态]）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "app/src/test/java/com/mov/android/personalization/CareProfileExtractorTest.kt（种子集 14 断言：11 种子全绿+amenityCap 截断+编辑层+空 care）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/交付报告/DELIVERY_UPG95_2026-09-04.md §二（变异 4 锚亲杀实录：画像提炼锚/DRAFT 闸锚/敏感闸锚/槽池闸锚全红→还原复绿）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG95-evidence/emulator_minimal_home.png（模拟器极简主页 CDP 铁证 home/index.html 加载——出卡走 CDP 注入路径转验收员持有）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    }
+  ]
+}
