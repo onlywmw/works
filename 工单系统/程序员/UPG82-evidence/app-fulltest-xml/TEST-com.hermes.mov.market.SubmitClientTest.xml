@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.market.SubmitClientTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:18.879Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="合法提交通过镜像校验" classname="com.hermes.mov.market.SubmitClientTest" time="0.001"/>
+  <testcase name="buildBody 生成合法 JSON 且无 token 泄露" classname="com.hermes.mov.market.SubmitClientTest" time="0.0"/>
+  <testcase name="declarative 提交校验与 body" classname="com.hermes.mov.market.SubmitClientTest" time="0.001"/>
+  <testcase name="token 供给侧拒收" classname="com.hermes.mov.market.SubmitClientTest" time="0.0"/>
+  <testcase name="字段镜像校验" classname="com.hermes.mov.market.SubmitClientTest" time="0.0"/>
+  <testcase name="desc 码点 20 字边界" classname="com.hermes.mov.market.SubmitClientTest" time="0.0"/>
+  <testcase name="confirm 硬闸——无 confirm 拒绝" classname="com.hermes.mov.market.SubmitClientTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

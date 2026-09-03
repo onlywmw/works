@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.subagent.SubagentIndexTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:18.277Z" hostname="苟富贵" time="0.057">
+  <properties/>
+  <testcase name="cleanupOrphans 重复调用幂等" classname="com.hermes.dsh.subagent.SubagentIndexTest" time="0.018"/>
+  <testcase name="cleanupOrphans parent 存在保留 缺失删除 读不出 parent 保留 android-session 保留" classname="com.hermes.dsh.subagent.SubagentIndexTest" time="0.009"/>
+  <testcase name="listChildren 扫描各 cwd 目录并读取血缘" classname="com.hermes.dsh.subagent.SubagentIndexTest" time="0.012"/>
+  <testcase name="listChildren 无 descriptor 的子会话 parentId 为 null" classname="com.hermes.dsh.subagent.SubagentIndexTest" time="0.006"/>
+  <testcase name="listChildren 空根与缺失日志静默跳过" classname="com.hermes.dsh.subagent.SubagentIndexTest" time="0.004"/>
+  <testcase name="listChildren 按 parentRoomId 过滤" classname="com.hermes.dsh.subagent.SubagentIndexTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

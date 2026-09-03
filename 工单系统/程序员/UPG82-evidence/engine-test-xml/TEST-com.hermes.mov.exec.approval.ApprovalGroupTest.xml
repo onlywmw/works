@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.approval.ApprovalGroupTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.853Z" hostname="苟富贵" time="0.004">
+  <properties/>
+  <testcase name="组状态机迁移 - pending 到 partially_decided 到 completed（§8·3）" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.001"/>
+  <testcase name="失败关闭 - 空或重复成员与非正 TTL 拒建组、外组节点裁决拒" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.001"/>
+  <testcase name="G4 组级 - 组终态后再裁决红（失败关闭）" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.0"/>
+  <testcase name="markBlocked 连坐回写 - pending 节点到 blocked 并推进组态（§8·3 断下游落点）" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.0"/>
+  <testcase name="markStale 漂移作废 - 组与 pending 节点到 stale、已决节点不动（G4）" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.001"/>
+  <testcase name="逐条独立授权 - 批1 拒1 待1 各安其位（§8·3 partially_decided 例）" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.0"/>
+  <testcase name="G4 节点级 - 已决节点二次裁决红且首决不被覆盖" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.0"/>
+  <testcase name="组簿不可变纪律 - 无 update overwrite remove 回退入口（G7 同纪律）" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.001"/>
+  <testcase name="组 id 确定性 - 同批同刻同 id、重发新刻新组（要跑=新审批）" classname="com.hermes.mov.exec.approval.ApprovalGroupTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.approval.ApprovalGuardTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.859Z" hostname="苟富贵" time="0.015">
+  <properties/>
+  <testcase name="WRITE approve 复验通过 - APPROVAL_REQUESTED APPROVED DISPATCHED 链" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.001"/>
+  <testcase name="G4 不可变守卫 - Record 无 var 可变字段、Book 无覆盖撤销入口" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.002"/>
+  <testcase name="G5 summary 禁 LLM 唯一路径 - approval 源码无 LLM 网络随机时钟 token" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.006"/>
+  <testcase name="无 reviewer - 默认 pending_approval 绝不自行放行（fail-closed）" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.001"/>
+  <testcase name="G5 summary 确定性 - 同 snapshot 两次渲染字节一致" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.001"/>
+  <testcase name="G9 安全面变严 - dispatch 前复验旧批 APPROVAL_STALE 不 dispatch" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.001"/>
+  <testcase name="WRITE reject - REJECTED 后 blocked 无 DISPATCHED" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.001"/>
+  <testcase name="G4 已决 Record 二次 decide 红 - 首决生效且不被覆盖" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.001"/>
+  <testcase name="G9 守卫 - dispatchApproved 必须引用 fingerprint 复验与 STALE 分支（篡改跳过即红）" classname="com.hermes.mov.exec.approval.ApprovalGuardTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

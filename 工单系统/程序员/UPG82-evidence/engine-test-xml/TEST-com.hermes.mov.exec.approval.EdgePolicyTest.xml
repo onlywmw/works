@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.approval.EdgePolicyTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:45.072Z" hostname="苟富贵" time="0.004">
+  <properties/>
+  <testcase name="保守聚合序 - BLOCK 大于 REQUIRE_HUMAN 大于 SKIP 大于 RUNNABLE" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.001"/>
+  <testcase name="通道映射 - Node 五态照 §8·3 映射且 stale 归 BLOCKED 通道、pending 不产生传播" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.001"/>
+  <testcase name="MONEY 节点超时不进自动放行 - EXPIRED 上游对下游走 DEFAULT 边必断流（§6·3×§8·1 交叉）" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.001"/>
+  <testcase name="值集冻结 - EdgeAction 恰四值且业务不可自造（enum 冻结）" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.001"/>
+  <testcase name="Graph-local - A败B成时 C 能否跑取决于 C 对 A 的边语义（§8·1 原例）" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.0"/>
+  <testcase name="默认断流（G8）- DEFAULT 的 failure rejected expired blocked 全 BLOCK" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.0"/>
+  <testcase name="CONTINUE_INDEPENDENTLY 仅显式 - declared() 是失败通道豁免唯一入口" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.0"/>
+  <testcase name="G8 行为 - 上游 rejected 过期 blocked 走 DEFAULT 边一律 BLOCK（未声明边不放行下游）" classname="com.hermes.mov.exec.approval.EdgePolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

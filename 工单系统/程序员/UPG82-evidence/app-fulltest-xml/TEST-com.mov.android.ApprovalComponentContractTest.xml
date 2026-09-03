@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ApprovalComponentContractTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:19.227Z" hostname="苟富贵" time="0.017">
+  <properties/>
+  <testcase name="A3 僵尸窗守卫 show 前查 deferred 已决" classname="com.mov.android.ApprovalComponentContractTest" time="0.001"/>
+  <testcase name="A2 chip 角标同源投影不自维护计数" classname="com.mov.android.ApprovalComponentContractTest" time="0.0"/>
+  <testcase name="A3 通知权限 canShow 且 show 内守卫先于 notify" classname="com.mov.android.ApprovalComponentContractTest" time="0.001"/>
+  <testcase name="A1 旧五法与 companion 人话图标全删 仅留组件挂点" classname="com.mov.android.ApprovalComponentContractTest" time="0.003"/>
+  <testcase name="A2 卡片v2结构齐全与无setMessage回潮" classname="com.mov.android.ApprovalComponentContractTest" time="0.0"/>
+  <testcase name="红线 通知未授权后台 fail-closed 足迹与 60s 服务侧兜底保留" classname="com.mov.android.ApprovalComponentContractTest" time="0.004"/>
+  <testcase name="A3 冷启动与 onNewIntent 同路径 handleApprovalLaunch" classname="com.mov.android.ApprovalComponentContractTest" time="0.002"/>
+  <testcase name="A1 answerer单挂点与宿主注入齐备" classname="com.mov.android.ApprovalComponentContractTest" time="0.004"/>
+  <testcase name="A2 only-once 禁勾选换锁行 其余三闸 remember 行" classname="com.mov.android.ApprovalComponentContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

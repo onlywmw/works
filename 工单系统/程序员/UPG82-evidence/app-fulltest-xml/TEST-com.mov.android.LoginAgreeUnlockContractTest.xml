@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.LoginAgreeUnlockContractTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:19.300Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="refreshEnabled 登录钮常可点且视觉禁用态保留" classname="com.mov.android.LoginAgreeUnlockContractTest" time="0.001"/>
+  <testcase name="doLogin 未勾选协议走 inline setError 提示" classname="com.mov.android.LoginAgreeUnlockContractTest" time="0.0"/>
+  <testcase name="协议整行可点切换勾选且链接优先" classname="com.mov.android.LoginAgreeUnlockContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

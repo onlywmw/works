@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.registry.CapabilityReaderTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:45.111Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="加载 fixture 资产得三能力且字段解析正确" classname="com.hermes.mov.exec.registry.CapabilityReaderTest" time="0.001"/>
+  <testcase name="未知能力 id 抛异常（失败关闭）" classname="com.hermes.mov.exec.registry.CapabilityReaderTest" time="0.001"/>
+  <testcase name="schema json 解析失败抛（失败关闭）" classname="com.hermes.mov.exec.registry.CapabilityReaderTest" time="0.001"/>
+  <testcase name="side_effect 越界抛（失败关闭）" classname="com.hermes.mov.exec.registry.CapabilityReaderTest" time="0.001"/>
+  <testcase name="缺必填字段抛（失败关闭）" classname="com.hermes.mov.exec.registry.CapabilityReaderTest" time="0.0"/>
+  <testcase name="资产 json 解析失败抛（失败关闭）" classname="com.hermes.mov.exec.registry.CapabilityReaderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.SceneWiringContractTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:19.429Z" hostname="苟富贵" time="0.006">
+  <properties/>
+  <testcase name="SceneTools_all 在生产装配迭代点（防函数在链断）" classname="com.mov.android.SceneWiringContractTest" time="0.002"/>
+  <testcase name="agent 工具描述优先取登记层真实描述（UPG-01 批 1 单源投影）" classname="com.mov.android.SceneWiringContractTest" time="0.002"/>
+  <testcase name="scene schema 由登记层接管（UPG-01 批 1 收敛，防双源回潮）" classname="com.mov.android.SceneWiringContractTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

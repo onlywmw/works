@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.836Z" hostname="苟富贵" time="0.014">
+  <properties/>
+  <testcase name="漂移 STALE 分支 - markGroupStale 后旧 token 全通道不可执行且事件链可检（G11）" classname="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" time="0.003"/>
+  <testcase name="G8 组级连坐 - 上游被拒后断流回写 blocked 且 dispatch 被拦（未声明边不放行下游）" classname="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" time="0.003"/>
+  <testcase name="组链全景 - runGroup 建组 逐条授权 部分批准 组完成 dispatchApprovedNode 放行" classname="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" time="0.002"/>
+  <testcase name="G11 漏记检测 - 缺 POLICY_VALIDATED 或乱序的事件序列必须报缺（漏记即红）" classname="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" time="0.001"/>
+  <testcase name="G4 引擎级 - 组内节点二次裁决 CONFLICT 红（首决胜不被覆盖）" classname="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" time="0.001"/>
+  <testcase name="非组 request 路径零变化 - 单 job S3 流不受组闸影响（回归锚）" classname="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" time="0.001"/>
+  <testcase name="EXPIRED 不复活 - 组过期后已批节点经 dispatch 双通道全封死（要跑=新审批）" classname="com.hermes.mov.exec.approval.ApprovalGroupGuardTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

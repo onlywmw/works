@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.approval.ApprovalExpiryTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.826Z" hostname="苟富贵" time="0.008">
+  <properties/>
+  <testcase name="MONEY 超时三不 - EXPIRED 非 approved 非 rejected，重新发起=新组新 token（§6·3）" classname="com.hermes.mov.exec.approval.ApprovalExpiryTest" time="0.006"/>
+  <testcase name="未到期与终态组 - sweep 幂等不动" classname="com.hermes.mov.exec.approval.ApprovalExpiryTest" time="0.001"/>
+  <testcase name="EXPIRED 复活红 - 过期组内已批节点经组簿直接推进被拒（封死组侧通道）" classname="com.hermes.mov.exec.approval.ApprovalExpiryTest" time="0.001"/>
+  <testcase name="TTL 超时 - 组 EXPIRED 且 pending 节点 EXPIRED（≠REJECTED）、已决节点保持（G4）" classname="com.hermes.mov.exec.approval.ApprovalExpiryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

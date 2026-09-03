@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.LoginTabSwitchContractTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:19.303Z" hostname="苟富贵" time="0.001">
+  <properties/>
+  <testcase name="applyModeUi 恢复 sendBtn 可见性按模式双向" classname="com.mov.android.LoginTabSwitchContractTest" time="0.001"/>
+  <testcase name="refreshEnabled 仍在 applyModeUi 尾部" classname="com.mov.android.LoginTabSwitchContractTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

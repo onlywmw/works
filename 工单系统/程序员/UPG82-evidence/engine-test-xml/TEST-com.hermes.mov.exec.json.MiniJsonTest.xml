@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.json.MiniJsonTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:45.081Z" hostname="苟富贵" time="0.004">
+  <properties/>
+  <testcase name="数字保留原文并判整型" classname="com.hermes.mov.exec.json.MiniJsonTest" time="0.0"/>
+  <testcase name="parse 能力资产核心结构" classname="com.hermes.mov.exec.json.MiniJsonTest" time="0.0"/>
+  <testcase name="非法 json 明确报错" classname="com.hermes.mov.exec.json.MiniJsonTest" time="0.003"/>
+  <testcase name="parse 字符串转义 roundtrip" classname="com.hermes.mov.exec.json.MiniJsonTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.md.MdPreprocessTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:19.876Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="版本号不误转" classname="com.mov.android.md.MdPreprocessTest" time="0.001"/>
+  <testcase name="裸域名 www 补协议" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="内部 IP 不转" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="裸域名后路径保留" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="纯数字段不转" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="无代码标记文本不动" classname="com.mov.android.md.MdPreprocessTest" time="0.001"/>
+  <testcase name="三级域名补协议" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="中文标点剥离" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="命令和文件名保持胶囊" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="带协议 URL 转链接" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <testcase name="句尾标点剥离" classname="com.mov.android.md.MdPreprocessTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

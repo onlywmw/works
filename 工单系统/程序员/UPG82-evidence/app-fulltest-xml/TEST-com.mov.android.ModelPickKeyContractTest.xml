@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ModelPickKeyContractTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:19.415Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="气泡模型选择写 ModelSheet 同一默认模型键 setDefault 加 syncModelRegistry" classname="com.mov.android.ModelPickKeyContractTest" time="0.002"/>
+  <testcase name="注入块禁平行 prefs 写入体系" classname="com.mov.android.ModelPickKeyContractTest" time="0.001"/>
+  <testcase name="气泡二级点击链真实调用 applyModelPick" classname="com.mov.android.ModelPickKeyContractTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

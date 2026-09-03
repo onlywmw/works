@@ -1,0 +1,55 @@
+{
+  "ticket_id": "UPG-82",
+  "delivery_id": "DEL-UPG82-20260903-001",
+  "standard_id": "STD-UPG-82-v1（content_sha256=6a1ab899c89923d977b76979a5d5c1221cd6d48b3a505cd32d777003c5c03a59）",
+  "code_commit_sha": "6e9f90e（feat/upg82，基 main 8647ee9；父级=origin/main）",
+  "artifact_sha": "25fad4bafc1c605095f5b3f84c1eba95a7fae739935a13b997c46db237d7db23（app/build/outputs/apk/debug/app-debug.apk，56157871B，装配级 assembleDebug 绿）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG82-evidence/engine-test-xml/（mov-exec-engine 模块测试 14 套件 88/0/0，--rerun-tasks 真跑；目录聚合 sha256=目录内 sorted 文件名+内容 sha256）",
+      "sha256": "01d01788ea7529282838b0ad44fcc2361027e1086a1fdcb195c57b001dcd7d6b",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG82-evidence/app-fulltest-xml/（:app:testDebugUnitTest --rerun-tasks 全量 724/2/1——2 失败=AppearanceContractTest L1-10/M-U50-5 基线预存[UPG-81 3339c4b 未合 main，git merge-base 实证]，与 UPG-84 验收「未开工口径 724/2/1」一致，零新增失败；目录聚合 sha256 同 E-001 算法）",
+      "sha256": "857f9bff72df1bb19ee8775ee9963e4bfbfe978e36446ad006d48aefa31cd645",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG82-evidence/chain-dump/（G11 事件链真实输出样本：3 卡建组→逐条授权→partially_decided×2→group_completed→POLICY_VALIDATED→DISPATCHED，含状态迁移序列与单调时间戳；临时导出测试类已删，不入库）",
+      "sha256": "37a6ef8de38d61d915938acf9c69025f7ed5f7b8ef1f890bef1e965e668ed890",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "0027-mov/app/build/outputs/apk/debug/app-debug.apk（装配级 assembleDebug BUILD SUCCESSFUL）",
+      "sha256": "25fad4bafc1c605095f5b3f84c1eba95a7fae739935a13b997c46db237d7db23",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/交付报告/DELIVERY_UPG82_2026-09-03.md §七（变异亲杀 M1-M4 实录：四锚全红→还原全量复绿 88/0/0，XML 计数口径）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "工单系统侧 git merge-base 实证 + 报告 §六·注（UPG-81 3339c4b 非 origin/main 祖先——基线预存 2 失败归属归属说明；与 0027-mov docs/ACCEPTANCE_LOG.md §P37[UPG-81 验收]同源对照）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "mov-exec-engine/src/test/kotlin/com/hermes/mov/exec/approval/（守卫锚源码位：ApprovalGroupTest G4 组级+禁入口反射锚 / EdgePolicyTest 值集冻结+G8 默认断流 / ApprovalGroupGuardTest EXPIRED 复活双通道+G11 漏记检测自证 / ApprovalExpiryTest MONEY 三不）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    }
+  ]
+}

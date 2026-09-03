@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.GuardInvariantTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.772Z" hostname="苟富贵" time="0.032">
+  <properties/>
+  <testcase name="G3 JobSpec 无 approved 审批字段" classname="com.hermes.mov.exec.GuardInvariantTest" time="0.001"/>
+  <testcase name="G2 exec 层无按 capabilityId 写死的放行分支" classname="com.hermes.mov.exec.GuardInvariantTest" time="0.03"/>
+  <testcase name="G7 Ledger 接口无覆写删除入口" classname="com.hermes.mov.exec.GuardInvariantTest" time="0.0"/>
+  <testcase name="G3 JobSpecState 仅四态且不含 approved" classname="com.hermes.mov.exec.GuardInvariantTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

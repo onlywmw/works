@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.RealAssetSmokeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.805Z" hostname="苟富贵" time="0.007">
+  <properties/>
+  <testcase name="未知能力 id 在正式资产上失败关闭" classname="com.hermes.mov.exec.RealAssetSmokeTest" time="0.002"/>
+  <testcase name="正式资产可加载且含 fulfill_track READ" classname="com.hermes.mov.exec.RealAssetSmokeTest" time="0.002"/>
+  <testcase name="正式资产上 READ 直跑与 WRITE MONEY 进审批挂起" classname="com.hermes.mov.exec.RealAssetSmokeTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

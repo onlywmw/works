@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.ExecEngineTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.701Z" hostname="苟富贵" time="0.069">
+  <properties/>
+  <testcase name="READ 无实现如实 failed(pending_impl) 不造假" classname="com.hermes.mov.exec.ExecEngineTest" time="0.036"/>
+  <testcase name="READ 直跑闭环 - 最小事件集满足 G11 且 phase 走通" classname="com.hermes.mov.exec.ExecEngineTest" time="0.002"/>
+  <testcase name="MONEY 进审批 - 无 review 挂起 pending_approval（与 WRITE 同理）" classname="com.hermes.mov.exec.ExecEngineTest" time="0.022"/>
+  <testcase name="Schema Gate 拦截 - invalid 且零执行副作用" classname="com.hermes.mov.exec.ExecEngineTest" time="0.003"/>
+  <testcase name="非 DRAFT job 拒执行（一次 run 语义）" classname="com.hermes.mov.exec.ExecEngineTest" time="0.001"/>
+  <testcase name="maxConcurrency 固定 1 串行" classname="com.hermes.mov.exec.ExecEngineTest" time="0.0"/>
+  <testcase name="账本行 index 从 0 单调且不重复（G7 append-only）" classname="com.hermes.mov.exec.ExecEngineTest" time="0.002"/>
+  <testcase name="WRITE 进审批 - 无 review 挂起 pending_approval（S3 取代 S2 占位 blocked）" classname="com.hermes.mov.exec.ExecEngineTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

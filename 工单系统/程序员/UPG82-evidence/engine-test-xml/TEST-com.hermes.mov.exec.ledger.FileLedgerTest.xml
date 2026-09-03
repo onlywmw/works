@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.ledger.FileLedgerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:45.087Z" hostname="苟富贵" time="0.023">
+  <properties/>
+  <testcase name="detail 转义含管道反斜杠不失真" classname="com.hermes.mov.exec.ledger.FileLedgerTest" time="0.013"/>
+  <testcase name="行序损坏拒载（失败关闭）" classname="com.hermes.mov.exec.ledger.FileLedgerTest" time="0.006"/>
+  <testcase name="文件追加写入并重开连续 - append-only" classname="com.hermes.mov.exec.ledger.FileLedgerTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

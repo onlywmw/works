@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.approval.ApprovalCoreTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:11:44.814Z" hostname="苟富贵" time="0.011">
+  <properties/>
+  <testcase name="summary 人读层控制符折叠 - n 注入不得伪造多行弹卡（P29 MEDIUM-2）" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.001"/>
+  <testcase name="policyFingerprint - side_effect 与 env 变化必变、同面稳定（G9-A）" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.001"/>
+  <testcase name="requestId 稳定 - 同 runId 同 snapshot 复现、apr_ 前缀" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.001"/>
+  <testcase name="ApprovalBook 首决胜 - 二次 decide Conflict 且首决不可覆盖（G4）" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.004"/>
+  <testcase name="canonical 键排序数组保序 - 同构 input 同字节" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.001"/>
+  <testcase name="summary 两行确定性 - 同一 snapshot 两次渲染字节一致（G5）" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.0"/>
+  <testcase name="snapshot 双快照齐全 - canonical 锁与 summary 对应" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.001"/>
+  <testcase name="canonical 拒非有限数 - 失败关闭" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.001"/>
+  <testcase name="canonicalHash 稳定且为 sha256 64 hex" classname="com.hermes.mov.exec.approval.ApprovalCoreTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.exec.approval.TempChainDumpTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:10:15.154Z" hostname="苟富贵" time="0.08">
+  <properties/>
+  <testcase name="dump 组链事件序列" classname="com.hermes.mov.exec.approval.TempChainDumpTest" time="0.08"/>
+  <system-out><![CDATA[=== UPG82 CHAIN DUMP BEGIN (dispatch=DISPATCHED) ===
+0|JOB_CREATED|j-m1|semanticKey=settle.pay#p1|1788401415190
+1|PLAN_VERIFIED|j-m1|capability=settle.pay in 契约通过|1788401415193
+2|APPROVAL_REQUESTED|j-m1|requestId=apr_b5b96ad51f28ad4f3bfc37462c8d973f8ee97aa5842c6c035cf0778b660a0225 capability=settle.pay side_effect=MONEY canonicalHash=17d4e2459eef72ee0cc299c3f4d7b0fdfe3c89d82c81b17e82450a3f26f94969|1788401415212
+3|JOB_CREATED|j-m2|semanticKey=settle.pay#p2|1788401415214
+4|PLAN_VERIFIED|j-m2|capability=settle.pay in 契约通过|1788401415214
+5|APPROVAL_REQUESTED|j-m2|requestId=apr_cf5209f0dd242faf5de6fcfb1c8a76ed72d139fedf658c46f31ea734a68b5bef capability=settle.pay side_effect=MONEY canonicalHash=7ca6aa1c1867314352da55b69f8534feb8f45768e28f68b023f9108c5e9eb257|1788401415215
+6|JOB_CREATED|j-w1|semanticKey=fulfill.dispatch#j-w1|1788401415215
+7|PLAN_VERIFIED|j-w1|capability=fulfill.dispatch in 契约通过|1788401415215
+8|APPROVAL_REQUESTED|j-w1|requestId=apr_00ed076d610e9a6ecaa9748ac15405c30b32d330664e70a8089ad39f1676d3d2 capability=fulfill.dispatch side_effect=WRITE canonicalHash=984d9c0080df5eab2dab8025c8a8c4527e7dc1c247e017db4da33a904e11ec4b|1788401415216
+9|APPROVED|j-m1|reviewer=human-a requestId=apr_b5b96ad51f28ad4f3bfc37462c8d973f8ee97aa5842c6c035cf0778b660a0225 批准（锁定 fp=662fb563adedc2d45f98e988a0a2ee0ab998a155adb3115ecf0641ede836889e，dispatch 前 STALE 复验）|1788401415224
+10|APPROVAL_PARTIALLY_DECIDED|j-m1|groupId=grp_5847c8d7cb5ad83ea49f2fd31385d92acd4c68eda5bbbff82043bd14b30c0f92 requestId=apr_b5b96ad51f28ad4f3bfc37462c8d973f8ee97aa5842c6c035cf0778b660a0225 node=approved members=settle.pay:approved,settle.pay:pending,fulfill.dispatch:pending|1788401415225
+11|REJECTED|j-m2|reviewer=human-b requestId=apr_cf5209f0dd242faf5de6fcfb1c8a76ed72d139fedf658c46f31ea734a68b5bef 拒绝 → blocked|1788401415226
+12|APPROVAL_PARTIALLY_DECIDED|j-m2|groupId=grp_5847c8d7cb5ad83ea49f2fd31385d92acd4c68eda5bbbff82043bd14b30c0f92 requestId=apr_cf5209f0dd242faf5de6fcfb1c8a76ed72d139fedf658c46f31ea734a68b5bef node=rejected members=settle.pay:approved,settle.pay:rejected,fulfill.dispatch:pending|1788401415226
+13|APPROVED|j-w1|reviewer=human-c requestId=apr_00ed076d610e9a6ecaa9748ac15405c30b32d330664e70a8089ad39f1676d3d2 批准（锁定 fp=372a074ff33487e6998f210808756e7dc958ac68ef1d4a8c4903704be2dd33d2，dispatch 前 STALE 复验）|1788401415226
+14|APPROVAL_GROUP_COMPLETED|j-w1|groupId=grp_5847c8d7cb5ad83ea49f2fd31385d92acd4c68eda5bbbff82043bd14b30c0f92 members=settle.pay:approved,settle.pay:rejected,fulfill.dispatch:approved|1788401415227
+15|POLICY_VALIDATED|j-m1|requestId=apr_b5b96ad51f28ad4f3bfc37462c8d973f8ee97aa5842c6c035cf0778b660a0225 五元同验通过（capabilityId/version/fingerprint/scope/SchemaGate 现况复验）|1788401415227
+16|DISPATCHED|j-m1|capability=settle.pay 审批放行（requestId=apr_b5b96ad51f28ad4f3bfc37462c8d973f8ee97aa5842c6c035cf0778b660a0225，五元同验通过）；impl 执行接线 S5+|1788401415227
+=== UPG82 CHAIN DUMP END ===
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.appearance.DisplayAppearanceResolverTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-09-03T02:08:19.831Z" hostname="苟富贵" time="0.006">
+  <properties/>
+  <testcase name="classic 解析为圆角方框" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.002"/>
+  <testcase name="L1-12 未知变体回退该组件default" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.001"/>
+  <testcase name="capsule 解析为全圆角胶囊" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="L1-13 familyOf 覆盖全部20条_四族有归" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.001"/>
+  <testcase name="默认形态常量一致" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="唯一真相读档" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="underline 解析为无边框下划线" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="L1-13 族状态矩阵_4族乘6态全声明" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="L1-12 未知组件回退classic_诚实降级" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.001"/>
+  <testcase name="L1-12 每组件每变体解析到唯一cssClass" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="未知形态回退经典_诚实降级" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="L1-12 INPUT族 阶段0几何保持" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.0"/>
+  <testcase name="状态矩阵全声明_3形态乘2明暗乘6状态" classname="com.mov.android.appearance.DisplayAppearanceResolverTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
