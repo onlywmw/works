@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ToolSdkGeneratorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:52.740Z" hostname="苟富贵" time="0.044">
+  <properties/>
+  <testcase name="三分执行层——调度器塌缩分支 已塌缩与真未知可区分" classname="com.mov.android.ToolSdkGeneratorTest" time="0.009"/>
+  <testcase name="P3 对账——nearSuggestions 与调度器 nearHint 同输入同候选（双实现同步锁）" classname="com.mov.android.ToolSdkGeneratorTest" time="0.008"/>
+  <testcase name="tool help 契约——已登记三件套 不存在近邻 入参空 INVALID_ARGS" classname="com.mov.android.ToolSdkGeneratorTest" time="0.004"/>
+  <testcase name="声明生成化——改 codeTools 集合声明文本自动同步" classname="com.mov.android.ToolSdkGeneratorTest" time="0.011"/>
+  <testcase name="同源断言——改登记层描述 SDK 节与 tool help 同步变化" classname="com.mov.android.ToolSdkGeneratorTest" time="0.005"/>
+  <testcase name="tool help output 诚实化——恒待登记标注 禁输入键冒充（R1 P2 锁死）" classname="com.mov.android.ToolSdkGeneratorTest" time="0.001"/>
+  <testcase name="SDK 节结构完整——直呼声明 工具目录 判例 双门 三分" classname="com.mov.android.ToolSdkGeneratorTest" time="0.001"/>
+  <testcase name="常用集签名层——frequent 在面才签 冷启动空态诚实声明" classname="com.mov.android.ToolSdkGeneratorTest" time="0.004"/>
+  <testcase name="summary 源超限 fail loud（红线 7）" classname="com.mov.android.ToolSdkGeneratorTest" time="0.001"/>
+  <system-out><![CDATA[A 行=- file.read：读取指定路径的文件内容（权限：harmless）, - obsidian.file.read：读取 vault 内笔记全文（权限：harmless）
+B 行=- file.read：同源测试前缀：读取指定路径的文件内容（权限：harmless）, - obsidian.file.read：读取 vault 内笔记全文（权限：harmless）
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV 审批体系 UI 重设计 · demo v1</title>
+<style>
+/* ===== MOV tokens（抄 tokens.css，冷调近黑·拍板候选C）===== */
+:root{
+  --primary:#23272F;--primary-strong:#4A5158;--on-primary:#ffffff;--primary-text:#23272F;--primary-tint:rgba(35,39,47,.08);
+  --bubble-bg:#E4E7ED;--bubble-text:#23272F;
+  --s0:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;--s4:#ffffff;
+  --text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+  --line:rgba(22,28,48,.08);
+  --danger:#d92d20;--danger-tint:rgba(217,45,32,.09);
+  --ok:#2B3038;--ok-tint:rgba(43,48,56,.08);
+  --warn:#7A4A2B;--warn-tint:rgba(122,74,43,.08);
+  --scrim:rgba(12,16,28,.45);
+}
+[data-theme=dark] .screen, .screen[data-theme=dark]{
+  --primary:#F1F3F5;--primary-strong:#D9DDE2;--on-primary:#16181D;--primary-text:#F1F3F5;--primary-tint:rgba(241,243,245,.14);
+  --bubble-bg:#2B2D33;--bubble-text:#E4E5EA;
+  --s0:#0c0e12;--s1:#16181d;--s2:#1e2024;--s3:#282a2e;--s4:#2b2d33;
+  --text:#e4e5ea;--text2:#a9afbf;--text3:#757b8d;
+  --line:rgba(255,255,255,.08);
+  --danger:#ff6b5e;--danger-tint:rgba(255,107,94,.14);
+  --ok:#E4E5EA;--ok-tint:rgba(255,255,255,.12);
+  --warn:#E4E5EA;--warn-tint:rgba(255,255,255,.12);
+  --scrim:rgba(0,0,0,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#05070a;color:#e4e5ea;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;padding:28px 16px 60px;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(70,80,100,.14),transparent 70%);}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit;font-size:inherit}
+
+/* ===== 演示台 ===== */
+.demo-bar{width:420px;max-width:100%;display:flex;align-items:center;gap:8px;margin-bottom:14px;position:relative;z-index:2}
+.demo-bar .logo{font-size:13px;font-weight:700;letter-spacing:.04em;color:#e4e5ea}
+.demo-bar .logo small{display:block;font-size:10px;font-weight:400;color:#757b8d;letter-spacing:.02em;margin-top:2px}
+.demo-bar .sp{flex:1}
+.seg{display:flex;background:#16181d;border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:3px;gap:2px}
+.seg button{padding:5px 10px;border-radius:999px;font-size:11px;color:#a9afbf;transition:all .18s;white-space:nowrap}
+.seg button.on{background:#F1F3F5;color:#16181D;font-weight:600}
+.theme-btn{width:32px;height:32px;border-radius:50%;background:#16181d;border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:14px;transition:transform .3s}
+.theme-btn:active{transform:scale(.9)}
+
+/* ===== 手机框 ===== */
+.phone{width:420px;max-width:100%;height:840px;border-radius:30px;border:1px solid rgba(255,255,255,.1);
+  overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.screen{position:absolute;inset:0;background:var(--s0);color:var(--text);display:flex;flex-direction:column;transition:background .3s}
+
+/* ===== 聊天背景（造境） ===== */
+.topbar{height:46px;flex:none;display:flex;align-items:center;gap:4px;padding:0 8px;background:var(--s0);border-bottom:1px solid var(--line)}
+.topbar .t{flex:1;text-align:center;font-size:16px;font-weight:600}
+.topbar .ic{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+.chat{flex:1;padding:14px 14px 8px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.bubble{max-width:78%;padding:9px 13px;font-size:14px;line-height:1.55;border-radius:12px}
+.bubble.ai{background:var(--s1);border:1px solid var(--line);align-self:flex-start;color:var(--text)}
+.bubble.me{background:var(--bubble-bg);color:var(--bubble-text);align-self:flex-end}
+.bubble .tool-line{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.composer{flex:none;margin:10px 12px 14px;height:44px;border-radius:999px;background:var(--s1);border:1px solid var(--line);
+  display:flex;align-items:center;padding:0 6px 0 16px;gap:8px}
+.composer .ph{flex:1;font-size:13px;color:var(--text3)}
+.composer .send{width:32px;height:32px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;justify-content:center}
+
+/* ===== 审批待办 chip ===== */
+.appr-chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;
+  background:var(--primary-tint);color:var(--primary-text);font-size:12px;font-weight:600;align-self:flex-start;
+  border:1px solid var(--line);position:relative}
+.appr-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--danger);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.appr-chip .n{background:var(--primary);color:var(--on-primary);border-radius:999px;min-width:18px;height:18px;
+  display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 5px}
+
+/* ===== scrim + 居中悬浮弹窗（极简模式复用同一容器） ===== */
+.scrim{position:absolute;inset:0;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity .28s;z-index:20}
+.scrim.show{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:50%;top:50%;z-index:21;background:var(--s4);color:var(--text);
+  width:calc(100% - 56px);max-width:364px;border-radius:16px;border:1px solid var(--line);
+  box-shadow:0 12px 40px rgba(12,16,28,.18);
+  opacity:0;transform:translate(-50%,-47%) scale(.94);pointer-events:none;
+  transition:opacity .22s ease,transform .28s cubic-bezier(.32,.72,.28,1);
+  padding:18px 18px 14px;max-height:78%;display:flex;flex-direction:column}
+.sheet.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.grabber{display:none}
+.qhead{text-align:center;font-size:12px;color:var(--text3);font-variant-numeric:tabular-nums;margin-bottom:10px;flex:none}
+.qhead b{color:var(--text2);font-weight:600}
+
+/* 审批卡头 */
+.ahead{display:flex;gap:12px;align-items:flex-start;flex:none}
+.aicon{width:44px;height:44px;flex:none;border-radius:12px;background:var(--s2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:var(--primary-text)}
+.aicon svg{width:22px;height:22px}
+.atitle{flex:1;min-width:0}
+.atitle h2{font-size:17px;font-weight:700;line-height:1.3;letter-spacing:.01em}
+.atitle .sub{font-size:12px;color:var(--text3);margin-top:3px}
+.tag{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;font-size:11px;font-weight:600;flex:none;margin-top:2px}
+.tag-write{background:var(--primary-tint);color:var(--primary-text)}
+.tag-sensitive{background:var(--danger-tint);color:var(--danger)}
+.tag-read{background:var(--s3);color:var(--text2)}
+.tag-money{background:var(--danger-tint);color:var(--danger)}
+
+/* 参数摘要 */
+.args{margin-top:14px;background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;flex:none}
+.args .row{display:flex;gap:10px;font-size:13px;line-height:1.5}
+.args .row + .row{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.args .k{flex:none;width:56px;color:var(--text3);font-size:12px;padding-top:1px}
+.args .v{flex:1;color:var(--text);word-break:break-all;font-variant-numeric:tabular-nums}
+.args .v.mask{letter-spacing:.06em}
+
+/* 元信息行 */
+.meta{display:flex;align-items:center;gap:8px;margin-top:12px;flex:none;flex-wrap:wrap}
+.chip-time{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;
+  background:var(--warn-tint);color:var(--warn);font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+.chip-once{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;
+  background:var(--s3);color:var(--text2);font-size:11px;font-weight:600}
+
+/* 决策选项（显形化） */
+.opts{margin-top:14px;display:flex;flex-direction:column;gap:8px;flex:none}
+.opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;border:1px solid var(--line);
+  background:var(--s1);cursor:pointer;transition:all .16s;text-align:left;width:100%;color:var(--text)}
+[data-theme=dark] .opt{background:var(--s2)}
+.opt:active{transform:scale(.985)}
+.opt .radio{width:18px;height:18px;flex:none;border-radius:50%;border:1.5px solid var(--text3);position:relative;transition:all .16s}
+.opt.sel{border-color:var(--primary);background:var(--primary-tint)}
+.opt.sel .radio{border-color:var(--primary)}
+.opt.sel .radio::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:var(--primary)}
+.opt .ot{flex:1;font-size:13.5px;font-weight:600}
+.opt .ot small{display:block;font-size:11px;font-weight:400;color:var(--text3);margin-top:2px}
+.notice{display:flex;gap:9px;align-items:flex-start;margin-top:14px;padding:11px 13px;border-radius:10px;
+  background:var(--danger-tint);color:var(--danger);font-size:12px;line-height:1.5;flex:none}
+.notice svg{width:15px;height:15px;flex:none;margin-top:1px}
+
+/* 按钮行 */
+.acts{display:flex;gap:10px;margin-top:16px;flex:none}
+.btn{flex:1;height:46px;border-radius:12px;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .15s}
+.btn:active{opacity:.7}
+.btn-yes{background:var(--primary);color:var(--on-primary)}
+.btn-no{background:var(--danger-tint);color:var(--danger)}
+.hint{text-align:center;font-size:11px;color:var(--text3);margin-top:10px;flex:none}
+
+/* ===== 审批单（预审单） ===== */
+.plan-head{flex:none;margin-bottom:4px}
+.plan-head h2{font-size:17px;font-weight:700}
+.plan-head .sub{font-size:12px;color:var(--text3);margin-top:3px}
+.steps{margin-top:12px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1;min-height:0}
+.step{display:flex;gap:11px;align-items:flex-start;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--s1);transition:all .16s}
+[data-theme=dark] .step{background:var(--s2)}
+.step .no{width:20px;height:20px;flex:none;border-radius:50%;background:var(--s3);color:var(--text2);
+  font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;font-variant-numeric:tabular-nums}
+.step .body{flex:1;min-width:0}
+.step .st{font-size:13.5px;font-weight:600;line-height:1.4}
+.step .sd{font-size:11.5px;color:var(--text3);margin-top:3px;line-height:1.45}
+.step .side{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.step .ck{width:20px;height:20px;flex:none;border-radius:6px;border:1.5px solid var(--text3);display:flex;align-items:center;justify-content:center;transition:all .16s;color:transparent;cursor:pointer}
+.step.on .ck{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.step.on{border-color:var(--primary)}
+.step.auto{opacity:.62}
+.step.auto .ck{visibility:hidden}
+.step.money{background:var(--danger-tint);border-color:transparent}
+.step.money .no{background:var(--danger);color:#fff}
+.step.money .lock{width:20px;height:20px;flex:none;color:var(--danger);display:flex;align-items:center;justify-content:center}
+.step.money .lock svg{width:15px;height:15px}
+.step.off{opacity:.5}
+.step.off .st{text-decoration:line-through;text-decoration-color:var(--text3)}
+
+/* toast */
+.toast{position:absolute;left:50%;bottom:110px;transform:translate(-50%,20px);z-index:30;
+  background:var(--text);color:var(--s0);font-size:12.5px;padding:9px 16px;border-radius:999px;
+  opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* 设计注记 */
+.notes{width:420px;max-width:100%;margin-top:18px;position:relative;z-index:1;
+  background:#10131a;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px}
+.notes h3{font-size:12px;font-weight:700;color:#a9afbf;letter-spacing:.08em;margin-bottom:10px}
+.notes li{font-size:12px;color:#757b8d;line-height:1.7;list-style:none;padding-left:14px;position:relative}
+.notes li::before{content:"—";position:absolute;left:0;color:#4a5158}
+.notes li b{color:#a9afbf;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <div class="logo">MOV · 审批体系 UI 重设计<small>demo v1 · 2026-09-03 · 令牌同源（冷调近黑 / 拍板C）</small></div>
+  <div class="sp"></div>
+  <div class="seg" id="seg">
+    <button data-sc="1" class="on">写类审批</button>
+    <button data-sc="2">only-once</button>
+    <button data-sc="3">预审单</button>
+    <button data-sc="4">待办chip</button>
+  </div>
+  <button class="theme-btn" id="themeBtn" title="切换深浅色">🌙</button>
+</div>
+
+<div class="phone">
+  <div class="screen" id="screen" data-theme="light">
+
+    <!-- 聊天造境 -->
+    <div class="topbar">
+      <div class="ic">‹</div><div class="t">MOV</div><div class="ic">⋯</div>
+    </div>
+    <div class="chat" id="chat">
+      <div class="bubble me">帮我把下载目录里昨天的报表整理一下，顺便提醒我下午三点开会</div>
+      <div class="bubble ai">好的，我先看一下目录内容，然后为你整理并设置提醒。
+        <div class="tool-line">⚙ 正在准备 3 步操作，需要你确认 2 步</div>
+      </div>
+      <div class="appr-chip" id="chip" style="display:none"><span class="dot"></span>审批待办<span class="n">2</span></div>
+    </div>
+    <div class="composer"><div class="ph">说点什么…</div><div class="send">↑</div></div>
+
+    <div class="scrim" id="scrim"></div>
+
+    <!-- 场景 1/2：单工具审批卡 -->
+    <div class="sheet" id="sheetSingle">
+      <div class="grabber"></div>
+      <div class="qhead" id="qhead">待审批 · 第 <b>1</b> / <b>3</b> 条</div>
+      <div class="ahead">
+        <div class="aicon" id="aIcon"></div>
+        <div class="atitle">
+          <h2 id="aTitle">AI 想帮你执行一条命令</h2>
+          <div class="sub" id="aSub">shell.exec · 来自当前对话</div>
+        </div>
+        <span class="tag tag-write" id="aTag">写入</span>
+      </div>
+      <div class="args" id="aArgs">
+        <div class="row"><div class="k">命令</div><div class="v">ls -la /sdcard/Download</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip-time">⏱ <span id="cd">30</span>s 后自动拒绝</span>
+        <span class="chip-once" id="onceChip" style="display:none">每次都需要你确认</span>
+      </div>
+      <div class="opts" id="opts">
+        <button class="opt sel" data-v="once"><span class="radio"></span><span class="ot">仅这次<small>用完即作废</small></span></button>
+        <button class="opt" data-v="turn"><span class="radio"></span><span class="ot">本轮同类不再问<small>这次对话内，同类操作直接放行</small></span></button>
+        <button class="opt" data-v="rem"><span class="radio"></span><span class="ot">记住我的选择<small>以后同类操作免确认（可在设置里改）</small></span></button>
+      </div>
+      <div class="notice" id="onceNotice" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <span>此操作会读取你的明文信息，<b>每次都需要你本人确认</b>——不提供「不再问」选项。</span>
+      </div>
+      <div class="acts">
+        <button class="btn btn-yes" id="btnYes">同意</button>
+        <button class="btn btn-no" id="btnNo">拒绝</button>
+      </div>
+      <div class="hint">拒绝只是这次不做，不会影响 AI 的其他能力</div>
+    </div>
+
+    <!-- 场景 3：预审单 -->
+    <div class="sheet" id="sheetPlan">
+      <div class="grabber"></div>
+      <div class="plan-head">
+        <h2>AI 的办事计划 · 4 步</h2>
+        <div class="sub">核对后一次批准。读取类自动执行、不打扰；支付永远逐笔确认。</div>
+      </div>
+      <div class="steps" id="steps">
+        <div class="step auto">
+          <div class="no">1</div>
+          <div class="body"><div class="st">查看下载目录内容</div><div class="sd">file.list · /sdcard/Download</div></div>
+          <div class="side"><span class="tag tag-read">读取 · 自动</span></div>
+        </div>
+        <div class="step on" data-ck="1">
+          <div class="no">2</div>
+          <div class="body"><div class="st">新建「报表整理」文件夹并移动文件</div><div class="sd">file.move · 12 个文件 → /Download/报表整理</div></div>
+          <div class="side"><span class="tag tag-write">写入</span><div class="ck">✓</div></div>
+        </div>
+        <div class="step on" data-ck="1">
+          <div class="no">3</div>
+          <div class="body"><div class="st">创建下午 3 点的开会提醒</div><div class="sd">calendar.create · 今天 15:00</div></div>
+          <div class="side"><span class="tag tag-write">写入</span><div class="ck">✓</div></div>
+        </div>
+        <div class="step money">
+          <div class="no">4</div>
+          <div class="body"><div class="st">支付云空间扩容 ¥6/月</div><div class="sd">payment.pay · 执行到这一步时，会单独弹窗请你确认</div></div>
+          <div class="side"><span class="tag tag-money">支付 · 逐笔</span><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div></div>
+        </div>
+      </div>
+      <div class="acts">
+        <button class="btn btn-yes" id="btnPlanYes">批准所选 <span id="planN">2</span> 项</button>
+        <button class="btn btn-no" id="btnPlanNo">全部拒绝</button>
+      </div>
+      <div class="hint">批准后若 AI 临时改了主意（计划外操作），会重新弹窗问你</div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
+
+<div class="notes">
+  <h3>设计决策（对照现行原生 AlertDialog）</h3>
+  <ul>
+    <li><b>居中悬浮卡替代系统弹窗</b>——容器为 CardShell 语言（16px 圆角、s4 面、scrim 令牌），审批/预审单/极简模式三处复用同一容器；点 scrim=取消=fail-closed 语义不变</li>
+    <li><b>去 78dp 大 emoji 灰块</b>——44px 线性图标 + 域名 tag（写入/敏感/读取/支付），信息层级靠字重与 tag，不靠图标尺寸</li>
+    <li><b>参数结构化</b>——从一行灰字摘要改为 key-value 参数卡（s2 底），脱敏值等宽展示，可读可核对</li>
+    <li><b>豁免选项显形化</b>——隐藏勾选改为单选卡（仅这次/本轮/记住），承诺文案与 handler 行为严格一致；only-once 无选项，换成风险说明条</li>
+    <li><b>倒计时从「一行小字」改为 chip</b>——等宽数字，warn 色令牌，与「已自动拒绝」toast 成对</li>
+    <li><b>预审单即步骤清单卡</b>——序号 + 人话 + 副作用 tag + 勾选；读取类灰显自动过；支付行 danger-tint 整行锁定，明示「到此步单独确认」</li>
+    <li><b>纯黑白 + 唯一功能红</b>——守拍板④（无品牌色）；拒绝/支付用 --danger 令牌，其余全靠明度/字重分层</li>
+  </ul>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const screen=$('#screen'),scrim=$('#scrim'),toast=$('#toast');
+const sheetS=$('#sheetSingle'),sheetP=$('#sheetPlan');
+let cd=30,timer=null,cur='1';
+
+const icons={
+  terminal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m4 17 6-6-6-6M12 19h8"/></svg>',
+  key:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="15" r="4"/><path d="m10.9 12.1 8.6-8.6M15 6l3 3M18 3l3 3"/></svg>',
+  plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>'
+};
+const scenes={
+  '1':{icon:'terminal',title:'AI 想帮你执行一条命令',sub:'shell.exec · 来自当前对话',tag:'写入',tagCls:'tag-write',
+       args:[['命令','ls -la /sdcard/Download']],opts:true,once:false,q:'待审批 · 第 <b>1</b> / <b>3</b> 条'},
+  '2':{icon:'key',title:'AI 想帮你读取你的个人信息',sub:'vault.get · 明文 · 来自当前对话',tag:'敏感 · 每次确认',tagCls:'tag-sensitive',
+       args:[['凭据','商户名称 ········3f9a'],['用途','填写入驻表单']],opts:false,once:true,q:'待审批 · 第 <b>2</b> / <b>3</b> 条'}
+};
+function show(id){toast.textContent=id;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1800)}
+function closeSheets(){sheetS.classList.remove('show');sheetP.classList.remove('show');scrim.classList.remove('show')}
+function openSingle(sc){
+  closeSheets();
+  $('#aIcon').innerHTML=icons[sc.icon];
+  $('#aTitle').textContent=sc.title;
+  $('#aSub').textContent=sc.sub;
+  const tag=$('#aTag');tag.textContent=sc.tag;tag.className='tag '+sc.tagCls;
+  $('#aArgs').innerHTML=sc.args.map(r=>`<div class="row"><div class="k">${r[0]}</div><div class="v">${r[1]}</div></div>`).join('');
+  $('#opts').style.display=sc.opts?'flex':'none';
+  $('#onceNotice').style.display=sc.once?'flex':'none';
+  $('#onceChip').style.display=sc.once?'inline-flex':'none';
+  $('#qhead').innerHTML=sc.q;
+  cd=30;$('#cd').textContent=cd;
+  clearInterval(timer);timer=setInterval(()=>{if(cd>0){cd--;$('#cd').textContent=cd}else{clearInterval(timer);closeSheets();show('已到 30s，已自动拒绝')}},1000);
+  scrim.classList.add('show');requestAnimationFrame(()=>sheetS.classList.add('show'));
+}
+function openPlan(){closeSheets();clearInterval(timer);scrim.classList.add('show');requestAnimationFrame(()=>sheetP.classList.add('show'))}
+
+/* 场景切换 */
+$('#seg').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));
+  cur=b.dataset.sc;$('#chip').style.display=cur==='4'?'inline-flex':'none';
+  if(cur==='1')openSingle(scenes['1']);
+  else if(cur==='2')openSingle(scenes['2']);
+  else if(cur==='3')openPlan();
+  else{closeSheets();clearInterval(timer);show('chip 点击 → 打开审批待办面板')}
+});
+/* 主题 */
+$('#themeBtn').addEventListener('click',()=>{
+  const d=screen.dataset.theme==='dark';screen.dataset.theme=d?'light':'dark';
+  $('#themeBtn').textContent=d?'🌙':'☀️';
+});
+/* 选项 */
+$('#opts').addEventListener('click',e=>{
+  const o=e.target.closest('.opt');if(!o)return;
+  document.querySelectorAll('#opts .opt').forEach(x=>x.classList.toggle('sel',x===o));
+});
+/* 决策 */
+$('#btnYes').onclick=()=>{closeSheets();clearInterval(timer);show('已同意 · 足迹已记录')};
+$('#btnNo').onclick=()=>{closeSheets();clearInterval(timer);show('好的，这次不执行')};
+scrim.onclick=()=>{closeSheets();clearInterval(timer);show('已取消（fail-closed，不会执行）')};
+/* 预审单勾选 */
+$('#steps').addEventListener('click',e=>{
+  const ck=e.target.closest('.ck');if(!ck)return;
+  const st=ck.closest('.step');st.classList.toggle('on');st.classList.toggle('off');
+  const n=document.querySelectorAll('#steps .step.on[data-ck]').length;
+  $('#planN').textContent=n;$('#btnPlanYes').disabled=n===0;
+});
+$('#btnPlanYes').onclick=()=>{closeSheets();show('已批准 · 按计划执行，支付到步再确认')};
+$('#btnPlanNo').onclick=()=>{closeSheets();show('已拒绝 · 后续步骤全部阻断')};
+
+/* 初始（支持 #1/#2/#3/#4 深链场景） */
+const initSc=(location.hash||'#1').slice(1);
+document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x.dataset.sc===initSc));
+cur=initSc;
+if(cur==='4')$('#chip').style.display='inline-flex';
+if(cur==='3')openPlan();else openSingle(scenes[cur]||scenes['1']);
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.guard.AcceptanceJudgeTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:46.953Z" hostname="苟富贵" time="0.009">
+  <properties/>
+  <testcase name="建议性语句不触发——建议按标准核对" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.001"/>
+  <testcase name="judge 产出截断 200 字" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <testcase name="缺标准短语——帮我核对一下（无值）不触发" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <testcase name="judge exact 相等——pass" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.001"/>
+  <testcase name="judge expected 空——产出非空即放行（老版语义）" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <testcase name="答案应为 x 形态" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.001"/>
+  <testcase name="judge 不等——fail 且 diff 带产出" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <testcase name="投影剔键_expected 绝不进模型上下文" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <testcase name="疑问尾豁免——标准是 42 元吗 不触发" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.001"/>
+  <testcase name="缺核对动词——答案应为 x 不触发" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <testcase name="M2 核对词带值——按这份标准核对：x" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.001"/>
+  <testcase name="M1 直连指定——标准应为 x" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <testcase name="空与 null 文本不触发" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.001"/>
+  <testcase name="询问豁免——标准是什么 不触发" classname="com.hermes.dsh.guard.AcceptanceJudgeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

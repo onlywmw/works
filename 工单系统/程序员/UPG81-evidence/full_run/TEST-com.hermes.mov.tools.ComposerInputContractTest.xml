@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.tools.ComposerInputContractTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:50.533Z" hostname="苟富贵" time="0.026">
+  <properties/>
+  <testcase name="editor action listener 接 send 且含空判" classname="com.hermes.mov.tools.ComposerInputContractTest" time="0.012"/>
+  <testcase name="inputType 不含 MULTI_LINE 且含 IME_ACTION_SEND" classname="com.hermes.mov.tools.ComposerInputContractTest" time="0.014"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

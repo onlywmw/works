@@ -1,0 +1,47 @@
+{
+  "ticket_id": "UPG-78",
+  "delivery_id": "DEL-UPG78-20260903-001",
+  "standard_id": "STD-UPG-78-v1",
+  "code_commit_sha": "f1e20678e2dc4633db48e15067b266ec455db0bd",
+  "artifact_sha": "72d424360d1cf0f815f293834dd050e61b2307f2e9d05638eb0f25ff9d80528e",
+  "delivered_at": "2026-09-03",
+  "delivered_by": "程序员",
+  "evidence_manifest_sha": "f7c874792e32df02b61579bf5fc71761c1c90c8ddcb43dda41fda1a80762218e",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG78-evidence/build.gradle.kts",
+      "sha256": "120e44a63d2669af607b4a746ec7a77e541238ee27e3daa509c0dc13eee1431d",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG78-evidence/upg68-registry.yml",
+      "sha256": "30e575f179c6f6aabce1a870f8a136c2fa5b0a90dd2aacdc4ed1325bd1079623",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG78-evidence/PermissionRegistryData.kt",
+      "sha256": "d3dd55d24248f036afbe5908c0f1c6f347d27f33b7d7769d9444960ff9d8422e",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG78-evidence/ApprovalRegistry.json",
+      "sha256": "e0591861aedb086e449be043d10951dea8527b7c965e61731b9d268242625d5e",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG78-evidence/ApprovalRegistry.md",
+      "sha256": "c090565c1b5dff54b8f31987cdbdefb31b67b0a5244a482001aa393e2138cae7",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    }
+  ]
+}

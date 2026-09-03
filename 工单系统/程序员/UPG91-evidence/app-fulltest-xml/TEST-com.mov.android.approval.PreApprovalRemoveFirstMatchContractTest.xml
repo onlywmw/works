@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.PreApprovalRemoveFirstMatchContractTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:49:40.649Z" hostname="苟富贵" time="0.017">
+  <properties/>
+  <testcase name="UPG85 修复形态 - 首个tool匹配removeAt在场且无匹配跳过" classname="com.mov.android.approval.PreApprovalRemoveFirstMatchContractTest" time="0.008"/>
+  <testcase name="UPG85 变异锚② - 末尾匹配或全量匹配形态退场" classname="com.mov.android.approval.PreApprovalRemoveFirstMatchContractTest" time="0.005"/>
+  <testcase name="UPG85 变异锚① - removeAll 同tool全量移除形态退场" classname="com.mov.android.approval.PreApprovalRemoveFirstMatchContractTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ToolMetaTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:52.263Z" hostname="苟富贵" time="0.472">
+  <properties/>
+  <testcase name="批3-4 登记 24 工具清单对账且 desc-schema-output 三件套质检" classname="com.mov.android.ToolMetaTest" time="0.088"/>
+  <testcase name="批3-3 登记 34 工具清单对账且 desc-schema-output 三件套质检" classname="com.mov.android.ToolMetaTest" time="0.005"/>
+  <testcase name="批3 收口——四表聚合 118 无缺漏 且 回落为零 且 零冲突" classname="com.mov.android.ToolMetaTest" time="0.02"/>
+  <testcase name="批4-R1 agent 面外部工具投影接线锚" classname="com.mov.android.ToolMetaTest" time="0.011"/>
+  <testcase name="output 首清偿 22——provider 20 加 scene 2 全部非空非占位" classname="com.mov.android.ToolMetaTest" time="0.002"/>
+  <testcase name="登记层 schema 均为 object 形态且真无参工具空 properties 合法" classname="com.mov.android.ToolMetaTest" time="0.004"/>
+  <testcase name="browser 14 在面名为 mcp__browser__ 客户端名且 schema 已接登记层" classname="com.mov.android.ToolMetaTest" time="0.002"/>
+  <testcase name="批3-1 登记 34 工具清单对账且 desc-schema-output 三件套质检" classname="com.mov.android.ToolMetaTest" time="0.003"/>
+  <testcase name="批3-3 投影验证——对齐 B1+B3 合并 registry 34 工具全命中非模板串" classname="com.mov.android.ToolMetaTest" time="0.002"/>
+  <testcase name="回落清单三态——无登记且无补丁才回落" classname="com.mov.android.ToolMetaTest" time="0.001"/>
+  <testcase name="批 1 冲突清偿状态——静态表无 builtin 条目且无 SceneTools append（防双源回潮）" classname="com.mov.android.ToolMetaTest" time="0.018"/>
+  <testcase name="批3-1 接线断言——34 工具全部进登记投影且从模板串回落清单消失" classname="com.mov.android.ToolMetaTest" time="0.002"/>
+  <testcase name="单源投影语义——登记层主 补丁位次之 模板串回落" classname="com.mov.android.ToolMetaTest" time="0.004"/>
+  <testcase name="批4 死码删除——零实例化文件与方法零命中" classname="com.mov.android.ToolMetaTest" time="0.274"/>
+  <testcase name="登记层 41 工具接线断言——投影 description 均非模板串且无占位黑名单" classname="com.mov.android.ToolMetaTest" time="0.002"/>
+  <testcase name="批4 外部工具元数据提取——合法条目携带 desc-schema 非法条目回落" classname="com.mov.android.ToolMetaTest" time="0.004"/>
+  <testcase name="批3-2 登记 26 工具清单对账且 desc-schema-output 三件套质检" classname="com.mov.android.ToolMetaTest" time="0.003"/>
+  <testcase name="批4-2 热挂载接线锚——mountExtTools 走三态投影 且 静态表日落到 emptyMap" classname="com.mov.android.ToolMetaTest" time="0.011"/>
+  <testcase name="批4 三态回落——外部元数据 登记层真命中 外部模板串 逐态断言" classname="com.mov.android.ToolMetaTest" time="0.003"/>
+  <testcase name="冲突检测首用例——静态表 builtin 占位条目 vs BuiltinMcpTools 真字段必红" classname="com.mov.android.ToolMetaTest" time="0.002"/>
+  <testcase name="批4 外部发现挂载点接线锚——使用三态投影而非模板串" classname="com.mov.android.ToolMetaTest" time="0.009"/>
+  <testcase name="批3-2 投影验证——对齐 B1+B2 合并 registry 26 工具全命中非模板串" classname="com.mov.android.ToolMetaTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

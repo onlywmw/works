@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.MemoryPageContractTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T14:33:24.895Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="呈现层源码零 import memory-core 内部" classname="com.mov.android.MemoryPageContractTest" time="0.001"/>
+  <testcase name="P1-2 渲染窗口化 + 全量加载后台 - 防大列表 ANR" classname="com.mov.android.MemoryPageContractTest" time="0.001"/>
+  <testcase name="5s 撤销窗口接纯函数" classname="com.mov.android.MemoryPageContractTest" time="0.0"/>
+  <testcase name="UI diff 锚 - promote remove setPinned restore 全部以底层 ok 为准" classname="com.mov.android.MemoryPageContractTest" time="0.001"/>
+  <testcase name="P2-1 搜索命中高亮接线" classname="com.mov.android.MemoryPageContractTest" time="0.0"/>
+  <testcase name="UI diff 成功侧才更新本地状态" classname="com.mov.android.MemoryPageContractTest" time="0.0"/>
+  <testcase name="P2-1 置顶徽标无图钉前缀 + 不变黄 - 验收定" classname="com.mov.android.MemoryPageContractTest" time="0.001"/>
+  <testcase name="P1-1 撤销过期条目同步移除本地items - 防复活" classname="com.mov.android.MemoryPageContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

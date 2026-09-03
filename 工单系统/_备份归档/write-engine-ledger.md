@@ -7,3 +7,4 @@
 {"ts":"2026-09-01T22:14:25.910Z","txid":"TX-202609012214248-xz71","op":"reject","no":"UPG-08","before":"delivering","after":"rejected","result":"committed","actor":"board"}
 {"ts":"2026-09-01T22:22:30.564Z","txid":"TX-202609012222293-knhd","op":"reject","no":"UPG-09","before":"delivering","after":"rejected","result":"committed","actor":"board"}
 {"ts":"2026-09-01T22:27:59.132Z","txid":"TX-202609012227575-8lf8","op":"reject","no":"UPG-01","before":"delivering","after":"rejected","result":"committed","actor":"board"}
+{"ts":"2026-09-01T22:29:05.802Z","txid":"TX-202609012229041-ggz2","op":"reject","no":"UPG-08","before":"delivering","after":"rejected","result":"committed","actor":"board"}

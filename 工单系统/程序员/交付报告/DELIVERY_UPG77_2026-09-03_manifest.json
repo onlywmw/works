@@ -1,0 +1,75 @@
+{
+  "ticket_id": "UPG-77",
+  "delivery_id": "DEL-UPG77-20260903-001",
+  "standard_id": "STD-UPG-77-v1",
+  "code_commit_sha": "a7736b35c3cf0c3e94e7320972b1c64c5ce471ef",
+  "artifact_sha": "7bad33b08b602e9b6b0feca5edf5c819a633725ab4f87699fded251b7a04a7b6",
+  "delivered_at": "2026-09-03",
+  "delivered_by": "程序员",
+  "evidence_manifest_sha": "0b780c4456cf0d4df7995b51aca1e883c3a9bfa1f28abc1d08492f6b53ecb767",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG77-evidence/McpToolScheduler.kt",
+      "sha256": "6f899d2a88ea4f49c4984254fd498f1237f776471b730607aadd0254fdb5fb73",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG77-evidence/ApprovalService.kt",
+      "sha256": "3583b18117dfe392c9a7aad76aebb9f19d436bd193c36c077412427370fcad02",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG77-evidence/McpServer.kt",
+      "sha256": "afaec17ed495b86b78d727ea59d65e51b92c84768bb44f0b63c26e92fc95ac9d",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG77-evidence/MainActivity.kt",
+      "sha256": "2319f4ad7b630b0fde884bf2a15a9776981998e53ae061a68c848bed46fb9b0a",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG77-evidence/ToolSdkGenerator.kt",
+      "sha256": "2a0688b8fbc2d0673f23667dacef61c8c45e887bd295fe85c47d95bc2a1196d1",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/UPG77-evidence/McpServerApprovalTest.kt",
+      "sha256": "8dea80a4bc2d5a83b345ce87538b5c0d40b2815633548b5a087d6b3e42fd8568",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "程序员/UPG77-evidence/ToolSdkGeneratorTest.kt",
+      "sha256": "b172f5a464af543a89d1ea6676ca7b172fb12ef44312528e7e764be39259b425",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-008",
+      "path": "程序员/UPG77-evidence/PermissionRegistryData.kt",
+      "sha256": "d3dd55d24248f036afbe5908c0f1c6f347d27f33b7d7769d9444960ff9d8422e",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-009",
+      "path": "程序员/UPG77-evidence/ApprovalRegistry.json",
+      "sha256": "e0591861aedb086e449be043d10951dea8527b7c965e61731b9d268242625d5e",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    }
+  ]
+}

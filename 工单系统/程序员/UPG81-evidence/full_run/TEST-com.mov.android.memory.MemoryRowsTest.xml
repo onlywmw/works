@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.memory.MemoryRowsTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:53.744Z" hostname="苟富贵" time="0.012">
+  <properties/>
+  <testcase name="搜索过滤 - 空查询不过滤 不区分大小写" classname="com.mov.android.memory.MemoryRowsTest" time="0.002"/>
+  <testcase name="状态 C 端文案 - DRAFT=待确认 ACTIVE=已记住" classname="com.mov.android.memory.MemoryRowsTest" time="0.0"/>
+  <testcase name="行号徽标 - 无 pin 前缀（验收定：置顶由按钮或详情体现）" classname="com.mov.android.memory.MemoryRowsTest" time="0.0"/>
+  <testcase name="计数行 - 共N条 已记住X 待确认Y" classname="com.mov.android.memory.MemoryRowsTest" time="0.006"/>
+  <testcase name="撤销窗口_4s 内可撤 5s 后过期" classname="com.mov.android.memory.MemoryRowsTest" time="0.001"/>
+  <testcase name="折叠 - 超长取 len-3 展开" classname="com.mov.android.memory.MemoryRowsTest" time="0.0"/>
+  <testcase name="操作按钮文案 - 待确认=设为重要 已记住=置顶" classname="com.mov.android.memory.MemoryRowsTest" time="0.0"/>
+  <testcase name="筛选_单选·同选归全部·均不选=全部" classname="com.mov.android.memory.MemoryRowsTest" time="0.001"/>
+  <testcase name="过期结算 - 仅筛出超过 5s 的条目id 未过期保留" classname="com.mov.android.memory.MemoryRowsTest" time="0.0"/>
+  <testcase name="搜索命中区间 - 忽略大小写 多次命中 空查询无命中为空" classname="com.mov.android.memory.MemoryRowsTest" time="0.0"/>
+  <testcase name="分区 - 已记住前置 + 待确认后置" classname="com.mov.android.memory.MemoryRowsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

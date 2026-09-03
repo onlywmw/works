@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ui.registry.ComponentContractValidationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:49:40.825Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="L1-19 合法契约全字段通过" classname="com.mov.android.ui.registry.ComponentContractValidationTest" time="0.0"/>
+  <testcase name="L1-19 命名规范不合_CI 红" classname="com.mov.android.ui.registry.ComponentContractValidationTest" time="0.001"/>
+  <testcase name="M-U50-10 缺任一字段_CI 红" classname="com.mov.android.ui.registry.ComponentContractValidationTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

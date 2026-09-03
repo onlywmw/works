@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ui.registry.ComponentRegistryTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T14:33:25.712Z" hostname="苟富贵" time="0.003">
+  <properties/>
+  <testcase name="L1-15 注册即出现_来源分区" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.001"/>
+  <testcase name="L1-16 热替换_同 ID 新 impl_返回旧值_版本自增" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.0"/>
+  <testcase name="L1-17 回滚_新 impl 失败回退旧 impl" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.001"/>
+  <testcase name="官方不可卸载_平台权威" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.0"/>
+  <testcase name="官方 20 条启动预置_installed_enabled" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.0"/>
+  <testcase name="L2-12 fail-closed 未注册组件不渲染_Resolver 读注册态" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.0"/>
+  <testcase name="M-U50-10 绕行注册_不入 catalog 直接 install_拒绝" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.001"/>
+  <testcase name="L1-15 注册_幂等_卸载即消失" classname="com.mov.android.ui.registry.ComponentRegistryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

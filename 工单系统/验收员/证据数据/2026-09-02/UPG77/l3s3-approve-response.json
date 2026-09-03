@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":20,"result":{"content":[{"type":"text","text":"{ok=false, error=keys 不能为空（数组或逗号分隔，可选: idName/idNo/idPeriod/licenseNo/shortName/mobile/email/bankAccountType/bankAccountName/bankName/bankBranch/bankAccount/bizAddress/category）}"}],"isError":false}}

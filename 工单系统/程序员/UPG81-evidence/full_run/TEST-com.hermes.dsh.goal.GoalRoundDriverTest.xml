@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.goal.GoalRoundDriverTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:46.634Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="未达上限保持 ACTIVE 且可续轮" classname="com.hermes.dsh.goal.GoalRoundDriverTest" time="0.002"/>
+  <testcase name="20 轮上限自动暂停（20 轮后 ARMED，不自动完成）" classname="com.hermes.dsh.goal.GoalRoundDriverTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

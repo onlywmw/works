@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.tools.SceneToolsTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T14:33:24.607Z" hostname="苟富贵" time="0.004">
+  <properties/>
+  <testcase name="参数 schema 每个字段都有中文描述" classname="com.hermes.mov.tools.SceneToolsTest" time="0.003"/>
+  <testcase name="站表解析空段容错与站后缀清洗" classname="com.hermes.mov.tools.SceneToolsTest" time="0.001"/>
+  <testcase name="注册完整两个场景工具" classname="com.hermes.mov.tools.SceneToolsTest" time="0.0"/>
+  <testcase name="description 非占位且够长" classname="com.hermes.mov.tools.SceneToolsTest" time="0.0"/>
+  <testcase name="工具名遵循 领域点动作 且不在黑名单" classname="com.hermes.mov.tools.SceneToolsTest" time="0.0"/>
+  <testcase name="站表解析取 f2 电报码而非 f0 拼音缩写" classname="com.hermes.mov.tools.SceneToolsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

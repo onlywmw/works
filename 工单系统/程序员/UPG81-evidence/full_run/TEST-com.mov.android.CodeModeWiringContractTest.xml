@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.CodeModeWiringContractTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:51.338Z" hostname="苟富贵" time="0.088">
+  <properties/>
+  <testcase name="tool help output 诚实化——禁用输入参数键冒充顶层返回键（P2 回归锚）" classname="com.mov.android.CodeModeWiringContractTest" time="0.003"/>
+  <testcase name="E3 装配点 code 分支调 SDK 生成器（M1 删装配或短路必红）" classname="com.mov.android.CodeModeWiringContractTest" time="0.053"/>
+  <testcase name="knownTools 三处同步——装配 热挂 热摘（漏一处三分失真）" classname="com.mov.android.CodeModeWiringContractTest" time="0.032"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.guard.FabricateGuardTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-09-03T14:33:23.255Z" hostname="苟富贵" time="0.009">
+  <properties/>
+  <testcase name="非结果类正常回复放行（解释说明不拦）" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.001"/>
+  <testcase name="anyToolExecuted 语义——本单由挂载点保证（turn 级零调用才进 guard）" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.001"/>
+  <testcase name="清单外工具名不提取（注册清单过滤）" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.0"/>
+  <testcase name="询问形态豁免——X是什么 不视为指定执行" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.002"/>
+  <testcase name="EXEC_CLAIM 中文形态覆盖" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.001"/>
+  <testcase name="诚实降级——工具清单为空放行" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.001"/>
+  <testcase name="SPEC_TAIL 工具名前置自然语序" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.0"/>
+  <testcase name="任务未指定工具放行（纯聊天）" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.0"/>
+  <testcase name="SPEC_EN 英文指定形态" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.001"/>
+  <testcase name="大小写容错——清单原样匹配失败回查不敏感" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.001"/>
+  <testcase name="数据形态路——结果引子加列表形态" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.001"/>
+  <testcase name="SPEC_VERB 中文动词提取" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.0"/>
+  <testcase name="询问形态豁免——你知道X吗" classname="com.hermes.dsh.guard.FabricateGuardTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

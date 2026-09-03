@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV 我的资产 · 重设计 demo v6（最终至简）</title>
+<style>
+:root{
+  --primary:#23272F;--on-primary:#ffffff;--primary-text:#23272F;
+  --s0:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;--s4:#ffffff;
+  --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--line:rgba(22,28,48,.08);
+  --danger:#d92d20;--danger-tint:rgba(217,45,32,.09);
+}
+.screen[data-theme=dark]{
+  --primary:#F1F3F5;--on-primary:#16181D;--primary-text:#F1F3F5;
+  --s0:#0c0e12;--s1:#16181d;--s2:#1e2024;--s3:#282a2e;--s4:#2b2d33;
+  --text:#e4e5ea;--text2:#a9afbf;--text3:#757b8d;--line:rgba(255,255,255,.08);
+  --danger:#ff6b5e;--danger-tint:rgba(255,107,94,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#05070a;color:#e4e5ea;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:26px 16px 60px;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(70,80,100,.14),transparent 70%)}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit;font-size:inherit}
+
+.demo-bar{width:420px;max-width:100%;display:flex;align-items:center;gap:8px;margin-bottom:14px;z-index:2;position:relative}
+.demo-bar .logo{font-size:13px;font-weight:700}
+.demo-bar .logo small{display:block;font-size:10px;font-weight:400;color:#757b8d;margin-top:2px}
+.demo-bar .sp{flex:1}
+.seg{display:flex;background:#16181d;border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:3px;gap:2px}
+.seg button{padding:5px 10px;border-radius:999px;font-size:11px;color:#a9afbf;white-space:nowrap}
+.seg button.on{background:#F1F3F5;color:#16181D;font-weight:600}
+.theme-btn{width:32px;height:32px;border-radius:50%;background:#16181d;border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:14px}
+
+.phone{width:420px;max-width:100%;height:860px;border-radius:30px;border:1px solid rgba(255,255,255,.1);
+  overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.screen{position:absolute;inset:0;background:var(--s0);color:var(--text);display:flex;flex-direction:column;transition:background .3s}
+
+/* 头：就一行 */
+.head{flex:none;display:flex;align-items:center;gap:10px;padding:16px 18px 10px}
+.head .bk{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--text2);font-size:16px}
+.head h1{font-size:19px;font-weight:800;flex:1}
+.head .lk{font-size:13px;color:var(--text3)}
+.head .lk .li{width:16px;height:16px;color:var(--text3)}
+
+/* 主体：裸列表，无卡片容器 */
+.body{flex:1;overflow-y:auto;padding:8px 20px 20px}
+.glabel{font-size:12px;font-weight:700;color:var(--text3);letter-spacing:.05em;padding:16px 2px 6px}
+.tabs{flex:none;display:flex;gap:2px;padding:2px 18px 0;border-bottom:1px solid var(--line)}
+.tabs .tab{flex:1;padding:9px 2px 10px;text-align:center;font-size:13px;font-weight:600;color:var(--text3);position:relative}
+.tabs .tab .n{font-size:10.5px;font-weight:400;color:var(--text3);margin-left:3px;font-variant-numeric:tabular-nums}
+.tabs .tab.on{color:var(--text)}
+.tabs .tab.on::after{content:"";position:absolute;left:22%;right:22%;bottom:-1px;height:2px;border-radius:2px;background:var(--primary)}
+.tabs .tab.off{opacity:.45}
+.kind{display:flex;}align-items:center;gap:8px;padding:16px 2px 8px;border-bottom:1.5px solid var(--line);margin-bottom:2px}
+.kind .ki{font-size:15px}
+.li{width:17px;height:17px;flex:none;color:var(--text2)}
+.kind .kn{font-size:15px;font-weight:800}
+.kind .kc{font-size:11px;color:var(--text3);font-variant-numeric:tabular-nums}
+.kind .sp{flex:1}
+.grow{display:flex;align-items:center;gap:8px;padding:13px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.grow .gk{flex:1;font-size:13.5px;font-weight:600;color:var(--text)}
+.grow .gn{font-size:11px;color:var(--text3);font-variant-numeric:tabular-nums}
+.grow .chev{color:var(--text3);font-size:12px;transition:transform .2s}
+.grow.open .chev{transform:rotate(90deg)}
+.grows{display:none;padding-left:14px}
+.grows.open{display:block}
+.ktag{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:999px;font-size:10.5px;font-weight:600}
+.ktag.sens{background:var(--danger-tint);color:var(--danger)}
+.ktag.norm{background:var(--s3);color:var(--text2)}
+.kst{font-size:10.5px;color:var(--text3);font-weight:600}
+.row{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .k{flex:none;width:70px;font-size:13.5px;color:var(--text2)}
+.row .v{flex:1;font-size:13.5px;color:var(--text);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.row .v{cursor:pointer}
+.row .v:hover{color:var(--text2)}
+.row .v.muted{color:var(--text3)}
+.row .eye{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--text3);flex:none;font-size:13px}
+.row .eye.on{color:var(--primary-text)}
+.row:active{background:var(--s2)}
+
+/* 证件照：两个虚线槽，无卡框 */
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:6px 2px 0}
+.slot{height:104px;border-radius:12px;border:1.5px dashed var(--line);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;color:var(--text3)}
+.slot:active{transform:scale(.98);border-color:var(--text3)}
+.slot .ic{font-size:19px}
+.slot .lb{font-size:11.5px;font-weight:600}
+
+/* 空态 */
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.empty .eic{width:60px;height:60px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center}
+.empty .eic .li{width:24px;height:24px;color:var(--text2)}
+.empty .et{font-size:16px;font-weight:700}
+.empty .es{font-size:12.5px;color:var(--text3);line-height:1.7;max-width:230px}
+.empty .ebtn{height:42px;padding:0 24px;border-radius:999px;background:var(--primary);color:var(--on-primary);
+  font-size:14px;font-weight:700;display:flex;align-items:center}
+
+.toast{position:absolute;left:50%;bottom:96px;transform:translate(-50%,20px);z-index:30;
+  background:var(--text);color:var(--s0);font-size:12.5px;padding:9px 16px;border-radius:999px;
+  opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.notes{width:420px;max-width:100%;margin-top:18px;background:#10131a;border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:16px 18px;z-index:1}
+.notes h3{font-size:12px;font-weight:700;color:#a9afbf;letter-spacing:.08em;margin-bottom:10px}
+.notes li{font-size:12px;color:#757b8d;line-height:1.7;list-style:none;padding-left:14px;position:relative}
+.notes li::before{content:"—";position:absolute;left:0;color:#4a5158}
+.notes li b{color:#a9afbf;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <div class="logo">MOV 我的资产 · demo v6<small>最终至简 · 2026-09-03 · 登记行也删</small></div>
+  <div class="sp"></div>
+  <div class="seg" id="seg">
+    <button data-sc="full" class="on">有数据</button>
+    <button data-sc="empty">空态</button>
+  </div>
+  <button class="theme-btn" id="themeBtn">🌙</button>
+</div>
+
+<div class="phone">
+  <div class="screen" id="screen" data-theme="light">
+
+    <div class="head">
+      <button class="bk">←</button>
+      <h1>我的资产</h1>
+      
+    </div>
+
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-tab="cred">凭据<span class="n">3</span></button>
+      <button class="tab" data-tab="photo">证件照<span class="n">0/2</span></button>
+      <button class="tab off" data-tab="soon1">衣柜</button>
+      <button class="tab off" data-tab="soon2">车辆</button>
+    </div>
+
+    <div class="body" id="bodyFull">
+      <div id="pane-cred-c">
+      <div class="grow" data-g><span class="gk">微信</span><span class="gn">2 项</span><span class="chev">›</span></div>
+      <div class="grows">
+      <div class="row"><span class="k">商户简称</span><span class="v" data-v="湘味小炒">········</span></div>
+      <div class="row"><span class="k">商户号</span><span class="v" data-v="1900000109">·······09</span></div>
+      </div>
+      <div class="grow" data-g><span class="gk">支付宝</span><span class="gn">1 项</span><span class="chev">›</span></div>
+      <div class="grows">
+      <div class="row"><span class="k">账号</span><span class="v" data-v="wmw***@163.com">wmw***@163.com</span></div>
+      </div>
+      </div>
+      <div id="pane-soon1-c" style="display:none"><div class="row" style="color:var(--text3);font-size:13px;border:none;padding-top:14px">即将上线</div></div>
+      <div id="pane-soon2-c" style="display:none"><div class="row" style="color:var(--text3);font-size:13px;border:none;padding-top:14px">即将上线</div></div>
+      <div id="pane-photo-c" style="display:none">
+      <div class="slots">
+        <button class="slot" data-slot="身份证"><span class="ic">+</span><span class="lb">身份证</span></button>
+        <button class="slot" data-slot="护照"><span class="ic">+</span><span class="lb">护照</span></button>
+      </div>
+      </div>
+    </div>
+
+    <div class="body" id="bodyEmpty" style="display:none">
+      <div class="empty">
+        <div class="eic"></div>
+        <div class="et">还没有任何资产</div>
+        <div class="es">只存在这台设备上，读取时每次需你确认</div>
+        <button class="ebtn" id="addBtn">添加凭据</button>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
+
+<div class="notes">
+  <h3>v6 最终至简（登记行也删）</h3>
+  <ul>
+    <li><b>导航栏回归</b>——下划线 tab 栏（凭据 3 / 证件照 0/2 / 衣柜 / 车辆·灰显），薄到只剩字+计数+一条线；点切类目</li>
+    <li><b>登记行删除（用户拍板）</b>——「凭据 3 条·敏感·每次确认·已上线」整行删：注册制结构由 tab 栏（类目+计数）承载；分级由机制承载（点值需确认=分级感的交互表达，不挂标语）</li>
+    <li><b>图标全删（用户拍板）</b>——头部 🔒、类目行图标、行尾 👁 全删；脱敏往返=点值本身；空态纯文字；视觉只剩字+线</li>
+    <li><b>二级列表收缩</b>——平台组默认收起成一行「微信 · 2 项 ›」，点开才展开字段明细；首屏只剩导航+登记行+组行</li>
+    <li><b>分级管理在行</b>——安全分级挂类目行（敏感·每次确认=功能红 / 普通=中性灰），读登记簿即读治理结构</li>
+    <li><b>薄视觉保留</b>——无卡框、裸列表、hairline 行、🔒 一枚图标、👁 脱敏往返、诚实空态、无假数据回落（v2 减法全保留）</li>
+    <li><b>即将上线诚实灰显</b>——未上线类目在册但灰显（登记簿完整），内容区无假装</li>
+  </ul>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const screen=$('#screen'),toast=$('#toast');
+function show(t){toast.textContent=t;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1800)}
+
+$('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));
+  const empty=b.dataset.sc==='empty';
+  $('#bodyFull').style.display=empty?'none':'block';
+  $('#bodyEmpty').style.display=empty?'flex':'none';
+});
+$('#themeBtn').onclick=()=>{const d=screen.dataset.theme==='dark';screen.dataset.theme=d?'light':'dark';$('#themeBtn').textContent=d?'🌙':'☀️'};
+
+document.querySelectorAll('.row .v').forEach(v=>{
+  v.onclick=()=>{
+    const open=v.classList.toggle('on');
+    if(open){v.dataset.mask=v.textContent;v.textContent=v.dataset.v;show('本次已确认 · 仅本机可见')}
+    else{v.textContent=v.dataset.mask}
+  };
+});
+document.querySelectorAll('[data-slot]').forEach(s=>s.onclick=()=>show('添加'+s.dataset.slot+'（拍照/相册）'));
+$('#addBtn').onclick=()=>show('添加凭据表单');
+document.querySelector('.bk').onclick=()=>show('返回');
+
+document.querySelectorAll('[data-g]').forEach(g=>g.onclick=()=>{
+  g.classList.toggle('open');g.nextElementSibling.classList.toggle('open');
+});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
+  ['cred','photo','soon1','soon2'].forEach(k=>{
+    const c=document.getElementById('pane-'+k+'-c');
+    if(c)c.style.display=b.dataset.tab===k?'block':'none';
+  });
+});
+
+if(location.hash==='#empty')document.querySelector('[data-sc="empty"]').click();
+</script>
+</body>
+</html>

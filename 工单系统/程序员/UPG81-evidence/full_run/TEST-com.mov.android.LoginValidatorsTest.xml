@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.LoginValidatorsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:51.688Z" hostname="苟富贵" time="0.01">
+  <properties/>
+  <testcase name="验证码 tab 提交条件 - 需协议+手机+验证码" classname="com.mov.android.LoginValidatorsTest" time="0.006"/>
+  <testcase name="验证码 - 六位数字" classname="com.mov.android.LoginValidatorsTest" time="0.001"/>
+  <testcase name="手机号格式 - 合法" classname="com.mov.android.LoginValidatorsTest" time="0.002"/>
+  <testcase name="手机号格式 - 非法" classname="com.mov.android.LoginValidatorsTest" time="0.001"/>
+  <testcase name="密码 tab 提交条件 - 密码不短于 6 位" classname="com.mov.android.LoginValidatorsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

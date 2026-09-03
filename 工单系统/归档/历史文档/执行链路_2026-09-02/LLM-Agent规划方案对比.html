@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给 LLM / Agent 出 Plan 的方案对比</title>
+<style>
+  :root {
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --ink: #1f2430;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --green: #16a34a;
+    --amber: #b45309;
+    --red: #dc2626;
+    --purple: #6d28d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", "Microsoft YaHei", -apple-system, sans-serif;
+    padding: 32px 20px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  header { margin-bottom: 20px; }
+  h1 { font-size: 24px; margin: 0 0 6px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .meta b { color: var(--accent); }
+  h2 {
+    font-size: 18px;
+    margin: 30px 0 12px;
+    padding-left: 10px;
+    border-left: 4px solid var(--accent);
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    font-size: 13.5px;
+  }
+  thead th {
+    background: var(--accent);
+    color: #fff;
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) { background: #fafbfd; }
+  tbody tr:hover { background: var(--accent-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+  tr.dsh td { background: #f5f3ff !important; }
+  tr.dsh:hover td { background: #ede9fe !important; }
+  .name { font-weight: 600; font-size: 14px; }
+  .star { color: var(--purple); }
+  .src { display: block; color: var(--muted); font-size: 11.5px; margin-top: 2px; word-break: break-all; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .t-skill { background: #dcfce7; color: var(--green); }
+  .t-framework { background: #dbeafe; color: var(--accent); }
+  .t-langgraph { background: #fef3c7; color: var(--amber); }
+  .t-reference { background: #e5e7eb; color: #374151; }
+  .t-orch { background: #ede9fe; color: var(--purple); }
+  .t-local { background: #ddd6fe; color: var(--purple); }
+  .yes { color: var(--green); font-weight: 600; }
+  .partial { color: var(--amber); font-weight: 600; }
+  .no { color: var(--muted); }
+  .strong { background: #fee2e2; color: var(--red); font-weight: 600; }
+  .strong-y { background: #dcfce7; color: var(--green); font-weight: 600; }
+  .conclusion, .panel {
+    margin-top: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+  .panel.purple { border-left-color: var(--purple); }
+  .panel b { color: var(--accent); }
+  .panel.purple b { color: var(--purple); }
+  .panel h3 { margin: 2px 0 10px; font-size: 15px; }
+  .panel ol, .panel ul { margin: 6px 0; padding-left: 22px; }
+  .panel li { margin: 6px 0; }
+  .panel code {
+    background: #f1f3f7;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0 4px;
+    font-size: 12.5px;
+    font-family: "Consolas", "Courier New", monospace;
+  }
+  .flow { color: var(--muted); font-size: 13px; }
+  @media (max-width: 760px) {
+    body { padding: 16px 10px; }
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>给 LLM / Agent 出 Plan 的方案对比</h1>
+    <div class="meta">整理日期：2026-09-02 · <b>8 个 GitHub / 业界方案 + 1 个本地深度研究</b>（deepseek-harness plan-mode）</div>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>方案</th>
+        <th>类型</th>
+        <th>核心理念</th>
+        <th>计划产出</th>
+        <th>动态重规划</th>
+        <th>审批 / 安全门</th>
+        <th>适合谁</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="dsh">
+        <td>
+          <span class="name"><span class="star">★</span> deepseek-harness plan-mode</span>
+          <span class="src">本地源码研究 · packages/plan/plan-mode + 决策记录 2026-07-22</span>
+        </td>
+        <td><span class="tag t-local">自研 harness 插件</span><br><span class="flow">Cordis·TS</span></td>
+        <td>单事实 log-only 布尔协作状态 + 评审 tool 调用；<b>软引导不强制</b></td>
+        <td><code>exit_plan_mode</code> 的 markdown（须 <code>#</code> 开头）；无文件、无 schema</td>
+        <td><span class="yes">✅ 评审不过→留在 plan mode 持续修订</span></td>
+        <td><span class="strong-y">✅ 强（评审卡）但仅 UX 闸</span></td>
+        <td>想抄「日志回放状态 + 计划审批闸 + 评审走工具调用」的</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">planning-with-files</span>
+          <span class="src">github.com/OthmanAdi/planning-with-files · ~26.3k★</span>
+        </td>
+        <td><span class="tag t-skill">Claude Code skill</span></td>
+        <td>Manus 式持久化 markdown 计划，扛过上下文重置</td>
+        <td><code>task_plan.md</code> + <code>findings.md</code> + <code>progress.md</code></td>
+        <td><span class="no">手动</span></td>
+        <td><span class="partial">弱</span></td>
+        <td>用 Claude Code 跑长任务手工流转的人</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">Zane-Qbb/LLM--Agent</span>
+          <span class="src">github.com/Zane-Qbb/LLM--Agent</span>
+        </td>
+        <td><span class="tag t-langgraph">LangGraph 范式合集</span></td>
+        <td>ReAct / ReWOO / <b>Plan&Execute</b> / LLM Compiler（任务编译成 DAG，节点=工具调用）</td>
+        <td>计划或编译为 DAG</td>
+        <td><span class="yes">✅ 局部容错重规划</span></td>
+        <td><span class="no">无</span></td>
+        <td>想对比多种规划范式做研究</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">ServiceNow EnterpriseOps-Gym</span>
+          <span class="src">github.com/ServiceNow/EnterpriseOps-Gym · planner_react.py</span>
+        </td>
+        <td><span class="tag t-orch">编排器（两遍式）</span></td>
+        <td>Planner 出战略计划，ReAct 执行器在其指导下做战术决策</td>
+        <td>意图 / 策略 / 风险 / 注意事项文本</td>
+        <td><span class="partial">部分（ReAct 层）</span></td>
+        <td><span class="no">无</span></td>
+        <td>企业级长任务的规划-执行分离</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">blecx/AI-Agent-Framework</span>
+          <span class="src">github.com/blecx/AI-Agent-Framework · PlannerAgent</span>
+        </td>
+        <td><span class="tag t-framework">Agent 框架</span></td>
+        <td>Planner 吃 GitHub issue → 写计划给下游原子化执行</td>
+        <td>严格 JSON：goal / 文件清单 / 验收 / 验证命令 / 耗时</td>
+        <td><span class="no">❌ 原子化执行</span></td>
+        <td><span class="no">无</span></td>
+        <td>issue → 代码的分工流水线</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">Plandex</span>
+          <span class="src">github.com/plandex-ai/plandex</span>
+        </td>
+        <td><span class="tag t-framework">CLI 框架</span></td>
+        <td>目的性 Plan-Execute + 计划树状态持久化</td>
+        <td>计划树（可分支）</td>
+        <td><span class="yes">✅</span></td>
+        <td><span class="yes">有</span></td>
+        <td>Python 生态想落地动态 Plan-Execute</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">Anneal</span>
+          <span class="src">github.com/krzemienski/anneal</span>
+        </td>
+        <td><span class="tag t-skill">Claude Code 插件族</span></td>
+        <td>模糊任务 → 多方案退火择优 → 出执行稿</td>
+        <td>XML prompt + plan 目录</td>
+        <td><span class="partial">—</span></td>
+        <td><span class="partial">评审</span></td>
+        <td>想要「多方案评审择优」而非单计划</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">LangGraph Plan-and-Execute</span>
+          <span class="src">langchain-ai/langgraph · 官方范式</span>
+        </td>
+        <td><span class="tag t-langgraph">底层框架</span></td>
+        <td>规划节点 → 执行 → 更新计划 → 判断完成的循环图</td>
+        <td>任意结构（图节点编排）</td>
+        <td><span class="yes">✅</span></td>
+        <td><span class="partial">自建</span></td>
+        <td>想自研定制规划编排</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="name">微软：规划 / 执行 / 验证分离</span>
+          <span class="src">learn.microsoft.com · 参考架构（非代码）</span>
+        </td>
+        <td><span class="tag t-reference">参考架构</span></td>
+        <td>Planner 只读 + 计划批准后才动手，可挂 CODEOWNERS / 分支保护</td>
+        <td>—（模式指导）</td>
+        <td><span class="partial">—</span></td>
+        <td><span class="strong-y">✅ 强（双层闸）</span></td>
+        <td>要「计划审批门 + 合代码审批门」双层治理</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="conclusion">
+    <b>一句话结论：</b>
+    自己用 Claude Code 跑手工流转 → 看 <b>planning-with-files</b>；
+    做代码级自动分工流水线 → 看 <b>blecx PlannerAgent</b> 与 <b>Plandex</b>；
+    想上「计划审批门 + 合代码审批门」 → 抄 <b>微软那套</b> 角色分离，或直接研究 <b>deepseek-harness plan-mode</b>（★ 唯一的「评审走结构化工具调用 + 状态靠日志回放」落地范式）。
+  </div>
+
+  <h2>★ deepseek-harness plan-mode 深度解读</h2>
+
+  <div class="panel purple">
+    <h3>先纠偏：plan 不在 Python SDK</h3>
+    <p class="flow">入口目录 <code>python/sdk/src/deepseek_harness</code> 是纯 stdio 传输层（JSON-RPC 客户端），grep「plan」零命中，不管规划。真正实现是 TS monorepo 里的 <code>packages/plan/plan-mode</code>（@deepseek-ai/dsh-plan-mode）；Python SDK 只负责：拉起 runtime 子进程 → 发 <code>session/prompt</code> → 收通知直到 idle → 抽最终回答。</p>
+  </div>
+
+  <div class="panel purple">
+    <h3>① 定位：plan 是「协作状态」，不是执行引擎</h3>
+    <p>plan mode 是 agent 的协作姿态（stance），只做<strong>软引导</strong>，从不强制。强制是三根独立轴，各自独立 owner、互不读写：<strong>沙箱 sandbox</strong>（执行范围）、<strong>批准策略 approval</strong>（权限）、<strong>plan mode</strong>（只贡献引导文本 + 一个需评审的退出工具）。决策记录明确拒绝把三者捏进同一个「named-mode」抽象。</p>
+  </div>
+
+  <div class="panel purple">
+    <h3>② 状态存储：log-only 单一事件，靠日志回放推导</h3>
+    <p>唯一持久事实是会话日志里一个事件 <code>plan/mode: {active: boolean}</code>——整值替换、最后一条生效。关键取舍：</p>
+    <ul>
+      <li><b>没有 live mirror（实时镜像）</b>。恢复 / resume / fork / compaction 全靠 <code>foldPlanMode(events)</code> 回放最后一条；host 重启、别的标签页、冷读都能从日志还原 → 状态与会话日志天然统一，不是边车。</li>
+      <li><b>明确拒绝「把 plan 存成文件/目录」</b>：工具参数已记录可评审计划，plan 目录会造成第二个持久家。计划内容工件 = <code>exit_plan_mode</code> 的一段 markdown（须 <code>#</code> 开头命名），无结构化 schema——刻意的克制。</li>
+    </ul>
+  </div>
+
+  <div class="panel purple">
+    <h3>③ 状态机：布尔开关 + pre-step 边界原子刷写</h3>
+    <p><code>set(agent, active)</code> 返回 <code>committed / queued / cancelled / noop</code>：</p>
+    <ul>
+      <li><b>turn 之间空闲</b> → 立即 <code>session.append('plan/mode')</code> 提交；</li>
+      <li><b>turn 开着</b> → 选择进 <code>pendingIntents</code>，等「下一个被接受的<strong>轮内 pre-step</strong>」才在边界刷写（挂在 <code>agent/pre-step</code> 钩子上）。</li>
+      <li>刷写卡在步进边界：新请求组装前应用，同一步骤的重试复用冻结的组装；append 失败则选择留在 pending 可重试，不丢。</li>
+    </ul>
+    <p class="flow">核心：状态翻转不靠独立写操作，而是<strong>挂在 agent 步进边界上原子提交</strong>。</p>
+  </div>
+
+  <div class="panel purple">
+    <h3>④ 谁触发（3 条通道）</h3>
+    <table>
+      <tbody>
+        <tr><td><b>用户命令</b></td><td><code>/plan</code>（进）、<code>/plan [message]</code>（进 + message 成为模型下一条普通用户消息）、<code>/plan off</code>（直接退、不进模型，还能取消尚未刷写的进入）</td></tr>
+        <tr><td><b>模型工具</b></td><td><code>exit_plan_mode</code>：plan mode 内展示完整计划，请求人类评审</td></tr>
+        <tr><td><b>继承</b></td><td><b>fork 继承已记录状态，新 spawn 从 inactive 开始</b>；无创建期 plan 选项</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel purple">
+    <h3>⑤ 评审闭环：给 LLM 出的 plan 如何被管理</h3>
+    <ul>
+      <li>参数 = markdown 计划；执行前校验「正在 plan mode」+「以 <code>#</code> 开头」。</li>
+      <li>经 <code>ctx.userQuestions.ask()</code> 弹评审：问题 <code>intent:{kind:'plan-review', approve:'Approve'}</code>，detail 携带完整计划 → 有能力的 UI 渲染成「决定卡」而非通用提问。</li>
+      <li>输出 schema 收窄到 <code>{approved: true}</code>（const）。</li>
+      <li><b>只有「Approve 且无自定义文本」放行</b>；拒绝 = 留在 plan mode 并把纠偏反馈回灌给模型继续改；放弃审阅（用户抢话）= 告知模型「停在这等用户消息」。</li>
+      <li>批准后是 <b>silent pending selection</b>：当前 tool batch 剩余仍带 plan 引导，下一个 request 前移除。</li>
+      <li><code>presentCall / presentResult</code> 定义 UI 呈现：卡片标题 = 计划第一个 heading，内容 = 原样 markdown。</li>
+      <li><b>工具目录常驻注册</b> <code>exit_plan_mode</code>（非 plan mode 执行才报错）→ 进出 plan mode 不改变工具 schema，保 KV cache 与稳定性。</li>
+    </ul>
+  </div>
+
+  <div class="panel purple">
+    <h3>⑥ 最值得抄的架构决策（与你的理念同源）</h3>
+    <ul>
+      <li><b>不为单一功能建通用抽象</b>：第一版做过通用 <code>ModeConfig.modes</code> 注册表，被砍——产品只有 plan 一个实例，通用机制只是维护负担。「等第二个真实消费者出现，再从两个具体案例抽公共 seam」。</li>
+      <li>plan 引导渲染在<strong>系统提示 order 50</strong>，inactive 零 token 成本；进出切换会改变 order 50 起的 KV cache 前缀。</li>
+      <li>已知局限照实写：进程在边界前退出丢一次 pending；评审中插件热重载 → 失败关闭（留 <code>/plan off</code> 手动逃生）；<strong>无视引导的模型仍可 mutation</strong> → 它是 UX 闸，不是安全闸。</li>
+    </ul>
+  </div>
+
+  <h2>对 MOV「计划审批闸」的借鉴点</h2>
+
+  <div class="panel purple">
+    <h3>可抄清单（对照 deepseek-harness）</h3>
+    <ol>
+      <li><b>单事实放会话日志</b>：若 MOV 已有 session/event 日志，plan 状态就当一个日志事件类型（log-only、整值替换），<b>别做实时镜像</b>——回放即状态，天然支持恢复 / 续跑 / 会话分叉。</li>
+      <li><b>plan 只当 UX 闸，强制另配独立轴</b>：要「计划/审批强制生效」，应独立设 enforcement（沙箱/批准），别硬塞进 plan 状态——否则会像 deepseek 砍掉的第一版一样，把不相干的 owner 拧成一根绳。</li>
+      <li><b>审批走结构化 tool 调用 + intent=plan-review</b>：给 LLM 出的 plan 通过带 <code>intent</code> 的问题通道弹出，UI 据此渲染成「决定卡」而非通用提问；只有明确批准（无自定义文本）才放行，其余把反馈回灌给模型。</li>
+      <li><b>批准动作延到下一步边界</b>：批准不是立刻生效，而是 pending 到下一 request 组装前——保证「带着计划引导跑完本批，下批才脱引导」。</li>
+      <li><b>工具/契约常驻，别随模式启停</b>：plan 工具进出不改变工具 schema，保 KV cache 前缀稳定；状态切换才改 prompt 段。</li>
+      <li><b>别急着做通用 named-mode 注册表</b>：除非 MOV 真出现第二个协作模式，否则先写死 plan，等两个具体案例再抽公共 seam。</li>
+    </ol>
+  </div>
+
+  <div class="conclusion">
+    <b>核心一句话：</b>deepseek-harness 把「给 LLM 出 plan」管成 = <b>log-only 布尔协作开关（回放即状态）+ 一份必须 <code>#</code> 开头的 markdown 工件 + 一次走 user-questions 的评审 tool 调用</b>——全程数据驱动、无 live mirror、无文件副产物、无通用 mode 注册表。
+  </div>
+
+  <p class="flow" style="margin-top:16px;">源码参考：<code>packages/plan/plan-mode/src/index.ts</code>（477 行）· <code>src/types.ts</code> · <code>src/client.ts</code>；设计决策：<code>.agents/notes/implemented/simplification/2026-07-22-plan-specific-collaboration-state.md</code>；传输层（无 plan）：<code>python/sdk/src/deepseek_harness/</code>。</p>
+</div>
+</body>
+</html>

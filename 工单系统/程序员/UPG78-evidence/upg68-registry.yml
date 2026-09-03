@@ -1,0 +1,45 @@
+name: UPG-68 Registry Guard
+
+# 商业安全闸 W2（UPG-68 A 项）：单源注册表 + 注册即校验闭环。
+# 新增 handler 未登记 → 生成器测试红 → CI 红；guard 只消费生成数据（PermissionRegistryData.kt），
+# 人工输入（categories/semantics）+ 盘点（tools.txt）任何一处漂移 → verify 红。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  registry-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK 环境
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+
+      - name: 盘点在面工具全集
+        run: node scripts/approval-inventory-collect.mjs
+
+      - name: 生成器测试（注册即校验：新 handler 未登记 / 缺人工分类 → 红）
+        run: ./gradlew :app:testDebugUnitTest --tests "com.mov.android.ApprovalRegistryGeneratorTest"
+
+      - name: 单源独立对账（生成物与人工输入一致性）
+        run: node scripts/approval-registry-verify.mjs
+
+      - name: 生成物保鲜——git diff --exit-code（UPG-78 A2：生成器重写后与库中版本漂移即红）
+        run: git diff --exit-code -- docs/ApprovalRegistry.json docs/ApprovalRegistry.md app/src/main/kotlin/com/hermes/dsh/tools/PermissionRegistryData.kt
+
+      - name: A7 单执行通道不变量（agent 唯一入口 dispatch / 禁绕过 guard 直调 / 明文出口收编 UI）
+        run: node scripts/single-channel-check.mjs
+
+      - name: 全量单元测试（guard 单源消费侧）
+        run: ./gradlew :app:testDebugUnitTest

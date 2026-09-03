@@ -1,0 +1,60 @@
+{
+  "ticket_id": "UPG-81",
+  "delivery_id": "DEL-UPG81-20260903-001",
+  "standard_id": "STD-UPG-81-v1",
+  "code_commit_sha": "3339c4b349254d9c849f142157f4d66101ff2cb2",
+  "artifact_sha": "ac64f567ac9322cde3fcaa401b7cdd837a4ae41be108def7c8986169d27dd7dd",
+  "delivered_at": "2026-09-03T09:20:00",
+  "delivered_by": "程序员-Claude/wmw0027",
+  "evidence_manifest_sha": "145a363026152ffb74012b67131a71fb38eaace852d190b7a38e61b401b5b6c8",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG81-evidence/before/TEST-com.mov.android.appearance.AppearanceContractTest.xml",
+      "sha256": "119b38843cc5e8e852b5d2b485cda4de7ec513e263eb8a0a29127081b030253a",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "修前定向复现 16/2（L1-10+M-U50-5 红）"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG81-evidence/after/TEST-com.mov.android.appearance.AppearanceContractTest.xml",
+      "sha256": "52c03d128cae9ca9ecb794f06dff10afdb8703d4474090e5abdfa1157036b7c9",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "修后定向 16/0 绿"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG81-evidence/kill/K1_L1-10.xml",
+      "sha256": "8c7d5e48aaa3fb618be5816744a04ba66224b4c731017853c784c58fd4393a43",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "亲杀 K1：L1-10 旧断言回潮 FAILED"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG81-evidence/kill/K2_M-U50-5.xml",
+      "sha256": "355afff5071606150591aba925d127f7de855b5bc2dd0571fc2c323b0df62a3e",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "亲杀 K2：M-U50-5 旧 pointer-events 回潮 FAILED"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG81-evidence/AppearanceContractTest.rev.bak.kt",
+      "sha256": "acc72af8b9365bb516c29db00be2d162ede5db6ec7d9fd367d7f7dd2a7f0ee6a",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "修订版测试文件备份"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/UPG81-evidence/full_run/SUMMARY_734_0fail_20260903_0910.md",
+      "sha256": "86d8bf08ed7eb7f0c3806320d6ccb467c6225384bb2288c10f3890882db7f993",
+      "producer": "程序员",
+      "created_at": "2026-09-03",
+      "note": "全量 --rerun-tasks 统计时点记录 734/0/1"
+    }
+  ]
+}

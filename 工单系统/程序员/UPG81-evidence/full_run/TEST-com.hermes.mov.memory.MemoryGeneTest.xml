@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.memory.MemoryGeneTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:50.500Z" hostname="苟富贵" time="0.03">
+  <properties/>
+  <testcase name="失败 2 次产出 failureAvoid 且 occurrences=2" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.008"/>
+  <testcase name="compact 同文本两次结果一致（确定性）" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.003"/>
+  <testcase name="confidence 规则推导矩阵" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.0"/>
+  <testcase name="画像草案识别与基因渲染" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.005"/>
+  <testcase name="长文本不作为画像条目（超 80 字符）" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.0"/>
+  <testcase name="tombstone 后历史 ref 不触发晋升（第四面）" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.005"/>
+  <testcase name="失败 1 次不产出 failureAvoid（occurrences 1 不注入）" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.001"/>
+  <testcase name="compact 提取 avoid 与关键词" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.001"/>
+  <testcase name="晋升路径回归——无 tombstone 时 ref 达标正常晋升" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.001"/>
+  <testcase name="多类失败去重聚合按次数降序且封顶 3 条" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.001"/>
+  <testcase name="正常偏好记忆不被指令过滤误杀" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.0"/>
+  <testcase name="指令语义记忆被弃条（compact 返回 null）" classname="com.hermes.mov.memory.MemoryGeneTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.market.LocalOverviewTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:49.620Z" hostname="苟富贵" time="0.115">
+  <properties/>
+  <testcase name="内置包预设指令在位且非空" classname="com.hermes.mov.market.LocalOverviewTest" time="0.039"/>
+  <testcase name="MainActivity 桥接线锚" classname="com.hermes.mov.market.LocalOverviewTest" time="0.035"/>
+  <testcase name="空数据源容错" classname="com.hermes.mov.market.LocalOverviewTest" time="0.002"/>
+  <testcase name="toMaps 桥输出形状完整" classname="com.hermes.mov.market.LocalOverviewTest" time="0.003"/>
+  <testcase name="三层分组齐全且顺序固定" classname="com.hermes.mov.market.LocalOverviewTest" time="0.002"/>
+  <testcase name="权限级从 tierOf 透传到工具行" classname="com.hermes.mov.market.LocalOverviewTest" time="0.002"/>
+  <testcase name="bubbleRows 轻量投影携带 enabled 与 reachable" classname="com.hermes.mov.market.LocalOverviewTest" time="0.004"/>
+  <testcase name="启停授权态透传与 unhealthy 口径" classname="com.hermes.mov.market.LocalOverviewTest" time="0.007"/>
+  <testcase name="McpMarket 读面方法锚" classname="com.hermes.mov.market.LocalOverviewTest" time="0.004"/>
+  <testcase name="meta 缺 desc 的工具行兜底为工具名" classname="com.hermes.mov.market.LocalOverviewTest" time="0.013"/>
+  <testcase name="内置包按前缀归包且工具数正确" classname="com.hermes.mov.market.LocalOverviewTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

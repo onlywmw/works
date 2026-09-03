@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.util.TruncateUtf8Test" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:49:38.768Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="中文三字节字符不劈半" classname="com.hermes.dsh.util.TruncateUtf8Test" time="0.001"/>
+  <testcase name="短文本原样返回" classname="com.hermes.dsh.util.TruncateUtf8Test" time="0.0"/>
+  <testcase name="emoji 代理对不劈半" classname="com.hermes.dsh.util.TruncateUtf8Test" time="0.0"/>
+  <testcase name="预算为零返回空串" classname="com.hermes.dsh.util.TruncateUtf8Test" time="0.0"/>
+  <testcase name="混合文本字节数恒不超预算" classname="com.hermes.dsh.util.TruncateUtf8Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

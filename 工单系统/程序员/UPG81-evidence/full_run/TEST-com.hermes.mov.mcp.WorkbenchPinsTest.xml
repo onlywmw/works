@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.mcp.WorkbenchPinsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:50.429Z" hostname="苟富贵" time="0.011">
+  <properties/>
+  <testcase name="超 5 截断" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.006"/>
+  <testcase name="迁移幂等 - v2 读回不变且再迁移不再变化" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.0"/>
+  <testcase name="空与坏输入解析为空表" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.001"/>
+  <testcase name="默认种子为 3 个内置能力 tasks orders vault" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.0"/>
+  <testcase name="v1 条目迁移为 v2 且丢弃冗余 name icon page ui" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.0"/>
+  <testcase name="缺 stableId 或 pinType 非法的条目被跳过" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.0"/>
+  <testcase name="v1 内置 page 缺省时回退 id" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.0"/>
+  <testcase name="serialize 也截断" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.001"/>
+  <testcase name="序列化只含 stableId pinType preset 无 name icon" classname="com.hermes.mov.mcp.WorkbenchPinsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

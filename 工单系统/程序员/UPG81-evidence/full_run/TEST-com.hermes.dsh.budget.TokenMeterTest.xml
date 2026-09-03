@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.budget.TokenMeterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:45.906Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="messageTokens 每块加 4 再加消息 4（dsh overhead）" classname="com.hermes.dsh.budget.TokenMeterTest" time="0.001"/>
+  <testcase name="空消息仅有消息开销" classname="com.hermes.dsh.budget.TokenMeterTest" time="0.003"/>
+  <testcase name="estimateTokens 加权口径 UPG-07 ASCII 0_3 CJK 0_67 其他 1_2" classname="com.hermes.dsh.budget.TokenMeterTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

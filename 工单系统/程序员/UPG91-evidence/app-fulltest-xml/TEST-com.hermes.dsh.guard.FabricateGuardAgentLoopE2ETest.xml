@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.guard.FabricateGuardAgentLoopE2ETest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:49:37.925Z" hostname="苟富贵" time="0.012">
+  <properties/>
+  <testcase name="对照组——正常闲聊不触发 guard（变异敏感度：删挂载则四点断言全红）" classname="com.hermes.dsh.guard.FabricateGuardAgentLoopE2ETest" time="0.006"/>
+  <testcase name="伪造完成声明走真实 AgentLoop——四点断言" classname="com.hermes.dsh.guard.FabricateGuardAgentLoopE2ETest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

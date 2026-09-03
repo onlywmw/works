@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.c7.C7BaselineGenerationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:53.627Z" hostname="苟富贵" time="0.067">
+  <properties/>
+  <testcase name="Z5 采集30会话确认弹窗计数基线并落档" classname="com.mov.android.c7.C7BaselineGenerationTest" time="0.067"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

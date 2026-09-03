@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.ApprovalExperienceTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:47.977Z" hostname="苟富贵" time="0.202">
+  <properties/>
+  <testcase name="UPG53 记住集超上限整体清空 失败方向为多弹窗" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.006"/>
+  <testcase name="UPG53场景3 拒绝后权限面与名单零变化" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.102"/>
+  <testcase name="UPG53场景7 调度链放行 allowed-remembered 不误判拒绝" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.016"/>
+  <testcase name="UPG53场景8 permissionTier万次判定毫秒级无IO退化" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.051"/>
+  <testcase name="UPG53场景7 gate级永不豁免 canRemember拦截" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.001"/>
+  <testcase name="UPG53场景2 ask与gate级工具人话映射全覆盖无fallback" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.014"/>
+  <testcase name="UPG53场景7 记住命中同类免弹且审计落 allowed-remembered" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.009"/>
+  <testcase name="UPG53场景1 free级恒放行不进审批链" classname="com.hermes.dsh.tools.ApprovalExperienceTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

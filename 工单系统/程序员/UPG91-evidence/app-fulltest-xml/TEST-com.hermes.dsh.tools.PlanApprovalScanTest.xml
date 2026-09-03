@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.PlanApprovalScanTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:49:38.734Z" hostname="苟富贵" time="0.014">
+  <properties/>
+  <testcase name="未登记工具fail_closed不入面" classname="com.hermes.dsh.tools.PlanApprovalScanTest" time="0.002"/>
+  <testcase name="扫描面收缩_只含free纯只读_写敏感ask读与未登记全部排除" classname="com.hermes.dsh.tools.PlanApprovalScanTest" time="0.001"/>
+  <testcase name="onlyonce防registry误标双保险_即使登记谎称free只读也排除" classname="com.hermes.dsh.tools.PlanApprovalScanTest" time="0.001"/>
+  <testcase name="gradeOf分级_MONEY最高_write与sensitive为WRITE_read为READ" classname="com.hermes.dsh.tools.PlanApprovalScanTest" time="0.004"/>
+  <testcase name="全登记表快照_扫描面成员全部为free纯只读且非onlyonce" classname="com.hermes.dsh.tools.PlanApprovalScanTest" time="0.001"/>
+  <testcase name="出单门槛_审批级步骤大于等于2才出单" classname="com.hermes.dsh.tools.PlanApprovalScanTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

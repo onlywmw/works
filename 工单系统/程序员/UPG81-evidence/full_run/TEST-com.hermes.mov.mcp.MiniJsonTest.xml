@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.mcp.MiniJsonTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:50.418Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="小数仍解析为 Double" classname="com.hermes.mov.mcp.MiniJsonTest" time="0.001"/>
+  <testcase name="Long 序列化输出不带小数点" classname="com.hermes.mov.mcp.MiniJsonTest" time="0.0"/>
+  <testcase name="超 Long 大整数退 Double" classname="com.hermes.mov.mcp.MiniJsonTest" time="0.002"/>
+  <testcase name="负整数与科学计数法分类正确" classname="com.hermes.mov.mcp.MiniJsonTest" time="0.001"/>
+  <testcase name="控制字符全量转义为合法 JSON" classname="com.hermes.mov.mcp.MiniJsonTest" time="0.001"/>
+  <testcase name="整数 id 解析为 Long 而非 Double" classname="com.hermes.mov.mcp.MiniJsonTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

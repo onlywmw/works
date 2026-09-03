@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "MOV 运行时架构（0027-mov @fea2fae）",
+    "output": "MOV_运行时架构图_2026-09-03.html",
+    "quality_profile": "showcase",
+    "locale": "zh-CN",
+    "views": [
+      { "id": "main-path", "label": "主路径：对话到执行", "focus": ["users", "chat", "agentloop", "scheduler", "approval", "tools", "memory"], "note": "用户说/打 → LLM 编排 → 判定单源 → 审批面 → 工具执行 → 落账。" },
+      { "id": "approval-plane", "label": "审批安全面", "focus": ["scheduler", "approval", "tools", "mcpface"], "note": "only-once/fail-closed/预审单；MCP 面与对话面共用同一判定入口（UPG-77 单源化）。" },
+      { "id": "external", "label": "外部依赖", "focus": ["agentloop", "deepseek", "market", "mowkim", "mcpface"], "note": "出网三通道：LLM 云、能力市场注册表、外部 MCP 服务器。" }
+    ]
+  },
+  "components": [
+    { "id": "users", "type": "external", "label": "用户", "sublabel": "平板 / 手机", "pos": [40, 330], "size": [150, 64] },
+    { "id": "chat", "type": "frontend", "label": "对话面", "sublabel": "room.html / markstream", "pos": [240, 330], "size": [150, 64], "tag": "WebView" },
+    { "id": "agentloop", "type": "backend", "label": "AgentLoop", "sublabel": "ReactLoopAgent 编排", "pos": [440, 330], "size": [150, 64] },
+    { "id": "scheduler", "type": "backend", "label": "McpToolScheduler", "sublabel": "guard.decide 判定单源", "pos": [640, 330], "size": [150, 64] },
+    { "id": "approval", "type": "security", "label": "审批面", "sublabel": "FIFO 队列 + 悬浮卡 + 预审单", "pos": [840, 330], "size": [160, 64], "tag": "only-once" },
+    { "id": "tools", "type": "backend", "label": "宿主工具面", "sublabel": "mcpHandlers 宿主工具", "pos": [1060, 330], "size": [160, 64] },
+    { "id": "mcpface", "type": "backend", "label": "MCP 面 :8389", "sublabel": "本机 HTTP + token 门", "pos": [440, 500], "size": [150, 64] },
+    { "id": "market", "type": "backend", "label": "市场包", "sublabel": "builtin/ext 热挂摘除", "pos": [840, 500], "size": [150, 64] },
+    { "id": "execeng", "type": "backend", "label": "执行引擎", "sublabel": "JobSpec / ApprovalGroup / Ledger", "pos": [840, 160], "size": [180, 64] },
+    { "id": "memory", "type": "database", "label": "记忆与账本", "sublabel": "Session JSONL / 足迹", "pos": [1060, 500], "size": [160, 64] },
+    { "id": "deepseek", "type": "cloud", "label": "DeepSeek 云", "sublabel": "LLM API", "pos": [440, 120], "size": [170, 64] },
+    { "id": "mowkim", "type": "cloud", "label": "mow.kim 能力市场", "sublabel": "registry 注册表", "pos": [1080, 640], "size": [170, 64] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Android 设备（App 进程）", "wraps": ["chat", "agentloop", "scheduler", "approval", "tools", "mcpface", "market", "execeng", "memory"] },
+    { "kind": "security-group", "label": "安全闸：判定单源 + fail-closed", "wraps": ["scheduler", "approval"] }
+  ],
+  "connections": [
+    { "id": "c1", "from": "users", "to": "chat", "label": "说/打字" },
+    { "id": "c2", "from": "chat", "to": "agentloop", "label": "消息+工具面", "labelAt": [415, 408] },
+    { "id": "c3", "from": "agentloop", "to": "scheduler", "label": "tool_call" },
+    { "id": "c4", "from": "scheduler", "to": "approval", "label": "ASK" },
+    { "id": "c5", "from": "approval", "to": "tools", "label": "放行执行" },
+    { "id": "c6", "from": "tools", "to": "memory", "label": "落账 journal", "labelAt": [1190, 432] },
+    { "id": "c8", "from": "mcpface", "to": "scheduler", "label": "同一 decide 单源", "variant": "dashed", "fromSide": "top", "toSide": "bottom" },
+    { "id": "c9", "from": "market", "to": "tools", "label": "热挂工具", "variant": "dashed", "fromSide": "right", "toSide": "bottom" },
+    { "id": "c10", "from": "execeng", "to": "approval", "label": "能力级审批原语（未接线）", "variant": "dashed", "fromSide": "bottom", "toSide": "top" },
+    { "id": "c11", "from": "agentloop", "to": "deepseek", "label": "HTTPS 请求/响应", "fromSide": "top", "toSide": "bottom" },
+    { "id": "c12", "from": "market", "to": "mowkim", "label": "registry 拉取", "fromSide": "bottom", "toSide": "left" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "对话与编排", "items": ["经典/极简两模式同一能力面（UPG-84 收敛）", "预审单：先扫描出单→一次批准→整批执行（UPG-76）"] },
+    { "dot": "rose", "title": "安全闸", "items": ["判定单源 guard.decide——对话面/MCP 面同一份判定（UPG-77）", "only-once 任何模式强制当次确认；fail-closed", "MONEY 永不预批，执行到该步实时逐笔确认"] },
+    { "dot": "emerald", "title": "能力与记忆", "items": ["执行引擎能力级 S1-S4 已合（未接线进对话面，S5+ 评估）", "记忆/账本 append-only，审批足迹可审计"] }
+  ]
+}

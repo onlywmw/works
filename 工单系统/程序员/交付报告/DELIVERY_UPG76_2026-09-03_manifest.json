@@ -1,0 +1,75 @@
+{
+  "ticket_id": "UPG-76",
+  "delivery_id": "DEL-UPG76-20260903-001",
+  "standard_id": "STD-UPG-76-v1",
+  "code_commit_sha": "ed5088c27b13ec7b612c685eff4ba786ca47e3b8",
+  "artifact_sha": "58715dc700967ff4edaacd578eaf78767ec7798f0b633364354d6eeb3963fcd8",
+  "delivered_at": "2026-09-03",
+  "delivered_by": "程序员",
+  "evidence_manifest_sha": "b4da221e868a3aab2264a1691e1d13517c1199a7e3e0f100163b3467ac1dec63",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG76-evidence/PlanApprovalStore.kt",
+      "sha256": "2f4b798ea64a639f8d98a797a77e8f86f91feaa7d31671308c28301145bb7549",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG76-evidence/PlanApprovalScan.kt",
+      "sha256": "c019d34dda8ead948fd996be3512acf59a11637f505e022817784196b30ac6db",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG76-evidence/MoneyTools.kt",
+      "sha256": "f241303cfe4fa46477f68e39f8b22573604bf411a18c33fff6e4a7f35ee02a8f",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG76-evidence/ApprovalService.kt",
+      "sha256": "cc338019c794972afc14180af4a638b94cfc1143a6794f76d28be2de3cfd7b25",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG76-evidence/MainActivity.kt",
+      "sha256": "24b7cda89bb24a0a09950f5356dc9edca7d094e5a59cb407a9b3fa0c8f322e39",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/UPG76-evidence/PlanApprovalStoreTest.kt",
+      "sha256": "9fe35e5b7ef302dabad24a8984d0b34477a13eb55e207669112976ff7204e8b8",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-007",
+      "path": "程序员/UPG76-evidence/PlanApprovalBindingTest.kt",
+      "sha256": "f57e2efeece245fdc2ce5d4595f4648b25e8ae7a15e7681711416098f7a50300",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-008",
+      "path": "程序员/UPG76-evidence/PlanApprovalScanTest.kt",
+      "sha256": "4bd68af9a5b02f549e9536a1f8947c3fa344abd1002794e977a16c0176f73da6",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-009",
+      "path": "程序员/UPG76-evidence/build.gradle.kts",
+      "sha256": "ad79d2241bd73c5045a7983a59f1f2a8befdcee4706521a1bf8893c25d514c0e",
+      "producer": "程序员",
+      "created_at": "2026-09-03"
+    }
+  ]
+}

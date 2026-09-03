@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":21,"result":{"content":[{"type":"text","text":"[code: APPROVAL_DENIED] 审批未通过（rejected）: 默认权限：vault.get 超出安全范围，请求允许"}],"isError":true}}

@@ -1,0 +1,233 @@
+# =====================================================================
+# MOV 元能力注册表 — MVP 实例(v0.3 schema)
+# 依据:架构设计稿 v0.3 §9.2(dispatch WRITE + track READ + pay MONEY 一条闭环)
+# 字段定义与取值约束见设计稿 §2;治理规则 §3/§4;consumer 独立性 §2.D/§4。
+# 本文件是「填了真实内容之后注册表长什么样」的样例,供审格式。
+# 真实登记要求:owner 真实责任作者 + acceptance_record 验收记录号,本文件用占位标注。
+# =====================================================================
+
+meta:
+  schema_version: "0.3"
+  registry_id: mov.capability-registry.mvp
+  open_domains: [fulfill, settle]        # §9.1:MVP 只开履约/结算两域
+  upgraded_by: independent_consumer_count # 晋升判据:独立消费者数 ≥2,见 §4
+
+# ---- 枚举约束(不允许枚举外取值,机器校验) ----
+enums:
+  side_effect: [READ, WRITE, MONEY]
+  env: [LOCAL, EXTERNAL]
+  consumer_type: [bundle, workflow, scenario]
+  state: [candidate, registered, deprecated, removed]
+  idempotent: [true, false]   # 语义=重复调用安全;自动重试策略归 Runtime Policy,见设计稿 §2.B
+
+# ---- 域登记(稳定业务对象域,非技术分类) ----
+domains:
+  - id: fulfill
+    name: 履约
+    note: A→B 的派单/追踪/送达。MVP 已开。
+    state: open
+  - id: settle
+    name: 结算
+    note: 资金收付、账单、退款。MVP 已开。
+    state: open
+  - id: sense
+    name: 感知
+    note: 相机/麦克风/传感器取数据。有真实场景再开,宁缺毋滥(§9.1)。
+    state: closed
+  - id: identity
+    name: 身份
+    note: 预留。用户档案/授权主体。
+    state: closed
+  - id: location
+    name: 位置
+    note: 预留。地理/地图语义能力。
+    state: closed
+
+# ---- 元能力(一行一条;registered 3 + candidate 1 演示) ----
+capabilities:
+
+  # ---------------------------------------------------------------
+  # [1] WRITE / EXTERNAL —— 三级副作用之一
+  # ---------------------------------------------------------------
+  - id: fulfill.dispatch
+    name: 派单
+    semantics: >-
+      把一次 A→B 的出行需求指派给一个可执行运力(司机/车辆),
+      返回可追踪的 booking;同 request_id 重复提交幂等返回同单。
+    domain: fulfill
+    side_effect: WRITE
+    env: EXTERNAL
+    idempotent: true          # 重复调用安全(同 request_id 去重);派单重试前先 reconcile 查该 request 是否已派
+    in:
+      required: [origin, destination]
+      properties:
+        origin:            { type: geo, note: "{lat,lng,label}", example: {lat: 31.23, lng: 121.47, label: "家"} }
+        destination:       { type: geo, note: "{lat,lng,label}", example: {lat: 31.18, lng: 121.50, label: "胖子餐馆"} }
+        desired_pickup_ts: { type: datetime, optional: true, example: "2026-09-02T18:00:00+08:00" }
+        vehicle_class:     { type: enum, optional: true, values: [economy, comfort, business] }
+        request_id:        { type: string, optional: false, note: "幂等键:调用方生成,去重/重试凭此 reconcile" }
+    out:
+      required: [booking_id, status]
+      properties:
+        booking_id:      { type: string }
+        status:          { type: enum, values: [BOOKED] }
+        pickup_eta_min:  { type: int, optional: true }
+    state: registered
+    owner: "{样例占位:登记责任作者,真实登记须填}"
+    evidence: "{样例占位:验收记录号,真实登记须填}"
+    consumers:            # independent_consumer_count = 2(不同业务目标)→ 已达 registered 判据
+      - consumer_id: bundle.dineout
+        consumer_type: bundle
+        domain_context: 出门吃饭闭环(去程用车)
+        first_used_at: 2026-09-02
+        acceptance_record: "{样例}"
+      - consumer_id: bundle.airport-run
+        consumer_type: bundle
+        domain_context: 去机场赶行程
+        first_used_at: 2026-09-02
+        acceptance_record: "{样例}"
+    impls:                # 路由:自营兜底优先;外部按区域/成本插拔(设计稿 §2.C)
+      - impl_id: mov.dispatch.v1
+        provider: self
+        base_cost: 0
+        latency_ms: 800
+        region: any
+        status: active
+      - impl_id: taxi.partner-shanghai
+        provider: partner
+        base_cost: 2.0     # 元/单(样例)
+        latency_ms: 600
+        region: "上海"
+        status: sandbox    # 未上生产:区域车队
+
+  # ---------------------------------------------------------------
+  # [2] READ / EXTERNAL —— 三级副作用之二
+  # ---------------------------------------------------------------
+  - id: fulfill.track
+    name: 追踪
+    semantics: >-
+      查询一个已生成订单/任务当前所处阶段与预计到达,只读不改。
+    domain: fulfill
+    side_effect: READ
+    env: EXTERNAL
+    idempotent: true          # 天然只读,可安全重复查询
+    in:
+      required: [booking_id]
+      properties:
+        booking_id: { type: string }
+    out:
+      required: [booking_id, status]
+      properties:
+        booking_id: { type: string }
+        status:     { type: enum, values: [DISPATCHED, ARRIVING, PICKED_UP, DELIVERING, ARRIVED, COMPLETED] }
+        eta_min:    { type: int, optional: true }
+        driver:     { type: object, optional: true, note: "{name, rating} 部分字段延迟填充" }
+    state: registered
+    owner: "{样例占位}"
+    evidence: "{样例占位}"
+    consumers:            # 独立消费者 = 2
+      - consumer_id: bundle.dineout
+        consumer_type: bundle
+        domain_context: 出门吃饭闭环(看车到哪了)
+        first_used_at: 2026-09-02
+        acceptance_record: "{样例}"
+      - consumer_id: bundle.errand
+        consumer_type: bundle
+        domain_context: 跑腿/闪送闭环(盯送达进度)
+        first_used_at: 2026-09-02
+        acceptance_record: "{样例}"
+    impls:
+      - impl_id: mov.track.v1
+        provider: self
+        base_cost: 0
+        latency_ms: 400
+        region: any
+        status: active
+
+  # ---------------------------------------------------------------
+  # [3] MONEY / EXTERNAL —— 三级副作用之三,审批唯一强门
+  # ---------------------------------------------------------------
+  - id: settle.pay
+    name: 支付
+    semantics: >-
+      向指定收款方支付一笔指定金额的资金,真实划转;授权后不可撤销,
+      故 MONEY 必须人工逐次审批——审批不是给 LLM 补参数的场合。
+    domain: settle
+    side_effect: MONEY
+    env: EXTERNAL
+    idempotent: true          # intent_id 幂等;重试前先 reconcile 查该 intent 交易状态,不盲目重试(支付超时先查单)
+    in:
+      required: [payee, amount_cents, currency]
+      properties:
+        payee:         { type: object, note: "{id/name} 收款方", example: {name: "胖子餐馆"} }
+        amount_cents:  { type: int, example: 15600, note: "单位:分" }
+        currency:      { type: enum, values: [CNY] }
+        intent_id:     { type: string, note: "幂等键/审批关联键,一次审批对一个 intent" }
+    out:
+      required: [txn_id, status]
+      properties:
+        txn_id:           { type: string }
+        status:           { type: enum, values: [AUTHORIZED, CAPTURED, FAILED] }
+        provider_receipt: { type: string, optional: true }
+    state: registered
+    owner: "{样例占位}"
+    evidence: "{样例占位}"
+    consumers:            # 独立消费者 = 2
+      - consumer_id: bundle.dineout
+        consumer_type: bundle
+        domain_context: 出门吃饭闭环(预付餐费)
+        first_used_at: 2026-09-02
+        acceptance_record: "{样例}"
+      - consumer_id: bill.recurring
+        consumer_type: workflow
+        domain_context: 周期性代付(帮还/交租)
+        first_used_at: 2026-09-02
+        acceptance_record: "{样例}"
+    impls:
+      - impl_id: mov.wallet.v1
+        provider: self
+        base_cost: 0
+        latency_ms: 900
+        region: any
+        status: active
+        note: "MVP 单实现即可;渠道(外部支付平台)按 partner 增挂,映射为 impl"
+
+  # ---------------------------------------------------------------
+  # [4] candidate 演示:WRITE / LOCAL / idempotent:false / 消费者=1
+  #     展示「未达独立消费者判据、等待第二个独立消费者」的状态
+  # ---------------------------------------------------------------
+  - id: sense.capture
+    name: 现场取证
+    semantics: >-
+      调用设备相机拍一张现场照并存入本地,每次执行产生新内容、不可幂等。
+    domain: sense
+    side_effect: WRITE
+    env: LOCAL
+    idempotent: false         # 每次产生新文件,重复调用语义不安全 → 不自动重试
+    in:
+      required: [subject]
+      properties:
+        subject:    { type: string, example: "餐桌环境" }
+        destination: { type: string, optional: true, note: "默认相册" }
+    out:
+      required: [media_id]
+      properties:
+        media_id: { type: string }
+        path:     { type: string }
+    state: candidate          # 消费者 =1,independent_consumer_count=1 < 2 → 停留 candidate,可正常用
+    owner: "{样例占位}"
+    evidence: "{样例占位}"
+    consumers:
+      - consumer_id: bundle.dineout
+        consumer_type: bundle
+        domain_context: 出门吃饭闭环(拍菜单/环境发给店家或留存)
+        first_used_at: 2026-09-02
+        acceptance_record: "{样例}"
+    impls:
+      - impl_id: mov.camera.v1
+        provider: self
+        base_cost: 0
+        latency_ms: 300
+        region: any
+        status: active
+    note: "若后续只被 dineout 一个业务目标用,长期停留 candidate;出现第 2 个独立消费者 → 触发 registered 评审(§4)"

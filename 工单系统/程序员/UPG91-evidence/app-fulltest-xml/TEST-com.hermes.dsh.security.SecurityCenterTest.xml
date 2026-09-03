@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.security.SecurityCenterTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:49:38.205Z" hostname="苟富贵" time="0.006">
+  <properties/>
+  <testcase name="UPG54锚9 体验等级随打扰度变化而非鼓励追分" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.003"/>
+  <testcase name="UPG54锚6 敏感信息显示只有始终隐藏与查看时30s" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.0"/>
+  <testcase name="UPG54锚2 策略摘要必含保护与打扰措辞" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.001"/>
+  <testcase name="UPG54锚7 数据同步档位不影响审批与外发判定" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.0"/>
+  <testcase name="UPG54锚3 硬边界五类别齐备含安全控制" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.0"/>
+  <testcase name="UPG54锚1 等级随策略变化且无直接调级API" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.0"/>
+  <testcase name="UPG54锚8 全放开也恒守硬边界最低B" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.0"/>
+  <testcase name="UPG54锚4 安全控制硬边界 模式切换单源不走安全中心" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.0"/>
+  <testcase name="UPG54锚5 审计不可关 profile无audit开关字段" classname="com.hermes.dsh.security.SecurityCenterTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

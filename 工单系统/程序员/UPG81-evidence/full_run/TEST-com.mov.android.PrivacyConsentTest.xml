@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.PrivacyConsentTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-03T01:09:52.206Z" hostname="苟富贵" time="0.025">
+  <properties/>
+  <testcase name="拒绝路径可退出且零业务触碰" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="政策页含 V1_1 特征内容" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="key 带版本号 v1" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="同意先持久化再进主界面" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="gate 类零业务类引用（合规核心）" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="已同意则放行" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="弹窗不可绕过且双钮同等显著" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="LAUNCHER 只属于 PrivacyGateActivity" classname="com.mov.android.PrivacyConsentTest" time="0.003"/>
+  <testcase name="MainActivity 有未同意重定向兑底" classname="com.mov.android.PrivacyConsentTest" time="0.013"/>
+  <testcase name="政策页零脚本零外链" classname="com.mov.android.PrivacyConsentTest" time="0.001"/>
+  <testcase name="未同意与缺省都需要弹窗" classname="com.mov.android.PrivacyConsentTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
