@@ -1,0 +1,45 @@
+{
+  "ticket_id": "UPG-88",
+  "delivery_id": "DEL-UPG88-20260903-001",
+  "standard_id": "STD-UPG-88-v1（content_sha256=f64ec0e288ecbe7ae14abaea2d325dc7036b5d89ccaf121e77ef782892575bec）",
+  "code_commit_sha": "43e5756（feat/upg88，基 main fea2fae；施工 90aee9f→契约升级 3a4dd11→R1 修复 43e5756）",
+  "artifact_sha": "6d4d2a4372e2d02d79cad05ece82ff62b014467976eb054dea17b7657b45eb10（app-debug.apk 56289653B，R1 修复后 assembleDebug）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG88-evidence/app-fulltest-xml/（:app:testDebugUnitTest --rerun-tasks 全量 102 套件 748/0/1 全绿；目录聚合 sha256=sorted 文件名+内容）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG88-evidence/emulator_home_minimal.png（模拟器：两态开关切换→极简主页呈现；CDP 铁证 home/index.html 已加载）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG88-evidence/emulator_home_reboot_keep.png（force-stop 重启后极简主页保持——持久化实证）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG88-evidence/emulator_asr_mode_log.txt（档位双向对照 logcat：minimal effort=none 简洁节=true / classic effort=high 简洁节=false + ASR 诚实空态路径）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/交付报告/DELIVERY_UPG88_2026-09-03.md §二（变异亲杀 4 锚实录：M1 删 loadUrl→锚①红/M2 删 partial 注入→锚②红/M3 isDeepFor 恒 true→锚③红/M4 加模式过滤→锚④红；还原复绿 748/0/1）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/交付报告/DELIVERY_UPG88_2026-09-03.md §四/§七（真机转模拟器自测依据[用户指示+平板被占]如实申报 + coverage_status=PARTIAL 设计师裁决位：ASR 真实语音转写端到端转真机人工走查）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    }
+  ]
+}
