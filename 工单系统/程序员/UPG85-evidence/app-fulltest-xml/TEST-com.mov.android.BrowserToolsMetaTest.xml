@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.BrowserToolsMetaTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T09:01:50.616Z" hostname="苟富贵" time="0.006">
+  <properties/>
+  <testcase name="browser 14 工具数量与命名契约" classname="com.mov.android.BrowserToolsMetaTest" time="0.002"/>
+  <testcase name="代理端契约不回归——connectProxy 与 rawName 双向转换" classname="com.mov.android.BrowserToolsMetaTest" time="0.001"/>
+  <testcase name="browser 14 三件套——description 真描述且保留原句（只增不改）" classname="com.mov.android.BrowserToolsMetaTest" time="0.001"/>
+  <testcase name="browser 14 三件套——字段级 schema 描述非参数名占位" classname="com.mov.android.BrowserToolsMetaTest" time="0.001"/>
+  <testcase name="browser 14 三件套——output 声明点名顶层返回键" classname="com.mov.android.BrowserToolsMetaTest" time="0.0"/>
+  <testcase name="真无参工具空 properties 合法（detectForms-back-forward）" classname="com.mov.android.BrowserToolsMetaTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

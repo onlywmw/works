@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.tools.SceneLiveQueryTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2026-09-03T09:01:50.451Z" hostname="苟富贵" time="0.0">
+  <properties/>
+  <testcase name="真实查票 北京到上海 车次返回（站表电报码修复互锁验证）" classname="com.hermes.mov.tools.SceneLiveQueryTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

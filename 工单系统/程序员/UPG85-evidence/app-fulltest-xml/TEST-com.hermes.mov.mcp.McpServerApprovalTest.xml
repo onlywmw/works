@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.mcp.McpServerApprovalTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T09:01:50.086Z" hostname="苟富贵" time="0.295">
+  <properties/>
+  <testcase name="MCP面 default ask 超时 fail-closed 拒绝 不留req且足迹cancelled" classname="com.hermes.mov.mcp.McpServerApprovalTest" time="0.266"/>
+  <testcase name="MCP面 default ask 路由 ApprovalService 允许返回明文且无req死信" classname="com.hermes.mov.mcp.McpServerApprovalTest" time="0.012"/>
+  <testcase name="MCP面 FULL_ACCESS only-once vault_get 拒绝不直出 当次允许才明文" classname="com.hermes.mov.mcp.McpServerApprovalTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

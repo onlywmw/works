@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.workflow.WorkflowEngineTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-09-03T09:01:50.463Z" hostname="苟富贵" time="0.024">
+  <properties/>
+  <testcase name="状态序列化 round-trip（含中文与错误）" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.006"/>
+  <testcase name="prepareResume 已完成剧本 no-op" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="demo 资产与解析器动作白名单一致" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.002"/>
+  <testcase name="非法剧本拒解析" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="prepareResume 重置未完成步并保留 done" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="状态反序列化损坏容错" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="初始状态全 pending" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="fillForm 字段契约校验" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.001"/>
+  <testcase name="vault 字段中文标签（审批文案）" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.001"/>
+  <testcase name="步进状态机" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="resume 起点计算" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="from 语法解析合法" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.001"/>
+  <testcase name="from 语法解析拒绝非法" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="解析合法 3 步剧本" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.0"/>
+  <testcase name="InfoVault 真实明文链路（假加密）" classname="com.hermes.mov.workflow.WorkflowEngineTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

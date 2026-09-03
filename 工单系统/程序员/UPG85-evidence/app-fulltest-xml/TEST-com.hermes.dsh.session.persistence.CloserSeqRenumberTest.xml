@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.session.persistence.CloserSeqRenumberTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T09:01:48.783Z" hostname="苟富贵" time="0.01">
+  <properties/>
+  <testcase name="两类 closer 单独输出 seq 重叠（回归锚点）" classname="com.hermes.dsh.session.persistence.CloserSeqRenumberTest" time="0.008"/>
+  <testcase name="已闭合日志无 closer 可重编号" classname="com.hermes.dsh.session.persistence.CloserSeqRenumberTest" time="0.001"/>
+  <testcase name="重编号后 seq 连续唯一且语义保持" classname="com.hermes.dsh.session.persistence.CloserSeqRenumberTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

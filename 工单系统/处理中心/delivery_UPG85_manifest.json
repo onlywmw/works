@@ -1,0 +1,41 @@
+{
+  "ticket_id": "UPG-85",
+  "delivery_id": "DEL-UPG85-20260903-001",
+  "standard_id": "STD-UPG-85-v1（content_sha256=9d82e2b11eea594f07a1fe75f82df8a5039af65b87ecfb3dd52d1313c54d2011）",
+  "code_commit_sha": "8609d69（feat/upg85，基 main 8647ee9）",
+  "artifact_sha": "a1132fa8572e543f03cd7e3f6898a0b92a090fe5c45e25afc807ce0f4bb5f0a1（app-debug.apk 56125103B，assembleDebug 绿）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG85-evidence/app-fulltest-xml/（:app:testDebugUnitTest --rerun-tasks 全量 98 套件 730/2/1——2 失败=AppearanceContractTest L1-10/M-U50-5 基线预存[UPG-81 未合 main]，724[U82 时点]+6[本单新增测试]=730 零新增失败；PlanApproval 家族 35 全绿=既有 32 零回归+新增 3；目录聚合 sha256=sorted 文件名+内容）",
+      "sha256": "47c0f3029724717e80473ddcc63a28723b0fbdacc1d9768574fa5690f8567caa",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "0027-mov/app/build/outputs/apk/debug/app-debug.apk（装配级 assembleDebug BUILD SUCCESSFUL）",
+      "sha256": "a1132fa8572e543f03cd7e3f6898a0b92a090fe5c45e25afc807ce0f4bb5f0a1",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/交付报告/DELIVERY_UPG85_2026-09-03.md §五（变异亲杀实录：M1 恢复 removeAll→契约 3 红；M2 改 indexOfLast→契约 2 红；还原后定向+全量复绿，commit 8609d69 保护下 checkout 还原）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/交付报告/DELIVERY_UPG85_2026-09-03.md §四（缺陷前后行为对比：缺陷态=同 tool 后续步骤被静默移除[单少行，b 不可勾选执行]；修复态=b 保留在单[可勾 HIT/未勾 DENIED/漂移 MISS]——PlanApprovalBindingTest 三案 + 契约锚 3 测试）",
+      "producer": "C",
+      "created_at": "2026-09-03"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "审验独立复现（UPG-80 审验发现①：ed5088c:5543 与 main:5267 同逻辑 removeAll 误移除）——本单修复点即该发现，工单库 UPG-85 卡依据段",
+      "producer": "审验员",
+      "created_at": "2026-09-03"
+    }
+  ]
+}
