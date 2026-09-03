@@ -70,7 +70,7 @@
 
 **E2 hash 一致性预校验**（`python 审验.py --verify-hash feat/upg92 39039ef --repo C:\Users\Administrator\Desktop\MOV`）：
 
-- 结果：**HASH_REJECT \<not-ancestor\>** —— 如实申报：feat/upg92 未合 main 且本地 main 领先 origin/main 8 提交（push 待网络恢复，UPG-75 起在案），未合分支 commit 必然不在 origin/main 祖先链——与 UPG-88/90/91 同模式（交付待验收，**设计师合 main 后终态复核**）。hash 存在性已验（`git cat-file -t 39039ef`=commit）。
+- 结果：**HASH_REJECT \<not-ancestor\>** —— 如实申报：feat/upg92 已 push origin 但未合 main，未合分支 commit 不在 origin/main 祖先链——与 UPG-88/90/91 同模式（交付待验收，**设计师合 main 后终态复核**）。hash 存在性已验（`git cat-file -t 39039ef`=commit）。
 
 ## 六、范围与红线遵守
 
