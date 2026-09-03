@@ -1,0 +1,33 @@
+{
+  "ticket_id": "UPG-90",
+  "delivery_id": "DEL-UPG90-20260903-001",
+  "standard_id": "STD-UPG-90-v1（content_sha256=59e79222de1f4c8dfeb6b4997099742b7c06b10d083a8fcd6adc72273cea0793）",
+  "code_commit_sha": "1845cb7（feat/upg90，基 main fea2fae）",
+  "artifact_sha": "不适用（无构建产物变更——market-web 静态修复+测试治理；:app:assembleDebug BUILD SUCCESSFUL 实证）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG90-evidence/app-fulltest-xml/（全量 101 套件 744/0/1 全绿；两跑 git status c7 面零 M；目录聚合 sha256=sorted 文件名+内容）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/交付报告/DELIVERY_UPG90_2026-09-03.md §二（亲杀 2 锚：M1 恢复未闭合引号→链接断言红/M2 写回 time 字段→确定性守卫红；还原复绿）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/交付报告/DELIVERY_UPG90_2026-09-03.md §三（两跑零 M 输出+c7 30 文件零 M 实证+5 CRLF 假差异如实申报[diff 实质零]）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "0027-mov market-web/index.html:199（引号闭合修复——git show 1845cb7 可验）+ market-web 库内四死文件零残留（git ls-files）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    }
+  ]
+}
