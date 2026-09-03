@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.OnlyOnceGuardTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:20.867Z" hostname="苟富贵" time="0.015">
+  <properties/>
+  <testcase name="UPG68 验收 dsh uiOnlyTools 硬拒 asset credPeek（allowedTools null 纵深）" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.002"/>
+  <testcase name="UPG61 vault_get remembered命中仍弹窗且落allowed-once" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.003"/>
+  <testcase name="UPG68 验收 open模式 vault_get 仍 only-once 强制确认" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.004"/>
+  <testcase name="only-once清单覆盖四handler且下划线归一命中" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.001"/>
+  <testcase name="UPG68 dispatch 对 only-once 只放行 allowed-once 拒绝 turn" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.002"/>
+  <testcase name="UPG68 vault_get 注册表宣告 ask 不再伪放行 free" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.0"/>
+  <testcase name="UPG68 弹窗层only-once禁用豁免勾选（源码锚）" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.002"/>
+  <testcase name="UPG61 vault_get turn豁免同样跳过" classname="com.hermes.dsh.tools.OnlyOnceGuardTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

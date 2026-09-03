@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ToolSdkGeneratorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:21.984Z" hostname="苟富贵" time="0.009">
+  <properties/>
+  <testcase name="三分执行层——调度器塌缩分支 已塌缩与真未知可区分" classname="com.mov.android.ToolSdkGeneratorTest" time="0.003"/>
+  <testcase name="P3 对账——nearSuggestions 与调度器 nearHint 同输入同候选（双实现同步锁）" classname="com.mov.android.ToolSdkGeneratorTest" time="0.003"/>
+  <testcase name="tool help 契约——已登记三件套 不存在近邻 入参空 INVALID_ARGS" classname="com.mov.android.ToolSdkGeneratorTest" time="0.001"/>
+  <testcase name="tool help output 诚实化——恒待登记标注 禁输入键冒充（R1 P2 锁死）" classname="com.mov.android.ToolSdkGeneratorTest" time="0.0"/>
+  <testcase name="tool help 同源——改登记层描述文档同步变化" classname="com.mov.android.ToolSdkGeneratorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

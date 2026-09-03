@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.guard.RepeatDetectorTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:20.394Z" hostname="苟富贵" time="0.009">
+  <properties/>
+  <testcase name="连续链命中后续阈值 5" classname="com.hermes.dsh.guard.RepeatDetectorTest" time="0.002"/>
+  <testcase name="reset 清空连续链" classname="com.hermes.dsh.guard.RepeatDetectorTest" time="0.001"/>
+  <testcase name="参数键序无关视为同一调用" classname="com.hermes.dsh.guard.RepeatDetectorTest" time="0.0"/>
+  <testcase name="超容量 LRU 淘汰不崩且检测仍可用" classname="com.hermes.dsh.guard.RepeatDetectorTest" time="0.004"/>
+  <testcase name="AAA 连续达到阈值 3 才触发" classname="com.hermes.dsh.guard.RepeatDetectorTest" time="0.001"/>
+  <testcase name="ABA 序列中第二个 A 计为第 1 次不误报" classname="com.hermes.dsh.guard.RepeatDetectorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

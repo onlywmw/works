@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.ApprovalServiceTurnTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:20.861Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="允许本轮后同turn同工具不再弹窗" classname="com.hermes.dsh.tools.ApprovalServiceTurnTest" time="0.003"/>
+  <testcase name="拒绝不记录下次重复弹" classname="com.hermes.dsh.tools.ApprovalServiceTurnTest" time="0.001"/>
+  <testcase name="跨turn重置重新弹窗" classname="com.hermes.dsh.tools.ApprovalServiceTurnTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

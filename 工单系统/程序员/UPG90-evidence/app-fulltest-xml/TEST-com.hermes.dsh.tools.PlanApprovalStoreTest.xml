@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.PlanApprovalStoreTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:20.955Z" hostname="苟富贵" time="0.011">
+  <properties/>
+  <testcase name="计划外未登记返回MISS" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="同工具不同参数为不同键_未批准参数MISS" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.0"/>
+  <testcase name="参数键等价_映射顺序无关canonical稳定命中" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="单上被拒步骤执行期命中为DENIED不重复弹窗" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="blockStep写入blocked_执行绑定DENIED" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="Group迁移_pending经部分批准到partially_decided_收口completed" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="已过期节点consume返回EXPIRED且不复活" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.0"/>
+  <testcase name="nodeKey由tool与参数哈希构成_可区分工具" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="Group_markStale使已批节点全STALE不可执行" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="argHash与engine CanonicalCodec一致性_同一canonical源" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="Group_超时自动expired_组内approved全失效" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.0"/>
+  <testcase name="onlyonce永不入簿且consume防御MISS" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="Group_收口后不可再裁决_重复建单拒绝" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="命中放行并原子扣减_耗尽后同键转RUNS_EXHAUSTED" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.001"/>
+  <testcase name="MONEY永不入簿且consume防御MISS" classname="com.hermes.dsh.tools.PlanApprovalStoreTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

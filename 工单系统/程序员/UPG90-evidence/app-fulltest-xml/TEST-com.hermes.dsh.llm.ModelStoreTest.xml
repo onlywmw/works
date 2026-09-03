@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.llm.ModelStoreTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:20.420Z" hostname="苟富贵" time="0.071">
+  <properties/>
+  <testcase name="持久化 roundtrip 重启仍在" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.014"/>
+  <testcase name="seed 两条加视觉迁移 且 flash 默认" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.006"/>
+  <testcase name="add 重复 id 拒绝" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.006"/>
+  <testcase name="删除默认递补第一个 enabled" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.007"/>
+  <testcase name="停用默认递补下一个" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.006"/>
+  <testcase name="setDefault 互斥 只有一个默认" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.006"/>
+  <testcase name="disabled 不可设默认" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.007"/>
+  <testcase name="全部停用后无默认 允许删光" classname="com.hermes.dsh.llm.ModelStoreTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

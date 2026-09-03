@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.capsule.CapsuleResolverTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:22.311Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="MCP 工具从注册表实读名称 - 包改名不影响" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.003"/>
+  <testcase name="预设链 - pin 预设优先于预设兜底" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.0"/>
+  <testcase name="内置 BUILTIN 解析为静态表与 page 路由" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.001"/>
+  <testcase name="停用与不可达状态" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.0"/>
+  <testcase name="新建 builtin memory 页可解析" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.0"/>
+  <testcase name="只读判定 - perm free 或词法命中" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.0"/>
+  <testcase name="卸载或未知工具 = REMOVED 且应被勾稽清理" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.0"/>
+  <testcase name="内置包（badge 内置）预设兜底仍生效" classname="com.mov.android.capsule.CapsuleResolverTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

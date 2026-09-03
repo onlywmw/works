@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.SchedulerDotNameBehaviorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:21.824Z" hostname="苟富贵" time="0.003">
+  <properties/>
+  <testcase name="点号与下划线直呼均不得塌缩 且 native 面塌缩保留" classname="com.mov.android.SchedulerDotNameBehaviorTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

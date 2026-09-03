@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.HostBuiltinPackContractTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T15:27:22.279Z" hostname="苟富贵" time="0.016">
+  <properties/>
+  <testcase name="UPG87 锚① - syncHostBuiltinTools 必须真实收缩面（禁用集消费 agent 面+MCP 面）" classname="com.mov.android.approval.HostBuiltinPackContractTest" time="0.003"/>
+  <testcase name="UPG87 锚② - enable 热挂恢复接线 + 冷启调用在位（重启状态保持）" classname="com.mov.android.approval.HostBuiltinPackContractTest" time="0.01"/>
+  <testcase name="UPG87 agent 面过滤在位 - rebuildAgentTools 按 hostDisabledTools 收缩（E3 白名单→TOOL_NOT_FOUND）" classname="com.mov.android.approval.HostBuiltinPackContractTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
