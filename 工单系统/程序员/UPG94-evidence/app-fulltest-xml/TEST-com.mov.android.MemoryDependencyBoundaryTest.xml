@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.MemoryDependencyBoundaryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:19.753Z" hostname="苟富贵" time="0.187">
+  <properties/>
+  <testcase name="memory-core 零 Android 依赖——真实路径加豁免仅注释行" classname="com.mov.android.MemoryDependencyBoundaryTest" time="0.009"/>
+  <testcase name="Gradle 模块与依赖边界" classname="com.mov.android.MemoryDependencyBoundaryTest" time="0.001"/>
+  <testcase name="呈现层源码零 import memory-core 内部——真实路径全量扫描" classname="com.mov.android.MemoryDependencyBoundaryTest" time="0.177"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

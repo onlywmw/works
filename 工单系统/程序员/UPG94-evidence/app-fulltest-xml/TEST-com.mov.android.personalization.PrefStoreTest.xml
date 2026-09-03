@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.personalization.PrefStoreTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:20.876Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="损坏内容 - 空池不抛" classname="com.mov.android.personalization.PrefStoreTest" time="0.002"/>
+  <testcase name="默认状态 - 未同意 默认开" classname="com.mov.android.personalization.PrefStoreTest" time="0.0"/>
+  <testcase name="序列化往返 - tags 与 state 齐全" classname="com.mov.android.personalization.PrefStoreTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

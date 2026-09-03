@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.ApprovalQueueTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:18.448Z" hostname="苟富贵" time="0.23">
+  <properties/>
+  <testcase name="A2全部本轮允许批量清队列且onlyonce留逐条" classname="com.hermes.dsh.tools.ApprovalQueueTest" time="0.03"/>
+  <testcase name="A1-2队首超时自动拒绝且下一窗自动出现并落足迹" classname="com.hermes.dsh.tools.ApprovalQueueTest" time="0.161"/>
+  <testcase name="A2外部complete尾项免弹允许且队列清空" classname="com.hermes.dsh.tools.ApprovalQueueTest" time="0.024"/>
+  <testcase name="A1-1 并发三请求FIFO依次展示全部有结论" classname="com.hermes.dsh.tools.ApprovalQueueTest" time="0.015"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

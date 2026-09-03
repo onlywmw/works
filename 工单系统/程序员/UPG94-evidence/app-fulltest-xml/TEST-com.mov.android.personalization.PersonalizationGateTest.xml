@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.personalization.PersonalizationGateTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:20.871Z" hostname="苟富贵" time="0.003">
+  <properties/>
+  <testcase name="推荐视图只含结构化字段 - 无 content 无原文无 Timeless" classname="com.mov.android.personalization.PersonalizationGateTest" time="0.003"/>
+  <testcase name="未协议授权 - 视图为空" classname="com.mov.android.personalization.PersonalizationGateTest" time="0.0"/>
+  <testcase name="上传载荷无个人 id 且仅结构字段" classname="com.mov.android.personalization.PersonalizationGateTest" time="0.0"/>
+  <testcase name="关闭个性化 - 视图为空且上传载荷空组" classname="com.mov.android.personalization.PersonalizationGateTest" time="0.0"/>
+  <testcase name="blocked 标签不复活" classname="com.mov.android.personalization.PersonalizationGateTest" time="0.0"/>
+  <testcase name="敏感标签不传" classname="com.mov.android.personalization.PersonalizationGateTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

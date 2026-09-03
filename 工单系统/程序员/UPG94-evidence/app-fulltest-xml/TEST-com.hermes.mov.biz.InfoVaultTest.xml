@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.biz.InfoVaultTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:18.813Z" hostname="苟富贵" time="0.151">
+  <properties/>
+  <testcase name="cred list 条目与脱敏账号" classname="com.hermes.mov.biz.InfoVaultTest" time="0.01"/>
+  <testcase name="照片加密落盘且可解密取回" classname="com.hermes.mov.biz.InfoVaultTest" time="0.005"/>
+  <testcase name="两次写入同 key 覆盖且索引更新" classname="com.hermes.mov.biz.InfoVaultTest" time="0.006"/>
+  <testcase name="cred 平台名剔除路径字符防穿越" classname="com.hermes.mov.biz.InfoVaultTest" time="0.004"/>
+  <testcase name="cred 删除与未知项" classname="com.hermes.mov.biz.InfoVaultTest" time="0.005"/>
+  <testcase name="校验 手机 邮箱 卡号 证件号与 OnboardDraft 同规则" classname="com.hermes.mov.biz.InfoVaultTest" time="0.009"/>
+  <testcase name="文本字段 roundtrip 加解密一致" classname="com.hermes.mov.biz.InfoVaultTest" time="0.005"/>
+  <testcase name="UPG53 撤销窗口过期 真删不可恢复" classname="com.hermes.mov.biz.InfoVaultTest" time="0.007"/>
+  <testcase name="labelsFor 对 cred 返回平台账号标签" classname="com.hermes.mov.biz.InfoVaultTest" time="0.002"/>
+  <testcase name="cred 存取 roundtrip 且磁盘无明文" classname="com.hermes.mov.biz.InfoVaultTest" time="0.004"/>
+  <testcase name="脱敏规则 邮箱 首字母加域名" classname="com.hermes.mov.biz.InfoVaultTest" time="0.0"/>
+  <testcase name="脱敏规则 身份证 前4后4" classname="com.hermes.mov.biz.InfoVaultTest" time="0.0"/>
+  <testcase name="UPG53 照片删除进撤销窗口可恢复" classname="com.hermes.mov.biz.InfoVaultTest" time="0.008"/>
+  <testcase name="UPG53 场景5 加密失败文案人话不暴露底层异常" classname="com.hermes.mov.biz.InfoVaultTest" time="0.003"/>
+  <testcase name="脱敏规则 手机 前3后4" classname="com.hermes.mov.biz.InfoVaultTest" time="0.0"/>
+  <testcase name="账户类型校验与脱敏原样（枚举非敏感）" classname="com.hermes.mov.biz.InfoVaultTest" time="0.005"/>
+  <testcase name="list 不含明文" classname="com.hermes.mov.biz.InfoVaultTest" time="0.004"/>
+  <testcase name="未知字段拒绝写入" classname="com.hermes.mov.biz.InfoVaultTest" time="0.003"/>
+  <testcase name="getPlain 跳过未存项且只认文本字段" classname="com.hermes.mov.biz.InfoVaultTest" time="0.003"/>
+  <testcase name="UPG53 凭据删除立即生效无撤销窗口 安全吊销不缓冲" classname="com.hermes.mov.biz.InfoVaultTest" time="0.004"/>
+  <testcase name="脱敏规则 卡号 前4后4" classname="com.hermes.mov.biz.InfoVaultTest" time="0.0"/>
+  <testcase name="公户开户名可存取" classname="com.hermes.mov.biz.InfoVaultTest" time="0.005"/>
+  <testcase name="delete 文本与照片项" classname="com.hermes.mov.biz.InfoVaultTest" time="0.011"/>
+  <testcase name="脱敏规则 其余字段 首字加星星" classname="com.hermes.mov.biz.InfoVaultTest" time="0.0"/>
+  <testcase name="UPG53 窗口内再次删除 旧 tombstone 立即真删只保最近一次" classname="com.hermes.mov.biz.InfoVaultTest" time="0.012"/>
+  <testcase name="UPG53 普通条目删除进 5s 撤销窗口 窗口内可恢复" classname="com.hermes.mov.biz.InfoVaultTest" time="0.008"/>
+  <testcase name="cred 重载实例后仍在" classname="com.hermes.mov.biz.InfoVaultTest" time="0.004"/>
+  <testcase name="假加密与不同明文产生不同密文（证明确实走了加密路径）" classname="com.hermes.mov.biz.InfoVaultTest" time="0.005"/>
+  <testcase name="cred 校验失败分支" classname="com.hermes.mov.biz.InfoVaultTest" time="0.003"/>
+  <testcase name="source 标记 photo 落盘并可重载（页面展示已从照片识别）" classname="com.hermes.mov.biz.InfoVaultTest" time="0.007"/>
+  <testcase name="重载实例后索引与密文仍在" classname="com.hermes.mov.biz.InfoVaultTest" time="0.004"/>
+  <testcase name="照片 kind 白名单与缺失源" classname="com.hermes.mov.biz.InfoVaultTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

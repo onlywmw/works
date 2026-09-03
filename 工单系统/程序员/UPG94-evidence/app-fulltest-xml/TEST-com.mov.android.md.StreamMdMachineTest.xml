@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.md.StreamMdMachineTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:20.835Z" hostname="苟富贵" time="0.01">
+  <properties/>
+  <testcase name="代码块内 URL 不转换" classname="com.mov.android.md.StreamMdMachineTest" time="0.003"/>
+  <testcase name="列表行 Raw 后空行 RenderText" classname="com.mov.android.md.StreamMdMachineTest" time="0.002"/>
+  <testcase name="数学块独立行 RenderMath" classname="com.mov.android.md.StreamMdMachineTest" time="0.0"/>
+  <testcase name="finish 无空行残段保留为 Raw 原文" classname="com.mov.android.md.StreamMdMachineTest" time="0.001"/>
+  <testcase name="数学块方括号跨行带换行闭合" classname="com.mov.android.md.StreamMdMachineTest" time="0.0"/>
+  <testcase name="数学块同行闭合" classname="com.mov.android.md.StreamMdMachineTest" time="0.0"/>
+  <testcase name="代码块输出 RenderCode" classname="com.mov.android.md.StreamMdMachineTest" time="0.0"/>
+  <testcase name="fullText 累积全部 chunk" classname="com.mov.android.md.StreamMdMachineTest" time="0.0"/>
+  <testcase name="段落行输出 Raw 与 RenderText" classname="com.mov.android.md.StreamMdMachineTest" time="0.0"/>
+  <testcase name="promoteUrlCodes 在 RenderText 中生效" classname="com.mov.android.md.StreamMdMachineTest" time="0.001"/>
+  <testcase name="表格输出 StartTable 与 TableRow" classname="com.mov.android.md.StreamMdMachineTest" time="0.001"/>
+  <testcase name="finish 未闭合代码块原文保留" classname="com.mov.android.md.StreamMdMachineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

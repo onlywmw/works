@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ui.catalog.UiComponentCatalogTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:20.884Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="L1-11 形态规格表合规_20条全档" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.0"/>
+  <testcase name="每条四字段齐" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.003"/>
+  <testcase name="范式合规_部位与组件类型词表" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.001"/>
+  <testcase name="M-U50-8 规格缺1条_红锚" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.0"/>
+  <testcase name="编号唯一无冲突" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.0"/>
+  <testcase name="L1-11 每组件default必选且有变体" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.0"/>
+  <testcase name="L1-11 形态总档数_基准规格表逐行" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.0"/>
+  <testcase name="编号库合规_首批20条" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.001"/>
+  <testcase name="本单打样组件常量为 UI-CHAT-INPUT" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.0"/>
+  <testcase name="L1-11 编号库与规格表一一对应" classname="com.mov.android.ui.catalog.UiComponentCatalogTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

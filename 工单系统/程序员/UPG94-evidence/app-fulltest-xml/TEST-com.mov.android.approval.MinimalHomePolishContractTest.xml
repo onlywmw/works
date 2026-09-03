@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.MinimalHomePolishContractTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:20.584Z" hostname="苟富贵" time="0.01">
+  <properties/>
+  <testcase name="UPG94 hint 删除 - heroHint 节点与 CSS 零残留且 placeholder 保留" classname="com.mov.android.approval.MinimalHomePolishContractTest" time="0.001"/>
+  <testcase name="UPG94 锚② hero 装饰 - heroLogo 零装饰（无圆角框·无投影·绿环拆除）" classname="com.mov.android.approval.MinimalHomePolishContractTest" time="0.0"/>
+  <testcase name="UPG94 btnSend 归 token - 纯黑 pill（非 --brand 薄荷绿；明暗双主题）" classname="com.mov.android.approval.MinimalHomePolishContractTest" time="0.001"/>
+  <testcase name="UPG94 锚① dock 路由 - applyPresentationMode 极简分支 dock GONE 经典分支 VISIBLE（字段化）" classname="com.mov.android.approval.MinimalHomePolishContractTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

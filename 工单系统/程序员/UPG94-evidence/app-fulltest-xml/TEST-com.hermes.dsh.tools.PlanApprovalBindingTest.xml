@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.PlanApprovalBindingTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:18.725Z" hostname="苟富贵" time="0.052">
+  <properties/>
+  <testcase name="单上被拒步骤执行期返回rejected且不重复弹窗" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.01"/>
+  <testcase name="清单命中放行跳过弹窗且审计成对" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.005"/>
+  <testcase name="planner钩子出单且本步获批_经清单放行不弹窗" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.003"/>
+  <testcase name="isGranted对onlyonce拒绝plan与turn_outcome" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.0"/>
+  <testcase name="UPG85 同tool多步骤_b未勾选_执行期DENIED阻断不打扰" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.004"/>
+  <testcase name="planner未出单_本步回退现行FIFO单步弹窗" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.003"/>
+  <testcase name="耗尽同键转ASK_与清单外等价_不因已批过而再次放行" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.004"/>
+  <testcase name="UPG85 同tool多步骤_b参数漂移_MISS转新ASK实时决策" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.004"/>
+  <testcase name="计划外工具请求落FIFO弹窗实时决策" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.003"/>
+  <testcase name="UPG85 同tool多步骤_b保留在单且勾选_执行期HIT放行" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.004"/>
+  <testcase name="planStore未装配时全走FIFO弹窗_无预审放行" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.003"/>
+  <testcase name="onlyonce即使装配planStore也不走清单放行_转ASK弹窗" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.003"/>
+  <testcase name="MONEY即使装配planStore也永不预批放行_实时逐笔确认" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.002"/>
+  <testcase name="planner不作用于onlyonce与MONEY_实时逐笔弹窗" classname="com.hermes.dsh.tools.PlanApprovalBindingTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

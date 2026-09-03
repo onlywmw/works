@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.budget.BudgetWeightTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:17.366Z" hostname="苟富贵" time="0.086">
+  <properties/>
+  <testcase name="ModelEntry 窗口字段与缺省回落" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.011"/>
+  <testcase name="纯 ASCII 按 0_3 每字符" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.021"/>
+  <testcase name="混合文本中英样本误差小于 30Percent" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.013"/>
+  <testcase name="双阈值单源——BCE 默认阈值引用 ContextBudget 常量" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.007"/>
+  <testcase name="CJK 常量锚定 1除1_5 与判定范围" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.001"/>
+  <testcase name="聚合层无自有存储写点（grep 实证）" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.001"/>
+  <testcase name="跨月事件分桶月重置" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.023"/>
+  <testcase name="messageTokens 保留块与消息 overhead" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.001"/>
+  <testcase name="纯中文按 1_5 字符每 token" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.001"/>
+  <testcase name="坏行与无 usage 行静默跳过" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.001"/>
+  <testcase name="fold 三轴累计与按模型" classname="com.hermes.dsh.budget.BudgetWeightTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

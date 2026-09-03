@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.appearance.AppearanceProfileTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T20:21:20.500Z" hostname="苟富贵" time="0.009">
+  <properties/>
+  <testcase name="写读往返含最近使用" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.008"/>
+  <testcase name="选回默认最近使用保留可找回" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.0"/>
+  <testcase name="最近使用跟踪_经典到胶囊" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.0"/>
+  <testcase name="选回默认彻底删除无残留键" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.0"/>
+  <testcase name="写形态落 components 唯一真相" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.0"/>
+  <testcase name="写读往返一致_重启保持" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.0"/>
+  <testcase name="空形态值视为默认并真删" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.0"/>
+  <testcase name="最近使用跟踪_多步切换只留最近一次" classname="com.mov.android.appearance.AppearanceProfileTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
