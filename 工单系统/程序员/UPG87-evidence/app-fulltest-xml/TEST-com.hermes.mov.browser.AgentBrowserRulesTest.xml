@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.browser.AgentBrowserRulesTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:27.262Z" hostname="苟富贵" time="0.003">
+  <properties/>
+  <testcase name="isAiBrowserTool 命中与边界" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.001"/>
+  <testcase name="URL 校验拒绝非 http" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="isFail 判定" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="ref 合法" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.001"/>
+  <testcase name="ref 非法" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="支付关键词命中" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="waitUser 参数校验通过" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="AI_BROWSER_TOOLS 为当前内建 14 工具全集" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="英文支付关键词大小写不敏感" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="waitUser reason 必填" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="普通操作不误伤" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.001"/>
+  <testcase name="URL 校验通过" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="waitUser 默认超时 10min" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <testcase name="waitUser 超时范围" classname="com.hermes.mov.browser.AgentBrowserRulesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

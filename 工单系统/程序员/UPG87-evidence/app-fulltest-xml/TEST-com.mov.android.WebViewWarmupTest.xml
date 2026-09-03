@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.WebViewWarmupTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:28.462Z" hostname="苟富贵" time="0.077">
+  <properties/>
+  <testcase name="未同意或同意态缺失绝不预热" classname="com.mov.android.WebViewWarmupTest" time="0.001"/>
+  <testcase name="SettingsSheet 同色底与占位就绪即撤" classname="com.mov.android.WebViewWarmupTest" time="0.001"/>
+  <testcase name="WebPageSheet 占位就绪即撤" classname="com.mov.android.WebViewWarmupTest" time="0.0"/>
+  <testcase name="预热挂点存在且位于 consent 之后" classname="com.mov.android.WebViewWarmupTest" time="0.007"/>
+  <testcase name="已预热幂等跳过" classname="com.mov.android.WebViewWarmupTest" time="0.0"/>
+  <testcase name="已同意且未预热则预热" classname="com.mov.android.WebViewWarmupTest" time="0.001"/>
+  <testcase name="assets 页面产物未被触碰" classname="com.mov.android.WebViewWarmupTest" time="0.066"/>
+  <testcase name="warmup 引擎实现零业务 URL" classname="com.mov.android.WebViewWarmupTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.goal.GoalChangeEventTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:26.221Z" hostname="苟富贵" time="0.024">
+  <properties/>
+  <testcase name="restoreFrom 已有新目标不覆盖" classname="com.hermes.dsh.goal.GoalChangeEventTest" time="0.013"/>
+  <testcase name="restoreFrom 跳过 COMPLETED 与 ABANDONED" classname="com.hermes.dsh.goal.GoalChangeEventTest" time="0.001"/>
+  <testcase name="restoreFrom 从日志重建最新活跃目标" classname="com.hermes.dsh.goal.GoalChangeEventTest" time="0.0"/>
+  <testcase name="complete 同路径落 COMPLETED 事件" classname="com.hermes.dsh.goal.GoalChangeEventTest" time="0.001"/>
+  <testcase name="goalchange 事件可作种子往返重建" classname="com.hermes.dsh.goal.GoalChangeEventTest" time="0.007"/>
+  <testcase name="set 落 goalchange 事件不抛且载荷为纯 map" classname="com.hermes.dsh.goal.GoalChangeEventTest" time="0.001"/>
+  <testcase name="restoreFrom 多目标场景恢复正常存活目标" classname="com.hermes.dsh.goal.GoalChangeEventTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

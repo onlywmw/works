@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:26.347Z" hostname="苟富贵" time="0.027">
+  <properties/>
+  <testcase name="A3-2 模式前缀解析 numeric-enum-contains" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.0"/>
+  <testcase name="A3-1 判否同样落journal（AgentLoop verdict事件链锚——fail也是数据）" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.007"/>
+  <testcase name="A3-1 枚举判定 正反例" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.002"/>
+  <testcase name="A3-2 只有核对动词无标准短语 诚实降级null" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.001"/>
+  <testcase name="A3-3 AgentLoop verdict事件带mode（expected不投影语义不破）" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.002"/>
+  <testcase name="A3-1 包含判定 正反例" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.0"/>
+  <testcase name="A3-1 数值判定 正反例" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.0"/>
+  <testcase name="A3-4 对拍失败propose 审核accept 进回归集可溯源" classname="com.hermes.dsh.guard.AcceptanceJudgeExtendTest" time="0.014"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.Upg84ModeConvergeContractTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:28.441Z" hostname="苟富贵" time="0.02">
+  <properties/>
+  <testcase name="快速深思单选退役且 reasoning 恒档" classname="com.mov.android.Upg84ModeConvergeContractTest" time="0.005"/>
+  <testcase name="SDK 匝道段退役而 tool help 存续" classname="com.mov.android.Upg84ModeConvergeContractTest" time="0.006"/>
+  <testcase name="ChatChips 模型行单级无模式尾注" classname="com.mov.android.Upg84ModeConvergeContractTest" time="0.001"/>
+  <testcase name="顶部按钮断循环占位" classname="com.mov.android.Upg84ModeConvergeContractTest" time="0.002"/>
+  <testcase name="工具面固定全量——模式过滤与枚举全退役" classname="com.mov.android.Upg84ModeConvergeContractTest" time="0.003"/>
+  <testcase name="presentation set_mode 全链路退役且只读查询存续" classname="com.mov.android.Upg84ModeConvergeContractTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

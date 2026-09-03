@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.biz.OnboardDraftTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:27.225Z" hostname="苟富贵" time="0.034">
+  <properties/>
+  <testcase name="未知字段与未知照片类型报错" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.003"/>
+  <testcase name="micro checklist 不含执照项" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.002"/>
+  <testcase name="持久化往返 字段照片状态全保留" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.005"/>
+  <testcase name="missing 随填写减少" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.002"/>
+  <testcase name="邮箱与卡号校验" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.002"/>
+  <testcase name="默认（未填主体类型）按 individual 出单" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.001"/>
+  <testcase name="clear 重置全部" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.005"/>
+  <testcase name="首次 ensureBusinessCode 生成且稳定" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.002"/>
+  <testcase name="证件号 15 或 18 位末位可 X" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.002"/>
+  <testcase name="手机号校验 11 位 1 开头" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.003"/>
+  <testcase name="微信态映射 reviewing signing done rejected" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.003"/>
+  <testcase name="individual checklist 含执照项" classname="com.hermes.mov.biz.OnboardDraftTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

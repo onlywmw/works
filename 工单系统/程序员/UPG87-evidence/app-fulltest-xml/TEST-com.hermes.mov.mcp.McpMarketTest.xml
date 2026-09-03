@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.mcp.McpMarketTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:27.327Z" hostname="苟富贵" time="0.097">
+  <properties/>
+  <testcase name="install 服务器不可达配置仍写入" classname="com.hermes.mov.mcp.McpMarketTest" time="0.01"/>
+  <testcase name="uninstall 市场条目删除并返回 prefix 与 removed" classname="com.hermes.mov.mcp.McpMarketTest" time="0.006"/>
+  <testcase name="install 成功写 store 并返回 ext 前缀工具与 handlers" classname="com.hermes.mov.mcp.McpMarketTest" time="0.004"/>
+  <testcase name="UPG87 宿主组纳入builtin机制 - list 含三组且 enable 不再 MARKET_NOT_INSTALLED" classname="com.hermes.mov.mcp.McpMarketTest" time="0.006"/>
+  <testcase name="uninstall 未安装报 MARKET_NOT_INSTALLED" classname="com.hermes.mov.mcp.McpMarketTest" time="0.006"/>
+  <testcase name="install 目录无此 id 报 MARKET_PACKAGE_NOT_FOUND" classname="com.hermes.mov.mcp.McpMarketTest" time="0.004"/>
+  <testcase name="UPG87 宿主组不覆盖 registry 同名包 - 幂等追加防重复条目" classname="com.hermes.mov.mcp.McpMarketTest" time="0.007"/>
+  <testcase name="setEnabled disable 返回 prefix，enable 重新 discover 返回 handlers" classname="com.hermes.mov.mcp.McpMarketTest" time="0.004"/>
+  <testcase name="list 合并 installed 与 enabled 状态" classname="com.hermes.mov.mcp.McpMarketTest" time="0.004"/>
+  <testcase name="refresh 拉取失败且无缓存报 MARKET_REGISTRY_UNAVAILABLE" classname="com.hermes.mov.mcp.McpMarketTest" time="0.002"/>
+  <testcase name="UPG87 宿主组 disable 落盘 enable 恢复 - builtinOn 默认 true（零缩减）与重启保持" classname="com.hermes.mov.mcp.McpMarketTest" time="0.005"/>
+  <testcase name="refresh 1h 内第二次命中缓存不调 fetcher" classname="com.hermes.mov.mcp.McpMarketTest" time="0.004"/>
+  <testcase name="bubbleOverview 返回安装全集与实挂工具（启用组有 tools 停用组空）" classname="com.hermes.mov.mcp.McpMarketTest" time="0.002"/>
+  <testcase name="desc 超 20 字截断，未超原样" classname="com.hermes.mov.mcp.McpMarketTest" time="0.004"/>
+  <testcase name="install 与既有条目冲突报 MARKET_ID_CONFLICT" classname="com.hermes.mov.mcp.McpMarketTest" time="0.003"/>
+  <testcase name="uninstall 手动条目拒绝并报 MARKET_NOT_MARKET_ORIGIN" classname="com.hermes.mov.mcp.McpMarketTest" time="0.005"/>
+  <testcase name="refresh 拉取失败回退旧缓存" classname="com.hermes.mov.mcp.McpMarketTest" time="0.005"/>
+  <testcase name="setEnabled 未安装报 MARKET_NOT_INSTALLED" classname="com.hermes.mov.mcp.McpMarketTest" time="0.003"/>
+  <testcase name="declarative：registry 呈现解析 + list 输出 kind + install 写剧本 + uninstall 删除" classname="com.hermes.mov.mcp.McpMarketTest" time="0.008"/>
+  <testcase name="install 剔除敏感工具与写工具" classname="com.hermes.mov.mcp.McpMarketTest" time="0.004"/>
+  <system-out><![CDATA[INST={ok=true, workflowId=demo-onboard, tools=[workflow.run, workflow.status], uiComponentId=null}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

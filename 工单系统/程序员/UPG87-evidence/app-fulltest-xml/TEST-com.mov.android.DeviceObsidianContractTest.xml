@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.DeviceObsidianContractTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:27.838Z" hostname="苟富贵" time="0.028">
+  <properties/>
+  <testcase name="ObsidianProvider 7 工具 meta 完整" classname="com.mov.android.DeviceObsidianContractTest" time="0.004"/>
+  <testcase name="obsidian 沙盒穿越拒绝" classname="com.mov.android.DeviceObsidianContractTest" time="0.001"/>
+  <testcase name="M3R2 MediaProjection 先 registerCallback 再 createVirtualDisplay（API34+ 强制顺序）" classname="com.mov.android.DeviceObsidianContractTest" time="0.001"/>
+  <testcase name="M3R2 approval setMode 收编 uiOnlyMcpTools（防远程自助切 never 绕过写类 ASK）" classname="com.mov.android.DeviceObsidianContractTest" time="0.007"/>
+  <testcase name="M3R2 file read 未登记 不可访问 不存在 三态分离" classname="com.mov.android.DeviceObsidianContractTest" time="0.0"/>
+  <testcase name="obsidian 与捕获桥接线在生产代码注册" classname="com.mov.android.DeviceObsidianContractTest" time="0.003"/>
+  <testcase name="查询类工具登记为 free（注册表单源只读）" classname="com.mov.android.DeviceObsidianContractTest" time="0.001"/>
+  <testcase name="写类工具全部登记注册表为 ask（漏登记即 UNKNOWN→ASK fail-closed 但注册即校验要求全量）" classname="com.mov.android.DeviceObsidianContractTest" time="0.0"/>
+  <testcase name="guard 精确匹配注册表（contains 子串不再放行，防 UPG-28 型误捕复发）" classname="com.mov.android.DeviceObsidianContractTest" time="0.0"/>
+  <testcase name="M3R2 pending 回填桥完整（授权成功到 service deliver 到 toolCapture deferred）" classname="com.mov.android.DeviceObsidianContractTest" time="0.006"/>
+  <testcase name="DeviceProvider 13 工具 meta 完整" classname="com.mov.android.DeviceObsidianContractTest" time="0.004"/>
+  <testcase name="敏感名单单源镜像含等价变体" classname="com.mov.android.DeviceObsidianContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

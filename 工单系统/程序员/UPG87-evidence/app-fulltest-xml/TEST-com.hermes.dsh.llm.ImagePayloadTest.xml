@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.llm.ImagePayloadTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:26.492Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="历史旧图降级为文本占位" classname="com.hermes.dsh.llm.ImagePayloadTest" time="0.002"/>
+  <testcase name="编码失败也降级占位 不产出坏请求" classname="com.hermes.dsh.llm.ImagePayloadTest" time="0.0"/>
+  <testcase name="无图消息只有 text 部分 无 image_url" classname="com.hermes.dsh.llm.ImagePayloadTest" time="0.001"/>
+  <testcase name="特殊字符文本走 MiniJson 转义" classname="com.hermes.dsh.llm.ImagePayloadTest" time="0.0"/>
+  <testcase name="mimeType 缺省回退 jpeg" classname="com.hermes.dsh.llm.ImagePayloadTest" time="0.001"/>
+  <testcase name="含图消息且允许嵌图 输出 text 加 image_url" classname="com.hermes.dsh.llm.ImagePayloadTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

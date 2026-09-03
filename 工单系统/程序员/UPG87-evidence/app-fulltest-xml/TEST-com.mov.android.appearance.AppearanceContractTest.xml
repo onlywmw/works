@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.appearance.AppearanceContractTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-09-03T10:19:28.540Z" hostname="苟富贵" time="0.065">
+  <properties/>
+  <testcase name="L2-9 1B 高频组件切换契约_实例分发到独立应用方法" classname="com.mov.android.appearance.AppearanceContractTest" time="0.006"/>
+  <testcase name="M-U50-6 切换后其他输入框零变化" classname="com.mov.android.appearance.AppearanceContractTest" time="0.004"/>
+  <testcase name="L2-9 1C 余下组件切换契约_真实页面实例消费 ui_getProfile" classname="com.mov.android.appearance.AppearanceContractTest" time="0.003"/>
+  <testcase name="L1-14 全组件切换单API_components唯一写点" classname="com.mov.android.appearance.AppearanceContractTest" time="0.004"/>
+  <testcase name="M-U50-3 选中写 profile 不写 impl 层" classname="com.mov.android.appearance.AppearanceContractTest" time="0.003"/>
+  <testcase name="M-U50-4 ✓生效优先于 ● 最近使用" classname="com.mov.android.appearance.AppearanceContractTest" time="0.005"/>
+  <testcase name="L1-10 排版语义 token 契约标准先行" classname="com.mov.android.appearance.AppearanceContractTest" time="0.003"/>
+  <testcase name="M-U50-5 预览卡 render-only 无交互" classname="com.mov.android.appearance.AppearanceContractTest" time="0.004"/>
+  <testcase name="P2-B pressed 态视觉反馈_4族矩阵active锚" classname="com.mov.android.appearance.AppearanceContractTest" time="0.003"/>
+  <testcase name="M-U50-9 切换误伤他组件_红锚" classname="com.mov.android.appearance.AppearanceContractTest" time="0.006"/>
+  <testcase name="L1-5 明暗跟随全局无独立残留" classname="com.mov.android.appearance.AppearanceContractTest" time="0.004"/>
+  <testcase name="L1-9 单实例路由_切换只影响目标组件" classname="com.mov.android.appearance.AppearanceContractTest" time="0.003"/>
+  <testcase name="M-U50-2 页面本地 selected 变异红锚" classname="com.mov.android.appearance.AppearanceContractTest" time="0.004"/>
+  <testcase name="L1-7 选择页桥接最小集 ui_getProfile_ui_setVariant" classname="com.mov.android.appearance.AppearanceContractTest" time="0.003"/>
+  <testcase name="L1-10 sync-pages 豁免名单包含 appearance" classname="com.mov.android.appearance.AppearanceContractTest" time="0.006"/>
+  <testcase name="L1-6 唯一真相_页面无本地 selected" classname="com.mov.android.appearance.AppearanceContractTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
