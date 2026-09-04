@@ -1,0 +1,9 @@
+--------- beginning of main
+09-04 18:39:05.258 28990  4433 I ApprovalVis: answerer: visible=true force=false notify=true tool=market.disable
+09-04 18:39:05.259 28990  4433 I ApprovalVis: route: visible=true force=false notify=true -> CARD tool=market.disable
+09-04 18:39:07.642 28990  4433 I ApprovalService: 决策: once market.disable
+09-04 18:39:07.647 28990  4433 I MOV-Market: 宿主内置包启停同步: 禁用工具 13 个（calendar.add,calendar.list,camera.capture,camera.ocrCapture,device.appLaunch,device.appList,device.network,device.storage,device.timer,device.toast,qr.scan,screen.capture,sensor.list）
+09-04 18:39:47.167 28990  4574 I ApprovalVis: answerer: visible=true force=false notify=true tool=market.enable
+09-04 18:39:47.168 28990  4574 I ApprovalVis: route: visible=true force=false notify=true -> CARD tool=market.enable
+09-04 18:39:49.568 28990  4574 I ApprovalService: 决策: once market.enable
+09-04 18:39:49.573 28990  4574 I MOV-Market: 宿主内置包启停同步: 禁用工具 0 个（全量启用）
