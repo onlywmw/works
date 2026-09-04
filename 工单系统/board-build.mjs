@@ -290,6 +290,14 @@ document.addEventListener('DOMContentLoaded', () => {
 let html = fs.readFileSync(TPL, "utf8");
 html = html.replace("/*__DATA__*/", `const DATA = ${JSON.stringify({ stats, tickets: projections, hanging, holdMore: hangMore, meta })};`);
 html = html.split("/*__RENDER__*/").join(renderFn);
+// VENDOR 本地化（2026-09-04：cdn.tailwindcss.com 国内加载失败=白屏根因）——内联本地 tailwind.js（html 自包含）
+const VENDOR = "设计师/前端设计/vendor/tailwind.js";
+try {
+  const tw = fs.readFileSync(VENDOR, "utf8");
+  html = html.replace('src="https://cdn.tailwindcss.com?plugins=forms,container-queries"', 'src="data:text/javascript;base64,' + Buffer.from(tw).toString("base64") + '"');
+} catch (e) {
+  console.error("⚠️ vendor/tailwind.js 缺失（保留 CDN fallback）:", e.message);
+}
 html = html.replace('<section class="grid grid-cols-2 md:grid-cols-6 gap-md mb-lg" id="summary-cards"></section>', `<section class="grid grid-cols-2 md:grid-cols-6 gap-md mb-lg" id="summary-cards">${summaryCardsHtml}</section>`);
 html = html.replace('<div class="grid grid-cols-1 md:grid-cols-3 gap-md" id="urgent-box"></div>', `<div class="grid grid-cols-1 md:grid-cols-3 gap-md" id="urgent-box">${urgent}</div>`);
 html = html.replace('<tbody class="font-body-sm text-body-sm" id="main-table-body"></tbody>', `<tbody class="font-body-sm text-body-sm" id="main-table-body">${rows}</tbody>`);
