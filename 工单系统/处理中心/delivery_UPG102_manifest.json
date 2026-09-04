@@ -1,0 +1,27 @@
+{
+  "ticket_id": "UPG-102",
+  "delivery_id": "DEL-UPG102-20260904-001",
+  "standard_id": "STD-UPG-102-v1（content_sha256=3eaa908be80ea7a8647bfafea079841bdcefd3371773fc836c130e788a773c5b）",
+  "code_commit_sha": "cfa7d607（feat/upg102，基 main d11509cc；施工 d77dae2a→锚⑥升级 cfa7d607）",
+  "artifact_sha": "df7ddfc2992f7551（APK 前 16——assembleDebug 绿后）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG102-evidence/app-fulltest-xml/（全量 113 套件 809/0/1 全绿；目录聚合 sha256=sorted 文件名+内容）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "app/src/test/java/com/mov/android/approval/PagesSplitContractTest.kt（契约锚 6：保真 14 handler/名单完备/唯一写点/上游兼容 approvalService internal）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/交付报告/DELIVERY_UPG102_2026-09-04.md（变异 3 锚形态实录+真机冒烟三场景持有+coverage PARTIAL 申报）",
+      "producer": "C",
+      "created_at": "2026-09-04"
+    }
+  ]
+}
