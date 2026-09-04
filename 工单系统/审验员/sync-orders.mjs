@@ -250,7 +250,7 @@ function parseLib(libPath) {
 // 口径：未合卡→code= 必须==对应仓 feat/<ticket> 分支头；已合卡（状态含「已合 main」）→code= 必须是该仓 main 祖先。
 // DEL 块内同段含「豁免」→ 跳过。git/仓库不可用→跳过并明示。失败不阻断投影，但 --check 退出码非零。
 const DEL_CODE_RE = new RegExp("DEL-([A-Z0-9]+)-(\\d{8})-(\\d+)[^\\n]{0,160}?code=\\**([0-9a-f]{7,40})", "g");
-const MOV_REPO = "C:/Users/Administrator/0027-mov";
+const MOV_REPO = "E:/mov归档/0027-mov";
 
 function gitAt(repo, args) {
   const r = spawnSync("git", ["-C", repo, ...args], { encoding: "utf8" });
@@ -471,7 +471,9 @@ function main() {
       for (const i of delAudit.issues) console.log(`  [${i.no}] ${i.type}：${i.detail}`);
       console.log("");
     }
-    process.exit(issues.length === 0 && delAudit.issues.filter(i => i.type === "DEL绑定失效").length === 0 ? 0 : 1);
+    // 退出口径：diff=0 且无「DEL绑定失效」硬红 → 0；提示性 issue（存量豁免/校验跳过·人工核类）打印不拦 commit
+    const hardRed = delAudit.issues.filter(i => i.type === "DEL绑定失效").length;
+    process.exit(issues.length === 0 && hardRed === 0 ? 0 : 1);
   }
 
   if (opts.mode === "sync") {
