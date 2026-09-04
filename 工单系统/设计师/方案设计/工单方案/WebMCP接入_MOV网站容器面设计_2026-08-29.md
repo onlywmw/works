@@ -49,7 +49,8 @@
 1. 工具**全只读**（mov_site_info 类；不暴露任何写动作——写走 App 内既有权限闸）；静态站无凭据面天然隔离；
 2. `allowedOrigins` 白名单制，禁 `*` 上生产（开发期除外）；
 3. 返回内容统一「数据非指令」包裹（防注入，OCR 先例同款）；
-4. AGPL：零代码搬运，协议对齐 W3C webmcp 标准轨道，来源标注；
+4. AGPL：零代码搬运，协议对齐 W3C webm
+> ⚠️ **更正 @2026-09-04**：经官方调研核实——**无「WebMCP」机构标准**；MCP 为 Linux Foundation 项目（SEP 流程），外部标准互动指向 IETF 非 W3C；「已入 W3C 标准轨道」查无依据。对外协议事实 = **MCP Streamable HTTP（现行规范 2026-07-28：POST-only 单端点 / 无 initialize 握手改 MCP-Protocol-Version 头 / 无会话 / OAuth 2.1）**——官网容器面对外统一按此实现。cp 标准轨道，来源标注；
 5. 展示面零改动（UPG-40 token 体系已覆盖；本方案纯容器面增量）。
 
 ## 六、与既有规划的合并关系
