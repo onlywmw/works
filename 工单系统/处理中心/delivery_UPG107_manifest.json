@@ -1,0 +1,38 @@
+{
+  "ticket_id": "UPG-107",
+  "delivery_id": "DEL-UPG107-20260905-001",
+  "standard_id": "STD-UPG-107-v1（content_sha256=235736101497215325714ded45bab6e6f797aa14865b4467d31f672ddedf7c30）",
+  "code_commit_sha": "31640fc8",
+  "artifact_sha": "e5a3f2bfb87ed577b8b7d3d1eaea3195e85e6f8b3db04e525650feb6ec38d07b",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG107-evidence/u107_s2_result.png",
+      "sha256": "bb66c34132f3f386da8140a270f88caec463fe57ffcc3195c04742b28ae30478",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG107-evidence/emulator_semantic_landed.md",
+      "sha256": "8141f91c7e4526184a5897996a0cf5f9b27193c48791a61f72c0ee9f07943830",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG107-evidence/emulator_ledger.jsonl",
+      "sha256": "a253ed35baf4bba7d4f04ad73d11451200a02c36c83bf537f6fa51aea0fb7f84",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG107-evidence/emulator_logcat_approval_chain.txt",
+      "sha256": "66ccc3728dce1643f2c2ea11e241d4c8ae4769aa91db88d970ddb235d732ad4c",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    }
+  ],
+  "evidence_manifest_sha": "0eab3bd3280588687e6f8772d82d44c068ff602000befccd37a4a4a9aaa4b5fe"
+}
