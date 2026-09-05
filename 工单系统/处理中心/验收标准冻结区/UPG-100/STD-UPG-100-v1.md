@@ -10,7 +10,7 @@
 - **content_sha256**: `96c6bce10e0cdbfe1bcf31e5eda7989222d40e8e26bcd6711c11f8f417685daa`（= 冻结区正文哈希，非整文件哈希；按文末命令计算）
 - **frozen_at**: `2026-09-05T10:15:00`
 - **frozen_by**: 设计师
-- **approved_by**: 审验员（追认会签待补——本单为交付先行后补冻，见追加说明区）
+- **approved_by**: 审验员 会签 @2026-09-05（审验独立复算冻结区 content_sha256=96c6bce10e0cdbfe1bcf31e5eda7989222d40e8e26bcd6711c11f8f417685daa 一致——卡面 A1-A3 判据原样固化无误；UPG-100 审验通过见 工单审验状态.md）
 
 ---
 

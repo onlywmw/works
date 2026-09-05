@@ -4997,20 +4997,20 @@ updated_at: 2026-09-05T08:41:59
 
 
 ```status
-phase: merged
+phase: delivered
 branch: feat/upg100
 head: a63b7088
 std: STD-UPG-100-v1
 delivery_id: DEL-UPG100-20260905-001
-designer: 📌 已派单（用户直接外派）+ STD 追认冻结 @2026-09-05（简式，sha=96c6bce1 会签已补）
+designer: 📌 已派单（用户直接外派）+ STD 追认冻结 @2026-09-05（简式）
 dev: ✅ C 完成 @2026-09-05（kimi-cli，a63b7088——锚②升级 count/match）
-inspector: ✅ 复验 §P62 + 审验✅ @2026-09-05（独立四态亲杀+A3 18 处表+STD 重算一致——integrity_review=confirmed）
-merge: ✅ 已合 main @2886821d（隔离全量 844/0/1；终态 verify-hash HASH_OK；P3×2 随批处置——manifest 重绑 96c6bce1+落点归处理中心 ok:True）
+inspector: ✅ 复验通过 @2026-09-05（§P62 双变异亲杀+3 连跑零 flaky；达待合→审验员）
+merge: —
 actor: 设计师
-updated_at: 2026-09-05T23:55:00
+updated_at: 2026-09-05T10:12:55
 ```
 
-**状态**：📌 已立卡·待派 ⏳ @2026-09-04（UPG-96 审验发现项①转正：contains 组合锚对单点破坏免疫）｜ 待派单 ｜ **优先级**：P2 ｜ → 🆕 **已认领 @2026-09-05**（程序员 Kimi/kimi-cli，worktree mov-upg100，branch feat/upg100，基 origin/main 31640fc8——用户指令直接领单；无派单文/无 STD 冻结，按卡面 A1-A3+锚施工，STD 补冻转设计师追认） → ✅**C 完成 @2026-09-05**（feat/upg100 **a63b7088** 已 push origin；三件全交：①**A1 锚②升级**[contains 组合→计数+局部性：`if (homeDeliveryActive)`==2+`MovHomeHost.onLlmChunk(`==2+分支块内局部性窗；形态取舍=JVM 无法驱动 WebView 回路，行为级=真机层验收员持有] ②**A2 方法论入库**[已知坑.md #10：多点同文本 contains 锚只防全删] ③**A3 同族抽检**[静态 8 文件 18 处疑似=Appearance 16+Approval 2，两档死角模式=定义兜底命中/注释令牌污染；实测变异 4 处 S1/S2/S4 死角实证绿+S3 强锚对照红]；**变异亲杀 4 组**[M1 单点短路(UPG-96 原变异复现)/M2 空壳/M3 双点/M4 全删全红，定点快照还原复绿]；全量 **842/0/1** 零回归[基线 31640fc8 同口径，UPG-107 载 843 ±1 注记]；零业务改动[+23/-0 单测试文件]；verify-hash not-ancestor 未合常态；STD 未冻结[卡面段实测 sha 2f3e20ea 临时代入 manifest]；DEL-UPG100-20260905-001[manifest_sha=fa151af2 硬闸产出]；报告 DELIVERY_UPG100_2026-09-05.md；**已登记两个表**）——待验收员验收+设计师 STD 追认/合 main；**遗留转办**：A3 表 18 处疑似死角升级建议立后续单（P3，Appearance 族优先） → ✅ **验收员复验 通过 @2026-09-05**（ACCEPTANCE_LOG §P62：a63b7088 隔离 worktree——**A1-1/A1-2 双变异亲杀**[count 断言捕获单点/双点破坏]+**3 连跑零 flaky**+零业务改动[纯测试锚升级]；**达待合→审验员→设计师**） → ✅ **审验通过 @2026-09-05**（审验员：integrity_review=confirmed——分支 ls-remote 实证+diff 面 +23/−0 单测试文件+升级代码双证[源码 2×if(homeDeliveryActive)+2×onLlmChunk ↔ 测试计数断言]+**静态四态亲杀独立复现**+A3 表/A2 坑 #10 在档+STD 重算 96c6bce1 一致会签已补+manifest ok:True；P3×2 附记：manifest 落点偏 evidence 目录/standard_id 绑临时代 2f3e20ea——不阻塞）→ ✅ **设计师合 main @2886821d @2026-09-05**（merge a63b7088 干净合入；隔离 worktree 全量 **844/0/1**；终态 verify-hash **HASH_OK**；**P3×2 随批销项**：①standard_id 重绑冻结值 96c6bce1…685daa[指纹交叉校验过]②落点归位 处理中心/delivery_UPG100_manifest.json——复跑 --manifest **ok:True**）
+**状态**：📌 已立卡·待派 ⏳ @2026-09-04（UPG-96 审验发现项①转正：contains 组合锚对单点破坏免疫）｜ 待派单 ｜ **优先级**：P2 ｜ → 🆕 **已认领 @2026-09-05**（程序员 Kimi/kimi-cli，worktree mov-upg100，branch feat/upg100，基 origin/main 31640fc8——用户指令直接领单；无派单文/无 STD 冻结，按卡面 A1-A3+锚施工，STD 补冻转设计师追认） → ✅**C 完成 @2026-09-05**（feat/upg100 **a63b7088** 已 push origin；三件全交：①**A1 锚②升级**[contains 组合→计数+局部性：`if (homeDeliveryActive)`==2+`MovHomeHost.onLlmChunk(`==2+分支块内局部性窗；形态取舍=JVM 无法驱动 WebView 回路，行为级=真机层验收员持有] ②**A2 方法论入库**[已知坑.md #10：多点同文本 contains 锚只防全删] ③**A3 同族抽检**[静态 8 文件 18 处疑似=Appearance 16+Approval 2，两档死角模式=定义兜底命中/注释令牌污染；实测变异 4 处 S1/S2/S4 死角实证绿+S3 强锚对照红]；**变异亲杀 4 组**[M1 单点短路(UPG-96 原变异复现)/M2 空壳/M3 双点/M4 全删全红，定点快照还原复绿]；全量 **842/0/1** 零回归[基线 31640fc8 同口径，UPG-107 载 843 ±1 注记]；零业务改动[+23/-0 单测试文件]；verify-hash not-ancestor 未合常态；STD 未冻结[卡面段实测 sha 2f3e20ea 临时代入 manifest]；DEL-UPG100-20260905-001[manifest_sha=fa151af2 硬闸产出]；报告 DELIVERY_UPG100_2026-09-05.md；**已登记两个表**）——待验收员验收+设计师 STD 追认/合 main；**遗留转办**：A3 表 18 处疑似死角升级建议立后续单（P3，Appearance 族优先） → ✅ **验收员复验 通过 @2026-09-05**（ACCEPTANCE_LOG §P62：a63b7088 隔离 worktree——**A1-1/A1-2 双变异亲杀**[count 断言捕获单点/双点破坏]+**3 连跑零 flaky**+零业务改动[纯测试锚升级]；**达待合→审验员→设计师**）
 
 ## 标题
 
@@ -5183,17 +5183,17 @@ MainActivity God File 拆分主线（计划书 v1.2 大神 9.1/10 定稿）：�
 
 
 ```status
-phase: delivered
+phase: claimed
 branch: feat/upg104
 head: —
 std: STD-UPG-104-v1
 delivery_id: —
 designer: 📌 已派单·待认领 @2026-09-05（段① UPG-46 已合 main @7ccf0446 解锁；STD-UPG-104-v1 冻结 sha=e6d8a7f9；派单文在案）
-dev: 已交付
+dev: 已认领
 inspector: —
 merge: —
 actor: Claude-wmw0027
-updated_at: 2026-09-05T23:41:17
+updated_at: 2026-09-05T22:54:32
 ```
 
 **状态**：📌 **挂单·待 UPG-46 交付后启动 @2026-09-04**（UPG-46 瘦身重派定案时转出段②——设计 v3/v3.1 全量保留归本单；待 UPG-46 段①合 main 后拆派单）｜ **优先级**：P2 → ✅ **段①解锁 @2026-09-05**（UPG-46 已合 main @7ccf0446）→ 📌 **已派单·待认领 @2026-09-05**（设计师：派单 `设计师/派单/UPG-104_工具联动段2_派单_2026-09-05.md`——四件 A1-A4+红线+交付链；**STD-UPG-104-v1 已冻结** sha=e6d8a7f960dad4d12a60fa5b105898d694f908ec0fae11b5c6205b6755e2b5b5b5）

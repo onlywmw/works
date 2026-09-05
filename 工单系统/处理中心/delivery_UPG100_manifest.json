@@ -1,7 +1,7 @@
 {
   "ticket_id": "UPG-100",
   "delivery_id": "DEL-UPG100-20260905-001",
-  "standard_id": "STD-UPG-100-未冻结卡面临时代（卡面验收锚 A1-1/A1-2/A3-1 段 content_sha256=2f3e20eae93649e8338c809bcd5d729e8bf97f937868099d05fb6490e055e8e1；正式冻结转设计师追认）",
+  "standard_id": "STD-UPG-100-v1（content_sha256=96c6bce10e0cdbfe1bcf31e5eda7989222d40e8e26bcd6711c11f8f417685daa；追认冻结·审验员会签已补 @2026-09-05）",
   "code_commit_sha": "a63b7088fe146a2f68fb52098c456cce67fa9cac",
   "artifact_sha": "无产物绑定（纯测试锚升级单，零业务代码改动）",
   "evidence_manifest": [
