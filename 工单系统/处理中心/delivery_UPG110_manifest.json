@@ -1,0 +1,31 @@
+{
+  "ticket_id": "UPG-110",
+  "delivery_id": "DEL-UPG110-20260905-001",
+  "standard_id": "STD-UPG-110-v1（content_sha256=99b7888112d536e3a5f614060d5c1b555d6269cdf22981258178db4f59cb5c77）",
+  "code_commit_sha": "1df4a3e3",
+  "artifact_sha": "15659065d449377751ee58f4715853e95ff5d39c3513151ad3701e085ea656fb",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "C:/Users/Administrator/mov-upg110/market-web/container-mcp/server.mjs",
+      "sha256": "15659065d449377751ee58f4715853e95ff5d39c3513151ad3701e085ea656fb",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "C:/Users/Administrator/mov-upg110/market-web/container-mcp/server.test.mjs",
+      "sha256": "b51623df51e74d7ee70482e8ef17c9c30f5a4bb79beb7256916776e29177718b",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "C:/Users/Administrator/mov-upg110/market-web/tools-schema.json",
+      "sha256": "f5a9f130f3874260c64414b54405dd2b6574b936aee388796cfd6f7f7eeb41f2",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    }
+  ],
+  "evidence_manifest_sha": "51395ddcdde2971f69be0b48f92e8887266d7f28b373a4ba801cde0de100932d"
+}
