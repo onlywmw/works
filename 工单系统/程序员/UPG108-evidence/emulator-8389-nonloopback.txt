@@ -1,0 +1,2 @@
+nc: connect: Connection refused
+exit=1

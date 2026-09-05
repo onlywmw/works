@@ -1,0 +1,45 @@
+{
+  "ticket_id": "UPG-108",
+  "delivery_id": "DEL-UPG108-20260906-001",
+  "standard_id": "（待填）",
+  "code_commit_sha": "d1d87aa1a10acef79693ac9394aa1f3157c17cc5",
+  "artifact_sha": "（待填）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG108-evidence/emulator-8389-loopback.txt",
+      "sha256": "cafb9bb4eca0b15711cdcaace3298e7c990e9c43f42ebfc9f66d83000a444973",
+      "producer": "程序员",
+      "created_at": "2026-09-06"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG108-evidence/emulator-8389-nonloopback.txt",
+      "sha256": "83cdf81e809b50192ea2aabdc93841312bdeb794bea1296b1664c7baff8c374a",
+      "producer": "程序员",
+      "created_at": "2026-09-06"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG108-evidence/node-account-pair-test.txt",
+      "sha256": "794f554f7bf9a49c37f3dc52755a65de4f36b860ec5593eb28248e8883574246",
+      "producer": "程序员",
+      "created_at": "2026-09-06"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG108-evidence/gradle-l1-targeted.txt",
+      "sha256": "195a73ade7bd14d92350bc7aee9a178ad1a5d43cc74c4ebd35b7864cb9c3309e",
+      "producer": "程序员",
+      "created_at": "2026-09-06"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG108-evidence/emulator_virtualscene_photo_nocode.jpg",
+      "sha256": "e45052403edf6a8b3cc35f93ee31a75c16702750231917825e45a7a493f596db",
+      "producer": "程序员",
+      "created_at": "2026-09-06"
+    }
+  ],
+  "evidence_manifest_sha": "8c2845811daaeed1721fa87e6e2b8c7da08564622bec93650aa25558917ba818"
+}

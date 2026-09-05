@@ -5368,17 +5368,17 @@ STD-UPG-107-v1（=验收脚本八步：基线/L1 结构面/AI 闸门/3 变异锚
 
 
 ```status
-phase: delivered
+phase: claimed
 branch: feat/upg108
-head: d1d87aa1a10acef79693ac9394aa1f3157c17cc5
-std: STD-UPG-108-v1
-delivery_id: DEL-UPG-108-20260906-001
+head: —
+std: —
+delivery_id: —
 designer: —
-dev: 阶段1 demo 交付：L1 22/22+全量862/0/1+变异5刀全红+信令线上全链curl闭环+8389双地址真机实证+部署mov-a
+dev: 已认领
 inspector: —
 merge: —
 actor: Claude-wmw0027
-updated_at: 2026-09-06T01:27:55
+updated_at: 2026-09-05T21:43:39
 ```
 
 **状态**：📌 **已立卡 @2026-09-05**（用户拍板官网双层设计：层 1=AI 面[容器面，UPG-105 线]；层 2=用户面[本卡]——**用户登入官网看到的信息来自用户自己的手机，MOV 服务器零存储**；与 vault「数据不出设备」哲学同构）｜ **优先级**：P1 ｜ **出单人**：设计师 ｜ **日期**：2026-09-05→ 📄 **设计 v1 已落盘 @2026-09-05**（设计师：`设计师/方案设计/工单方案/官网用户面_手机即服务器_设计_v1_2026-09-05.md`——通道三档+数据流契约+安全红线+三阶段拆分+验收雏形 U108-1~4；**待评审后拆派**）→ 📌 **已派单 @2026-09-05**（设计师：派单 `设计师/派单/UPG-108_官网用户面_手机即服务器_派单_2026-09-05.md`；STD-UPG-108-v1 已冻结；阶段 1 demo——**待认领**） → ⚠️ **验收员 WIP 收口确认（非验收通过）@2026-09-05**（ACCEPTANCE_LOG §P63：盘点资产核物 **7/7 全中**[MiniHttpServer 162 行+127.0.0.1 绑定:48/LightOcr 零 QR/InfoVault:291/RoomStore:62/SemanticPool.snapshot:25 行级精准]；架构异议=App 内 ForegroundService 已申报设计师备案；续作按盘点路径重建 worktree；交付后按 STD 完整验收）
