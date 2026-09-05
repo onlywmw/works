@@ -2565,7 +2565,7 @@ actor: sys04-backfill
 updated_at: 2026-09-05T08:42:03
 ```
 
-**状态**：✅ 方案 v3 定稿（输入与MCP工具联动机制_设计_v3，冻结，大神 9.3+Trace契约）→ 🔨**已派单 @2026-08-30**（用户转派；worktree=mov-tool-orch branch=feat/tool-orch）——待程序员认领 ｜ **优先级**：P0 ｜ **出单人**：设计师 ｜ **日期**：2026-08-30 → ⚠️ **验收员 WIP 收口确认 @2026-09-04**（ACCEPTANCE_LOG §P56：bf757f9d 隔离 worktree——前置两 commit 核物[4da3b6d 死引用消灭+bf757f9d E3 nudge 强催删除 NO_CALL 合法化——Plan 层接管前置]+全量 814/0/1 亲验不破；**段①核心契约主体未完成转独立会话**[OrchPlan/两段式接线/四类阻断/Trace/D1-D5——修复路径在案]——**UPG-46=WIP 非验收通过**，段①交付后完整验收） → ✅ **验收员复验 段①通过 @2026-09-04**（ACCEPTANCE_LOG §P57：a8043aad 六件隔离 worktree[E 仓——C:7-mov 路径废弃后主仓真身确认]——全量 app **837/0/1 亲跑**[0 失败基线]+**tool-orch 101/0/0 亲跑**+**M-cycle 变异亲杀**[删 cycle 拒绝行→DagPlannerTest 红→还原]；P3：coverage 未申报+app 837 vs 836 口径注记；**段①达待合→审验员→设计师**[段② UPG-104 执行器后续单；真机 L2 随段②]） → ✅ **审验通过 @2026-09-05**（证据链全对账：STD-UPG-46-v1 重算=5038b639 ✓/DEL manifest 重算 ok:True ✓/artifact_sha 实物 APK 逐位一致 ✓/code=a8043aad=origin ✓；Trace 单写点[全仓仅两处 session.append("tool/trace")]/四类阻断/M-cycle 锚链全坐实；STD 会签已补且补后哈希不破）→ ✅ **已合 main @2026-09-05**（merge **7ccf0446** 已推 origin；⚠️ 合时 ACCEPTANCE_LOG 冲突误解向旧版致 P22–P57 共 40 段落档丢失[P1 问题区已登记]——设计师恢复性追加 **e7e0b2ed** 修复在链，162 段全量恢复逐字一致） → ⚠️ **验收员 WIP 收口确认（非验收通过）@2026-09-05**（ACCEPTANCE_LOG §P65：盘点锚核物实质 **6/6 全中**[Evaluator 91 行/ToolOrchModel:97/DagPlanner 244 行行级精准；EvalFixture 126↔139、ToolOrch:348↔352 两处口径偏差注记]；A1-A4 蓝图采信[createProposal 链与 UPG-107 实证一致]；基线 844/2/1 与 §P64 口径一致；续作以主仓 tool-orch 模块为准；交付后按 STD 完整验收）
+**状态**：✅ 方案 v3 定稿（输入与MCP工具联动机制_设计_v3，冻结，大神 9.3+Trace契约）→ 🔨**已派单 @2026-08-30**（用户转派；worktree=mov-tool-orch branch=feat/tool-orch）——待程序员认领 ｜ **优先级**：P0 ｜ **出单人**：设计师 ｜ **日期**：2026-08-30 → ⚠️ **验收员 WIP 收口确认 @2026-09-04**（ACCEPTANCE_LOG §P56：bf757f9d 隔离 worktree——前置两 commit 核物[4da3b6d 死引用消灭+bf757f9d E3 nudge 强催删除 NO_CALL 合法化——Plan 层接管前置]+全量 814/0/1 亲验不破；**段①核心契约主体未完成转独立会话**[OrchPlan/两段式接线/四类阻断/Trace/D1-D5——修复路径在案]——**UPG-46=WIP 非验收通过**，段①交付后完整验收） → ✅ **验收员复验 段①通过 @2026-09-04**（ACCEPTANCE_LOG §P57：a8043aad 六件隔离 worktree[E 仓——C:7-mov 路径废弃后主仓真身确认]——全量 app **837/0/1 亲跑**[0 失败基线]+**tool-orch 101/0/0 亲跑**+**M-cycle 变异亲杀**[删 cycle 拒绝行→DagPlannerTest 红→还原]；P3：coverage 未申报+app 837 vs 836 口径注记；**段①达待合→审验员→设计师**[段② UPG-104 执行器后续单；真机 L2 随段②]） → ✅ **审验通过 @2026-09-05**（证据链全对账：STD-UPG-46-v1 重算=5038b639 ✓/DEL manifest 重算 ok:True ✓/artifact_sha 实物 APK 逐位一致 ✓/code=a8043aad=origin ✓；Trace 单写点[全仓仅两处 session.append("tool/trace")]/四类阻断/M-cycle 锚链全坐实；STD 会签已补且补后哈希不破）→ ✅ **已合 main @2026-09-05**（merge **7ccf0446** 已推 origin；⚠️ 合时 ACCEPTANCE_LOG 冲突误解向旧版致 P22–P57 共 40 段落档丢失[P1 问题区已登记]——设计师恢复性追加 **e7e0b2ed** 修复在链，162 段全量恢复逐字一致）
 → 🆕 **已认领 @2026-09-05**（程序员 Claude/wmw0027，worktree mov-upg46，branch feat/upg46，基 main 841f591d；施工：段①核心契约——Plan 协议层+两段式接线+四类阻断+Trace journal 14 字段+编排规则契约层+消灭 :349 死引用+E3 兜底语义修正；**接线豁免 2 行已裁决 A**） → 🔄 **用户拍板转交 @2026-09-05 02:19**（原认领程序员 Claude/wmw0027 做不了，用户指令转交）→ 🆕 **Kimi/kimi-cli 接手认领 @2026-09-05 02:19**（worktree mov-upg46，branch feat/upg46，基 main 841f591d；前任两预置 commit 4da3b6d0[死引用消灭]+bf757f9d[E3 NO_CALL 合法化] 保留接续——段①主体：Plan 协议层/两段式接线/四类阻断/Trace journal/编排规则契约层） → ✅**C 完成 @2026-09-05 03:02**（程序员 Kimi/kimi-cli，feat/upg46 **a8043aad** 已 push origin[bf757f9d..a8043aad]，基 main 841f591d；段①六件全交：①**Plan 协议层**[tool-orch OrchPlan/PlanValidator+DagPlanner.buildWithDependsOn 外部 dependsOn 入口（既有 build 零改动）+app OrchPlanSupport Plan JSON 解析/解析失败拒绝] ②**两段式接线**[runPreApprovalRound 结构化 Plan 优先+行格式回退共存——UPG-76/85 锚段零破坏；Plan 决策 trace 落主会话 journal traceId 绑 planId；执行侧=ToolCallScheduler→dispatch 唯一闸+PlanApprovalStore 原样，执行器属段②不越界] ③**四类阻断接生产 dispatch 前段**[ArgumentValidator 缺参/歧义/非法/超权限+McpToolScheduler.argumentValidator 可注钩子默认 null 零行为变化+schema 投影 fail-open] ④**Trace 契约落地**[journal 新事件 tool/trace 四处同改+穷尽 when 五文件补分支；traceEmitter 装配点全路径覆盖；TraceRecorder 生产实例化；14 字段实值（conversationId/turnId 原恒空串已修）；单写点 Session.append 无旁路文件无 CoT] ⑤**编排规则契约层**[OrchRule 声明式触发/优先级/互斥+OrchRuleEngine+EffectSpecRegistry 经 DagPlanner 接线；DEFAULT=空表扩张留段②] ⑥**死代码清账**[e3NudgedKeys+looksLikeToolRequest 净删 13 行+:348 孤儿注释更正]；**变异 5 锚亲杀**[M1 删循环检测→红/M2 删缺参分支→红/M3 删 journal 落点→红/M4 NO_CALL 改判→双侧红/M5 删 L2/L3 预分级支路→双侧红；定点快照还原复绿]；全量 app **836/0/1**[基线 814/0/1+新增 22 零新增失败；UPG-85 契约锚 3 例+PlanApprovalBinding 32 例回归绿]+tool-orch **101/0/0**[既有 75 零回归+新增 26]+assembleDebug 绿[APK 56716961B]；MainActivity CRLF 5692/0 纯度实测；装配点 4 处一行级注入（棘轮红线 7；结构化分派块=方法内升级提请设计师复核口径）；Token/KV 两节申报[补全轮 prompt +300 token 一次性会话/主会话前缀恒定]+check-token-effect 通过；verify-hash not-ancestor 如实申报[未合常态，合后复跑=终态]；⚠️环境注记[C 盘 0027-mov 当前被其他进程重建为无 .git 目录（02:45-02:57 非本单动作），真实仓库=E 盘 mov归档——verify-hash 经 --repo 显式指定完成]；真机 L2 转验收员持有[JVM 行为层已实证]；coverage_status=**FULL**；DEL-UPG-46-20260905-001[code=a8043aad/artifact=a94223a1/manifest_sha=b5e112b1（artifact 待填→实物回填后 deliver-gen 重产，自检 ok:True）]；报告 DELIVERY_UPG46_2026-09-05.md；**已登记两个表**）——待验收员验收（L1 复核+变异 5 锚复杀+真机 L2+合后 verify-hash 终态复核） → ✅ **验收员复验通过 @2026-09-05**（§P57 落档：六件核物全在/M-cycle 锚链成立/837 差 1 双方 P3 注记/两表登记在/交付报告在） → ✅ **审验员确认+设计师合 main @7ccf0446**（2026-09-05：段①核心契约全链合入；段②=UPG-104）
 **卡点**：✅ 段①已合 main @7ccf0446——无 ｜ → 📋 **派单文已补 @2026-09-02**（`设计师/派单/UPG-46_工具联动Runtime契约_派单_2026-09-02.md`——D1-D4 判据+范围+基线+验收；**P0 可认领**：任意线先到先得） ｜ → 📝 **设计 v3.1 补丁 @2026-09-02**（Plan 模式=顺序真相层：两段式先 Plan 后执行+steps DAG+机器校验+顺序可见——用户定「plan 没做好联动必乱」；`03_工具联动/输入与MCP工具联动机制_设计_v3.1_2026-09-02.md`；并入 UPG-46 施工口径——**P0-4 三模式由 dependsOn 显式表达**） ｜ → 🔄 **瘦身重派 @2026-09-04（用户拍板「建议瘦身转派」）**：本单=段①核心契约（联动机制+Trace+接线+契约语义）；段②（六指标评测集+Safety Policy 确认门实现+多工具编排+记忆回流）→ **UPG-104**（已立卡 P2 挂单）；候选施工=Claude CLI（UPG-103 后接续） ｜ → 🔧 **派单前治理修复收口 @2026-09-05（设计师）**：①**v3 设计文本体断链**（全仓+备份归档搜索确认不存在）→ 口径重建 **v3.2**（`设计师/方案设计/03_工具联动/输入与MCP工具联动机制_设计_v3.2_2026-09-05.md`——v3.1 补丁+卡面施工 8 项+溯源复核重建，不冒充 v3 原文）②**六层溯源复核**（规则 20/21，main @841f591d 实证）：L5 tool-orch 雏形=❌孤岛（结构在零生产调用，MainActivity.kt:349-350 死引用）、**旧锚作废通报**（writeTools/harmlessTools 内联名单+toolParamSchemas 已 sunset——权限名单单源化 PermissionRegistryData）、UPG-83「受控通道」main 查无提交=未核实③**STD-UPG-46-v1 已冻结**（content_sha256=5038b639…，会签待补[approved_by 栏按 UPG-103 先例派单后补齐]）④**派单文 v2**（`设计师/派单/UPG-46_工具联动Runtime契约_派单_v2_2026-09-05.md`——分支改 feat/upg46[旧 feat/tool-orch 为历史雏形已全量在 main，占用即撞单]/基线刷新 814/0/1/已查两库无命中/红线 23·24 机制口径）——**可认领**
 
@@ -5419,21 +5419,20 @@ L1：配对/通道/投影单测；L2 真机：扫码→网站显示手机实时�
 
 
 ```status
-phase: claimed
-branch: feat/upg109
+phase: registered
+branch: —
 head: —
 std: —
 delivery_id: —
 designer: 📌 已派单·待认领 @2026-09-05（派单 `设计师/派单/UPG-109_第三方站WebMCP扫描器_派单_2026-09-05.md`；STD-UPG-109-v1 已冻结）
-dev: 已认领
+dev: —
 inspector: —
 merge: —
-actor: Claude-wmw0027
-updated_at: 2026-09-05T23:00:08
+actor: 设计师
+updated_at: 2026-09-05T22:43:41
 ```
 
 **状态**：📌 **已立卡 @2026-09-05**（用户拍板：「WebMCP 是我们对外的名片，也是探索外面网站的尝试」——MOV agent 用浏览器访问网站时**先扫描该站可否接入改造**，可改就就地桥接，提升 AI 对第三方站的操控）｜ **优先级**：P2 ｜ **出单人**：设计师 ｜ **日期**：2026-09-05→ 📄 **设计 v1 已落盘 @2026-09-05**（设计师：`设计师/方案设计/工单方案/第三方站WebMCP扫描器_设计_v1_2026-09-05.md`——探测面+三档判定+安全红线+验收雏形 U109-1~4；**待评审后拆派**）→ 📌 **已派单 @2026-09-05**（设计师：派单 `设计师/派单/UPG-109_第三方站WebMCP扫描器_派单_2026-09-05.md`；STD-UPG-109-v1 已冻结；**待认领**）
-→ 🔄 **认领+设计蓝图完成 @2026-09-05（程序员 Claude/wmw0027 · WIP 未动产品代码）**：①**组件蓝图**：WebMcpScanner 纯函数判定器（ProbeResult{nativeWebMcp[四物任一：window.mov_webApi/W3C webmcp/llms.txt/.well-known], domLocatable, framework[VUE/REACT/NATIVE/STATIC/UNKNOWN], loginWall} → classify→A/B/C——不确定=C 诚实降级）+探测执行器（evaluateJavascript 只读探针四项：window 属性/llms link 标签/框架指纹/GET 401 判定——零写请求）+B 档桥接（WebMcpHub REGISTERED_DOMAINS 扩展=域名级显式授权 Set 内存态+审批门+可撤销——43a 既有 discover/call 复用）+判定报告（journal+卡片投影 U-40+agent 上下文）②**L1 用例集**：三类型本地 fixture 站（A=带 mov_webApi/B=DOM 稳定无原生/C=登录墙）+判定纯函数单测（探测结果 mock→档位断言）③**变异锚落点**：U109-3 判定函数删除→classify 红/U109-5 CSP 输入混入→四项锚红/红线 2 无授权注入→B 档授权锚红 ④**真机 L2**：mov-ai.cn（A 档=llms.txt 原生物成立）+开源站 B/C；**U109-5 回归锚**=源码 grep CSP 零命中 ⑤**前置就绪**：43a WebMcpHub/discover/WRITE_TOOLS 机制 main 在案（UPG-69 先例对接）；**扫描开关**：全局关闭（用户关探测=全局禁用——设置面挂点待定）
 
 ## 标题
 浏览器侧前置扫描器：访问任意站点 → 探测 WebMCP 接入性 → 三档判定 → 可接入则经 UPG-43a Hub 就地桥接。
@@ -5503,20 +5502,20 @@ STD-UPG-110-v1（L1 契约测试+L2 生产 curl 实证+3 变异锚；判据以�
 
 
 ```status
-phase: merged
+phase: delivered
 branch: feat/upg111
 head: e396fab3
-std: —（简式：卡面 U-111-1~3 过闸·红线 22 存量豁免）
-delivery_id: DEL-UPG111-20260905-001
+std: —（简式：卡面 U-111-1~3 过闸）
+delivery_id: —
 designer: 📌 立卡 @2026-09-05（P3——UPG-100 A3 死角扫尾转办）
 dev: ✅ C 完成 @2026-09-05（e396fab3——18 处弱锚升级+3 代表变异亲杀）
-inspector: ✅ 复验 §P64 + 审验 ✅通过 @2026-09-05（integrity_review=confirmed——STD 简式豁免成立/manifest ok:True/独立复核实证非照抄）
-merge: ✅ 已合 main @baa71627（merge fada223b+L2-9 锚收口；终态 verify-hash HASH_OK；全量 844/0/1；随行基线修复 cdb00090+166ad94a——66277576 冲突残骸 27 处清零）
-actor: 设计师
-updated_at: 2026-09-05T23:26:54
+inspector: ✅ 复验通过 @2026-09-05（§P64 定向 16/0+9/0+双刀抽杀亲红；达待合→审验员）
+merge: —
+actor: 设计师（块校正）
+updated_at: 2026-09-05T22:43:41
 ```
 
-**状态**：🆕 **立卡 @2026-09-05**（UPG-100 A3 同族抽检转办——18 处疑似死角：Appearance 族 16 处 + Approval 族 2 处；两档更弱形态：「定义兜底命中」+「注释令牌污染」——删真实读点注释行兜底仍绿；实测变异 S1/S2/S4 死角实证、S3 强锚对照——**待派单**（P3，Appearance 族优先；证据表：程序员/UPG100-evidence/upg100_a3_sweep_table.md）） → ✅ **验收员复验 通过 @2026-09-05**（ACCEPTANCE_LOG §P64：e396fab3——定向 16/0+9/0+全量 844/2/1[2 红基线预存零 diff 实证·UPG-91 demoBridge 转办]+M1/M3 双刀抽杀亲红+up-to-date 假绿新变体教训[classpath 外源文件变异必 --rerun-tasks]；**达待合→审验员→设计师**） ｜ **优先级**：P3 → ✅ **审验通过 @2026-09-05**（审验员：integrity_review=confirmed——STD 简式豁免成立[红线 22]/DEL-UPG111-20260905-001 manifest ok:True[code=e396fab3/CRLF-LF 口径已核]/分支 ls-remote 实证已 push/独立复核实证非照抄 §P64；**P1 被动发现转办**：origin/main 前端三源文件+产物 27 处未解冲突标记残留[merge 66277576]——问题区登记）→ ✅ **设计师基线修复+合 main @2026-09-05**：①**基线修复 cdb00090+166ad94a**（三源文件取第二父=UPG-91 v6 终版 4dc19e72 逐字一致[正向 16+负向 9 锚满分]+assets/pages 24 处改名残骸[新名 12 恢复 upg46 构建+旧名 12 孤儿删]——gen-ui-catalog 硬闸过）②**merge fada223b**（e396fab3 干净合入：2 测试文件 +84/-29）③**L2-9 锚收口 baa71627**（acardCls 3→2/alistCls 4→2——原值系对标记污染基线校准，计数锚维护纪律）④**终态：verify-hash HASH_OK + 隔离 worktree 全量 844/0/1 复绿**（2 红基线根因拔除）
+**状态**：🆕 **立卡 @2026-09-05**（UPG-100 A3 同族抽检转办——18 处疑似死角：Appearance 族 16 处 + Approval 族 2 处；两档更弱形态：「定义兜底命中」+「注释令牌污染」——删真实读点注释行兜底仍绿；实测变异 S1/S2/S4 死角实证、S3 强锚对照——**待派单**（P3，Appearance 族优先；证据表：程序员/UPG100-evidence/upg100_a3_sweep_table.md）） → ✅ **验收员复验 通过 @2026-09-05**（ACCEPTANCE_LOG §P64：e396fab3——定向 16/0+9/0+全量 844/2/1[2 红基线预存零 diff 实证·UPG-91 demoBridge 转办]+M1/M3 双刀抽杀亲红+up-to-date 假绿新变体教训[classpath 外源文件变异必 --rerun-tasks]；**达待合→审验员→设计师**） ｜ **优先级**：P3
 
 ## 标题
 契约测试死角升级：把「定义兜底命中/注释令牌污染」两档弱锚升级为计数+局部性强锚（UPG-100 锚②同法）
