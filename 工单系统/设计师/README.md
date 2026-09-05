@@ -72,6 +72,8 @@
 ## 五、维护约定与工作顺序
 
 - **工单库 = 派单权威**：状态/进度/归属实时更新，其他目录不另起炉灶
+- **队列/进度出数纪律（2026-09-05 定，UPG-52 误报教训）**：对外报「哪些单没做」一律以**工单表**（sync 机器投影）为准——库卡面状态允许续行（`｜`/`→` 开头行），禁止只读状态行尾段裸扫；拿不准时跑 `python 审验员/recon-queue.py`（表×分支×验收日志三方对账，只出 flag 人裁决）
+- **状态写入闸（SYS-04，2026-09-05 生效）**：卡状态变更一律走 `python 审验员/set-status.py <工单号> --phase <相位> [--role dev --note …] [--branch …] [--head …]`——归属/迁移/hash 校验内置，写失败=登记无效；**手写散文状态段不再产生权威状态**（sync 以 status 块为准）；**合批门禁**：设计师合 main 前后各跑一次 `recon-queue.py`，🔴=暂停合批先核
 - 方案/工单改动**在此登记**，不留散落
 - 派单给 A/B/C 时：工单文本可复制、含测试方案、交接基础信息（仓库/路径/分支/构建/设备/文档入口）
 - 与仓库联动件（TASKBOARD/ACCEPTANCE_LOG）以仓库 docs/ 为准
@@ -229,7 +231,8 @@
 
 | 节点 | 状态 | 证据 | 发现/变更（人+date+commit） |
 |---|---|---|---|
-| 运行时接线四点（mcpHandlers 注册段 + toolParamSchemas + 权限名单 + isHardwareTool/ToolRegistry） | ✅ | MainActivity.kt:1858-3652 / :357 / McpToolScheduler.kt:93,100-120 / MainActivity.kt:59,2034-2041,6213（索引审计 @2026-08-30 654c88f 行号修正；hostToolMeta 聚合 354-355） | 2026-08-28 溯源确认——**一切工具类工单的必经接点** |
+| 运行时接线四点（mcpHandlers + ToolsRegistry.registerAll + PermissionGuard 名单单源 + uiOnlyMcpTools） | ✅ | MainActivity.kt:365 / :2408（注册面=tools/ToolsRegistry.kt:24，UPG-93/98 迁出）/ McpToolScheduler.kt:16-184 / MainActivity.kt:196（**2026-09-05 UPG-46 溯源复核 @841f591d 锚点刷新**——旧锚 writeTools 内联名单/toolParamSchemas 已 sunset 作废） | 2026-08-28 溯源确认——**一切工具类工单的必经接点** |
+| tool-orch 雏形（ToolOrchestrator/DagPlanner/EffectSpecs/TraceRecord 14 字段） | ❌ 孤岛 | MainActivity.kt:349-350 死引用 + orchestrate 调用方全在 tool-orch/src/test（@841f591d） | 2026-09-05 UPG-46 溯源发现——UPG-27 雏形（bc58a013）已在 main 零生产调用；段①=接线对象，决策器为关键词启发式勿硬改（Evaluator baseline 依赖） |
 | McpToolProvider | ❌ 孤岛 | McpToolProvider.kt:21（零生产实例化，仅 McpExtDiscovery 注释提及） | 2026-08-28 三单溯源共同发现 |
 | 权限门 else→ALLOW 静默放行 | ⚠️ 设计陷阱 | McpToolScheduler.kt:208-214（新工具不在任何名单→不弹窗直放；索引审计 @2026-08-29 行号修正 @8af7da9；@2026-08-30 654c88f 复核不变） | 2026-08-28；处置=新写类工具必登记 writeTools+验收变异 |
 | 敏感黑名单四处镜像 | ⚠️ 不一致 | McpToolProvider.kt:30 / McpMarket.kt:579(定义):442(使用) / McpExtDiscovery.kt:31 / McpToolScheduler.kt:93（内容不一致 + 子串/精确匹配语义不同；索引审计 @2026-08-29 行号修正 @8af7da9 + @2026-08-30 654c88f 复核） | 2026-08-28；UPG-02 施工项 |
@@ -270,6 +273,7 @@
 | UPG-23 本机能力总览 | 市场 builtin 机制✅ / 接线四点✅ / 权限门名单区⚠️（permissionTier 单源访问器纪律）/ pins 单写点✅ | ⚠️ | ✅（规则 21 溯源已过；内置包实列已随 8a205d6 落地） |
 | UPG-24 设计规范 v1 | tokens.css 唯一源✅（全仓扫描实物反提） | ✅ | ✅ 文档已交付（设计师单无施工） |
 | UPG-25 UI 瑕疵批修 | 规范 v1 §七 对照表✅ / chipsRow 区⚠️（与 UPG-23 邻接） | ⚠️ | ✅（①项待 UPG-23 合 main 或 rebase） |
+| UPG-46 工具联动段① | 接线四点✅ / tool-orch 雏形❌（接线对象） | ❌ | ✅（断点处置=本单修，设计 v3.2；派单 v2 已出 @2026-09-05） |
 | S-06 | server.mjs 站表 bug❌（与 UPG-03 同根 BP-02） | ❌ | ❌（打回小修中） |
 
 ### 4. 断点波及速查（BP 聚类，v0.2）

@@ -325,3 +325,21 @@ adb -s emulator-5556 shell "dumpsys window windows | grep -B2 -A10 '<Activity>'"
 - **r42/r67**：⚠️ 客户端达成，服务面未施工（r43），端到端待服务面
 - **待合 main**：r85/r52/r82（验收通过未合，设计师安排）
 - **AI key**：被测试 key 覆盖（挂账-ai-key-被覆盖），需用户提供真实 key 恢复
+
+---
+
+## ⚠️ 硬条款（2026-09-04 增补 · 证据目录缺失连续两单后立项）
+
+### 「证据目录随落档必存」——ACCEPTANCE_LOG commit 前必须完成
+
+**背景**：UPG-105/UPG-46 连续两单复验的 XML/快照实证随 verify worktree 清理未留存（app/build/test-results 在 worktree 内=remove --force 即消失）——审验员审读时发现缺口。
+
+**硬条款（违反=验收无效重做）**：
+1. **ACCEPTANCE_LOG commit 之前**，必须完成：
+   - ①全量 XML 拷贝：`cp -r app/build/test-results/testDebugUnitTest/*.xml "工单系统\验收员\证据数据\<日期>\<工单>\"`
+   - ②关键断言的变异过程截屏（变异注入前/红/还原三态）
+   - ③真机场景截图/录屏
+2. **worktree 清理在证据拷贝验证之后**（ls 证据目录确认文件在——才许 remove worktree）
+3. 证据目录缺文件=ACCEPTANCE_LOG 结论无效，验收重做
+
+**顺带固化**：变异注入「可编译且走完测试」自查（UPG-81/91/94/96 四现终纳）+「删除式/条件反转，永不注释」（contains 锚免疫四现终纳）——见 §P34/§P42/§P51b 各节。

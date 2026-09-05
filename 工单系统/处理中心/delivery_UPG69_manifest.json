@@ -1,45 +1,52 @@
 {
   "ticket_id": "UPG-69",
   "delivery_id": "DEL-UPG69-20260905-001",
-  "standard_id": "STD-UPG69-v1（content_sha256=753694923074505d2684d86a13c9982b1ba21e8ca80f2edd9b48470d6d15b458）",
-  "code_commit_sha": "f5e7212a",
+  "standard_id": "STD-UPG-69-v1（content_sha256=be6a06a06c77ecd0b8e26932c802b5981df7d41b85d27708b74ce1d764088f13）",
+  "code_commit_sha": "f5e7212a55d7397c067c39bfc8047e8f40528350",
   "artifact_sha": "（待填）",
   "evidence_manifest": [
     {
       "evidence_id": "E-001",
-      "path": "程序员/UPG69-evidence/line_tickets_401.json",
-      "sha256": "3b2fec5dc6a8c37c379c2d889b5214906835b8f9cbc2f18ecddcea7f7ae3a68b",
-      "producer": "程序员",
-      "created_at": "2026-09-05"
-    },
-    {
-      "evidence_id": "E-002",
-      "path": "程序员/UPG69-evidence/line_webapi-tickets.js",
-      "sha256": "de9c4ede6f36c8dc1fd9fe05404c4c29e1cac2559450ac9cf46cd98f95514e2c",
-      "producer": "程序员",
-      "created_at": "2026-09-05"
-    },
-    {
-      "evidence_id": "E-003",
-      "path": "程序员/UPG69-evidence/local_tickets.db",
-      "sha256": "dcee731eff8429e707ee251eb480f6ec7d7137a73f57e37037f8c597e05dce01",
-      "producer": "程序员",
-      "created_at": "2026-09-05"
-    },
-    {
-      "evidence_id": "E-004",
       "path": "程序员/UPG69-evidence/tickets.html",
       "sha256": "91913d2a0ce2d6380e7726836f0743a05b042a414e1a9cdf296dbb8c943ece9d",
       "producer": "程序员",
       "created_at": "2026-09-05"
     },
     {
-      "evidence_id": "E-005",
+      "evidence_id": "E-002",
       "path": "程序员/UPG69-evidence/webapi-tickets.js",
       "sha256": "de9c4ede6f36c8dc1fd9fe05404c4c29e1cac2559450ac9cf46cd98f95514e2c",
       "producer": "程序员",
       "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "程序员/UPG69-evidence/line_tickets_401.json",
+      "sha256": "3b2fec5dc6a8c37c379c2d889b5214906835b8f9cbc2f18ecddcea7f7ae3a68b",
+      "producer": "程序员",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "程序员/UPG69-evidence/line_webapi-tickets.js",
+      "sha256": "de9c4ede6f36c8dc1fd9fe05404c4c29e1cac2559450ac9cf46cd98f95514e2c",
+      "producer": "程序员",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-005",
+      "path": "程序员/UPG69-evidence/local_tickets.db",
+      "sha256": "dcee731eff8429e707ee251eb480f6ec7d7137a73f57e37037f8c597e05dce01",
+      "producer": "程序员",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-006",
+      "path": "程序员/交付报告/DELIVERY_UPG69_2026-09-05.md",
+      "sha256": "f5fd1db036ed73f69f60f931ec589fa59e802a1187bc91da0a3b68dc5b91e300",
+      "producer": "程序员",
+      "created_at": "2026-09-05"
     }
   ],
-  "evidence_manifest_sha": "382efcba761704f3c6fbd3e05b89c7097f493ee11fbb0f1b432c8b420305bc54"
+  "evidence_manifest_sha": "5595603883501ce4b04aac5922928cff6a9c4692cc46c05d33a02f1999d10717"
 }

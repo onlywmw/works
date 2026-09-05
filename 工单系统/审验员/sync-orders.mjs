@@ -106,12 +106,28 @@ function extractPriority(txt) {
   return "—";
 }
 
+// ---------------- SYS-04：status 块 schema 解析（双模：块优先，无块退回启发式） ----------------
+function parseStatusBlock(cardLines) {
+  const out = {};
+  let inB = false;
+  for (const l of cardLines) {
+    const t = l.trim();
+    if (t === "```status") { inB = true; continue; }
+    if (inB && t === "```") break;
+    if (inB) {
+      const m = t.match(/^([a-z_]+):\s?(.*)$/);
+      if (m) out[m[1]] = m[2].trim();
+    }
+  }
+  return out;
+}
+
 function parseLib(libPath) {
   const src = fs.readFileSync(libPath, "utf8").replace(/\r\n/g, "\n");
   const lines = src.split("\n");
   const cards = [];
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^# (UPG-\d+)\s+(.*)$/);
+    const m = lines[i].match(/^# ([A-Z][A-Z0-9]*-\d+)\s+(.*)$/);   // SYS-04 补丁：W/S/SYS 前缀同权（原只认 UPG——W-11 等卡长期不进表）
     if (m) cards.push({ idx: i, no: m[1], title: m[2].trim() });
   }
   const endOf = (i) => (i + 1 < cards.length ? cards[i + 1].idx : lines.length);
@@ -125,7 +141,7 @@ function parseLib(libPath) {
     let endline = end;
     for (let j = st + 1; j < end; j++) {
       const l = lines[j];
-      if (/^# UPG-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
+      if (/^# [A-Z][A-Z0-9]*-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
       // R1：blockquote（> 遗留跟进等）与分隔线（---）非状态区内容，排除
       if (l.startsWith(">") || l.startsWith("---")) { endline = j; break; }
       if (SEC_WORDS.some((w) => l.startsWith(w))) { endline = j; break; }
@@ -232,6 +248,14 @@ function parseLib(libPath) {
       const s = pick(segs, role);
       if (s) row[col] = s.slice(0, 70);
     }
+    // SYS-04：status 块为权威——有块则角色列/delivery_id 以块为准（免猜测）
+    const blk = parseStatusBlock(lines.slice(c.idx, endOf(c.idx)));
+    if (blk.phase) {
+      for (const [k, col] of [["designer", "D"], ["dev", "E"], ["inspector", "F"], ["merge", "G"]]) {
+        if (blk[k] !== undefined && blk[k] !== "") row[col] = blk[k].slice(0, 70);
+      }
+      if (blk.delivery_id) row.I = blk.delivery_id;
+    }
     row.C = extractPriority(txt);
     if (row.C === "—") warns.push("优先级缺失");
     const dm = txt.match(DEL_RE);
@@ -263,7 +287,7 @@ function delBindingAudit(libPath) {
   const issues = [];
   let checked = 0;
   // 卡边界：「# UPG-xx」头到下一张卡头
-  const cardRe = /^# (UPG-[A-Z0-9]+)/gm;
+  const cardRe = /^# ([A-Z][A-Z0-9]*-[A-Z0-9]+)/gm;   // SYS-04 补丁：W/S/SYS 前缀同权
   const heads = [];
   let hm;
   while ((hm = cardRe.exec(txt)) !== null) heads.push({ no: hm[1], at: hm.index });

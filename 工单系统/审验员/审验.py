@@ -462,7 +462,8 @@ def delivery_binding(ticket, table):
 # ---------------------------------------------------------------- SYS-02 E2 hash 一致性自动闸
 
 # 主仓库（项目配置.md 第二节）：code_commit_sha 校验对象；--repo 可覆盖（测试/扩展用）
-MAIN_REPO = r"C:\Users\Administrator\0027-mov"
+# 2026-09-05：主仓迁移 C:\Users\Administrator\0027-mov → E:\mov归档\0027-mov（C 盘为残留空壳，.git 已不在）
+MAIN_REPO = r"E:\mov归档\0027-mov"
 
 
 def _run_git(repo, *args):
