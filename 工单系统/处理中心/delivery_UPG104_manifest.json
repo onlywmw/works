@@ -1,0 +1,38 @@
+{
+  "ticket_id": "UPG-104",
+  "delivery_id": "DEL-UPG104-20260905-001",
+  "standard_id": "STD-UPG-104-v1（content_sha256=e6d8a7f960dad4d12a60fa5b105898d694f908ec0fae11b5c6205b6755e2b5b5）",
+  "code_commit_sha": "f4317a03",
+  "artifact_sha": "5ed5b181d218d923e1ac40eb3ef89af6",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "C:/Users/Administrator/mov-upg104/tool-orch/src/main/kotlin/com/hermes/mov/orch/SafetyClassifier.kt",
+      "sha256": "bc3d4d0cf4f89dda160dd97199a3479f96d2748d53852b4e988d5e947f729b3d",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "C:/Users/Administrator/mov-upg104/tool-orch/src/main/kotlin/com/hermes/mov/orch/PlanExecutor.kt",
+      "sha256": "12e80d58cbe42402b2d0a78d07b09b98082c9284c2d510b0a4349719ec66ffdb",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-003",
+      "path": "C:/Users/Administrator/mov-upg104/tool-orch/src/main/kotlin/com/hermes/mov/orch/EvalFixture.kt",
+      "sha256": "5f4c4ca84e7ad36728202402d74bf6b475d6033eda72575893087b43f50f2845",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-004",
+      "path": "C:/Users/Administrator/mov-upg104/app/src/main/java/com/mov/android/tools/MemoryReflex.kt",
+      "sha256": "e5a5f63154bfa208fe9265ce4f6abfac107d51ae36c2e96c16263bccfef0818b",
+      "producer": "程序员C/Claude-wmw0027",
+      "created_at": "2026-09-05"
+    }
+  ],
+  "evidence_manifest_sha": "ee68bd5e5eed85ef10b5c027ac24d18bdbf8638179637d4aa711ec6a78605a92"
+}
