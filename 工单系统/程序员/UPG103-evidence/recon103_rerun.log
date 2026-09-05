@@ -1,0 +1,10 @@
+block                  ok?  match/actual
+capsule                OK   
+refreshModelChip       OK   
+chipsFace_body         OK   
+pinServers             OK   
+pinSchemaOf            OK   
+readPinList            OK   
+writePinList           OK   
+capsuleFace_body       OK   
+ALL_OK

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.MarketSplitContractTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:03.340Z" hostname="苟富贵" time="0.08">
+  <properties/>
+  <testcase name="名单锚——market 市场面 7 函数全集冻结" classname="com.mov.android.MarketSplitContractTest" time="0.004"/>
+  <testcase name="唯一写点锚——MainActivity 壳内零市场面函数定义残留（伪搬移必红）" classname="com.mov.android.MarketSplitContractTest" time="0.066"/>
+  <testcase name="直呼接线锚——MainActivity 与 MarketTools 对 market 函数 import 在场" classname="com.mov.android.MarketSplitContractTest" time="0.002"/>
+  <testcase name="保真锚——7 块归一化 sha256 拆前拆后全等（纯搬移零逻辑改动机器证明）" classname="com.mov.android.MarketSplitContractTest" time="0.006"/>
+  <testcase name="军规8锚——market 模块零 Activity 字段持有（顶层扩展无持有）" classname="com.mov.android.MarketSplitContractTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

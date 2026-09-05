@@ -1,0 +1,23 @@
+﻿没 太 明 白 你 的 意 思 。 你 是 想 问 什 么 ， 还 是 想 让 我 帮 你
+做 点 事 ？
+如 果 你 在 测 试 ， 可 以 试 试 这 些 ：
+「 查 一 下 明 天 北 京 到 上 海 的 火 车
+「 现 在 几 点 了 」
+「 帮 我 记 个 事 」
+「 查 下 电 量 」
+直 接 说 需 求 就 行 。
+what time is it now use the date-time tool
+现 在 是 2026 年 9 月 4 日 ， 晚 上 21 ： 37 。
+9 ： 39 凵
+新 对 话
+示 」
+0
+电 量 100 ％
+check the battery level now
+， 当 前 没 有 在 充 电 。
+check the battery level again
+Deepseek V4
+MCP 工 具
+我 的 能 力
+给 发 消 息 “
+内 容 由

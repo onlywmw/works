@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ui.registry.ComponentCatalogTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.660Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="M-U50-11 ID 永不复用_删除作废后不重分配" classname="com.mov.android.ui.registry.ComponentCatalogTest" time="0.003"/>
+  <testcase name="官方组件不可作废_平台权威" classname="com.mov.android.ui.registry.ComponentCatalogTest" time="0.001"/>
+  <testcase name="L2-11 官方 catalog 20 条齐全_含 id_contract_version_provider_id" classname="com.mov.android.ui.registry.ComponentCatalogTest" time="0.0"/>
+  <testcase name="官方 semanticId 与阶段1编号库对齐_双向映射" classname="com.mov.android.ui.registry.ComponentCatalogTest" time="0.0"/>
+  <testcase name="第三方段从 UI-010001 起分配" classname="com.mov.android.ui.registry.ComponentCatalogTest" time="0.0"/>
+  <testcase name="isOccupied 检测官方_第三方_作废" classname="com.mov.android.ui.registry.ComponentCatalogTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

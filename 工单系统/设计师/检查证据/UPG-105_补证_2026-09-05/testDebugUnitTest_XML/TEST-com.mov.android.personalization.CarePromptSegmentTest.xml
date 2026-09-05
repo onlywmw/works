@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.personalization.CarePromptSegmentTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.569Z" hostname="苟富贵" time="0.001">
+  <properties/>
+  <testcase name="DRAFT 与敏感在提示词层同样缺席 - 提炼层已闸（纵深防御）" classname="com.mov.android.personalization.CarePromptSegmentTest" time="0.0"/>
+  <testcase name="双段输出指令 - amenities ≤3 + seat_pref 字段声明" classname="com.mov.android.personalization.CarePromptSegmentTest" time="0.0"/>
+  <testcase name="槽池契约 - domain 槽池声明+禁发明新槽" classname="com.mov.android.personalization.CarePromptSegmentTest" time="0.0"/>
+  <testcase name="空 care - 空节（零字节注入）" classname="com.mov.android.personalization.CarePromptSegmentTest" time="0.0"/>
+  <testcase name="标签注入不注原文 - UPG-05 红线" classname="com.mov.android.personalization.CarePromptSegmentTest" time="0.001"/>
+  <testcase name="amenities 上限 - 超 3 项渲染截断（槽池闸配合）" classname="com.mov.android.personalization.CarePromptSegmentTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

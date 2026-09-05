@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.personalization.CareProfileExtractorTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.566Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="M-05 不拼车 - ride carpool never" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-11 敏感闸 - 宗教条目绝不进画像（ACTIVE 吃素也被拦）" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-07 美式无糖 - food coffee americano_plain" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="编辑层提示词节 - 标签注入不注原文+槽池+禁发明新槽" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.001"/>
+  <testcase name="M-08 出差节奏 - travel pattern sun_out_fri_back" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-06 性价比优先 - shopping priority value" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="空 care - 空节（不注入无意义文本）" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-01+M-02 聚合 - breakfast 优先于 bathtub（条目序）" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.001"/>
+  <testcase name="M-10 DRAFT+转述双重不驱动 - 画像为空（朋友说轻断食）" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-04 高铁靠窗 - rail seat window" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="amenities 截断 ≤3 - 超界截断（槽池闸配合）" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-01 早餐刚需 - hotel amenities 含 breakfast" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-03 无辣不欢 - food spice high" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <testcase name="M-09 DRAFT 不驱动 - 画像为空（想看演唱会）" classname="com.mov.android.personalization.CareProfileExtractorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.Upg68SingleChannelContractTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.047Z" hostname="苟富贵" time="0.012">
+  <properties/>
+  <testcase name="A7 明文缩略图出口 asset credPeek peekPhoto 收编 uiOnlyMcpTools（AI 不可调）" classname="com.mov.android.Upg68SingleChannelContractTest" time="0.006"/>
+  <testcase name="A7 agent 唯一入口 ToolCalls 经 scheduler dispatch 不直调 mcpHandlers" classname="com.mov.android.Upg68SingleChannelContractTest" time="0.001"/>
+  <testcase name="A7 asset credPeek 转发 vault get 传 keys 键列表（防断链回归）" classname="com.mov.android.Upg68SingleChannelContractTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.ContainerContentContractTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.316Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="UPG105 llms txt - 能力清单同源（无编造条目）" classname="com.mov.android.approval.ContainerContentContractTest" time="0.001"/>
+  <testcase name="UPG105 sitemap - 11 URL（10 页+llms txt）" classname="com.mov.android.approval.ContainerContentContractTest" time="0.0"/>
+  <testcase name="UPG105 JSON-LD - schema org 类型（禁整体自定义 mov Capability）" classname="com.mov.android.approval.ContainerContentContractTest" time="0.001"/>
+  <testcase name="UPG105 六工具 schema - 四要素齐全（用途·输入·输出·边界）" classname="com.mov.android.approval.ContainerContentContractTest" time="0.0"/>
+  <testcase name="UPG105 与 UPG-94 共存 - market-web index JSON-LD 注入不破坏 head 结构" classname="com.mov.android.approval.ContainerContentContractTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

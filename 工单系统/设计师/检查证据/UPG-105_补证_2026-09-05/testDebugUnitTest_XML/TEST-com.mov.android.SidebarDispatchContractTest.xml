@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.SidebarDispatchContractTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:03.619Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="分派锚——五 case 键值到 ui_open 桥全接" classname="com.mov.android.SidebarDispatchContractTest" time="0.002"/>
+  <testcase name="兜底锚——未接线槽位走 showDialog 可见提示（非裸 toast）" classname="com.mov.android.SidebarDispatchContractTest" time="0.001"/>
+  <testcase name="键值对齐锚——CapsuleResolver 静态表 page 值 == openBuiltin case 键" classname="com.mov.android.SidebarDispatchContractTest" time="0.001"/>
+  <testcase name="回归锚——市场入口与房间及 profile 既有接线零改动" classname="com.mov.android.SidebarDispatchContractTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

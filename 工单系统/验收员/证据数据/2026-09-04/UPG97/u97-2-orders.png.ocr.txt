@@ -1,0 +1,22 @@
+﻿1 1 ： 04 囗
+hello
+你 好 ， 有 什 么 可 以 帮 你 的 ？
+你 是 想 做 什 么 ？ 比 如 ：
+． 切 换 某 个 模 型
+． 还 是 别 的 什 么 操 作
+可 以 说 具 体 一 点 ， 我 好 帮 你 处 理 。
+5G 0
+0
+hello
+classic
+classic
+我 查 了 一 下 当 前 已 注 册 的 模 型 ， 没 有 叫 "classic"
+的 。 目 前 有 这 三 个 ：
+DeepSeek Flash （ 快 速 对 话 ） _ 当 前 使 用 中
+DeepSeek V4 Pro （ 高 质 量 / 推 理 ）
+DeepSeek V4 FIash Vision （ 多 模 态 ）
+Deepseek V4
+MCP 工 具
+我 的 能 力
+给 发 消 息 “
+内 容 由

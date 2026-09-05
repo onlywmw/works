@@ -1,0 +1,24 @@
+{
+  "ticket_id": "UPG-46",
+  "delivery_id": "DEL-UPG-46-20260905-001",
+  "standard_id": "STD-UPG-46-v1（content_sha256=5038b6398e39cabf4b5edba40c4d1ec096d4ee8876dee185d8e2679c7392f4f4）",
+  "code_commit_sha": "a8043aad24158a02b3667e8c8849c24abfa72e87",
+  "artifact_sha": "（待填）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG46-evidence/upg46_test_counts.txt",
+      "sha256": "552935adb2f13ace4abfb59f8a2ba5d4e2e72a2b87c657e4f87133b263f35c95",
+      "producer": "程序员 Kimi/kimi-cli",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG46-evidence/upg46_mutation_kills.txt",
+      "sha256": "eadd2b4f05bcc200d26b03b91b2be6be621e80363eba3b8de6d4360907f2e871",
+      "producer": "程序员 Kimi/kimi-cli",
+      "created_at": "2026-09-05"
+    }
+  ],
+  "evidence_manifest_sha": "98767cfb550274a1bb6fafb6b8f92fa3330b22c280dca20cdcfa14a98744d1db"
+}

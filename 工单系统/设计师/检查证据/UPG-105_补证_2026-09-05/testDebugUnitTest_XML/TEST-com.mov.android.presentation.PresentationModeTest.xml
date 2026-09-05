@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.presentation.PresentationModeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.584Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="id 稳定性 - 持久化字符串契约（prefs 存储值不被无意改名）" classname="com.mov.android.presentation.PresentationModeTest" time="0.001"/>
+  <testcase name="STD 锚③档位绑定 - 极简为快速（reasoning off）经典为深度思考 high" classname="com.mov.android.presentation.PresentationModeTest" time="0.0"/>
+  <testcase name="parse - 合法值还原 未知空损坏回退经典（fail-safe 不白屏）" classname="com.mov.android.presentation.PresentationModeTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

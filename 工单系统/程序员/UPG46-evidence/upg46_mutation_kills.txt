@@ -1,0 +1,14 @@
+UPG-46 段① 变异锚亲杀记录（程序员 Kimi/kimi-cli，2026-09-05，快照-还原纪律：/tmp/upg46-mut 定点快照 → 变异 → 定向测试必红 → 还原复绿）
+
+M1 Plan 校验锚：删 DagPlanner.buildWithDependsOn 循环检测（layer.isEmpty() Reject→break）
+   → PlanValidatorTest「循环依赖 s1 s2 互依 Reject」FAILED（必红✔）→ 还原
+M2 四类阻断锚：删 ArgumentValidator MissingParam 分支
+   → ArgumentValidatorTest「缺参 MissingParam」+「多 issue 同返」FAILED（必红✔）→ 还原
+M3 Trace 单写点锚：OrchPlanSupport emitter/Plan trace 两处 session.append("tool/trace") 删除
+   → ToolTraceJournalTest「journal 可见 trace 事件」「EventCodec 往返」「不存 CoT」FAILED（必红✔）→ 还原
+M4 NO_CALL 锚：PlanValidator NO_CALL Accept 分支改 Reject（强制改判）
+   → PlanValidatorTest「NO_CALL 合法锚」「空 steps 按 NO_CALL Accept」+ app 侧 OrchPlanJsonTest「NO_CALL 空 steps 合法」FAILED（必红✔）→ 还原
+M5 确认门锚：confirmRequired 删 riskOf>=L2 支路（L2/L3 绕过确认门）
+   → PlanValidatorTest「confirmRequired WRITE_EXTERNAL+riskOf L2」+ app 侧 OrchPlanJsonTest「确认门预分级 file.write 进 confirmRequired」FAILED（必红✔）→ 还原
+
+还原后全量复绿：app 836/0/1 + tool-orch 101/0/0（见 upg46_test_counts.txt）

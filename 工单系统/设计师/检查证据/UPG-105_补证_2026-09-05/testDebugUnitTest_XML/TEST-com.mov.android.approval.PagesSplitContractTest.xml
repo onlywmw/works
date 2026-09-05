@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.PagesSplitContractTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.402Z" hostname="苟富贵" time="0.005">
+  <properties/>
+  <testcase name="UPG102 锚② 名单 - 14 个 browser handler 完备（多挂·漏搬即红）" classname="com.mov.android.approval.PagesSplitContractTest" time="0.001"/>
+  <testcase name="UPG102 锚① 保真 - browserHandlers 14 个 handler 全在场" classname="com.mov.android.approval.PagesSplitContractTest" time="0.0"/>
+  <testcase name="UPG102 锚① 保真 - WebMcpHub mountCallback 在场" classname="com.mov.android.approval.PagesSplitContractTest" time="0.001"/>
+  <testcase name="UPG102 上游兼容 - approvalService internal + market 顶层扩展可调" classname="com.mov.android.approval.PagesSplitContractTest" time="0.001"/>
+  <testcase name="UPG102 锚③ 唯一写点 - 壳内零残留（无第二实现）" classname="com.mov.android.approval.PagesSplitContractTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

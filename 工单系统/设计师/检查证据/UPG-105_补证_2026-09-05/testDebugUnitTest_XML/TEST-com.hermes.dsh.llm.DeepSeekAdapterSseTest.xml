@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.llm.DeepSeekAdapterSseTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:01.707Z" hostname="苟富贵" time="0.003">
+  <properties/>
+  <testcase name="跨行 arguments 分片继承首行 id" classname="com.hermes.dsh.llm.DeepSeekAdapterSseTest" time="0.003"/>
+  <testcase name="arguments 内嵌套大括号不误切" classname="com.hermes.dsh.llm.DeepSeekAdapterSseTest" time="0.0"/>
+  <testcase name="单 delta 两个并行 tool_calls 全部解析且无幻影" classname="com.hermes.dsh.llm.DeepSeekAdapterSseTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

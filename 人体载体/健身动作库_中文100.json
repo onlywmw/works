@@ -1,0 +1,1206 @@
+[
+  {
+    "id": "Barbell_Bench_Press_-_Medium_Grip",
+    "name": "Barbell Bench Press - Medium Grip",
+    "nameZh": "杠铃卧推",
+    "part": "胸",
+    "tips": "肩胛后收下沉，杠铃下放至胸部中缝后推起；肘部约45°内收。",
+    "sets": "3-4 × 8-12",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Barbell_Bench_Press_-_Medium_Grip/0.jpg",
+      "Barbell_Bench_Press_-_Medium_Grip/1.jpg"
+    ]
+  },
+  {
+    "id": "Push-Up_Wide",
+    "name": "Push-Up Wide",
+    "nameZh": "宽距俯卧撑",
+    "part": "胸",
+    "tips": "双手宽于肩，身体成直线；下降至胸部贴近地面，胸发力推起。",
+    "sets": "3-4 × 10-20",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Push-Up_Wide/0.jpg",
+      "Push-Up_Wide/1.jpg"
+    ]
+  },
+  {
+    "id": "Incline_Push-Up",
+    "name": "Incline Push-Up",
+    "nameZh": "上斜俯卧撑",
+    "part": "胸",
+    "tips": "手撑高台，身体直线下压推起；入门训练，胸下束。",
+    "sets": "3-4 × 12-20",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Incline_Push-Up/0.jpg",
+      "Incline_Push-Up/1.jpg"
+    ]
+  },
+  {
+    "id": "Dumbbell_Flyes",
+    "name": "Dumbbell Flyes",
+    "nameZh": "哑铃飞鸟",
+    "part": "胸",
+    "tips": "双臂微屈像抱树，肩部固定；下放至胸部拉伸感，夹胸回位。",
+    "sets": "3 × 10-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Dumbbell_Flyes/0.jpg",
+      "Dumbbell_Flyes/1.jpg"
+    ]
+  },
+  {
+    "id": "Incline_Dumbbell_Press",
+    "name": "Incline Dumbbell Press",
+    "nameZh": "上斜哑铃卧推",
+    "part": "胸",
+    "tips": "上斜凳30-45°，哑铃从肩上方推起再缓慢下放；侧重上胸。",
+    "sets": "3-4 × 8-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Incline_Dumbbell_Press/0.jpg",
+      "Incline_Dumbbell_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Wide-Grip_Barbell_Bench_Press",
+    "name": "Wide-Grip Barbell Bench Press",
+    "nameZh": "宽握杠铃卧推",
+    "part": "胸",
+    "tips": "握距比肩宽一掌，杠铃下放至胸中部；侧重胸肌外侧。",
+    "sets": "3 × 8-12",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Wide-Grip_Barbell_Bench_Press/0.jpg",
+      "Wide-Grip_Barbell_Bench_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Dumbbell_Bench_Press",
+    "name": "Dumbbell Bench Press",
+    "nameZh": "哑铃卧推",
+    "part": "胸",
+    "tips": "平凳哑铃推举，下放至胸部两侧拉伸，避免肩部过度外展。",
+    "sets": "3-4 × 8-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Dumbbell_Bench_Press/0.jpg",
+      "Dumbbell_Bench_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Dips_-_Chest_Version",
+    "name": "Dips - Chest Version",
+    "nameZh": "双杠臂屈伸（胸）",
+    "part": "胸",
+    "tips": "身体前倾，肘部外展；下放至肩部略低于肘部再撑起。",
+    "sets": "3 × 8-12",
+    "equipment": "other",
+    "level": "intermediate",
+    "images": [
+      "Dips_-_Chest_Version/0.jpg",
+      "Dips_-_Chest_Version/1.jpg"
+    ]
+  },
+  {
+    "id": "Bent-Arm_Dumbbell_Pullover",
+    "name": "Bent-Arm Dumbbell Pullover",
+    "nameZh": "哑铃过头拉力",
+    "part": "胸",
+    "tips": "平躺哑铃举过头顶下放至头部后方，感受胸廓拉伸，用胸发力拉回。",
+    "sets": "3 × 10-12",
+    "equipment": "dumbbell",
+    "level": "intermediate",
+    "images": [
+      "Bent-Arm_Dumbbell_Pullover/0.jpg",
+      "Bent-Arm_Dumbbell_Pullover/1.jpg"
+    ]
+  },
+  {
+    "id": "Flat_Bench_Cable_Flyes",
+    "name": "Flat Bench Cable Flyes",
+    "nameZh": "绳索夹胸",
+    "part": "胸",
+    "tips": "站姿绳索前夹，双臂沿弧线收至胸前，顶峰收缩1秒。",
+    "sets": "3 × 12-15",
+    "equipment": "cable",
+    "level": "intermediate",
+    "images": [
+      "Flat_Bench_Cable_Flyes/0.jpg",
+      "Flat_Bench_Cable_Flyes/1.jpg"
+    ]
+  },
+  {
+    "id": "Weighted_Pull_Ups",
+    "name": "Weighted Pull Ups",
+    "nameZh": "负重引体向上",
+    "part": "背",
+    "tips": "正握略宽于肩，肩胛下沉，拉至下巴过杠；离心缓慢下放。",
+    "sets": "3-4 × 6-12",
+    "equipment": "other",
+    "level": "intermediate",
+    "images": [
+      "Weighted_Pull_Ups/0.jpg",
+      "Weighted_Pull_Ups/1.jpg"
+    ]
+  },
+  {
+    "id": "Wide-Grip_Lat_Pulldown",
+    "name": "Wide-Grip Lat Pulldown",
+    "nameZh": "宽握高位下拉",
+    "part": "背",
+    "tips": "坐姿握杆，挺胸肩胛下沉；拉至锁骨位置，避免后仰借力。",
+    "sets": "3-4 × 10-12",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Wide-Grip_Lat_Pulldown/0.jpg",
+      "Wide-Grip_Lat_Pulldown/1.jpg"
+    ]
+  },
+  {
+    "id": "Bent_Over_Barbell_Row",
+    "name": "Bent Over Barbell Row",
+    "nameZh": "杠铃划船",
+    "part": "背",
+    "tips": "俯身45°，杠铃沿大腿拉至下腹，顶峰收缩；背部伸直。",
+    "sets": "3-4 × 8-12",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Bent_Over_Barbell_Row/0.jpg",
+      "Bent_Over_Barbell_Row/1.jpg"
+    ]
+  },
+  {
+    "id": "Seated_Cable_Rows",
+    "name": "Seated Cable Rows",
+    "nameZh": "坐姿绳索划船",
+    "part": "背",
+    "tips": "坐姿直背，拉至腹部暂停1秒，缓慢放回保持张力。",
+    "sets": "3-4 × 10-12",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Seated_Cable_Rows/0.jpg",
+      "Seated_Cable_Rows/1.jpg"
+    ]
+  },
+  {
+    "id": "Bent_Over_Two-Dumbbell_Row",
+    "name": "Bent Over Two-Dumbbell Row",
+    "nameZh": "俯身哑铃划船",
+    "part": "背",
+    "tips": "俯身双手持铃，从肩部正下方后拉至腰侧，背部伸直。",
+    "sets": "3-4 × 10-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Bent_Over_Two-Dumbbell_Row/0.jpg",
+      "Bent_Over_Two-Dumbbell_Row/1.jpg"
+    ]
+  },
+  {
+    "id": "Straight-Arm_Pulldown",
+    "name": "Straight-Arm Pulldown",
+    "nameZh": "直臂下压",
+    "part": "背",
+    "tips": "站姿直臂握杆下压至大腿前，肩胛下沉；孤立背阔肌。",
+    "sets": "3 × 12-15",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Straight-Arm_Pulldown/0.jpg",
+      "Straight-Arm_Pulldown/1.jpg"
+    ]
+  },
+  {
+    "id": "Lying_T-Bar_Row",
+    "name": "Lying T-Bar Row",
+    "nameZh": "T杠划船",
+    "part": "背",
+    "tips": "俯身支撑固定架，杠铃拉向胸口；躯干稳定不晃动。",
+    "sets": "3-4 × 8-10",
+    "equipment": "machine",
+    "level": "intermediate",
+    "images": [
+      "Lying_T-Bar_Row/0.jpg",
+      "Lying_T-Bar_Row/1.jpg"
+    ]
+  },
+  {
+    "id": "Inverted_Row",
+    "name": "Inverted Row",
+    "nameZh": "反向划船",
+    "part": "背",
+    "tips": "仰卧杠下身体直线，拉起至胸口触杠；背+二头。",
+    "sets": "3 × 8-12",
+    "equipment": null,
+    "level": "beginner",
+    "images": [
+      "Inverted_Row/0.jpg",
+      "Inverted_Row/1.jpg"
+    ]
+  },
+  {
+    "id": "Elevated_Cable_Rows",
+    "name": "Elevated Cable Rows",
+    "nameZh": "上斜绳索划船",
+    "part": "背",
+    "tips": "坐姿绳索斜上拉至锁骨，背部收紧；侧重上背。",
+    "sets": "3 × 10-12",
+    "equipment": "cable",
+    "level": "intermediate",
+    "images": [
+      "Elevated_Cable_Rows/0.jpg",
+      "Elevated_Cable_Rows/1.jpg"
+    ]
+  },
+  {
+    "id": "Hyperextensions_Back_Extensions",
+    "name": "Hyperextensions (Back Extensions)",
+    "nameZh": "背屈伸",
+    "part": "背",
+    "tips": "器械固定髋部，躯干缓慢下放再抬起；只做下背伸展不过伸。",
+    "sets": "3 × 12-15",
+    "equipment": "other",
+    "level": "beginner",
+    "images": [
+      "Hyperextensions_Back_Extensions/0.jpg",
+      "Hyperextensions_Back_Extensions/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Shoulder_Press",
+    "name": "Barbell Shoulder Press",
+    "nameZh": "站姿杠铃推举",
+    "part": "肩",
+    "tips": "杠铃从锁骨推过头顶，核心收紧臀部夹紧；避免过度挺腰。",
+    "sets": "3-4 × 6-10",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Barbell_Shoulder_Press/0.jpg",
+      "Barbell_Shoulder_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Seated_Dumbbell_Press",
+    "name": "Seated Dumbbell Press",
+    "nameZh": "坐姿哑铃推举",
+    "part": "肩",
+    "tips": "坐姿靠背，哑铃从耳侧推至头顶上方合拢。",
+    "sets": "3-4 × 8-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Seated_Dumbbell_Press/0.jpg",
+      "Seated_Dumbbell_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Side_Lateral_Raise",
+    "name": "Side Lateral Raise",
+    "nameZh": "侧平举",
+    "part": "肩",
+    "tips": "哑铃向两侧抬至与肩平，小指略高；肩部下沉不耸肩。",
+    "sets": "3 × 12-15",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Side_Lateral_Raise/0.jpg",
+      "Side_Lateral_Raise/1.jpg"
+    ]
+  },
+  {
+    "id": "Side_Laterals_to_Front_Raise",
+    "name": "Side Laterals to Front Raise",
+    "nameZh": "侧平举转前平举",
+    "part": "肩",
+    "tips": "先侧举至肩高再转向前平举；肩部全角度刺激。",
+    "sets": "3 × 12-15",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Side_Laterals_to_Front_Raise/0.jpg",
+      "Side_Laterals_to_Front_Raise/1.jpg"
+    ]
+  },
+  {
+    "id": "Dumbbell_Lying_Rear_Lateral_Raise",
+    "name": "Dumbbell Lying Rear Lateral Raise",
+    "nameZh": "俯卧侧平举",
+    "part": "肩",
+    "tips": "俯卧凳上哑铃向两侧后展，肩胛夹紧；孤立三角肌后束。",
+    "sets": "3 × 12-15",
+    "equipment": "dumbbell",
+    "level": "intermediate",
+    "images": [
+      "Dumbbell_Lying_Rear_Lateral_Raise/0.jpg",
+      "Dumbbell_Lying_Rear_Lateral_Raise/1.jpg"
+    ]
+  },
+  {
+    "id": "Arnold_Dumbbell_Press",
+    "name": "Arnold Dumbbell Press",
+    "nameZh": "阿诺德推举",
+    "part": "肩",
+    "tips": "哑铃掌心朝内起始，边推边外旋至掌心向前；全程控制。",
+    "sets": "3-4 × 8-12",
+    "equipment": "dumbbell",
+    "level": "intermediate",
+    "images": [
+      "Arnold_Dumbbell_Press/0.jpg",
+      "Arnold_Dumbbell_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Upright_Barbell_Row",
+    "name": "Upright Barbell Row",
+    "nameZh": "杠铃直立划船",
+    "part": "肩",
+    "tips": "杠铃沿身体上提至胸上方，肘部高于手腕；窄握刺激斜方+肩。",
+    "sets": "3 × 10-12",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Upright_Barbell_Row/0.jpg",
+      "Upright_Barbell_Row/1.jpg"
+    ]
+  },
+  {
+    "id": "Face_Pull",
+    "name": "Face Pull",
+    "nameZh": "面拉",
+    "part": "肩",
+    "tips": "绳索调至面高，双肘后展拉向面部；收紧上背与肩后束。",
+    "sets": "3 × 12-15",
+    "equipment": "cable",
+    "level": "intermediate",
+    "images": [
+      "Face_Pull/0.jpg",
+      "Face_Pull/1.jpg"
+    ]
+  },
+  {
+    "id": "Reverse_Flyes",
+    "name": "Reverse Flyes",
+    "nameZh": "反向飞鸟",
+    "part": "肩",
+    "tips": "俯卧凳上哑铃向两侧后展，肩胛夹紧；侧重三角肌后束。",
+    "sets": "3 × 12-15",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Reverse_Flyes/0.jpg",
+      "Reverse_Flyes/1.jpg"
+    ]
+  },
+  {
+    "id": "Alternating_Cable_Shoulder_Press",
+    "name": "Alternating Cable Shoulder Press",
+    "nameZh": "交替绳索推举",
+    "part": "肩",
+    "tips": "绳索双手交替推举，核心稳定；肩部全程张力。",
+    "sets": "3 × 10-12",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Alternating_Cable_Shoulder_Press/0.jpg",
+      "Alternating_Cable_Shoulder_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Curl",
+    "name": "Barbell Curl",
+    "nameZh": "杠铃弯举",
+    "part": "二头",
+    "tips": "站姿握杠弯举至胸前，肘部固定；离心慢放。",
+    "sets": "3-4 × 8-12",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Barbell_Curl/0.jpg",
+      "Barbell_Curl/1.jpg"
+    ]
+  },
+  {
+    "id": "Seated_Dumbbell_Curl",
+    "name": "Seated Dumbbell Curl",
+    "nameZh": "坐姿哑铃弯举",
+    "part": "二头",
+    "tips": "坐姿双手交替弯举，掌心朝上；避免摆动借力。",
+    "sets": "3-4 × 10-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Seated_Dumbbell_Curl/0.jpg",
+      "Seated_Dumbbell_Curl/1.jpg"
+    ]
+  },
+  {
+    "id": "Hammer_Curls",
+    "name": "Hammer Curls",
+    "nameZh": "锤式弯举",
+    "part": "二头",
+    "tips": "掌心相对锤式握哑铃弯举；同时刺激肱肌与前臂。",
+    "sets": "3 × 10-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Hammer_Curls/0.jpg",
+      "Hammer_Curls/1.jpg"
+    ]
+  },
+  {
+    "id": "Alternate_Incline_Dumbbell_Curl",
+    "name": "Alternate Incline Dumbbell Curl",
+    "nameZh": "上斜交替弯举",
+    "part": "二头",
+    "tips": "上斜凳弯举增加二头下段拉伸；单臂交替。",
+    "sets": "3 × 10-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Alternate_Incline_Dumbbell_Curl/0.jpg",
+      "Alternate_Incline_Dumbbell_Curl/1.jpg"
+    ]
+  },
+  {
+    "id": "Concentration_Curls",
+    "name": "Concentration Curls",
+    "nameZh": "集中弯举",
+    "part": "二头",
+    "tips": "坐姿肘撑大腿内侧，单臂慢弯举；顶峰收缩1秒。",
+    "sets": "3 × 10-12",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Concentration_Curls/0.jpg",
+      "Concentration_Curls/1.jpg"
+    ]
+  },
+  {
+    "id": "Machine_Preacher_Curls",
+    "name": "Machine Preacher Curls",
+    "nameZh": "牧师凳弯举",
+    "part": "二头",
+    "tips": "双臂贴凳面让上臂固定，弯举至顶峰；底部不完全放直。",
+    "sets": "3 × 10-12",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Machine_Preacher_Curls/0.jpg",
+      "Machine_Preacher_Curls/1.jpg"
+    ]
+  },
+  {
+    "id": "Reverse_Barbell_Curl",
+    "name": "Reverse Barbell Curl",
+    "nameZh": "反握杠铃弯举",
+    "part": "二头",
+    "tips": "掌心朝下握杠弯举；兼顾前臂伸肌。",
+    "sets": "3 × 10-12",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Reverse_Barbell_Curl/0.jpg",
+      "Reverse_Barbell_Curl/1.jpg"
+    ]
+  },
+  {
+    "id": "Triceps_Pushdown_-_Rope_Attachment",
+    "name": "Triceps Pushdown - Rope Attachment",
+    "nameZh": "绳索下压",
+    "part": "三头",
+    "tips": "站姿绳索下压至手臂伸直，肘部固定；顶峰收缩。",
+    "sets": "3-4 × 10-15",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Triceps_Pushdown_-_Rope_Attachment/0.jpg",
+      "Triceps_Pushdown_-_Rope_Attachment/1.jpg"
+    ]
+  },
+  {
+    "id": "EZ-Bar_Skullcrusher",
+    "name": "EZ-Bar Skullcrusher",
+    "nameZh": "仰卧臂屈伸",
+    "part": "三头",
+    "tips": "仰卧杠铃从额头上方屈肘下放再伸直；肘部稳定。",
+    "sets": "3 × 10-12",
+    "equipment": "e-z curl bar",
+    "level": "beginner",
+    "images": [
+      "EZ-Bar_Skullcrusher/0.jpg",
+      "EZ-Bar_Skullcrusher/1.jpg"
+    ]
+  },
+  {
+    "id": "Cable_Rope_Overhead_Triceps_Extension",
+    "name": "Cable Rope Overhead Triceps Extension",
+    "nameZh": "过头臂屈伸",
+    "part": "三头",
+    "tips": "坐/站姿双手过头下放至头后，再伸直；三头长头刺激。",
+    "sets": "3 × 10-12",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Cable_Rope_Overhead_Triceps_Extension/0.jpg",
+      "Cable_Rope_Overhead_Triceps_Extension/1.jpg"
+    ]
+  },
+  {
+    "id": "Smith_Machine_Close-Grip_Bench_Press",
+    "name": "Smith Machine Close-Grip Bench Press",
+    "nameZh": "窄距卧推",
+    "part": "三头",
+    "tips": "与肩同宽窄握下放至胸，肘贴身；三头主导。",
+    "sets": "3 × 8-10",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Smith_Machine_Close-Grip_Bench_Press/0.jpg",
+      "Smith_Machine_Close-Grip_Bench_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Dips_-_Triceps_Version",
+    "name": "Dips - Triceps Version",
+    "nameZh": "双杠臂屈伸（三头）",
+    "part": "三头",
+    "tips": "身体直立，肘部贴身；三头发力撑起。",
+    "sets": "3 × 8-12",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Dips_-_Triceps_Version/0.jpg",
+      "Dips_-_Triceps_Version/1.jpg"
+    ]
+  },
+  {
+    "id": "Cable_Lying_Triceps_Extension",
+    "name": "Cable Lying Triceps Extension",
+    "nameZh": "绳索仰卧臂屈伸",
+    "part": "三头",
+    "tips": "仰卧绳索臂屈伸，肘部固定向额头下放后伸直。",
+    "sets": "3 × 10-12",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Cable_Lying_Triceps_Extension/0.jpg",
+      "Cable_Lying_Triceps_Extension/1.jpg"
+    ]
+  },
+  {
+    "id": "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench",
+    "name": "Palms-Up Barbell Wrist Curl Over A Bench",
+    "nameZh": "腕弯举",
+    "part": "前臂",
+    "tips": "前臂贴凳手心朝上，腕部屈起；小重量慢速。",
+    "sets": "3 × 12-15",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench/0.jpg",
+      "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench/1.jpg"
+    ]
+  },
+  {
+    "id": "Palms-Down_Wrist_Curl_Over_A_Bench",
+    "name": "Palms-Down Wrist Curl Over A Bench",
+    "nameZh": "反腕弯举",
+    "part": "前臂",
+    "tips": "手心朝下手腕反屈；刺激前臂伸肌群。",
+    "sets": "3 × 12-15",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Palms-Down_Wrist_Curl_Over_A_Bench/0.jpg",
+      "Palms-Down_Wrist_Curl_Over_A_Bench/1.jpg"
+    ]
+  },
+  {
+    "id": "Farmers_Walk",
+    "name": "Farmer's Walk",
+    "nameZh": "农夫走",
+    "part": "前臂",
+    "tips": "双手提重物行走，挺胸收腹核心绷紧；握力+核心训练。",
+    "sets": "3 × 30-40米",
+    "equipment": "other",
+    "level": "intermediate",
+    "images": [
+      "Farmers_Walk/0.jpg",
+      "Farmers_Walk/1.jpg"
+    ]
+  },
+  {
+    "id": "Crunches",
+    "name": "Crunches",
+    "nameZh": "卷腹",
+    "part": "腹",
+    "tips": "仰卧屈膝，下背部贴地；肩胛离地卷起，颈部放松。",
+    "sets": "3-4 × 15-20",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Crunches/0.jpg",
+      "Crunches/1.jpg"
+    ]
+  },
+  {
+    "id": "Plank",
+    "name": "Plank",
+    "nameZh": "平板支撑",
+    "part": "腹",
+    "tips": "肘撑地身体成直线，收腹提臀；均匀呼吸保持。",
+    "sets": "3 × 30-60秒",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Plank/0.jpg",
+      "Plank/1.jpg"
+    ]
+  },
+  {
+    "id": "Sit-Up",
+    "name": "Sit-Up",
+    "nameZh": "仰卧起坐",
+    "part": "腹",
+    "tips": "仰卧屈膝，双手抱头卷起至坐姿；下背不过度离地。",
+    "sets": "3 × 15-20",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Sit-Up/0.jpg",
+      "Sit-Up/1.jpg"
+    ]
+  },
+  {
+    "id": "Russian_Twist",
+    "name": "Russian Twist",
+    "nameZh": "俄罗斯转体",
+    "part": "腹",
+    "tips": "坐姿屈膝抬脚，双手持重物左右转动躯干。",
+    "sets": "3 × 20-30",
+    "equipment": "body only",
+    "level": "intermediate",
+    "images": [
+      "Russian_Twist/0.jpg",
+      "Russian_Twist/1.jpg"
+    ]
+  },
+  {
+    "id": "Flat_Bench_Lying_Leg_Raise",
+    "name": "Flat Bench Lying Leg Raise",
+    "nameZh": "仰卧举腿",
+    "part": "腹",
+    "tips": "仰卧抬腿至与地面垂直，缓慢下放不触地。",
+    "sets": "3 × 12-15",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Flat_Bench_Lying_Leg_Raise/0.jpg",
+      "Flat_Bench_Lying_Leg_Raise/1.jpg"
+    ]
+  },
+  {
+    "id": "Oblique_Crunches",
+    "name": "Oblique Crunches",
+    "nameZh": "侧卷腹",
+    "part": "腹",
+    "tips": "侧卧屈膝，对侧肩向侧上方卷起；侧腹刺激。",
+    "sets": "3 × 12-15/侧",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Oblique_Crunches/0.jpg",
+      "Oblique_Crunches/1.jpg"
+    ]
+  },
+  {
+    "id": "Hanging_Leg_Raise",
+    "name": "Hanging Leg Raise",
+    "nameZh": "悬垂举腿",
+    "part": "腹",
+    "tips": "悬挂单杠，收腹抬腿至水平/更高；避免摆动。",
+    "sets": "3 × 8-12",
+    "equipment": "body only",
+    "level": "expert",
+    "images": [
+      "Hanging_Leg_Raise/0.jpg",
+      "Hanging_Leg_Raise/1.jpg"
+    ]
+  },
+  {
+    "id": "Mountain_Climbers",
+    "name": "Mountain Climbers",
+    "nameZh": "登山跑",
+    "part": "腹",
+    "tips": "俯撑位交替提膝向胸口，核心稳定；快速节奏。",
+    "sets": "3 × 30-40秒",
+    "equipment": null,
+    "level": "beginner",
+    "images": [
+      "Mountain_Climbers/0.jpg",
+      "Mountain_Climbers/1.jpg"
+    ]
+  },
+  {
+    "id": "Flutter_Kicks",
+    "name": "Flutter Kicks",
+    "nameZh": "仰卧交替打腿",
+    "part": "腹",
+    "tips": "仰卧抬腿小幅上下交替摆动；下背贴地。",
+    "sets": "3 × 30-40秒",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Flutter_Kicks/0.jpg",
+      "Flutter_Kicks/1.jpg"
+    ]
+  },
+  {
+    "id": "Ab_Roller",
+    "name": "Ab Roller",
+    "nameZh": "腹肌轮",
+    "part": "腹",
+    "tips": "跪姿推轮向前滚动，腹部收紧控制回位。",
+    "sets": "3 × 8-10",
+    "equipment": "other",
+    "level": "intermediate",
+    "images": [
+      "Ab_Roller/0.jpg",
+      "Ab_Roller/1.jpg"
+    ]
+  },
+  {
+    "id": "Cable_Crunch",
+    "name": "Cable Crunch",
+    "nameZh": "绳索卷腹",
+    "part": "腹",
+    "tips": "跪姿绳索下拉卷腹至肘贴膝；顶峰收缩。",
+    "sets": "3 × 12-15",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Cable_Crunch/0.jpg",
+      "Cable_Crunch/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Squat",
+    "name": "Barbell Squat",
+    "nameZh": "杠铃深蹲",
+    "part": "腿",
+    "tips": "双脚略宽于肩，髋部后坐下蹲至大腿平行；膝对脚尖。",
+    "sets": "3-4 × 8-12",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Barbell_Squat/0.jpg",
+      "Barbell_Squat/1.jpg"
+    ]
+  },
+  {
+    "id": "Bodyweight_Squat",
+    "name": "Bodyweight Squat",
+    "nameZh": "徒手深蹲",
+    "part": "腿",
+    "tips": "自重深蹲，脚跟着地，蹲至大腿平行；基础动作标准优先。",
+    "sets": "3-4 × 15-20",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Bodyweight_Squat/0.jpg",
+      "Bodyweight_Squat/1.jpg"
+    ]
+  },
+  {
+    "id": "Front_Barbell_Squat",
+    "name": "Front Barbell Squat",
+    "nameZh": "前蹲",
+    "part": "腿",
+    "tips": "杠铃置于锁骨前，肘部抬高；躯干更直立，更强调股四头。",
+    "sets": "3-4 × 6-10",
+    "equipment": "barbell",
+    "level": "expert",
+    "images": [
+      "Front_Barbell_Squat/0.jpg",
+      "Front_Barbell_Squat/1.jpg"
+    ]
+  },
+  {
+    "id": "Leg_Extensions",
+    "name": "Leg Extensions",
+    "nameZh": "腿屈伸",
+    "part": "腿",
+    "tips": "坐姿器械伸膝至顶峰收缩1秒；孤立股四头。",
+    "sets": "3-4 × 10-15",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Leg_Extensions/0.jpg",
+      "Leg_Extensions/1.jpg"
+    ]
+  },
+  {
+    "id": "Dumbbell_Lunges",
+    "name": "Dumbbell Lunges",
+    "nameZh": "哑铃弓步蹲",
+    "part": "腿",
+    "tips": "前后分腿下蹲至双膝90°，前膝对脚尖；两侧交替。",
+    "sets": "3 × 10-12/侧",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Dumbbell_Lunges/0.jpg",
+      "Dumbbell_Lunges/1.jpg"
+    ]
+  },
+  {
+    "id": "Box_Squat",
+    "name": "Box Squat",
+    "nameZh": "箱式深蹲",
+    "part": "腿",
+    "tips": "坐向箱凳再站起，触箱不放松；稳定深蹲轨迹。",
+    "sets": "3 × 8-10",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Box_Squat/0.jpg",
+      "Box_Squat/1.jpg"
+    ]
+  },
+  {
+    "id": "Leg_Press",
+    "name": "Leg Press",
+    "nameZh": "腿举",
+    "part": "腿",
+    "tips": "坐姿蹬腿器械，下放至膝约90°；脚距决定侧重。",
+    "sets": "3-4 × 10-12",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Leg_Press/0.jpg",
+      "Leg_Press/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Hack_Squat",
+    "name": "Barbell Hack Squat",
+    "nameZh": "哈克深蹲",
+    "part": "腿",
+    "tips": "背靠器械轨道下蹲，膝对脚尖；股四头主导。",
+    "sets": "3 × 8-12",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Barbell_Hack_Squat/0.jpg",
+      "Barbell_Hack_Squat/1.jpg"
+    ]
+  },
+  {
+    "id": "Romanian_Deadlift",
+    "name": "Romanian Deadlift",
+    "nameZh": "罗马尼亚硬拉",
+    "part": "腿后",
+    "tips": "直腿微屈，髋部后移杠铃贴腿下放；腘绳肌拉伸感后拉起。",
+    "sets": "3-4 × 8-12",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Romanian_Deadlift/0.jpg",
+      "Romanian_Deadlift/1.jpg"
+    ]
+  },
+  {
+    "id": "Lying_Leg_Curls",
+    "name": "Lying Leg Curls",
+    "nameZh": "腿弯举",
+    "part": "腿后",
+    "tips": "俯卧/坐姿器械勾腿，顶峰收缩；孤立腘绳肌。",
+    "sets": "3-4 × 10-12",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Lying_Leg_Curls/0.jpg",
+      "Lying_Leg_Curls/1.jpg"
+    ]
+  },
+  {
+    "id": "Good_Morning",
+    "name": "Good Morning",
+    "nameZh": "早安式",
+    "part": "腿后",
+    "tips": "杠铃架肩，髋部后移前俯再起身；腘绳+下背联动。",
+    "sets": "3 × 8-12",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Good_Morning/0.jpg",
+      "Good_Morning/1.jpg"
+    ]
+  },
+  {
+    "id": "Smith_Machine_Stiff-Legged_Deadlift",
+    "name": "Smith Machine Stiff-Legged Deadlift",
+    "nameZh": "直腿硬拉",
+    "part": "腿后",
+    "tips": "微屈膝直腿下放杠铃，背部伸直；更强调腘绳拉伸。",
+    "sets": "3 × 8-12",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Smith_Machine_Stiff-Legged_Deadlift/0.jpg",
+      "Smith_Machine_Stiff-Legged_Deadlift/1.jpg"
+    ]
+  },
+  {
+    "id": "Seated_Good_Mornings",
+    "name": "Seated Good Mornings",
+    "nameZh": "坐姿早安式",
+    "part": "腿后",
+    "tips": "坐姿杠铃架肩，髋部前俯后回；安全练腘绳。",
+    "sets": "3 × 10-12",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Seated_Good_Mornings/0.jpg",
+      "Seated_Good_Mornings/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Glute_Bridge",
+    "name": "Barbell Glute Bridge",
+    "nameZh": "杠铃臀桥",
+    "part": "臀",
+    "tips": "上背靠凳，杠铃置于髋部，臀部顶起至躯干水平；顶峰夹臀1秒。",
+    "sets": "3-4 × 8-12",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Barbell_Glute_Bridge/0.jpg",
+      "Barbell_Glute_Bridge/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Hip_Thrust",
+    "name": "Barbell Hip Thrust",
+    "nameZh": "髋冲（臀推）",
+    "part": "臀",
+    "tips": "上背靠凳，杠铃置于髋部，臀部顶起至躯干水平。",
+    "sets": "3-4 × 8-12",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Barbell_Hip_Thrust/0.jpg",
+      "Barbell_Hip_Thrust/1.jpg"
+    ]
+  },
+  {
+    "id": "Sumo_Deadlift",
+    "name": "Sumo Deadlift",
+    "nameZh": "相扑硬拉",
+    "part": "臀",
+    "tips": "宽站距脚尖外展，杠铃两腿间拉起；臀腿大募集。",
+    "sets": "3-4 × 5-8",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Sumo_Deadlift/0.jpg",
+      "Sumo_Deadlift/1.jpg"
+    ]
+  },
+  {
+    "id": "Butt_Lift_Bridge",
+    "name": "Butt Lift (Bridge)",
+    "nameZh": "臀桥（自重）",
+    "part": "臀",
+    "tips": "仰卧屈膝臀推至髋臀一线，顶峰夹臀；无器械入门。",
+    "sets": "3-4 × 12-15",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Butt_Lift_Bridge/0.jpg",
+      "Butt_Lift_Bridge/1.jpg"
+    ]
+  },
+  {
+    "id": "Standing_Calf_Raises",
+    "name": "Standing Calf Raises",
+    "nameZh": "站姿提踵",
+    "part": "小腿",
+    "tips": "前掌踩台阶边缘，充分下放再踮起至最高点。",
+    "sets": "3-4 × 12-15",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Standing_Calf_Raises/0.jpg",
+      "Standing_Calf_Raises/1.jpg"
+    ]
+  },
+  {
+    "id": "Seated_Calf_Raise",
+    "name": "Seated Calf Raise",
+    "nameZh": "坐姿提踵",
+    "part": "小腿",
+    "tips": "坐姿负重提踵，重心落腿前面；针对比目鱼肌。",
+    "sets": "3 × 12-15",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Seated_Calf_Raise/0.jpg",
+      "Seated_Calf_Raise/1.jpg"
+    ]
+  },
+  {
+    "id": "Calf_Press_On_The_Leg_Press_Machine",
+    "name": "Calf Press On The Leg Press Machine",
+    "nameZh": "腿举提踵",
+    "part": "小腿",
+    "tips": "腿举器械上仅用前掌发力踮伸；大重量安全练小腿。",
+    "sets": "3 × 12-15",
+    "equipment": "machine",
+    "level": "beginner",
+    "images": [
+      "Calf_Press_On_The_Leg_Press_Machine/0.jpg",
+      "Calf_Press_On_The_Leg_Press_Machine/1.jpg"
+    ]
+  },
+  {
+    "id": "Donkey_Calf_Raises",
+    "name": "Donkey Calf Raises",
+    "nameZh": "驴式提踵",
+    "part": "小腿",
+    "tips": "俯身负重提踵，脚尖承重垫高；大幅下放拉伸。",
+    "sets": "3 × 12-15",
+    "equipment": "other",
+    "level": "intermediate",
+    "images": [
+      "Donkey_Calf_Raises/0.jpg",
+      "Donkey_Calf_Raises/1.jpg"
+    ]
+  },
+  {
+    "id": "Dumbbell_Seated_One-Leg_Calf_Raise",
+    "name": "Dumbbell Seated One-Leg Calf Raise",
+    "nameZh": "单腿坐姿提踵",
+    "part": "小腿",
+    "tips": "单腿坐姿提踵增加负重；左右均衡练。",
+    "sets": "3 × 10-12/侧",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Dumbbell_Seated_One-Leg_Calf_Raise/0.jpg",
+      "Dumbbell_Seated_One-Leg_Calf_Raise/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Shrug",
+    "name": "Barbell Shrug",
+    "nameZh": "杠铃耸肩",
+    "part": "斜方",
+    "tips": "站姿耸肩至最高点，顶峰停留；不转肩。",
+    "sets": "3-4 × 10-12",
+    "equipment": "barbell",
+    "level": "beginner",
+    "images": [
+      "Barbell_Shrug/0.jpg",
+      "Barbell_Shrug/1.jpg"
+    ]
+  },
+  {
+    "id": "Dumbbell_Shrug",
+    "name": "Dumbbell Shrug",
+    "nameZh": "哑铃耸肩",
+    "part": "斜方",
+    "tips": "铃置于体侧直上直下耸肩；斜方上束。",
+    "sets": "3 × 12-15",
+    "equipment": "dumbbell",
+    "level": "beginner",
+    "images": [
+      "Dumbbell_Shrug/0.jpg",
+      "Dumbbell_Shrug/1.jpg"
+    ]
+  },
+  {
+    "id": "Cable_Shrugs",
+    "name": "Cable Shrugs",
+    "nameZh": "绳索耸肩",
+    "part": "斜方",
+    "tips": "站姿绳索耸肩至最高，顶峰1秒；持续张力。",
+    "sets": "3 × 12-15",
+    "equipment": "cable",
+    "level": "beginner",
+    "images": [
+      "Cable_Shrugs/0.jpg",
+      "Cable_Shrugs/1.jpg"
+    ]
+  },
+  {
+    "id": "Isometric_Neck_Exercise_-_Front_And_Back",
+    "name": "Isometric Neck Exercise - Front And Back",
+    "nameZh": "颈部等长收缩（前后）",
+    "part": "颈",
+    "tips": "坐姿手抵额头/后脑，头手对抗保持；动作轻缓。",
+    "sets": "2 × 10-15",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Isometric_Neck_Exercise_-_Front_And_Back/0.jpg",
+      "Isometric_Neck_Exercise_-_Front_And_Back/1.jpg"
+    ]
+  },
+  {
+    "id": "Isometric_Neck_Exercise_-_Sides",
+    "name": "Isometric Neck Exercise - Sides",
+    "nameZh": "颈部等长收缩（侧）",
+    "part": "颈",
+    "tips": "手抵头侧对抗，头手互推保持；缓慢用力。",
+    "sets": "2 × 10-15/侧",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Isometric_Neck_Exercise_-_Sides/0.jpg",
+      "Isometric_Neck_Exercise_-_Sides/1.jpg"
+    ]
+  },
+  {
+    "id": "Superman",
+    "name": "Superman",
+    "nameZh": "超人式",
+    "part": "下背",
+    "tips": "俯卧四肢同时抬起，背部收紧；静态保持。",
+    "sets": "3 × 15-20秒",
+    "equipment": "body only",
+    "level": "beginner",
+    "images": [
+      "Superman/0.jpg",
+      "Superman/1.jpg"
+    ]
+  },
+  {
+    "id": "Barbell_Deadlift",
+    "name": "Barbell Deadlift",
+    "nameZh": "硬拉",
+    "part": "下背",
+    "tips": "杠铃贴小腿，髋膝同伸，腰背锁直；杠铃拉至髋部站直。",
+    "sets": "3-4 × 5-8",
+    "equipment": "barbell",
+    "level": "intermediate",
+    "images": [
+      "Barbell_Deadlift/0.jpg",
+      "Barbell_Deadlift/1.jpg"
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+UPG-100 变异亲杀记录（程序员 Kimi/kimi-cli，2026-09-05；快照-还原纪律：/tmp/upg100-ma-snapshot.kt + /tmp/upg100-mut/ 定点快照）
+
+A1 锚②升级亲杀（HomeDeliveryContractTest 锚②——UPG-96 审验 M2 原变异复现）：
+- M1 单点短路：chunk 转发点 :1825 if (homeDeliveryActive) → if (false && homeDeliveryActive) → 锚② FAILED ✔红
+- M2 空壳破坏：保留 if、删 :1828 onLlmChunk 转发体 → 锚② FAILED ✔红（局部性断言命中）
+- M3 双点短路：两处条件同时反转 → 锚② FAILED ✔红
+- M4 全删：两分支块整体删除 → 锚② FAILED ✔红
+- 原态 → 绿；全部快照还原后复绿 ✔
+
+A3 同族抽检实测变异（4 处）：
+- S1 ApprovalComponentContractTest A2 锚：单删 ApprovalSurface.kt:323 的 30s 超时 deferred.complete(null) → 测试仍绿（另 3 处同文本兜底）= 死角实证 ✔
+- S2 AppearanceContractTest L1-6：单删 AppearanceApp.vue:58 使用处 currentOf(comp) → 仍绿（定义行+其余 8 处兜底）= 死角实证 ✔
+- S3 对照组 SidebarDispatchContractTest 键值对齐锚：CapsuleResolver.kt tasks 行改名 → FAILED 红 ✔（单点文本锚强度 OK 分类不虚）
+- S4 AppearanceContractTest 1C SIDE-HEADER：删 SidebarNav.vue:192 真实读点 c['UI-SIDE-HEADER'] → 仍绿（:118 注释行兜底）= 注释污染死角实证 ✔
+全部快照还原。
+
+全量回归：app 842/0/1（0 失败 0 错误 1 跳过，XML 119 文件全 fresh）；基线 31640fc8 同口径（UPG-107 提交信息载 843，±1 口径注记：本卡为零计数变化的原位升级）。

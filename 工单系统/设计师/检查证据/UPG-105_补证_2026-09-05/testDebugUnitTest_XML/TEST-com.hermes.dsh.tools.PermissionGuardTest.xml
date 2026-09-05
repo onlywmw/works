@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.tools.PermissionGuardTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:02.323Z" hostname="苟富贵" time="0.004">
+  <properties/>
+  <testcase name="无害级自动放行不弹窗" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="V68-8 ① open 模式未登记工具仍 ASK 不随 open 豁免（变异 else→ALLOW 必红）" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.001"/>
+  <testcase name="系统底线任何模式永远 deny（单源化后 FULL_ACCESS 前置检查变异锚）" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="V68-8 ② open 模式高危子集照旧 ASK（shell exec 凭据路径写）" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="实质级与红线不动" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="permissionTier 在 goal 模式关闭时无害级失效回 ask" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.001"/>
+  <testcase name="open 模式高危仍 ask 不变" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="goal模式关闭时无害级失效全部ask" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="permissionTier 三级分诊与 guard 同源" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="UPG53 vault restore 撤销通道归 free 免弹窗" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="obsidian file write 任意路径形态全 ASK（UPG-28 审批闸修复）" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="memory delete 为写类 ASK（UPG-05 v5 3 save 归位 harmless，delete 维持 ASK）" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.001"/>
+  <testcase name="filewrite 越界路径仍实质级" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="V68-8 ③ setMode 前后 registry 判定三档一致（模式无关性）" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <testcase name="filewrite 工作区相对路径自动放行" classname="com.hermes.dsh.tools.PermissionGuardTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.browser.WebMcpHubTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:02.647Z" hostname="苟富贵" time="0.023">
+  <properties/>
+  <testcase name="M1 页面谎报 write=false 但 App 登记写工具 仍判写（并集防伪）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.002"/>
+  <testcase name="M2 实时域非白名单 拒绝转发（TOCTOU 封口）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.003"/>
+  <testcase name="method not found 未登记工具" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="工具名规范 mov_ 前缀" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <testcase name="H4 写类 审批不可用→拒绝（fail-closed）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="H5 白名单判定 小写精确匹配" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="discover 元数据数组解析（bridge 输出形）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <testcase name="M1 默认登记集 页面声明写工具 照常审批（主路径回归）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="H4 必填校验先于审批（写工具缺参不弹审批）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="H4 写类 未批准→APPROVAL_DENIED 且不执行" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="命名 web域名工具" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="H5 hostname 解析 去端口路径查询" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <testcase name="M1 R2 discover call 前校验真桥标志（源码断言 fail-closed）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="H4 写类 批准后→执行并回程" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="必填参数校验 缺参返回文案 齐参通过" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="H5 空白空非法域 恒不注册（fail-closed）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <testcase name="登记表解析 命名+write+非法跳过" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <testcase name="invalid params 缺必填" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <testcase name="M1a bridge 无条件覆盖 无入口短路 defineProperty 不可重配" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.002"/>
+  <testcase name="M1 R2 isAuthenticBridge 真标志通过 假标志 null 拒绝（fail-closed）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <testcase name="H5 非注册域调用→DOMAIN_NOT_REGISTERED 且不执行（导航逃逸兜底）" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.002"/>
+  <testcase name="H7 读类 直接转发 不触发审批 参数原样" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.002"/>
+  <testcase name="M3 描述消毒 控制字符折叠 超长裁剪" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.001"/>
+  <testcase name="M3 schema 顶层字段白名单 只留 type properties required" classname="com.hermes.mov.browser.WebMcpHubTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

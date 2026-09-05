@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.ui.registry.AppearanceRegistryContractTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.592Z" hostname="苟富贵" time="0.067">
+  <properties/>
+  <testcase name="fail-closed 未注册组件不渲染_Resolver 读注册态锚" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.009"/>
+  <testcase name="M-U50-11 ID 永不复用_删除作废不重分配_亲杀锚" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.007"/>
+  <testcase name="L1-19 注册契约九字段校验锚_缺一红" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.009"/>
+  <testcase name="L1-20 单执行通道_注册面不直达 impl" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.007"/>
+  <testcase name="L2-11 Catalog 机器校验锚_20条含 id_contract_version_provider_id" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.007"/>
+  <testcase name="M-U50-10 绕行注册_不入 catalog 直接 install_拒绝_亲杀锚" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.007"/>
+  <testcase name="前端选择页_来源分区渲染_未注册不出现" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.01"/>
+  <testcase name="L1-18 Token 命名空间隔离_第三方 token 不覆盖全局" classname="com.mov.android.ui.registry.AppearanceRegistryContractTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

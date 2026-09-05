@@ -1,0 +1,5 @@
+app(testDebugUnitTest): tests=837 failures=0 errors=0 skipped=1
+tool-orch(test): tests=101 failures=0 errors=0 skipped=0
+基线 814/0/1 @841f591d → 本次 app 836 通过/0 失败/1 跳过（新增 22 例：OrchPlanJsonTest 8 + ToolTraceJournalTest 4 + DispatchArgumentBlockTest 4 + ToolLinkageContractTest 6）
+tool-orch 101 绿（既有 75 + 新增 26：PlanValidatorTest 11 + ArgumentValidatorTest 7 + OrchRuleEngineTest 4 + TraceJournalMapTest 1 + TraceRecorderSinkTest 3）
+assembleDebug BUILD SUCCESSFUL（app-debug.apk 56716961B）

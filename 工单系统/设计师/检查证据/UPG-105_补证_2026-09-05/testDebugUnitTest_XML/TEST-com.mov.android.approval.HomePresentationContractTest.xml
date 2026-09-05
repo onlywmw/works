@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.approval.HomePresentationContractTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:04.328Z" hostname="苟富贵" time="0.018">
+  <properties/>
+  <testcase name="UPG88 锚③ - send 链档位绑 UI 模式（极简 off 简洁节 经典 high 不变）" classname="com.mov.android.approval.HomePresentationContractTest" time="0.005"/>
+  <testcase name="UPG88 锚④ - rebuildAgentTools 无模式过滤（两模式工具面同一全量集）" classname="com.mov.android.approval.HomePresentationContractTest" time="0.002"/>
+  <testcase name="UPG88 锚② - ASR partial 回填与 final 发送注入（假听写即红）" classname="com.mov.android.approval.HomePresentationContractTest" time="0.004"/>
+  <testcase name="UPG88 锚① - 两态开关真实切主页且持久化（applyPresentationMode 路由+冷启恢复）" classname="com.mov.android.approval.HomePresentationContractTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

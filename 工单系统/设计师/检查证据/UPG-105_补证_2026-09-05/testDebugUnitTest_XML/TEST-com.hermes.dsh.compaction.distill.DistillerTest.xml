@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.dsh.compaction.distill.DistillerTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:01.097Z" hostname="苟富贵" time="0.054">
+  <properties/>
+  <testcase name="B8 蒸馏器输出纯数据无写入口" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.009"/>
+  <testcase name="B4 教训缺任一字段拒绝构造" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.006"/>
+  <testcase name="registryHash 工具名集合变更即 hash 变更" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.004"/>
+  <testcase name="B1 超时重试链全分类 RETRYABLE 且不产教训" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.014"/>
+  <testcase name="B1 业务拒绝分类 NON_RETRYABLE 且产低 confidence 教训" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.011"/>
+  <testcase name="B2 抽3条证据指针逐条回溯到原始JSONL行" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.005"/>
+  <testcase name="B9 蒸馏为纯函数 同输入两次产出一致（无副作用）" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.002"/>
+  <testcase name="B1 fabricate_hit 分类 FABRICATED_BLOCKED 且产高 confidence 教训" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.001"/>
+  <testcase name="B3 网络断与5xx错误不产生教训条目" classname="com.hermes.dsh.compaction.distill.DistillerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+UPG-103 DEL 绑定证据（程序员 Kimi/kimi-cli 代行补证 @2026-09-05，据 STD-UPG-103-v2 追加区「形式链四断②DEL 绑定未建」）
+
+测试计数（非本轮亲跑，来源如实标注）：
+- 交付时点（2026-09-04 23:05，commit 4e5a2f7c）：全量 814/0/0（--rerun-tasks）；ChipsCapsuleSplitContractTest 5/5；assembleDebug --rerun-tasks 47 任务 SUCCESS——交付记录（工单库 UPG-46 卡面快照段/旧 manifest 处理中心/delivery_UPG103_manifest.json 旧格式）
+- 验收员亲跑（ACCEPTANCE_LOG §P54 @2026-09-04）：隔离 worktree 全量 814/0/0 + 契约锚 5/5 + recon103 亲跑 ALL_OK
+- 本轮亲跑（程序员 DEL 补证 @2026-09-05）：recon103.py 对 4e5a2f7c 全量检出内容复跑 = ALL_OK（见 recon103_rerun.log）
+
+口径注记：冻结清单实物 8 块（upg103_freeze_manifest.txt 8 行）；历史文本「9 块」（commit message/卡面/STD v2 追加区「9/9」）与实物行数差 1——以对账工具实物输出为准，不回填改历史文本。
+artifact_sha：无产物绑定——纯源码搬移单，APK 未随 worktree 留存；code_commit_sha 4e5a2f7c 为唯一代码锚（验收员 §P54：申报 sha 本轮唯一无误）。

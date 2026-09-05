@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hermes.mov.biz.PartnerTokenRotationTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:02.634Z" hostname="苟富贵" time="0.002">
+  <properties/>
+  <testcase name="401 403 视为认证过期" classname="com.hermes.mov.biz.PartnerTokenRotationTest" time="0.001"/>
+  <testcase name="过期但已重试 → 放弃不刷新（防死循环 无旧值重放）" classname="com.hermes.mov.biz.PartnerTokenRotationTest" time="0.0"/>
+  <testcase name="非过期码即使未重试也不刷新" classname="com.hermes.mov.biz.PartnerTokenRotationTest" time="0.001"/>
+  <testcase name="过期且未重试 → 应刷新重试" classname="com.hermes.mov.biz.PartnerTokenRotationTest" time="0.0"/>
+  <testcase name="非过期码不视为认证过期" classname="com.hermes.mov.biz.PartnerTokenRotationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

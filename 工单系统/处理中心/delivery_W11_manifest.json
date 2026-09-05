@@ -1,0 +1,17 @@
+{
+  "ticket_id": "W-11",
+  "delivery_id": "DEL-W11-20260905-001",
+  "standard_id": "STD-W-11-v1（content_sha256=9524776d7d7df42efe2fcf79bdf272cac4f423429bac6832294f6c40d0eedfed）",
+  "code_commit_sha": "655b148de1dff7a19e33339b2dc28eda423e8166",
+  "artifact_sha": "d85e39bb02213c66da1c63dbedff537ea7dfde0cf0eda12fc5f6e37680ef30a6",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/交付报告/DELIVERY_W11_2026-09-05.md",
+      "sha256": "2df65d497ec23489585f1e5fc0061667b69761e1a471e5b02eaa3d8b01a1f3ff",
+      "producer": "程序员",
+      "created_at": "2026-09-05"
+    }
+  ],
+  "evidence_manifest_sha": "afb5291dc361a8f8451c44c05b8b94b34f849202f9b1a30b198d66e6823ef6e4"
+}

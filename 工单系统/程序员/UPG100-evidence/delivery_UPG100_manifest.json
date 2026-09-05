@@ -1,0 +1,24 @@
+{
+  "ticket_id": "UPG-100",
+  "delivery_id": "DEL-UPG100-20260905-001",
+  "standard_id": "STD-UPG-100-未冻结卡面临时代（卡面验收锚 A1-1/A1-2/A3-1 段 content_sha256=2f3e20eae93649e8338c809bcd5d729e8bf97f937868099d05fb6490e055e8e1；正式冻结转设计师追认）",
+  "code_commit_sha": "a63b7088fe146a2f68fb52098c456cce67fa9cac",
+  "artifact_sha": "无产物绑定（纯测试锚升级单，零业务代码改动）",
+  "evidence_manifest": [
+    {
+      "evidence_id": "E-001",
+      "path": "程序员/UPG100-evidence/upg100_mutation_kills.txt",
+      "sha256": "f190eba635dc0e1a94a8c7b6f53919c3ccac80233a6331d9fce6284c906ab620",
+      "producer": "程序员",
+      "created_at": "2026-09-05"
+    },
+    {
+      "evidence_id": "E-002",
+      "path": "程序员/UPG100-evidence/upg100_a3_sweep_table.md",
+      "sha256": "aeeaefdd91222da34e8db0429f5a40f893fb45db58f42cba252801f1fcd96d68",
+      "producer": "程序员",
+      "created_at": "2026-09-05"
+    }
+  ],
+  "evidence_manifest_sha": "fa151af21ca53000c032e7459d0cc019549746ed70304cb069f028742457eaf4"
+}

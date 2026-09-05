@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mov.android.MemoryCoverTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-04T16:52:03.423Z" hostname="苟富贵" time="0.009">
+  <properties/>
+  <testcase name="render 晋升带勾标 塌缩占位与逐字共存" classname="com.mov.android.MemoryCoverTest" time="0.006"/>
+  <testcase name="截断顺序——晋升优先于 draft 且档内按引用计数" classname="com.mov.android.MemoryCoverTest" time="0.001"/>
+  <testcase name="同档同引用按 updatedAt 降序" classname="com.mov.android.MemoryCoverTest" time="0.0"/>
+  <testcase name="新 session 重建——聚合变化生效" classname="com.mov.android.MemoryCoverTest" time="0.001"/>
+  <testcase name="Freeze——同 session 聚合变化不改变已冻结 cover" classname="com.mov.android.MemoryCoverTest" time="0.001"/>
+  <testcase name="指纹覆盖全部条目——verbatim 变化也改变指纹" classname="com.mov.android.MemoryCoverTest" time="0.0"/>
+  <testcase name="显式移除——invalidate 后重建且指纹变化（E4a）" classname="com.mov.android.MemoryCoverTest" time="0.0"/>
+  <testcase name="maxItems 超限塌缩为 summary 指纹条" classname="com.mov.android.MemoryCoverTest" time="0.0"/>
+  <testcase name="maxLength 挤出的条目进入塌缩" classname="com.mov.android.MemoryCoverTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
