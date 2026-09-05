@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV 工单工作台 · UPG-69 WebMCP 试点</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1a1a1a; --muted:#8a8f98; --brand:#3B6EEB; --ok:#18a058; --err:#d03050; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font:14px/1.6 -apple-system,"Segoe UI",Roboto,"Microsoft YaHei",sans-serif; padding:32px 20px 60px; }
+  .wrap { max-width:880px; margin:0 auto; }
+  header { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+  h1 { font-size:22px; font-weight:700; } h1 span { color:var(--brand); }
+  .badge { font-size:13px; padding:6px 14px; border-radius:99px; background:#eef2ff; color:var(--brand); }
+  .badge.ok { background:#e8f7ef; color:var(--ok); }
+  .card { background:var(--card); border:1px solid #e8eaee; border-radius:16px; padding:20px 22px; margin-bottom:18px; box-shadow:0 4px 16px rgba(16,24,40,.04); }
+  .card h3 { font-size:15px; margin-bottom:12px; }
+  input, textarea { width:100%; padding:10px 12px; border:1px solid #dfe3e8; border-radius:10px; font-size:14px; margin-bottom:10px; font-family:inherit; }
+  .btn { background:var(--brand); color:#fff; border:none; padding:9px 18px; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid #f0f2f5; font-size:13px; }
+  th { color:var(--muted); font-weight:600; }
+  .tag { padding:2px 10px; border-radius:99px; font-size:12px; background:#eef2ff; color:var(--brand); }
+  .tag.open { background:#fff7e8; color:#b26a00; }
+  .muted { color:var(--muted); font-size:13px; }
+  .w1 { font-size:12px; color:var(--muted); margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>MOV 工单工作台 <span>· mow.kim</span></h1>
+    <span id="authBadge" class="badge">检查登录态…</span>
+  </header>
+
+  <div class="card">
+    <h3>开工单</h3>
+    <input id="tTitle" placeholder="单标题（必填）">
+    <textarea id="tDesc" rows="3" placeholder="问题描述（可选）"></textarea>
+    <button class="btn" id="btnOpen">提交工单</button>
+    <span id="openMsg" class="muted" style="margin-left:10px"></span>
+  </div>
+
+  <div class="card">
+    <h3>最近工单 / 订单动态</h3>
+    <div id="list">加载中…</div>
+  </div>
+
+  <div class="card">
+    <h3>WebMCP 工具面（window.mov_webApi）</h3>
+    <div id="w1" class="muted">注册表检查中…</div>
+    <div class="w1" id="w1Detail"></div>
+  </div>
+</div>
+
+<script src="account.js"></script>
+<script src="webapi-tickets.js"></script>
+<script>
+(function () {
+  "use strict";
+  var user = null;
+  try { user = JSON.parse(localStorage.getItem("mov_account_user") || "null"); } catch (e) {}
+
+  function badge(text, ok) {
+    var b = document.getElementById("authBadge");
+    b.textContent = text;
+    b.className = "badge" + (ok ? " ok" : "");
+  }
+
+  function renderW1() {
+    var el = document.getElementById("w1");
+    var det = document.getElementById("w1Detail");
+    var api = window.mov_webApi;
+    if (!api || !api.tools) { el.textContent = "❌ mov_webApi 未挂载"; return; }
+    var names = Object.keys(api.tools);
+    var allOk = api.version === "0.1" && names.length === 3 &&
+      ["mov_openTicket", "mov_queryTicket", "mov_listOrders"].every(function (n) {
+        var t = api.tools[n];
+        return t && t.name === n && t.description && t.inputSchema && typeof t.handler === "function";
+      });
+    el.textContent = allOk ? "✅ W1：登记表 3 工具齐全（schema 完整 / handler 就绪）" : "❌ 登记表不完整";
+    el.style.color = allOk ? "#18a058" : "#d03050";
+    det.textContent = names.map(function (n) {
+      var t = api.tools[n];
+      return n + "（write=" + !!t.write + "）";
+    }).join(" · ");
+  }
+
+  function loadList() {
+    var t = localStorage.getItem("mov_account_token") || "";
+    fetch("https://mow.kim/account/tickets?limit=10", { headers: { "Authorization": "Bearer " + t } })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j.ok) { document.getElementById("list").innerHTML = '<span class="muted">' + (j.error || "加载失败") + "</span>"; return; }
+        if (!(j.tickets || []).length) { document.getElementById("list").innerHTML = '<span class="muted">暂无工单——用上方表单或让 AI 调 mov_openTicket 开一张</span>'; return; }
+        var rows = j.tickets.map(function (t) {
+          return "<tr><td>T" + t.id + "</td><td>" + t.title + "</td><td><span class='tag open'>" + t.status + "</span></td><td class='muted'>" + new Date(t.created_at).toLocaleString() + "</td></tr>";
+        }).join("");
+        document.getElementById("list").innerHTML = "<table><tr><th>单号</th><th>标题</th><th>状态</th><th>时间</th></tr>" + rows + "</table>";
+      })
+      .catch(function (e) { document.getElementById("list").innerHTML = '<span class="muted">网络异常: ' + e.message + "</span>"; });
+  }
+
+  document.getElementById("btnOpen").addEventListener("click", function () {
+    var title = document.getElementById("tTitle").value.trim();
+    if (!title) { document.getElementById("openMsg").textContent = "标题必填"; return; }
+    var t = localStorage.getItem("mov_account_token") || "";
+    fetch("https://mow.kim/account/tickets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + t },
+      body: JSON.stringify({ title: title, description: document.getElementById("tDesc").value.trim(), source: "mow.kim web" })
+    }).then(function (r) { return r.json(); })
+      .then(function (j) {
+        document.getElementById("openMsg").textContent = j.ok ? "已开单 T" + j.id : (j.error || "失败");
+        if (j.ok) { document.getElementById("tTitle").value = ""; document.getElementById("tDesc").value = ""; loadList(); }
+      });
+  });
+
+  // 登录态检查（account.js 的 token 直接打 /account/me）
+  var tk = localStorage.getItem("mov_account_token") || "";
+  fetch("https://mow.kim/account/me", { headers: { "Authorization": "Bearer " + tk } })
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      if (j.ok) { badge("已登录 " + (j.user.nickname || j.user.phone), true); loadList(); }
+      else { badge("未登录——请先在市场页登录", false); document.getElementById("list").innerHTML = '<span class="muted">登录后可开工单/查单（WebMCP 工具同样要求登录态）</span>'; }
+    });
+
+  renderW1();
+})();
+</script>
+</body>
+</html>
