@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "canonical-card.schema.json",
+  "title": "SYS-10 CanonicalCard（工单卡规范解析产物 · P0-2 契约）",
+  "type": "object",
+  "required": ["id", "title", "phase", "statusSummary", "raw"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^(?:UPG|SYS|W|S)-[0-9]+$", "description": "卡号（工单库.md 一级标题解析）" },
+    "title": { "type": "string", "description": "卡标题（一级标题去除卡号后余文）" },
+    "phase": {
+      "description": "机器枚举 phase——status 块权威；无块=null（文案启发式诚实降级，不得造值）",
+      "enum": ["queued", "assigned", "delivering", "merged", "archived", "rejected", null]
+    },
+    "stageLabel": {
+      "description": "canonical 人读标签（=STATUS_REGISTRY[phase].label）；phase=null 时为 null",
+      "type": ["string", "null"]
+    },
+    "statusSummary": { "type": "string", "description": "**状态** 文案行首行原文（物化视图投影；无状态区=空串）" },
+    "head": { "type": ["string", "null"], "description": "status 块 head 字段（git hash）" },
+    "branch": { "type": ["string", "null"], "description": "status 块 branch 字段" },
+    "designer": { "type": ["string", "null"], "description": "status 块 designer 字段" },
+    "dev": { "type": ["string", "null"], "description": "status 块 dev 字段" },
+    "inspector": { "type": ["string", "null"], "description": "status 块 inspector 字段" },
+    "merge": { "type": ["string", "null"], "description": "status 块 merge 字段" },
+    "delivery_id": { "type": ["string", "null"], "description": "status 块 delivery_id 字段（或文案 DEL- 正则尾命中——块优先）" },
+    "statusHistory": {
+      "type": "array",
+      "description": "```status-history 结构化留痕（phase/at/head 逐条；批②起写入，批①只读解析）",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phase": { "type": "string" },
+          "at": { "type": "string" },
+          "head": { "type": ["string", "null"] }
+        },
+        "required": ["phase", "at"]
+      }
+    },
+    "raw": { "type": "string", "description": "卡片原文（一级标题行至下一卡前，CRLF 已归一为 LF）" },
+    "priority": { "type": "string", "description": "优先级（多形态锚提取；缺失=—）" },
+    "cat": { "type": ["string", "null"], "description": "**分类** 字段（旧卡兼容）" },
+    "roles": {
+      "type": "object",
+      "description": "文案启发式角色列（designer/dev/inspector/merge——无块卡唯一的角色信息来源；有块卡=块字段权威，此字段仍填文案侧供对账）",
+      "properties": {
+        "D": { "type": ["object", "null"] },
+        "E": { "type": ["object", "null"] },
+        "F": { "type": ["object", "null"] },
+        "G": { "type": ["object", "null"] }
+      }
+    }
+  },
+  "additionalProperties": false
+}
