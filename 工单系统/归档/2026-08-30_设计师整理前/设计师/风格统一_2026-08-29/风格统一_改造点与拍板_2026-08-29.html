@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App 视觉风格统一 · 改造点清单与主色拍板</title>
+<style>
+  :root{
+    --bg:#f4f5f7; --card:#ffffff; --ink:#1b1d22; --ink2:#5a5f6b; --ink3:#9aa0ab;
+    --line:#e3e5ea; --accent:#1b1d22; --tint:rgba(27,29,34,.06);
+    --ok:#0f8a5f; --warn:#b45309; --danger:#d92d20;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;padding:0 0 60px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{background:var(--accent);color:#fff;padding:34px 0 30px;margin-bottom:28px}
+  header h1{font-size:24px;font-weight:700;letter-spacing:.5px}
+  header p{color:#c9ccd3;font-size:13px;margin-top:6px}
+  header .meta{margin-top:12px;font-size:12px;color:#9aa0ab}
+  h2{font-size:18px;margin:36px 0 14px;padding-left:12px;border-left:4px solid var(--accent)}
+  h2 small{font-weight:400;color:var(--ink3);font-size:12px;margin-left:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+  /* 候选 tab */
+  .tabs{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:8px;padding:10px 18px;cursor:pointer;font-size:14px;transition:.15s}
+  .tab:hover{border-color:var(--ink3)}
+  .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .tab .dot{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px;vertical-align:-1px;border:1px solid rgba(0,0,0,.15)}
+  .cand-note{font-size:13px;color:var(--ink2);margin-bottom:12px}
+  .swatches{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .sw{flex:1;min-width:130px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .sw .c{height:44px;display:flex;align-items:flex-end;padding:4px 8px;font-size:10px;letter-spacing:.5px}
+  .sw .t{padding:6px 8px;font-size:11px;color:var(--ink2);background:#fff}
+  .shots{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .shots figure{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+  .shots img{width:100%;display:block}
+  .shots figcaption{font-size:11px;color:var(--ink2);padding:6px 8px;text-align:center}
+  .shots a{display:block}
+  /* 逐屏 */
+  .screens{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .sc{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff}
+  .sc h3{font-size:14px;margin-bottom:6px}
+  .sc .px{font-size:11.5px;color:var(--ink2);font-family:Consolas,monospace;background:var(--tint);border-radius:6px;padding:4px 8px;display:inline-block;margin-bottom:8px}
+  .sc p{font-size:13px;color:var(--ink2)}
+  .badge{display:inline-block;font-size:11px;border-radius:20px;padding:1px 10px;margin-left:6px;vertical-align:1px}
+  .b0{background:#eef2ee;color:var(--ok)} .b1{background:#fdf3e7;color:var(--warn)} .b2{background:#eceff4;color:var(--ink2)}
+  /* 改造点表 */
+  .filters{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  .f{border:1px solid var(--line);background:#fff;border-radius:20px;padding:4px 14px;font-size:12.5px;cursor:pointer}
+  .f.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+  th{background:#f0f1f4;text-align:left;padding:9px 10px;font-size:12px;color:var(--ink2);white-space:nowrap}
+  td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
+  td.code{font-family:Consolas,monospace;font-size:12px;white-space:nowrap}
+  td .swb{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px;border:1px solid rgba(0,0,0,.12)}
+  tr.hide{display:none}
+  .tag{display:inline-block;font-size:10.5px;border-radius:4px;padding:1px 7px;white-space:nowrap}
+  .t-change{background:#1b1d22;color:#fff} .t-keep{background:#eef2ee;color:var(--ok)}
+  .t-out{background:#eceff4;color:var(--ink2)} .t-fix{background:#fdf3e7;color:var(--warn)}
+  .t-p0{background:#d92d20;color:#fff} .t-p1{background:#b45309;color:#fff} .t-pn{background:#eceff4;color:var(--ink2)}
+  /* 色值对照 */
+  .ctable td .v{font-family:Consolas,monospace;font-size:12px}
+  /* 拍板单 */
+  .q{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff;margin-bottom:12px}
+  .q h3{font-size:14px;margin-bottom:8px}
+  .q .opts{display:flex;gap:8px;flex-wrap:wrap}
+  .opt{border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-size:13px;cursor:pointer;background:#fff}
+  .opt:hover{border-color:var(--ink3)}
+  .opt.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .opt.rec::after{content:"荐";font-size:10px;background:var(--warn);color:#fff;border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:1px}
+  .gen{margin-top:16px;display:flex;gap:10px;align-items:center}
+  button.big{background:var(--ink);color:#fff;border:0;border-radius:8px;padding:10px 22px;font-size:14px;cursor:pointer}
+  textarea{width:100%;min-height:120px;margin-top:12px;font:12px/1.6 Consolas,monospace;border:1px solid var(--line);border-radius:8px;padding:10px;display:none}
+  footer{margin-top:40px;font-size:12px;color:var(--ink3);text-align:center}
+  .kbd{font:11px Consolas,monospace;background:var(--tint);border-radius:4px;padding:1px 6px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>App 视觉风格统一 · 改造点清单与主色拍板</h1>
+    <p>黑白主调 · logo 同源 ｜ 设计师 2026-08-29 ｜ 配套：建议区草案 + 15 张 mock + 改造点 Excel（同目录）</p>
+    <div class="meta">识别方式：源码逐屏实盘（权威）+ 15 张 mock PNG 像素统计（佐证）｜ 锚点行号 = 0027-mov main 实测 @2026-08-29</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<h2>① 三候选主色（决策点① · 看图拍板）<small>点 tab 切换；截图为本候选真实 build 产物</small></h2>
+<div class="tabs" id="tabs"></div>
+<div class="card">
+  <div class="cand-note" id="candNote"></div>
+  <div class="swatches" id="swatches"></div>
+  <div class="shots" id="shots"></div>
+</div>
+
+<h2>② 逐屏识别（10 个画面）<small>像素统计为 4bit 量化 top 色</small></h2>
+<div class="screens" id="screens"></div>
+
+<h2>③ 改造点总表（20 行）<small>点筛选；「修正」= 对草案的定性纠错</small></h2>
+<div class="filters" id="filters"></div>
+<table id="gtable">
+  <thead><tr><th>编号</th><th>画面/载体</th><th>位置（实测）</th><th>现状</th><th>改法</th><th>类型</th><th>优先级</th></tr></thead>
+  <tbody></tbody>
+</table>
+
+<h2>④ 候选色值对照<small>拍板后此表直接抄进施工单</small></h2>
+<table class="ctable" id="ctable">
+  <thead><tr><th>变量</th><th>现状(绿)</th><th>候选A 纯黑</th><th>候选B 暖调近黑 <span class="tag t-fix">荐</span></th><th>候选C 冷调近黑</th><th>落点</th></tr></thead>
+  <tbody></tbody>
+</table>
+
+<h2>⑤ 五决策点拍板单<small>点选 → 生成拍板文本 → 复制发给设计师 → 30 分钟内出正式工单卡</small></h2>
+<div id="quiz"></div>
+<div class="gen">
+  <button class="big" onclick="genResult()">生成拍板结果</button>
+  <span style="font-size:12px;color:var(--ink3)">生成后全选复制下方文本即可</span>
+</div>
+<textarea id="result" readonly></textarea>
+
+<footer>纯静态单文件 · 离线可用 · 截图为 Edge headless 420×900 真实 build 产物（build 隔离于 C:/movmock，仓库 dist/assets 零污染）</footer>
+</div>
+
+<script>
+/* ================= 数据 ================= */
+const CANDS = {
+  A:{name:"候选A 纯黑", light:"#000000", strong:"#000000", tint:"rgba(0,0,0,.06)", dark:"#F5F5F5",
+     note:"最硬核的极限解。风险：主色与正文 #191b21 明度差过小——看 market.png 里按钮与正文的贴脸程度。",
+     sw:[["--primary","#000000"],["--primary-strong","#000000"],["--primary-tint","rgba(0,0,0,.06)"],["--primary(dark)","#F5F5F5"],["气泡底","#ECECEC"]],
+     dir:"候选A_纯黑"},
+  B:{name:"候选B 暖调近黑（推荐）", light:"#2B2724", strong:"#1D1A17", tint:"rgba(43,39,36,.08)", dark:"#EDE7E0",
+     note:"logo 线稿墨感的最近解——纸上墨是暖黑不是 #000。与正文保留温度差，dark 暖白 #EDE7E0 在 OLED 上不刺眼。",
+     sw:[["--primary","#2B2724"],["--primary-strong","#1D1A17"],["--primary-tint","rgba(43,39,36,.08)"],["--primary(dark)","#EDE7E0"],["气泡底","#EAE5E0"]],
+     dir:"候选B_暖调近黑"},
+  C:{name:"候选C 冷调近黑", light:"#23272F", strong:"#171B22", tint:"rgba(35,39,47,.08)", dark:"#E8EBF2",
+     note:"延续现有中性冷灰体系（s0-s4）最顺；#191B21 按评审意见①不作默推项，此为换值冷调。",
+     sw:[["--primary","#23272F"],["--primary-strong","#171B22"],["--primary-tint","rgba(35,39,47,.08)"],["--primary(dark)","#E8EBF2"],["气泡底","#E4E7ED"]],
+     dir:"候选C_冷调近黑"},
+};
+const SHOTS = [["market.png","市场页（primary 大户 12.9%）"],["orders.png","订单页"],["chat.png","聊天页（注入演示消息）"],["model.png","模型页"],["vault.png","信息库"]];
+
+const SCREENS = [
+  ["market（Vant）","主色像素 12.9%（A：000000）｜背景 80.4%","primary 全走 token，0 硬编码","0 改 · token 单点全包","b0","零页改"],
+  ["orders","背景 96.5%，primary 少量（按钮/状态）","0 硬编码","0 改","b0","零页改"],
+  ["chat（markstream）","97.4% 中性，气泡 1.0%——本就最贴黑白","2 处色值 :147/:156（全页仅此两处）","2 行 + build 拷贝","b1","小改·半天"],
+  ["model","背景 90.2%，primary 4.8-5.5%（卡片选中态）","0 硬编码","0 改","b0","零页改"],
+  ["vault","背景 91.0%","0 处（confirmButtonColor 功能色保留）","0 改","b0","零页改"],
+  ["settings","三候选截图 md5 相同——默认态无 primary 可见元素","0 处","0 改","b0","零页改 · L2 须截开关 ON 态"],
+  ["workbench（Vue）","—","1 处紫野色 avatarBg #7c5cff（:257）","1 行","b1","小改"],
+  ["sidebar / workbench html","—","同 token 体系","0 改","b0","零页改"],
+  ["原生壳（MainActivity/登录/隐私门/3 个 Sheet）","mock 未覆盖——真机走查由 L3 承担","品牌绿 5 处（:720/:825/PhotoAsk:40/WebPage:85/:125）+ 无 colors.xml/themes.xml 裸奔","colors.xml/themes.xml 新建 + 5 处改引用 + 挂主题","b2","中改 · 第三刀主体"],
+  ["聊天内代码高亮块","—","语法高亮 5 色组（cKw 0xFF0000FF 等）——功能语义色","不改","b2","保留 · 修正草案误判"],
+];
+
+const ITEMS = [
+ ["G1","全局 token（7 页共用）","tokens.css:3-7","--primary 绿系 5 变量","单点换候选主色；Vant 映射零改动","change","品牌主色","P0","唯一 token 源，mock 已实证 7 页同步变"],
+ ["G2","全局 token（深色）","tokens.css:75-79","dark 绿系 5 变量","按决策点②换值（mock=黑底白强调）","change","品牌主色","P0","dark 校验含入 L1"],
+ ["C1","聊天页-用户气泡底","RoomApp.vue:147","#EAF0FD 浅蓝（唯一野色）","→ 中性灰阶（A #ECECEC/B #EAE5E0/C #E4E7ED）","change","品牌残留","P0","build --base=./ + 拷 assets/markstream（冻结区人工同步）"],
+ ["C2","聊天页-气泡文字","RoomApp.vue:156","#1F2329","→ 与主色对齐（A #17181C/B #2B2724/C #23272F）","change","品牌残留","P0","全页仅此 2 色值（实测）"],
+ ["N1","原生-房间浮层","MainActivity.kt:720","popPrimary = 0xFF0E7C5B","改 R.color.mov_primary","change","品牌残留","P1","草案漏盘，本轮新发现"],
+ ["N2","原生-输入区 dock","MainActivity.kt:825","dockPrimary = 0xFF0E7C5B","同 N1","change","品牌残留","P1","新发现"],
+ ["N3","原生-拍照面板","PhotoAskSheet.kt:40","primary = 0xFF0E7C5B","同 N1","change","品牌残留","P1","新发现"],
+ ["N4","原生-Web 面板","WebPageSheet.kt:85/:125","setTextColor(0xFF0E7C5B) ×2","同 N1","change","品牌残留","P1","新发现"],
+ ["N5","原生-主题基建","res/values/（仅 ic_launcher_colors.xml）","无 colors.xml/themes.xml，系统主题裸奔","新建 colors.xml(mov_primary…)+themes.xml；登录/隐私门/MainActivity 挂主题","change","基建","P1","第三刀主体；N1-N4 引用落点"],
+ ["K4","Workbench 头像底","WorkbenchPage.vue:257","avatarBg: #7c5cff（紫）","→ 中性灰阶首字母头像","change","野色","P1","全仓唯一非体系彩色"],
+ ["K1","修正草案误判","MainActivity.kt:5828（原锚:5395 漂移）","cKw=0xFF0000FF——语法高亮关键字色（VS Code 配色组），非草案所称「链接蓝」","不改（功能语义色；cType/cNum/cStr/cCom 同组保留）","fix","修正","—","逐屏识别定性纠错"],
+ ["K2","Vant Dialog 确认按钮","components ×6（ModelPage/SidebarNav/VaultPage）","confirmButtonColor:#d92d20","不改（危险确认语义色，与 --danger 同值）","keep","功能色","—","可选收编 JS 常量"],
+ ["K3","SidebarNav 边框","SidebarNav.vue:450/:455","#E5E7EB/#2E333B 中性灰","不改（黑白主调下天然和谐）","keep","中性色","—",""],
+ ["K5","图标体系","icons.js","0 处硬编码色（currentColor/token）","不改","keep","已合规","—","实测 0 命中"],
+ ["K6","launcher 底色","ic_launcher_colors.xml","#FFFFFF","不改（与黑白 logo 同源）","keep","已合规","—",""],
+ ["O1","官网 official-web","独立目录","第三套脸","本期不做（决策点③）；上架物料只截 App 内页面","out","范围外","—","防一锅烩"],
+ ["O2","工作台 workbench-web","独立目录","另一套样式","同 O1","out","范围外","—",""],
+ ["M1","上架展示图","mov_store_assets（六张黑白版搁置）","绿色海报已被否","本单落地后按新主色重渲","change","下游","P2","本单是物料前置"],
+ ["V1","L1 验收硬规","全仓 grep","当前绿残留基线 10 处（tokens 5 + 原生 5，已实测）","改造后 grep=0 + 主色改回绿校验必红（变异）+ 写死品牌色 grep=0","fix","验收","—","UPG-23 硬规继承"],
+];
+const FILTERS = [["all","全部 20"],["change","要改 9"],["keep","保留 4"],["fix","修正/验收 2"],["out","范围外 2"]];
+const TYPEMAP = {change:["t-change","要改"],keep:["t-keep","保留"],fix:["t-fix","修正"],out:["t-out","范围外"]};
+const PMAP = {"P0":"t-p0","P1":"t-p1"};
+
+const CVALS = [
+ ["--primary (浅)","#0E7C5B","#000000","#2B2724","#23272F","tokens.css:3"],
+ ["--primary-strong (浅)","#0A6649","#000000","#1D1A17","#171B22","tokens.css:4"],
+ ["--on-primary (浅)","#ffffff","#ffffff","#ffffff","#ffffff","tokens.css:5"],
+ ["--primary-text (浅)","#0E7C5B","#000000","#2B2724","#23272F","tokens.css:6"],
+ ["--primary-tint (浅)","rgba(14,124,91,.1)","rgba(0,0,0,.06)","rgba(43,39,36,.08)","rgba(35,39,47,.08)","tokens.css:7"],
+ ["--primary (dark)","#34C79A","#F5F5F5","#EDE7E0","#E8EBF2","tokens.css:75"],
+ ["--primary-strong (dark)","#4fd7ab","#FFFFFF","#F7F3EE","#F5F7FB","tokens.css:76"],
+ ["--on-primary (dark)","#06392B","#111111","#211D1A","#1B1F27","tokens.css:77"],
+ ["--primary-text (dark)","#34C79A","#F5F5F5","#EDE7E0","#E8EBF2","tokens.css:78"],
+ ["--primary-tint (dark)","rgba(52,199,154,.16)","rgba(245,245,245,.12)","rgba(237,231,224,.12)","rgba(232,235,242,.12)","tokens.css:79"],
+ ["聊天页气泡底","#EAF0FD","#ECECEC","#EAE5E0","#E4E7ED","RoomApp.vue:147"],
+ ["聊天页气泡文字","#1F2329","#17181C","#2B2724","#23272F","RoomApp.vue:156"],
+ ["原生 mov_primary（colors.xml 新建）","硬编码 0xFF0E7C5B ×5","=A","=B","=C","N1-N4 引用"],
+];
+
+const QUIZ = [
+ {q:"① 主色", opts:[["A 纯黑 #000000",false],["B 暖调近黑 #2B2724",true],["C 冷调近黑 #23272F",false]], id:"主色"},
+ {q:"② 深色反转口径", opts:[["黑底白强调（已 mock）",true],["中性灰反转（需补 mock）",false]], id:"深色"},
+ {q:"③ 官网/工作台", opts:[["不同批另立单；物料只截 App 内",true],["同批极简对齐（只换主色不改布局）",false]], id:"官网工作台"},
+ {q:"④ 品牌绿点缀", opts:[["否，纯黑白",true],["保留一丝极深绿近黑（tab 下划线/开关 ON）",false]], id:"点缀"},
+ {q:"⑤ 可点态区分度", opts:[["黑=可点 + 透明度/字重分层",true],["极低饱和灰蓝专供链接（#5A6B7A 系）",false],["看 mock 实况后再定",false]], id:"可点态"},
+];
+
+/* ================= 渲染 ================= */
+let curCand = "B";
+function renderTabs(){
+  document.getElementById("tabs").innerHTML = Object.keys(CANDS).map(k=>{
+    const c = CANDS[k];
+    return `<div class="tab ${k===curCand?"on":""}" onclick="curCand='${k}';renderTabs()"><span class="dot" style="background:${c.light}"></span>${c.name}</div>`;
+  }).join("");
+  const c = CANDS[curCand];
+  document.getElementById("candNote").innerHTML = "<b>"+c.name+"</b> — "+c.note;
+  document.getElementById("swatches").innerHTML = c.sw.map(([n,v])=>
+    `<div class="sw"><div class="c" style="background:${v};${v=="#ffffff"||v.startsWith("rgba(2")?"color:#666":""}">${v}</div><div class="t">${n}</div></div>`).join("");
+  document.getElementById("shots").innerHTML = SHOTS.map(([f,d])=>
+    `<figure><a href="${encodeURIComponent(c.dir)}/${f}" target="_blank"><img src="${encodeURIComponent(c.dir)}/${f}" alt="${d}"></a><figcaption>${d}</figcaption></figure>`).join("");
+}
+function renderScreens(){
+  document.getElementById("screens").innerHTML = SCREENS.map(([n,px,p,hard,cls,con])=>
+    `<div class="sc"><h3>${n}<span class="badge ${cls}">${con}</span></h3><div class="px">${px}</div><p><b>primary：</b>${p}</p><p><b>残留：</b>${hard}</p></div>`).join("");
+}
+let curFilter = "all";
+function renderTable(){
+  document.getElementById("filters").innerHTML = FILTERS.map(([k,n])=>
+    `<span class="f ${k===curFilter?"on":""}" onclick="curFilter='${k}';renderTable()">${n}</span>`).join("");
+  const tb = document.querySelector("#gtable tbody");
+  tb.innerHTML = ITEMS.filter(it=>curFilter==="all"||it[5]===curFilter).map(it=>{
+    const [id,carrier,loc,now,fix,typ,cat,pri,note] = it;
+    const [cls,label] = TYPEMAP[typ];
+    return `<tr><td><b>${id}</b></td><td>${carrier}</td><td class="code">${loc}</td><td>${now}</td><td>${fix}${note?`<div style="font-size:11px;color:var(--ink3);margin-top:3px">${note}</div>`:""}</td><td><span class="tag ${cls}">${label}·${cat}</span></td><td><span class="tag ${PMAP[pri]||"t-pn"}">${pri}</span></td></tr>`;
+  }).join("");
+}
+function renderCvals(){
+  const tb = document.querySelector("#ctable tbody");
+  tb.innerHTML = CVALS.map(r=>`<tr><td><b>${r[0]}</b></td>`+
+    r.slice(1,5).map((v,i)=>{
+      const isColor = /^#|^rgba/.test(v) && v!=="—";
+      const sw = isColor?`<span class="swb" style="background:${v.startsWith("rgba")?v:v}"></span>`:"";
+      return `<td><span class="v">${sw}${v}</span></td>`;
+    }).join("")+`<td class="code">${r[5]}</td></tr>`).join("");
+}
+function renderQuiz(){
+  document.getElementById("quiz").innerHTML = QUIZ.map((q,qi)=>{
+    q.sel = q.opts.findIndex(o=>o[1]);
+    return `<div class="q"><h3>${q.q}</h3><div class="opts">${q.opts.map((o,oi)=>
+      `<span class="opt ${o[1]?"on":""} ${o[1]?"rec":""}" onclick="pick(${qi},${oi})">${o[0]}</span>`).join("")}</div></div>`;
+  }).join("");
+}
+function pick(qi,oi){ QUIZ[qi].sel = oi; renderQuiz(); }
+function genResult(){
+  const lines = QUIZ.map(q=>`${q.id}：${q.opts[q.sel][0]}`).join("\n");
+  const txt = `【风格统一工单拍板 @${new Date().toISOString().slice(0,10)}】\n${lines}\n——按此出正式工单卡（编号以工单表为准）+ 工单表登记 + 建议区回链。`;
+  const ta = document.getElementById("result");
+  ta.style.display = "block"; ta.value = txt; ta.select();
+}
+renderTabs(); renderScreens(); renderTable(); renderCvals(); renderQuiz();
+</script>
+</body>
+</html>

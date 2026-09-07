@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 审批弹窗 UI 设计 Demo v2（可交互）</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;
+    --line:rgba(22,28,48,.08);--text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+    --acc:#23272f;--on-acc:#ffffff;--danger:#d92d20;--blue:#3b6fd4;--warn:#a5711f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#e9ebf0;color:var(--text);display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  @media(min-width:421px){.phone{margin:24px 0;border-radius:18px;min-height:calc(100vh-48px);box-shadow:0 20px 60px rgba(0,0,0,.12);overflow:hidden}}
+  .wrap{padding:14px 14px 40px}
+  .h{font-size:13px;font-weight:600;color:var(--text3);margin:6px 2px 12px}
+  .seg{display:flex;gap:4px;background:var(--s2);border-radius:11px;padding:4px;margin-bottom:12px}
+  .seg button{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--text2);padding:9px 0;border-radius:8px;cursor:pointer}
+  .seg button.on{background:var(--s1);color:var(--text);box-shadow:0 1px 4px rgba(22,28,48,.08)}
+
+  .scene{background:var(--s1);border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative}
+  .bar{height:42px;display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--text2)}
+  .bar .st{font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;margin-left:auto}
+  .st.idle{background:var(--s2);color:var(--text3)}
+  .st.ok{background:rgba(43,129,88,.14);color:#2b8158}
+  .st.dg{background:rgba(217,45,32,.12);color:var(--danger)}
+  .msgs{padding:14px 12px;display:flex;flex-direction:column;gap:10px;min-height:150px}
+  .bbl{max-width:80%;padding:9px 12px;border-radius:12px;font-size:13.5px}
+  .bbl.user{align-self:flex-end;background:#e4e7ed;border-top-right-radius:4px}
+  .bbl.ai{align-self:flex-start;border:1px solid var(--line);color:var(--text2)}
+  .bbl.ai b{color:var(--text)}
+  .trigger{margin:12px;padding:13px;border-radius:12px;border:1px solid var(--line);background:var(--s2);
+    color:var(--text2);font-weight:600;font-size:14px;width:calc(100% - 24px);cursor:pointer;font-family:inherit}
+  .trigger:hover{background:var(--s3)}
+
+  /* 弹窗（absolute 覆盖 scene，不动顶部 seg） */
+  .mask{position:absolute;inset:0;background:rgba(12,16,28,.5);display:none;align-items:center;justify-content:center;padding:18px;z-index:10}
+  .mask.show{display:flex}
+  .dlg{width:100%;max-width:320px;background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.3);overflow:hidden;animation:pop .18s ease}
+  @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+  .dlg-head{display:flex;align-items:center;gap:10px;padding:15px 17px 5px}
+  .dlg-head .ic2{width:32px;height:32px;border-radius:9px;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .dlg-head .tt{font-size:16px;font-weight:700}
+  .dlg-head .sb{font-size:11px;color:var(--text3);margin-top:2px}
+  .dlg-b{padding:8px 17px 2px;font-size:13px;color:var(--text2);line-height:1.55}
+  .dlg-b b{color:var(--text)}
+  .tool-card{margin-top:9px;background:var(--s2);border:1px solid var(--line);border-radius:11px;padding:10px 11px}
+  .tool-card .n{font-family:"SF Mono",ui-monospace,monospace;font-size:12px;color:var(--text);font-weight:600}
+  .tool-card .d{font-size:11.5px;color:var(--text3);margin-top:3px}
+  .tool-card .a{font-family:"SF Mono",ui-monospace,monospace;font-size:11.5px;color:var(--text2);background:var(--s1);border:1px solid var(--line);border-radius:7px;padding:6px 8px;margin-top:6px;word-break:break-all}
+  .warn{display:flex;gap:6px;align-items:flex-start;margin-top:10px;font-size:11.5px;color:var(--warn)}
+  .warn .wd{flex:none;width:14px;height:14px;border-radius:50%;background:rgba(165,113,31,.18);display:flex;align-items:center;justify-content:center;font-size:9px;margin-top:1px}
+  .dlg-f{display:flex;flex-direction:column;gap:7px;padding:13px 17px 16px}
+  .btn{width:100%;text-align:center;padding:12px;border-radius:11px;font-size:14px;font-weight:600;cursor:pointer;border:none;font-family:inherit}
+  .btn.pr{background:var(--acc);color:#fff}
+  .btn.mid{background:rgba(59,111,212,.12);color:var(--blue)}
+  .btn.dg{background:rgba(217,45,32,.1);color:var(--danger)}
+  .fn{margin-top:1px;font-size:10.5px;color:var(--text3);text-align:center;line-height:1.4}
+  .note{margin-top:16px;font-size:12.5px;color:var(--text3);line-height:1.6}
+  .note b{color:var(--text2)}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="wrap">
+    <div class="h">审批弹窗 UI 设计 · 先选场景，点「模拟 AI 发起审批」看弹窗</div>
+    <div class="seg">
+      <button id="s3" class="on">无目标 · 三键</button>
+      <button id="s4">有活性目标 · 四键</button>
+    </div>
+
+    <div class="scene" id="scene">
+      <div class="bar">☰ MOV 助手<span class="st" id="sceneState">待触发</span></div>
+      <div class="msgs" id="msgs">
+        <div class="bbl user">帮我把这段会议纪要整理成 Markdown 存到笔记</div>
+        <div class="bbl ai">好的，我先在设备上执行一步操作，需要你确认。</div>
+      </div>
+      <button class="trigger" id="trig">⚡ 模拟：AI 发起审批</button>
+
+      <div class="mask" id="mask">
+        <div class="dlg">
+          <div class="dlg-head">
+            <div class="ic2">⚙️</div>
+            <div><div class="tt">审批请求</div><div class="sb">AI 想执行一个操作，等你确认</div></div>
+          </div>
+          <div class="dlg-b" id="dlgB"></div>
+          <div class="dlg-f" id="dlgF"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">批2 修复要保证这个弹窗<b>真实可点</b>(三键/四键都能命中,非 setItems 容错)。点一个按钮试试——弹窗会关闭并更新上方状态,可反复触发。</div>
+  </div>
+</div>
+
+<script>
+let hasGoal=false;
+const BODY3=`是否允许 AI 执行这个操作？<b>60 秒无响应将自动拒绝。</b>
+  <div class="warn"><span class="wd">!</span>工具在执行时可能<b>修改你的数据</b>，请确认。</div>`;
+const BODY4=`是否允许 AI 执行这个操作？<b>60 秒无响应将自动拒绝。</b>
+  <div class="warn"><span class="wd">!</span>检测到<b>进行中的目标</b>，「允许本目标」可在本次目标内免重复确认。</div>`;
+const TOOL=`<div class="tool-card"><div class="n">shell.exec</div><div class="d">执行 shell 命令（任意代码级，高权限）</div><div class="a">echo "整理 -> notes/会议纪要.md"</div></div>`;
+
+function setScene(label,cls){
+  const st=document.getElementById('sceneState');
+  st.textContent=label; st.className='st '+cls;
+}
+function renderDlg(){
+  document.getElementById('dlgB').innerHTML=(hasGoal?BODY4:BODY3)+TOOL;
+  document.getElementById('dlgF').innerHTML= hasGoal?`
+    <button class="btn pr" data-r="允许本轮">允许本轮</button>
+    <button class="btn mid" data-r="允许本目标">允许本目标</button>
+    <button class="btn pr" data-r="允许本次">允许本次</button>
+    <button class="btn dg" data-r="拒绝">拒绝</button>
+    <div class="fn">允许本轮=本次对话免询 / 允许本目标=当前目标内免询 / 允许本次=仅这一次</div>`
+  :
+    `<button class="btn pr" data-r="允许本轮">允许本轮</button>
+     <button class="btn pr" data-r="允许本次">允许本次</button>
+     <button class="btn dg" data-r="拒绝">拒绝</button>
+     <div class="fn">允许本轮=本次对话免询 / 允许本次=仅这一次，60s 无人确认自动拒绝</div>`;
+}
+// 切场景
+document.getElementById('s3').onclick=()=>{hasGoal=false;s3.on=0;document.getElementById('s3').classList.add('on');document.getElementById('s4').classList.remove('on');resetScene();};
+document.getElementById('s4').onclick=()=>{hasGoal=true;document.getElementById('s4').classList.add('on');document.getElementById('s3').classList.remove('on');resetScene();};
+function resetScene(){setScene('待触发','idle');document.getElementById('msgs').innerHTML=`<div class="bbl user">帮我把这段会议纪要整理成 Markdown 存到笔记</div><div class="bbl ai">好的，我先在设备上执行一步操作，需要你确认。</div>`;}
+// 触发弹窗
+document.getElementById('trig').onclick=()=>{renderDlg();document.getElementById('mask').classList.add('show');};
+// 弹窗按钮 → 关闭 + 更新状态
+document.getElementById('dlgF').addEventListener('click',e=>{
+  const b=e.target.closest('.btn'); if(!b)return;
+  const r=b.dataset.r;
+  document.getElementById('mask').classList.remove('show');
+  if(r==='拒绝') setScene('❌ 已拒绝','dg');
+  else setScene('✅ 已'+r+'，AI 继续执行','ok');
+});
+resetScene();
+</script>
+</body>
+</html>

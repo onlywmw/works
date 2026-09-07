@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV 我的资产 · 重设计 demo v1</title>
+<style>
+:root{
+  --primary:#23272F;--on-primary:#ffffff;--primary-text:#23272F;--primary-tint:rgba(35,39,47,.08);
+  --s0:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;--s4:#ffffff;
+  --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--line:rgba(22,28,48,.08);
+  --danger:#d92d20;--danger-tint:rgba(217,45,32,.09);--scrim:rgba(12,16,28,.45);
+}
+.screen[data-theme=dark]{
+  --primary:#F1F3F5;--on-primary:#16181D;--primary-text:#F1F3F5;--primary-tint:rgba(241,243,245,.14);
+  --s0:#0c0e12;--s1:#16181d;--s2:#1e2024;--s3:#282a2e;--s4:#2b2d33;
+  --text:#e4e5ea;--text2:#a9afbf;--text3:#757b8d;--line:rgba(255,255,255,.08);
+  --danger:#ff6b5e;--danger-tint:rgba(255,107,94,.14);--scrim:rgba(0,0,0,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#05070a;color:#e4e5ea;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:26px 16px 60px;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(70,80,100,.14),transparent 70%)}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit;font-size:inherit}
+
+.demo-bar{width:420px;max-width:100%;display:flex;align-items:center;gap:8px;margin-bottom:14px;z-index:2;position:relative}
+.demo-bar .logo{font-size:13px;font-weight:700}
+.demo-bar .logo small{display:block;font-size:10px;font-weight:400;color:#757b8d;margin-top:2px}
+.demo-bar .sp{flex:1}
+.seg{display:flex;background:#16181d;border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:3px;gap:2px}
+.seg button{padding:5px 10px;border-radius:999px;font-size:11px;color:#a9afbf;white-space:nowrap}
+.seg button.on{background:#F1F3F5;color:#16181D;font-weight:600}
+.theme-btn{width:32px;height:32px;border-radius:50%;background:#16181d;border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:14px}
+
+.phone{width:420px;max-width:100%;height:860px;border-radius:30px;border:1px solid rgba(255,255,255,.1);
+  overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.screen{position:absolute;inset:0;background:var(--s0);color:var(--text);display:flex;flex-direction:column;transition:background .3s}
+
+/* ===== 头部 ===== */
+.head{flex:none;padding:14px 16px 6px;display:flex;align-items:center;gap:10px}
+.head .bk{width:36px;height:36px;border-radius:50%;background:var(--s1);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:16px}
+.head h1{font-size:19px;font-weight:800;flex:1}
+.sec-chip{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;
+  background:var(--s2);color:var(--text3);font-size:11px;font-weight:600}
+.sec-line{flex:none;padding:0 18px 8px;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px}
+
+/* ===== 类目分段 ===== */
+.cats{flex:none;display:flex;gap:8px;padding:4px 16px 12px}
+.cat{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 4px 9px;
+  border-radius:12px;background:var(--s1);border:1px solid var(--line);color:var(--text2);transition:all .18s}
+.cat .ci{font-size:18px}
+.cat .cl{font-size:12.5px;font-weight:600}
+.cat .cn{font-size:10px;color:var(--text3);font-variant-numeric:tabular-nums}
+.cat.on{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.cat.on .cn{color:var(--on-primary);opacity:.7}
+.cat.off{opacity:.45}
+.cat:active{transform:scale(.97)}
+
+/* ===== 主体 ===== */
+.body{flex:1;overflow-y:auto;padding:2px 16px 18px;display:flex;flex-direction:column;gap:14px}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card-h{display:flex;align-items:center;padding:12px 14px 10px}
+.card-h .t{flex:1;font-size:13px;font-weight:700;color:var(--text2)}
+.card-h .mini{font-size:11px;color:var(--text3);font-weight:600}
+
+/* 凭据行 */
+.cred-g{padding:2px 0}
+.cred-gh{display:flex;align-items:center;gap:8px;padding:8px 14px 6px}
+.cred-gh .p{font-size:12px;font-weight:700;color:var(--text3);letter-spacing:.03em}
+.cred-row{display:flex;align-items:center;gap:10px;padding:10px 14px;transition:background .15s}
+.cred-row:active{background:var(--s3)}
+.cred-row + .cred-row{border-top:1px solid var(--line)}
+.cred-g .cred-row{border-top:none;padding-left:26px}
+.cred-k{flex:none;width:76px;font-size:13px;color:var(--text2)}
+.cred-v{flex:1;font-size:13px;color:var(--text);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.cred-v.muted{color:var(--text3)}
+.eye{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--text3);flex:none;transition:all .15s}
+.eye:active{background:var(--s3)}
+.eye.on{color:var(--primary-text)}
+
+/* 照片槽 */
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:2px 14px 14px}
+.slot{height:118px;border-radius:12px;border:1.5px dashed var(--line);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;color:var(--text3);transition:all .18s}
+.slot:active{transform:scale(.98);border-color:var(--text3)}
+.slot .ic{font-size:22px}
+.slot .lb{font-size:12px;font-weight:600}
+.slot.has{border-style:solid;border-color:var(--line);background:var(--s2);color:var(--text2)}
+
+/* 空态 */
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.empty .eic{width:64px;height:64px;border-radius:18px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:26px}
+.empty .et{font-size:16px;font-weight:700}
+.empty .es{font-size:12.5px;color:var(--text3);line-height:1.7;max-width:240px}
+.empty .ebtn{height:42px;padding:0 22px;border-radius:12px;background:var(--primary);color:var(--on-primary);
+  font-size:14px;font-weight:700;display:flex;align-items:center}
+
+.toast{position:absolute;left:50%;bottom:96px;transform:translate(-50%,20px);z-index:30;
+  background:var(--text);color:var(--s0);font-size:12.5px;padding:9px 16px;border-radius:999px;
+  opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.notes{width:420px;max-width:100%;margin-top:18px;background:#10131a;border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:16px 18px;z-index:1}
+.notes h3{font-size:12px;font-weight:700;color:#a9afbf;letter-spacing:.08em;margin-bottom:10px}
+.notes li{font-size:12px;color:#757b8d;line-height:1.7;list-style:none;padding-left:14px;position:relative}
+.notes li::before{content:"—";position:absolute;left:0;color:#4a5158}
+.notes li b{color:#a9afbf;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <div class="logo">MOV 我的资产 · 重设计<small>demo v1 · 2026-09-03 · 令牌化 / 诚实空态 / 无假数据</small></div>
+  <div class="sp"></div>
+  <div class="seg" id="seg">
+    <button data-sc="full" class="on">有数据</button>
+    <button data-sc="empty">空态</button>
+  </div>
+  <button class="theme-btn" id="themeBtn">🌙</button>
+</div>
+
+<div class="phone">
+  <div class="screen" id="screen" data-theme="light">
+
+    <div class="head">
+      <button class="bk">←</button>
+      <h1>我的资产</h1>
+      <span class="sec-chip">🔒 本机存储</span>
+    </div>
+    <div class="sec-line">数据不出设备 · 凭据读取每次需你确认</div>
+
+    <div class="cats" id="cats">
+      <button class="cat on" data-cat="cred"><span class="ci">🔐</span><span class="cl">凭据</span><span class="cn">3 条</span></button>
+      <button class="cat" data-cat="photo"><span class="ci">🪪</span><span class="cl">证件照</span><span class="cn">0/2</span></button>
+      <button class="cat off"><span class="ci">👕</span><span class="cl">衣柜</span><span class="cn">即将上线</span></button>
+    </div>
+
+    <div class="body" id="bodyFull">
+      <!-- 凭据卡 -->
+      <div class="card">
+        <div class="card-h"><span class="t">凭据</span><button class="mini" id="grpBtn">按平台分组 ⇄</button></div>
+        <div class="cred-g">
+          <div class="cred-gh"><span class="p">微信</span></div>
+          <div class="cred-row"><span class="cred-k">商户简称</span><span class="cred-v" data-v="湘味小炒">········</span><button class="eye" data-eye>👁</button></div>
+          <div class="cred-row"><span class="cred-k">商户号</span><span class="cred-v" data-v="1900000109">·······09</span><button class="eye" data-eye>👁</button></div>
+        </div>
+        <div class="cred-g">
+          <div class="cred-gh"><span class="p">支付宝</span></div>
+          <div class="cred-row"><span class="cred-k">账号</span><span class="cred-v" data-v="wmw***@163.com">wmw***@163.com</span><button class="eye" data-eye>👁</button></div>
+        </div>
+      </div>
+      <!-- 证件照卡 -->
+      <div class="card">
+        <div class="card-h"><span class="t">证件照</span><span class="mini">与凭据同等安全等级</span></div>
+        <div class="slots">
+          <button class="slot" data-slot="身份证"><span class="ic">📷</span><span class="lb">身份证 · 添加</span></button>
+          <button class="slot" data-slot="护照"><span class="ic">📷</span><span class="lb">护照 · 添加</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 空态 -->
+    <div class="body" id="bodyEmpty" style="display:none">
+      <div class="empty">
+        <div class="eic">🔒</div>
+        <div class="et">还没有任何资产</div>
+        <div class="es">凭据、证件照只存在这台设备上，读取时每次都需要你确认。从添加第一条凭据开始。</div>
+        <button class="ebtn" id="addBtn">添加凭据</button>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
+
+<div class="notes">
+  <h3>重设计决策（对照现页四病灶）</h3>
+  <ul>
+    <li><b>绿横幅降级</b>——「本机存储/读取需审批」从 #eef7f4 绿条（硬编码、违反纯黑白拍板）降为头部 sec-chip + 一行小字（text3），信息在、颜色回令牌</li>
+    <li><b>类目从硬三列 grid 改自适应分段卡</b>——带计数（凭据 3 条/证件照 0/2/衣柜·即将上线灰显），选中态=纯黑反转，不挤不截断</li>
+    <li><b>假数据回落删除</b>——桥空=空态（本 demo 空态场景），绝不用演示凭据充数（红线 18 同族根治）</li>
+    <li><b>诚实空态</b>——无数据=引导卡（🔒+说明+「添加凭据」主按钮），不再是大片虚空</li>
+    <li><b>凭据表分组可读</b>——平台组头 + 行内 label/脱敏值/👁 切换；脱敏值等宽数字；行距呼吸感</li>
+    <li><b>证件照槽虚线空槽</b>——「添加」引导明确，不虚线不灰尸</li>
+  </ul>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const screen=$('#screen'),toast=$('#toast');
+function show(t){toast.textContent=t;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1800)}
+
+$('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));
+  const empty=b.dataset.sc==='empty';
+  $('#bodyFull').style.display=empty?'none':'flex';
+  $('#bodyEmpty').style.display=empty?'flex':'none';
+  $('#cats').style.display=empty?'none':'flex';
+});
+$('#themeBtn').onclick=()=>{const d=screen.dataset.theme==='dark';screen.dataset.theme=d?'light':'dark';$('#themeBtn').textContent=d?'🌙':'☀️'};
+
+/* peek：点👁 显示/再点收回（脱敏往返） */
+document.querySelectorAll('[data-eye]').forEach(btn=>{
+  btn.onclick=()=>{
+    const v=btn.parentElement.querySelector('.cred-v');
+    const open=btn.classList.toggle('on');
+    if(open){v.dataset.mask=v.textContent;v.textContent=v.dataset.v;show('本次已确认 · 内容仅本机可见')}
+    else{v.textContent=v.dataset.mask}
+  };
+});
+document.querySelectorAll('.cat:not(.off)').forEach(c=>c.onclick=()=>{
+  document.querySelectorAll('.cat').forEach(x=>x.classList.remove('on'));c.classList.add('on');
+  show(c.dataset.cat==='photo'?'证件照区（本 demo 合并展示）':'凭据区');
+});
+document.querySelectorAll('[data-slot]').forEach(s=>s.onclick=()=>show('添加'+s.dataset.slot+'（拍照/相册）'));
+$('#grpBtn').onclick=()=>show('切换 分组 ⇄ 平铺');
+$('#addBtn').onclick=()=>show('添加凭据表单（商业期接真实字段）');
+document.querySelector('.bk').onclick=()=>show('返回');
+
+/* 深链 #full/#empty */
+if(location.hash==='#empty')document.querySelector('[data-sc="empty"]').click();
+</script>
+</body>
+</html>

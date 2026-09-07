@@ -202,6 +202,9 @@ def PHASE_LABEL(phase):
 def backfill():
     """从工单表反投影回填全部卡的 status 块（基线迁移；已有块的卡跳过）"""
     import openpyxl
+    if not os.path.exists(os.path.join(ROOT, "工单表.xlsx")):
+        print("[表投影已取消 2026-09-08] 工单表不存在——backfill 不再需要，跳过")
+        return 0
     wb = openpyxl.load_workbook(os.path.join(ROOT, "工单表.xlsx"), read_only=True)
     rows = list(wb.active.iter_rows(values_only=True))
     s = lambda c: (str(c) if c else "—").replace("\n", " ").strip()

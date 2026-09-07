@@ -1,0 +1,102 @@
+# MOV 设计规范 v1（Design Tokens + 组件规格）
+
+> 设计师 @2026-08-29 ｜ 依据：全仓扫描实物反提（tokens.css:2-165 + mov-vue/src + 原生 UI 类），**以实物定标，不凭空发明**。
+> 用途：①一切 UI 工单的施工/验收标尺；②皮肤/主题创作者的数据参考（所有坐标值即本表）；③UPG-25 瑕疵批修的「现状值→规范值」对照。
+> 硬规：**禁止写死色值/字号/圆角**——web 用 CSS 变量，原生用 UiTokens 常量（UPG-25 建）。新旧体系冲突时以本表为准。
+
+## 一、色板（唯一源 `mov-vue/src/styles/tokens.css`）
+
+### 1.1 品牌与语义
+
+| Token | 浅色值 | 暗色值 | 用途 |
+|---|---|---|---|
+| `--primary` | `#0E7C5B` | `#34C79A` | 主色：主按钮、选中态、钉选中、链接强调 |
+| `--primary-strong` | `#0A6649` | — | 主色按压/深色态 |
+| `--on-primary` | `#FFFFFF` | — | 主色上的文字/图标 |
+| `--primary-tint` | `rgba(14,124,91,.1)` | 暗色同系 | 主色浅底（选中行底、badge 底） |
+| `--danger` | `#D92D20` | 同系 | 删除/退出/危险操作（**JS 场景 6 处直写 `#d92d20` 待收编**，UPG-25） |
+| `--ok` | `#0F8A5F` | 同系 | 正常/在线状态点 |
+| `--warn` | `#B45309` | 同系 | 降级/未授权/异常提示 |
+
+### 1.2 中性色（Surface 5 级 + 文本 3 级 + 线）
+
+| Token | 值 | 用途 |
+|---|---|---|
+| `--s0` | `#F3F4F7` | 页面底色、sheet 底色（**统一值**，VaultSheet/WebPageSheet 的 `#FFFFFF` 底待收编） |
+| `--s1` | `#FFFFFF` | 卡片/列表行底 |
+| `--s2` | `#EDEFF3` | 图标容器底、次级填充 |
+| `--s3` | `#E2E5EB` | 按压态/分隔带 |
+| `--text` | `#191B21` | 主文本（原生平行色 `0xFF1F2329` 待并轨） |
+| `--text2` | `#565C6B` | 次级文本（原生 `0xFF8A919C`/`0xFF5C6470`/`#666` 等待并轨） |
+| `--text3` | `#8B91A1` | 说明/占位文本（`#888/#999` 待并轨） |
+| `--line` | `rgba(22,28,48,.08)` | 分隔线/卡片描边 |
+| `--scrim` | `rgba(12,16,28,.45)` | 遮罩 |
+
+**阴影**：统一 `rgba(0,0,0,.08~.18)` 系（ChatPage 的蓝色调 `rgba(16,24,64,.16)` 待收编）；`#7C5CFF` 游离品牌紫（WorkbenchPage:257）收编为 `--primary` 系。
+
+## 二、字阶（px = web；sp = 原生，同值对应）
+
+| 档位 | 值 | 用途 |
+|---|---|---|
+| 说明 | 10 | 工具行说明、时间戳、badge |
+| 辅助 | 11 | 副说明、状态小字 |
+| 副文 | 12 | 列表副标题、chip 文案 |
+| 正文小 | 13 | 气泡正文、表单辅助 |
+| 正文 | 14 | 列表主标题（cell）、正文 |
+| 标题 | 15 | 卡片/区块标题（600+） |
+| 品牌 | 19 | 品牌大标题/价格/头像字（仅品牌场景，**禁泛用**） |
+
+**禁用档**：9sp（dock 气泡，低于最小档→升 10）、10.5/12.5 半档（MainActivity:5368/5379/5521→就近归 10/12/13）。等宽场景（工具名/版本号）用 `ui-monospace` 族，不新造字号。
+
+## 三、圆角阶梯
+
+| 档位 | 值 | 用途 |
+|---|---|---|
+| 标签 | 4 | tag/badge |
+| 小件 | 8 | 小图标钮、小输入框（**`cornerRadius=8f` 裸 px 待修为 8dp**——MainActivity:4906/5354/5488） |
+| 菜单 | 12 | 弹出菜单（web/原生统一 12——原生 popup 14dp 待并轨） |
+| 卡片 | 14 | 卡片、气泡、弹层内容 |
+| 容器 | 16 | sheet 顶部圆角（**统一 16**，PhotoAskSheet 15dp 待修）、chip 高度一半=全圆角 |
+| 全圆 | 50%/999px | chip、头像、状态点 |
+
+## 四、间距与尺寸阶梯（4 的倍数优先）
+
+- **间距档**：4 / 8 / 12 / 16 / 24（页面边距 16，卡片内边距 12-14，行间距 8，图标间距 4-6）。原生现存 21 档 dp 逐批归并；**一切 padding 必走 dp2px，禁裸 px**（SettingsSheet:143/164、MainActivity:408/4450/4910/5078 等 8 处在案）。
+- **行高**：列表行（van-cell）默认 44+；**含右值的行右值单行 ellipsize 不得折行**（AI 模型行「快速对话）」折行瑕疵在案）；**房间列表行高固定、时间列固定宽不换行**（「19:5\n7」折行瑕疵在案）。
+- **顶栏**：统一 46px（van-nav-bar 默认）——自有 `.topbar` 56px（tokens.css:152）待并轨，差 10px 属瑕疵。
+- **基础件**：icon-btn/头像 40px、tag 高 22px（tokens.css:120-133 在案，沿用）。
+
+## 五、组件规格（定形态，逐项是验收点）
+
+1. **按钮**：主按钮=primary 底+on-primary 字+圆角 12+高 44；次按钮=s1 底+line 边+text 字；文字按钮=primary-text 无框；危险按钮=danger（**退出登录用 danger 文字钮，不放页面底部孤立位**——进账号卡）。
+2. **chip**（聊天页 chips 排）：高 30、全圆角、s1 底+line 边、12px 字、固定 chip 宽 118dp；**文案不带 ▾ 三角**（用户拍板去除，UPG-25 ①；可点性由气泡交互承担，不靠指示符）；钉选小按钮=34×34 圆角 10（UPG-23 规格）。
+3. **卡片/分组**：van-cell-group inset，圆角 14，s1 底，line 分隔。
+4. **弹层/sheet**：底部 sheet 顶圆角 16、底色 s0；气泡弹层圆角 14、阴影 0 8 28 rgba(0,0,0,.12)。
+5. **开关**：van-switch 默认尺寸，on=primary。
+6. **状态点**：7px 圆，ok绿/warn橙/danger红/灰=s3；全 App 同一套。
+7. **tab**：下划线式（当前=2.5px primary 短杠），文字 13px。
+8. **toast**：深色半透明底 `rgba(26,26,26,.88)`、圆角 8、11px 白字、底部居中。
+9. **空态**：text3 文案 + primary 文字按钮引导（「暂无项目，去市场看看」范式）。
+10. **时间戳**：10px、text3、等宽数字、**固定宽不换行**。
+
+## 六、皮肤/主题创作指南（坐标参考）
+
+换皮=只改 §一的 token 值（浅色/暗色两组），不动 §二~§五的任何几何与组件规格。暗色范式见 tokens.css:74-97（primary→#34C79A 的明度翻转逻辑）。新主题验收：①只动 token 文件 ②状态三色辨识度（ok/warn/danger 两主题下可区分）③scrim 对比度。
+
+## 七、待并轨清单（→ UPG-25 施工范围，现状值→规范值）
+
+| # | 项 | 现状 | 规范值 | 锚点 |
+|---|---|---|---|---|
+| 1 | chips ▾ 三角 | 模型/MCP chip 带「 ▾」 | 去除 | MainActivity.kt:1023/1030；ChatChips.kt:9/57 注释口径同步 |
+| 2 | 房间列表时间行 | 时间折行「19:5\n7」、行高不固定 | 时间列固宽不换行+行高固定 | MainActivity.kt:4409 区 |
+| 3 | 设置页结构 | 「信息管理（记忆）」原生孤立行/WebView 外；API Key 在审批组；退出登录在设置页底 | 「我的记忆」融进 Vue 列表分组；API Key 挪 AI 模型组；退出登录挪账号卡 | SettingsSheet.kt:134-184 原生段整段拆除→SettingsPage.vue |
+| 4 | 设置行右值折行 | 「DeepSeek V4 Flash（快 速对话）」两行 | 右值单行 ellipsis | SettingsPage.vue cell |
+| 5 | sheet 底色 | Settings=s0 / Vault+WebPage=s1 | 全 s0 | SettingsSheet:90,103 / VaultSheet:81 / WebPageSheet:228 |
+| 6 | 原生文本色并轨 | 0xFF1F2329 / 0xFF8A919C / 0xFF5C6470 / #666/#888/#999 | --text/--text2/--text3 对应值 | MainActivity:481,555,584；WebPageSheet:70,114；MemoryPageActivity:78,108,148,166 |
+| 7 | 字号禁用档 | 9sp / 10.5 / 12.5 | 归 10/12/13 | MainActivity:696/5368/5379/5521 |
+| 8 | sheet/弹层圆角 | PhotoAsk 15dp、popup 14dp、8f 裸 px | 16 / 12 / 8dp | PhotoAskSheet:117；MainActivity:498/4906/5354/5488 |
+| 9 | 裸 px padding | 8 处 | dp2px | SettingsSheet:137/143/158/164；MainActivity:408/4450/4910/5078 |
+| 10 | JS 直写 danger | `#d92d20`×6 | 单源常量 | ModelPage:216；SidebarNav:274,377；VaultPage:408,485 |
+| 11 | 游离色 | #7C5CFF 紫 / rgba(16,24,64,.16) 蓝阴影 | primary 系 / 标准阴影 | WorkbenchPage:257；ChatPage:186 |
+| 12 | 顶栏高度 | 自有 56 vs van 46 | 统一 46 | tokens.css:152 |
+| 13 | ellipsize 缺失 | MemoryPage 全部 TextView 无 maxLines | 标题 1 行/摘要 2 行 ellipsis | MemoryPageActivity:72,77,147,153,165,176 |

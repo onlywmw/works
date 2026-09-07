@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 本机能力 —— 市场包详情(主页示意) Demo v6</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;
+    --line:rgba(22,28,48,.08);--text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+    --acc:#23272f;--on-acc:#ffffff;--ok:#2b8158;--warn:#a5711f;--danger:#d92d20;--blue:#3b6fd4;--hi:#3b6fd4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#e9ebf0;color:var(--text);display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  @media(min-width:421px){.phone{margin:24px 0;border-radius:18px;min-height:calc(100vh-48px);box-shadow:0 20px 60px rgba(0,0,0,.12);overflow:hidden}}
+
+  .top{height:54px;display:flex;align-items:center;gap:8px;padding:0 8px;
+    border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+  .top .back{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+  .top .back:active{background:var(--s3)}
+  .top .ttl{flex:1;text-align:center;font-size:17px;font-weight:600;margin-right:38px}
+  .top .sp{width:38px}
+
+  .wrap{padding:8px 14px 60px}
+  .muted{color:var(--text3);font-size:12.5px}
+
+  .row{display:flex;align-items:center;gap:12px;padding:15px 16px 15px 20px;border-bottom:1px solid var(--line);cursor:pointer}
+  .row .nm{font-size:15.5px;font-weight:600}
+  .row .ds{font-size:12.5px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .chev{color:var(--text3);opacity:.6;font-size:17px;flex:none}
+  .sec{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;color:var(--text3);margin:18px 18px 4px 12px;padding-bottom:6px}
+
+  .hd{display:flex;gap:14px;align-items:center;padding:10px 0 4px}
+  .hd .ic{width:52px;height:52px;border-radius:14px;font-size:26px;flex:none;display:flex;align-items:center;justify-content:center}
+  .hd .ic.market{background:rgba(59,111,212,.14)}
+  .hd .ic.builtin{background:var(--acc);color:var(--on-acc)}
+  .hd .ic.system{background:var(--s3)}
+  .hd .ttls{flex:1;min-width:0}
+  .hd .nm{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .badge{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:99px;flex:none}
+  .badge.market{background:rgba(59,111,212,.16);color:var(--blue)}
+  .badge.installed{background:rgba(43,129,88,.14);color:var(--ok)}
+  .hd .sub1{font-size:12.5px;color:var(--text3);margin-top:4px}
+  .hd .tagline{font-size:13.5px;color:var(--text2);margin-top:5px;line-height:1.45}
+
+  /* 核心：主页示意 */
+  .seg{display:flex;gap:0;background:var(--s2);border-radius:11px;padding:4px;margin-top:14px}
+  .seg button{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--text2);padding:8px 0;border-radius:8px;cursor:pointer}
+  .seg button.on{background:var(--s1);color:var(--text);box-shadow:0 1px 4px rgba(22,28,48,.08)}
+
+  .homedesc{margin-top:12px;font-size:13px;color:var(--text2);line-height:1.6}
+  .homedesc b{color:var(--text)}
+
+  /* 主页缩略(模拟 MOV 主页) */
+  .home{background:var(--s1);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:12px}
+  .home .bar{height:40px;display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--text2)}
+  .home .bar .rt{color:var(--text3);font-size:14px}
+  .home .bar .rb{font-size:14px}
+  .home .hero{padding:34px 18px;text-align:center;color:var(--text3);font-size:12.5px;line-height:1.6}
+  .home .hero .hb{width:44px;height:44px;border-radius:12px;background:var(--s2);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .home .hero .h1{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .home .dock{padding:10px 12px 12px;border-top:1px solid var(--line)}
+  .chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:9px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{display:inline-flex;align-items:center;gap:4px;flex:none;font-size:11.5px;font-weight:600;color:var(--text2);background:var(--s2);border-radius:99px;padding:5px 11px;border:1px solid var(--line)}
+  .chip.mode{color:var(--acc);border-color:var(--acc)}
+  .chip.pkg{color:#fff;background:var(--blue);border-color:var(--blue);position:relative}
+  .chip.pkg::after{content:"新";position:absolute;top:-6px;right:-4px;background:var(--danger);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:99px}
+  .composer{display:flex;align-items:center;gap:6px;background:var(--s2);border:1px solid var(--line);border-radius:99px;padding:6px 8px}
+  .composer .cb{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text3)}
+  .composer .ipt{flex:1;font-size:12px;color:var(--text3)}
+  .composer .sm{flex:none;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-size:13px}
+  .pinstar{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--blue);background:rgba(59,111,212,.1);border:1px solid rgba(59,111,212,.3);border-radius:99px;padding:5px 12px;position:relative}
+  .pinstar::after{content:"本包";position:absolute;top:-6px;right:-4px;background:var(--danger);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:99px}
+  .hometag{margin-top:8px;font-size:11.5px;color:var(--text3)}
+
+  .ex{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .ex:last-child{border-bottom:none}
+  .ex .what{flex:none;width:34px;height:34px;border-radius:9px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .ex .body{flex:1;min-width:0}
+  .ex .ask{font-size:13.5px;color:var(--text);font-weight:600}
+  .ex .do{font-size:12.5px;color:var(--text3);margin-top:3px}
+  .ex .copy{flex:none;align-self:center;color:var(--text3);font-size:12px;cursor:pointer;font-weight:600}
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+  .ct{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .foot{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .btn{font-weight:600;font-size:14px;padding:13px;border-radius:12px;text-align:center;cursor:pointer}
+  .btn.danger{background:rgba(217,45,32,.09);color:var(--danger);border:1px solid rgba(217,45,32,.2)}
+
+  .modebar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;
+    background:rgba(255,255,255,.85);border:1px solid var(--line);padding:6px;border-radius:99px;backdrop-filter:blur(8px);z-index:20;box-shadow:0 4px 16px rgba(22,28,48,.1)}
+  .modebar button{color:var(--text2);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:99px;cursor:pointer}
+  .modebar button.on{background:var(--acc);color:var(--on-acc)}
+  .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--acc);color:var(--on-acc);
+    padding:8px 16px;border-radius:99px;font-size:12.5px;font-weight:600;opacity:0;transition:.2s;z-index:50;pointer-events:none}
+  .toast.show{opacity:1}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top"><button class="back" id="backBtn">‹</button><div class="ttl" id="topTitle">本机能力</div><div class="sp"></div></div>
+
+  <div class="wrap">
+    <div id="viewList">
+      <div class="sec">内置能力</div><div id="listBuiltin"></div>
+      <div class="sec">市场已安装</div><div id="listMarket"></div>
+      <div class="sec">系统基础能力</div><div id="listSystem"></div>
+    </div>
+
+    <!-- 市场包详情：以主页示意为核心 -->
+    <div id="viewMarket" hidden>
+      <div class="hd">
+        <div class="ic market" id="m_ic">📦</div>
+        <div class="ttls">
+          <div class="nm"><span id="m_name">—</span><span class="badge installed" id="m_inst">已安装</span></div>
+          <div class="sub1" id="m_meta">—</div>
+          <div class="tagline" id="m_tagline">—</div>
+        </div>
+      </div>
+
+      <!-- 核心：安装后主页两种模式 -->
+      <div class="seg">
+        <button id="btnNorm" class="on">普通模式主页</button>
+        <button id="btnMini">极简模式主页</button>
+      </div>
+
+      <!-- 普通模式主页示意 -->
+      <div id="homeNorm">
+        <div class="home">
+          <div class="bar"><span class="rb">☰</span><span style="flex:1">MOV 助手</span><span class="rt">🌙</span></div>
+          <div class="hero">
+            <div class="hb">🤖</div>
+            <div class="h1">你好，我是 MOV</div>
+            说一句，我帮你安排<br>查票 / 记账 / 拍照 / 整理笔记…
+          </div>
+          <div class="dock">
+            <div class="chips">
+              <span class="chip mode">⚡ 标准</span>
+              <span class="chip">📷 照片OCR</span>
+              <span class="chip">📄 总结文件</span>
+              <span class="chip pkg">📦 效率增强</span><!-- 本包新增的入口 -->
+            </div>
+            <div class="composer">
+              <span class="cb">📷</span><span class="ipt">和 MOV 说点什么…</span><span class="sm">🎤</span>
+            </div>
+            <div class="hometag">↑ 装了「效率增强」后，主页功能栏多出 <b>📦 效率增强</b>，点它直接开用</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 极简模式主页示意 -->
+      <div id="homeMini" hidden>
+        <div class="home">
+          <div class="bar"><span class="rb">☰</span><span style="flex:1">MOV 助手</span></div>
+          <div class="hero">
+            <div class="hb">🤖</div>
+            <div class="h1">你好</div>
+            说一句，我帮你安排…
+          </div>
+          <div class="dock">
+            <div class="chips">
+              <span class="chip mode">⚡ 标准</span>
+              <span class="pinstar">⭐ 效率增强</span><!-- 极简下精简为钉选快捷 -->
+            </div>
+            <div class="composer">
+              <span class="cb">📷</span><span class="ipt">和 MOV 说点什么…</span><span class="sm">➤</span>
+            </div>
+            <div class="hometag">↑ 极简模式下主页只留核心，本包精简成输入框上一颗 ⭐ 快捷纽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 怎么用(辅助) -->
+      <div class="card">
+        <div class="ct">怎么用 <span class="muted">说一句就行</span></div>
+        <div class="ex"><div class="what">💬</div><div class="body"><div class="ask">“帮我把这周的重复任务整理成清单”</div><div class="do">→ 按包内规则批量处理并返回结果</div></div></div>
+        <div class="ex"><div class="what">💬</div><div class="body"><div class="ask">“用它跑一下我的自动化流程”</div><div class="do">→ 执行定义好的操作</div></div></div>
+      </div>
+
+      <div class="foot"><button class="btn danger">卸载</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="modebar">
+  <button id="mList" class="on">一级</button>
+  <button id="mMarket">市场详情</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const BUILTIN=[
+  {id:'device',kind:'builtin',icon:'🛠️',name:'设备控制',tagline:'控制手机：查网络/存储/应用/日历，拍照/扫码/截屏'},
+  {id:'scene',kind:'builtin',icon:'🚄',name:'生活场景 · 12306',tagline:'查火车票：一句话查车次/余票/站点'},
+  {id:'obsidian',kind:'builtin',icon:'📓',name:'笔记 · Obsidian',tagline:'读写笔记：记录/检索/整理'},
+];
+const MARKET=[{id:'mcp.example',kind:'market',icon:'📦',name:'效率增强包',version:'1.2.1',author:'某开发者',
+  tagline:'把杂活儿交给 AI 自动跑',ex:[['帮我把这周的重复任务整理成清单','按包内规则批量处理并返回结果'],['用它跑一下我的自动化流程','执行定义好的操作']]}];
+const SYSTEM=[{id:'sys',kind:'system',icon:'⚙️',name:'系统基础能力',tagline:'AI 基本功：读文件/写便签/记忆'}];
+function render(sel,list){
+  document.getElementById(sel).innerHTML=list.map(p=>
+    `<div class="row" data-kind="${p.kind}"><div style="flex:1;min-width:0"><div class="nm">${p.name}</div><div class="ds">${p.tagline}</div></div><span class="chev">›</span></div>`).join('');
+}
+render('listBuiltin',BUILTIN); render('listMarket',MARKET); render('listSystem',SYSTEM);
+const toast=document.getElementById('toast'),topTitle=document.getElementById('topTitle');
+function doToast(m){toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500)}
+function show(listV,mV){document.getElementById('viewList').hidden=!listV;document.getElementById('viewMarket').hidden=!mV;
+  document.getElementById('mList').classList.toggle('on',listV);document.getElementById('mMarket').classList.toggle('on',mV)}
+document.querySelectorAll('#viewList .row').forEach(el=>el.addEventListener('click',()=>{
+  const k=el.dataset.kind; if(k==='market'){topTitle.textContent='效率增强包';show(false,true);} else doToast(k==='builtin'?'(内置工具详情略)':'(系统能力详情略)');
+}));
+function goList(){show(true,false);topTitle.textContent='本机能力'}
+document.getElementById('backBtn').onclick=goList;
+document.getElementById('mList').onclick=goList;
+document.getElementById('mMarket').onclick=()=>{topTitle.textContent='效率增强包';show(false,true)};
+// 普通/极简 tab
+function setMode(norm,mini){
+  document.getElementById('homeNorm').hidden=!norm;
+  document.getElementById('homeMini').hidden=!mini;
+  document.getElementById('btnNorm').classList.toggle('on',norm);
+  document.getElementById('btnMini').classList.toggle('on',mini);
+}
+document.getElementById('btnNorm').onclick=()=>setMode(true,false);
+document.getElementById('btnMini').onclick=()=>setMode(false,true);
+</script>
+</body>
+</html>

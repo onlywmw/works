@@ -1,0 +1,143 @@
+{
+ "nodes": [
+  {
+   "id": "n67",
+   "type": "file",
+   "file": "设计师/设计网络/方向/营销设计.md",
+   "x": 650.0,
+   "y": 0,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n68",
+   "type": "file",
+   "file": "设计师/设计网络/方向/官网.md",
+   "x": 185.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n70",
+   "type": "file",
+   "file": "设计师/设计网络/工单/S-07.md",
+   "x": 0,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n72",
+   "type": "file",
+   "file": "设计师/设计网络/工单/S-08.md",
+   "x": 310,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n74",
+   "type": "file",
+   "file": "设计师/设计网络/方向/市场站.md",
+   "x": 805.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n76",
+   "type": "file",
+   "file": "设计师/设计网络/工单/S-05.md",
+   "x": 620,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n78",
+   "type": "file",
+   "file": "设计师/设计网络/工单/S-06.md",
+   "x": 930,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n80",
+   "type": "file",
+   "file": "设计师/设计网络/方向/域与合规.md",
+   "x": 1270.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n82",
+   "type": "file",
+   "file": "设计师/设计网络/工单/S-04.md",
+   "x": 1240,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  }
+ ],
+ "edges": [
+  {
+   "id": "n69",
+   "fromNode": "n67",
+   "fromSide": "bottom",
+   "toNode": "n68",
+   "toSide": "top"
+  },
+  {
+   "id": "n71",
+   "fromNode": "n68",
+   "fromSide": "bottom",
+   "toNode": "n70",
+   "toSide": "top"
+  },
+  {
+   "id": "n73",
+   "fromNode": "n68",
+   "fromSide": "bottom",
+   "toNode": "n72",
+   "toSide": "top"
+  },
+  {
+   "id": "n75",
+   "fromNode": "n67",
+   "fromSide": "bottom",
+   "toNode": "n74",
+   "toSide": "top"
+  },
+  {
+   "id": "n77",
+   "fromNode": "n74",
+   "fromSide": "bottom",
+   "toNode": "n76",
+   "toSide": "top"
+  },
+  {
+   "id": "n79",
+   "fromNode": "n74",
+   "fromSide": "bottom",
+   "toNode": "n78",
+   "toSide": "top"
+  },
+  {
+   "id": "n81",
+   "fromNode": "n67",
+   "fromSide": "bottom",
+   "toNode": "n80",
+   "toSide": "top"
+  },
+  {
+   "id": "n83",
+   "fromNode": "n80",
+   "fromSide": "bottom",
+   "toNode": "n82",
+   "toSide": "top"
+  }
+ ]
+}

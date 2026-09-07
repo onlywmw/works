@@ -1,0 +1,255 @@
+{
+ "nodes": [
+  {
+   "id": "n36",
+   "type": "file",
+   "file": "设计师/设计网络/方向/结构设计.md",
+   "x": 1580.0,
+   "y": 0,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n37",
+   "type": "file",
+   "file": "设计师/设计网络/方向/工具体系.md",
+   "x": 805.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n39",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-01.md",
+   "x": 0,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n41",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-02.md",
+   "x": 310,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n43",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-03.md",
+   "x": 620,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n45",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-04.md",
+   "x": 930,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n47",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-18.md",
+   "x": 1240,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n49",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-23.md",
+   "x": 1550,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n51",
+   "type": "file",
+   "file": "设计师/设计网络/方向/记忆与智能.md",
+   "x": 2200.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n53",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-05.md",
+   "x": 1860,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n55",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-06.md",
+   "x": 2170,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n57",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-22.md",
+   "x": 2480,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n59",
+   "type": "file",
+   "file": "设计师/设计网络/方向/预算与权限.md",
+   "x": 2820.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n61",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-07.md",
+   "x": 2790,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n63",
+   "type": "file",
+   "file": "设计师/设计网络/方向/构建与发布.md",
+   "x": 3130.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n65",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-16.md",
+   "x": 3100,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  }
+ ],
+ "edges": [
+  {
+   "id": "n38",
+   "fromNode": "n36",
+   "fromSide": "bottom",
+   "toNode": "n37",
+   "toSide": "top"
+  },
+  {
+   "id": "n40",
+   "fromNode": "n37",
+   "fromSide": "bottom",
+   "toNode": "n39",
+   "toSide": "top"
+  },
+  {
+   "id": "n42",
+   "fromNode": "n37",
+   "fromSide": "bottom",
+   "toNode": "n41",
+   "toSide": "top"
+  },
+  {
+   "id": "n44",
+   "fromNode": "n37",
+   "fromSide": "bottom",
+   "toNode": "n43",
+   "toSide": "top"
+  },
+  {
+   "id": "n46",
+   "fromNode": "n37",
+   "fromSide": "bottom",
+   "toNode": "n45",
+   "toSide": "top"
+  },
+  {
+   "id": "n48",
+   "fromNode": "n37",
+   "fromSide": "bottom",
+   "toNode": "n47",
+   "toSide": "top"
+  },
+  {
+   "id": "n50",
+   "fromNode": "n37",
+   "fromSide": "bottom",
+   "toNode": "n49",
+   "toSide": "top"
+  },
+  {
+   "id": "n52",
+   "fromNode": "n36",
+   "fromSide": "bottom",
+   "toNode": "n51",
+   "toSide": "top"
+  },
+  {
+   "id": "n54",
+   "fromNode": "n51",
+   "fromSide": "bottom",
+   "toNode": "n53",
+   "toSide": "top"
+  },
+  {
+   "id": "n56",
+   "fromNode": "n51",
+   "fromSide": "bottom",
+   "toNode": "n55",
+   "toSide": "top"
+  },
+  {
+   "id": "n58",
+   "fromNode": "n51",
+   "fromSide": "bottom",
+   "toNode": "n57",
+   "toSide": "top"
+  },
+  {
+   "id": "n60",
+   "fromNode": "n36",
+   "fromSide": "bottom",
+   "toNode": "n59",
+   "toSide": "top"
+  },
+  {
+   "id": "n62",
+   "fromNode": "n59",
+   "fromSide": "bottom",
+   "toNode": "n61",
+   "toSide": "top"
+  },
+  {
+   "id": "n64",
+   "fromNode": "n36",
+   "fromSide": "bottom",
+   "toNode": "n63",
+   "toSide": "top"
+  },
+  {
+   "id": "n66",
+   "fromNode": "n63",
+   "fromSide": "bottom",
+   "toNode": "n65",
+   "toSide": "top"
+  }
+ ]
+}

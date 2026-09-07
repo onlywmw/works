@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · AI 模型管理（三级）Demo</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;--line:rgba(22,28,48,.08);
+    --text:#191b21;--text2:#565c6b;--text3:#8b91a1;--primary:#0E7C5B;--danger:#d92d20;--acc:#23272f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;background:#e9ebf0;color:var(--text);
+    display:flex;justify-content:center;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:420px;min-height:100vh;background:var(--bg);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .top{height:52px;display:flex;align-items:center;gap:8px;padding:0 8px;border-bottom:1px solid var(--line);background:var(--bg)}
+  .top .bb{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:22px;cursor:pointer}
+  .top .tt{flex:1;text-align:center;font-size:16px;font-weight:600;margin-right:36px}
+  .wrap{padding:8px 14px 40px}
+  .cell{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .row{display:flex;align-items:center;gap:10px;padding:14px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+  .row:last-child{border-bottom:none}
+  .row .ic{width:22px;height:22px;border-radius:6px;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:12px}
+  .row .nm{font-size:15px;font-weight:600}
+  .row .sub{font-size:11.5px;color:var(--text3);margin-top:2px}
+  .row .val{margin-left:auto;color:var(--text3);font-size:13px}
+  .row .chev{color:var(--text3);font-size:15px}
+  .arrow{color:var(--text3);}
+
+  /* 二级列表行 */
+  .mrow{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+  .mrow:last-child{border-bottom:none}
+  .mrow .minfo{flex:1;min-width:0}
+  .mrow .mname{font-size:14.5px;font-weight:600}
+  .mrow .mprov{font-size:11px;color:var(--text3);margin-top:2px}
+  .mrow .cur{font-size:11px;color:var(--primary);font-weight:700}
+  .tbtn{flex:none;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:99px;background:var(--s2);color:var(--text2);border:1px solid var(--line);cursor:pointer}
+  .tbtn:hover{background:var(--s3)}
+  .sw{flex:none;width:40px;height:24px;border-radius:99px;background:var(--s3);position:relative;cursor:pointer;transition:.15s}
+  .sw.on{background:var(--primary)}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.15s}
+  .sw.on::after{left:19px}
+  .addbtn{margin-top:10px;text-align:center;padding:13px;border-radius:12px;border:1px dashed var(--text3);color:var(--text2);font-weight:600;font-size:14px;cursor:pointer;background:var(--s1)}
+
+  /* 三级表单 */
+  .form{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .frow{display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--line)}
+  .frow:last-child{border-bottom:none}
+  .frow .ft{width:104px;flex:none;font-size:13px;color:var(--text2)}
+  .frow .fv{flex:1;font-size:13.5px;color:var(--text)}
+  .frow .fv.ph{color:var(--text3)}
+  .btnrow{margin-top:12px;display:flex;gap:10px}
+  .btn{flex:1;text-align:center;padding:13px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:none}
+  .btn.pr{background:var(--primary);color:#fff}
+  .btn.gh{background:var(--s2);color:var(--text2);border:1px solid var(--line)}
+  .btn.dg{background:rgba(217,45,32,.1);color:var(--danger)}
+  .del{margin-top:10px;text-align:center;padding:12px;border-radius:12px;color:var(--danger);font-weight:600;font-size:13.5px;background:var(--s1);border:1px solid var(--line)}
+  .chip2{display:inline-flex;align-items:center;font-size:12px;font-weight:600;color:var(--text2);background:var(--s2);border:1px solid var(--line);border-radius:999px;padding:0 12px;height:30px}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <!-- 一级：设置页 -->
+  <div id="v1">
+    <div class="top"><span class="bb">‹</span><div class="tt">设置</div><span style="width:36px"></span></div>
+    <div class="wrap">
+      <div class="cell">
+        <div class="row" onclick="go(2)">
+          <div class="ic">⚙️</div>
+          <div><div class="nm">AI 模型</div></div>
+          <span class="chev">›</span>
+        </div>
+        <div class="row" onclick="toast('其他设置…')">
+          <div class="ic">🛡️</div><div><div class="nm">隐私与合规</div></div><span class="chev">›</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:12px;color:var(--text3)">👆 点「AI 模型」进二级列表</div>
+    </div>
+  </div>
+
+  <!-- 二级：模型列表（测试 + 开关） -->
+  <div id="v2" hidden>
+    <div class="top"><span class="bb" onclick="back1()">‹</span><div class="tt">AI 模型管理</div><span style="width:36px"></span></div>
+    <div class="wrap">
+      <div class="cell">
+        <div class="mrow" onclick="toast('快速测试 DeepSeek V4… 回复 OK ✓')">
+          <div class="minfo"><div class="mname">DeepSeek V4 Flash <span class="cur">✓ 当前</span></div></div>
+          <button class="tbtn" onclick="event.stopPropagation();toast('测试 DeepSeek V4…返 200 ✓')">⚡ 测试</button>
+          <div class="sw on" onclick="event.stopPropagation();this.classList.toggle('on')"></div>
+        </div>
+        <div class="mrow" onclick="toast('进入设置 模型A')">
+          <div class="minfo"><div class="mname">另加模型 A</div></div>
+          <button class="tbtn" onclick="event.stopPropagation();toast('测试 模型A… 待配置 key')">⚡ 测试</button>
+          <div class="sw" onclick="event.stopPropagation();this.classList.toggle('on')"></div>
+        </div>
+        <div class="mrow" onclick="toast('进入设置 本地自主')">
+          <div class="minfo"><div class="mname">LLaMA 3.2（本地部署）</div></div>
+          <button class="tbtn" onclick="event.stopPropagation();toast('测试 本地 LLaMA…返 200 ✓')">⚡ 测试</button>
+          <div class="sw on" onclick="event.stopPropagation();this.classList.toggle('on')"></div>
+        </div>
+      </div>
+      <div class="addbtn" onclick="addNew()">＋ 添加模型（含本地自部署）</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text3)">点某一行 → 进三级；开关=启用/停用；下拉供应商可再选「本地自部署」</div>
+    </div>
+  </div>
+
+  <!-- 三级：真正设置 -->
+  <div id="v3" hidden>
+    <div class="top"><span class="bb" onclick="go(2)">‹</span><div class="tt" id="v3title">模型设置</div><span style="width:36px"></span></div>
+    <div class="wrap">
+      <div class="form">
+        <div class="frow"><div class="ft">模型名</div><div class="fv">DeepSeek V4 Flash</div></div>
+        <div class="frow"><div class="ft">供应商</div><div class="fv">DeepSeek <span style="color:var(--text3)">(provider▾ 可选:OpenAI / 本地自部署)</span></div></div>
+        <div class="frow"><div class="ft">模型 ID</div><div class="fv">deepseek-v4-flash</div></div>
+        <div class="frow"><div class="ft">接口地址</div><div class="fv">https://api.deepseek.com</div></div>
+        <div class="frow"><div class="ft">API Key</div><div class="fv">sk-****5f77 <span class="chip2">编辑</span></div></div>
+        <div class="frow" style="justify-content:space-between"><div class="ft">设为当前</div><div class="sw on" onclick="toast('已设为当前模型')"></div></div>
+      </div>
+      <div class="btnrow">
+        <button class="btn pr" onclick="toast('已保存 ✓')">保存</button>
+        <button class="btn gh" onclick="toast('快速测试…返 200 ✓')">⚡ 测试</button>
+      </div>
+      <div class="del" onclick="toast('确认删除该模型？')">删除该模型</div>
+    </div>
+  </div>
+</div>
+<script>
+function go(n){['v1','v2','v3'].forEach((id,i)=>document.getElementById(id).hidden=i!==n-1)}
+function back1(){go(1)}
+function addNew(){
+  document.getElementById('v3title').textContent='添加模型';
+  document.querySelectorAll('#v3 .fv').forEach(f=>{f.classList.add('ph');f.textContent=f.dataset.ph||'请填写'});
+  go(3);
+}
+function editModel(name){ // 点某行 → 编辑模式(回填)
+  document.getElementById('v3title').textContent='模型设置 · '+name;
+  document.querySelectorAll('#v3 .fv').forEach(f=>{f.classList.remove('ph')});
+  go(3);
+}
+function toast(m){const t=document.createElement('div');t.textContent=m;t.style.cssText='position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:rgba(26,26,26,.9);color:#fff;padding:10px 16px;border-radius:8px;font-size:13px;z-index:99';document.body.appendChild(t);setTimeout(()=>t.remove(),1600)}
+</script>
+</body>
+</html>

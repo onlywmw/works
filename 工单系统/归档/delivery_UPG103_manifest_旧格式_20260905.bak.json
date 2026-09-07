@@ -1,0 +1,21 @@
+{
+  "ticket": "UPG-103",
+  "title": "批④ MainActivity 拆出 chips/胶囊面",
+  "branch": "feat/upg103",
+  "commit": "4e5a2f7c",
+  "base": "cfa7d607",
+  "deliveredAt": "2026-09-04T23:05:00+08:00",
+  "verdict": "待验收（设计师已交付，STD-UPG-103-v1 锚自测全绿）",
+  "evidence": [
+    { "kind": "shа256冻结", "detail": "拆前 9 块基线固化 upg103_freeze_manifest.txt；reкон103.py 拆后反接线还原对账 → 9/9 ALL_OK（零逻辑漂移，纯搬移）" },
+    { "kind": "契约锚", "detail": "ChipsCapsuleSplitContractTest 5/5（名单/装配点/唯一写点/派生接口）；ApprovalComponentContractTest 联合读源升级", "run": "testDebugUnitTest --tests ChipsCapsuleSplitContractTest" },
+    { "kind": "全量回归", "detail": "814 tests / 0 failures / 0 errors（--rerun-tasks 强制，XML 22:49 本轮）", "run": "gradlew :app:testDebugUnitTest --rerun-tasks" },
+    { "kind": "编译", "detail": "assembleDebug --rerun-tasks BUILD SUCCESSFUL（47 tasks 全执行）", "run": "gradlew :app:assembleDebug --rerun-tasks" },
+    { "kind": "结构", "detail": "MainActivity -775/+34；ui/chips/ChipsBubble.kt 464 行（setupChipsFace）；ui/capsule/HomeCapsule.kt 350 行（setupCapsuleFace+pin 面全部 pinServers/pinSchemaOf/readPinList/writePinList/pinViewsOf）；成员提升 internal（approvalChip/approvalSurface/dockText 等）" }
+  ],
+  "known_gaps": [
+    { "severity": "P3", "desc": "setupChipsFace/setupCapsuleFace 为搬移时面重组（旧 renderPinChips/openCapsuleManager 等收敛为新 face 形态）——sha 冻结表仅覆盖 pin 面 9 块，面重组部分未冻结（行为面：全量+契约锚兜底）" },
+    { "severity": "P3", "desc": "catalog 生成物（UiComponentCatalog.kt / ui-components.generated.js）为构建副产物，未纳入本单（已还原）" }
+  ],
+  "tools": "docs/upg103-tools/（gen103.py 生成块清单 / build_upg103.py 拆装 / recon103.py 对账 / UPG103-task.md 任务书）"
+}

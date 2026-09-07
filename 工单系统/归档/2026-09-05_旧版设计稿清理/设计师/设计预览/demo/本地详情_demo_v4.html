@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 本机能力 —— 详情 Demo v4</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;
+    --line:rgba(22,28,48,.08);--text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+    --acc:#23272f;--on-acc:#ffffff;--ok:#2b8158;--warn:#a5711f;--danger:#d92d20;--blue:#3b6fd4;--gray:#c7ccd6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#e9ebf0;color:var(--text);display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  @media(min-width:421px){.phone{margin:24px 0;border-radius:18px;min-height:calc(100vh-48px);box-shadow:0 20px 60px rgba(0,0,0,.12);overflow:hidden}}
+
+  .top{height:54px;display:flex;align-items:center;gap:8px;padding:0 8px;
+    border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+  .top .back{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+  .top .back:active{background:var(--s3)}
+  .top .ttl{flex:1;text-align:center;font-size:17px;font-weight:600;margin-right:38px}
+  .top .sp{width:38px}
+
+  .wrap{padding:8px 14px 60px}
+  .muted{color:var(--text3);font-size:12.5px}
+
+  .hd{display:flex;gap:14px;align-items:center;padding:10px 0 4px}
+  .hd .ic{width:52px;height:52px;border-radius:14px;font-size:26px;flex:none;display:flex;align-items:center;justify-content:center}
+  .hd .ic.builtin{background:var(--acc);color:var(--on-acc)}
+  .hd .ic.market{background:rgba(59,111,212,.14)}
+  .hd .ic.system{background:var(--s3)}
+  .hd .ttls{flex:1;min-width:0}
+  .hd .nm{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .badge{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:99px;flex:none}
+  .badge.builtin{background:var(--acc);color:var(--on-acc)}
+  .badge.market{background:rgba(59,111,212,.16);color:#3b6fd4}
+  .badge.system{background:var(--gray);color:#3c4552}
+  .hd .tagline{font-size:13.5px;color:var(--text2);margin-top:5px;line-height:1.45}
+  .sw{flex:none;width:44px;height:26px;border-radius:99px;background:var(--s3);position:relative;transition:.18s}
+  .sw.on{background:var(--acc)}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.18s;box-shadow:0 0 0 1px var(--line)}
+  .sw.on::after{left:21px}
+  .stat-h{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text2)}
+  .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.err{background:var(--danger)}
+  .permhealth{margin-top:8px;font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+  .ct{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .ct a{color:var(--text3);font-weight:500;font-size:12px;cursor:pointer}
+
+  /* 「这能干嘛」——一句人话 */
+  .usecase{font-size:14.5px;line-height:1.6;color:var(--text);font-weight:500}
+  .usecase em{font-style:normal;color:var(--acc);font-weight:700}
+
+  /* 「怎么用」——你一句 → 它回什么 */
+  .ex{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .ex:last-child{border-bottom:none}
+  .ex .what{flex:none;width:34px;height:34px;border-radius:9px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .ex .body{flex:1;min-width:0}
+  .ex .ask{font-size:13.5px;color:var(--text);font-weight:600}
+  .ex .do{font-size:12.5px;color:var(--text3);margin-top:3px}
+  .ex .copy{flex:none;align-self:center;color:var(--text3);font-size:12px;cursor:pointer;font-weight:600}
+
+  .btn{cursor:pointer;font-weight:600;font-size:13px;padding:7px 12px;border-radius:9px;flex:none;white-space:nowrap}
+  .btn.pr{background:var(--acc);color:var(--on-acc)}
+  .btn.gh{background:var(--s2);color:var(--text2);border:1px solid var(--line)}
+
+  .tool{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .tool:last-child{border-bottom:none}
+  .tool .tn{font-family:"SF Mono",ui-monospace,monospace;font-size:12.3px;color:var(--text);flex:none;min-width:118px}
+  .tool .td{flex:1;font-size:12.5px;color:var(--text2);min-width:0}
+  .perm{flex:none;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:99px}
+  .perm.free{background:rgba(43,129,88,.14);color:#2b8158}
+  .perm.ask{background:rgba(165,113,31,.15);color:#a5711f}
+  .perm.gate{background:rgba(217,45,32,.13);color:#d92d20}
+
+  .foot{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .btn.block{width:100%;text-align:center;padding:13px;border-radius:12px;font-size:14px}
+  .btn.danger{background:rgba(217,45,32,.09);color:var(--danger);border:1px solid rgba(217,45,32,.2)}
+  .auth{display:flex;align-items:center;gap:10px;background:var(--s2);border:1px solid rgba(165,113,31,.22);border-radius:10px;padding:11px 12px;margin-top:10px}
+  .auth .tx{flex:1;font-size:12.8px;color:var(--text2)}
+
+  .modebar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;
+    background:rgba(255,255,255,.85);border:1px solid var(--line);padding:6px;border-radius:99px;backdrop-filter:blur(8px);z-index:20;box-shadow:0 4px 16px rgba(22,28,48,.1)}
+  .modebar button{color:var(--text2);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:99px;cursor:pointer}
+  .modebar button.on{background:var(--acc);color:var(--on-acc)}
+  .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--acc);color:var(--on-acc);
+    padding:8px 16px;border-radius:99px;font-size:12.5px;font-weight:600;opacity:0;transition:.2s;z-index:50;pointer-events:none}
+  .toast.show{opacity:1}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top">
+    <button class="back" id="backBtn">‹</button>
+    <div class="ttl" id="topTitle">本机能力</div>
+    <div class="sp"></div>
+  </div>
+
+  <div class="wrap">
+    <!-- 一级 -->
+    <div id="viewList">
+      <div class="sec" style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;color:var(--text3);margin:18px 2px 4px;padding-bottom:6px">内置能力 <span class="muted" id="c1"></span></div>
+      <div class="list" id="listBuiltin"></div>
+      <div class="sec" style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;color:var(--text3);margin:18px 2px 4px;padding-bottom:6px">市场已安装 <span class="muted" id="c2"></span></div>
+      <div class="list" id="listMarket"></div>
+      <div class="sec" style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;color:var(--text3);margin:18px 2px 4px;padding-bottom:6px">系统基础能力 <span class="muted" id="c3"></span></div>
+      <div class="list" id="listSystem"></div>
+    </div>
+
+    <!-- 二级：详情（用途+用法优先） -->
+    <div id="viewDetail" hidden>
+      <div class="hd">
+        <div class="ic" id="d_ic"></div>
+        <div class="ttls">
+          <div class="nm"><span id="d_name">—</span><span class="badge" id="d_badge"></span></div>
+          <div class="tagline" id="d_tagline">—</div>
+        </div>
+        <div class="sw" id="d_sw"></div>
+      </div>
+      <div class="permhealth" id="d_health"></div>
+
+      <!-- 这能干嘛 -->
+      <div class="card">
+        <div class="ct">这能干嘛</div>
+        <div class="usecase" id="d_usecase">—</div>
+      </div>
+
+      <!-- 怎么用：你一句 → 它回什么 -->
+      <div class="card">
+        <div class="ct">怎么用 <span class="muted" style="font-weight:400">像聊天那样说一句就行</span></div>
+        <div id="d_examples"></div>
+      </div>
+
+      <!-- 工具一览 -->
+      <div class="card">
+        <div class="ct">工具一览 <span class="muted" id="d_toolCount" style="font-weight:400"></span></div>
+        <div id="d_toolList"></div>
+      </div>
+
+      <!-- 权限 -->
+      <div class="card">
+        <div class="ct">权限分布</div>
+        <div class="tool" style="cursor:default"><span class="tn">自由 free</span><span class="td" id="d_permfree"></span></div>
+        <div class="tool" style="cursor:default"><span class="tn">询问 ask</span><span class="td" id="d_permask"></span></div>
+        <div class="tool" style="cursor:default"><span class="tn">拦截 gate</span><span class="td" id="d_permgate"></span></div>
+      </div>
+
+      <div class="auth" id="d_auth" hidden>
+        <div class="tx">需要 SAF 授权才能读写 Obsidian 仓库</div>
+        <button class="btn pr" id="d_authBtn">去授权</button>
+      </div>
+      <div class="foot" id="d_foot"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modebar">
+  <button id="mList" class="on">一级 · 列表</button>
+  <button id="mDetail">二级 · 详情</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const BUILTIN=[
+  {id:'device-control',kind:'builtin',badge:'内置',icon:'🛠️',name:'设备控制',
+   tagline:'控制手机：查网络 / 存储 / 应用 / 日历，拍照 / 扫码 / 截屏',
+   usecase:'让 AI 直接操作你手机上的<em>设备和系统</em>——不用自己进设置翻，说一句就能查存储、看网络、开日历、拍照扫码截屏。',
+   examples:[
+     {ask:'帮我看看存储空间还剩多少',do:'读取存储使用情况，返回占用 / 剩余'},
+     {ask:'现在网络信号怎么样',do:'返回网络类型、信号与连接信息'},
+     {ask:'帮我截个屏',do:'调起截屏并保存图片'},
+   ],
+   health:'ok',enabled:true,
+   tools:[['device.getStorage','查看存储使用情况','free'],['device.getNetwork','网络状态','free'],['device.listApps','已装应用清单','free'],['camera.capture','拍照','ask'],['qr.scan','扫二维码','ask'],['screen.capture','截屏','ask'],['sensor.list','传感器数据','free'],['calendar.query','查看日历日程','free']]},
+  {id:'scene-12306',kind:'builtin',badge:'内置',icon:'🚄',name:'生活场景 · 12306',
+   tagline:'查火车票：中文一句话查车次 / 余票 / 站点',
+   usecase:'不用打开 12306，直接对 AI 说<em>你想哪天去哪</em>，它帮你查车次、余票、站点。',
+   examples:[
+     {ask:'帮我查北京到上海的高铁，明天上午',do:'返回车次 / 时间 / 余票'},
+     {ask:'重庆到广州现在有哪些车',do:'列出车次与票价'},
+   ],
+   health:'ok',enabled:true,
+   tools:[['scene.searchTrains','余票/车次查询','free'],['scene.queryStations','站点解析','free']]},
+  {id:'obsidian',kind:'builtin',badge:'内置',icon:'📓',name:'笔记 · Obsidian',
+   tagline:'读写笔记：往仓库记录 / 检索 / 整理',
+   usecase:'把 MOV 和你的<em>Obsidian 仓库</em>打通——让 AI 记笔记、读笔记、搜笔记，你只管说。',
+   examples:[
+     {ask:'把这条建议记到我的笔记',do:'新建 / 追加到 Obsidian 仓库'},
+     {ask:'我上周记了什么',do:'读仓库，检索写入的笔记'},
+   ],
+   health:'warn',enabled:true,auth:false,
+   tools:[['obsidian.file.read','读取笔记','free'],['obsidian.file.write','写入/新建笔记','gate'],['obsidian.vault','列出仓库笔记','ask']]},
+];
+const MARKET=[
+  {id:'mcp.example',kind:'market',badge:'市场',icon:'📦',name:'示例市场包',
+   tagline:'来自市场安装的示例能力',
+   usecase:'这是从<em>mow.kim 市场</em>安装的能力包示例。装上后就能按它的说明用起来。',
+   examples:[{ask:'帮我用一下这个能力',do:'按该包定义的操作用起来'}],
+   health:'err',enabled:true,
+   tools:[['mcp.example.query','示例查询','free'],['mcp.example.list','示例列表','free']]},
+];
+const SYSTEM=[
+  {id:'system-core',kind:'system',badge:'系统',icon:'⚙️',name:'系统基础能力',
+   tagline:'AI 基本功：读文件 / 写便签 / 记忆',
+   usecase:'MOV 的<em>底子能力</em>，始终开启——读文件、记笔记、存记忆，AI 离不开；不可关闭。',
+   examples:[
+     {ask:'记住我下周要开会',do:'写入记忆，之后能检索'},
+     {ask:'把我上次记的进展找出来',do:'检索记忆并返回'},
+   ],
+   health:'ok',enabled:true,locked:true,
+   tools:[['file.read','读文件','free'],['file.write','写文件','ask'],['note.create','写便签','free'],['memory.save','记住事情','free'],['memory.load','读取记忆','free'],['memory.list','记忆清单','free'],['memory.search','检索记忆','free'],['memory.delete','移除记忆','gate']]},
+];
+const all=[...BUILTIN,...MARKET,...SYSTEM];
+const topTitle=document.getElementById('topTitle');
+const backBtn=document.getElementById('backBtn');
+function render(sel,cntId,list){
+  document.getElementById(cntId).textContent=`${list.length} 项`;
+  document.getElementById(sel).innerHTML=list.map(p=>`
+    <div class="row" data-id="${p.id}" style="display:flex;align-items:center;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line);cursor:pointer">
+      <div style="flex:1;min-width:0"><div style="font-size:15.5px;font-weight:600">${p.name}</div><div style="font-size:12.5px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.tagline}</div></div>
+      <span style="color:var(--text3);opacity:.6;font-size:17px">›</span>
+    </div>`).join('');
+}
+render('listBuiltin','c1',BUILTIN); render('listMarket','c2',MARKET); render('listSystem','c3',SYSTEM);
+document.querySelectorAll('.row').forEach(el=>el.addEventListener('click',()=>openDetail(el.dataset.id)));
+
+function show(v){
+  document.getElementById('viewList').hidden=v!=='list';
+  document.getElementById('viewDetail').hidden=v!=='detail';
+  document.getElementById('mList').classList.toggle('on',v==='list');
+  document.getElementById('mDetail').classList.toggle('on',v==='detail');
+}
+const toast=document.getElementById('toast');
+function doToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500)}
+const permTxt={free:'自由',ask:'询问',gate:'拦截'};
+const permCls=c=>c==='free'?'perm free':c==='ask'?'perm ask':'perm gate';
+function openDetail(id){
+  const p=all.find(x=>x.id===id); if(!p)return;
+  const ic=document.getElementById('d_ic'); ic.className='ic '+p.kind; ic.textContent=p.icon;
+  const bn=document.getElementById('d_badge'); bn.textContent=p.badge; bn.className='badge '+p.kind;
+  document.getElementById('d_name').textContent=p.name;
+  document.getElementById('d_tagline').textContent=p.tagline;
+  document.getElementById('d_usecase').innerHTML=p.usecase;
+  const sw=document.getElementById('d_sw'); sw.classList.toggle('on',p.enabled);
+  sw.style.pointerEvents=p.locked?'none':'auto'; sw.style.opacity=p.locked?0.4:1;
+  sw.onclick=()=>{if(p.locked)return;p.enabled=!p.enabled;sw.classList.toggle('on',p.enabled);};
+  const h=document.getElementById('d_health');
+  h.innerHTML=p.health==='ok'?'<span class="dot ok"></span>运行正常 · 工具就绪'
+    :p.health==='warn'?'<span class="dot warn"></span>未授权 · 部分能力待激活'
+    :'<span class="dot err"></span>服务不可达 · 检查安装';
+  // examples
+  document.getElementById('d_examples').innerHTML=p.examples.map((e,i)=>`
+    <div class="ex"><div class="what">💬</div>
+      <div class="body"><div class="ask">“${e.ask}”</div><div class="do">→ ${e.do}</div></div>
+      <span class="copy" data-i="${i}">用它</span>
+    </div>`).join('');
+  document.querySelectorAll('#d_examples .copy').forEach(b=>b.onclick=()=>doToast('已把「'+p.examples[b.dataset.i].ask+'」填进输入框'));
+  // tools
+  let fs=0,as=0,ga=0;
+  document.getElementById('d_toolList').innerHTML=p.tools.map(([n,d,c])=>{
+    if(c==='free')fs++;else if(c==='ask')as++;else ga++;
+    return `<div class="tool"><span class="tn">${n}</span><span class="td">${d}</span><span class="${permCls(c)}">${permTxt[c]}</span></div>`;}).join('');
+  document.getElementById('d_toolCount').textContent=`${p.tools.length} 个`;
+  const ff=document.getElementById('d_permfree'),fa=document.getElementById('d_permask'),fg=document.getElementById('d_permgate');
+  document.getElementById('d_usecase');
+  document.getElementById('d_permfree').closest('.tool').querySelector('.td').textContent=`${fs} 个 · 无需弹窗直接放行`;
+  document.getElementById('d_permask').closest('.tool').querySelector('.td').textContent=`${as} 个 · 执行前弹窗确认`;
+  document.getElementById('d_permgate').closest('.tool').querySelector('.td').textContent=`${ga} 个 · 写入/高危网关拦截`;
+  const auth=document.getElementById('d_auth'); auth.hidden=!(p.auth===false);
+  let foot='';
+  if(p.kind==='market')foot+=`<button class="btn block danger" id="footUninstall">卸载</button>`;
+  document.getElementById('d_foot').innerHTML=foot;
+  const fu=document.getElementById('footUninstall'); if(fu)fu.onclick=()=>doToast('... 确认卸载 '+p.name);
+  document.getElementById('d_authBtn').onclick=()=>{auth.hidden=true;p.auth=null;doToast('已授权')};
+  topTitle.textContent=p.name;
+  show('detail');
+}
+function goList(){show('list');topTitle.textContent='本机能力';}
+backBtn.onclick=goList;
+document.getElementById('mList').onclick=goList;
+document.getElementById('mDetail').onclick=()=>openDetail(all[0].id);
+</script>
+</body>
+</html>

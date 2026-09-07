@@ -33,6 +33,9 @@ def card_state(r):
 
 def main():
     log_text = git('show', 'origin/main:docs/ACCEPTANCE_LOG.md')
+    if not os.path.exists(os.path.join(ROOT, '工单表.xlsx')):
+        print('[表投影已取消 2026-09-08] 工单表不存在——队列对账改以工单库为准（本轮跳过）')
+        return 0
     wb = openpyxl.load_workbook(os.path.join(ROOT, '工单表.xlsx'), read_only=True)
     rows = list(wb.active.iter_rows(values_only=True))
     print(f"{'工单':<9}{'级':<4}{'表状态':<12}{'分支':<6}{'∈main':<7}{'日志':<5}flag")

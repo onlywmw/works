@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "schema_version": "0.3",
+    "registry_id": "mov.capability-registry.mvp",
+    "open_domains": ["fulfill", "settle"],
+    "promotion_rule": "independent_consumer_count >= 2"
+  },
+  "enums": {
+    "side_effect": ["READ", "WRITE", "MONEY"],
+    "env": ["LOCAL", "EXTERNAL"],
+    "consumer_type": ["bundle", "workflow", "scenario"],
+    "state": ["candidate", "registered", "deprecated", "removed"]
+  },
+  "domains": [
+    { "id": "fulfill", "name": "履约", "note": "A→B 派单/追踪/送达。MVP 已开。", "state": "open" },
+    { "id": "settle", "name": "结算", "note": "资金收付/账单/退款。MVP 已开。", "state": "open" },
+    { "id": "sense", "name": "感知", "note": "相机/麦克风/传感器。有真实场景再开(宁缺毋滥)。", "state": "closed" },
+    { "id": "identity", "name": "身份", "note": "预留:用户档案/授权主体。", "state": "closed" },
+    { "id": "location", "name": "位置", "note": "预留:地理/地图语义。", "state": "closed" }
+  ],
+  "capabilities": [
+    {
+      "id": "fulfill.dispatch",
+      "name": "派单",
+      "semantics": "把一次 A→B 的出行需求指派给一个可执行运力(司机/车辆),返回可追踪的 booking;同 request_id 重复提交幂等返回同单。",
+      "domain": "fulfill",
+      "side_effect": "WRITE",
+      "env": "EXTERNAL",
+      "idempotent": true,
+      "in": {
+        "required": ["origin", "destination"],
+        "properties": {
+          "origin": { "type": "geo", "note": "{lat,lng,label}" },
+          "destination": { "type": "geo", "note": "{lat,lng,label}" },
+          "desired_pickup_ts": { "type": "datetime", "optional": true },
+          "vehicle_class": { "type": "enum", "optional": true, "values": ["economy", "comfort", "business"] },
+          "request_id": { "type": "string", "note": "幂等键,重试凭此 reconcile" }
+        }
+      },
+      "out": {
+        "required": ["booking_id", "status"],
+        "properties": {
+          "booking_id": { "type": "string" },
+          "status": { "type": "enum", "values": ["BOOKED"] },
+          "pickup_eta_min": { "type": "int", "optional": true }
+        }
+      },
+      "state": "registered",
+      "owner": "{样例占位:真实登记须填责任作者}",
+      "evidence": "{样例占位:真实登记须填验收记录号}",
+      "consumers": [
+        { "consumer_id": "bundle.dineout", "consumer_type": "bundle", "domain_context": "出门吃饭闭环(去程用车)", "first_used_at": "2026-09-02", "acceptance_record": "{样例}" },
+        { "consumer_id": "bundle.airport-run", "consumer_type": "bundle", "domain_context": "去机场赶行程", "first_used_at": "2026-09-02", "acceptance_record": "{样例}" }
+      ],
+      "impls": [
+        { "impl_id": "mov.dispatch.v1", "provider": "self", "base_cost": 0, "latency_ms": 800, "region": "any", "status": "active" },
+        { "impl_id": "taxi.partner-shanghai", "provider": "partner", "base_cost": 2.0, "latency_ms": 600, "region": "上海", "status": "sandbox" }
+      ]
+    },
+    {
+      "id": "fulfill.track",
+      "name": "追踪",
+      "semantics": "查询一个已生成订单/任务当前所处阶段与预计到达,只读不改。",
+      "domain": "fulfill",
+      "side_effect": "READ",
+      "env": "EXTERNAL",
+      "idempotent": true,
+      "in": {
+        "required": ["booking_id"],
+        "properties": { "booking_id": { "type": "string" } }
+      },
+      "out": {
+        "required": ["booking_id", "status"],
+        "properties": {
+          "booking_id": { "type": "string" },
+          "status": { "type": "enum", "values": ["DISPATCHED", "ARRIVING", "PICKED_UP", "DELIVERING", "ARRIVED", "COMPLETED"] },
+          "eta_min": { "type": "int", "optional": true },
+          "driver": { "type": "object", "optional": true, "note": "{name,rating} 延迟字段" }
+        }
+      },
+      "state": "registered",
+      "owner": "{样例占位}",
+      "evidence": "{样例占位}",
+      "consumers": [
+        { "consumer_id": "bundle.dineout", "consumer_type": "bundle", "domain_context": "出门吃饭闭环(看车到哪)", "first_used_at": "2026-09-02", "acceptance_record": "{样例}" },
+        { "consumer_id": "bundle.errand", "consumer_type": "bundle", "domain_context": "跑腿/闪送闭环(盯送达)", "first_used_at": "2026-09-02", "acceptance_record": "{样例}" }
+      ],
+      "impls": [
+        { "impl_id": "mov.track.v1", "provider": "self", "base_cost": 0, "latency_ms": 400, "region": "any", "status": "active" }
+      ]
+    },
+    {
+      "id": "settle.pay",
+      "name": "支付",
+      "semantics": "向指定收款方支付一笔指定金额的资金,真实划转;授权后不可撤销,故 MONEY 必须人工逐次审批——审批不是给 LLM 补参数的场合。",
+      "domain": "settle",
+      "side_effect": "MONEY",
+      "env": "EXTERNAL",
+      "idempotent": true,
+      "in": {
+        "required": ["payee", "amount_cents", "currency"],
+        "properties": {
+          "payee": { "type": "object", "note": "{id/name} 收款方" },
+          "amount_cents": { "type": "int", "note": "单位:分" },
+          "currency": { "type": "enum", "values": ["CNY"] },
+          "intent_id": { "type": "string", "note": "幂等键/审批关联键" }
+        }
+      },
+      "out": {
+        "required": ["txn_id", "status"],
+        "properties": {
+          "txn_id": { "type": "string" },
+          "status": { "type": "enum", "values": ["AUTHORIZED", "CAPTURED", "FAILED"] },
+          "provider_receipt": { "type": "string", "optional": true }
+        }
+      },
+      "state": "registered",
+      "owner": "{样例占位}",
+      "evidence": "{样例占位}",
+      "consumers": [
+        { "consumer_id": "bundle.dineout", "consumer_type": "bundle", "domain_context": "出门吃饭闭环(预付餐费)", "first_used_at": "2026-09-02", "acceptance_record": "{样例}" },
+        { "consumer_id": "bill.recurring", "consumer_type": "workflow", "domain_context": "周期性代付(帮还/交租)", "first_used_at": "2026-09-02", "acceptance_record": "{样例}" }
+      ],
+      "impls": [
+        { "impl_id": "mov.wallet.v1", "provider": "self", "base_cost": 0, "latency_ms": 900, "region": "any", "status": "active" }
+      ]
+    },
+    {
+      "id": "sense.capture",
+      "name": "现场取证",
+      "semantics": "调用设备相机拍一张现场照并存入本地,每次执行产生新内容、不可幂等。",
+      "domain": "sense",
+      "side_effect": "WRITE",
+      "env": "LOCAL",
+      "idempotent": false,
+      "in": {
+        "required": ["subject"],
+        "properties": {
+          "subject": { "type": "string" },
+          "destination": { "type": "string", "optional": true, "note": "默认相册" }
+        }
+      },
+      "out": {
+        "required": ["media_id"],
+        "properties": {
+          "media_id": { "type": "string" },
+          "path": { "type": "string" }
+        }
+      },
+      "state": "candidate",
+      "owner": "{样例占位}",
+      "evidence": "{样例占位}",
+      "consumers": [
+        { "consumer_id": "bundle.dineout", "consumer_type": "bundle", "domain_context": "出门吃饭闭环(拍菜单/环境)", "first_used_at": "2026-09-02", "acceptance_record": "{样例}" }
+      ],
+      "impls": [
+        { "impl_id": "mov.camera.v1", "provider": "self", "base_cost": 0, "latency_ms": 300, "region": "any", "status": "active" }
+      ],
+      "note": "消费者=1,independent_consumer_count<2 → 停留 candidate;出现第 2 独立消费者触发 registered 评审。"
+    }
+  ]
+}

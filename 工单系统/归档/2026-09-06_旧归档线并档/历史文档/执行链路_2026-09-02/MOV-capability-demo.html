@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOV 能力生态 · 演示（元能力注册 + LLM 串联）</title>
+<style>
+  :root{
+    --ink:#1a2421; --muted:#5b6b66; --line:#dde5e2; --bg:#f4f7f5;
+    --primary:#0f6b4f; --primary-soft:#e3f1eb; --accent:#b45309; --accent-soft:#fdf0e0;
+    --red:#b3261e; --red-soft:#fdeceb; --chip:#eef3f1; --green:#2e7d32;
+    --shadow:0 1px 2px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI","Microsoft YaHei",-apple-system,sans-serif;line-height:1.55;padding:26px 16px 60px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:23px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:6px}
+  .tagline{font-size:13px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--primary);
+    border-radius:8px;padding:8px 12px;margin:8px 0 4px;color:var(--ink)}
+  h2{font-size:16px;margin:30px 0 10px;padding-left:10px;border-left:4px solid var(--primary)}
+  .hint{color:var(--muted);font-size:12.5px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:16px;margin-top:10px}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  .col{flex:1;min-width:150px}
+
+  /* 壳 */
+  .shell{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--primary-soft)}
+  .shell b{font-size:14px}
+  .shell .desc{font-size:12px;color:var(--muted)}
+  .coreLine{margin:12px 0 2px;text-align:center;color:var(--muted);font-size:12px}
+  .core{border:1px dashed var(--primary);border-radius:10px;padding:10px;background:#fff}
+  .core .unit{display:inline-block;margin:3px;padding:3px 10px;border-radius:999px;font-size:12.5px;
+    background:var(--primary);color:#fff}
+  .core .unit.ghost{background:#fff;color:var(--primary);border:1px solid var(--primary)}
+  .note{font-size:12px;color:var(--muted);margin-top:6px}
+
+  /* 注册表 */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:#0f1d19;color:#fff;text-align:left;padding:7px 10px;font-weight:600}
+  td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr.provider-row td{background:#fafbfa}
+  .tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .t-read{background:var(--chip);color:var(--muted)}
+  .t-write{background:var(--accent-soft);color:var(--accent)}
+  .t-money{background:var(--red-soft);color:var(--red)}
+  .t-provider{background:var(--primary-soft);color:var(--primary)}
+  .clickable{cursor:pointer}
+  .clickable:hover{background:#f0f7f4}
+
+  /* demo */
+  .demoHead{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .demoHead input{flex:1;min-width:200px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px}
+  .btn{border:none;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;background:var(--primary);color:#fff}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn.ghost{background:#fff;color:var(--primary);border:1px solid var(--primary)}
+  .btn.red{background:var(--red);color:#fff}
+
+  .lane{margin-top:14px}
+  .laneTitle{font-size:12.5px;font-weight:700;color:var(--muted);margin:2px 0 6px;letter-spacing:.5px}
+  .steps{display:flex;gap:8px;flex-wrap:wrap}
+  .step{flex:1;min-width:150px;border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;opacity:.4;
+    transition:.25s;position:relative}
+  .step.active{opacity:1;border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-soft)}
+  .step.done{opacity:.75;border-color:var(--green);background:#f2faf3}
+  .step .sNo{font-size:10.5px;color:var(--muted)}
+  .step .sT{font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px}
+  .step .sD{font-size:12px;color:var(--muted);margin-top:2px}
+  .chips{margin-top:6px}
+  .chip2{display:inline-block;margin:2px 2px 0 0;padding:1px 7px;border-radius:6px;font-size:11px;background:var(--chip)}
+  .chip2.eff{background:var(--red-soft);color:var(--red)}
+
+  .providerPick{display:none;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;
+    padding:10px 12px;margin-top:12px;background:#fff}
+  .providerPick.show{display:block}
+  .providerPick .opt{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:8px;cursor:pointer}
+  .providerPick .opt:hover{border-color:var(--primary)}
+  .providerPick .opt.sel{border-color:var(--primary);background:var(--primary-soft)}
+
+  .approval{display:none;position:fixed;inset:0;background:rgba(10,20,17,.45);z-index:50;align-items:center;justify-content:center}
+  .approval.show{display:flex}
+  .approval .box{background:#fff;border-radius:14px;max-width:440px;width:92%;padding:18px;box-shadow:var(--shadow)}
+  .approval .title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+  .approval .dot{width:9px;height:9px;border-radius:50%;background:var(--red)}
+  .approval .body{font-size:13px;margin:10px 0;color:var(--ink)}
+  .approval .meta{font-size:12px;color:var(--muted)}
+  .approval .acts{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+  .countdown{font-size:11px;color:var(--accent);font-weight:600}
+  .logBox{background:#0f1d19;color:#cfe9e0;font-family:Consolas,monospace;font-size:12px;border-radius:10px;
+    padding:10px 12px;margin-top:10px;min-height:40px;white-space:pre-wrap}
+  .logBox .ok{color:#8be0b0}
+  .logBox .warn{color:#f6c177}
+  .logBox .bad{color:#ff9a92}
+  .result{display:none;border:1px solid var(--primary);border-radius:12px;padding:14px 16px;background:var(--primary-soft);margin-top:12px}
+  .result.show{display:block}
+  .boundary{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:12.5px;margin-top:8px}
+  .boundary b{color:var(--primary)}
+  footer{margin-top:34px;font-size:12px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>MOV 能力生态 · 演示</h1>
+  <div class="tagline"><b>一句话模型</b>：不是"MCP 管理宇宙"，而是 <b>元能力注册（一次实现多次复用）+ bundle 只存编排 + LLM 按需串联 + 护栏扣副作用</b>。</div>
+
+  <!-- ══════ 1 引擎 vs 壳 ══════ -->
+  <h2>① 本质：外卖 / 闪送 / 快递，是一个引擎、三种壳</h2>
+  <div class="row">
+    <div class="col shell"><b>外卖</b><div class="desc">餐饮 · 准时 · 退款 · 保温</div></div>
+    <div class="col shell"><b>闪送 / 跑腿</b><div class="desc">急件 · 议价 · C2C</div></div>
+    <div class="col shell"><b>快递</b><div class="desc">批次 · 网点 · 称重</div></div>
+  </div>
+  <div class="coreLine">↓ 三个壳，共用同一批 <b>履约元能力</b>（业务壳不注册，元能力才注册）</div>
+  <div class="card core">
+    <span class="unit">派单</span><span class="unit">运力</span><span class="unit">地图/路线</span>
+    <span class="unit">签收</span><span class="unit">时效</span><span class="unit ghost">结算/扣款</span>
+    <div class="note">只要做一次"把物品从 A 送到 B"的引擎，外卖、闪送、快递全是它的壳。&nbsp;这就是去重来源。</div>
+  </div>
+
+  <!-- ══════ 2 注册制 ══════ -->
+  <h2>② 注册制：元能力 = id + 契约 + 副作用 + 提供者</h2>
+  <div class="card">
+    <table>
+      <tr><th>元能力 id</th><th>干什么</th><th>副作用</th><th>提供者</th></tr>
+      <tr class="clickable" onclick="toggleRows(this,'d1')"><td>fulfill.dispatch</td><td>派单到最近运力</td><td><span class="tag t-write">写</span></td><td><span class="tag t-provider">2</span></td></tr>
+      <tr id="d1" class="provider-row" style="display:none"><td colspan="4">
+        <b>按能力找实现：</b>
+        <span class="chip2">自营运力 · 0.8s · 覆盖全市</span>
+        <span class="chip2">区域车队 · 0.5s · 仅城东</span>
+        → 由上层按 SLA/覆盖/价格选，契约相同。 <i class="hint">（注册表有真消费者，不是登记表）</i>
+      </td></tr>
+      <tr class="clickable" onclick="toggleRows(this,'d2')"><td>fulfill.geo</td><td>路线 / 实时位置</td><td><span class="tag t-read">读</span></td><td><span class="tag t-provider">1</span></td></tr>
+      <tr id="d2" class="provider-row" style="display:none"><td colspan="4">地图基础能力，一次实现，被派单/导航/用户轨迹同时复用。</td></tr>
+      <tr class="clickable" onclick="toggleRows(this,'d3')"><td>fulfill.acknowledge</td><td>签收 / 确认送达</td><td><span class="tag t-write">写·不可逆</span></td><td><span class="tag t-provider">2</span></td></tr>
+      <tr id="d3" class="provider-row" style="display:none"><td colspan="4">送达闭环节点：签收后进入结算。护栏要求"确认送达"前给人一次确认。</td></tr>
+      <tr class="clickable" onclick="toggleRows(this,'d4')"><td>billing.charge</td><td>结算 / 扣款</td><td><span class="tag t-money">花钱</span></td><td><span class="tag t-provider">1 · 自营</span></td></tr>
+      <tr id="d4" class="provider-row" style="display:none"><td colspan="4">花钱动作 → 永远挂"护栏"，必须过原生审批。商业闭环自营，不外包。</td></tr>
+    </table>
+    <div class="note">点行看"提供者"；粒度判据：一次实现、多次复用、有清晰副作用契约 —— 够格才进注册表。业务壳（外卖下单流程）不算元能力，不注册。</div>
+  </div>
+
+  <!-- ══════ 3 场景走查 ══════ -->
+  <h2>③ 场景走查：去胖子餐馆吃饭 → 一段被 LLM 穿起来、被护栏兜住的旅程</h2>
+  <div class="card">
+    <div class="demoHead">
+      <input id="utterance" value="去胖子餐馆吃饭，3 个人，晚上 6 点到">
+      <button class="btn" id="runBtn" onclick="runDemo()">跑一遍</button>
+      <button class="btn ghost" onclick="resetDemo()">重置</button>
+      <span class="hint">输入你自己的话，看路由怎么变</span>
+    </div>
+
+    <!-- 阶段0 路由 -->
+    <div class="lane">
+      <div class="laneTitle">ROUTE · 意图路由（先分"查一下"还是"办一件事"）</div>
+      <div class="logBox" id="routeLog">还没开始。</div>
+    </div>
+
+    <!-- 阶段1 拆旅程 -->
+    <div class="lane">
+      <div class="laneTitle">DECOMPOSE · LLM 拆成"有数据流的结果链"（不是步骤清单）</div>
+      <div class="steps" id="jSteps"></div>
+    </div>
+
+    <!-- 阶段2 时间线 -->
+    <div class="lane">
+      <div class="laneTitle">TIMELINE · 风险驱动排序（先拆门槛，再并行，最后付款闸）</div>
+      <div class="steps" id="tSteps"></div>
+    </div>
+
+    <!-- 阶段3 绑定能力 -->
+    <div class="lane">
+      <div class="laneTitle">BIND · 每段挂上注册表里的元能力 + 副作用溯源</div>
+      <div class="logBox" id="bindLog"></div>
+    </div>
+
+    <!-- 提供者选择演示 -->
+    <div class="providerPick" id="providerPick">
+      <b>按能力找实现</b> — <span class="hint">这一段要用 <code>fulfill.dispatch</code>，注册表给到 2 个提供者</span>
+      <div class="opt" onclick="pickProvider(this,0)">自营运力 · 0.8s · 覆盖全市 <b class="hint">(选它)</b></div>
+      <div class="opt" onclick="pickProvider(this,1)">区域车队 · 0.5s · 仅城东</div>
+    </div>
+
+    <!-- 护栏 -->
+    <div class="lane">
+      <div class="laneTitle">GATE · 护栏只在"副作用点"出现，其余不打扰</div>
+      <div class="logBox" id="gateLog"></div>
+    </div>
+
+    <!-- 完成 -->
+    <div class="result" id="result">
+      <b style="font-size:15px">到店即吃 ✓</b>
+      <div style="font-size:13px;margin-top:6px" id="resultText"></div>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:6px">这一程 = 同一批元能力被 LLM 穿线；实现只有底层一份，付款被护栏拦了一次。若这就是你要的效果 → 方向对。</div>
+    </div>
+  </div>
+
+  <!-- 边界 -->
+  <div class="boundary">
+    <b>这次的三条边界（避开旧坑）：</b>
+    ① 注册范围=自己业务域的元能力，不是"全世界的 MCP"；
+    ② 注册表必须有真消费者（按能力找实现/选提供者），否则空转；
+    ③ 粒度=一次实现多次复用 + 副作用契约清晰；业务壳不注册，只组合。
+    旧"原子/注册中心大 schema/merkle/能力地图"那套重管理，不在本演示内。
+  </div>
+
+  <footer>MOV 能力生态演示 · 单文件 HTML · 目标是让你判断方向走对没有</footer>
+</div>
+
+<!-- 审批弹窗 -->
+<div class="approval" id="approval">
+  <div class="box">
+    <div class="title"><span class="dot"></span> MOV 原生审批 <span class="countdown" id="cd"></span></div>
+    <div class="body">调用 <b>billing.charge</b>（付款 · 含预授权）<br>
+      目的地：胖子餐馆 · 预付 ¥180（3 人餐位定金）</div>
+    <div class="meta">副作用：花钱 · 不可逆 · 走原生弹窗（护栏在组合层聚合了副作用，不会失明）</div>
+    <div class="acts">
+      <button class="btn ghost" onclick="deny()">拒绝</button>
+      <button class="btn red" onclick="approve()">允许付款</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const $=id=>document.getElementById(id);
+  const log=(el,txt,cls)=>{el.insertAdjacentHTML('beforeend',`<span class="${cls||''}">${txt}</span>\n`);el.scrollTop=el.scrollHeight;};
+
+  let timer=null; let cdTimer=null; let state={waiting:false};
+
+  const JOB_TYPES=[
+    {t:'订座', d:'先确认有没有座 —— 决定后三段成不成立', eff:['reserve'],
+      need:['地点:胖子餐馆']},
+    {t:'点餐', d:'按口味习惯 + 新品推荐，先备好', eff:['menu','记忆:口味']},
+    {t:'打车', d:'A→B 履约：把"人"送到餐馆，对齐到店时间', eff:['dispatch','geo'],
+      needProvider:true},
+    {t:'预付', d:'结算闸，过完这一下到店即吃', eff:['charge'], money:true},
+  ];
+
+  function resetDemo(){
+    clearTimeout(timer); clearInterval(cdTimer);
+    state={waiting:false};
+    $('runBtn').disabled=false;
+    $('providerPick').classList.remove('show');
+    $('result').classList.remove('show');
+    $('approval').classList.remove('show');
+    ['routeLog','bindLog','gateLog'].forEach(id=>$(id).innerHTML='');
+    $('jSteps').innerHTML=''; $('tSteps').innerHTML='';
+    $('jSteps').parentElement.style.display='none';
+    $('tSteps').parentElement.style.display='none';
+    const box=$('routeLog'); box.innerHTML='';
+    log(box,'等待输入…', 'ok');
+  }
+  resetDemo();
+  // 重开父级可见
+  document.querySelectorAll('.lane').forEach(l=>{});
+  function showLane(which){ document.querySelectorAll('.lane').forEach(l=>l.style.display='none'); }
+  // 只对步骤做渐进显示，其它 lane 全程可见则更简单：给所有 lane 默认 display:block；重跑时仅滚动
+  // 改用：全部 lane 可见，内容异步填充
+
+  // —— render job cards ——
+  function renderSteps(container, items, withEff){
+    container.innerHTML='';
+    items.forEach((it,i)=>{
+      const d=document.createElement('div'); d.className='step'; d.dataset.i=i;
+      d.innerHTML=`<div class="sNo">${i+1}</div><div class="sT">${it.t}</div><div class="sD">${it.d}</div>`+
+        (withEff&&it.eff?`<div class="chips">${it.eff.map(e=>`<span class="chip2">${e}</span>`).join('')}`+
+        (it.money?`<span class="chip2 eff">花钱·护栏</span>`:'')+`</div>`:'');
+      container.appendChild(d);
+    });
+  }
+  function setStep(box,i,cls){ const s=box.querySelector(`.step[data-i="${i}"]`); if(s){ s.classList.remove('active','done'); s.classList.add(cls); } }
+
+  function runDemo(){
+    if(state.waiting) return;
+    resetDemo();
+    const utt=$('utterance').value.trim()||'去胖子餐馆吃饭，3 个人，晚上 6 点到';
+    const route=$('routeLog'); log(route,'输入: '+utt,'ok');
+    const isAction = !/看|查|问|有没有这个/.test(utt);
+    log(route,isAction?'→ 路由判定: 办一件事(action) → 进入收敛/护栏':'→ 路由判定: 查一下(view) → 直接答，零 plan','ok');
+
+    // decompose
+    document.querySelectorAll('.lane').forEach(l=>l.style.display='');
+    const j=$('jSteps'); renderSteps(j, JOB_TYPES, false);
+    // timeline same order + 数据流
+    const t=$('tSteps'); renderSteps(t, JOB_TYPES, true);
+
+    setTimeout(()=>setStep(t,0,'active'),400);
+    const bind=$('bindLog');
+    setTimeout(()=>{ setStep(t,0,'done'); setStep(t,1,'active');
+      log(bind,'订座 → 挂 reserve@restr(胖子餐馆)，桌号回填给打车终点','ok'); },1300);
+    setTimeout(()=>{ setStep(t,1,'done'); setStep(t,2,'active');
+      log(bind,'点餐 → menu 按记忆口味 + 本周新品（并行准备，不占你时间）','ok'); },2400);
+    setTimeout(()=>{ setStep(t,2,'done');
+      log(bind,'打车段要用 fulfill.dispatch / fulfill.geo —— 展示"按能力找实现"','ok');
+      $('providerPick').classList.add('show'); },3500);
+    // wait user picks provider -> continue
+  }
+
+  let stepAfterPick=null;
+  function pickProvider(el, idx){
+    document.querySelectorAll('#providerPick .opt').forEach(o=>o.classList.remove('sel'));
+    el.classList.add('sel');
+    log($('gateLog'),'已选: '+ (idx===0?'自营运力(0.8s)':'区域车队(0.5s)') + ' —— 上层按 SLA 选，契约同一份','ok');
+    $('providerPick').classList.remove('show');
+    setStep($('tSteps'),2,'done'); setStep($('tSteps'),3,'active');
+    setTimeout(()=>{ openApproval(); },500);
+  }
+
+  function openApproval(){
+    state.waiting=true; $('runBtn').disabled=true;
+    const a=$('approval'); a.classList.add('show');
+    log($('gateLog'),'护栏命中 billing.charge(花钱·不可逆) → 原生审批压顶，球暂停变红','warn');
+    let s=15; $('cd').textContent=s+'s 后拒绝(fail-closed)';
+    clearInterval(cdTimer);
+    cdTimer=setInterval(()=>{ s--; $('cd').textContent=s+'s 后拒绝(fail-closed)'; if(s<=0) deny(); },1000);
+  }
+  function deny(){
+    clearInterval(cdTimer);
+    $('approval').classList.remove('show');
+    log($('gateLog'),'✗ 用户拒绝 → 预付段未放行；回到模型等待用户意见（护栏不失效）','bad');
+    $('runBtn').disabled=false; state.waiting=false;
+  }
+  function approve(){
+    clearInterval(cdTimer);
+    $('approval').classList.remove('show');
+    log($('gateLog'),'✓ 允许付款 → 预付放行（一次性票据），扣款走自营','ok');
+    setStep($('tSteps'),3,'done');
+    setTimeout(()=>{
+      const r=$('result'); r.classList.add('show');
+      $('resultText').textContent='19:55 打车到店 → 桌已留 · 菜已备 · 定金已结 —— 坐下即开吃。整段旅程：同一批元能力被 LLM 穿线，实现只有底层一份，全程只在"付款"被打断一次。';
+      log($('gateLog'),'到店即吃 ✓ 旅程完成','ok');
+    },600);
+  }
+</script>
+</body>
+</html>

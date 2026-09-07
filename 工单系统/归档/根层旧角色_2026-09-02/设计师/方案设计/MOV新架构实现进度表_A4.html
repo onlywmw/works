@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MOV 新架构实现进度表（A4 竖版黑白打印版）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #fff; }
+
+  @media screen {
+    .sheet { width: 210mm; height: 297mm; margin: 12px auto; background: #fff;
+             border: 1px solid #000; overflow: hidden; }
+  }
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: #fff; }
+    .sheet { width: 210mm; height: 297mm; page-break-after: always; }
+    .sheet:last-child { page-break-after: auto; }
+  }
+
+  .sheet { padding: 9mm 10mm; }
+  h1 { font-size: 18pt; text-align: center; font-weight: bold; letter-spacing: 1px;
+       margin-bottom: 3mm; }
+  .meta { font-size: 9.5pt; text-align: center; margin-bottom: 5mm; }
+
+  h2 { font-size: 12pt; color: #000; font-weight: bold;
+       padding: 1.5mm 0 1mm; margin: 6mm 0 3mm; border-bottom: 1.2pt solid #000; }
+
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  th, td { border: .6pt solid #000; padding: 2.2mm 2.5mm; vertical-align: top;
+           font-size: 9pt; line-height: 1.5; word-wrap: break-word; }
+  th { font-size: 10pt; }
+  thead th { color: #000; font-weight: bold; }
+
+  col.dim { width: 30mm; }
+  col.a { width: 110mm; }
+  col.s { width: 42mm; }
+
+  .dim { font-weight: bold; }
+  .done { font-weight: bold; }
+  .part { font-weight: bold; }
+  .todo { font-weight: bold; }
+  .foot { text-align: center; font-size: 8.5pt; margin-top: 4mm; }
+</style>
+</head>
+<body>
+
+<!-- ================= 第 1 页 ================= -->
+<div class="sheet">
+  <h1>MOV 新架构实现进度表</h1>
+  <div class="meta">依据：2026-08-18 定案表 + 2026-08-19 源码实证　|　标记：<b>✅ 已实现</b>（真机/测试验证）　<b>🔶 部分</b>（有基础未完整）　<b>⬜ 未做</b></div>
+  <div class="meta"><b>流程线：</b>①H1/H2（md 渲染核心✅）→ ②F5 → ③CI → ④清理　<b>（B3/F4/D3/D4/通知栏审批/HEIC直扫/超时机制/D5错误分类/E1E3并发作用域/F3错误分类/F2会话搜索/md渲染 ✅）</b></div>
+
+  <h2>A. 总体架构</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">A1 三巨头拆解</td>
+        <td>循环/会话/工具注册分模块</td>
+        <td class="done">✅ 天然（dsh 翻译即分模块）</td></tr>
+      <tr><td class="dim">A2 分层形态</td>
+        <td>LLM 层 → Agent 层 → 外围能力包</td>
+        <td class="done">✅ 内核三层达成（UI 层未做）</td></tr>
+      <tr><td class="dim">A3 运行形态</td>
+        <td>删除 proot + llama，纯安卓应用</td>
+        <td class="done">✅ 天然（翻译路线未带）<br/><b>OCR 定案（2026-08-19）</b>：3B 本地止损（性能不达标 412s/页）→ <b>ML Kit 轻量本地识别 + AI 排版</b>（0.84s 完整识别，图片不出端）</td></tr>
+      <tr><td class="dim">A4 扩展机制</td>
+        <td>注册 MCP（工具/模型/权限等 = MCP 服务器）</td>
+        <td class="done">✅ 已实现（McpServer :8389 + 40 工具）</td></tr>
+    </tbody>
+  </table>
+
+  <h2>B. 真相源与持久化</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">B1 会话存储</td>
+        <td>Journal append-only 事件日志（唯一真理源）</td>
+        <td class="done">✅ Session.append + @Synchronized + CopyOnWriteArrayList（并发安全）</td></tr>
+      <tr><td class="dim">B2 重放保真</td>
+        <td>assistant/chunk 逐 chunk 落盘 + sourceEventSeqs</td>
+        <td class="done">✅ 真机 journal 完整（chunk×N）＋摘要折叠显示</td></tr>
+      <tr><td class="dim">B3 崩溃恢复</td>
+        <td>request/header Epoch 快照 + 离线折叠重建 + 会话持久化</td>
+        <td class="done">✅ 全链路（2026-08-20）：dsh 4 包翻译（核心/JSONL/SQLite/checkpoint）+ 接线 + JSONL 落盘 + 重启恢复 2143 事件实证 + UI 历史渲染 + 崩溃注入测试 5/5</td></tr>
+      <tr><td class="dim">B4 事件可扩展</td>
+        <td>事件注册表化 + ignorable 标记</td>
+        <td class="done">✅ SessionEvent sealed + ignorable（已扩展 compaction/memory/causal）</td></tr>
+      <tr><td class="dim">B5 重试恢复</td>
+        <td>durable retry（llm/retry 落盘续退避）</td>
+        <td class="done">✅ 错误码化 + recoverWithDurableRetry 接线；真机断网亲测（重试 2 次指数退避→恢复）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 1 / 5 页 —— MOV 新架构实现进度（2026-08-19）</div>
+</div>
+
+<!-- ================= 第 2 页 ================= -->
+<div class="sheet">
+  <h2>C. 模型可见上下文</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">C1 投影机制</td>
+        <td>Surface 投影——compaction 只换投影、日志永不删</td>
+        <td class="done">✅ foldSurface + SurfaceManager；selectSafeRegion 纯对话段压缩（不碰工具链）＋摘要投影进模型（29/29 测试）</td></tr>
+      <tr><td class="dim">C2 上下文预算</td>
+        <td>ContextBudget 保留（4 态降级 85% 触发）</td>
+        <td class="done">✅ ContextBudget.kt 完成（PC 9 项断言）；窗口 1M/5K 可切换（实测 DeepSeek 支持 ≥900K）</td></tr>
+      <tr><td class="dim">C3 超长结果</td>
+        <td>spill（超限存文件 + head/tail 预览）</td>
+        <td class="done">✅ SpillPolicy 接线 + 公共目录（Download/MOV/spill/）＋ spill.list/clean 管理；真机验证取回</td></tr>
+    </tbody>
+  </table>
+
+  <h2>D. Agent 循环</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">D1 循环主体</td>
+        <td>ReactLoopAgent 工具驱动（turn/step + 日志派生）</td>
+        <td class="done">✅ 真机对话跑通（完整闭环）＋ B5 重试/预算/压缩接入</td></tr>
+      <tr><td class="dim">D2 状态管理</td>
+        <td>Phase 状态机 + 日志即状态</td>
+        <td class="done">✅ idle/running（Phase）</td></tr>
+      <tr><td class="dim">D3 换模型</td>
+        <td>模型 = MCP 服务器注册/切换</td>
+        <td class="done">✅（2026-08-20）：ModelRegistry（v4-pro/flash 官方实证）+ OpenAiCompatAdapter（通用 OpenAI 兼容）+ model.list/use + UI 按钮 + system prompt 注入；切换落盘实证</td></tr>
+      <tr><td class="dim">D4 中途干预</td>
+        <td>Inbox 三通道 + pre-execute approval + 通知栏审批</td>
+        <td class="done">✅（2026-08-20）：ApprovalService（审计/单队列/60s fail-closed/隐式 turn）+ 模式↔策略事件化 + AlertDialog 回答者 + 高危子集 + 悬挂审批恢复 + 通知栏入口（点击进 App 弹窗接管）；<b>通知按钮被 MIUI 过滤（7 轮踩坑，见 NOTIFICATION_ACTION_ISSUE.md，记录为已知限制）</b></td></tr>
+      <tr><td class="dim">D5 截断防护</td>
+        <td>BlockAssembler max-tokens 丢残缺 tool-call + 错误分类 MCP</td>
+        <td class="done">✅ 组装验证＋并行 tool_calls 解析修复（index 跨 delta 保留）＋<b>错误分类（2026-08-20）：ErrorClass 单源表（B5 重试同源）+ 源头投影 [code: X]（agent/MCP 双路径）+ 脱敏 + error.classify/error.report MCP + 弹窗超时自动关闭；自测通过</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 2 / 5 页</div>
+</div>
+
+<!-- ================= 第 3 页 ================= -->
+<div class="sheet">
+  <h2>E. 工具系统</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">E1 注册表</td>
+        <td>MCP 注册 + pre→execute→post 流水线 + scoped 隔离</td>
+        <td class="part">🔶 MCP 注册✅ + 流水线✅ + 超时机制✅ + <b>并发与作用域✅（2026-08-20：ToolRegistry——concurrencySafe 函数式（dsh 对齐，file.write 按路径）+ scope 声明 + exclusive 屏障嵌套防死锁；调度器接入 SCOPE_DENIED/BUSY code）</b>；真并行（第二步，读类收益明确再开）；subagent 未接</td></tr>
+      <tr><td class="dim">E2 工具呈现</td>
+        <td>流式 + 卡片 + MCP 工具自描述（词汇渲染）</td>
+        <td class="part">🔶 词汇类型✅ + md 渲染✅（表格/行内代码/段落——消息流形态）；卡片/图谱未做</td></tr>
+      <tr><td class="dim">E3 工具面收缩</td>
+        <td>Code Mode（native/code/both + UNKNOWN_TOOL 塌缩）</td>
+        <td class="done">✅ 5 模式（both/code/native/hardware/causal）+ 执行层 allowedTools 塌缩 + 参数 schema + 真机验证</td></tr>
+      <tr><td class="dim">E4 权限门</td>
+        <td>权限模式（strict/standard/open/custom）+ guard + 三条铁律</td>
+        <td class="done">✅ PermissionGuard 真机验证（默认 ASK/敏感拦/底线永远 deny）；4 模式对齐挂账（当前 2 模式）</td></tr>
+      <tr><td class="dim">E5 执行模式</td>
+        <td>subagent fork + isConcurrencySafe</td>
+        <td class="part">🔶 subagent 移植未接；isConcurrencySafe 未生效</td></tr>
+    </tbody>
+  </table>
+
+  <h2>H. 前端与通信</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">H1 前端</td>
+        <td>前端 = MCP 客户端 + 词汇渲染器（拆模块）</td>
+        <td class="part">🔶 md 渲染核心✅（2026-08-20 真机验收）：表格 TableLayout（表头 seal 淡蓝块/竖线/对齐声明/富内容/横滑）+ 行内代码圆角胶囊（自绘 ReplacementSpan）+ 用户消息/AI 回复双路径 md 渲染 + Markwon 段落（blockMargin 防粘连）+ 小爱硬禁用；前端卡片/图谱未定（用户思考中）</td></tr>
+      <tr><td class="dim">H2 桥接层</td>
+        <td>142 桥方法全删，McpServer = 对外唯一通道</td>
+        <td class="done">✅ McpServer :8389 对外通道（40 工具，含文件/pdf/spill）；前端 MCP 客户端⬜</td></tr>
+      <tr><td class="dim">H3 测试</td>
+        <td>安全口；CI 自动跑</td>
+        <td class="part">🔶 tools/batch2-test（29 断言 PC 测试）✅；无 CI</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 3 / 5 页</div>
+</div>
+
+<!-- ================= 第 4 页 ================= -->
+<div class="sheet">
+  <h2>F. 记忆 · 检索 · 错误 · 凭据 · 加密</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>MOV 定案</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">F1 长期记忆</td>
+        <td>M-LIFE 生命周期 + causal 因果引擎（保留）</td>
+        <td class="done">✅ memory.*/causal.* MCP 工具真机验证</td></tr>
+      <tr><td class="dim">F2 会话检索</td>
+        <td>FTS5 双虚表 + traceEvent 血缘</td>
+        <td class="done">✅（2026-08-20，大神验收通过）：打包 FTS5 底座（osmerion 3.49.2）+ 双表（LIKE 普通表绕开 FTS5 优化 / MATCH trigram 虚表）+ 启动重建（历史可搜）+ session.search MCP + extraction 4 增强（压缩摘要/审计/记忆因果/脱敏）</td></tr>
+      <tr><td class="dim">F3 错误分类</td>
+        <td>错误 MCP 化（error.classify/report）</td>
+        <td class="done">✅（2026-08-20，D5 完成）：ErrorClass 单源表（B5 同源）+ [code:] 投影 + error.classify/error.report MCP + 脱敏</td></tr>
+      <tr><td class="dim">F4 凭据</td>
+        <td>CredentialStore 引用式（0600 + Keystore）保留</td>
+        <td class="done">✅（2026-08-20）：AndroidKeyStore AES-256-GCM 加密 + 旧明文自动迁移删除 + 重启解密恢复实证</td></tr>
+      <tr><td class="dim">F5 加密/沙箱</td>
+        <td>vault 保留；沙箱不借鉴</td>
+        <td class="todo">⬜ 未移植（沙箱天然不适用✅）</td></tr>
+    </tbody>
+  </table>
+
+  <h2>新增：存储与文件能力（2026-08-19 落地，超出定案表）</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>内容</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">存储公共化</td>
+        <td>/sdcard/Download/MOV/（MediaStore 零权限）；笔记/spill/文件/图片/下载分目录</td>
+        <td class="done">✅ 真机验证（文件管理器可见）</td></tr>
+      <tr><td class="dim">文件工具</td>
+        <td>text2image / image.info / http.download / pdf.read / file.read/write / note.create(.md)</td>
+        <td class="done">✅ 代码完成，pdf.read/spill 已真机验；其余待真机验（清单见 VERIFICATION_CHECKLIST）</td></tr>
+      <tr><td class="dim">上下文 1M</td>
+        <td>实测 DeepSeek 支持 ≥900K → 窗口默认 1M</td>
+        <td class="done">✅ API 压测 + 配置更新</td></tr>
+      <tr><td class="dim">开发教训库</td>
+        <td>DEV_LESSONS（L1 库初始化/L2 scoped storage/L3 检查清单/L4 git 分支）</td>
+        <td class="done">✅ 文档化</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">第 4 / 5 页</div>
+</div>
+
+<!-- ================= 第 5 页 ================= -->
+<div class="sheet">
+  <h2>OCR 模型账目（2026-08-19 定案 → 已落地）</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>项</th><th>内容</th><th>状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">方案</td>
+        <td><b>ML Kit 轻量识别（快扫+补底）+ AI 排版</b>——结构化输出带 [x,y] 坐标，AI 重建表格/版面；3B 已止损下线（见 docs/OCR_FINAL_PLAN.md）</td>
+        <td class="done">✅ 已落地（image.ocr 0.28-0.84s）</td></tr>
+      <tr><td class="dim">机测</td>
+        <td>大字图 0.28s ✓ ｜ 复杂发票 0.57s（表格完整重建）✓ ｜ 微信照片 3024×4032 0.84s（42 行含页脚）✓ ｜ <b>HEIC 直扫 1.25s ✓（2026-08-20：BitmapFactory/ImageDecoder 统一 + EXIF orientation 校正——微信/iPhone 原图免转 PNG）</b></td>
+        <td class="done">✅ 用户已比对</td></tr>
+      <tr><td class="dim">3B 资产</td>
+        <td>Unlimited-OCR 3B：性能不达标（f16 270s / q4 261-412s / 6 核满载）→ 止损；模型已删（释放 8.5GB）</td>
+        <td class="done">✅ 已清理</td></tr>
+      <tr><td class="dim">依赖</td>
+        <td>ML Kit（GMS，设备已确认）；图片不出端（本地推理）</td>
+        <td class="done">✅ 已验证</td></tr>
+    </tbody>
+  </table>
+
+  <h2>总结：新架构全景实现度</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <thead><tr><th>层</th><th>MOV 新架构</th><th>实现状态</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">对外</td>
+        <td>全 MCP：McpServer = 唯一通道</td>
+        <td class="part">🔶 McpServer✅（40 工具）；前端 MCP 客户端⬜</td></tr>
+      <tr><td class="dim">LLM 层</td>
+        <td>ai/ model/ serve/（云端）；模型 = MCP 注册</td>
+        <td class="part">🔶 DeepSeek adapter✅（错误码化/重试/转义修复）；模型 MCP 注册🔶</td></tr>
+      <tr><td class="dim">Agent 层</td>
+        <td>循环 + 状态 + Journal + 预算 + 压缩 + spill</td>
+        <td class="done">✅ 全部落地（B5/C1/C2/C3 闭环，真机验证）</td></tr>
+      <tr><td class="dim">外围能力包</td>
+        <td>MCP 工具 / memory / causal / 文件 / subagent / 权限 / vault / 错误</td>
+        <td class="part">🔶 memory/causal/文件/权限✅；subagent/vault/错误 MCP 未接</td></tr>
+      <tr><td class="dim">前端</td>
+        <td>MCP 客户端 + 词汇渲染器</td>
+        <td class="todo">⬜ 未做</td></tr>
+    </tbody>
+  </table>
+
+  <h2>统计：实现进度（2026-08-19 更新）</h2>
+  <table>
+    <colgroup><col class="dim"><col class="a"><col class="s"></colgroup>
+    <tbody>
+      <tr><td class="dim">已实现</td>
+        <td>A1-A4 ｜ B1 B2 B4 B5 ｜ C1 C2 C3 ｜ D1 D2 D5 ｜ E3 E4 ｜ F1 F2 ｜ H2 ｜ OCR（ML Kit 快扫+补底+AI 排版）｜ F3 错误分类 ｜ 新增：存储公共化/文件工具/1M/教训库</td>
+        <td class="done">22 项 ✅</td></tr>
+      <tr><td class="dim">部分</td>
+        <td>E1 E2 E5 ｜ H3 ｜ 对外 ｜ LLM 层 ｜ 外围能力包</td>
+        <td class="part">5 项 🔶</td></tr>
+      <tr><td class="dim">未做</td>
+        <td>F5 ｜ H1 ｜ 最小 CI ｜ 清理 ｜ 前端</td>
+        <td class="todo">5 项 ⬜</td></tr>
+    </tbody>
+  </table>
+
+  <h2>后续流程线（见首页顶部）</h2>
+
+  <div class="foot">第 5 / 5 页 —— MOV 新架构实现进度表（2026-08-19 更新）</div>
+</div>
+
+</body>
+</html>

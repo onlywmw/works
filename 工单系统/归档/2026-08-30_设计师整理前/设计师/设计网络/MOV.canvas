@@ -1,0 +1,304 @@
+{
+ "nodes": [
+  {
+   "id": "n101",
+   "type": "text",
+   "text": "# 🌳 MOV",
+   "x": 1905.0,
+   "y": 0,
+   "width": 220,
+   "height": 64,
+   "color": "5"
+  },
+  {
+   "id": "n102",
+   "type": "file",
+   "file": "设计师/设计网络/方向/UI设计.md",
+   "x": 600.0,
+   "y": 154,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n104",
+   "type": "file",
+   "file": "设计师/设计网络/方向/登录与合规弹窗.md",
+   "x": 0,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n106",
+   "type": "file",
+   "file": "设计师/设计网络/方向/聊天页.md",
+   "x": 290,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n108",
+   "type": "file",
+   "file": "设计师/设计网络/方向/设置与页面收口.md",
+   "x": 580,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n110",
+   "type": "file",
+   "file": "设计师/设计网络/方向/品牌与图标.md",
+   "x": 870,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n112",
+   "type": "file",
+   "file": "设计师/设计网络/方向/设计规范.md",
+   "x": 1160,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n114",
+   "type": "file",
+   "file": "设计师/设计网络/方向/结构设计.md",
+   "x": 1905.0,
+   "y": 154,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n116",
+   "type": "file",
+   "file": "设计师/设计网络/方向/工具体系.md",
+   "x": 1450,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n118",
+   "type": "file",
+   "file": "设计师/设计网络/方向/记忆与智能.md",
+   "x": 1740,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n120",
+   "type": "file",
+   "file": "设计师/设计网络/方向/预算与权限.md",
+   "x": 2030,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n122",
+   "type": "file",
+   "file": "设计师/设计网络/方向/构建与发布.md",
+   "x": 2320,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n124",
+   "type": "file",
+   "file": "设计师/设计网络/方向/营销设计.md",
+   "x": 2920.0,
+   "y": 154,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n126",
+   "type": "file",
+   "file": "设计师/设计网络/方向/官网.md",
+   "x": 2610,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n128",
+   "type": "file",
+   "file": "设计师/设计网络/方向/市场站.md",
+   "x": 2900,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n130",
+   "type": "file",
+   "file": "设计师/设计网络/方向/域与合规.md",
+   "x": 3190,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n132",
+   "type": "file",
+   "file": "设计师/设计网络/方向/内部基建.md",
+   "x": 3645.0,
+   "y": 154,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n134",
+   "type": "file",
+   "file": "设计师/设计网络/方向/工作台.md",
+   "x": 3480,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  },
+  {
+   "id": "n136",
+   "type": "file",
+   "file": "设计师/设计网络/方向/账号服务.md",
+   "x": 3770,
+   "y": 308,
+   "width": 260,
+   "height": 84
+  }
+ ],
+ "edges": [
+  {
+   "id": "n103",
+   "fromNode": "n101",
+   "fromSide": "bottom",
+   "toNode": "n102",
+   "toSide": "top"
+  },
+  {
+   "id": "n105",
+   "fromNode": "n102",
+   "fromSide": "bottom",
+   "toNode": "n104",
+   "toSide": "top"
+  },
+  {
+   "id": "n107",
+   "fromNode": "n102",
+   "fromSide": "bottom",
+   "toNode": "n106",
+   "toSide": "top"
+  },
+  {
+   "id": "n109",
+   "fromNode": "n102",
+   "fromSide": "bottom",
+   "toNode": "n108",
+   "toSide": "top"
+  },
+  {
+   "id": "n111",
+   "fromNode": "n102",
+   "fromSide": "bottom",
+   "toNode": "n110",
+   "toSide": "top"
+  },
+  {
+   "id": "n113",
+   "fromNode": "n102",
+   "fromSide": "bottom",
+   "toNode": "n112",
+   "toSide": "top"
+  },
+  {
+   "id": "n115",
+   "fromNode": "n101",
+   "fromSide": "bottom",
+   "toNode": "n114",
+   "toSide": "top"
+  },
+  {
+   "id": "n117",
+   "fromNode": "n114",
+   "fromSide": "bottom",
+   "toNode": "n116",
+   "toSide": "top"
+  },
+  {
+   "id": "n119",
+   "fromNode": "n114",
+   "fromSide": "bottom",
+   "toNode": "n118",
+   "toSide": "top"
+  },
+  {
+   "id": "n121",
+   "fromNode": "n114",
+   "fromSide": "bottom",
+   "toNode": "n120",
+   "toSide": "top"
+  },
+  {
+   "id": "n123",
+   "fromNode": "n114",
+   "fromSide": "bottom",
+   "toNode": "n122",
+   "toSide": "top"
+  },
+  {
+   "id": "n125",
+   "fromNode": "n101",
+   "fromSide": "bottom",
+   "toNode": "n124",
+   "toSide": "top"
+  },
+  {
+   "id": "n127",
+   "fromNode": "n124",
+   "fromSide": "bottom",
+   "toNode": "n126",
+   "toSide": "top"
+  },
+  {
+   "id": "n129",
+   "fromNode": "n124",
+   "fromSide": "bottom",
+   "toNode": "n128",
+   "toSide": "top"
+  },
+  {
+   "id": "n131",
+   "fromNode": "n124",
+   "fromSide": "bottom",
+   "toNode": "n130",
+   "toSide": "top"
+  },
+  {
+   "id": "n133",
+   "fromNode": "n101",
+   "fromSide": "bottom",
+   "toNode": "n132",
+   "toSide": "top"
+  },
+  {
+   "id": "n135",
+   "fromNode": "n132",
+   "fromSide": "bottom",
+   "toNode": "n134",
+   "toSide": "top"
+  },
+  {
+   "id": "n137",
+   "fromNode": "n132",
+   "fromSide": "bottom",
+   "toNode": "n136",
+   "toSide": "top"
+  }
+ ]
+}

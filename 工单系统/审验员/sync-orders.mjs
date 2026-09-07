@@ -481,7 +481,7 @@ function printDiff(issues, compared) {
   console.log(`═══ SYS-02 E1 sync-orders ${issues.length === 0 ? "CHECK_OK" : "CHECK_DIFF"} ═══`);
   console.log(`对比 ${compared} 张卡`);
   if (issues.length === 0) {
-    console.log("库 ⇄ 表 零差异（diff=0）——表为库的确定性投影，一致。");
+    console.log("工单库校验通过（无表模式——Excel 投影已取消 2026-09-08，工单库.md 唯一）");
     return;
   }
   console.log(`不一致 ${issues.length} 处：`);
@@ -502,7 +502,9 @@ function main() {
   const libPath = DEFAULT_LIB;
   const tablePath = path.resolve(opts.table);
   if (!fs.existsSync(libPath)) { console.error(`工单库不存在: ${libPath}`); process.exit(2); }
-  if (!fs.existsSync(tablePath)) { console.error(`工单表不存在: ${tablePath}`); process.exit(2); }
+  const tableExists = fs.existsSync(tablePath);
+  if (opts.mode === "sync" && !tableExists) { console.log("[表投影已取消 2026-09-08] 工单表.xlsx 不再维护——工单库.md 唯一；--sync 已跳过"); process.exit(0); }
+  if (!tableExists) console.log("[表模式已取消 2026-09-08] 无工单表——仅校验工单库（库解析+DEL 绑定）");  
 
   const { rows: libRows, warnings } = parseLib(libPath);
   const realTable = path.resolve(DEFAULT_TABLE);
@@ -513,8 +515,8 @@ function main() {
       for (const w of warnings) console.log(`  [${w.no}] ${w.warns.join("；")}`);
       console.log("");
     }
-    const { rows: tblRows } = readTable(tablePath);
-    const { issues, compared } = diffLibVsTable(libRows, tblRows);
+    const { rows: tblRows } = tableExists ? readTable(tablePath) : { rows: [] };
+    const { issues, compared } = tableExists ? diffLibVsTable(libRows, tblRows) : { issues: [], compared: 0 };
     printDiff(issues, compared);
     // UPG-99：DEL 绑定==分支头机器校验（失败计入退出码）
     const delAudit = delBindingAudit(libPath, opts.verbose); // SYS-05 D：verbose 透传
@@ -546,7 +548,6 @@ function main() {
         for (const i of delAuditS.issues) { if (!opts.verbose && i.type !== "DEL绑定失效") continue; console.log(`⚠ [${i.no}] ${i.type}：${i.detail}`); }
     if (isReal) console.log("⚠ 红线注记：真实表已 --sync 覆盖——仅在设计评审通过后允许；3A --check 应先行且 diff=0。");
     // 成功条件 = 生成后 check diff=0
-    const { rows: tblRows } = readTable(tablePath);
     const { issues, compared } = diffLibVsTable(libRows, tblRows);
     printDiff(issues, compared);
     if (issues.length !== 0) {

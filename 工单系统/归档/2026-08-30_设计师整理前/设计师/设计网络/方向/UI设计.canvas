@@ -1,0 +1,287 @@
+{
+ "nodes": [
+  {
+   "id": "n1",
+   "type": "file",
+   "file": "设计师/设计网络/方向/UI设计.md",
+   "x": 1735.0,
+   "y": 0,
+   "width": 220,
+   "height": 64
+  },
+  {
+   "id": "n2",
+   "type": "file",
+   "file": "设计师/设计网络/方向/登录与合规弹窗.md",
+   "x": 495.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n4",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-09.md",
+   "x": 0,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n6",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-13.md",
+   "x": 310,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n8",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-15.md",
+   "x": 620,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n10",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-11.md",
+   "x": 930,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n12",
+   "type": "file",
+   "file": "设计师/设计网络/方向/聊天页.md",
+   "x": 1580.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n14",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-20.md",
+   "x": 1240,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n16",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-12.md",
+   "x": 1550,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n18",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-21.md",
+   "x": 1860,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n20",
+   "type": "file",
+   "file": "设计师/设计网络/方向/设置与页面收口.md",
+   "x": 2355.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n22",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-14.md",
+   "x": 2170,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n24",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-17.md",
+   "x": 2480,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n26",
+   "type": "file",
+   "file": "设计师/设计网络/方向/品牌与图标.md",
+   "x": 2820.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n28",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-19.md",
+   "x": 2790,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n30",
+   "type": "file",
+   "file": "设计师/设计网络/方向/设计规范.md",
+   "x": 3285.0,
+   "y": 154,
+   "width": 220,
+   "height": 56
+  },
+  {
+   "id": "n32",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-24.md",
+   "x": 3100,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  },
+  {
+   "id": "n34",
+   "type": "file",
+   "file": "设计师/设计网络/工单/UPG-25.md",
+   "x": 3410,
+   "y": 300,
+   "width": 280,
+   "height": 70
+  }
+ ],
+ "edges": [
+  {
+   "id": "n3",
+   "fromNode": "n1",
+   "fromSide": "bottom",
+   "toNode": "n2",
+   "toSide": "top"
+  },
+  {
+   "id": "n5",
+   "fromNode": "n2",
+   "fromSide": "bottom",
+   "toNode": "n4",
+   "toSide": "top"
+  },
+  {
+   "id": "n7",
+   "fromNode": "n2",
+   "fromSide": "bottom",
+   "toNode": "n6",
+   "toSide": "top"
+  },
+  {
+   "id": "n9",
+   "fromNode": "n2",
+   "fromSide": "bottom",
+   "toNode": "n8",
+   "toSide": "top"
+  },
+  {
+   "id": "n11",
+   "fromNode": "n2",
+   "fromSide": "bottom",
+   "toNode": "n10",
+   "toSide": "top"
+  },
+  {
+   "id": "n13",
+   "fromNode": "n1",
+   "fromSide": "bottom",
+   "toNode": "n12",
+   "toSide": "top"
+  },
+  {
+   "id": "n15",
+   "fromNode": "n12",
+   "fromSide": "bottom",
+   "toNode": "n14",
+   "toSide": "top"
+  },
+  {
+   "id": "n17",
+   "fromNode": "n12",
+   "fromSide": "bottom",
+   "toNode": "n16",
+   "toSide": "top"
+  },
+  {
+   "id": "n19",
+   "fromNode": "n12",
+   "fromSide": "bottom",
+   "toNode": "n18",
+   "toSide": "top"
+  },
+  {
+   "id": "n21",
+   "fromNode": "n1",
+   "fromSide": "bottom",
+   "toNode": "n20",
+   "toSide": "top"
+  },
+  {
+   "id": "n23",
+   "fromNode": "n20",
+   "fromSide": "bottom",
+   "toNode": "n22",
+   "toSide": "top"
+  },
+  {
+   "id": "n25",
+   "fromNode": "n20",
+   "fromSide": "bottom",
+   "toNode": "n24",
+   "toSide": "top"
+  },
+  {
+   "id": "n27",
+   "fromNode": "n1",
+   "fromSide": "bottom",
+   "toNode": "n26",
+   "toSide": "top"
+  },
+  {
+   "id": "n29",
+   "fromNode": "n26",
+   "fromSide": "bottom",
+   "toNode": "n28",
+   "toSide": "top"
+  },
+  {
+   "id": "n31",
+   "fromNode": "n1",
+   "fromSide": "bottom",
+   "toNode": "n30",
+   "toSide": "top"
+  },
+  {
+   "id": "n33",
+   "fromNode": "n30",
+   "fromSide": "bottom",
+   "toNode": "n32",
+   "toSide": "top"
+  },
+  {
+   "id": "n35",
+   "fromNode": "n30",
+   "fromSide": "bottom",
+   "toNode": "n34",
+   "toSide": "top"
+  }
+ ]
+}

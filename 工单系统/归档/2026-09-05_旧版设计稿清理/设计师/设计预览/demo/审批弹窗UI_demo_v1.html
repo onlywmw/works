@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV · 审批弹窗 UI 设计 Demo v1</title>
+<style>
+  :root{
+    --bg:#f3f4f7;--s1:#ffffff;--s2:#edeff3;--s3:#e2e5eb;
+    --line:rgba(22,28,48,.08);--text:#191b21;--text2:#565c6b;--text3:#8b91a1;
+    --acc:#23272f;--on-acc:#ffffff;--ok:#2b8158;--warn:#a5711f;--danger:#d92d20;--blue:#3b6fd4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+    background:#e9ebf0;color:var(--text);display:flex;justify-content:center;align-items:flex-start;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .phone{width:100%;max-width:420px;min-height:100vh;background:var(--bg);
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  @media(min-width:421px){.phone{margin:24px 0;border-radius:18px;min-height:calc(100vh-48px);box-shadow:0 20px 60px rgba(0,0,0,.12);overflow:hidden}}
+  .wrap{padding:14px 14px 60px}
+  .h{font-size:13px;font-weight:600;color:var(--text3);margin:6px 2px 12px}
+  .seg{display:flex;gap:0;background:var(--s2);border-radius:11px;padding:4px;margin-bottom:14px}
+  .seg button{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--text2);padding:9px 0;border-radius:8px;cursor:pointer}
+  .seg button.on{background:var(--s1);color:var(--text);box-shadow:0 1px 4px rgba(22,28,48,.08)}
+
+  /* 场景：一个后台聊天界面，触发审批 */
+  .scene{background:var(--s1);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .scene .bar{height:40px;display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--text2)}
+  .scene .msgs{padding:14px 12px;display:flex;flex-direction:column;gap:10px}
+  .bbl{max-width:78%;padding:9px 12px;border-radius:12px;font-size:13.5px}
+  .bbl.user{align-self:flex-end;background:var(--theme-b,#e4e7ed);border-top-right-radius:4px}
+  .bbl.ai{align-self:flex-start;border:1px solid var(--line)}
+  .bbl.ai .tm{font-size:11px;color:var(--text3);margin-top:6px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .st{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:99px}
+  .st.ask{background:rgba(165,113,31,.15);color:#a5711f}
+  .st.gate{background:rgba(217,45,32,.12);color:var(--danger)}
+
+  /* 遮罩 + 弹窗 */
+  .mask{position:fixed;inset:0;background:rgba(12,16,28,.45);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+  .dlg{width:100%;max-width:340px;background:var(--s4,#fff);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.28);overflow:hidden;animation:pop .18s ease}
+  @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+  .dlg-head{display:flex;align-items:center;gap:10px;padding:16px 18px 6px}
+  .dlg-head .ic{width:34px;height:34px;border-radius:10px;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-size:16px}
+  .dlg-head .tt{font-size:16px;font-weight:700}
+  .dlg-head .st2{font-size:11px;color:var(--text3);margin-top:2px}
+  .dlg-body{padding:10px 18px 4px;font-size:13.5px;color:var(--text2);line-height:1.55}
+  .dlg-body b{color:var(--text);font-weight:600}
+  .tool-card{margin-top:10px;background:var(--s2);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
+  .tool-card .tc-name{font-family:"SF Mono",ui-monospace,monospace;font-size:12px;color:var(--text);font-weight:600}
+  .tool-card .tc-desc{font-size:12px;color:var(--text3);margin-top:4px}
+  .tool-card .tc-args{font-size:12px;font-family:"SF Mono",ui-monospace,monospace;color:var(--text2);margin-top:6px;background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:7px 9px;word-break:break-all}
+  .warn{display:flex;gap:7px;align-items:flex-start;margin-top:12px;font-size:12px;color:#a5711f}
+  .warn .wdot{flex:none;width:15px;height:15px;border-radius:50%;background:rgba(165,113,31,.18);color:#a5711f;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px}
+
+  .dlg-foot{display:flex;flex-direction:column;gap:8px;padding:14px 18px 18px}
+  .btn{width:100%;text-align:center;padding:13px;border-radius:12px;font-size:14.5px;font-weight:600;cursor:pointer;border:none;font-family:inherit}
+  .btn.pr{background:var(--acc);color:var(--on-acc)}
+  .btn.mid{background:rgba(59,111,212,.12);color:var(--blue)}
+  .btn.gh{background:var(--s2);color:var(--text2)}
+  .btn.dg{background:rgba(217,45,32,.1);color:var(--danger)}
+  .foot-note{margin-top:2px;font-size:11px;color:var(--text3);text-align:center}
+
+  .note{margin-top:16px;font-size:12.5px;color:var(--text3);line-height:1.6}
+  .note b{color:var(--text2)}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="wrap">
+    <div class="h">审批弹窗 UI 设计 · 点下面切换场景</div>
+    <div class="seg">
+      <button id="s3" class="on">无目标 · 三键</button>
+      <button id="s4">有活性目标 · 四键</button>
+    </div>
+
+    <!-- 触发场景：聊天里 AI 请求执行工具 -->
+    <div class="scene">
+      <div class="bar">☰ MOV 助手 ｜ <span id="sc-mode">标准模式</span></div>
+      <div class="msgs">
+        <div class="bbl user">帮我把这段会议纪要整理成 Markdown 存到笔记</div>
+        <div class="bbl ai">
+          <span class="tm"><span class="st ask">⏳ 请求审批</span> 准备执行命令</span>
+          好的，我先在设备上执行一步操作：
+          <div class="tm"><span class="st gate">⚠ 敏感操作</span> shell.exec</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">注：本弹窗用于 <b>AI 请求执行需确认的工具</b>(shell.exec / 写类 / 高权限工具) 时的征询。修复批2 需确保此弹窗按钮 <b>真实可点</b>(非 setItems 容错)。</div>
+  </div>
+
+  <!-- 遮罩 + 弹窗 -->
+  <div class="mask" id="mask">
+    <div class="dlg" id="dlg">
+      <div class="dlg-head">
+        <div class="ic">⚙️</div>
+        <div><div class="tt">审批请求</div><div class="st2">AI 想执行一个操作，等你确认</div></div>
+      </div>
+      <div class="dlg-body" id="dlg-body"></div>
+      <div class="dlg-foot" id="dlg-foot"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const body3 = `
+  是否允许 AI 执行这个操作？<b>60 秒无响应将自动拒绝。</b>
+  <div class="warn"><span class="wdot">!</span> 工具在执行时可能 <b>修改你的数据</b>，请确认。</div>
+`;
+const body4 = `
+  是否允许 AI 执行这个操作？<b>60 秒无响应将自动拒绝。</b>
+  <div class="warn"><span class="wdot">!</span> 检测到一个<b>进行中的目标</b>，你选「允许本目标」即可在本次目标内免重复确认。</div>
+`;
+const tool = `
+  <div class="tool-card">
+    <div class="tc-name">shell.exec</div>
+    <div class="tc-desc">执行 shell 命令（任意代码级，高权限）</div>
+    <div class="tc-args">echo "整理 -> notes/会议纪要.md"</div>
+  </div>
+`;
+function dlg(hasGoal){
+  document.getElementById('dlg-body').innerHTML = (hasGoal?body4:body3) + tool;
+  let foot;
+  if(hasGoal){
+    foot = `
+      <button class="btn pr">允许本轮 · 仅这一次对话</button>
+      <button class="btn mid">允许本目标 · 当前任务免重复询问</button>
+      <button class="btn pr">允许本次 · 仅这次操作</button>
+      <button class="btn dg">拒绝</button>
+      <div class="foot-note">「允许本轮」= 本次对话内不再询问；「允许本目标」= 当前进行中的目标内免确认；「允许本次」= 仅这一次。</div>`;
+  } else {
+    foot = `
+      <button class="btn pr">允许本轮</button>
+      <button class="btn pr">允许本次</button>
+      <button class="btn dg">拒绝</button>
+      <div class="foot-note">「允许本轮」= 本次对话内不再询问；「允许本次」= 仅这一次。</div>`;
+  }
+  document.getElementById('dlg-foot').innerHTML = foot;
+  document.getElementById('sc-mode').textContent = hasGoal?'标准模式 · 有活性目标':'标准模式';
+}
+document.getElementById('s3').onclick=()=>{dg(false);document.getElementById('s3').classList.add('on');document.getElementById('s4').classList.remove('on')};
+document.getElementById('s4').onclick=()=>{dg(true);document.getElementById('s4').classList.add('on');document.getElementById('s3').classList.remove('on')};
+dg(false);
+// 点弹窗按钮给反馈
+document.getElementById('dlg-foot').addEventListener('click',e=>{if(e.target.classList.contains('btn')){e.target.textContent='已选择 ✓';}});
+</script>
+</body>
+</html>

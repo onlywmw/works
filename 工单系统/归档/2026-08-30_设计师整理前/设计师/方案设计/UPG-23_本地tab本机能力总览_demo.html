@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>本机能力总览 Demo · UPG-23 v2（本地 tab + 主页输入框小按钮联动）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system,"PingFang SC","Inter",sans-serif; }
+  body { background:#e5e5e8; min-height:100vh; display:flex; align-items:flex-start; justify-content:center; gap:22px; padding:24px 12px; flex-wrap:wrap; }
+  .phone { width:375px; height:740px; background:#f7f7f8; border-radius:28px; overflow:hidden; position:relative; box-shadow:0 12px 40px rgba(0,0,0,.18); display:flex; flex-direction:column; flex-shrink:0; }
+  .ptag { position:absolute; top:8px; left:12px; font-size:10px; color:#b9b9bf; z-index:5; }
+  .nav { height:52px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600; color:#1a1a1a; background:#fff; border-bottom:1px solid #f0f0f2; flex-shrink:0; }
+  .tabs { display:flex; background:#fff; border-bottom:1px solid #f0f0f2; flex-shrink:0; }
+  .tab { flex:1; text-align:center; padding:11px 0 9px; font-size:13px; color:#9a9aa0; cursor:pointer; position:relative; }
+  .tab.on { color:#1a1a1a; font-weight:600; }
+  .tab.on::after { content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:24px; height:2.5px; border-radius:2px; background:#1a1a1a; }
+  .scroll { flex:1; overflow-y:auto; padding:12px 12px 24px; scrollbar-width:none; }
+  .scroll::-webkit-scrollbar { display:none; }
+
+  /* ===== 主页（聊天页） ===== */
+  .statusbar { height:44px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; color:#1a1a1a; flex-shrink:0; }
+  .chat { flex:1; padding:16px; overflow:hidden; }
+  .bubble { background:#fff; border:1px solid #e6e6e9; border-radius:14px; padding:12px 14px; margin-bottom:10px; color:#3a3a3e; font-size:13px; }
+  .dock { padding:10px 0 18px; position:relative; flex-shrink:0; }
+  .chips { display:flex; gap:8px; margin-bottom:10px; overflow-x:auto; scrollbar-width:none; padding:0 12px; align-items:center; }
+  .chips::-webkit-scrollbar { display:none; }
+  .chip { display:flex; align-items:center; justify-content:center; gap:5px; background:#fff; border:1px solid #e0e0e3; border-radius:999px; padding:6px 0; font-size:12px; color:#4a4a4e; cursor:pointer; user-select:none; width:118px; min-width:118px; flex-shrink:0; }
+  .chip span.lbl { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:88px; }
+  /* 钉选小按钮（UPG-23 新增）：方形图标钮 */
+  .pinchip { width:34px; height:34px; min-width:34px; border-radius:10px; background:#fff; border:1px solid #e0e0e3; display:flex; align-items:center; justify-content:center; font-size:15px; cursor:pointer; flex-shrink:0; position:relative; }
+  .pinchip:active { background:#f3f3f5; }
+  .pinchip .bdg { position:absolute; top:-3px; right:-3px; width:8px; height:8px; border-radius:50%; background:#2ba471; border:1.5px solid #f7f7f8; }
+  .pinchip .bdg.bad { background:#d54941; }
+  .chipgap { width:1px; height:20px; background:#e6e6e9; flex-shrink:0; }
+  .composer { background:#fff; border:1px solid #e0e0e3; border-radius:20px; height:44px; display:flex; align-items:center; padding:0 14px; color:#b0b0b5; font-size:13px; margin:0 12px; }
+  /* MCP 气泡 */
+  .pop { position:absolute; bottom:118px; left:12px; width:250px; background:#fff; border:1px solid #e8e8eb; border-radius:14px; box-shadow:0 8px 28px rgba(0,0,0,.12); padding:5px; opacity:0; pointer-events:none; transform:translateY(6px); transition:all .16s ease; z-index:9; }
+  .pop.show { opacity:1; pointer-events:auto; transform:translateY(0); }
+  .pop .pt { font-size:11px; color:#9a9aa0; padding:7px 10px 3px; }
+  .popt { display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:9px; font-size:12px; color:#3a3a3e; }
+  .popt .pn2 { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .popt .cnt { font-size:10px; color:#9a9aa0; flex-shrink:0; }
+
+  /* ===== 市场页（本地 tab） ===== */
+  .ov { background:#1a1a1a; color:#fff; border-radius:16px; padding:14px 16px; margin-bottom:12px; }
+  .ov .t1 { font-size:12px; opacity:.65; margin-bottom:6px; }
+  .ov .nums { display:flex; gap:18px; align-items:baseline; }
+  .ov .n { font-size:22px; font-weight:700; }
+  .ov .u { font-size:10px; opacity:.6; margin-left:2px; }
+  .ov .health { margin-top:9px; font-size:11px; display:flex; align-items:center; gap:5px; opacity:.9; }
+  .ov .health.warn { color:#ffb04d; }
+  .pins { background:#fff; border:1px solid #ececef; border-radius:14px; padding:10px 12px; margin-bottom:12px; }
+  .pins .pt { font-size:11px; color:#9a9aa0; margin-bottom:8px; display:flex; justify-content:space-between; }
+  .pinrow { display:flex; gap:8px; }
+  .slot { flex:1; height:52px; border-radius:10px; border:1px dashed #dcdce0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; color:#c5c5ca; font-size:9px; }
+  .slot.full { border:1px solid #ececef; background:#fafafa; color:#1a1a1a; cursor:pointer; }
+  .slot .ic { font-size:15px; }
+  .slot .nm { font-size:9px; max-width:56px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .grp { margin-bottom:12px; }
+  .gt { font-size:11px; color:#9a9aa0; padding:0 6px 6px; display:flex; justify-content:space-between; }
+  .card { background:#fff; border:1px solid #ececef; border-radius:14px; overflow:hidden; }
+  .pkg { padding:11px 12px; }
+  .pkg + .pkg { border-top:1px solid #f4f4f6; }
+  .prow { display:flex; align-items:center; gap:10px; cursor:pointer; }
+  .pic { width:34px; height:34px; border-radius:9px; background:#f3f3f5; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+  .pmeta { flex:1; min-width:0; }
+  .pn { font-size:13px; font-weight:600; color:#1a1a1a; display:flex; align-items:center; gap:6px; }
+  .pd { font-size:10px; color:#9a9aa0; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .badge { font-size:9px; padding:1px 5px; border-radius:4px; font-weight:500; flex-shrink:0; }
+  .b-sys { background:#f0f0f2; color:#8a8a90; }
+  .b-builtin { background:#1a1a1a; color:#fff; }
+  .b-mkt { background:#e8f0fe; color:#3b62a8; }
+  .st { width:7px; height:7px; border-radius:50%; background:#2ba471; flex-shrink:0; }
+  .st.bad { background:#d54941; }
+  .st.off { background:#d4d4d8; }
+  .sw { width:36px; height:21px; border-radius:11px; background:#dcdce0; position:relative; flex-shrink:0; cursor:pointer; transition:background .15s; }
+  .sw::after { content:""; position:absolute; top:2px; left:2px; width:17px; height:17px; border-radius:50%; background:#fff; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.15); }
+  .sw.on { background:#1a1a1a; }
+  .sw.on::after { left:17px; }
+  .arrow { color:#c5c5ca; font-size:12px; transition:transform .15s; flex-shrink:0; }
+  .pkg.open .arrow { transform:rotate(90deg); }
+  .tools { display:none; margin-top:9px; border-top:1px dashed #f0f0f2; padding-top:8px; }
+  .pkg.open .tools { display:block; }
+  .tool { display:flex; align-items:center; gap:8px; padding:5px 2px; font-size:11px; color:#4a4a4e; }
+  .tool .tn { font-family:ui-monospace,Menlo,monospace; font-size:10px; color:#1a1a1a; background:#f6f6f8; padding:1px 5px; border-radius:4px; flex-shrink:0; }
+  .tool .td { flex:1; color:#8a8a90; font-size:10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .perm { font-size:9px; flex-shrink:0; }
+  .perm.free { color:#2ba471; }
+  .perm.ask { color:#d58a1f; }
+  .pinbtn { border:none; background:none; font-size:13px; cursor:pointer; color:#c5c5ca; padding:2px; flex-shrink:0; }
+  .pinbtn.on { color:#1a1a1a; }
+
+  .toast { position:fixed; left:50%; bottom:60px; transform:translateX(-50%); background:rgba(26,26,26,.88); color:#fff; font-size:11px; padding:7px 14px; border-radius:8px; opacity:0; transition:opacity .18s; pointer-events:none; white-space:nowrap; z-index:99; }
+  .toast.show { opacity:1; }
+
+  .notes { width:330px; flex-shrink:0; padding-top:8px; }
+  .notes h2 { font-size:15px; color:#1a1a1a; margin-bottom:10px; }
+  .note { background:#fff; border:1px solid #e6e6e9; border-radius:12px; padding:11px 13px; margin-bottom:9px; font-size:12px; color:#4a4a4e; line-height:1.65; }
+  .note b { color:#1a1a1a; }
+  .note .k { display:inline-block; background:#1a1a1a; color:#fff; font-size:10px; border-radius:4px; padding:0 5px; margin-right:5px; }
+  @media (max-width:1200px){ .notes{ display:none; } }
+</style>
+</head>
+<body>
+
+<!-- ============ 左：主页（聊天页） ============ -->
+<div class="phone">
+  <div class="ptag">主页</div>
+  <div class="statusbar">MOV</div>
+  <div class="chat">
+    <div class="bubble">你好，我是 MOV AI。</div>
+    <div class="bubble" style="color:#9a9aa0;font-size:12px">试试：点上方「MCP 工具」chip 看本机能力气泡；点钉选小按钮快捷调用；到右边市场页停用/钉选，这里实时联动。</div>
+  </div>
+  <div class="dock">
+    <div class="pop" id="mcpPop">
+      <div class="pt">‹ MCP 工具 · 本机已启用</div>
+      <div id="mcpPopBody"></div>
+    </div>
+    <div class="chips" id="homeChips"></div>
+    <div class="composer">发消息…</div>
+  </div>
+</div>
+
+<!-- ============ 右：工具市场 · 本地 tab ============ -->
+<div class="phone">
+  <div class="ptag">工具市场</div>
+  <div class="nav">工具市场</div>
+  <div class="tabs">
+    <div class="tab on" data-tab="local">本地</div>
+    <div class="tab" data-tab="store">市场</div>
+  </div>
+  <div class="scroll" id="pgLocal">
+    <div class="ov">
+      <div class="t1">本机能力总览</div>
+      <div class="nums">
+        <span><span class="n" id="ovTools">0</span><span class="u">工具</span></span>
+        <span><span class="n">6</span><span class="u">来源</span></span>
+        <span><span class="n" id="ovPins">0</span><span class="u">/5 钉选</span></span>
+      </div>
+      <div class="health warn" id="ovHealth">▲ 1 个市场包不可达（效率工具包）</div>
+    </div>
+    <div class="pins">
+      <div class="pt"><span>钉选 · 主页输入框小按钮 + 侧边栏槽</span><span id="pinCnt">0/5</span></div>
+      <div class="pinrow" id="pinRow"></div>
+    </div>
+    <div id="groups"></div>
+  </div>
+  <div class="scroll" id="pgStore" style="display:none">
+    <div class="card"><div class="pkg"><div class="prow"><div class="pic">🧺</div><div class="pmeta"><div class="pn">市场列表保持现状</div><div class="pd">本 demo 只演「本地」tab + 主页小按钮联动</div></div></div></div></div>
+  </div>
+</div>
+
+<div class="notes">
+  <h2>设计说明（UPG-23 v2）</h2>
+  <div class="note"><span class="k">新</span><b>主页小按钮 = 钉选的出口</b>：钉选的工具包以方形图标钮显示在主页输入框上方 chips 排（模型 / MCP 工具两个固定 chip 之后，分隔线隔开），带健康小圆点。点按 = 快捷调用（插入预设指令到输入框）。<b>钉选从此有了用户可感知的回报</b>。</div>
+  <div class="note"><span class="k">新</span><b>MCP 工具 chip 气泡 = 总览的轻量投影</b>：列已启用分组 + 工具数 + 健康点；停用的包灰显。数据与本地 tab 同源。</div>
+  <div class="note"><span class="k">1</span><b>本地 tab = 本机能力总览</b>：概览卡（工具数/来源/钉选占用+健康一句话）→ 钉选槽 → 三层分组（内置/市场/系统）→ 工具级下钻带权限标记（免审批/需确认，与 McpToolScheduler 名单同源）。</div>
+  <div class="note"><span class="k">2</span><b>联动是同一个状态</b>：右边停用 → 左边气泡灰显、钉选钮健康点变；右边钉选/取消 → 左边小按钮增减。 demo 里两部手机共享一份数据，正式实现也是（market.status + ui.getPins 单一数据源，L6 红线）。</div>
+  <div class="note"><span class="k">3</span><b>未定的点</b>：①主页小按钮槽位与钉选 5 上限共用还是独立；②小按钮点按行为=插入指令 还是 直接调工具；③Obsidian 未授权 SAF 的引导行；④系统基础能力只展示不可关。</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- 共享数据（UPG-02+04 合入后的真实形态） ---------- */
+var PIN_MAX = 5;
+var groups = [
+  { title:"内置 · 设备控制", sub:"UPG-02", pkgs:[
+    { id:"device", icon:"🔦", name:"设备控制", desc:"手电/WiFi/蓝牙/音量/亮度/静音/计时器/截屏", badge:["b-builtin","内置"], enabled:true, health:"ok",
+      tools:[["torch.on","打开手电筒","free"],["wifi.on","开 WiFi","free"],["bluetooth.on","开蓝牙","free"],["volume.set","调音量","free"],["brightness.set","调亮度","free"],["silent.on","静音","free"],["device.timer","倒计时（落盘持久）","ask"],["screen.capture","截屏给 AI 看","ask"]]},
+    { id:"scene", icon:"🚄", name:"生活场景 · 12306", desc:"查车票/站名联想（UPG-03 已合）", badge:["b-builtin","内置"], enabled:true, health:"ok",
+      tools:[["scene.ticketQuery","查车次余票","free"],["scene.stationSuggest","站名联想","free"]]},
+    { id:"obsidian", icon:"📓", name:"笔记 · Obsidian", desc:"读写你的 Obsidian 仓库（SAF 已授权）", badge:["b-builtin","内置"], enabled:true, health:"ok",
+      tools:[["obsidian.file.read","读笔记","free"],["obsidian.file.write","写笔记","ask"],["obsidian.file.list","列目录","free"],["obsidian.search","全文搜索","free"],["obsidian.vault.rescan","重建索引","ask"]]}
+  ]},
+  { title:"市场 · 已安装", sub:"server 包", pkgs:[
+    { id:"browser-automation", icon:"🌐", name:"浏览器自动化", desc:"登录平台/抓页面/自动操作", badge:["b-mkt","市场"], enabled:true, health:"ok",
+      tools:[["browser.login","智能登录当前平台","ask"],["browser.fetch","抓取页面内容","free"],["browser.click","页面点击操作","ask"]]},
+    { id:"effi-kit", icon:"⚡", name:"效率工具包", desc:"二维码/短链/翻译（服务不可达）", badge:["b-mkt","市场"], enabled:true, health:"bad",
+      tools:[["effi.qrcode","生成二维码","free"],["effi.translate","文本翻译","free"]]}
+  ]},
+  { title:"系统 · 基础能力", sub:"不可停用", pkgs:[
+    { id:"sysbase", icon:"🧩", name:"基础能力", desc:"文件/笔记/记忆——AI 的基本功", badge:["b-sys","系统"], enabled:true, health:"ok", locked:true,
+      tools:[["file.read","读文件","free"],["file.write","写文件","ask"],["note.create","写小米笔记","free"],["memory.save","记住事情","free"],["memory.search","检索记忆","free"],["memory.delete","移除记忆","ask"]]}
+  ]}
+];
+var pins = ["scene","browser-automation","device"];
+function pkgOf(id){ for (var gi=0; gi<groups.length; gi++){ var p=groups[gi].pkgs.find(function(x){return x.id===id}); if(p) return p; } return null; }
+
+/* ---------- 主页 chips ---------- */
+function renderHome(){
+  var box = document.getElementById('homeChips'); box.innerHTML="";
+  box.innerHTML = '<div class="chip"><span class="lbl">DeepSeek V4 Pro · 快速</span>▾</div>'
+    + '<div class="chip" id="mcpChip"><span class="lbl">MCP 工具</span>▾</div>';
+  document.getElementById('mcpChip').onclick = function(){ document.getElementById('mcpPop').classList.toggle('show'); renderPop(); };
+  if (pins.length){
+    var gap = document.createElement('div'); gap.className="chipgap"; box.appendChild(gap);
+    pins.forEach(function(id){
+      var p = pkgOf(id); if(!p) return;
+      var b = document.createElement('div'); b.className="pinchip";
+      b.innerHTML = p.icon + '<span class="bdg'+((p.enabled && p.health!=="bad")?"":" bad")+'" style="'+((p.enabled&&p.health!=="bad")?"":'background:#d54941')+'"></span>';
+      if (!p.enabled) b.style.opacity=.35;
+      b.title = p.name;
+      b.onclick = function(){
+        if(!p.enabled){ toast('「'+p.name+'」已停用，先到市场本地 tab 启用'); return; }
+        toast('快捷调用「'+p.name+'」→ 预设指令已填入输入框（demo）');
+      };
+      box.appendChild(b);
+    });
+  }
+}
+function renderPop(){
+  var body = document.getElementById('mcpPopBody'); body.innerHTML="";
+  groups.forEach(function(g){
+    g.pkgs.forEach(function(p){
+      var d = document.createElement('div'); d.className="popt";
+      if(!p.enabled) d.style.opacity=.4;
+      d.innerHTML = '<span>'+p.icon+'</span><span class="pn2">'+p.name+'</span><span class="cnt">'+p.tools.length+' 工具</span>'
+        + '<span class="st'+(p.enabled?(p.health==="bad"?" bad":""):" off")+'"></span>';
+      d.onclick = function(){ document.getElementById('mcpPop').classList.remove('show'); toast('打开「'+p.name+'」详情 → 市场本地 tab（demo）'); };
+      body.appendChild(d);
+    });
+  });
+}
+
+/* ---------- 市场页 ---------- */
+function renderPins(){
+  var row = document.getElementById('pinRow'); row.innerHTML = "";
+  for (var i=0;i<PIN_MAX;i++){
+    var id = pins[i], p = id && pkgOf(id);
+    var d = document.createElement('div');
+    if (p){ d.className="slot full"; d.innerHTML='<div class="ic">'+p.icon+'</div><div class="nm">'+p.name+'</div>';
+      d.onclick=(function(pp){return function(){ pins=pins.filter(function(x){return x!==pp.id}); renderAll(); toast('已取消钉选「'+pp.name+'」'); };})(p);
+    } else { d.className="slot"; d.innerHTML='<div class="ic">＋</div><div class="nm">空槽</div>'; }
+    row.appendChild(d);
+  }
+  document.getElementById('pinCnt').textContent = pins.length + "/" + PIN_MAX;
+  document.getElementById('ovPins').textContent = pins.length;
+}
+function renderGroups(){
+  var box = document.getElementById('groups'); box.innerHTML="";
+  var total = 0;
+  groups.forEach(function(g){
+    var gt = document.createElement('div'); gt.className="grp";
+    var head = '<div class="gt"><span>'+g.title+'</span><span>'+g.sub+'</span></div>';
+    var card = document.createElement('div'); card.className="card";
+    g.pkgs.forEach(function(p){
+      total += p.tools.length;
+      var pinned = pins.indexOf(p.id) >= 0;
+      var el = document.createElement('div'); el.className="pkg";
+      var toolsHtml = p.tools.map(function(t){
+        return '<div class="tool"><span class="tn">'+t[0]+'</span><span class="td">'+t[1]+'</span><span class="perm '+(t[2]==="free"?"free\">免审批":"ask\">需确认")+'</span></div>';
+      }).join("");
+      var swHtml = p.locked ? '' : '<div class="sw'+(p.enabled?" on":"")+'"></div>';
+      el.innerHTML = '<div class="prow"><div class="pic">'+p.icon+'</div>'+
+        '<div class="pmeta"><div class="pn">'+p.name+'<span class="badge '+p.badge[0]+'">'+p.badge[1]+'</span></div>'+
+        '<div class="pd">'+p.desc+' · '+p.tools.length+' 个工具</div></div>'+
+        '<button class="pinbtn'+(pinned?" on":"")+'">'+(pinned?"★":"☆")+'</button>'+
+        '<span class="st'+(p.enabled?(p.health==="bad"?" bad":""):" off")+'"></span>'+swHtml+'<span class="arrow">›</span></div>'+
+        '<div class="tools">'+toolsHtml+'</div>';
+      el.querySelector('.prow').onclick = function(e){
+        if (e.target.classList.contains('sw') || e.target.classList.contains('pinbtn')) return;
+        el.classList.toggle('open');
+      };
+      el.querySelector('.pinbtn').onclick = function(){
+        if (pinned){ pins = pins.filter(function(x){return x!==p.id}); toast('已取消钉选「'+p.name+'」'); }
+        else { if (pins.length>=PIN_MAX){ toast('钉选已满（'+PIN_MAX+' 个）'); return; } pins.push(p.id); toast('已钉选「'+p.name+'」→ 主页小按钮'); }
+        renderAll();
+      };
+      var sw = el.querySelector('.sw');
+      if (sw) sw.onclick = function(){
+        p.enabled = !p.enabled; sw.classList.toggle('on', p.enabled);
+        el.querySelector('.st').className = 'st' + (p.enabled ? (p.health==="bad"?" bad":"") : ' off');
+        renderHome(); toast(p.name + (p.enabled ? ' 已启用' : ' 已停用') + (p.enabled?"":"（主页气泡灰显）"));
+      };
+      card.appendChild(el);
+    });
+    gt.innerHTML = head; gt.appendChild(card);
+    box.appendChild(gt);
+  });
+  document.getElementById('ovTools').textContent = total;
+}
+function renderAll(){ renderPins(); renderGroups(); renderHome(); }
+
+/* tab 切换 */
+document.querySelectorAll('.tab').forEach(function(t){
+  t.onclick = function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+    t.classList.add('on');
+    document.getElementById('pgLocal').style.display = t.dataset.tab==='local' ? '' : 'none';
+    document.getElementById('pgStore').style.display = t.dataset.tab==='store' ? '' : 'none';
+  };
+});
+/* 点弹窗外关闭 */
+document.addEventListener('click', function(e){
+  var pop = document.getElementById('mcpPop');
+  if (pop.classList.contains('show') && !pop.contains(e.target) && (!e.target.closest || !e.target.closest('#mcpChip'))) pop.classList.remove('show');
+});
+
+var toastTimer=null;
+function toast(msg){
+  var el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show');
+  clearTimeout(toastTimer); toastTimer=setTimeout(function(){el.classList.remove('show')},1600);
+}
+
+renderAll();
+</script>
+</body>
+</html>
