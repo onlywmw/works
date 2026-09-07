@@ -203,9 +203,10 @@ function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
   }
   const dm = txt.match(DEL_RE);
   const rawT = libLines.slice(idx, end).join(String.fromCharCode(10));
+  const phm = rawT.match(/```status[\s\S]*?\r?\nphase:\s*(\w+)/);
   const cm = rawT.match(/\*\*分类\*\*[：:]\s*([MP0-9A-Z]{1,3})/);
   const cat = cm ? cm[1] : null;
-  return { cardNo, title: cardTitle, statusText: txt, raw: rawT, cat, row, priority: extractPriority(rawT), delId: dm ? dm[dm.length - 1] : null };
+  return { cardNo, title: cardTitle, statusText: txt, raw: rawT, cat, row, phase: phm ? phm[1] : null, priority: extractPriority(rawT), delId: dm ? dm[dm.length - 1] : null };
 }
 
 function readLib(libPath) {
@@ -260,8 +261,12 @@ function readHanging(hangPath) {
 // ---------------- 投影层（E1 → Projection Model）----------------
 // 当前态判定（优先级）：已合 main(正向合流) → 打回(晚于合流则回炉) → 验收/审验通过(待合) → dev 动作(施工/待验收)
 //   → 已派/认领(已派待认领) → ⏳/待前置(排队) → 未知(⚠️ 无法解析，不静默降级)
-function detectStage(row, txt) {
+function detectStage(row, txt, phase) {
   const G = row.G, F = row.F;
+  // SYS-04 status 块权威优先（机器登记态 > 状态文案）——2026-09-08 整修：已合卡误显在流根因
+  if (phase === "merged") return { stage: "merged" };
+  if (phase === "archived" || phase === "cancelled") return { stage: "archived" };
+  if (phase === "rejected") return { stage: "delivering", rejected: true };
   // 看板操作标记（用户拍板：看板回炉重修）——最高优先
   if (/【看板回炉】/.test(txt)) return { stage: "delivering", rejected: true };
   
@@ -340,7 +345,7 @@ function dateNumToStr(t) {
 function analyzeCard(card, nowMs) {
   const txt = card.statusText;
   const kdT = card.raw || txt;
-  const det = detectStage(card.row, txt);
+  const det = detectStage(card.row, txt, card.phase);
   const stage = det.stage;
   const tsNum = maxDate(txt);
   const ts = tsNum >= 0 ? dateNumToStr(tsNum) : null;
