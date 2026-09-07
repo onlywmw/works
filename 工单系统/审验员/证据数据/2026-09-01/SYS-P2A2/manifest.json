@@ -1,0 +1,13 @@
+{
+  "delivery_id": "DEL-SYS-P2A2-20260901-001",
+  "evidence_manifest": [
+    {
+      "evidence_id": "EVID-1",
+      "path": "审验员/证据数据/2026-09-01/SYS-P2A2/evidence.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "producer": "程序员",
+      "created_at": "2026-09-01T09:00:00"
+    }
+  ],
+  "evidence_manifest_sha": "df93688c2cc50419a09a87351c37865841731301ca02b722825c42fadfcb3f80"
+}

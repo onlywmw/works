@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="mcp_servers">[{&quot;id&quot;:&quot;MockServer&quot;,&quot;url&quot;:&quot;https://mow.kim/mock/mcp&quot;,&quot;token&quot;:&quot;&quot;,&quot;enabled&quot;:true,&quot;origin&quot;:&quot;market&quot;,&quot;name&quot;:&quot;MockServer&quot;,&quot;desc&quot;:&quot;模拟能力市场服务器（审验用）&quot;,&quot;cat&quot;:&quot;mock&quot;,&quot;paid&quot;:false}]</string>
+</map>

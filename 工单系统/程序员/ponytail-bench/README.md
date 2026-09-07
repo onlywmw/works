@@ -1,6 +1,6 @@
 # ponytail-bench — 极简对照测量工具（程序员工作流）
 
-> 接入日期：2026-09-02（ponytail 规则于 0027-mov AGENTS.md 第 7 条默认生效；本工具=测量/对照）
+> 接入日期：2026-09-02（ponytail 规则接入于 <项目> AGENTS.md——新项目按需接入）默认生效；本工具=测量/对照）
 > 来源：DietrichGebert/ponytail（MIT）benchmarks 适配（loc.js 同口径）
 
 ## 用在哪
@@ -38,5 +38,5 @@ ponytail 官方 54% 是 5 个 toy 任务（email validator/debounce/CSV sum/Reac
 ## 归属
 
 - 工具：`程序员\ponytail-bench\`（本目录）
-- 规则常驻：`0027-mov\AGENTS.md` 第 7 条（极简阶梯默认生效）
+- 规则常驻：`<项目>\AGENTS.md` 第 7 条（极简阶梯默认生效）
 - 深度档：skill `ponytail`（`/ponytail`——lite/full/ultra + audit 等子技能）
