@@ -1,11 +1,11 @@
 [
-  { "name": "安卓中国", "prefix": "ANG-", "lib": "../安卓中国体系建设/工单库.md", "color": "#4F46E5" },
-  { "name": "iOS 苹果", "prefix": "IOS-", "lib": "../ios体系建设—苹果/工单库.md", "color": "#000000" },
-  { "name": "PC", "prefix": "PC-", "lib": "../pc端体系建设/工单库.md", "color": "#2563EB" },
-  { "name": "鸿蒙", "prefix": "HMOS-", "lib": "../鸿蒙体系建设/工单库.md", "color": "#0EA5E9" },
-  { "name": "微信生态", "prefix": "WX-", "lib": "../腾讯微信生态/工单库.md", "color": "#07C160" },
-  { "name": "云服务器", "prefix": "CLOUD-", "lib": "../云服务器管理/工单库.md", "color": "#F59E0B" },
-  { "name": "运营中心", "prefix": "OPS-", "lib": "../运营中心/工单库.md", "color": "#8B5CF6" },
-  { "name": "网页体系", "prefix": "WEB-", "lib": "../网页体系建设/工单库.md", "color": "#EF4444" },
-  { "name": "谷歌出海", "prefix": "GP-", "lib": "../安卓全球版体系建设—谷歌/工单库.md", "color": "#DB2777" }
+  { "id": "android-cn", "name": "安卓中国", "prefix": "ANG-", "lib": "../安卓中国体系建设/工单库.md", "color": "#4F46E5", "enabled": true, "schema_version": 1, "legacy_prefixes": ["UPG", "SYS", "W"] },
+  { "id": "ios", "name": "iOS 苹果", "prefix": "IOS-", "lib": "../ios体系建设—苹果/工单库.md", "color": "#000000", "enabled": true, "schema_version": 1 },
+  { "id": "pc", "name": "PC", "prefix": "PC-", "lib": "../pc端体系建设/工单库.md", "color": "#2563EB", "enabled": true, "schema_version": 1 },
+  { "id": "hmos", "name": "鸿蒙", "prefix": "HMOS-", "lib": "../鸿蒙体系建设/工单库.md", "color": "#0EA5E9", "enabled": true, "schema_version": 1 },
+  { "id": "wechat", "name": "微信生态", "prefix": "WX-", "lib": "../腾讯微信生态/工单库.md", "color": "#07C160", "enabled": true, "schema_version": 1 },
+  { "id": "cloud", "name": "云服务器", "prefix": "CLOUD-", "lib": "../云服务器管理/工单库.md", "color": "#F59E0B", "enabled": true, "schema_version": 1 },
+  { "id": "ops", "name": "运营中心", "prefix": "OPS-", "lib": "../运营中心/工单库.md", "color": "#8B5CF6", "enabled": true, "schema_version": 1 },
+  { "id": "web", "name": "网页体系", "prefix": "WEB-", "lib": "../网页体系建设/工单库.md", "color": "#EF4444", "enabled": true, "schema_version": 1 },
+  { "id": "google", "name": "谷歌出海", "prefix": "GP-", "lib": "../安卓全球版体系建设—谷歌/工单库.md", "color": "#DB2777", "enabled": true, "schema_version": 1 }
 ]
