@@ -248,6 +248,7 @@ export function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
   const dm = txt.match(DEL_RE);
   const deliveryId = blk.delivery_id || (dm ? dm[dm.length - 1] : null);
   const cm = rawT.match(/\*\*分类\*\*[：:]\s*([MP0-9A-Z]{1,3})/);
+  const statusText = txt;
 
   return {
     id: cardNo,
@@ -255,6 +256,7 @@ export function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
     phase,
     stageLabel: phase ? labelOf(phase) : null,
     statusSummary: stLine,
+    statusText,
     head,
     branch,
     designer,

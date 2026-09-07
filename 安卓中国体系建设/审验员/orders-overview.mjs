@@ -34,6 +34,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import { parseCardStatus as libParseCardStatus } from "./lib/parse-card.mjs";
 const ROOT = path.dirname(__dirname); // 工单系统\
 const DEFAULT_LIB = path.join(ROOT, "工单库.md");
 const DEFAULT_TABLE = path.join(ROOT, "工单表.xlsx");
@@ -50,104 +51,12 @@ const THRESHOLD = {
 
 const LEGEND_LINE = "线 A=agent-1 · B=agent-2 · C=agent-3 · D=agent-4";
 
-// ---------------- 解析核心（复制自 sync-orders.mjs R1 增强版，E4 自包含）----------------
-const SEC_WORDS = [
-  "**卡点", "**背景", "**来源", "**问题", "**修法", "**验收", "**交接", "**红线", "**方案",
-  "**决策点", "**施工规矩", "**根因", "**定案", "**防撞", "**级别", "**判据",
-  "**范围红线", "**关键设计点", "**送审", "**与契约", "**一句话", "**施工范围",
-  "**遗留", "**用户实测", "**其余", "**串行", "**交付", "**顺带纠正", "**无冲突",
-  "**Token", "**认领情况", "**派单交接", "**核心方案", "**实施", "**不做清单",
-  "**维持死亡", "**证伪复活", "**方法学注记", "**文档纪律", "**打回依据",
-  "**重修验收", "**关联独立单", "**桥能力现状", "**达标项", "**修正项", "**差距",
-  "**合格", "**结构", "**能力清单", "**安装", "**功能", "**规则", "**场景",
-  "**边界", "**职责", "**契约", "**接口", "**数据结构", "**配置", "**流转",
-];
-
-const SEG_RE = /(?=→\s*[✅🔨❌⚠️📌🆕⏳】]+)|(?=→\s*\*\*)|(?=｜\s*[✅🔨❌⚠️📌🆕⏳】]+)|(?=｜\s*\*\*)|(?=【✅)|(?=】；)|(?=\*\*日期\*\*)|(?=\*\*出单人\*\*)|(?=\*\*优先级\*\*)|(?= \*\*✅)|(?= \*\*🔨)|(?= \*\*❌)/;
-
-const FIELD_HEAD = ["**出单人**", "**日期**", "**优先级**", "**卡点**", "**原状态**"];
-
-// 角色动作锚（与 sync-orders.mjs 完全同口径——E4 复用 E1 的角色段解析）
-const ROLE_ANCHORS = [
-  { role: "merge", re: /待设计师合 main|已合 main|合 main|合流/g },
-  { role: "inspector", re: /验收员|验收通过|独立复核|复验|打回|审验/g },
-  { role: "dev", re: /C 交付|C 完成|C 修复|C 批|修复交付|修复完成|M3-R2|已认领|在施|施工中|重修完成/g },
-  { role: "designer", re: /出单人|方案[\s**]*[vV]\d|设计[\s]*[vV]\d|定稿|已派单|评审|裁决|拍板|规范|激活|方案完成/g },
-];
-
-const DATE_RE = /@?(\d{4}-\d{2}-\d{2})/g;
-const DEL_RE = /DEL-[A-Z0-9]+-\d{8}-\d+/g;
-const DOC_RE = /设计师[\\/][^\s｜|，。；）)（(]*?\.md/;
-
-function extractPriority(txt) {
-  const patterns = [
-    /\*\*优先级\*\*：\s*([^｜|\n\r]+)/,
-    /(?:｜|\|)\s*优先级：\s*([^｜|\n\r]+)/,
-    /(?:^|；)优先级：\s*([^｜|\n\r]+)/,
-    /（(P[0-4])\s*·\s*[0-9~]/u,
-    /\*\*级别\*\*：\s*([^｜|\n\r]+)/,
-  ];
-  for (const re of patterns) {
-    const m = txt.match(re);
-    if (!m) continue;
-    let v = m[1].trim().replace(/[（(].*$/, "").trim();
-    // 多批分级（如「批 1 P0 / 批 2 P1」）→ 取主批（首个 P 级）
-    const pm = v.match(/P[0-4]/);
-    if (pm) return pm[0];
-    if (/^[0-4]$/.test(v)) return "P" + v;
-    if (/^P[0-4]$/.test(v)) return v;
-    return v;
-  }
-  return "—";
-}
-
-function segments(text) {
-  let body = text.replace(/^\*\*状态\*\*：/, "").replace(/\n/g, " ").replace(/——/g, "｜");
-  return body
-    .split(SEG_RE)
-    .map((p) => p.trim().replace(/^[→｜。；]+/, "").trim())
-    .filter((p) => p.length > 0);
-}
-
-function classify(seg) {
-  if (FIELD_HEAD.some((f) => seg.startsWith(f))) return null;
-  const head = seg.slice(0, 40);
-  for (const { role, re } of ROLE_ANCHORS) {
-    re.lastIndex = 0;
-    if (re.test(head)) return role;
-  }
-  return null;
-}
-
-function actionSubsegs(seg) {
-  const markers = [];
-  for (const { role, re } of ROLE_ANCHORS) {
-    for (const m of seg.matchAll(re)) markers.push({ idx: m.index, role, word: m[0] });
-  }
-  if (!markers.length) return [];
-  markers.sort((a, b) => a.idx - b.idx || b.word.length - a.word.length);
-  const dedup = [];
-  for (const mk of markers) {
-    const last = dedup[dedup.length - 1];
-    if (last && last.idx === mk.idx) continue;
-    if (last && mk.role === last.role && mk.idx < last.idx + last.word.length) continue;
-    dedup.push(mk);
-  }
-  const out = [];
-  for (let k = 0; k < dedup.length; k++) {
-    const mk = dedup[k];
-    const tail = seg.slice(mk.idx + mk.word.length, k + 1 < dedup.length ? dedup[k + 1].idx : seg.length)
-      .trim().replace(/^[｜|→。；：]+/, "").trim();
-    out.push({ role: mk.role, text: (mk.word + tail).slice(0, 70) });
-  }
-  return out;
-}
-
+// ---------------- 解析核心：SYS-10 批① 起改为 import lib/parse-card.mjs（V8 禁私有正则）----------------
 function maxDate(s) {
-  // 返回 UTC 毫秒时间戳：取状态发生日 23:59:59（日粒度——当天发生、次日检查 <24h 不算逾期）
+  // 返回 UTC 毫秒时间戳：取状态发生日 23:59:59（日粒度——超期计算用；非状态解析，V8 不拦）
   let date = -1;
-  DATE_RE.lastIndex = 0;
-  for (let m = DATE_RE.exec(s); m; m = DATE_RE.exec(s)) {
+  const DATE_RE = /@(\d{4}-\d{2}-\d{2})/g;
+  for (const m of s.matchAll(DATE_RE)) {
     const p = m[1].split("-");
     const t = Date.UTC(+p[0], +p[1] - 1, +p[2], 23, 59, 59);
     if (t > date) date = t;
@@ -155,58 +64,14 @@ function maxDate(s) {
   return date;
 }
 
-// pick 返回 { text, date, pos }（与 sync-orders 的字符串版同选法，E4 额外需要位置做打回/合流先后判定）
-function pick(segs, role) {
-  let best = null, bestDate = -1, bestPos = -1, hasWhole = false;
-  segs.forEach((s, pos) => {
-    if (FIELD_HEAD.some((f) => s.startsWith(f))) return;
-    if (classify(s) !== role) return;
-    hasWhole = true;
-    const date = maxDate(s);
-    if (date > bestDate || (date === bestDate && pos > bestPos)) {
-      best = { text: s, date, pos }; bestDate = date; bestPos = pos;
-    }
-  });
-  if (hasWhole) return best;
-  segs.forEach((s, pos) => {
-    if (FIELD_HEAD.some((f) => s.startsWith(f))) return;
-    actionSubsegs(s).forEach((sub, si) => {
-      if (sub.role !== role) return;
-      const date = maxDate(sub.text);
-      const score = pos + si / 100;
-      if (date > bestDate || (date === bestDate && score > bestPos)) {
-        best = { text: sub.text, date, pos: score }; bestDate = date; bestPos = score;
-      }
-    });
-  });
-  return best;
-}
-
-// 单卡状态区解析：{ statusText, row{D/E/F/G: {text,date,pos}|null}, priority, delId }
+// 单卡状态区解析：SYS-10 批① 起=lib/parse-card.mjs 委托（私有正则已删——V8）
 function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
-  let st = -1;
-  for (let j = idx; j < end; j++) if (libLines[j].includes("**状态**：")) { st = j; break; }
-  if (st === -1) return { cardNo, title: cardTitle, statusText: "", row: { D: null, E: null, F: null, G: null }, priority: "—", delId: null };
-  let endline = end;
-  for (let j = st + 1; j < end; j++) {
-    const l = libLines[j];
-    if (/^# (?:UPG|SYS|W|S)-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
-    if (l.startsWith(">") || l.startsWith("---")) { endline = j; break; }
-    if (SEC_WORDS.some((w) => l.startsWith(w))) { endline = j; break; }
-  }
-  const txt = libLines.slice(st, endline).join("\n");
-  const segs = segments(txt);
-  const row = { D: null, E: null, F: null, G: null };
-  for (const [role, key] of [["designer", "D"], ["dev", "E"], ["inspector", "F"], ["merge", "G"]]) {
-    const p = pick(segs, role);
-    if (p) row[key] = p;
-  }
-  const dm = txt.match(DEL_RE);
-  const rawT = libLines.slice(idx, end).join(String.fromCharCode(10));
-  const phm = rawT.match(/```status[\s\S]*?\r?\nphase:\s*(\w+)/);
-  const cm = rawT.match(/\*\*分类\*\*[：:]\s*([MP0-9A-Z]{1,3})/);
-  const cat = cm ? cm[1] : null;
-  return { cardNo, title: cardTitle, statusText: txt, raw: rawT, cat, row, phase: phm ? phm[1] : null, priority: extractPriority(rawT), delId: dm ? dm[dm.length - 1] : null };
+  const c = libParseCardStatus(cardNo, cardTitle, libLines, idx, end);
+  return {
+    cardNo: c.id, title: c.title, statusText: c.statusText, raw: c.raw, cat: c.cat,
+    row: { D: c.roles.D, E: c.roles.E, F: c.roles.F, G: c.roles.G },
+    phase: c.phase, priority: c.priority, delId: c.delivery_id,
+  };
 }
 
 function readLib(libPath) {
