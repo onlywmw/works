@@ -47,11 +47,20 @@ function FEATURE_TREE() { return FEATURES.tree; }
 
 // === FEATURE_VALIDATOR（v1.2：功能域必须在功能树中） ===
 const FEATURE_RE = /\*\*功能域\*\*[：:][ ]*([^\n|]+)/;
-function validateFeature(raw) {
-  if (!raw || !raw.trim()) return null;
-  const paths = raw.split(/[、,，;；\s]+/).map(s => s.trim().replace(/^\/+|\/+$/g, "")).filter(Boolean);
-  const bad = paths.filter(p => !FEATURE_PATHS.has(p));
-  return { raw: raw.trim(), paths, bad };
+const FEATURE_REL_RE = /\*\*关联功能域\*\*[：:][ ]*([^\n|]+)/;
+function parseFeaturePaths(raw) {
+  if (!raw || !raw.trim()) return [];
+  return raw.split(/[、,，;；\s]+/).map(s => s.trim().replace(/^\/+|\/+$/g, "")).filter(Boolean);
+}
+function validateFeature(raw, relRaw) {
+  const primary = parseFeaturePaths(raw);
+  const related = parseFeaturePaths(relRaw);
+  const bad = [];
+  if (primary.length === 0) bad.push("主功能域缺失（primary 必填唯一）");
+  if (primary.length > 1) bad.push("主功能域 ≥2（违反单主约束）");
+  for (const p2 of primary) if (!FEATURE_PATHS.has(p2)) bad.push("主功能域不在树: " + p2);
+  for (const r of related) if (!FEATURE_PATHS.has(r)) bad.push("关联功能域不在树: " + r);
+  return { primary, related, bad };
 }
 
 // === Registry Validator（P0-1） ===
@@ -100,7 +109,7 @@ function parseLib(libPath, sysDef) {
       pri: prm?.[1] || "",
       dep: (b.match(DEP_RE)?.[1] || "").trim(),
       blk: (b.match(BLK_RE)?.[1] || "").trim(),
-      feat: validateFeature(b.match(FEATURE_RE)?.[1] || ""),
+      feat: validateFeature(b.match(FEATURE_RE)?.[1] || "", b.match(FEATURE_REL_RE)?.[1] || ""),
       ownershipOk,
     });
   }
@@ -119,6 +128,7 @@ const targets = only ? systems.filter(s => s.name === only) : systems.filter(s =
 const rows = [];
 let warnings = [];
 let badStageCount = 0;
+let missingFeatCount = 0;
 for (const s of targets) {
   const lib = path.resolve(ROOT, "..", s.lib.replace(/^\.\.\//, ""));
   const { cards, err } = parseLib(lib, s);
@@ -126,7 +136,11 @@ for (const s of targets) {
   for (const c of cards) {
     if (!c.ownershipOk) warnings.push(`${s.name}/${c.no}: 前缀与注册表不符（库归属校验 FAIL）`);
     if (c.stage.cls === "bad") badStageCount++;
-    if (c.feat && c.feat.bad.length) warnings.push(`${s.name}/${c.no}: 功能域不在功能树 [${c.feat.bad.join(", ")}]（功能树: ${FEATURE_PATHS.size} 路径）`);
+    if (c.feat) {
+      const serious = c.feat.bad.filter(b => !b.startsWith("主功能域缺失"));
+      if (serious.length) warnings.push(`${s.name}/${c.no}: 功能域校验 [${serious.join(" | ")}]`);
+      if (c.feat.bad.some(b => b.startsWith("主功能域缺失"))) missingFeatCount++;
+    }
     rows.push({ sys: s.name, color: s.color, ...c });
   }
   console.log(`${s.name}: ${cards.length} 卡${!s.enabled ? "（disabled）" : ""}`);
@@ -167,8 +181,9 @@ const sysRows = Object.entries(bySys).map(([sys, cs]) => {
 }).join("");
 
 const stageCls = (c) => c === "ok" ? "#059669" : c === "active" ? "#2563EB" : "#DC2626";
-const rowsHtml = rows.map(r => `<tr><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5"><span style="color:${r.color};font-weight:600">${esc(r.sys)}</span></td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5">${esc(r.no)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5">${esc(r.title)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5;color:${stageCls(r.stage.cls)};font-weight:600">${esc(r.stage.text)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5">${esc(r.pri)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5;color:#6b7280;font-size:11px">${r.feat ? esc(r.feat.raw) : ""}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5;color:#9ca3af;font-size:11px">${r.dep ? "↳" + esc(r.dep) : r.blk ? "⊘" + esc(r.blk) : ""}</td></tr>`).join("");
+const rowsHtml = rows.map(r => `<tr><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5"><span style="color:${r.color};font-weight:600">${esc(r.sys)}</span></td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5">${esc(r.no)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5">${esc(r.title)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5;color:${stageCls(r.stage.cls)};font-weight:600">${esc(r.stage.text)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5">${esc(r.pri)}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5;color:#6b7280;font-size:11px">${r.feat ? esc(r.feat.primary.join(",") || "") + (r.feat.related.length ? " ↪" + esc(r.feat.related.join(",")) : "") : ""}</td><td style="padding:6px 10px;border-bottom:1px solid #f5f5f5;color:#9ca3af;font-size:11px">${r.dep ? "↳" + esc(r.dep) : r.blk ? "⊘" + esc(r.blk) : ""}</td></tr>`).join("");
 
+const featNote = missingFeatCount ? `<div class="panel"><h2 style="color:#d97706">ℹ️ ${missingFeatCount} 张卡未填功能域（历史卡待补录——新卡必填）</h2></div>` : "";
 const warnNote = badStageCount ? `<div class="panel"><h2 style="color:#d97706">ℹ️ 历史状态未规范化 ${badStageCount} 条（仅提示——新卡强制合法状态）</h2></div>` : "";
 const warnHtml = warnings.length || refIssues.length
   ? `<div class="panel" style="border:1px solid #fca5a5"><h2 style="color:#DC2626">⚠️ 校验告警（${warnings.length + refIssues.length}）</h2><ul style="font-size:12px;color:#991b1b;margin:0;padding-left:18px">${[...warnings, ...refIssues].map(w => `<li>${esc(w)}</li>`).join("")}</ul></div>`
@@ -192,7 +207,7 @@ table{border-collapse:collapse;width:100%;font-size:13px}th{text-align:left;colo
 <h1>MOV 全体系工单总览</h1>
 <div class="sub">v1.1（评审采纳）· ${new Date().toLocaleString("zh-CN")} · 数据源：${targets.length} 个体系库 · Registry/Ownership/Stage 校验已跑</div>
 <div class="cards">${statCards.map(c => `<div class="card"><div class="n" style="color:${c.cls}">${c.n}</div><div class="z">${c.zh}</div></div>`).join("")}</div>
-${warnNote}${warnHtml}
+${featNote}${warnNote}${warnHtml}
 <div class="panel"><h2>按体系</h2><table><thead><tr><th>体系</th><th>卡数</th><th>已合 main</th><th>在流</th><th>作废/归档</th></tr></thead><tbody>${sysRows || `<tr><td colspan="5">暂无</td></tr>`}</tbody></table></div>
 <div class="panel"><h2>全部工单</h2><table><thead><tr><th>体系</th><th>单号</th><th>标题</th><th>状态</th><th>级</th><th>功能域</th><th>引用</th></tr></thead><tbody>${rowsHtml || `<tr><td colspan="6">全部库暂无卡（各体系复制 工单系统模板/工单库.模板.md 起卡）</td></tr>`}</tbody></table></div>
 <div class="foot">生成：node 审验员/aggregate-overview.mjs（--only 体系名 看单体系）· 只读投影 · 口径：当前工作量=总卡（作废/归档独立统计）</div>
