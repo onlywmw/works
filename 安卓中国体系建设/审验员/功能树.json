@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-08",
+  "tree": [
+    { "path": "首页", "name": "首页", "note": "入口/球/对话首页" },
+    { "path": "对话", "name": "对话", "note": "会话/房间/消息流" },
+    { "path": "工具", "name": "工具", "note": "工具执行/审批/权限" },
+    { "path": "MCP", "name": "MCP", "note": "MCP 服务器/注册中心" },
+    { "path": "记忆", "name": "记忆", "note": "记忆/回忆/基因" },
+    { "path": "市场", "name": "能力市场", "note": "市场/分享/安装/商城" },
+    { "path": "官网", "name": "官网", "note": "mov-ai.cn 官网/llms/容器面" },
+    { "path": "资产", "name": "资产" },
+    { "path": "资产/衣柜", "name": "我的衣柜", "note": "UPG-119 衣柜生图/换装" },
+    { "path": "资产/徽章", "name": "徽章" },
+    { "path": "资产/账户", "name": "账户与凭据", "note": "vault/credentials" },
+    { "path": "设置", "name": "设置" },
+    { "path": "登录注册", "name": "登录注册", "note": "手机验证码/协议/登录" },
+    { "path": "安全合规", "name": "安全与合规", "note": "审批/隐私/备案" },
+    { "path": "后台", "name": "后台", "note": "mow.kim 后台/运营/商家" },
+    { "path": "支付", "name": "支付", "note": "微信支付/商户/计费" },
+    { "path": "多端", "name": "多端", "note": "ios/鸿蒙/pc 翻译线" }
+  ]
+}
