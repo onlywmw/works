@@ -22,7 +22,7 @@ function walk(dir, out = []) {
     if (e.name.startsWith(".") || e.name.startsWith("_")) continue;
     const full = path.join(dir, e.name);
     if (e.isDirectory()) walk(full, out);
-    else if (e.name.endsWith(".md")) out.push(full);
+    else if (e.name.endsWith(".md") && !e.name.includes("方案状态建议清单")) out.push(full);
   }
   return out;
 }
@@ -45,12 +45,28 @@ for (const f of files) {
   // 状态探测
   let state = (head.match(STATE_RE) || [])[1] || "";
   let state2 = "";
-  if (!state) { const m = head.match(STAGE_RE); state2 = m ? m[1] : "未标注"; }
+  let hint = "";
+  if (!state) {
+    const fc = (re) => (doc.match(re) || [])[0] || "";
+    const impl = fc(/(已实施|已落地|已合 main|已交付(?!.{0,20}备案))/);
+    const dead = fc(/(已废弃|不采用|不再采用|方案已被否决|停止推进|已放弃|不再推进)/);
+    const final = fc(/(方案.{0,12}定稿|评审通过|定稿|9[.\d]*\s*\/\s*10|已采纳)/);
+    const inrev = fc(/(送审|评审中|征求意见|专家评审)/);
+    const pend = fc(/(挂起|暂停|待定|推迟|先不做)/);
+    if (dead && !impl) { state2 = "建议:已废弃"; hint = "「" + dead.slice(0, 20) + "」"; }
+    else if (impl) { state2 = "建议:已实施"; hint = "「" + impl.slice(0, 20) + "」"; }
+    else if (final) { state2 = "建议:定稿"; hint = "「" + final.slice(0, 20) + "」"; }
+    else if (inrev) { state2 = "建议:评审中"; hint = "「" + inrev.slice(0, 20) + "」"; }
+    else if (pend) { state2 = "建议:已挂起"; hint = "「" + pend.slice(0, 20) + "」"; }
+    else if (doc.length < 600) { state2 = "建议:草稿"; hint = "空白/骨架文档"; }
+    else { state2 = "未标注"; hint = "无明确状态信号"; }
+  }
   const tickets = [...new Set((doc.match(IMPL_RE) || []).map(t => t.replace(/-(\d)/, "-$1")))].slice(0, 4);
   items.push({
     rel, base, theme: noVer || base, ver,
     state: state.trim() || state2,
     hasState: !!state,
+    hint,
     tickets: tickets.join(", "),
     size: doc.length,
   });
@@ -106,7 +122,22 @@ table{border-collapse:collapse;width:100%;font-size:13px}th{text-align:left;colo
 <div class="foot">状态词表：草稿/评审中/定稿/已实施(落地)/已废弃/已挂起；实施工单 = 文档正文出现的首个工单号（实施单）；根治办法 = 定稿时设计师在方案头部填「方案状态」+「实施工单」，废弃旧版本在文件头标「已废弃」</div>
 </body></html>`;
 
+
 fs.writeFileSync(OUT, html);
+const cand = items.filter(i => !i.hasState && i.state.startsWith("建议:"));
+const sugLines = [
+  "# 方案状态建议清单（机器候选 · 设计师确认后回填头部）",
+  "",
+  "> 生成：审验员/design-audit.mjs · " + new Date().toLocaleString("zh-CN"),
+  "> " + items.length + " 份文档；待确认 " + cand.length + " 份（机器启发式候选，确认后改为头部 **方案状态** 字段）。",
+  "",
+  "| 文件 | 建议状态 | 命中信号 |",
+  "|---|---|---|",
+  ...cand.sort((a, b) => a.rel.localeCompare(b.rel)).map(i => "| " + i.rel + " | " + i.state.replace("建议:", "") + " | " + i.hint + " |"),
+  "",
+].join("\n");
+fs.writeFileSync(path.join(ROOT, "设计师", "方案设计", "方案状态建议清单.md"), sugLines);
+console.log("📋 建议清单（" + cand.length + " 份候选）");
 console.log(`✅ 方案全景 → ${OUT}`);
 console.log(`方案主题 ${stats.themes} · 文档 ${stats.total} · 多版本 ${stats.multi} · 状态未标注 ${stats.unmarked}`);
 if (stats.unmarked > 0) process.exit(1); // 提示级：未标注多 = 卫生待补（不阻断生成）
