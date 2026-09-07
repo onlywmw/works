@@ -16,6 +16,7 @@
       "type": ["string", "null"]
     },
     "statusSummary": { "type": "string", "description": "**状态** 文案行首行原文（物化视图投影；无状态区=空串）" },
+    "statusText": { "type": "string", "description": "状态区全文（**状态**：起至区域止——detectStage 回炉标记等派生消费）" },
     "head": { "type": ["string", "null"], "description": "status 块 head 字段（git hash）" },
     "branch": { "type": ["string", "null"], "description": "status 块 branch 字段" },
     "designer": { "type": ["string", "null"], "description": "status 块 designer 字段" },
