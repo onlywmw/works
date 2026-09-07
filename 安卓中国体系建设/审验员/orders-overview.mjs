@@ -130,7 +130,7 @@ function detectStage(row, txt, phase) {
   const G = row.G, F = row.F;
   // SYS-04 status 块权威优先（机器登记态 > 状态文案）——2026-09-08 整修：已合卡误显在流根因
   if (phase === "merged") return { stage: "merged" };
-  if (phase === "archived" || phase === "cancelled" || phase === "obsolete") return { stage: "archived" };
+  if (phase === "archived" || phase === "cancelled" || phase === "obsolete" || phase === "closed") return { stage: "archived" };
   if (phase === "rejected") return { stage: "delivering", rejected: true };
   if (phase === "assigned" || phase === "dispatched") return { stage: "assigned" };
   if (phase === "delivering" || phase === "in_progress") return { stage: "delivering" };
