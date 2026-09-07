@@ -1,0 +1,13 @@
+{
+  "delivery_id": "DEL-UPG-99-20260901-001",
+  "evidence_manifest": [
+    {
+      "evidence_id": "EVID-1",
+      "path": "审验员/_selfcheck/D_manifest/evidence.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "producer": "程序员",
+      "created_at": "2026-09-01T10:00:00"
+    }
+  ],
+  "evidence_manifest_sha": "7da350f9dd067cb2a8845658c1c736e3186ebb0cfcf92d97d83030217bd51a10"
+}
