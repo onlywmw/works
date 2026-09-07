@@ -48,11 +48,16 @@ function FEATURE_TREE() { return FEATURES.tree; }
 // === FEATURE_VALIDATOR（v1.2：功能域必须在功能树中） ===
 const FEATURE_RE = /\*\*功能域\*\*[：:][ ]*([^\n|]+)/;
 const FEATURE_REL_RE = /\*\*关联功能域\*\*[：:][ ]*([^\n|]+)/;
+const FEATURE_ID_RE = /\*\*feature_id\*\*[：:][ ]*([A-Z0-9-]+)/; // immutable id（P0-2）
 function parseFeaturePaths(raw) {
   if (!raw || !raw.trim()) return [];
   return raw.split(/[、,，;；\s]+/).map(s => s.trim().replace(/^\/+|\/+$/g, "")).filter(Boolean);
 }
-function validateFeature(raw, relRaw) {
+function validateFeature(raw, relRaw, featId) {
+  if (featId) {
+    const found = FEATURES.tree.some(f => f.feature_id === featId.trim());
+    if (!found) return { primary: parseFeaturePaths(raw), related: parseFeaturePaths(relRaw), bad: ["feature_id 不在功能树: " + featId] };
+  }
   const primary = parseFeaturePaths(raw);
   const related = parseFeaturePaths(relRaw);
   const bad = [];
@@ -101,7 +106,7 @@ function parseLib(libPath, sysDef) {
     const stage = normalizeStage(stm?.[1] || "");
     // === Ownership Validator（P0-2）：卡 ID 前缀 == Registry.prefix == 库归属 ===
     const idPrefix = no.split(/[-—]/)[0];
-    const allowedPrefix = new Set([sysDef.prefix.replace(/-$/, ""), ...(sysDef.legacy_prefixes || [])].map(x => x.toUpperCase()));
+    const allowedPrefix = new Set([sysDef.prefix.replace(/-$/, ""), ...(sysDef.retired_prefixes || [])].map(x => x.toUpperCase()));
     const ownershipOk = allowedPrefix.has(idPrefix.toUpperCase());
     cards.push({
       no, title: (title?.[1] || "").trim().slice(0, 60),
@@ -109,7 +114,7 @@ function parseLib(libPath, sysDef) {
       pri: prm?.[1] || "",
       dep: (b.match(DEP_RE)?.[1] || "").trim(),
       blk: (b.match(BLK_RE)?.[1] || "").trim(),
-      feat: validateFeature(b.match(FEATURE_RE)?.[1] || "", b.match(FEATURE_REL_RE)?.[1] || ""),
+      feat: validateFeature(b.match(FEATURE_RE)?.[1] || "", b.match(FEATURE_REL_RE)?.[1] || "", b.match(FEATURE_ID_RE)?.[1] || ""),
       ownershipOk,
     });
   }
@@ -196,7 +201,7 @@ const statCards = [
   { zh: "作废/归档（历史）", n: voided, cls: "#9ca3af" },
 ];
 
-const html = `<!DOCTYPE html>
+let html = `<!DOCTYPE html>
 <html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MOV 全体系工单总览</title>
 <style>body{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;background:#f7f7f8;margin:0;padding:24px;color:#111} h1{font-size:20px;margin:0 0 4px} .sub{color:#6b7280;font-size:12px;margin-bottom:16px}
 .cards{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}.card{background:#fff;border-radius:10px;padding:14px 22px;box-shadow:0 1px 3px rgba(0,0,0,.06)}.card .n{font-size:26px;font-weight:700}.card .z{font-size:12px;color:#6b7280}
@@ -213,6 +218,38 @@ ${featNote}${warnNote}${warnHtml}
 <div class="foot">生成：node 审验员/aggregate-overview.mjs（--only 体系名 看单体系）· 只读投影 · 口径：当前工作量=总卡（作废/归档独立统计）</div>
 </body></html>`;
 
+  // === Snapshot Manifest（P0-6） ===
+  {
+    const crypto = await import("crypto");
+    const { execSync } = await import("child_process");
+    const shasum = (s) => crypto.createHash("sha256").update(s).digest("hex").slice(0, 12);
+    const libCommits = {};
+    for (const s of targets) {
+      const lib = path.resolve(ROOT, "..", s.lib.replace(/^\.\.\//, ""));
+      const rel = path.relative("C:/Users/Administrator/Desktop/MOV", lib).replace(/\\/g, "/");
+      let commit = "n/a";
+      try { commit = execSync("git -C C:/Users/Administrator/Desktop/MOV log -1 --format=%h -- " + JSON.stringify(rel), { encoding: "utf8" }).trim(); } catch {}
+      libCommits[s.id] = { lib: rel, commit, cards: (bySys[s.name] || []).length };
+    }
+    const status = (warnings.length || refIssues.length) ? "INVALID" : ((badStageCount || missingFeatCount) ? "WARNING" : "VALID");
+    const snapshot = {
+      generated_at: new Date().toLocaleString("zh-CN"),
+      registry_hash: shasum(JSON.stringify(systems)),
+      feature_tree_version: FEATURES.tree_version,
+      feature_tree_hash: shasum(JSON.stringify(FEATURES)),
+      systems: libCommits,
+      errors: warnings.length + refIssues.length,
+      status,
+    };
+    html = html.replace("</body>", '<script id="snapshot" type="application/json">' + JSON.stringify(snapshot) + '</script>\n</body>');
+    const bar = status === "WARNING"
+      ? '<div style="background:#FEF3C7;color:#92400E;padding:8px 16px;border-radius:8px;margin-bottom:12px;font-size:13px;font-weight:600">⚠️ SNAPSHOT WARNING — 有提示级问题（历史状态/功能域待补录），快照仍可用</div>'
+      : status === "INVALID"
+        ? '<div style="background:#FEE2E2;color:#991B1B;padding:8px 16px;border-radius:8px;margin-bottom:12px;font-size:13px;font-weight:700">🔴 SNAPSHOT INVALID — 有错误级校验失败，本快照不可用于决策</div>'
+        : "";
+    html = html.replace("<h1>MOV 全体系工单总览</h1>", bar + "<h1>MOV 全体系工单总览</h1>");
+    console.log("📸 Snapshot: " + status + "（" + snapshot.generated_at + "）");
+  }
 fs.writeFileSync(OUT, html);
 console.log(`✅ 总看板 → ${OUT}（${rows.length} 卡 · 终态 ${done} · 在流 ${active} · 历史 ${voided}）`);
 if (warnings.length || refIssues.length) { console.log(`⚠️ 告警 ${warnings.length + refIssues.length} 条（详见看板）`); process.exit(1); }

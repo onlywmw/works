@@ -20,6 +20,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LIB = os.path.join(ROOT, "工单库.md")
+LIB_GLOBAL = None
 REPO = r"E:\mov归档\0027-mov"
 
 PHASES = ["registered", "dispatched", "claimed", "in_progress", "delivered",
@@ -45,18 +46,18 @@ def git(*args):
 
 
 def load():
-    return open(LIB, encoding='utf-8').read().replace("\r\n", "\n")
+    return open(LIB_GLOBAL or LIB, encoding='utf-8').read().replace("\r\n", "\n")
 
 
 def save(text):
-    open(LIB, "w", encoding='utf-8', newline="\n").write(text)
+    open(LIB_GLOBAL or LIB, "w", encoding='utf-8', newline="\n").write(text)
 
 
 def backup(tag):
     ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     dst = os.path.join(ROOT, "_备份归档", f"工单库_backup_setstatus_{tag}_{ts}.md")
     import shutil
-    shutil.copyfile(LIB, dst)
+    shutil.copyfile(LIB_GLOBAL or LIB, dst)
     return dst
 
 
@@ -298,6 +299,9 @@ def main():
     ap.add_argument("--role", choices=list(ROLE_FIELD))
     ap.add_argument("--note")
     ap.add_argument("--branch")
+    ap.add_argument("--system", help="P0-4 Registry-first: 体系 id（如 ios）→ 由 registry 解析库")
+    ap.add_argument("--lib", dest="adhoc_lib", help="P0-4 后门降级: 诊断/迁移/离线修复专用（--adhoc-lib 别名）")
+    ap.add_argument("--adhoc-lib", dest="adhoc_lib2", help="P0-4 显式后门（诊断专用）")
     ap.add_argument("--head")
     ap.add_argument("--std")
     ap.add_argument("--delivery-id", dest="delivery_id")
@@ -306,6 +310,23 @@ def main():
     ap.add_argument("--backfill", action="store_true")
     ap.add_argument("--show", action="store_true")
     a = ap.parse_args()
+    # P0-4 Registry-first routing：--system → registry → lib（普通业务入口）
+    if a.system:
+        import json as _json
+        reg = _json.load(open(os.path.join(ROOT, "审验员", "体系清单.json"), encoding="utf-8"))
+        hit = next((s for s in reg if s.get("id") == a.system), None)
+        if not hit:
+            die(f"体系不存在: {a.system}（见 审验员/体系清单.json）")
+        lib = os.path.normpath(os.path.join(ROOT, "..", hit["lib"].replace("../", "")))
+        if not os.path.exists(lib):
+            die(f"体系库不存在: {lib}")
+        LIB_GLOBAL = lib
+    elif a.adhoc_lib or a.adhoc_lib2:
+        lib = a.adhoc_lib or a.adhoc_lib2
+        LIB_GLOBAL = os.path.normpath(os.path.join(os.getcwd(), lib))
+        print(f"[adhoc-lib] 诊断模式写入 {LIB_GLOBAL}（非 Registry 权威，仅迁移/离线修复用）")
+    else:
+        LIB_GLOBAL = None
     if a.backfill:
         backfill()
         return
