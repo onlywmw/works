@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DOC = process.argv.includes("--dir") ? process.argv[process.argv.indexOf("--dir") + 1] : path.join(ROOT, "设计师", "方案设计");
-const OUT = path.join(ROOT, "方案全景.html");
+const OUT = path.join(ROOT, "处理中心", "验证产物", "方案全景.html");
 
 const esc = (s) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const V_RE = /[vV](\d+(?:\.\d+){0,2})/;

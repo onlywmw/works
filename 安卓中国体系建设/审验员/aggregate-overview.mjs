@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const MANIFEST = path.join(__dirname, "体系清单.json");
-const OUT = path.join(ROOT, "总看板.html");
+const OUT = path.join(ROOT, "处理中心", "验证产物", "总看板.html");
 
 const esc = (s) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
