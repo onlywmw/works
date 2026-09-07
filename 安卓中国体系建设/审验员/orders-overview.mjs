@@ -190,7 +190,7 @@ function parseCardStatus(cardNo, cardTitle, libLines, idx, end) {
   let endline = end;
   for (let j = st + 1; j < end; j++) {
     const l = libLines[j];
-    if (/^# UPG-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
+    if (/^# (?:UPG|SYS|W|S)-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
     if (l.startsWith(">") || l.startsWith("---")) { endline = j; break; }
     if (SEC_WORDS.some((w) => l.startsWith(w))) { endline = j; break; }
   }
@@ -214,7 +214,7 @@ function readLib(libPath) {
   const lines = src.split("\n");
   const cards = [];
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^# (UPG-\d+)\s+(.*)$/);
+    const m = lines[i].match(/^# ((?:UPG|SYS|W|S)-\d+)\s+(.*)$/);
     if (m) cards.push({ idx: i, no: m[1], title: m[2].trim() });
   }
   const endOf = (i) => (i + 1 < cards.length ? cards[i + 1].idx : lines.length);
@@ -265,8 +265,11 @@ function detectStage(row, txt, phase) {
   const G = row.G, F = row.F;
   // SYS-04 status 块权威优先（机器登记态 > 状态文案）——2026-09-08 整修：已合卡误显在流根因
   if (phase === "merged") return { stage: "merged" };
-  if (phase === "archived" || phase === "cancelled") return { stage: "archived" };
+  if (phase === "archived" || phase === "cancelled" || phase === "obsolete") return { stage: "archived" };
   if (phase === "rejected") return { stage: "delivering", rejected: true };
+  if (phase === "assigned" || phase === "dispatched") return { stage: "assigned" };
+  if (phase === "delivering" || phase === "in_progress") return { stage: "delivering" };
+  if (phase === "queued") return { stage: "queued" };
   // 看板操作标记（用户拍板：看板回炉重修）——最高优先
   if (/【看板回炉】/.test(txt)) return { stage: "delivering", rejected: true };
   
@@ -390,7 +393,7 @@ function keypoint(p) {
 }
 
 function cardNum(no) {
-  const m = no.match(/UPG-(\d+)/);
+  const m = no.match(/(?:UPG|SYS|W|S)-(\d+)/);
   return m ? Number(m[1]) : 9999;
 }
 
