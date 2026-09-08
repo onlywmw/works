@@ -11,25 +11,21 @@
 
 import { STATUS_REGISTRY } from "./status-registry.mjs";
 
-const EMOJI = {
-  queued: "📋",
-  assigned: "📌",
-  delivering: "🔨",
-  delivered: "📦",
-  merged: "✅",
-  archived: "🗄",
-  rejected: "⚠️",
-};
-
 /**
  * deriveStatusSummary(canonical) → string
  * @param {{ phase: string, head?: string }} canonical
+ *
+ * 单点派生（SYS-10 P0-3）：label/emoji 一律读 STATUS_REGISTRY——不在注册表时
+ * **显式告警 + 占位「未知态(phase)」**，绝不静默回退英文 phase（防双实现分叉）。
  */
 export function deriveStatusSummary(canonical) {
   const phase = canonical.phase || "queued";
   const e = STATUS_REGISTRY[phase];
-  const label = e ? e.label : phase;
-  const emoji = EMOJI[phase] || "";
+  if (!e) {
+    console.warn(`[derive] phase "${phase}" 不在 STATUS_REGISTRY——使用显式占位，请补 registry 或修正卡`);
+  }
+  const label = e ? e.label : `未知态(${phase})`;
+  const emoji = e && e.emoji ? e.emoji : "";
   const head = (canonical.head || "").trim();
   if (head && head !== "—" && head !== "-") {
     return `${emoji} ${label} @${head.slice(0, 12)}`;

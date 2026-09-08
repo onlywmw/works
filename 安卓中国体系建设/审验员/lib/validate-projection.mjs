@@ -42,7 +42,14 @@ export function checkLib(libText) {
       if (m) kv[m[1]] = m[2].trim();
     }
     const phase = kv.phase || "";
-    if (!phase || !STATUS_REGISTRY[phase]) continue;
+    if (!phase) {
+      failed.push({ no: heads[c].no, phase: "(无)", expected: "?phase", actual: "status 块缺 phase" });
+      continue;
+    }
+    if (!STATUS_REGISTRY[phase]) {
+      failed.push({ no: heads[c].no, phase, expected: "?registry", actual: `phase "${phase}" 不在 STATUS_REGISTRY（勿静默跳检）` });
+      continue;
+    }
     // 派生摘要
     const canonical = { phase, head: kv.head || "" };
     const derived = deriveStatusSummary(canonical);

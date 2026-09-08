@@ -1,0 +1,19 @@
+{
+  "STATUS_REGISTRY": {
+    "queued": { "label": "已立卡", "terminal": false, "aliases": [], "emoji": "📋" },
+    "assigned": { "label": "已派单", "terminal": false, "aliases": ["dispatched"], "emoji": "📌" },
+    "delivering": { "label": "施工中", "terminal": false, "aliases": ["in_progress"], "emoji": "🔨" },
+    "delivered": { "label": "已交付", "terminal": false, "aliases": [], "emoji": "📦" },
+    "merged": { "label": "已合 main", "terminal": true, "aliases": [], "emoji": "✅" },
+    "archived": { "label": "作废/归档", "terminal": true, "aliases": ["cancelled", "obsolete", "closed"], "emoji": "🗄" },
+    "rejected": { "label": "回炉", "terminal": false, "aliases": [], "emoji": "⚠️" }
+  },
+  "TRANSITIONS": {
+    "queued": ["assigned", "delivering", "archived", "rejected"],
+    "assigned": ["delivering", "merged", "archived", "rejected"],
+    "delivering": ["delivered", "merged", "rejected", "archived"],
+    "rejected": ["delivering", "assigned", "archived"],
+    "merged": ["archived"],
+    "archived": []
+  }
+}

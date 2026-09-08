@@ -13,7 +13,7 @@
   ④ hash 校验：--head 必须在主仓存在；phase=merged 时必须是 origin/main 祖先
   ⑤ 写前备份 _备份归档\\；写后自动 sync --sync + --check（diff≠0=报错）
 """
-import argparse, datetime, io, os, re, subprocess, sys
+import argparse, datetime, io, json, os, re, subprocess, sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
@@ -186,13 +186,15 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
         card = card[:ins] + [""] + new_block + [""] + card[ins:]
     else:
         card = card[:bi] + new_block + card[bj + 1:]
-    # SYS-10 批②：deriveStatusSummary（Python 原生实现——与 derive-status-summary.mjs 同口径）
-    _SUMMARY_EMOJI = {"queued": "📋", "assigned": "📌", "delivering": "🔨",
-                      "delivered": "📦", "merged": "✅", "archived": "🗄", "rejected": "⚠️"}
-    _SUMMARY_LABEL = {"queued": "已立卡", "assigned": "已派单", "delivering": "施工中",
-                      "delivered": "已交付", "merged": "已合 main", "archived": "作废/归档", "rejected": "回炉"}
-    _e2 = _SUMMARY_EMOJI.get(phase, "")
-    _l2 = _SUMMARY_LABEL.get(phase, phase)
+    # SYS-10 批②/③：deriveStatusSummary（Python 原生实现——与 derive-status-summary.mjs 同口径，
+    # label/emoji 从 registry 单源读——不在注册表=显式占位+告警，勿静默回退）
+    _ENTRYY = registry()["STATUS_REGISTRY"].get(phase, {})
+    if phase not in registry()["STATUS_REGISTRY"]:
+        print(f"[warn] set-status: phase {phase} 不在 STATUS_REGISTRY——使用显式占位", file=sys.stderr)
+        _l2 = "未知态(" + phase + ")"
+    else:
+        _l2 = _ENTRYY.get("label", "未知态(" + phase + ")")
+    _e2 = _ENTRYY.get("emoji", "")
     _summary2 = _e2 + " " + _l2 + ((" @" + head[:12]) if head and head != "-" and head != "—" else "")
 
     # 插入 **状态摘要** 行
@@ -233,11 +235,30 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
     print(f"✅ {ticket} → phase={phase}（块已写+表已 sync+check 通过；备份 {os.path.basename(b)}）")
 
 
+_REGISTRY = None
+
+
+def registry():
+    """SYS-10 R1：状态主数据单源——与 derive-status-summary.mjs 共读 status-registry.json。"""
+    global _REGISTRY
+    if _REGISTRY is None:
+        with open(os.path.join(ROOT, "审验员", "lib", "status-registry.json"), encoding="utf-8") as f:
+            _REGISTRY = json.load(f)
+    return _REGISTRY
+
+
+# 遗留 enum 兼容（旧卡迁移形态；新 7 态一律走 registry 单源）
+LEGACY_LABEL = {"dispatched": "已派单", "claimed": "已认领", "in_progress": "在施",
+                "accepted": "验收通过", "audited": "审验通过",
+                "closed": "已闭环", "registered": "已立卡", "on_hold": "⏸️ 挂起",
+                "obsolete": "❌ 已作废"}
+
+
 def PHASE_LABEL(phase):
-    return {"dispatched": "已派单", "claimed": "已认领", "in_progress": "在施",
-            "delivered": "已交付", "accepted": "验收通过", "audited": "审验通过",
-            "merged": "已合 main", "closed": "已闭环", "registered": "已立卡",
-            "on_hold": "⏸️ 挂起", "obsolete": "❌ 已作废"}.get(phase, phase)
+    e = registry()["STATUS_REGISTRY"].get(phase)
+    if e:
+        return e["label"]
+    return LEGACY_LABEL.get(phase, phase)
 
 
 def backfill():
