@@ -159,6 +159,20 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
     if delivery_id:
         kv["delivery_id"] = delivery_id
 
+    # SYS-08 S3 词表收敛（R2 补齐）：closed 仅限「明确关闭/不做」——head 已入 origin/main=已合卡唯一终态（合并自 b2）
+    if phase == "closed" and head:
+        import subprocess as _sp3
+        for _rr in [r"E:/mov归档/0027-mov", ROOT]:
+            if not os.path.isdir(_rr):
+                continue
+            _c1 = _sp3.run(["git", "-C", _rr, "cat-file", "-t", head], capture_output=True)
+            if _c1.returncode != 0:
+                continue
+            _c2 = _sp3.run(["git", "-C", _rr, "merge-base", "--is-ancestor", head, "origin/main"], capture_output=True)
+            if _c2.returncode == 0:
+                die("词表收敛（SYS-08 S3）：head 已在 origin/main——已合卡唯一终态")
+            break
+
     kv["phase"] = phase
     kv["actor"] = actor
     kv["updated_at"] = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
@@ -229,6 +243,7 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
         card.append(_he2)
         card.append("```")
 
+    lines = lines[:start] + card + lines[end:]  # 写回（所有 card 修改完成后——块/摘要/history 全含）
     b = backup(ticket)
     save("\n".join(lines))
     sync_and_check()

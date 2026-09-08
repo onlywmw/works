@@ -1,29 +1,25 @@
 /**
- * validate-projection.mjs —— SYS-10 批③ P0-5 · 投影一致性校验
+ * validate-projection.mjs —— SYS-10 批③/④ R3 · 投影一致性校验（含 CLI 入口）
  *
- * 判据：deriveStatusSummary(canonical) == canonical.statusSummary（规范化后逐位）
- * ——不是「文案是否含已合 main」（防 phase=assigned + 文案已合 坏数据放行）
- * 附加：phase 合法（∈STATUS_REGISTRY）；statusHistory 最后一条 = 当前 phase
- * 出口：checkLib(工单库.md) → { passed, failed[] }
+ * 判据（R3 升级）：
+ * - **状态摘要** 行 = deriveStatusSummary(canonical) 逐位全等（includes 弱断言→全等，R3 升级）
+ * - 无摘要行卡 → 跳检（report-only 降级申报——存量多轮卡批④迁移前不在范围内）
+ * - phase 不在 STATUS_REGISTRY → 红
+ *
+ * CLI 入口：
+ *   node lib/validate-projection.mjs [工单库路径]
+ *   → stdout "对账 N 卡 / 不一致 M" + 不一致列表
+ *   → 不一致非零 exit 1
  */
 
 import { deriveStatusSummary } from "./derive-status-summary.mjs";
 import { STATUS_REGISTRY } from "./status-registry.mjs";
+import { readFileSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
-export function validateProjection(canonical) {
-  const errors = [];
-  if (canonical.phase && !STATUS_REGISTRY[canonical.phase]) {
-    errors.push(`phase "${canonical.phase}" 不在 STATUS_REGISTRY`);
-  }
-  const derived = deriveStatusSummary(canonical);
-  const actual = (canonical.statusSummary || "").trim();
-  if (actual !== derived) {
-    errors.push(`statusSummary 不一致：derive="${derived}" actual="${actual}"`);
-  }
-  return { ok: errors.length === 0, errors };
-}
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-/** checkLib：扫描工单库全部卡——report-only（默认）或 fail-close */
 export function checkLib(libText) {
   const lines = libText.replace(/\r\n/g, "\n").split("\n");
   const headRe = /^# ([A-Z][A-Z0-9]*-[A-Z0-9]+)/gm;
@@ -31,43 +27,55 @@ export function checkLib(libText) {
   let hm;
   while ((hm = headRe.exec(libText)) !== null) heads.push({ no: hm[1], at: hm.index });
   const failed = [];
+  let total = 0;
   for (let c = 0; c < heads.length; c++) {
+    const no = heads[c].no;
     const cardTxt = libText.slice(heads[c].at, c + 1 < heads.length ? heads[c + 1].at : libText.length);
-    const sm = cardTxt.match(/```status\n([\s\S]*?)```/);
-    if (!sm) continue;
-    const block = sm[1];
-    const kv = {};
-    for (const line of block.split("\n")) {
-      const m = line.match(/^([a-z_]+):\s*(.*)$/);
-      if (m) kv[m[1]] = m[2].trim();
+    const cardLines = cardTxt.replace(/\r\n/g, "\n").split("\n");
+    const sbIdx = cardLines.findIndex(l => l.trim() === "```status");
+    if (sbIdx < 0) continue;
+    // 解析 status block
+    let phase = "", head = "";
+    for (let i = sbIdx + 1; i < cardLines.length; i++) {
+      if (cardLines[i].trim() === "```") break;
+      const m = cardLines[i].match(/^([a-z_]+):\s*(.*)$/);
+      if (m) { if (m[1] === "phase") phase = m[2]; if (m[1] === "head") head = m[2]; }
     }
-    const phase = kv.phase || "";
     if (!phase) {
-      failed.push({ no: heads[c].no, phase: "(无)", expected: "?phase", actual: "status 块缺 phase" });
+      failed.push({ no, phase: "(无)", expected: "?phase", actual: "status 块缺 phase" });
       continue;
     }
     if (!STATUS_REGISTRY[phase]) {
-      failed.push({ no: heads[c].no, phase, expected: "?registry", actual: `phase "${phase}" 不在 STATUS_REGISTRY（勿静默跳检）` });
+      failed.push({ no, phase, expected: "?registry", actual: `phase "${phase}" 不在 STATUS_REGISTRY（勿静默跳检）` });
       continue;
     }
-    // 派生摘要
-    const canonical = { phase, head: kv.head || "" };
+    total++;
+    const canonical = { phase, head };
     const derived = deriveStatusSummary(canonical);
-    // 找卡的 **状态** 行（首行摘要）——从 status block 后第一行找 **状态**：
-    const cardLines = cardTxt.replace(/\r\n/g, "\n").split("\n");
-    let actual = "";
-    for (const l of cardLines) {
-      if (l.startsWith("**状态**：") || l.startsWith("**状态**：")) {
-        actual = l.replace(/^\*\*状态\*\*[：:]\s*/, "").trim().split("｜")[0].trim();
-        break;
+    // 优先 **状态摘要** 行（R3 逐位全等）
+    const sumLine = cardLines.find(l => l.startsWith("**状态摘要**："));
+    if (sumLine) {
+      const actual = sumLine.replace(/^\*\*状态摘要\*\*[：:]\s*/, "").trim();
+      if (actual !== derived) {
+        failed.push({ no, phase, expected: derived, actual: actual.slice(0, 60) });
       }
-    }
-    if (!actual) continue;
-    // 对比：derived 的 label 部分应出现在 actual 的前缀里
-    const label = STATUS_REGISTRY[phase].label;
-    if (!actual.includes(label)) {
-      failed.push({ no: heads[c].no, phase, expected: label, actual: actual.slice(0, 40) });
+    } else {
+      // 无摘要行=跳检（report-only 降级申报）
+      failed.push({ no, phase, expected: derived, actual: "(无摘要行——批④迁移待执行)" });
     }
   }
-  return { passed: failed.length === 0, failed };
+  return { passed: failed.length === 0, failed, total };
+}
+
+// ---- CLI 入口（SYS-10 批③ R3 补齐） ----
+const _isCLI = process.argv[1] && process.argv[1].replace(/\\/g, "/").endsWith("validate-projection.mjs");
+if (_isCLI) {
+  const libPath = process.argv[2] || join(__dirname, "..", "..", "工单库.md");
+  const libText = readFileSync(libPath, "utf8");
+  const r = checkLib(libText);
+  console.log(`[validate-projection] 对账 ${r.total} 卡 / 不一致 ${r.failed.length}`);
+  for (const f of r.failed) {
+    console.error(`  [${f.no}] phase=${f.phase} expected="${f.expected?.slice(0, 40)}" actual="${f.actual?.slice(0, 40)}"`);
+  }
+  process.exit(r.failed.length > 0 ? 1 : 0);
 }
