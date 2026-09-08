@@ -186,7 +186,47 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
         card = card[:ins] + [""] + new_block + [""] + card[ins:]
     else:
         card = card[:bi] + new_block + card[bj + 1:]
-    lines = lines[:start] + card + lines[end:]
+    # SYS-10 批②：deriveStatusSummary（Python 原生实现——与 derive-status-summary.mjs 同口径）
+    _SUMMARY_EMOJI = {"queued": "📋", "assigned": "📌", "delivering": "🔨",
+                      "delivered": "📦", "merged": "✅", "archived": "🗄", "rejected": "⚠️"}
+    _SUMMARY_LABEL = {"queued": "已立卡", "assigned": "已派单", "delivering": "施工中",
+                      "delivered": "已交付", "merged": "已合 main", "archived": "作废/归档", "rejected": "回炉"}
+    _e2 = _SUMMARY_EMOJI.get(phase, "")
+    _l2 = _SUMMARY_LABEL.get(phase, phase)
+    _summary2 = _e2 + " " + _l2 + ((" @" + head[:12]) if head and head != "-" and head != "—" else "")
+
+    # 插入 **状态摘要** 行
+    _sum_line = "**状态摘要**：" + _summary2
+    _found2 = False
+    for _i2, _l2 in enumerate(card):
+        if _l2.startswith("**状态摘要**："):
+            card[_i2] = _sum_line
+            _found2 = True
+            break
+    if not _found2:
+        card.insert(bj + 1, "")
+        card.insert(bj + 2, _sum_line)
+
+    # status-history 追加
+    _at2 = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    _hm2 = "```status-history"
+    _he2 = "- phase: " + phase + "   at: " + _at2 + "   head: " + (head or "NONE")
+    _hb2 = -1
+    for _i3, _l3 in enumerate(card):
+        if _l3.startswith(_hm2):
+            _hb2 = _i3
+            break
+    if _hb2 >= 0:
+        for _i4 in range(_hb2 + 1, len(card)):
+            if card[_i4].strip() == "```":
+                card.insert(_i4, _he2)
+                break
+    else:
+        card.append("")
+        card.append(_hm2)
+        card.append(_he2)
+        card.append("```")
+
     b = backup(ticket)
     save("\n".join(lines))
     sync_and_check()
