@@ -50,7 +50,7 @@ export function checkLib(libText) {
     const cardLines = cardTxt.replace(/\r\n/g, "\n").split("\n");
     let actual = "";
     for (const l of cardLines) {
-      if (l.startsWith("**状态**：") || l.startsWith("**状态**：")) {
+      if (l.startsWith("**状态摘要**：")) {
         actual = l.replace(/^\*\*状态\*\*[：:]\s*/, "").trim().split("｜")[0].trim();
         break;
       }
