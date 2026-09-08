@@ -108,8 +108,9 @@ function check(name, cond) {
   if (existsSync(jsonPath)) {
     console.log("[self-test] 5. registry JSON 一致性");
     const jsonObj = JSON.parse(readFileSync(jsonPath, "utf8"));
+    const reg = jsonObj.STATUS_REGISTRY || jsonObj;  // 双层主数据（SYS-10 R1）兼容平铺旧形
     for (const [phase, entry] of Object.entries(STATUS_REGISTRY)) {
-      const j = jsonObj[phase];
+      const j = reg[phase];
       check(`JSON.${phase} label 一致`, j?.label === entry.label);
       check(`JSON.${phase} terminal 一致`, j?.terminal === entry.terminal);
     }
