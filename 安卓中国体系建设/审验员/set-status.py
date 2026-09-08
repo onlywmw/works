@@ -159,6 +159,20 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
     if delivery_id:
         kv["delivery_id"] = delivery_id
 
+    # SYS-08 S3 词表收敛（R2 补齐）：closed 仅限「明确关闭/不做」——head 已在 origin/main 的卡禁 closed
+    if phase == "closed" and head:
+        import subprocess as _sp3
+        for _rr in ["E:/mov归档/0027-mov", ROOT]:
+            if not os.path.isdir(_rr):
+                continue
+            _c1 = _sp3.run(["git", "-C", _rr, "cat-file", "-t", head], capture_output=True)
+            if _c1.returncode != 0:
+                continue
+            _c2 = _sp3.run(["git", "-C", _rr, "merge-base", "--is-ancestor", head, "origin/main"], capture_output=True)
+            if _c2.returncode == 0:
+                die("词表收敛（SYS-08 S3）：head 已在 origin/main——已合卡唯一终态=merged（closed 仅限明确关闭/不做语义）；请 set-status phase=merged")
+            break
+
     kv["phase"] = phase
     kv["actor"] = actor
     kv["updated_at"] = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
@@ -184,6 +198,8 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
         if ins is None:
             ins = 2 if len(card) > 2 else len(card)
         card = card[:ins] + [""] + new_block + [""] + card[ins:]
+        bi = ins + 1  # SYS-10 R2：新块起始（供后续 SYS-10 摘要/history 使用——bi=None 修复）
+        bj = bi + len(new_block) - 1
     else:
         card = card[:bi] + new_block + card[bj + 1:]
     # SYS-10 批②：deriveStatusSummary（Python 原生实现——与 derive-status-summary.mjs 同口径）
