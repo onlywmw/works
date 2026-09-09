@@ -1,0 +1,15 @@
+#!/bin/sh
+# 红线：提交前校验 工单库.md ⇄ 工单表.xlsx 同步（防陈旧表入库）
+cd "$(git rev-parse --show-toplevel)" || exit 1
+node 安卓中国体系建设/处理中心/机器闸/sync-orders.mjs --check >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+  echo "❌ pre-commit 拦截：工单库.md 与 工单表.xlsx 不同步（先 node 安卓中国体系建设/处理中心/机器闸/sync-orders.mjs --check 归因，或 --sync 同步）"
+  exit 1
+fi
+
+# SYS-08 S1：卡面 phase 登记断裂机器闸（已合 main 但 phase 未登记 merged → 硬红）
+if [ -f 安卓中国体系建设/审验员/_tools/card-phase-audit.cjs ]; then node 安卓中国体系建设/审验员/_tools/card-phase-audit.cjs; else echo "[card-phase-audit] 脚本未同步（SYS-08 未合 main）——跳过本闸"; fi
+if [ $? -ne 0 ]; then
+  echo "❌ pre-commit 拦截（SYS-08）：卡面 phase 与 git 断裂——请 set-status phase=merged（详见上方 card-phase-audit 输出）"
+  exit 1
+fi
