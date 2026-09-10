@@ -1,6 +1,8 @@
 # 九库 HEAD 快照（2026-09-09 施工日收口）
 
 | # | 库 | 路径 | HEAD | 提交数（09-09） |
+| P | **0027-mov（产品代码主仓）** | `E:\mov归档\0027-mov`（remote git@github.com:onlywmw/0027-mov.git）——App/官网(official-web)/市场(market-web)/工作台(workbench-web)；施工走 `C:\Users\Administrator\mov-upg<号>` worktree | — | — |
+
 |---|---|---|---|---|
 | 0 | works（骨架仓） | Desktop\MOV | 待推送 | 4 |
 | 1 | 安卓中国体系建设 | 同上仓内（独立库） | git log --oneline -1 | 49+ |
