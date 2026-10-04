@@ -1,0 +1,37 @@
+{
+  "intervalSec": 60,
+  "workers": [
+    {
+      "name": "临1-pi",
+      "consolePid": 44268,
+      "mailbox": "程序员",
+      "enabled": true,
+      "cooldownMin": 10,
+      "note": "并行位（用户令 2026-10-01 07:3x）·定向 440→446 已完成（均终态 merged）。当前待命：下一批 UPG-379/445 待 441/443 合并放行后定向；单放行即投铃。"
+    },
+    {
+      "name": "临2-pi",
+      "consolePid": 20844,
+      "mailbox": "程序员",
+      "enabled": true,
+      "cooldownMin": 10,
+      "note": "并行位（同上）·定向 UPG-442 已完成（merged；433 亦终态）。待命同上（379/445 放行后接）。"
+    },
+    {
+      "name": "临3-pi",
+      "consolePid": 7292,
+      "mailbox": "程序员",
+      "enabled": true,
+      "cooldownMin": 10,
+      "note": "并行位（同上）·定向 UPG-444 已完成（merged；335/SYS-158 亦终态）。待命同上（379/445 放行后接）。"
+    }
+  ],
+  "reviewWatch": [
+    {
+      "name": "设计师",
+      "consolePid": 16460,
+      "enabled": true,
+      "staleMin": 30
+    }
+  ]
+}

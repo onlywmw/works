@@ -1,0 +1,859 @@
+{
+ "name": "mov-ticket",
+ "version": "0.2.0",
+ "built_at": "2026-10-04 10:39:30",
+ "generator": "打包分发.mjs（SYS-177）·class 单源=本工具 CONFIG_DOMAIN/classOf",
+ "count": 168,
+ "package_files": 170,
+ "excludes": [
+  "UPGRADE_MANIFEST.json",
+  "SHA256SUMS"
+ ],
+ "classes": {
+  "模板": 23,
+  "机制": 125,
+  "配置域": 20
+ },
+ "files": [
+  {
+   "path": "CHANGELOG.md",
+   "sha256": "9fb1bbe996cf371fd9cdffedcadbc8ee59283beda6d033888085995173e86d7c",
+   "class": "模板"
+  },
+  {
+   "path": "README.md",
+   "sha256": "2d54ba1af636ef2ea13678ab27fe9df9e9f0d68ea409fd4c6c7a1b86f3eea3d6",
+   "class": "模板"
+  },
+  {
+   "path": "install.ps1",
+   "sha256": "9215478e17b092790d1ce9faab233f264533d9ec4632fb7afa23d600685af42b",
+   "class": "机制"
+  },
+  {
+   "path": "version.json",
+   "sha256": "1de9c6df32ce24b1981355de9a3ad7e40def56ea62ae4a932640234aa8eff2c2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/README.md",
+   "sha256": "e49d5d9dd43ff3e51b5e36ada2beae3199ea523e9192b58e042bf8d6f219c5f6",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/交付清单/README.md",
+   "sha256": "a0ac9c022cd06d5edf379ff527354a6a15ea86ce24e180c895bd674cff014f99",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/工单库.md",
+   "sha256": "667bee5d05642bf0a3cd265a41bd4e579ad29e2f5a7d792fb30e9107661530a2",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/机器闸/CHANGELOG.md",
+   "sha256": "9fb1bbe996cf371fd9cdffedcadbc8ee59283beda6d033888085995173e86d7c",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/README.md",
+   "sha256": "02a2021fb6cd1bcb6188855027c6d072526180b5749c080bd8929df167dfd7b5",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/agent扫描.mjs",
+   "sha256": "a710846040958ea54e4147932b508e38410571a10a7ea614bd88ff0738ab9c80",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/aggregate-overview.mjs",
+   "sha256": "df631fb0ce26e5d17cf2f4d92ba3e2c7b35b364603ddad8b25e69785366315aa",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/archive-cards.mjs",
+   "sha256": "fd71b08e8d946500dc20134e73fdc44b5926255d77c8057b37bd117a9492e93d",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/card-audit.mjs",
+   "sha256": "4228c46db5052b58ed910a15c093a0c7c307a49454004aebb876c2f8a4d1a5c7",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/checks/check-priority-score.mjs",
+   "sha256": "f2b099baea72dc18cc7d021baad2d0225d31f1257c9e5f60fa6382ace328bc2b",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/checks/key-health.mjs",
+   "sha256": "c6257c4ebcb2e0f62c242311d028d56384dd74b89bd8df2b9b69470811a6843d",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/checks/precheck-l23.mjs",
+   "sha256": "8120b6c2e4506501f04d5d42e93e9e96a5ea175fc5b00ff1f25844c5be4e86d0",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/checks/真机占用.mjs",
+   "sha256": "efe1bbfd079bad0278a57199c167541ab2c0ef0e710ae48c4342079d71faa698",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/checks/装机前置.mjs",
+   "sha256": "4710fdc0219b7373b7692bf168a8766e95306fe5d06cd0f337729d9db6c6cfe2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/cos-verify.py",
+   "sha256": "3e18da1c3b1f77db113f7aa8088d814fad206be46db2b6e6582c6eb8878a08e2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/delivery-drift-check.mjs",
+   "sha256": "9e552e6ab10324fb7a101c21a49b30d5222cb36bee3a58948a63bdb66f387a5d",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/delivery-index.mjs",
+   "sha256": "873fb3a51f7f3b347397b1bf956c7d19cbf7501bf8cd314b77eb7428a2cad3a6",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/dispatch-lint.mjs",
+   "sha256": "5f5aaec676418126b84d3ac9b5dd9e3240f240fedb36113f0bee17f435951ae2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/evidence-archive.mjs",
+   "sha256": "04a45ca42a7b9676c065b3a176ec20be65285c916bb67f4562b4e31820bc2cc2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/evidence-index.mjs",
+   "sha256": "d6937454f1fff50cb1a12ec1a617bc990357604afea82057be5a3ba449938116",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/evidence-sums.mjs",
+   "sha256": "5ab8ea3696648f0840ffd12d407918af224cc889af03d181f644af58d963026d",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/install-ledger.mjs",
+   "sha256": "75e31d625870b4feecf5c472a956ab9b48b4e86ae2bdf5277507eb2ff0b360f0",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/install.ps1",
+   "sha256": "9215478e17b092790d1ce9faab233f264533d9ec4632fb7afa23d600685af42b",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/layout-check.mjs",
+   "sha256": "452edc7e6dde9632c5720488c0d2a05da1cb1a8c4dd2c9221622955b550549fb",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/lib-edit.mjs",
+   "sha256": "a2b157b99f2a53232ebf091f72af6d3abd15d7995ea506c7a7578fb8b44bfd7b",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/lib/canonical-card.schema.json",
+   "sha256": "a4e32c05e2ae405026541618ade22d8b911ede830df25167d521553f6e61e3ab",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/lib/parse-card.mjs",
+   "sha256": "30f0337b2bc8c90f6c0183e26cfbef64088a35a57449439413605a6437ebb700",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/lib/root.mjs",
+   "sha256": "3c6c258cec1eb23559e4575d10ed5084d86bda7970c06a104c253f39401a99f8",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/lib/rules-registry.json",
+   "sha256": "924edde955986544511e3ce7e0342023f0a8dda867c8b506e7a75830af2b7427",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/lib/status-registry.mjs",
+   "sha256": "972bb221fa610e2f13a9c523ab72fa3bb55987157bbe478fe1abcab6b08e2607",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/merge-check.mjs",
+   "sha256": "b4dbc6bf20485f1f2d4a64ddc1f1ef257b731a8cb4e1fc75ff9a4a1965c109ef",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/orders-overview.mjs",
+   "sha256": "8189bf5c1c3b21b0aaf96a800330661cfecfd76c3003f3f902006782696a8fb6",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/precommit-check.mjs",
+   "sha256": "994464fb17fc578417336142d981754d1fbc4a00dd80a45ca0b9247351513a96",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/rules-registry-check.mjs",
+   "sha256": "139620d1879d822f4c01d373c17512a65144786348c9d9805315a1f8a0b34573",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/set-status.py",
+   "sha256": "a8bf9e9b7969b8ba01ba834ee7cb693dba0a6a203e8d041619e167a346a8ce2f",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/shared-leaf-registry.json",
+   "sha256": "486a4f62026043590bd4b7c66970051b689c6e4f51613114cda4c0a33d270c09",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/机器闸/skinGate-verify.mjs",
+   "sha256": "af72ea2ff110b2cbb1bc8fe4b61c939d4717ca81004e010525cc5a6d519aa7f9",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/snapshot.mjs",
+   "sha256": "d3d587f3d61c89a9228a0bc56041ded971020823651acd8a2931ee11c2f4dfa5",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/spawn-hide-check.mjs",
+   "sha256": "8a5c0ffc29ef2f8ba175ae5ac91c4035d3bdc6781869a62f350608e27bed73ab",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/stages.json",
+   "sha256": "77c2266126053aad3f742775e7af70e8f4b348d214ba755b34141a35537c5eaf",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/机器闸/sync-orders.mjs",
+   "sha256": "5723ddeb517f512658e2854af214fad62297c8a9f9535ce2ba0a7df5ae81fc5e",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/tests/.tmp/drill-d1.md",
+   "sha256": "401dc9f1cc87352bcdeb99d29629d95da25eda2ae1dc8f16431590b63947ba44",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/tests/.tmp/drill-d2.md",
+   "sha256": "65b4774dcee606664d0fecedf7a4750a6447b17987c7aa1231fc53459d3b7491",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/tests/.tmp/drill-d3.md",
+   "sha256": "02985a35434e93c54e1fbd6aa409596d907bac3d6cd1b0125fbd951af454aef5",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/tests/.tmp/drill-d4.md",
+   "sha256": "44f16b9fbfed7c8a64914d81f573b0641d629c116ecb4aef4d026c1bae695f05",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/tests/.tmp/drill-d5.md",
+   "sha256": "02985a35434e93c54e1fbd6aa409596d907bac3d6cd1b0125fbd951af454aef5",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/tests/.tmp/noop-edit.py",
+   "sha256": "de273ded215c0f5d0c0a9d2345254ebf43a05ffaae8e105040dd16d0db325f98",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/tests/README.md",
+   "sha256": "2b926618d74f9e8db7a75bbf493d9f737e141aba1e7d7d786c6fe897c5843ec9",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/tests/concurrent-drill.mjs",
+   "sha256": "2d3ec759355087dadd2926fa88edde93c898ca56fbfec5af9c5ffdfc0164239b",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/tests/contracts/fixture-library.md",
+   "sha256": "02985a35434e93c54e1fbd6aa409596d907bac3d6cd1b0125fbd951af454aef5",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/tests/contracts/last-run.json",
+   "sha256": "d27f3e3178267b669e157e06fd605324b848723437642103f44f494ec205eaff",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/tests/run-contracts.mjs",
+   "sha256": "fcac71c5241c8687d0b4446905a95bd41081a2504639251c70f71d4eb09de8dd",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/tests/sys177-upgrade-drill.ps1",
+   "sha256": "b40edaad177d8cf42338360a06c6f4803fcfe4baf4048e912706200d0fa818a2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/tool-registry.json",
+   "sha256": "cdd7ff95af05a7b98783f6ff178361d4cd191838a793844fcd447432f37e8d78",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/机器闸/version.json",
+   "sha256": "84b06d3f815761113d80e0d1db0a88474de7e356e88ccbb6090cfe581214f9fa",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/wired-audit-baseline.json",
+   "sha256": "42aeefec7c489555e4958bd95b27e642384e81515c38327b0851693be5e91180",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/机器闸/wired-audit.mjs",
+   "sha256": "96ed98718dd5144134314447944317f5d8b6391e719366301a0bd22641cc9e6e",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/worktree.mjs",
+   "sha256": "24cb91a32aa3b7ab6039e7a45074f99d2b20882ebac1688654dede532289100b",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/交付件数对账.mjs",
+   "sha256": "bc8592d28738b7524f7dfcaa19565e32b41afec0c1100e04dc6d663097e54d66",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/体系清单.json",
+   "sha256": "7fdb294a198fe9d722bc3c4b742e52a40584a47b66ffabe340498a87758d678c",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/机器闸/发行版README.md",
+   "sha256": "2d54ba1af636ef2ea13678ab27fe9df9e9f0d68ea409fd4c6c7a1b86f3eea3d6",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/机器闸/取号.mjs",
+   "sha256": "163442247ae84199bba4db8921de9f053d655384210384f02d56935dfbe5b917",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/可携性豁免.json",
+   "sha256": "a427f13d1bae233a7092c134f51ca796979cbd53002116ef796f4d120bd406f7",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/机器闸/工具自检.mjs",
+   "sha256": "cfc2f401473ac35499c23a7bb496f2fb5e83ca56e3e40fd655cc3055e6e152d8",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/席位.mjs",
+   "sha256": "0eb0eb5142f07ef53d149f54f09300ad87847a63fe85d7ab3f66a417dfe57e90",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/打包分发.mjs",
+   "sha256": "3a298a335fc1c213bbb2dc4ed210e21983f4a496465685b07d7348c55c1f132b",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/武器矩阵.json",
+   "sha256": "9dfa2a95decaa7a5ce44586654e4be0786e8c2df586879667d617c51fa6b0ff2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/等信.mjs",
+   "sha256": "20849082fcc4279a217f02ab70e4f69c68c18bf7082f9433b7231dabc62cfeb3",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/装机.mjs",
+   "sha256": "b6b4ac35f60fcd85d0014609937db5e275077b737e55038675a6fa07b9c62c89",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/机器闸/设备矩阵闸.mjs",
+   "sha256": "6e34012de207770e5f76621604716daa695f87fb2171d8c72f684a09d22c9327",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/README.md",
+   "sha256": "9e4cae5c30534d5027da6c81de6e3bb0921fc3a2dc3c897478a1e910dea6990b",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/看板/_dbg_ring.mjs",
+   "sha256": "2cdd952b4b22a592bf29c2571fa741c93e9003de83583bebb2a69fbc1f5a0646",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/_probe_fix.py",
+   "sha256": "b7bbf79fc659382895d35ab8ecf99059cd2d3883ad25ded13334d469c14b3d6b",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/_r3_fix.py",
+   "sha256": "d83a5b5ce394511c0f6775550b4b9790f106ad9c950d3964e3565ce00c80a847",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/_readcon.ps1",
+   "sha256": "0ddc224c25bb5cf3160f9ea46db2459d17777a58ac9aa5f8705a509a0a924ed4",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/board-data.mjs",
+   "sha256": "74e604324101380983c62a42fd3608e8c72fc9834307ec1d352c3f723cee99ad",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/engine.mjs",
+   "sha256": "47d37274194640008824fce10cc2c708409da5a50329a438efc599f82aa12172",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/lib/envelope.mjs",
+   "sha256": "77c91cab417a908f8fee8e41124c17cad4ca1084f84faabfab147f981e15fce7",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/lib/seat-thresh.mjs",
+   "sha256": "6b9a8a47a1f555f9cdc955f033f1ee49e64db9ce84dd054bdb546aae194c77b0",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/mut_guardlocks.mjs",
+   "sha256": "be708d39ee5963b088b7aa4d1c5d7e367c1db44ebdf13ebc24cd195b4b0720bb",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/check-test-exit-zero.mjs",
+   "sha256": "b830b7aca375140ec3970b83feb8048fb3b35c80ef85c56637d7de7c63452105",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/engine.test.mjs",
+   "sha256": "2bf455fe27576325604ebe320b4b471f91282337df160fb8f043ae42db20224c",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys102-seat-heal.test.mjs",
+   "sha256": "2c918ff66e8d9bfd485c4a59666d7252951203dbf50f3ba4f49af9b34eef34be",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys103-resilience.test.mjs",
+   "sha256": "4702f4e646be3df88a62458bc395d8064be505753e8e07605da5ff450e69f532",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys104-failclosed.test.mjs",
+   "sha256": "931f2267ad6306214db6ada01ef2eedb0e6172df6cb6f30191ce4ad0e25cb9ed",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys111-cross-system-kill.test.mjs",
+   "sha256": "9925c1125af544d891a0cb3b15e7ed4a1754b58938aeae754c852efa7b09f19a",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys112-worktree.test.mjs",
+   "sha256": "da8e11d3f9e4eef6e015b74b2d69cfdba3965a0b1f89c8fb86a4185db9299b4e",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys135-occupancy.test.mjs",
+   "sha256": "b1d4bb046b214959d3aa87a703fc943c2855a465cbed056137a8dc4c82b8ad77",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys145-routine-anchor.test.mjs",
+   "sha256": "ff47b2724fecee22b0014bf37019b11158e2cf5f001fdde15655189b49a27973",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys156-fault-count.test.mjs",
+   "sha256": "4397b2b20a58fdbd7c943e27321cf5b077eb7f26dbe52d35166db3b2b51890ea",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys161-rotate-verify.test.mjs",
+   "sha256": "a1506bda9c219bd183fe3ffde95fe757d8a89e74ac57b70785b398faa559a980",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys167-thrift.test.mjs",
+   "sha256": "29676eacd58e7cfbfd772d090dc3002f1add6240779c9eba6a1bf5ca82e7c4d2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys173-title.test.mjs",
+   "sha256": "e311249009a70ce2dc3e91bacb68b75e957fa1d55e623f5d222536618a10d837",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys176-seat-score.test.mjs",
+   "sha256": "81a4df5b13b1138375258bd119d86fd650b6584be7436dc9255f80289d367c4d",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys30-maddog.test.mjs",
+   "sha256": "43b8946c921ff8c5d76a28370c351888bc876c095761b2ae9faacf8445c6514c",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys38-mail-volume.test.mjs",
+   "sha256": "69f3c32805c73ecf5fe251c88cfe966a6b4ac8bd7352f4e395711a74f0fc47f9",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys42-board.test.mjs",
+   "sha256": "b90b8dc81b44b3e4a3cf237dbfe29faace5bd2b8b2746591d277c240790b9d0c",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys43-watchdog.test.mjs",
+   "sha256": "bd0bdb4001a7eff44cd77147b8bccfc365ac370ea07619a573a58d6632ee5444",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys44-dispatch.test.mjs",
+   "sha256": "254d618380496a946ca078ff3cfdde71e01ff2ea2a1dcf97f11d014afb75b7d9",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys45-pool.test.mjs",
+   "sha256": "7364f476af25a2388b8331415c82f64f4f6766fbb15fc91f2f90d5bc8af5e6e2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys49-backup.test.mjs",
+   "sha256": "99a20300c25f1b55ca5d9981077aae98340749afe998c5a0bfbd6b73f018ca80",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys51-maddog-perletter.test.mjs",
+   "sha256": "8f791c18f653c4c117b3d0f79bc0e4c870376e83f76bb65a7b67ddcbaa2bab30",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys52-claim-stale.test.mjs",
+   "sha256": "4e986f0d010cbbb427a45bac7d92a3ba15747ae36b76ded51984204584e0029e",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys53-pullup.test.mjs",
+   "sha256": "eaff19cce1e0490d0727f55716d8aa46dda1f0d2be4364e84c31823213f3d6b9",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys56-ring-backfill.test.mjs",
+   "sha256": "c05603ac17a6c0d52f723e70c08f8bf6d7bee9b88d03becd552abcbd09d20761",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys57-sprites-parade.test.mjs",
+   "sha256": "a2e743eb0ac7b93ea2e0f375087738f5bc86a322b50c9b966e908ced2a279ed2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys58-channel.test.mjs",
+   "sha256": "94f4eb93d44f8d875b086f6a3df31c063fea67ddd4d0efb01455aa8a350422f6",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys59-priority.test.mjs",
+   "sha256": "a048ce2fe084c105ddad10678e8a8c3357ff4838e40c76f6cf13d0b073b3949c",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys62-sprite-debt.test.mjs",
+   "sha256": "c7ef689c3cc68da313739f78d8fc706819c7bcb6859101ba1ebc661d8dbf91c9",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys88-seat-pid.test.mjs",
+   "sha256": "e3fdaaebbb24ebbd546b66b47296e08084b68aee76a08f0fe5d8cb57401418b2",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys89-maddog-switch.test.mjs",
+   "sha256": "f91e39927c0d9583a62d9e012eab2204f368a0a3138f737ed318c56a9f463ae1",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys90-token.test.mjs",
+   "sha256": "d107966703c60d0869d4f3cd6e7f7739ceb0be5135431250cfb71bc24e4d41fb",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/sys91-log-integrity.test.mjs",
+   "sha256": "b1c5e915795a388dd9f0571a0da278775331a75b621a968cfa878085afdff955",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/upg482-atomic-write.test.mjs",
+   "sha256": "a5dad3f156ae8bc3144f308d98cfba2bbc2b9285f961916765736f3bf88580d3",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/tests/取号.test.mjs",
+   "sha256": "bd016ca9bba74bbdc1c78a6899b6de9b9fbfc1d6d54de385c42e145eceac6eb8",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/值守池.mjs",
+   "sha256": "a0ea5465edc5b9180a63702640c264c12cd1c5d9f91bc4c566d68102783ed7ad",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/入驻.cmd",
+   "sha256": "60d8a93c14bd2b7b388c53141f9da9c36b26667f82db03cbd6f6621e81a449fe",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/全席重启.ps1",
+   "sha256": "996bec72f4254e4338534d8e7dcc22c1be407c998a62a0d3325f0ff17ae5dd48",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/备份.mjs",
+   "sha256": "b2f89c123912a5dd12d5418717667748a92fa7d6849952728364be342048c1d6",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/工位.ps1",
+   "sha256": "8df33cd7dfc60b894e58acc610f63a084862af610819ee04a1106bdf2400c92c",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/工位/AGENTS.md",
+   "sha256": "300a5cfff70480d0267265a31d2316f19fd122e5e60c6fa0a8884dafbe176895",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/看板/工位/CLAUDE.md",
+   "sha256": "5047b40a7c340f19c353518b08cd69a7a32444f90153325020fa272543f8ebdd",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/看板/工位/审验员/AGENTS.md",
+   "sha256": "39646246db99212e76e62657f3013b9e815cc4657918416a58c03d64b9960d49",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/审验员/CLAUDE.md",
+   "sha256": "b37dfab572d1cbcf920b1d7e543a1d78f63aba284a915d8d6e90d6cafcbedcbe",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/巡检台/AGENTS.md",
+   "sha256": "1e0a158e9834cf52e8ce37fe4baba7dd0420aa2351c1faddbcfcc65d50974d3b",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/巡检台/CLAUDE.md",
+   "sha256": "b37dfab572d1cbcf920b1d7e543a1d78f63aba284a915d8d6e90d6cafcbedcbe",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/程序员/AGENTS.md",
+   "sha256": "b81af7c51ea9b05a73a96f11c71ed734737fca31b5b7f831e8e56be5e9c7be32",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/程序员/CLAUDE.md",
+   "sha256": "b37dfab572d1cbcf920b1d7e543a1d78f63aba284a915d8d6e90d6cafcbedcbe",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/设计师/AGENTS.md",
+   "sha256": "a0d91eb369b9cf3ff5f2a3b89fcad3b7a58ef42422bb6187c66f6fb4e6ec54e9",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/设计师/CLAUDE.md",
+   "sha256": "b37dfab572d1cbcf920b1d7e543a1d78f63aba284a915d8d6e90d6cafcbedcbe",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/验收员/AGENTS.md",
+   "sha256": "6505beb84f109cb28dab022ce95f3f7ab8f46d601a6114fd1ed2fbd491368cb1",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/工位/验收员/CLAUDE.md",
+   "sha256": "b37dfab572d1cbcf920b1d7e543a1d78f63aba284a915d8d6e90d6cafcbedcbe",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/看板/座态标题.ps1",
+   "sha256": "b361172f0274d5d12735645f31cd152b61ec1445ddf56623aab2609cb4df66a1",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/座探.ps1",
+   "sha256": "515fcf1477189f8a3422a101cd4474d80c458f59e9cfc3b4569cfa128ab20450",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/开工.cmd",
+   "sha256": "f603f1897cdd344ee4a7cf6909eb2bf542cd2c1911c8377545d5887b62767b41",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/心跳外哨.ps1",
+   "sha256": "7bc127c78396b234b36fa3a774a89d4f189ef6037be81dcc5586693f838b589a",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/故障.log口径.md",
+   "sha256": "1e24fb6cfbff6ba4395d5ed75a6d14b1ba17ca5cb5826f096d42b353e670425d",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/看板/日志窗口计数.mjs",
+   "sha256": "57c474549c0d288d5bec5955a57eb3773787ff6a2451e701cfdbb93669c0f8f0",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/看板-终端.cmd",
+   "sha256": "6742bf1e399d600887055f0e4bb4c4b942e22f566874b1b43caa9cfa63eae944",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/看板守护.ps1",
+   "sha256": "f76641dcfa9b693e46a415740b74ef1a68d649c5247f5c3ad22aa70c3c7e20cd",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/窗柄.ps1",
+   "sha256": "4591286529242e42eff5d1e9d74ab24fa4acd61dbe37c3b843d5b2e5e406661e",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/重启末步.ps1",
+   "sha256": "4c7eb4154e25645e7af177645197e043b3453c0d655cc0ecaf9f4ff55ab7cff0",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/铃.ps1",
+   "sha256": "7b9eea91d2a6618a12a5aaabee2c945f5d1790ee2489d8a6b0001e30391c5681",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/看板/铃2.ps1",
+   "sha256": "bc5dde4e803867b673dd913be43c9fabfdfa39a1446c5303011fa9dd7ca12a8a",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/README.md",
+   "sha256": "823284df4199ced36bdca6c36ca7c6c1fe46e09253059b14cbbfdde90757467f",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/邮局/claim.mjs",
+   "sha256": "21b4a003570de312c4ce050c2b7f912fcd743f159598c4420f2a647e53d738c4",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/post-office.mjs",
+   "sha256": "4fe7e688092f87bf542df7b8069e1eec5c29ba878ed9d96b29361aefd77969d0",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/post.cmd",
+   "sha256": "472dfdcb9a2bc5e9880213dcb0997f9ebb73e88501f66a40d2b6f14844052ed5",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守-审验员.cmd",
+   "sha256": "f51ce8243793d13786a33b80df26a890741d6aeda1b2c72064f49069c3eae486",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守-巡检台.cmd",
+   "sha256": "ae43fd340bfd5f5b32fdb37dfdfec5897dc8bad187649f7ffcd38f0af6e9637f",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守-程序员.cmd",
+   "sha256": "48a6ffad1e613245b5113525ce9f5865a84c675bf2302a6235e48a4f1f405117",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守-设计师.cmd",
+   "sha256": "b9d18477df21dede0ad5417b4825f2b073099631c84e31a80ab243b74774cb25",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守-验收员.cmd",
+   "sha256": "234a05573d7baecdd61f8448a9a6aca380cdf2a111fbe4f906e47fc5657640c8",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守.mjs",
+   "sha256": "65b6bf9edb0a26bb7f1b2ad39408be39ab0f4320c8316c68f28a0aadff26aac1",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守工.json.bak-20261004130933",
+   "sha256": "698eafec3267eaffd4e10936075f793f48aa3da0f1bfbbb4c38a7e95c23ead21",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/值守工.mjs",
+   "sha256": "e0ca08fe620deb75e126a9d7a8ea9e8e6b6033afb769635e9f3b6618af412ed3",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/守望.mjs",
+   "sha256": "2d4ec2d55efcee87aefeccdd0cfc5e5d575a785cb9942b3e1a3abde6f6cc7ab5",
+   "class": "机制"
+  },
+  {
+   "path": "处理中心/邮局/角色卡/审验员.md",
+   "sha256": "0aac6c86c8b113a0b130eeeb91e146b2d0d1d20d38ccdb8f56f58ef72bed2ce2",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/邮局/角色卡/巡检台.md",
+   "sha256": "8a9cc91a887b8ad0e66b0cb0a95c9d9589f4cbf59ea2c35146bebba5ff562b15",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/邮局/角色卡/程序员.md",
+   "sha256": "e6b0b689ba20442fa961d4db87bd10b5f8f3b4001dbc59f545a64e972c5b023a",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/邮局/角色卡/设计师.md",
+   "sha256": "ba51ae6c2a30fd101f71944cb9a723a9d58773a6fdf31e1fe44bfd7d02c926c3",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/邮局/角色卡/验收员.md",
+   "sha256": "ea338772574e4d76ff24249ead4d97497ea4d6c0378665296bc8f6a468e33b44",
+   "class": "模板"
+  },
+  {
+   "path": "处理中心/问题区/README.md",
+   "sha256": "06b00e5f38be104b78a7604d2fec0a1c7f0353dde0aa4bd8dbec3696be2082d9",
+   "class": "配置域"
+  },
+  {
+   "path": "处理中心/验收标准冻结区/README.md",
+   "sha256": "f37e826d9c874b0c50b11bf074e01cd7d9cd1cf0ae47d107c03729e8c60070be",
+   "class": "配置域"
+  }
+ ]
+}

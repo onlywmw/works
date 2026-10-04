@@ -1,0 +1,18 @@
+{
+  "_note": "SYS-160 武器组：跨平台解析矩阵（版本 pin + Linux 路径/豁免）。解析实现=巡检台/_tools/武器.mjs + 工具自检武器表（均注册表驱动）。",
+  "weapons": [
+    { "name": "gitleaks", "win": "巡检台/_tools/bin/gitleaks.exe", "win_version": "8.30.1",
+      "linux": "巡检台/_tools/bin/gitleaks-linux-amd64", "linux_version": "8.30.1（与 win 同版本 pin）",
+      "musl": "实测通过：Alpine(3.x, musl) 直跑 rc=0·`ldd` 报 Not a valid dynamic program＝静态 Go 单文件（无需 gcompat）",
+      "resolution": "武器.mjs / 工具自检武器表", "status": "OK" },
+    { "name": "trufflehog", "win": "审验员/_tools/security-scan/trufflehog.exe", "win_version": "在册（注册表）",
+      "linux": "待补：`审验员/_tools/security-scan/trufflehog-linux-amd64`（v3.97.9 官方 linux_amd64 拉取中·网络受限）",
+      "musl": "待实测（Go 静态构建预期可跑）", "resolution": "武器.mjs（注册表 dir+name → 平台变体邻居查找）", "status": "PENDING-NET" },
+    { "name": "osv-scanner", "win": "审验员/_tools/security-scan/osv-scanner.exe", "win_version": "在册（注册表）",
+      "linux": "待补：`审验员/_tools/security-scan/osv-scanner-linux-amd64`（官方 linux_amd64 拉取中）",
+      "musl": "待实测", "resolution": "同上", "status": "PENDING-NET" },
+    { "name": "alint", "win": "巡检台/_tools/bin/alint.exe（16.2MB）", "linux": "无 Linux 构建",
+      "musl": "不适用", "origin_probe": "strings 无 golang/rustc/go build/URL 特征；16MB 单文件·出身不明",
+      "exemption": "见 处理中心/机器闸/可携性豁免.json EX-06（Linux 面无此武器·判据面不参与）", "status": "EXEMPT" }
+  ]
+}

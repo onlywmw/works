@@ -1,0 +1,519 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "updated": "2026-10-04",
+    "description": "工具注册表：工具名→在册位置→归属角色。体检.mjs 每次核磁盘实际 vs 注册表。",
+    "updated_at": "2026-10-04"
+  },
+  "tools": {
+    "aggregate-overview.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "archive-cards.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "check-backup-health.mjs": {
+      "dir": "巡检台/_tools",
+      "role": "巡检台",
+      "desc": "HY-BASE-25 每日备份成败核验（manifest.ok＋≤26h 鲜度·2026-10-03 入册）",
+      "exists": true
+    },
+    "delivery-index.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "evidence-archive.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "evidence-index.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "layout-check.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "orders-overview.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "set-status.py": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "公共工具",
+      "exists": true
+    },
+    "sync-orders.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "工单库自洽校验器（--check：解析警告+DEL 绑定==分支头）；xlsx 通道 2026-10-04 R5 拆除（--sync=兼容别名）",
+      "exists": true
+    },
+    "体系清单.json": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "多体系注册数据",
+      "exists": true
+    },
+    "stages.json": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "phase 相位数据",
+      "exists": true
+    },
+    "canonical-card.schema.json": {
+      "dir": "处理中心/机器闸/lib",
+      "role": "公共",
+      "desc": "卡片解析 schema",
+      "exists": true
+    },
+    "parse-card.mjs": {
+      "dir": "处理中心/机器闸/lib",
+      "role": "公共",
+      "desc": "卡片解析库",
+      "exists": true
+    },
+    "status-registry.mjs": {
+      "dir": "处理中心/机器闸/lib",
+      "role": "公共",
+      "desc": "状态注册库",
+      "exists": true
+    },
+    "card-phase-audit.cjs": {
+      "dir": "审验员/_tools",
+      "role": "审验员",
+      "desc": "审验员工具",
+      "exists": true
+    },
+    "decisions.mjs": {
+      "dir": "审验员/_tools",
+      "role": "审验员",
+      "desc": "审验员工具",
+      "exists": true
+    },
+    "_diag_diff.mjs": {
+      "dir": "审验员/_tools",
+      "role": "审验员",
+      "desc": "审验员工具",
+      "exists": true
+    },
+    "审验.py": {
+      "dir": "审验员/_tools",
+      "role": "审验员",
+      "desc": "审验员工具",
+      "exists": true
+    },
+    "deliver-gen.mjs": {
+      "dir": "程序员/_tools",
+      "role": "程序员",
+      "desc": "程序员工具",
+      "exists": true
+    },
+    "ADBKeyboard-debug.apk": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "cdp-eval.mjs": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "cdp_eval.js": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "evidence_shot.sh": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "input_chain.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "make_overview.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "mcp_call.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "mcp_call_pad.sh": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "mcp_pad.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "mutate-gen.mjs": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "ocr_batch.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "ocr_shot.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "scan_executetool.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "scan_executetool_batch.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "ui_ops.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "verify_pad_note.py": {
+      "dir": "验收员/_tools",
+      "role": "验收员",
+      "desc": "验收员工具",
+      "exists": true
+    },
+    "design-audit.mjs": {
+      "dir": "设计师/_tools",
+      "role": "设计师",
+      "desc": "设计师工具",
+      "exists": true
+    },
+    "feature-drift.mjs": {
+      "dir": "设计师/_tools",
+      "role": "设计师",
+      "desc": "设计师工具",
+      "exists": true
+    },
+    "gen-std.py": {
+      "dir": "设计师/_tools",
+      "role": "设计师",
+      "desc": "设计师工具",
+      "exists": true
+    },
+    "recon-queue.py": {
+      "dir": "设计师/_tools",
+      "role": "设计师",
+      "desc": "设计师工具",
+      "exists": true
+    },
+    "体检.mjs": {
+      "dir": "巡检台/_tools",
+      "role": "巡检台",
+      "desc": "巡检台工具",
+      "exists": true
+    },
+    "iface-ownership-scan.mjs": {
+      "dir": "巡检台/_tools",
+      "role": "巡检台",
+      "desc": "能力归属闸（闸②·提交前机检·规格=能力归属原则 §五；基线=iface-ownership-baseline.json）",
+      "exists": true
+    },
+    "ponytail-bench": {
+      "dir": "程序员",
+      "role": "程序员",
+      "desc": "极简对照工具包（带README）",
+      "exists": true
+    },
+    "gitleaks.exe": {
+      "dir": "巡检台/_tools/bin",
+      "role": "巡检台",
+      "desc": "密钥泄漏闸（第三方二进制，gitignore 不入仓）",
+      "exists": true
+    },
+    "alint.exe": {
+      "dir": "巡检台/_tools/bin",
+      "role": "巡检台",
+      "desc": "仓库形状闸（第三方二进制，gitignore 不入仓）",
+      "exists": true
+    },
+    "arch-radar.mjs": {
+      "dir": "设计师/_tools",
+      "role": "设计师",
+      "desc": "架构要地雷达（churn×fan-in×LOC 要地分·设计前溯源武器·SYS-145 自 巡检台/建筑师/tools 迁入）",
+      "exists": true
+    },
+    "axe_baseline.mjs": {
+      "dir": "验收员/_tools/ui-baseline",
+      "role": "验收员",
+      "desc": "UI axe 基线跑（http+selenium 法·浅深双主题·真机验收流程挂载·SYS-145 迁入）",
+      "exists": true
+    },
+    "visual-baseline.mjs": {
+      "dir": "验收员/_tools/ui-baseline",
+      "role": "验收员",
+      "desc": "UI 视觉回归跑（截图+pixelmatch·基线/差异/报告·SYS-145 迁入）",
+      "exists": true
+    },
+    "trufflehog.exe": {
+      "dir": "审验员/_tools/security-scan",
+      "role": "审验员",
+      "desc": "密钥扫描（带验证能力·补 gitleaks 盲面·第三方二进制·SYS-145 迁入）；R5 出窗（gitignore 不入仓·2026-10-04）·重复副本 trufflehog_3.97.4_windows_amd64.exe 已删（逐字节同·sha256 3ad27c8c）",
+      "exists": true
+    },
+    "osv-scanner.exe": {
+      "dir": "审验员/_tools/security-scan",
+      "role": "审验员",
+      "desc": "依赖漏洞扫描（lockfile/SBOM→OSV 库·第三方二进制·SYS-145 迁入）；R5 出窗（gitignore 不入仓·2026-10-04·sha256 锚定见 验证产物/tool-binaries-manifest-2026-10-04.json）",
+      "exists": true
+    },
+    "detekt-cli-1.23.8-all.jar": {
+      "dir": "审验员/_tools/security-scan",
+      "role": "审验员",
+      "desc": "Kotlin 静态分析（java -jar 直跑·JBR21·SYS-145 迁入）；SYS-179 起兼行级门规则引擎；R5 出窗（gitignore 不入仓·2026-10-04·sha256 锚定见 验证产物/tool-binaries-manifest-2026-10-04.json）",
+      "exists": true
+    },
+    "detekt-baseline.xml": {
+      "dir": "审验员/_tools/security-scan",
+      "role": "审验员",
+      "desc": "行级门存量归零基线（4036 条签名·生成于产品仓 e88a6503 时点·SYS-179）",
+      "exists": true
+    },
+    "reviewdog.exe": {
+      "dir": "审验员/_tools/bin",
+      "role": "审验员",
+      "desc": "行级门 diff 过滤器（v0.21.2·MIT·SYS-179 引入·登记见 bin/README.md）；R5 出窗（gitignore 不入仓·2026-10-04·sha256 锚定见 验证产物/tool-binaries-manifest-2026-10-04.json）",
+      "exists": true
+    },
+    "line-gate.mjs": {
+      "dir": "审验员/_tools",
+      "role": "审验员",
+      "desc": "行级门（detekt 基线归零→reviewdog added 过滤·合 main 前置·fail-closed rc2·SYS-179）",
+      "exists": true
+    },
+    "mov-orb": {
+      "dir": "巡检台/_tools",
+      "role": "巡检台",
+      "desc": "呼吸光球 pi 扩展（等待会话动效+工位窗标题活性心跳·2026-09-11 用户拍板·ASCII 副本安装）",
+      "exists": true
+    },
+    "座态标题.ps1": {
+      "dir": "处理中心/看板",
+      "role": "公共",
+      "desc": "SYS-46 B：席位窗标题动效（⏳/💤/⚠️·conhost 标题级·读 seats+座态.json）",
+      "exists": true
+    },
+    "备份.mjs": {
+      "dir": "处理中心/看板",
+      "role": "公共",
+      "desc": "SYS-49 每日备份（works+0027-mov git bundle→C:mov备份+日志/manifest·引擎跨日例程调用）",
+      "exists": true
+    },
+    "取号.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "工单库立卡唯一入口（锁式取号+原子落卡；SYS-59 起 WSJF 四因子必填闸+bug ITIL 3×3）",
+      "exists": true
+    },
+    "等信.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "一条命令阻塞等信（--box按cwd判工位/超时「无新信」·零副作用；N回合压成1·SYS-167）",
+      "exists": true
+    },
+    "check-priority-score.mjs": {
+      "dir": "处理中心/机器闸/checks",
+      "role": "公共",
+      "desc": "SYS-59 评分防滥校验（缺分/值非法/wsjf 不一致/bug ITIL 不符/全 P1 → fail；存量豁免）",
+      "exists": true
+    },
+    "worktree.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "worktree 管理（list/prune/rm/new·双判据·SYS-112）",
+      "exists": true
+    },
+    "evidence-sums.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "证据清单生成/校验（标准 hash␠␠path 格式·并输出官方口径目录 pin 供 DEL 重录·2026-09-28 审验 F-B/F-3）",
+      "exists": true
+    },
+    "cos-verify.py": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "COS 分桶/防串/配额验收探针（匿名 403·跨桶拒绝·禁公开 List·自桶冒烟·2026-09-28 立）",
+      "exists": true
+    },
+    "merge-check.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "合并位三查：全树补丁＋件数核对＋基点核对＋冲突检测（含 stderr）＋逐件比对（2026-09-28 立·防'按目录过滤漏件'与'--3way 冲突漏判'）",
+      "exists": true
+    },
+    "snapshot.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "改动即快照（git stash create 非侵入·台账·按文件恢复）——取 jj/Aider 精华",
+      "exists": true
+    },
+    "spawn-hide-check.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "无窗子进程执法闸（spawn/exec 无 windowsHide 即红·席位窗白名单·2026-10-04 闪窗根治批立）",
+      "exists": true
+    },
+    "lib-edit.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "账本类长文件安全改动通道（备份→跑脚本→自证〔卡数/标题/行数/语法〕→异常自动回滚）",
+      "exists": true
+    },
+    "precommit-check.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "体系仓提交前自证（账本完整性+语法+密钥·已接为 .githooks/pre-commit 闸三）",
+      "exists": true
+    },
+    "席位.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "无人值守席位运行器（pi -p 每趟一个新会话·空闲只查信箱不烧 token·冷却防空转）——自动实现『办结即 /new』",
+      "exists": true
+    },
+    "工具自检.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "机器闸/全域脚本语法自检（node --check；接 pre-commit 闸三前置 + 体检 + 引擎三入口）；跨仓分级：体系仓硬拦·产品仓 scripts 告警不挡（--sys-only 可跳过跨仓扫描）",
+      "exists": true
+    },
+    "交付件数对账.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "交付面件集合对账闸（UPG-361 审验席 F-1 提案·设计师点头）：补丁件集(A=git apply --numstat) ＝ 交付树变集(B=git status -uall --no-renames)，两侧同口径；可选 --base 给出 C 集并提示「base 动过 ⇒ diff-sha 不可作对数凭据」；比集合不只比数字（数字同亦可能集合不同）；rc 0 一致/1 不一致/2 用法错。拦截形态：UPG-358 补丁 29 vs 变集 43（缺 14 件旧哈希删除）·UPG-361 同型",
+      "exists": true
+    },
+    "真机占用.mjs": {
+      "dir": "处理中心/机器闸/checks",
+      "role": "公共",
+      "desc": "SYS-135 真机占用闸：占/放/查三动作（登记件 机器闸/真机占用.json＝谁·何时·多久）＋ wm size/density 覆盖读数（跑前查残留·跑毕自证已还原）＋ adb 定位；precheck-l23 ⓪/①b 复用其登记与读数",
+      "exists": true
+    },
+    "装机前置.mjs": {
+      "dir": "处理中心/机器闸/checks",
+      "role": "公共",
+      "desc": "SYS-158 装机/仪器占用闸接线：`[--serial] [--who] [--force [--why]] -- <命令…>` ——占中非本人 ⇒ 拒跑 rc=3（不执行被包命令·给占位者/解除方式/--force 提示）；--force 写 _forceLog（who/why/time）后执行；空/自持直放；被包命令退出码透传；install-ledger.mjs 记 内置同闸（import guardOccupancy 复用）",
+      "exists": true
+    },
+    "card-audit.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "设计师",
+      "desc": "卡片对账闸（六面）：A 卡型集合／B 字段／C 动作与中文／D 接线（未接线不渲染）／F 文案单源／G-H 房间卡纳管／**I 发射端扫描**（退役 id 残留・在用卡型零引用）；另输出契约覆盖与 surface 读数；漂移 exit 1（--only 限定）",
+      "exists": true,
+      "faces": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+      ]
+    },
+    "skinGate-verify.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "UPG-389 生成卡面槽位契约双向闸（薄壳·规则真源＝0027-mov tools/ms-md-server/page/src/lib/skinGate.mjs）",
+      "exists": true
+    },
+    "扫描摘要.mjs": {
+      "dir": "巡检台/_tools",
+      "role": "巡检台",
+      "desc": "扫描器大 JSON → 一行摘要（明细件留盘·防整段回显灌上下文；--self-test 计数字段自证·SYS-154 立）",
+      "exists": true
+    },
+    "脱敏.mjs": {
+      "dir": "巡检台/_tools",
+      "role": "巡检台",
+      "desc": "通用三字段脱敏器（gitleaks JSON→脱敏副本·非覆写）：Match/Secret/Line→REDACTED；证据件入档前必跑（HY-BASE-11 配套·设计师裁定 LTR-20260930-224158 三②）",
+      "exists": true
+    },
+    "wired-audit.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "接线审计闸（HY-ARCH-04 用）：7 Gradle 模块跨模块类引用探针——零外部消费且未登记 ⇒ 红（建了没接线·造轮子扫描病因A）；豁免基线 wired-audit-baseline.json（登记≠销账·接线后必删本条）；--class 类级三态（外部接线/仅模块内自引用/零接线）；--json/--repo",
+      "exists": true
+    },
+    "dispatch-lint.mjs": {
+      "desc": "派单卡面完整性闸（HY-BASE-23 用）：扫全量工单卡——已派及以上（dispatched/in_progress/delivered/accepted/audited）的卡「## 范围/## 验收标准」仍为 TODO（骨架空壳）⇒ 红；registered 允许 TODO、终态豁免；--file 供沙盒；stdout 摘要、明细落 巡检台/_tools/输出/dispatch-lint.log",
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "kind": "check",
+      "owner": "机器闸",
+      "since": "2026-10-01"
+    },
+    "delivery-drift-check.mjs": {
+      "desc": "交付树漂移对账（配 set-status 交付三闸之树快照锚）：重算 worktree 全树摘要（status -uall + diff HEAD --no-renames 的 sha256 前16）vs 卡面 tree_digest——不等=交付后动树⇒红；--ticket 必填、--lib 沙盒、--expect 自测；退出码 0/1/2",
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "kind": "check",
+      "owner": "机器闸",
+      "since": "2026-10-01"
+    },
+    "proc-cwd.ps1": {
+      "desc": "只读读进程 PEB 取 cwd（占用之谜定位·2026-10-02 残壳案收编）：全表输出自行 findstr·CJK 乱码按 ASCII 路径段过滤",
+      "dir": "巡检台/_tools",
+      "role": "公共",
+      "kind": "tool",
+      "owner": "巡检台",
+      "since": "2026-10-02"
+    },
+    "装机.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "设计师",
+      "desc": "合并位出包装机：主检出构建 debug APK→装到在联设备→设备 versionName 对账主检出短 sha（防旧包冒充）·2026-10-02 立",
+      "exists": true
+    }
+  }
+}

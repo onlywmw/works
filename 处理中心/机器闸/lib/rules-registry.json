@@ -1,0 +1,228 @@
+{
+  "_meta": {
+    "name": "红线规则注册表",
+    "立": "2026-10-04 · 工单系统重构 R4（规则即代码）",
+    "法源": "体系根 README §四/§六（法条全文唯一源）——本表=索引/执法标注/别名映射，不改写法条",
+    "净减基线": {
+      "重排前唯一根数": 31,
+      "重排后唯一根数": 30,
+      "判定式": "挂表后有效法条唯一根数 ≤ 31（D1-微 执行清单清点值；杀灭同义重复条后消亡的号不计入）",
+      "D1-微": "2026-10-04 重排：旧11a→11 / 旧11b→29 / 旧28a→28 / 旧28b→30（别名映射见根 README §四头注）",
+      "归并记录": "2026-10-04 用户令删并臂执行：红线 5→27（编号空置）·红线 11⑤→26⑤——31→30"
+    },
+    "执法三档": "machine=机器闸拦 / human=人检纪律 / mixed=机器+人检合围",
+    "删并纪律": "review 字段=删并候选标注——**只标注不删文**，处置权在设计师（周减负 C·v3 R4 删并臂）"
+  },
+  "rules": [
+    {
+      "id": 0,
+      "title": "目录布局边界",
+      "enforcement": "machine",
+      "gates": [
+        "layout-check.mjs"
+      ]
+    },
+    {
+      "id": 1,
+      "title": "合 main 只归设计师（真机验收前提）",
+      "enforcement": "human"
+    },
+    {
+      "id": 2,
+      "title": "验收结论落 ACCEPTANCE_LOG",
+      "enforcement": "human"
+    },
+    {
+      "id": 3,
+      "title": "不信自报信实物",
+      "enforcement": "human"
+    },
+    {
+      "id": 4,
+      "title": "证据落盘前脱敏",
+      "enforcement": "mixed",
+      "gates": [
+        "precommit-check.mjs"
+      ],
+      "note": "precommit 密钥扫描=机器面；内容脱敏=人检"
+    },
+    {
+      "id": 6,
+      "title": "编译+测试不过不许报 hash",
+      "enforcement": "human"
+    },
+    {
+      "id": 7,
+      "title": "进度以工单库.md 为准（登记同步）",
+      "enforcement": "mixed",
+      "gates": [
+        "set-status.py"
+      ],
+      "note": "写入闸强制走 set-status=机器面；登记时效=人检"
+    },
+    {
+      "id": 8,
+      "title": "合 main 前全量绿+真机验收通过",
+      "enforcement": "mixed",
+      "gates": [
+        "merge-check.mjs"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "工作顺序·多 agent 防撞（认领/冲突域/账本写入）",
+      "enforcement": "mixed",
+      "gates": [
+        "set-status.py",
+        "lib-edit.mjs"
+      ],
+      "note": "R2 后写入五步铁律降级为闸⑥⑦内建（2026-10-04）；认领/冲突域仍人检"
+    },
+    {
+      "id": 10,
+      "title": "挂账登记与转工单",
+      "enforcement": "human"
+    },
+    {
+      "id": 11,
+      "title": "单写点红线",
+      "enforcement": "mixed",
+      "gates": [
+        "set-status.py"
+      ],
+      "alias": "旧 11a",
+      "note": "①单写点=人检纪律；②git 互斥→R2 写锁机器面；③冲突 SOP=sync --check；2026-10-04 原⑤已归并入 26⑤（用户令）"
+    },
+    {
+      "id": 12,
+      "title": "派单必含（交接段三件+LOC 申报）",
+      "enforcement": "human"
+    },
+    {
+      "id": 13,
+      "title": "体系根目录卫生标准（白名单制）",
+      "enforcement": "machine",
+      "gates": [
+        "layout-check.mjs"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "目录整洁纪律（归档边界/证据归属唯一化）",
+      "enforcement": "human"
+    },
+    {
+      "id": 15,
+      "title": "合批前核实真机证据真实性（防幻觉抽查）",
+      "enforcement": "human"
+    },
+    {
+      "id": 16,
+      "title": "全角色问题/发现进处理中心",
+      "enforcement": "human"
+    },
+    {
+      "id": 17,
+      "title": "所有工单必须经审验",
+      "enforcement": "mixed",
+      "gates": [
+        "card-phase-audit.cjs（审验员）"
+      ],
+      "note": "审验.py 证据链核验=机器面；证据真实性=人检"
+    },
+    {
+      "id": 18,
+      "title": "演示数据必须还原",
+      "enforcement": "human"
+    },
+    {
+      "id": 19,
+      "title": "开工前先 fetch+看表",
+      "enforcement": "human"
+    },
+    {
+      "id": 20,
+      "title": "设计前溯源（分层三态判定）",
+      "enforcement": "human"
+    },
+    {
+      "id": 21,
+      "title": "派单前溯源复核",
+      "enforcement": "human"
+    },
+    {
+      "id": 22,
+      "title": "验收标准必须先冻结（STD·不可改+版本派生）",
+      "enforcement": "mixed",
+      "gates": [
+        "gen-std.py（设计师）"
+      ]
+    },
+    {
+      "id": 23,
+      "title": "交付必绑定 delivery_id+三重 hash",
+      "enforcement": "machine",
+      "gates": [
+        "deliver-gen.mjs（程序员）",
+        "delivery-drift-check.mjs",
+        "sync-orders.mjs"
+      ]
+    },
+    {
+      "id": 24,
+      "title": "共享面变更必报能力护栏",
+      "enforcement": "human"
+    },
+    {
+      "id": 25,
+      "title": "工单命名分层+平台归属强制",
+      "enforcement": "machine",
+      "gates": [
+        "取号.mjs",
+        "set-status.py"
+      ]
+    },
+    {
+      "id": 26,
+      "title": "生成物落点固定",
+      "enforcement": "mixed",
+      "gates": [
+        "layout-check.mjs"
+      ],
+      "note": "白名单禁令=机器面；工具产出声明=人检；2026-10-04 归并自红线 11⑤（看板产物不入库→本条⑤）"
+    },
+    {
+      "id": 27,
+      "title": "卫生标准总纲（四层白名单+三世界分流+法闸人）",
+      "enforcement": "machine",
+      "gates": [
+        "layout-check.mjs"
+      ],
+      "note": "2026-10-04 归并自红线 5（数据不散落·编号 5 空置不复用）"
+    },
+    {
+      "id": 28,
+      "title": "文件命名规范",
+      "enforcement": "human",
+      "alias": "旧 28a"
+    },
+    {
+      "id": 29,
+      "title": "待合 main 前置校验",
+      "enforcement": "mixed",
+      "gates": [
+        "card-phase-audit.cjs（审验员）"
+      ],
+      "alias": "旧 11b·2026-10-04 D1-微 重排"
+    },
+    {
+      "id": 30,
+      "title": "工单资产生命周期制",
+      "enforcement": "machine",
+      "gates": [
+        "evidence-archive.mjs"
+      ],
+      "alias": "旧 28b·2026-10-04 D1-微 重排"
+    }
+  ]
+}

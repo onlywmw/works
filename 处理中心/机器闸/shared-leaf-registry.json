@@ -1,0 +1,21 @@
+{
+  "_note": "模块共享叶子登记表（UPG-402 立·治 F-ARCH-3「模块级单一真源缺位」）——共享叶子＝跨模块复用的中性纯 JVM 件。登记项＝模块/Gradle 路径/归属单/消费者/边界纪律；核验口径：叶子未登记即红（巡检/审验按表抽核），消费者清单须能在产品仓复跑核到。维护：新增/退役叶子随单登记（程序员），结构变更由设计师裁定。",
+  "leaves": {
+    "mini-json": {
+      "gradlePath": ":mini-json",
+      "package": "com.hermes.mov.json",
+      "purpose": "JSON 解析/序列化唯一实现归属——宽松 Map 口径(JsonMap)＋严格类型化树口径(JsonTree)＋转义辅助(Escapes)",
+      "registeredBy": "UPG-402",
+      "registeredAt": "2026-10-01",
+      "consumers": [
+        "app → com.hermes.mov.mcp.MiniJson（转发壳·45 调用点零改）",
+        "memory-core → JsonMini/JsonEsc（转发壳·memory 族转义口径经 Escapes.unescape 保真）",
+        "mov-exec-engine → exec/json/MiniJson（转发壳·JsonNode/JsonParseException 移居叶子，调用点 import 改指）",
+        "tool-orch → Gate3Automation 直用叶子 JsonMap（封口 orch→memory-core 类边：1→0）"
+      ],
+      "boundaryRule": "叶子零第三方依赖；不得反向依赖任何消费者模块；新 JSON 解析需求先并入本叶子（禁复活副本/新造解析器）",
+      "evidence": "程序员/UPG402-evidence/",
+      "verification": "node 机器闸/wired-audit.mjs --repo <产品仓>（mini-json 有外部消费=绿）；jdeps 三证见归属单证据包"
+    }
+  }
+}

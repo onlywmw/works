@@ -1,0 +1,7 @@
+{
+  "name": "mov-ticket",
+  "version": "0.2.0",
+  "channel": "local",
+  "updated_at": "2026-10-04",
+  "note": "发行版版本源（打包分发.mjs 读取并写入包内 version.json；官网上架/GitHub Releases 由设计师侧执行）"
+}

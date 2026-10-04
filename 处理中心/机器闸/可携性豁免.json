@@ -1,0 +1,53 @@
+{
+  "_note": "SYS-160 工具面硬化 Phase 1：不可治/不治项的豁免登记（reason/ref 必填，仿 branch-ignore.json 先例）。台账只记事实；改判须走派单。",
+  "entries": [
+    {
+      "id": "EX-01",
+      "path": "处理中心/看板/全席重启.ps1",
+      "class": "路径组·C 类（必须留）",
+      "reason": "Windows 窗口/席位机制（PowerShell 原生·窗口句柄与进程树操作无跨平台等价物）",
+      "ref": "SYS-160 派单 §二.1 C 类·清单-路径.md §C",
+      "scope": "Phase 1 登记；Phase 2 若迁再设计替代"
+    },
+    {
+      "id": "EX-02",
+      "path": "处理中心/看板/重启末步.ps1",
+      "class": "路径组·C 类（必须留）",
+      "reason": "同上（席位重启末步·Windows 窗口机制）",
+      "ref": "SYS-160 派单 §二.1 C 类·清单-路径.md §C",
+      "scope": "Phase 1 登记；Phase 2 若迁再设计替代"
+    },
+    {
+      "id": "EX-03",
+      "path": "处理中心/看板/engine.mjs（铃2.ps1 注入 :409/:474/:618/:1451/:1941/:2159 · 座探.ps1 :2211 · 开窗 :3004 · 窗柄.ps1 :3050/:3068）",
+      "class": "调用组·窗口注入类（豁免）",
+      "reason": "向真窗注入触发词/读窗柄＝Windows 窗口机制；非 Windows 面已由 winShell() 显式 no-op（不再抛 ENOENT），功能留待 Phase 2 替代设计",
+      "ref": "SYS-160 派单 §二.2「铃/窗口注入类登记豁免」",
+      "scope": "Phase 1 登记（winShell 守卫在位）；Phase 2 评估替代"
+    },
+    {
+      "id": "EX-04",
+      "path": "处理中心/看板/engine.mjs:41 syncStatus（python 串通道）＋各 py 外调点",
+      "class": "调用组·白名单票号串通道（保留）",
+      "reason": "票号经 字母-数字 白名单先验、argv 皆内部常量（--phase/--role/--note 固定文案）⇒ 无注入面；本单已把 python→PY 解析（Linux 无 python 别名）",
+      "ref": "SYS-160 §二.2「或登记豁免」",
+      "scope": "Phase 1 登记"
+    },
+    {
+      "id": "EX-05",
+      "path": "处理中心/机器闸/lib/root.mjs 的平台缺省常量",
+      "class": "路径组·单源内的缺省值（不适用）",
+      "reason": "根解析单源自身必须携带「缺省原 Windows 路径」常量（零回归铁律）；非散落硬编码",
+      "ref": "SYS-160 §二.1 推荐机制 1",
+      "scope": "常驻"
+    },
+    {
+      "id": "EX-06",
+      "path": "巡检台/_tools/bin/alint.exe",
+      "class": "武器组·alint（Linux 无构建·豁免）",
+      "reason": "出身不明（strings 无 Go/Rust 构建特征与来源 URL）且无官方 Linux 构建；Linux 副本面无此武器——按派单「查出身 → Linux 构建或豁免登记」落豁免（判据面不参与）",
+      "ref": "SYS-160 派单 §二.3 武器组·§三.3",
+      "scope": "Phase 1 登记；若后续查清出身再评估 Linux 构建"
+    }
+  ]
+}

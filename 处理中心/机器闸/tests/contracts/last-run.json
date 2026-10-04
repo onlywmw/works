@@ -1,0 +1,91 @@
+{
+  "ran_at": "2026-10-04T08:43:42.736Z",
+  "total": 14,
+  "failed": 0,
+  "results": [
+    {
+      "suite": "A",
+      "name": "A1 show 现存卡→rc0+phase",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A2 show 未知卡→rc1+库中无卡",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A3 错挂分支→rc1+归属校验",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A4 非法迁移 closed←registered→rc1+迁移校验",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A5 delivered 缺 delivery_id→rc1+交付门",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A6 delivered＋delivery-id（沙盒）→rc0＋跳过报告闸（tier C① 修复后行为·真库路径仍拦）",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A9 merged（沙盒）→rc0＋跳过随动＋跳过装机钩子（tier C① 修复·原装机钩子不经沙盒判定）",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A7 沙盒旗标指真库→rc1+拒收（SYS-104 fail-closed）",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "A",
+      "name": "A8 主路径写入→rc0+沙盒零真写+读回三验（目标变更/旁观卡原样/卡数不变）",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "B",
+      "name": "B1 dispatch-lint 空壳卡→rc1+点名 SYS-99002（卡头正则 UPG|SYS|W|S·TST 段不可见·tier C② 修复后口径）",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "B",
+      "name": "B2 delivery-drift 无树锚→rc0+无锚标注",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "C",
+      "name": "C1 layout-check→rc0+PASS 标记",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "C",
+      "name": "C2 sync-orders --check→rc0+表模式已取消口径（现行为契约）",
+      "pass": true,
+      "err": null
+    },
+    {
+      "suite": "C",
+      "name": "C3 工具自检 --sys-only→rc0（语法闸全绿）",
+      "pass": true,
+      "err": null
+    }
+  ]
+}
