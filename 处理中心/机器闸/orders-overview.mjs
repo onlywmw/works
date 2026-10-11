@@ -79,7 +79,7 @@ function readLib(libPath) {
   const lines = src.split("\n");
   const cards = [];
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^# ((?:UPG|SYS|W|S)-\d+)\s+(.*)$/);
+    const m = lines[i].match(/^# ((?:UPG|SYS|POL)-\d+)\s+(.*)$/);
     if (m) cards.push({ idx: i, no: m[1], title: m[2].trim() });
   }
   const endOf = (i) => (i + 1 < cards.length ? cards[i + 1].idx : lines.length);
@@ -258,7 +258,7 @@ function keypoint(p) {
 }
 
 function cardNum(no) {
-  const m = no.match(/(?:UPG|SYS|W|S)-(\d+)/);
+  const m = no.match(/(?:UPG|SYS|POL)-(\d+)/);
   return m ? Number(m[1]) : 9999;
 }
 
@@ -407,9 +407,13 @@ function main() {
   if (!fs.existsSync(DEFAULT_LIB)) { console.error(`工单库不存在: ${DEFAULT_LIB}`); process.exit(2); }
   const outArgIdx = args.indexOf("--out");
   const outPath = path.resolve(outArgIdx >= 0 ? args[outArgIdx + 1] : DEFAULT_OUT);
+  // SYS-204 B#17：--out 禁指只读源（工单库/工单表/挂账表）——防工具自毁红线
+  const FORBIDDEN_OUT = [DEFAULT_LIB, DEFAULT_TABLE, DEFAULT_HANG].map((p) => path.resolve(p));
+  if (FORBIDDEN_OUT.includes(outPath)) { console.error(`--out 不得指向只读源：${outPath}`); process.exit(2); }
 
   const libShaBefore = sha256(DEFAULT_LIB);
-  const tblShaBefore = fs.existsSync(DEFAULT_TABLE) ? sha256(DEFAULT_TABLE) : null;
+  const tblPresent = fs.existsSync(DEFAULT_TABLE);   // SYS-204 B#17：表不存在时不得宣称完整只读实证
+  const tblShaBefore = tblPresent ? sha256(DEFAULT_TABLE) : null;
 
   const projections = readLib(DEFAULT_LIB).map((c) => analyzeCard(c, Date.now()));
   const hanging = readHanging(DEFAULT_HANG);
@@ -441,10 +445,10 @@ function main() {
   // 只读实证：跑后 hash 必须与跑前一致（E4 不写库/表）
   const libShaAfter = sha256(DEFAULT_LIB);
   const tblShaAfter = tblShaBefore && fs.existsSync(DEFAULT_TABLE) ? sha256(DEFAULT_TABLE) : null;
-  const readonlyOk = libShaBefore === libShaAfter && (!tblShaBefore || tblShaBefore === tblShaAfter);
+  const readonlyOk = libShaBefore === libShaAfter && (!tblPresent || tblShaBefore === tblShaAfter);
 
   console.log(`已生成看板 → ${outPath}`);
-  console.log(`工单库 ${projections.length} 卡（只读实证：${readonlyOk ? "sha 跑前=跑后 ✓" : "⚠ sha 变化！" }）`);
+  console.log(`工单库 ${projections.length} 卡（只读实证：${readonlyOk ? (tblPresent ? "sha 跑前=跑后 ✓" : "工单库 sha 跑前=跑后 ✓（工单表不存在·该项未覆盖）") : "⚠ sha 变化！" }）`);
   console.log(`活跃挂账 ${hanging.length} 条 ｜ 工单表行 ${tblNums ? tblNums.size : "未读"} ｜ 表缺行 ${tblMissing} ｜ 库缺卡 ${tblExtra}`);
   const unknown = projections.filter((p) => p.stage === "unknown");
   const overdue = projections.filter((p) => p.overdue);

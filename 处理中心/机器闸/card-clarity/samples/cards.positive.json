@@ -1,0 +1,136 @@
+[
+  {
+    "cardId": "onboard.rejected.1",
+    "type": "onboard.status",
+    "what": "微信特约商户进件",
+    "state": "审核被驳回",
+    "next": "onboard.fix",
+    "why": "微信反馈营业执照信息与备案不符，需要改正后重新提交",
+    "blocker": null,
+    "steps": [
+      {
+        "name": "上传材料",
+        "status": "done"
+      },
+      {
+        "name": "核对资料",
+        "status": "done"
+      },
+      {
+        "name": "提交进件",
+        "status": "done"
+      },
+      {
+        "name": "等审核结果",
+        "status": "done"
+      },
+      {
+        "name": "改正资料并重新提交",
+        "status": "now"
+      },
+      {
+        "name": "等重提后审核",
+        "status": "todo"
+      }
+    ],
+    "actions": [
+      "onboard.fix"
+    ]
+  },
+  {
+    "cardId": "onboard.reviewing.1",
+    "type": "onboard.status",
+    "what": "开店进度",
+    "state": "审核中，随时可查看进度",
+    "next": "task.view",
+    "why": "微信正在审核；想看最新进度，点下面的按钮查看任务",
+    "blocker": "等待微信审核结果，无需操作",
+    "steps": [
+      {
+        "name": "上传材料",
+        "status": "done"
+      },
+      {
+        "name": "提交进件",
+        "status": "done"
+      },
+      {
+        "name": "等审核结果",
+        "status": "now"
+      }
+    ],
+    "actions": [
+      "task.view"
+    ]
+  },
+  {
+    "cardId": "shop.orders.1",
+    "type": "merchant.shop",
+    "what": "我的店铺",
+    "state": "今天有 3 笔新订单",
+    "next": "merchant.orders",
+    "why": "买家已下单，尽快处理能减少等待",
+    "blocker": null,
+    "actions": [
+      "merchant.orders",
+      "merchant.shelf"
+    ]
+  },
+  {
+    "cardId": "express.arrived.1",
+    "type": "express.result",
+    "what": "你的快递",
+    "state": "已到代收点",
+    "next": "express.track",
+    "why": "快递在驿站，超过三天可能退回；点下面的按钮查看物流，尽快取件",
+    "blocker": null,
+    "actions": [
+      "express.track",
+      "reminder.set"
+    ]
+  },
+  {
+    "cardId": "task.generic.1",
+    "type": "task.card",
+    "what": "待办任务",
+    "state": "等你补充一句话就能继续",
+    "next": "task.go",
+    "why": "系统需要你确认一个细节才能往下走",
+    "blocker": "缺少收货地址",
+    "steps": [
+      {
+        "name": "收集信息",
+        "status": "now"
+      },
+      {
+        "name": "执行办理",
+        "status": "todo"
+      }
+    ],
+    "actions": [
+      "task.go"
+    ]
+  },
+  {
+    "cardId": "shelf.empty.1",
+    "type": "merchant.shelf",
+    "what": "店铺货架",
+    "state": "货架还是空的",
+    "next": "merchant.shelf",
+    "why": "先查看货架，再把商品放上去；点下面的按钮查看货架",
+    "blocker": null,
+    "actions": [
+      "merchant.shelf"
+    ],
+    "steps": [
+      {
+        "name": "准备商品信息",
+        "status": "now"
+      },
+      {
+        "name": "拍照并发布",
+        "status": "todo"
+      }
+    ]
+  }
+]

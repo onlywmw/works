@@ -80,10 +80,10 @@ t("A", "A5 delivered 缺 delivery_id→rc1+交付门", () => {
   const r = ss(sb, ["TST-001", "--phase", "delivered"]);
   return r.rc === 1 && r.out.includes("交付门");
 });
-t("A", "A6 delivered 缺报告原件→rc1+报告闸", () => {
+t("A", "A6 delivered 沙盒→报告闸跳过+写入成功（tier C① 口径·2026-10-04；真库路径仍拦）", () => {
   const sb = freshSandbox("a6");
   const r = ss(sb, ["TST-001", "--phase", "delivered", "--delivery-id", "DEL-TST001-20261004-001"]);
-  return r.rc === 1 && r.out.includes("报告闸");
+  return r.rc === 0 && r.out.includes("沙盒模式：跳过报告闸") && r.out.includes("phase=delivered");
 });
 t("A", "A7 沙盒旗标指真库→rc1+拒收（SYS-104 fail-closed）", () => {
   const r = run("python", [path.join(GATES, "set-status.py"), "TST-001", "--phase", "in_progress", "--lib", path.join("处理中心", "工单库.md")]);
@@ -102,8 +102,14 @@ t("A", "A8 主路径写入→rc0+沙盒零真写+读回三验（目标变更/旁
     && cardCount(sb) === 3;
 });
 
+t("A", "A9 merged 沙盒→资产随动/装机钩子双跳过（tier C① 口径·真库不变）", () => {
+  const sb = freshSandbox("a9");
+  const r = ss(sb, ["SYS-99002", "--phase", "merged"]);
+  return r.rc === 0 && r.out.includes("沙盒模式：跳过工单资产随动") && r.out.includes("沙盒模式：跳过装机钩子");
+});
+
 // —— B 组：派单完整性 / 树漂移（沙盒）——
-t("B", "B1 dispatch-lint 空壳卡→rc1+点名 SYS-99002（现卡头正则仅认 UPG|SYS——TST 段不可见，亦为契约）", () => {
+t("B", "B1 dispatch-lint 空壳卡→rc1+点名 SYS-99002（卡头扫面 UPG|SYS|POL——TST 段不在扫面，亦为契约）", () => {
   const sb = freshSandbox("b1");
   const r = run("node", [path.join(GATES, "dispatch-lint.mjs"), "--file", sb]);
   return r.rc === 1 && r.out.includes("SYS-99002");

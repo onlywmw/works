@@ -53,6 +53,11 @@ if (BASE) {
 }
 const diffSets = (x, y) => ({ onlyX: [...x].filter((v) => !y.has(v)), onlyY: [...y].filter((v) => !x.has(v)) });
 
+// 分栏（2026-10-04 裁定·UPG-511「差 1」案）：产物＝产物目录（app/src/main/assets/**｜**/dist/**｜**/build/**）内由构建生成者；其余（含 *.mjs 测试/脚本）＝源改。
+const isProductPath = (f) => /^app\/src\/main\/assets\//.test(f) || /(^|\/)(dist|build)\//.test(f);
+const kinds = { source: [], product: [] };
+for (const f of B) (isProductPath(f) ? kinds.product : kinds.source).push(f);
+
 const ab = diffSets(A, B);
 const ac = C ? diffSets(A, C) : null;
 let head = "?";
@@ -65,12 +70,14 @@ if (JSON_OUT) {
   console.log(JSON.stringify({
     ts: stamp, root: ROOT, head, patch: path.resolve(PATCH), base: BASE || null,
     counts: { A_patch: A.size, B_tree: B.size, C_base: C ? C.size : null },
+    kinds: { B_source: kinds.source.length, B_product: kinds.product.length },
     ab, ac, verdict: ok ? "consistent" : "mismatch",
   }, null, 2));
 } else if (!QUIET) {
   console.log(`交付件对账 · ${stamp}`);
   console.log(`  交付树 ${ROOT}（HEAD ${head}）｜补丁 ${path.basename(PATCH)}${BASE ? `｜base ${BASE}` : ""}`);
   console.log(`  口径：A=patch(numstat 行) ${A.size}｜B=tree(status -uall --no-renames 件) ${B.size}${C ? `｜C=diff(base, --no-renames 件) ${C.size}` : ""}`);
+  console.log(`  分栏（B·2026-10-04 口径）：源改 ${kinds.source.length}｜产物 ${kinds.product.length}（产物=app/src/main/assets/**｜**/dist/**｜**/build/** 内由构建生成者；其余含 .mjs=源改）`);
   if (!ok) {
     console.log(`  ❌ A≠B：仅补丁有 ${ab.onlyX.length} 件｜仅交付树有 ${ab.onlyY.length} 件`);
     for (const f of ab.onlyX.slice(0, 8)) console.log(`     · 仅补丁有：${f}`);

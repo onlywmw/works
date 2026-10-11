@@ -71,7 +71,7 @@ test("SYS-62 ①b 巡检台宽限=20min：21min 信咬｜15min 信不咬（配�
   // 出厂配置口径锁（工位绑定.json）
   const b = JSON.parse(fs.readFileSync(new URL("../工位绑定.json", import.meta.url), "utf-8"));
   assert.equal(b._madDogGraceMin["巡检台"], 20); assert.equal(b._madDogGraceMin["设计师"], 25);
-  assert.equal(b._madDogGraceMin["程序员"], 45); assert.equal(b._madDogGraceMin["审验员"], 45);
+  assert.equal(b._madDogGraceMin["程序员"], 45); assert.equal(b._madDogGraceMin["审验员"], 60); // 2026-10-08 提案A：审验员 45→60（工序实测 ~56min·验收席源·已入 HEAD）
 });
 
 test("SYS-62 ② 白鸽连跳：3 跳→咬信投巡检台席（2 跳不咬·每 3 次一咬）", () => {

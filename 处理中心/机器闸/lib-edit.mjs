@@ -53,7 +53,7 @@ const releaseLock = () => { try { fs.unlinkSync(LOCK); } catch {} };
 
 const stat = (s) => ({
   lines: s.split("\n").length,
-  cards: (s.match(/^# (?:UPG|SYS)-\d+ /gm) || []).length,
+  cards: (s.match(/^# (?:UPG|SYS|POL)-\d+ /gm) || []).length,
   h2: (s.match(/^## /gm) || []).length,
   endsNL: s.endsWith("\n"),
 });

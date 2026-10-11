@@ -1,4 +1,5 @@
-// SYS-53 静默席拉起闸 · 自测（席静默+待办 → 池唤醒；两向 + 冷却 + 真池端到端）
+// SYS-53 静默席拉起闸 · 自测（席静默+待办 → 可见窗三态拉起；两向 + 冷却）
+// 2026-10-05 瘦身批1：⑧ 池用例随 SYS-61 RPC 退役件删除；改动即本条（其余用例不动）
 // 验收（卡面）：构造案双席静默 → ≤N 分钟被拉起（真实端到端）+ 零回归
 // 跑法：node --test 处理中心/看板/tests/sys53-pullup.test.mjs
 import { test } from "node:test";
@@ -7,7 +8,6 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { EventEmitter } from "node:events";
-import { createPool } from "../值守池.mjs";
 import { pullUpSilentSeats, __testResetPullUp, __testResetWorkerOpen } from "../engine.mjs";
 
 const NOW = Date.now();
@@ -116,16 +116,6 @@ test("⑦ enabled=false 的席位跳过；未超窗的信不拉", () => {
   resetCap();
   run(sb2);
   assert.equal(CAP.injected.length, 0, "窗内新信不拉");
-});
-
-test("⑧ SYS-61：RPC 退役态——createPool 默认关（wake 返回 rpc-retired·start 记事件）；显式 rpcEnabled 才启用", () => {
-  const writes = [];
-  const fakeSpawn = () => { const c = new EventEmitter(); c.pid = 5252; c.stdin = { write: (s) => { writes.push(s); } }; c.stdout = new EventEmitter(); c.stderr = new EventEmitter(); c.kill = () => {}; return c; };
-  const off = createPool({ spawnFn: fakeSpawn, stateFile: null });
-  assert.deepEqual(off.wake("二号-pi", "x"), { ok: false, how: "rpc-retired" }, "默认退役态：唤醒不 spawn");
-  assert.equal(writes.length, 0, "退役态不得写 stdin");
-  const on = createPool({ spawnFn: fakeSpawn, stateFile: null, rpcEnabled: true }); // 防回潮开关（测试/迁移用）
-  assert.equal(on.wake("二号-pi", "x").ok, true, "显式开启后机制可用（历史通道回归锁）");
 });
 
 test("⑨ SYS-61：可见窗端到端（pullUp 路径）——窗死→开窗+workersFile 换绑+注入；RPC 零调用", () => {

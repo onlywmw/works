@@ -132,8 +132,8 @@ function readLedger() {
   try {
     const lib = fs.readFileSync(path.join(CENTER, "工单库.md"), "utf-8");
     const STATUS_RE = /```status\r?\n([\s\S]*?)```/;
-    for (const card of lib.split(/^# (?=(?:UPG|SYS|W|S|HMOS)-)/m).slice(1)) {
-      const head = card.match(/^((?:UPG|SYS|W|S|HMOS)-\S+)[ \t]*(.*)/);
+    for (const card of lib.split(/^# (?=(?:UPG|SYS|POL)-)/m).slice(1)) {
+      const head = card.match(/^((?:UPG|SYS|POL)-\S+)[ \t]*(.*)/);
       if (!head) continue;
       const sb = card.match(STATUS_RE);
       if (!sb) continue;

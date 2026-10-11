@@ -110,15 +110,18 @@ const FORBIDDEN_CONTENT = [
   { name: "AWS key", re: /\bAKIA[0-9A-Z]{16}\b/ },
   { name: "长 token 赋值", re: /(api[_-]?key|secret|token|password)["']?\s*[:=]\s*["'][A-Za-z0-9_\-./+]{24,}["']/i },
 ];
-// 内容扫描豁免：工具自身（含模式定义·本就出现这些字样）
-const CONTENT_SCAN_SKIP = new Set(["处理中心/机器闸/打包分发.mjs"]);
+// 内容扫描豁免：工具自身（含模式定义·本就出现这些字样）＋自测夹具（样本池检测自测内置合成密钥串 sk-123…·非真钥匙；2026-10-11 出包实跑命中后豁免）
+const CONTENT_SCAN_SKIP = new Set([
+  "处理中心/机器闸/打包分发.mjs",
+  "处理中心/机器闸/task-polish/样本池/自检.mjs",
+]);
 
 /* ------------------------------ 空账本骨架 ------------------------------ */
 const LEDGER_TEMPLATES = {
   "处理中心/工单库.md": `# 工单库（空·初始化骨架）
 
 > 本文件＝工单唯一真相源（SYS 体系口径）。新装系统从空账本起步：取号 → 立卡 → 派单 → 交付 → 验收 → 合并。
-> 取号：node 处理中心/机器闸/取号.mjs <前缀>（前缀 UPG/SYS/W/S/HMOS…按体系约定）。
+> 取号：node 处理中心/机器闸/取号.mjs <前缀>（前缀 UPG/SYS/POL…按体系约定）。
 > 卡片模板与状态块格式见 处理中心/README.md 与 处理中心/机器闸/set-status.py。
 
 ---
@@ -227,6 +230,17 @@ for (const [src, dst] of [["处理中心/机器闸/发行版README.md", "README.
   if (fs.existsSync(a)) fs.copyFileSync(a, path.join(PKG_DIR, dst));
   else fails.push(`缺发行版件: ${src}`);
 }
+// 2d+) install.ps1 版本戳强刷（2026-10-11 修复·SYS-177 实跑抓漏：0.2.0 包内 $ScriptVersion 仍写 0.1.0 ⇒ 下载 URL 拼音版本号 ⇒ --upgrade／引导安装必 404）。
+//   纪律：包内 $ScriptVersion MUST == 本发行版 version；未命中即红（fail-closed，防静默发错包）。
+{
+  const f = path.join(PKG_DIR, "install.ps1");
+  if (fs.existsSync(f)) {
+    const t = fs.readFileSync(f, "utf8");
+    const n = t.replace(/(\$ScriptVersion\s*=\s*")[^"]*(")/, `$1${version}$2`);
+    if (n === t) fails.push("install.ps1 版本戳未命中（$ScriptVersion 模式失配）——拒绝产出带旧版本号的包");
+    else fs.writeFileSync(f, n, "utf8");
+  }
+}
 
 // 3) 洁净判据：路径 + 内容 + 账本骨架
 const pkgFiles = walk2(PKG_DIR);
@@ -251,7 +265,7 @@ for (const rel of pkgFiles) {
 function failuresSize(rel) { console.log(`  ⚠ 大件（>4MB·人核）: ${rel}`); }
 {
   const lib = fs.readFileSync(path.join(PKG_DIR, "处理中心/工单库.md"), "utf8");
-  const cards = (lib.match(/^# (?:UPG|SYS|W|S|HMOS)-\d+/gm) || []).length;
+  const cards = (lib.match(/^# (?:UPG|SYS|POL)-\d+/gm) || []).length;
   if (cards > 0 || Buffer.byteLength(lib, "utf8") > 4096) fails.push(`账本非骨架（卡片 ${cards}·${Buffer.byteLength(lib)}B）`);
 }
 

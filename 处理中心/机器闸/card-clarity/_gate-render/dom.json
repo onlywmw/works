@@ -1,0 +1,80 @@
+[
+  {
+    "cardId": "onboard.rejected.1",
+    "next": "onboard.fix",
+    "label": "去修正",
+    "touch": {
+      "w": 77,
+      "h": 40,
+      "ok": true
+    },
+    "ctaContrast": 6.36,
+    "text": "微信特约商户进件 审核被驳回 ✓ 上传材料 ✓ 核对资料 ✓ 提交进件 ✓ 等审核结果 ▶ 改正资料并重新提交 ○ 等重提后审核 微信反馈营业执照信息与备案不符，需要改正后重新提交 去修正",
+    "overflow": false
+  },
+  {
+    "cardId": "onboard.reviewing.1",
+    "next": "task.view",
+    "label": "查看任务",
+    "touch": {
+      "w": 92,
+      "h": 40,
+      "ok": true
+    },
+    "ctaContrast": 6.36,
+    "text": "开店进度 审核中，随时可查看进度 ✓ 上传材料 ✓ 提交进件 ▶ 等审核结果 微信正在审核；想看最新进度，点下面的按钮查看任务 受阻：等待微信审核结果，无需操作 查看任务",
+    "overflow": false
+  },
+  {
+    "cardId": "shop.orders.1",
+    "next": "merchant.orders",
+    "label": "查看订单",
+    "touch": {
+      "w": 92,
+      "h": 40,
+      "ok": true
+    },
+    "ctaContrast": 6.36,
+    "text": "我的店铺 今天有 3 笔新订单 买家已下单，尽快处理能减少等待 查看订单",
+    "overflow": false
+  },
+  {
+    "cardId": "express.arrived.1",
+    "next": "express.track",
+    "label": "查看物流",
+    "touch": {
+      "w": 92,
+      "h": 40,
+      "ok": true
+    },
+    "ctaContrast": 6.36,
+    "text": "你的快递 已到代收点 快递在驿站，超过三天可能退回；点下面的按钮查看物流，尽快取件 查看物流",
+    "overflow": false
+  },
+  {
+    "cardId": "task.generic.1",
+    "next": "task.go",
+    "label": "去办理",
+    "touch": {
+      "w": 77,
+      "h": 40,
+      "ok": true
+    },
+    "ctaContrast": 6.36,
+    "text": "待办任务 等你补充一句话就能继续 ▶ 收集信息 ○ 执行办理 系统需要你确认一个细节才能往下走 受阻：缺少收货地址 去办理",
+    "overflow": false
+  },
+  {
+    "cardId": "shelf.empty.1",
+    "next": "merchant.shelf",
+    "label": "查看货架",
+    "touch": {
+      "w": 92,
+      "h": 40,
+      "ok": true
+    },
+    "ctaContrast": 6.36,
+    "text": "店铺货架 货架还是空的 ▶ 准备商品信息 ○ 拍照并发布 先查看货架，再把商品放上去；点下面的按钮查看货架 查看货架",
+    "overflow": false
+  }
+]

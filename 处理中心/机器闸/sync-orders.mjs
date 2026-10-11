@@ -271,7 +271,7 @@ function delBindingAudit(libPath, verbose = false) {
     const st = (cardTxt.match(new RegExp("```status\\r?\\n([\\s\\S]*?)```")) || [])[1] || "";
     const hasBranch = /branch: (?!—)[a-z]/.test(st);
     const mUpd = st.match(/updated_at: (\d{4}-\d{2}-\d{2})/);
-    const isNewCard = /^SYS-/.test(heads[c].no) || /^UPG-11[4-9]/.test(heads[c].no) || /^UPG-1[2-9]\d/.test(heads[c].no); // 前缀改制后新卡（SYS-*/UPG-114+）
+    const isNewCard = /^SYS-/.test(heads[c].no) || /^UPG-11[4-9]/.test(heads[c].no) || /^UPG-1[2-9]\d/.test(heads[c].no) || /^POL-/.test(heads[c].no); // 前缀改制后新卡（SYS-*/UPG-114+/POL-*）
     if (hasBranch && isNewCard && !/^platform:/m.test(st)) issues.push({ no: heads[c].no, type: "平台归属警告", detail: "status 块缺 platform:/repo: 字段（红线 25：跨平台施工禁止——鸿蒙/安卓混写预防）" });
     // 已合卡：验「已合 main @hash」记录的真实落点 ∈ main 祖先（rebase 重写是常态，交付时 DEL 绑定为时点记录不回头验）
     const mMerged = cardTxt.match(/已合 main[\s\S]{1,40}?([0-9a-f]{7,40})/);
@@ -499,7 +499,8 @@ function main() {
     // SYS-05 D：提示性 issue 默认静默（--verbose 才显示）；硬红（DEL绑定失效）永远显示
         for (const i of delAuditS.issues) { if (!opts.verbose && i.type !== "DEL绑定失效") continue; console.log(`⚠ [${i.no}] ${i.type}：${i.detail}`); }
     if (isReal) console.log("⚠ 红线注记：真实表已 --sync 覆盖——仅在设计评审通过后允许；3A --check 应先行且 diff=0。");
-    // 成功条件 = 生成后 check diff=0
+    // 成功条件 = 生成后 check diff=0（SYS-203 #2：写表后读回——原 tblRows 未定义 ⇒ ReferenceError 致成功条件永不执行）
+    const { rows: tblRows } = readTable(tablePath);
     const { issues, compared } = diffLibVsTable(libRows, tblRows);
     printDiff(issues, compared);
     if (issues.length !== 0) {

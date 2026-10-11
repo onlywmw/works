@@ -1,9 +1,9 @@
 {
   "_meta": {
     "version": "1.0",
-    "updated": "2026-10-04",
+    "updated": "2026-10-07",
     "description": "工具注册表：工具名→在册位置→归属角色。体检.mjs 每次核磁盘实际 vs 注册表。",
-    "updated_at": "2026-10-04"
+    "updated_at": "2026-10-07"
   },
   "tools": {
     "aggregate-overview.mjs": {
@@ -512,7 +512,37 @@
     "装机.mjs": {
       "dir": "处理中心/机器闸",
       "role": "设计师",
-      "desc": "合并位出包装机：主检出构建 debug APK→装到在联设备→设备 versionName 对账主检出短 sha（防旧包冒充）·2026-10-02 立",
+      "desc": "设备装包单一入口：默认=main 对齐（合并钩子），--from <树|main> 通用装包（回读断言+设备包.json 台账+跨签名保护+--reconcile 对账+--apk 直给）·2026-10-02 立·2026-10-05 SYS-184 扩",
+      "exists": true
+    },
+    "redact.mjs": {
+      "dir": "处理中心/机器闸/设备工具",
+      "role": "公共",
+      "desc": "送模型回吐脱敏过滤器（键名+值模式两层掩码·raw 只落本地·默认开·MOV_MASK=off 显式关·fail-closed·SYS-187 立）",
+      "exists": true
+    },
+    "call_tool.sh": {
+      "dir": "处理中心/机器闸/设备工具",
+      "role": "公共",
+      "desc": "设备工具调用（回吐管道 cdp_call.js|redact.mjs·脚本自定位·SYS-187 收口）",
+      "exists": true
+    },
+    "cdp_call.js": {
+      "dir": "处理中心/机器闸/设备工具",
+      "role": "公共",
+      "desc": "CDP 调用器（目标 WebView 执行 JS 打印 JSON·自证据副本原样搬入·SYS-187）",
+      "exists": true
+    },
+    "dup-radar.mjs": {
+      "dir": "处理中心/机器闸/checks",
+      "role": "公共",
+      "desc": "SYS-192 实现层复用扫：新 HttpURLConnection/KeyGenerator/filesDir 根/手机号 Regex/硬编码 https 基址 ⇒ 命中给单源建议＋计次；--check-registry 单源清单断链检查（warn 起步·precommit 已接线）",
+      "exists": true
+    },
+    "dialog-audit.mjs": {
+      "dir": "处理中心/机器闸",
+      "role": "公共",
+      "desc": "UPG-589 对话动作闸（只减不增）：扫产品仓弹窗/确认调用（未登记对词典台账·危险色裸 hex·回合特判）＋台账合规（D1 理由/D3 撤销/回合可推导）＋--dict-md 渲染＋--self-test 注入自测；对照件＝设计师/卡片库/台账/动作词典台账.json",
       "exists": true
     }
   }

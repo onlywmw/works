@@ -47,7 +47,7 @@ export const ROLE_ANCHORS = [
 export const DATE_RE = /@?(\d{4}-\d{2}-\d{2})/g;
 export const DEL_RE = /DEL-[A-Z0-9]+-\d{8}-\d+/g;
 export const DOC_RE = /设计师[\\/][^\s｜|，。；）)（(]*?\.md/;
-const CARD_HEAD_RE = /^# ((?:UPG|SYS|W|S)-\d+)\s+(.*)$/;
+const CARD_HEAD_RE = /^# ((?:UPG|SYS|POL)-\d+)\s+(.*)$/;
 
 export function extractPriority(txt) {
   const patterns = [
@@ -203,7 +203,7 @@ export function parseStatusHistoryLines(cardLines) {
   return out;
 }
 
-/** 卡片切分（UPG|SYS|W|S 前缀同权）：[{idx, no, title, end}] */
+/** 卡片切分（UPG|SYS|POL 前缀同权）：[{idx, no, title, end}] */
 export function splitCards(libLines) {
   const cards = [];
   for (let i = 0; i < libLines.length; i++) {
@@ -226,7 +226,7 @@ export function statusRegion(libLines, idx, end) {
   let endline = end;
   for (let j = st + 1; j < end; j++) {
     const l = libLines[j];
-    if (/^# (?:UPG|SYS|W|S)-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
+    if (/^# (?:UPG|SYS|POL)-\d+/.test(l) || /^## /.test(l)) { endline = j; break; }
     if (l.startsWith(">") || l.startsWith("---")) { endline = j; break; }
     if (SEC_WORDS.some((w) => l.startsWith(w))) { endline = j; break; }
   }

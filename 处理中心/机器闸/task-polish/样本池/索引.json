@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-07T08:39:48",
+  "entries": [
+    {
+      "id": "CP-DEMO-01",
+      "sample": "S-MERCHANT-01",
+      "source": "sandbox",
+      "status": "在用",
+      "entry": "条目/CP-DEMO-01.json",
+      "card": "条目/CP-DEMO-01.卡.md",
+      "materials": [
+        {
+          "slot": "license",
+          "path": "素材/CP-DEMO-01/license.svg",
+          "synthetic": true,
+          "bytes": 597,
+          "sha256": "a0006495b2259d2ad916eb70449214ad2046f77dccdd900d98064e3114bf0b91"
+        },
+        {
+          "slot": "id_front",
+          "path": "素材/CP-DEMO-01/id_front.svg",
+          "synthetic": true,
+          "bytes": 598,
+          "sha256": "c811c10f22ead5ac23898e7863f10d8b5408618385bf41aa494cbe033498d10f"
+        },
+        {
+          "slot": "id_back",
+          "path": "素材/CP-DEMO-01/id_back.svg",
+          "synthetic": true,
+          "bytes": 597,
+          "sha256": "e71780a862f25401d4ecc30796450c270615dda3d74d62bcc688994e02b4e448"
+        },
+        {
+          "slot": "shop_front",
+          "path": "素材/CP-DEMO-01/shop_front.svg",
+          "synthetic": true,
+          "bytes": 600,
+          "sha256": "26f39c28b16dac1ac90c430ef126e44a68a2b5e6add024f4d26e1e970d5e5af7"
+        },
+        {
+          "slot": "shop_inner",
+          "path": "素材/CP-DEMO-01/shop_inner.svg",
+          "synthetic": true,
+          "bytes": 600,
+          "sha256": "48ab7652c2edd325c397e0513094839fb25b60a802f5fdc745548e04c200c07e"
+        }
+      ],
+      "redacted": []
+    }
+  ]
+}

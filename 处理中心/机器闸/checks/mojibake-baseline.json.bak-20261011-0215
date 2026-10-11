@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "note": "SYS-201 乱码扫描闸白名单——只增需理由（{path,kind,reason}·path 支持 *／** 通配；kind 支持 *）。冻结面用目录通配·活面逐件具名（防以后真伤被吞）。新增/退役由程序员/巡检台按实测登记。",
+    "updated": "2026-10-11",
+    "fills": "首fill=2026-10-11 SYS-201 实测（体系仓 34943 件/447 件命中；产品仓 2425 件/16 件命中）"
+  },
+  "entries": [
+    { "path": "处理中心/归档/**", "kind": "*", "reason": "归档/证据冻结面（采集时点原样·历史乱码与 ANSI 控制符不回溯）" },
+    { "path": "处理中心/验证产物/**", "kind": "*", "reason": "验证产物面（终端/采集原始输出·非活代码）" },
+    { "path": "云服务器管理/**", "kind": "*", "reason": "他体系资料面（只读·GBK 采集原始件）" },
+    { "path": "dsh-local/evidence/**", "kind": "*", "reason": "产品仓 dsh 证据面（乱码反推案例原始件·冻结）" },
+    { "path": "tools/ms-md-server/out/**", "kind": "*", "reason": "md 服务测试输出产物（out/ 临时输出）" },
+    { "path": "处理中心/看板/全席重启.log", "kind": "*", "reason": "运维日志（终端原始·GBK 时代输出）" },
+    { "path": "处理中心/看板/心跳外哨.log", "kind": "*", "reason": "运维日志（终端原始·GBK 时代输出）" },
+    { "path": "巡检台/checks/记分史.log", "kind": "*", "reason": "记分史日志（终端原始·含控制符）" },
+    { "path": "处理中心/看板/看板-终端.cmd", "kind": "*", "reason": "cmd 批处理【编码锚】GBK(936) 现行有效（文件内注·cmd.exe 按 ANSI 解析）" },
+    { "path": "处理中心/看板/tests/sys89-maddog-switch.test.mjs", "kind": "U+FFFD", "reason": "存量小伤 1 处（注释「�ing」·非本单域）候办" },
+    { "path": "处理中心/工单库.md", "kind": "U+FFFD", "reason": "卡片正文刻意引用 `�` 字面（SYS-201/629 卡示例）" },
+    { "path": "处理中心/汇报区/工单审验状态_修复记录_2026-10-11.md", "kind": "U+FFFD", "reason": "修复记录刻意引用 `�?` 损伤字面" },
+    { "path": "设计师/派单/UPG-629_邮件预览乱码修复_派单_2026-10-11.md", "kind": "*", "reason": "派单刻意引用乱码示例（夹具口径）" },
+    { "path": "设计师/派单/SYS-201_乱码扫描闸与写护栏_派单_2026-10-11.md", "kind": "*", "reason": "派单列热字表/引用 `�` 字面（本闸规格自体）" },
+    { "path": "处理中心/邮局/邮箱/归档/LTR-20261007-083649-918-pq7.md", "kind": "U+FFFD", "reason": "信件原文留痕（既有）" },
+    { "path": "处理中心/邮局/邮箱/归档/LTR-20261007-083850-742-9kw.md", "kind": "U+FFFD", "reason": "信件原文留痕（既有）" },
+    { "path": "处理中心/邮局/邮箱/归档/LTR-20261011-011236-567-o5b.md", "kind": "U+FFFD", "reason": "629 v2 通知（引用乱码示例）" },
+    { "path": "处理中心/邮局/邮箱/归档/LTR-20261011-013713-108-hnd.md", "kind": "U+FFFD", "reason": "修复记录信（引用 `�?` 读数）" },
+    { "path": "处理中心/邮局/邮箱/归档/LTR-20261011-014255-461-06b.md", "kind": "U+FFFD", "reason": "验收席回执（引用 `�?` 读数）" },
+    { "path": "验收员/证据数据/处理中.md", "kind": "U+FFFD", "reason": "既有小伤 1 处（留痕面·非本单域）候办" },
+    { "path": "处理中心/机器闸/checks/mojibake-probe.mjs", "kind": "*", "reason": "探针自体（热字表/正则内含目标字面）" },
+    { "path": "处理中心/机器闸/checks/mojibake-scan.mjs", "kind": "*", "reason": "自检夹具刻意含乱码字面" },
+    { "path": "处理中心/机器闸/checks/mojibake-baseline.json", "kind": "*", "reason": "白名单自体（条目含乱码字面）" },
+    { "path": "程序员/UPG629-evidence/**", "kind": "*", "reason": "629 对照件刻意留存修复前乱码读数" },
+    { "path": "程序员/SYS201-evidence/**", "kind": "*", "reason": "本单证据面（含乱码夹具/扫描读数原文）" },
+    { "path": "app/src/main/assets/markstream/assets/*.js", "kind": "*", "reason": "markstream vendor 压缩产物（Unicode 范围正则含字面 U+FFFD＋原文控制字节·派单已列合法例）" },
+    { "path": "app/src/test/java/com/hermes/dsh/util/TruncateUtf8Test.kt", "kind": "U+FFFD", "reason": "断言『不产生替换符』·字符字面即测试目标" },
+    { "path": "app/src/test/java/com/hermes/dsh/spill/TextRetainerTest.kt", "kind": "U+FFFD", "reason": "断言『不产生替换符』·字符字面即测试目标" }
+  ]
+}

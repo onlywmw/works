@@ -1,0 +1,11 @@
+{
+ "at": "2026-10-06T10:09:47Z",
+ "probe": {
+  "state": "REJECTED",
+  "desc": "已驳回（UPG548 B取证·后台周期命中）"
+ },
+ "row": {
+  "shop": "shop4ead686f0fd8",
+  "status": "REJECTED"
+ }
+}

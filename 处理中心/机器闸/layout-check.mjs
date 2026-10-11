@@ -22,7 +22,7 @@ const FORBIDDEN = [
 // SYS-23 政策反转：工具痕迹目录（.reasonix 类）「就不能存在」——撤 SYS-11 的 .reasonix/reasonix.toml 登记（登记=放行，与现政策冲突）；与体检.mjs 第⑧节「存在即红」构成双闸联防（大神拍板 2026-09-10）
 // SYS-31：.githooks 补登——体系仓专用 pre-commit 提交闸（sync-orders --check + card-phase-audit，core.hooksPath 已配；works 根 .githooks 正式件先例，根层哨兵首单定性 @2026-09-10）
 // 报错文案直接引用本集合——与集合同口径、永不再手工脱节（SYS-11 收口根治旧硬编码漏 .git/.workbuddy 之弊）
-export const SYS_WHITELIST = new Set(["README.md", "项目配置.md", ".gitignore", ".gitattributes", ".git", ".workbuddy", ".githooks", "设计师", "程序员", "验收员", "审验员", "巡检台", "处理中心", "云服务器管理", "运营中心", "MOV看板.lnk"]); // 云服务器管理/运营中心=体系内部成员·独立嵌套库（2026-09-10 用户拍板）；MOV看板.lnk=根层看板快捷方式（2026-09-12 用户拍板认领 · 2026-09-29 补登·对齐网页范本）；.gitattributes=归档面字节保真（SYS-159 在途件·2026-10-01 即时补登·巡检台卫生通报）——**本 Set 是根层哨兵的单源**（engine.mjs readSetLiteral 直读此处，改此一处哨兵同愈）
+export const SYS_WHITELIST = new Set(["README.md", "项目配置.md", ".gitignore", ".gitattributes", ".git", ".workbuddy", ".workbuddy-ai", ".githooks", "设计师", "程序员", "验收员", "审验员", "巡检台", "处理中心", "云服务器管理", "运营中心", "MOV看板.lnk"]); // 云服务器管理/运营中心=体系内部成员·独立嵌套库（2026-09-10 用户拍板）；MOV看板.lnk=根层看板快捷方式（2026-09-12 用户拍板认领 · 2026-09-29 补登·对齐网页范本）；.gitattributes=归档面字节保真（SYS-159 在途件·2026-10-01 即时补登·巡检台卫生通报）——**本 Set 是根层哨兵的单源**（engine.mjs readSetLiteral 直读此处，改此一处哨兵同愈）；`.workbuddy-ai`＝**用户裁 2026-10-08「保留不动」**（WorkBuddyAI 工具活跃·项目记忆随工作目录落根层；⑧ 继续按实观测其痕迹状态——巡检台终裁留痕·设计席 2026-10-08 13:00 件委托）
 // 处理中心根层白名单（卫生要求§八 · 2026-09-09 上闸）
 export const CENTER_WHITELIST = new Set(["README.md", "工单库.md", "挂账登记表.md", "运行状态.md", "工单审验状态.md", "交付清单", "汇报区", "问题区", "验收标准冻结区", "归档", "机器闸", "邮局", "看板", "验证产物", "工单库_归档"]); // 验证产物=红线26②生成物落点（orders-overview 等）；工单库_归档=2026-09-27 清洗归档区（2026-09-29 补录·用户令）
 // 角色目录卫生白名单（2026-09-09 定稿·程序员样板；其余角色定稿时按同构登记）
@@ -50,7 +50,7 @@ export function checkLayout({ root } = {}) {
   if (!fs.existsSync(lib)) errors.push("工单库.md 缺失");
   else {
     const t = fs.readFileSync(lib, "utf8");
-    const cards = (t.match(/^# (?:UPG|SYS|W|S|HMOS)-\d+/gm) || []).length;
+    const cards = (t.match(/^# (?:UPG|SYS|POL)-\d+/gm) || []).length;
     // 防清空闸（原≥50硬阈值对新植入体系误报——2026-09-10 植入器实测）：账本有过内容（>5KB）而卡数锐减才是事故信号；新体系 0 卡正常
     if (cards < 50 && t.length > 5120) errors.push(`工单卡数异常: ${cards}（账本 ${Math.round(t.length / 1024)}KB 但卡数 <50——疑似清空事故；新体系初始 0 卡为正常）`);
   }

@@ -1,0 +1,97 @@
+{
+  "intervalSec": 60,
+  "workers": [
+    {
+      "name": "临1-pi",
+      "consolePid": 2976,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临2-pi",
+      "consolePid": 36188,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临3-pi",
+      "consolePid": 2072,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临4-pi",
+      "consolePid": 13412,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临5-pi",
+      "consolePid": 36568,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临6-pi",
+      "consolePid": 32068,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临7-pi",
+      "consolePid": 36500,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临9-pi",
+      "consolePid": 20272,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临10-pi",
+      "consolePid": 2632,
+      "mailbox": "程序员",
+      "enabled": true,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临11-pi",
+      "consolePid": 28768,
+      "mailbox": "程序员",
+      "enabled": false,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临12-pi",
+      "consolePid": 26336,
+      "mailbox": "程序员",
+      "enabled": true,
+      "cooldownMin": 10
+    },
+    {
+      "name": "临8-pi",
+      "consolePid": 41876,
+      "mailbox": "程序员",
+      "enabled": true,
+      "cooldownMin": 10
+    }
+  ],
+  "reviewWatch": [
+    {
+      "name": "设计师",
+      "consolePid": 16460,
+      "enabled": true,
+      "staleMin": 30
+    }
+  ]
+}

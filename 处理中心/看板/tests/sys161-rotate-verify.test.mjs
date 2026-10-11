@@ -104,3 +104,22 @@ test("SYS-161 ⑥ dry 只读：待验态 dry 跑零写零日志（轮换自检�
   assert.deepEqual(events(logs), [], "dry 不走日志出口");
   assert.equal(fs.readFileSync(sb.stateFile, "utf8"), before, "dry 不改状态文件");
 });
+
+test("SYS-182 ⑦ 宽限窗：新档 mtime 先于 pending 记录 ≤30s ⇒ 仍判已轮换（实测五现签名·防假红）", () => {
+  const sb = sandbox();
+  // 注入效果先于记录落盘（site 实测：新档时刻与 pending 差 ≤8s）——注入 mock 把档 mtime 拨到 T0−5s（宽限内）
+  const logs1 = scan(sb, { now: T0, inject: () => { const t = (T0 - 5000) / 1000; fs.utimesSync(sb.sessFile, t, t); } });
+  assert.deepEqual(events(logs1), [], "注入当场不记");
+  const logs2 = scan(sb, { now: T0 + 6 * 60e3, inject: () => { throw new Error("不应再注入"); } });
+  assert.deepEqual(events(logs2), ["session.rotate"], "宽限窗内 ⇒ 记已轮换（不判未生效）");
+  assert.ok(logs2[0].e.includes("已轮换"), "文案含「已轮换」");
+  assert.equal(readState(sb)["程序员"].pending, null, "判后清 pending");
+});
+
+test("SYS-182 ⑧ 宽限窗边界：档 mtime 早于 pending −30s（真未生效）⇒ 仍判未生效（宽限不引假绿）", () => {
+  const sb = sandbox();
+  const logs1 = scan(sb, { now: T0, inject: () => { const t = (T0 - 60e3) / 1000; fs.utimesSync(sb.sessFile, t, t); } }); // 60s 前（静置窗旧写位）
+  assert.deepEqual(events(logs1), [], "注入当场不记");
+  const logs2 = scan(sb, { now: T0 + 6 * 60e3, inject: () => { throw new Error("不应再注入"); } });
+  assert.deepEqual(events(logs2), ["session.rotate.noeffect"], "超出宽限 ⇒ 真未生效照判（红线保持）");
+});

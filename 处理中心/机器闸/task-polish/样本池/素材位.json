@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "note": "样本→素材位登记表（接收侧合成素材拼装的唯一来源）。新增样本卡 MUST 在此登记一行；未登记样本的上传一律拒收。card 相对 task-polish 根。",
+  "samples": {
+    "S-ONBOARD-01": {
+      "card": "样本任务卡_S-ONBOARD-01.md",
+      "blueprint": "onboard-v1",
+      "materials": ["license", "id_front", "id_back", "shop_front", "shop_inner"]
+    },
+    "S-MERCHANT-01": {
+      "card": "样本任务卡_S-MERCHANT-01.md",
+      "blueprint": "merchant-v1",
+      "materials": ["license", "id_front", "id_back", "shop_front", "shop_inner"]
+    },
+    "S-WXPAY-01": {
+      "card": "样本任务卡_S-WXPAY-01.md",
+      "blueprint": "wxpay-v1",
+      "materials": []
+    },
+    "S-LISTING-01": {
+      "card": "样本任务卡_S-LISTING-01.md",
+      "blueprint": "listing-v1",
+      "materials": ["barcode", "product_photo"]
+    }
+  }
+}

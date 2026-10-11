@@ -48,6 +48,7 @@ node "E:\MOV\安卓中国体系建设\处理中心\机器闸\checks\precheck-l23
 ```
 
 三项：① 模拟器在线（`adb devices` 见目标机，默认 `emulator-5554`）② App 已装（`pm path <包名>`——**包名默认自动读**：`--package` > `--worktree` > cwd > `E:/mov工作区` 最新 `mov-*` worktree（跳过 `-mut` 副本）的 `app/build.gradle(.kts)` 的 `applicationId`；全取不到回退 `cn.mov.app`）③ key 有效（复用 key-health 探测）。
+- **判据绑定某棵树时加 `--expect-device <main|树路径>`**（SYS-184 跑前门：设备现包指纹 ≠ 期望即 **fail-closed 拒跑**·打印两指纹对比；读数记入证据）。
 - 全绿（`PRECHECK L23 PASS`，exit 0）→ 可开链；
 - 红一项（exit 1）→ **停链**，按逐条「缺什么／怎么补」报缺给对应角色（key 失效 → 设计师；模拟器/包缺失 → 施工侧），补齐复跑绿了再开。
 - 换目标：`--serial <序列号> --package <包名> --worktree <worktree路径> --adb <路径> --keys <路径>`。
@@ -55,12 +56,13 @@ node "E:\MOV\安卓中国体系建设\处理中心\机器闸\checks\precheck-l23
 - 注 2（SYS-133 @2026-09-28）：② 的包名切勿写死——`namespace`（`com.mov.android`）与 `applicationId`（`cn.mov.app`）是两个值，写死 namespace 会读出「App 没装」的**假红**；读数首行 `包名=X（来源）` 会写明本次判的包名从哪来。
 
 ## 项目地图
-- 九库全景 `E:\MOV\REPOS.md`；**产品源码（App/官网/市场/工作台）= `E:\mov归档\0027-mov`（0027-mov.git，施工走 mov-upg<号> worktree）**；各体系根有各自工单库——先查地图再全域搜
+- 九库全景 `E:/MOV/README.md`＋`E:/MOV/项目配置.md`（`REPOS.md` 不存在·旧名）；**产品源码（App/官网/市场/工作台）= `E:\mov归档\0027-mov`（0027-mov.git，施工走 mov-upg<号> worktree）**；各体系根有各自工单库——先查地图再全域搜
 
 
 - **打回必做相位回退**（否则看板/铃全指错方向）：打回时同步 `set-status <号> --phase <回退相位> --note "打回"`——→程序员 `in_progress`｜→验收员 `delivered`｜→设计师重走 `registered`
 
 - **卡片单必过卡片闸**（2026-09-29 立·change=card-lifecycle-governance）：涉及卡片的单，派单/交付/验收 MUST 过 `node 处理中心/机器闸/card-audit.mjs --only <本单卡型>`（漂移即红）；**未接线动作不得渲染按钮**（规范 §3.10/§4-7）；接线即同轮翻 `ACTION_WIRED`。
+- **对话可用性核（2026-10-07 立·change=conversation-capability-parity）**：凡含新增/变更用户可见功能的单——验收 MUST 按派单「对话可用性」声明核：**连接形态**挂点齐（工具＝在册＋meta；任务/卡片/页面/主动线＝桩在＋动作已接线）＋覆盖率读数不降（`node 处理中心/机器闸/tool-face-audit.mjs`）；豁免按「确不属用户意图可映射面」核。缺声明或读数回涨＝红。
 ## 红线
 - **体系边界**：只写「安卓中国体系建设」目录内文件 + 派单指定的 0027-mov worktree；其他体系目录（网页/ios/鸿蒙/谷歌/腾讯/运营/云服务器）**一律只读**——跨体系的活在自己体系出提案+挂账移交，由目标体系自己接手（红线25平台归属纪律延伸到体系目录，2026-09-09 官网草案越界案定）
 - 绝不采信交付报告里的自报数字——一切自己复跑

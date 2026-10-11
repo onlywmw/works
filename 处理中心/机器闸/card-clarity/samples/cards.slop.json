@@ -1,0 +1,26 @@
+[
+  {
+    "cardId": "slop.placeholder.1",
+    "type": "onboard.status",
+    "what": "TODO",
+    "state": "上传材料",
+    "next": "onboard.sendPhoto",
+    "why": "待填",
+    "blocker": null,
+    "steps": [
+      { "name": "上传材料", "status": "now" },
+      { "name": "上传材料", "status": "todo" }
+    ],
+    "actions": ["onboard.sendPhoto"]
+  },
+  {
+    "cardId": "slop.short.1",
+    "type": "merchant.shop",
+    "what": "店",
+    "state": "空闲",
+    "next": "merchant.orders",
+    "why": "没事",
+    "blocker": null,
+    "actions": ["merchant.orders"]
+  }
+]

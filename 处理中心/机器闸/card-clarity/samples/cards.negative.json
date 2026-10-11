@@ -1,0 +1,38 @@
+[
+  {
+    "cardId": "neg.missing.1",
+    "type": "onboard.status",
+    "what": "微信特约商户进件",
+    "state": "审核被驳回",
+    "next": "onboard.fix",
+    "blocker": null,
+    "steps": [
+      { "name": "上传材料", "status": "done" },
+      { "name": "改正资料并重新提交", "status": "now" }
+    ]
+  },
+  {
+    "cardId": "neg.vague.1",
+    "type": "onboard.status",
+    "what": "资料相关事项",
+    "state": "有一些信息需要处理",
+    "next": "onboard.fix",
+    "why": "系统检测到一些情况，建议关注",
+    "blocker": null,
+    "steps": [
+      { "name": "相关步骤", "status": "now" },
+      { "name": "后续处理", "status": "todo" }
+    ],
+    "actions": ["onboard.fix"]
+  },
+  {
+    "cardId": "neg.term.1",
+    "type": "onboard.status",
+    "what": "微信特约商户进件",
+    "state": "REJECTED",
+    "next": "onboard.fix",
+    "why": "shop_id 校验未通过",
+    "blocker": null,
+    "actions": ["onboard.fix"]
+  }
+]

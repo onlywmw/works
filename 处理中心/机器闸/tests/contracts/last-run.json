@@ -1,5 +1,5 @@
 {
-  "ran_at": "2026-10-04T08:43:42.736Z",
+  "ran_at": "2026-10-09T13:11:01.184Z",
   "total": 14,
   "failed": 0,
   "results": [
@@ -35,13 +35,7 @@
     },
     {
       "suite": "A",
-      "name": "A6 delivered＋delivery-id（沙盒）→rc0＋跳过报告闸（tier C① 修复后行为·真库路径仍拦）",
-      "pass": true,
-      "err": null
-    },
-    {
-      "suite": "A",
-      "name": "A9 merged（沙盒）→rc0＋跳过随动＋跳过装机钩子（tier C① 修复·原装机钩子不经沙盒判定）",
+      "name": "A6 delivered 沙盒→报告闸跳过+写入成功（tier C① 口径·2026-10-04；真库路径仍拦）",
       "pass": true,
       "err": null
     },
@@ -58,8 +52,14 @@
       "err": null
     },
     {
+      "suite": "A",
+      "name": "A9 merged 沙盒→资产随动/装机钩子双跳过（tier C① 口径·真库不变）",
+      "pass": true,
+      "err": null
+    },
+    {
       "suite": "B",
-      "name": "B1 dispatch-lint 空壳卡→rc1+点名 SYS-99002（卡头正则 UPG|SYS|W|S·TST 段不可见·tier C② 修复后口径）",
+      "name": "B1 dispatch-lint 空壳卡→rc1+点名 SYS-99002（卡头扫面 UPG|SYS|POL——TST 段不在扫面，亦为契约）",
       "pass": true,
       "err": null
     },

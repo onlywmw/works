@@ -23,10 +23,12 @@ import { spawn, execSync, execFileSync } from "node:child_process"; // 2026-10-0
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module"; // SYS-90 R2：ESM 下引 node:sqlite（require 未定义活体缺陷修）
 import { collect } from "./board-data.mjs";
-import { createPool, parseSeatField } from "./值守池.mjs"; // SYS-45 C 层：headless 工位池（pi --mode rpc 唤醒通道）
 import os from "node:os";
-import { newId, buildEnvelope, parseEnvelope, TICKET_IN_TEXT } from "./lib/envelope.mjs"; // 发信+读信单一通道（SYS-16/审查⑥）：毫秒唯一 ID + 信封 ref 常驻 + 解析归一，堵同秒覆盖丢信与哨兵盲区
+import { newId, buildEnvelope, parseEnvelope, TICKET_IN_TEXT, parseSeatField } from "./lib/envelope.mjs"; // 发信+读信单一通道（SYS-16/审查⑥）：毫秒唯一 ID + 信封 ref 常驻 + 解析归一，堵同秒覆盖丢信与哨兵盲区
 import { SEAT_THRESH, seatTag } from "./lib/seat-thresh.mjs"; // SYS-176：席位评定阈值/tag 单源（[75,60]·与 seat-score.mjs 同引本件）
+import { PRODUCT } from "../机器闸/lib/root.mjs"; // SYS-160/184：产品仓根单源（空闲回主判据）
+import { isMainLine, gitShort } from "../机器闸/lib/device-version.mjs"; // SYS-184：回主判据指纹解析单一真源
+import { resolveAdb, run as adbRun } from "../机器闸/checks/真机占用.mjs"; // SYS-135/184：adb 定位/占用登记单源
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
@@ -71,7 +73,7 @@ function linuxProcs() { // 与 WMI 表同字段：ProcessId/ParentProcessId/Name
 const DIR = path.join(HERE, "单");
 const WORKS = path.join(HERE, "..", ".."); // 安卓中国体系建设体系根（工单库在 处理中心/，状态闸在 处理中心/机器闸/）
 const SET_STATUS = path.join(WORKS, "处理中心", "机器闸", "set-status.py"); // 2026-09-09 工具分家后自 审验员/ 迁入机器闸（死链修复）
-const TICKET_RE = /^(UPG|SYS|W|S|HMOS)-[A-Za-z0-9]+$/;
+const TICKET_RE = /^(UPG|SYS|POL)-[A-Za-z0-9]+$/;
 const STAGE_PHASE = { // 工序→工单库主链相位（阶段通过时回写；设计师合并位在 completeStage 专路处理，不走此表）
   "程序员": ["delivered", "dev"], "验收员": ["accepted", "inspector"], "审验员": ["audited", "inspector"],
 };
@@ -480,19 +482,25 @@ function normalizeRotateState(v) {
   if (v && typeof v === "object") return { last: Number(v.last) || 0, pending: v.pending || null };
   return { last: 0, pending: null };
 }
-/** SYS-161：注入效果验证——该席任一 .jsonl 的 mtime 晚于注入时刻（新档出现 或 原档 mtime 变化）⇒ 生效。 */
+/** SYS-161：注入效果验证——该席任一 .jsonl 的 mtime 晚于注入时刻（新档出现 或 原档 mtime 变化）⇒ 生效。
+ *  SYS-182（2026-10-04）：加**宽限窗**——实测五现「注入已落（新档已生成）却判未生效」（多例新档时刻与 pending 差 ≤8s）。
+ *  安全前提：轮换条件含「静置≥60s」⇒ [pending.at−GRACE, pending.at] 内不可能有该席旧写 ⇒ 宽限不引假绿；
+ *  同时返回 newest（判失败时供日志记「最近档 mtime 差」·现网复现自解释）。 */
+const ROTATE_VERIFY_GRACE_MS = 30e3;
 function verifyRotateEffect(sessionsRoot, role, pending) {
+  let newest = null;
   try {
     for (const d of fs.readdirSync(sessionsRoot)) {
       if (!d.includes(role)) continue;
       for (const jf of fs.readdirSync(path.join(sessionsRoot, d))) {
         if (!jf.endsWith(".jsonl")) continue;
-        const fp = path.join(sessionsRoot, d, jf); const stat = fs.statSync(fp);
-        if (stat.mtimeMs > pending.at) return { ok: true, file: jf, size: stat.size };
+        const stat = fs.statSync(path.join(sessionsRoot, d, jf));
+        if (!newest || stat.mtimeMs > newest.mtimeMs) newest = { file: d + "/" + jf, mtimeMs: stat.mtimeMs, size: stat.size };
+        if (stat.mtimeMs > pending.at - ROTATE_VERIFY_GRACE_MS) return { ok: true, file: jf, size: stat.size, graceMs: pending.at - stat.mtimeMs };
       }
     }
   } catch { /* 无会话目录 ⇒ 未生效 */ }
-  return { ok: false };
+  return { ok: false, newest };
 }
 function scanSessionRotate(opts = {}) { // opts（测试桩·同 ringUnreadSeats 口径）：seatsDir/sessionsRoot/stateFile 换沙盒，inject 换掉真注入，now 换时钟，noLog/onFault 换日志出口
   if (Date.now() - lastSessionRotateScan < 5 * 60e3 && !opts.force) return; // 每 5 分钟最多一遍
@@ -523,12 +531,13 @@ function scanSessionRotate(opts = {}) { // opts（测试桩·同 ringUnreadSeats
       if (opts.dry) { console.log(`[轮换·dry] ${sd.role}：注入待验（${ageMin}min·${v.ok ? "已见新档/mtime 变化 ⇒ 会记已轮换" : (now - rec.pending.at) >= SESSION_ROTATE.verifyMs ? "超判定窗 ⇒ 会记未生效" : "期内待下轮"}）`); continue; }
       if (v.ok) {
         st[sd.role] = { last: now, pending: null }; saveState(st);
-        report("session.rotate", `已轮换：${sd.role}（注入验证通过·${v.file} ${(v.size / 1048576).toFixed(1)}MB）`);
+        report("session.rotate", `已轮换：${sd.role}（注入验证通过${v.graceMs > 1500 ? `·宽限命中（档先于记录 ${(v.graceMs / 1000).toFixed(0)}s）` : ""}·${v.file} ${(v.size / 1048576).toFixed(1)}MB）`);
       } else if ((now - rec.pending.at) < SESSION_ROTATE.verifyMs) {
         /* 期内：等下一轮扫描再判（不记日志） */
       } else {
         st[sd.role] = { last: now, pending: null }; saveState(st);
-        report("session.rotate.noeffect", `注入未生效（待验）：${sd.role}（注入后 ${ageMin}min 无新档/mtime 变化 ⇒ 转观察·冷却后重试）`);
+        const nn = v.newest ? `·最近档 mtime 差 ${((v.newest.mtimeMs - rec.pending.at) / 1000).toFixed(1)}s` : "·无任何档";
+        report("session.rotate.noeffect", `注入未生效（待验）：${sd.role}（注入后 ${ageMin}min 无新档/mtime 变化${nn} ⇒ 转观察·冷却后重试）`);
       }
       continue;
     }
@@ -633,7 +642,7 @@ function scanStalls() {
 }
 
 // ---------- 巡检台定时巡查（2026-09-10 用户拍板）：引擎按钟点向巡检台工位窗注入「巡查」触发词——事件/钟点驱动，agent 不轮询 ----------
-// 间隔默认 4 小时（工位绑定.json _hygienePatrolMin 分钟 / _hygienePatrolHours 小时 可调）；席不在岗=跳过且不重置计时（复岗后第一分钟即补巡）；触发时刻落盘，引擎重启不乱补
+// 间隔默认 4 小时（工位绑定.json _hygienePatrolMin 分钟 / _hygienePatrolHours 小时 可调）；席不在岗=跳过并重置计时（2026-10-08 用户令「没打开不能自动在后台跑」⇒ 复岗不补巡·打开后从头算间隔）；触发时刻落盘，引擎重启不乱补
 // 主题轮换制（2026-09-10 用户拍板）：每轮=基础卫生扫+单一聚焦主题（UI设计→架构设计→bug查找→目标对齐→循环），不一次全管——主题随触发词下发，round 计数落盘
 const PATROL_FILE = path.join(HERE, "巡查哨兵.json");
 const HY_THEMES = ["UI设计", "架构设计", "bug查找", "目标对齐"]; // 第四主题 2026-09-10 立：目标是项目前进的动力——毛病挑完就量离北极星的差距（巡检台\猫头鹰\）
@@ -682,14 +691,14 @@ function patrolHygiene(force = false, opts = {}) { // opts（测试桩）：patr
     if (!alive) {
       const step = skipEscalateStep(st, Date.now(), intervalMs); // SYS-56：按巡查间隔计次（防 tick 级重复计数→同事项连投）
       if (!step.counted) return; // 本间隔已计过：静默返回，不重复计数/不重复投信
-      fs.writeFileSync(opts.patrolFile || PATROL_FILE, JSON.stringify({ ...st, lastSkip: new Date().toISOString(), skipReason: "席不在岗", skipStreak: step.streak }, null, 2), "utf-8");
+      fs.writeFileSync(opts.patrolFile || PATROL_FILE, JSON.stringify({ ...st, lastAt: new Date().toISOString(), lastSkip: new Date().toISOString(), skipReason: "席不在岗", skipStreak: step.streak }, null, 2), "utf-8"); // 2026-10-08 用户令：lastAt 同步重置——复岗不补巡（没打开=不跑·打开后从头算）
       if (step.escalate) { // 连续 6 次跳过（≈2h@缺省间隔）= 席挂升级：值班信报设计师（每 6 次复报）
         try { sendDutyLetter("SYS-巡检台", `巡检台席疑似挂起：连续 ${step.streak} 次巡查跳过（席不在岗）`, `巡查哨兵.json lastSkip=${new Date().toISOString()}·skipStreak=${step.streak} —— 请复席或排查（体系外心跳=心跳外哨.ps1 同步在看）。`); } catch (e) { fault("patrol.skipEscalate", e, opts); }
       }
       if (step.bite) { // SYS-62：白鸽连跳≥3 → 咬信投巡检台席（每 3 次一咬）
         try { sendSpriteBite(`白鸽连跳 ${step.streak} 次不巡（席不在岗）`, `巡查哨兵.json lastSkip=${new Date().toISOString()}·skipStreak=${step.streak}——基准巡逻钟连跳 ${step.streak} 次（每 3 次一咬）。请复席或排查（体系外心跳=心跳外哨.ps1 同步在看）。`, { noLog: opts.noLog, boxRoot: opts.boxRoot, now: opts.now }); } catch (e) { fault("patrol.skipBite", e, opts); }
       }
-      return; // 不动 lastAt/round——复岗即补巡
+      return; // lastAt 已重置（见上）——复岗不补巡；round 不动（未巡不加轮）
     }
     const round = st.round || 0;
     const b = binding0;
@@ -906,17 +915,19 @@ function evidenceDirs(roleDir) {
   for (const e of ents) if (e.isDirectory() && /证据|evidence/i.test(e.name)) out.push(path.join(roleDir, e.name));
   return out;
 }
-function latestMtimeUnder(dir) { // 浅扫两层：目录内文件 + 其一层子目录内的文件
+function latestMtimeUnder(dir, maxDepth = 5) { // SYS-30 补（2026-10-08 验收席提案 B）：原浅扫两层对「证据数据/<日期>/<单号>/<文件>」三层面失明 ⇒ 改深度受限递归（≤5 层）
   if (!fs.existsSync(dir)) return 0;
   let latest = 0;
-  let ents;
-  try { ents = fs.readdirSync(dir, { withFileTypes: true }); } catch { return 0; }
-  for (const ent of ents) {
-    const p = path.join(dir, ent.name);
-    const bump = (f) => { try { const m = fs.statSync(f).mtimeMs; if (m > latest) latest = m; } catch {} };
-    if (ent.isDirectory()) { try { for (const s of fs.readdirSync(p, { withFileTypes: true })) if (s.isFile()) bump(path.join(p, s.name)); } catch {} }
-    else bump(p);
-  }
+  const walk = (d, depth) => {
+    let ents;
+    try { ents = fs.readdirSync(d, { withFileTypes: true }); } catch { return; }
+    for (const ent of ents) {
+      const p = path.join(d, ent.name);
+      if (ent.isDirectory()) { if (depth < maxDepth) walk(p, depth + 1); continue; }
+      try { const m = fs.statSync(p).mtimeMs; if (m > latest) latest = m; } catch {}
+    }
+  };
+  walk(dir, 0);
   return latest;
 }
 
@@ -1113,6 +1124,25 @@ function parkTicket(id, reason, until, by) {
   fs.writeFileSync(PARK_FILE, JSON.stringify(p, null, 2), "utf-8");
   parkLetter("设计师", `${id} 挂起知会`, `工单 ${id} 已挂起（登记人：${by || "?"}）。\n原因：${reason}\n解除条件：${until}\n挂起期间哨兵豁免（不报卡单、疯狗不咬）。条件达成后任何人执行「解挂 ${id}」复工。`);
 }
+function parkArgsOf(ra) { // SYS-188：挂起参数解析（--until 旗标优先；旧式 <原因> | <条件> | <角色> 兼容）——纯函数可单测
+  const ui = ra.indexOf("--until");
+  const untilFlag = ui >= 0 ? String(ra[ui + 1] || "").trim() : "";
+  const rest2 = ui >= 0 ? ra.filter((_, i) => i !== ui && i !== ui + 1) : ra;
+  const parts = rest2.join(" ").split("|").map((s) => s.trim());
+  const legacy = !untilFlag; // 旧式三段；带 --until 时剩余竖线段=角色
+  return { reason: parts[0] || "", until: untilFlag || parts[1] || "", by: (legacy ? parts[2] : parts[1]) || "cli" };
+}
+function selfHoldWarnings(by, occFile) { // SYS-188：登记方=当前占用方 ⇒ 警告（自持不构成阻塞理由）；占用表读不到 ⇒ 空
+  const outv = [];
+  try {
+    const occ = readJson(occFile || path.join(HERE, "..", "机器闸", "真机占用.json")) || {};
+    for (const [serial, o] of Object.entries(occ)) {
+      if (serial.startsWith("_") || !o || !o.who) continue;
+      if (o.who === by) outv.push(`⚠ 登记方「${by}」＝当前占用方（${serial}·自 ${o.since} 至 ${o.until}）——自持不构成阻塞理由（SYS-188）；请勿以此挂起`);
+    }
+  } catch { /* 占用表不可读不阻断 */ }
+  return outv;
+}
 function unparkTicket(id) {
   const p = readParked(); const rec = p[id];
   if (!rec) return false;
@@ -1189,6 +1219,9 @@ function __testResetWatchdog() { for (const k of Object.keys(watchEscalated)) de
 function sendWatchAlert(msg) { // 默认告警出口（测试以 opts.onEscalate 替换）：type=告警 即时信 → 设计师
   sendDutyLetter("SYS-看门狗", "铃通道告警", msg, { type: "告警", sign: "看门狗", tail: "看门狗即时告警（席位通道可能未送达）。请核查：巡铃注入/席位会话写盘/巡铃.log 对账；处理完销信即可。" });
 }
+function sendThriftAlert(msg) { // SYS-188：thrift（轮询/回合超阈）≠ 通道故障——独立出口与文案（判据/语义配位）
+  sendDutyLetter("SYS-Token", "轮询/回合超阈预警", msg, { type: "告警", sign: "token 哨兵", tail: "降耗预警（非通道故障）：计数=目录级信箱查看/同路径≥3 次重复读（SYS-188）；处理=等信.mjs＋只读小检串一条命令（SYS-167）；处理完销信即可。" });
+}
 // SYS-58：「敲了没办」阈值——_watchdogNoProgressMin（数字或 per-role 对象，同 _madDogGraceMin 结构）；缺省 10 分钟
 const WATCHDOG_STUCK_DEFAULT_MS = 10 * 60e3;
 function watchdogStuckMs(binding, role) {
@@ -1232,11 +1265,11 @@ let firstPatrolDone = false;                 // 本进程首次出巡完成标�
 const ROUTINE_MAX_AGE_MS = 7 * 24 * 3600e3;
 const ROUTINE_ARM_FILE = path.join(HERE, "例行产出锚.json");
 const SYS_ROOT = path.join(HERE, "..", "..");
-const ROUTINE_ANCHORS = [
-  { role: "设计师", label: "目标对齐复核", dir: path.join("设计师", "例行产出"), re: /^目标对齐复核_\d{4}-\d{2}-\d{2}\.md$/ },
-  { role: "设计师", label: "架构雷达图谱", dir: path.join("设计师", "例行产出"), re: /^架构雷达_\d{4}-\d{2}-\d{2}$/ },
-  { role: "审验员", label: "每周安全扫", dir: path.join("审验员", "例行产出"), re: /^安全扫_\d{4}-\d{2}-\d{2}\.md$/ },
-  { role: "验收员", label: "视觉回归＋基准对账", dir: path.join("验收员", "例行产出"), re: /^视觉回归_\d{4}-\d{2}-\d{2}\.md$/ },
+const ROUTINE_ANCHORS = [ // 2026-10-07：加 `(_轮\d+)?` 容错——架构雷达实产带「_轮N」后缀（巡检台欠账线误咬案·防同型再发）
+  { role: "设计师", label: "目标对齐复核", dir: path.join("设计师", "例行产出"), re: /^目标对齐复核_\d{4}-\d{2}-\d{2}(_轮\d+)?\.md$/ },
+  { role: "设计师", label: "架构雷达图谱", dir: path.join("设计师", "例行产出"), re: /^架构雷达_\d{4}-\d{2}-\d{2}(_轮\d+)?$/ },
+  { role: "审验员", label: "每周安全扫", dir: path.join("审验员", "例行产出"), re: /^安全扫_\d{4}-\d{2}-\d{2}(_轮\d+)?\.md$/ },
+  { role: "验收员", label: "视觉回归＋基准对账", dir: path.join("验收员", "例行产出"), re: /^视觉回归_\d{4}-\d{2}-\d{2}(_轮\d+)?\.md$/ },
 ];
 
 function watchdog(D, opts = {}) { // 每分钟一轮：信龄超 5 分钟的可敲信未敲 / 灯尸（灯亮 agent 死）→ 告警；opts（测试桩）：boxRoot/seatsDir/watchFile/force/onAlarm/boardStartedAt/bootAt
@@ -1421,8 +1454,9 @@ const CLAIM_FILE = path.join(HERE, "持单哨兵.json");
 const CLAIM_SLA_MIN = 30;
 // SYS-172 相位闸：卡面 phase 已进交付线/终态 ⇒ 不存在「持单不动」——不报；已在告警态 ⇒ 同轮自动销警（一夜 3 次同型假警）。
 const CLAIM_PARKED_PHASES = new Set(["delivered", "accepted", "audited", "merged", "obsolete"]);
-function parkedClaimKeys(libFile) { // 工单库.md → 相位已 parked 的单号集（解析口径同 SYS-44；读不到=空集——禁放宽真卡单）
-  const parked = new Set();
+function parkedClaimKeys(libFile, parkFile) { // 工单库.md → 相位已 parked 的单号集（解析口径同 SYS-44；读不到=空集——禁放宽真卡单）
+  // SYS-188：引擎挂起表（挂起.json）并入——挂起豁免以挂起.json 为唯一真源（卡面 phase 不变的挂起单不再照报）
+  const parked = new Set(Object.keys(readParked(parkFile)));
   try {
     const lib = fs.readFileSync(libFile || path.join(HERE, "..", "工单库.md"), "utf-8");
     for (const card of lib.split(/^# (?=[A-Z][A-Z0-9]*-)/m).slice(1)) {
@@ -1466,7 +1500,7 @@ function scanClaimStale(opts = {}) { // opts（测试桩）：claimsDir/bindFile
     const notified = { ...(st.notified || {}) };
     for (const [k, t] of Object.entries(notified)) if (now - t > 24 * 3600e3) delete notified[k]; // 冷却表 24h 清理
     // SYS-172 相位闸：报前读卡面 phase——parked 的不进候选；已在告警态的同轮销警（无候选无告警则免读）
-    const parked = (stale.length || Object.keys(notified).length) ? parkedClaimKeys(opts.libFile) : new Set();
+    const parked = (stale.length || Object.keys(notified).length) ? parkedClaimKeys(opts.libFile, opts.parkFile) : new Set();
     const live = stale.filter((r) => !parked.has(r.id));
     for (const id of Object.keys(notified)) if (parked.has(id)) delete notified[id];
     const hit = live.filter((r) => now - (notified[r.id] || 0) > 30 * 60e3);
@@ -1537,7 +1571,8 @@ function findWorkerWindow(name, opts = {}) { // R1①：标题 MOV-<name> 的活
 function openWorkerWindow(name, wdef, opts = {}) {
   const seatDir = path.join(HERE, "工位", (wdef && wdef.mailbox) || "程序员");
   const title = `MOV-${name}〔安卓中国〕`; // SYS-173：席位/临时窗标题带体系标签（解析同批改·座探认 MOV- 前缀）
-  const ps = `$p = Start-Process cmd -ArgumentList '/k','title ${title} && cd /d "${seatDir}" && pi' -PassThru; $p.Id`;
+  const potEnv = PONYTAIL_ULTRA_ROLES.has(String((wdef && wdef.mailbox) || "程序员")) ? ' && set "PONYTAIL_DEFAULT_MODE=ultra"' : '';
+  const ps = `$p = Start-Process cmd -ArgumentList '/k','title ${title} && cd /d "${seatDir}"${potEnv} && pi' -PassThru; $p.Id`;
   const out = (opts.execSyncFn || execSync)(`powershell -NoProfile -Command "${ps.replace(/"/g, '\\"')}"`, { encoding: "utf8", timeout: 30000 });
   const pid = Number(String(out).trim());
   if (!pid) throw new Error(`openWorkerWindow 未取到 pid（out=${String(out).slice(0, 80)}）`);
@@ -1597,11 +1632,10 @@ function wakeWorker(name, text, opts = {}) {
     return { ok: false, how: "window-dead-no-reopen" };
   }
 }
-function pullUpSilentSeats(opts = {}) { // opts（测试桩）：pool/boxRoot/claimsDir/workersFile/stateFile/now/force/binding/sessionMtime/silentMs/noLog
+function pullUpSilentSeats(opts = {}) { // opts（测试桩）：boxRoot/claimsDir/workersFile/stateFile/now/force/binding/sessionMtime/silentMs/noLog
   const now = opts.now ?? Date.now();
   if (!opts.force && now - lastPullUpScan < 60e3) return null;
   lastPullUpScan = now;
-  const pool = opts.pool || boardPool; // SYS-61：池仅作状态位（唤醒只走可见窗·无池也可扫——绝不隐性）
   try {
     const b = opts.binding || readBinding();
     const silentMs = opts.silentMs || silentMsOf(b, "_pullUpSilentMin"); // 席静默窗与信超窗同口径（缺省 10min）
@@ -1844,7 +1878,6 @@ const rungLetters = new Set();
 const RING_ACK_DEFAULT_MS = 15e3;
 const ringAck = {};        // role → {at, preWrite, retried, retryAt, alerted}
 function __testResetRingAck() { for (const k of Object.keys(ringAck)) delete ringAck[k]; if (typeof chanAlertAt !== "undefined") for (const k of Object.keys(chanAlertAt)) delete chanAlertAt[k]; }
-let boardPool = null; // SYS-45：工位池（cmdBoard 非 smoke 创建；定向信 → 池唤醒；忙位跳过）
 const lastPoolSkip = {}; // 池忙位跳过日志节流（每工位 60s 一条，防逐 tick 刷日志）
 const lastBackfill = {}; // SYS-90 静噪：补敲计数/时刻（role → {count, at}；上限 3 + 指数退避 90s/180s/360s；席写盘即归零）
 const lastRingAt = {}; // 角色 → 上次成功敲铃时刻：90 秒冷却合并 burst（信件洪峰期每封一响=触发词排队空转，2026-09-10 设计师九连空案）
@@ -2046,6 +2079,70 @@ function installDailyBackup() { // board 与 serve 两模式各自挂点（同�
   dailyBackupTick();
 }
 
+// ── SYS-184 空闲回主（change=device-package-governance·D3）：每 ~30min 一次「设备 = main 线」巡检 ──
+//   占用在期 ⇒ skip（严格=任何 who——引擎非席，不认自持）；装机在跑（锁新鲜）⇒ skip（与合并钩子不重复构建）；
+//   设备离线/读不到版本 ⇒ skip；设备 versionName 不是 main 线（base≠main 短 sha 或带分支标记）⇒ 异步调
+//   装机.mjs 默认模式回主（清单一入口：占用双查/自判/锁均在装机.mjs 内）。台账与设备回读不符⇒对账告警（D5）。
+const RESTORE_INTERVAL_MS = 30 * 60e3;
+const INSTALL_MJS = path.join(HERE, "..", "机器闸", "装机.mjs");
+const INSTALL_LOG = path.join(HERE, "装机哨兵.log");
+const DEVICE_LEDGER = path.join(HERE, "设备包.json");
+let lastRestoreAt = 0;
+let restoreMainTimer = null;
+function probeRestoreEnv() { // 真环境探针（测试经 opts.probe 注入替代；本件只读，不触装机）
+  const occ = readJson(path.join(HERE, "..", "机器闸", "真机占用.json")) || {};
+  const now = Date.now();
+  if (Object.entries(occ).some(([k, o]) => !k.startsWith("_") && o && o.until && Date.parse(String(o.until).replace(" ", "T")) > now)) return { occupied: true };
+  const st = readJson(path.join(HERE, "装机.lock"));
+  if (st && st.at && now - Date.parse(st.at) < 20 * 60e3) return { locked: true }; // 装机锁（20min 口径同装机.mjs）
+  const adb = resolveAdb();
+  let serials = [];
+  try { const r = adbRun(adb, ["devices"]); serials = String(r.out || "").split(/\r?\n/).filter((l) => /\tdevice$/.test(l)).map((l) => l.split(/\t/)[0]); } catch { /* adb 不可用 ⇒ 视为离线 */ }
+  if (!serials.length) return { offline: true };
+  const serial = serials[0];
+  const dp = adbRun(adb, ["-s", serial, "shell", "dumpsys", "package", "cn.mov.app"]);
+  const deviceVersion = (String((dp && dp.out) || "").match(/versionName=(\S+)/) || [])[1] || "";
+  const L = readJson(DEVICE_LEDGER);
+  const ledgerLast = L && Array.isArray(L.entries) ? (L.entries[L.entries.length - 1] || null) : null;
+  return { serial, deviceVersion, mainHead: gitShort(PRODUCT), ledgerLast };
+}
+function spawnRestoreMain({ serial }) { // 异步调装机.mjs（默认模式）——日志并入「装机哨兵.log」（与合并钩子同件）
+  const fh = fs.openSync(INSTALL_LOG, "a");
+  try {
+    spawn(process.execPath, [INSTALL_MJS, "--serial", serial, "--purpose", "restore-main", "--by", "sentinel"],
+      { cwd: WORKS, detached: true, stdio: ["ignore", fh, fh], windowsHide: true }).unref();
+  } finally { try { fs.closeSync(fh); } catch { /* 子进程持副本 */ } }
+}
+function restoreMainTick(opts = {}) { // 低频回主检查（opts：now/force/intervalMs/probe/spawn——测试注入缝；真跑＝probeRestoreEnv）
+  const now = opts.now || Date.now();
+  if (!opts.force && now - lastRestoreAt < (opts.intervalMs ?? RESTORE_INTERVAL_MS)) return { action: "skip-interval" };
+  lastRestoreAt = now;
+  let env;
+  try { env = (opts.probe || probeRestoreEnv)(); } catch (e) { fault("restoreMain.probe", e, opts); return { action: "probe-fault" }; }
+  if (!env || env.occupied) return { action: "skip-occupied" };
+  if (env.locked) return { action: "skip-locked" };
+  if (env.offline || !env.serial) return { action: "skip-offline" };
+  if (!env.deviceVersion) return { action: "skip-no-version", serial: env.serial };
+  const rec = { serial: env.serial, device: env.deviceVersion, main: env.mainHead || "" };
+  if (env.ledgerLast && env.ledgerLast.versionName && env.ledgerLast.versionName !== env.deviceVersion) {
+    rec.reconcile = `设备 ${env.deviceVersion} ≠ 台账 last ${env.ledgerLast.versionName}（${env.ledgerLast.at || "?"}·${env.ledgerLast.tree || "?"}）——疑似手工安装未记账（D5）`;
+  }
+  if (!env.mainHead) return { ...rec, action: "skip-no-main" };
+  if (isMainLine(env.deviceVersion, env.mainHead)) return { ...rec, action: "skip-main" };
+  try { (opts.spawn || spawnRestoreMain)({ serial: env.serial }); } catch (e) { fault("restoreMain.spawn", e, opts); return { ...rec, action: "spawn-fault" }; }
+  return { ...rec, action: "spawned" };
+}
+function installRestoreMain() { // board/serve 两模式各自挂点；启动即查一次（漂移即回·在跑/占用自然 skip）
+  if (restoreMainTimer) return;
+  const beat = () => {
+    const r = restoreMainTick();
+    if (r.reconcile) out(`⚠️ 设备包对账：${r.reconcile}`);
+    if (r.action === "spawned") out(`🔄 空闲回主已触发（${r.serial}｜设备 ${r.device} → main ${r.main}）`);
+  };
+  restoreMainTimer = setInterval(beat, RESTORE_INTERVAL_MS);
+  beat();
+}
+
 function ringUnreadSeats(D, opts = {}) { // opts（测试桩）：boxRoot/seatsDir 换沙盒目录，onRing 换掉真注入，noPersist 关落盘，noCooldown 关冷却，noLog 关日志
   const boxRoot = opts.boxRoot || path.join(HERE, "..", "邮局", "邮箱");
   const seatsDir = opts.seatsDir || path.join(HERE, "seats");
@@ -2198,7 +2295,6 @@ function ringUnreadSeats(D, opts = {}) { // opts（测试桩）：boxRoot/seatsD
     }
     if (failNotes.length) rlog(nowFn(), `注入失败合并：${failNotes.join(" ｜ ")}`); // S1.2：同轮多失败合并一行
     // SYS-45 A/C：定向投递 × headless 工位池——`工位: <名>` 信只唤醒目标工位；忙位（流式中）跳过不标记，下轮重评
-    const pool = opts.pool || boardPool;
     if (!opts.noPoolSweep) { // SYS-61：定向信扫常开（RPC 退役）；测试可用 noPoolSweep 关
       const workers = opts.workers || (readJson(opts.workersFile || path.join(HERE, "..", "邮局", "值守工.json")) || {}).workers || []; // SYS-58 追加#2：workers 注入缝（测试隔离——防吃真 consolePid 注真窗）
       for (const [role, key] of Object.entries(SEAT_KEY)) {
@@ -2602,7 +2698,6 @@ function cmdBoard() {
   // SYS-173 追加B：引擎换新必留痕——pid 行可与 看板-终端.cmd/开工.cmd 的启动行对上（今晚 10:32 换新无 log 行案）
   if (!smoke) { try { fs.appendFileSync(path.join(HERE, "全席重启.log"), `${new Date().toLocaleTimeString("sv-SE")} | 引擎换新（engine.mjs board·pid=${process.pid}）\n`); } catch {} }
   if (!smoke) killStaleBoards(); // 单实例自保（2026-09-10 用户拍板：只显示最新看板窗，旧窗杀掉）——重启残留的旧窗/旧 node 全清；SYS-29：一次性 smoke 无杀戒（15:41 曾误杀活引擎 pid 13424）
-  if (!smoke) boardPool = createPool({ stateFile: path.join(HERE, "值守池.json") }); // SYS-45：headless 工位池（按需 spawn·pi RPC）
   // ── SYS-42：SMOKE 单帧回归钩子（BW_SEL/BW_PAGE 定选中与页码；BW_FULL 打印全量清单）——可复跑证据口径 ──
   if (smoke && process.env.BW_SEL) { selId = null; rowSel = Math.max(0, parseInt(process.env.BW_SEL, 10) || 0); }
   if (smoke && process.env.BW_PAGE) pageStart = Math.max(0, parseInt(process.env.BW_PAGE, 10) || 0);
@@ -2611,7 +2706,7 @@ function cmdBoard() {
   if (!smoke) flashMsg("↑↓/j k 选单 · PgUp/PgDn 翻页 · g 全量清单 · d 详情 · q 退出"); // SYS-42 键位提示（启动 6s 内）
   const W = () => (smoke && +process.env.BW_W) || process.stdout.columns || 100, H = () => (smoke && +process.env.BW_H) || process.stdout.rows || 30;
   let alive = true;
-  const cleanup = () => { if (smoke) return; alive = false; try { if (boardPool) boardPool.stopAll(); } catch {} process.stdout.write("\x1b[?1049l\x1b[?25h"); process.exit(0); };
+  const cleanup = () => { if (smoke) return; alive = false; process.stdout.write("\x1b[?1049l\x1b[?25h"); process.exit(0); };
 
   const buildFrame = () => {
     const w = W(), h = H();
@@ -2660,7 +2755,7 @@ function cmdBoard() {
           if (owner === role && !chips.includes(tid) && !chips.some(x => x.endsWith(tid))) chips.push(tid);
         }
         for (const l of (D.mail.inflight || []).filter(l => l.to === role)) {
-          const m = (l.re || "").match(/(?:UPG|SYS|W|S|HMOS)-[A-Za-z0-9]+/);
+          const m = (l.re || "").match(/(?:UPG|SYS|POL)-[A-Za-z0-9]+/);
           if (!m || doneSet.has(m[0])) continue; // 终态后噪音信不挂牌（SYS-13 merged 后回执漂牌案）
           if ((l.type || "").trim() === "打回") { // 打回信：球在收信人手里，直接挂
             if (!chips.includes(m[0]) && !chips.some(x => x.endsWith(m[0]))) chips.push(m[0]); // 用户令：无 📮 前缀
@@ -3031,6 +3126,7 @@ function cmdBoard() {
   setInterval(pollSeats, SEAT_TICK_MS);
   setInterval(tickAll, 2500);   // 引擎推卡
   installDailyBackup(); // SYS-49：跨日备份例程（60s 检查点，低频不动节拍）
+  installRestoreMain(); // SYS-184：空闲回主巡检（30min 低频；启动即查一次）
   render();
 }
 
@@ -3039,6 +3135,7 @@ function cmdBoard() {
 function serve(port) {
   LONG_RUNNING = true; // 长跑模式：进程级保险丝留痕不杀
   installDailyBackup(); // SYS-49：API 口径也挂（看板窗没开时仍能跨日产出）
+  installRestoreMain(); // SYS-184：API 口径也挂空闲回主
   const srv = http.createServer(async (req, res) => {
     try { // 闸内兜底：readT 遇坏单/API 参数异常不再静默杀引擎（旧状=unhandledRejection 直接崩）
     const u = new URL(req.url, "http://x");
@@ -3084,16 +3181,19 @@ function serve(port) {
   });
 }
 
+// ponytail 档位（2026-10-05 用户令）：ultra 三席（设计师/程序员/巡检台）起窗即设 PONYTAIL_DEFAULT_MODE=ultra；**校验两席（验收员/审验员）不设**（禁 ultra 姿势）
+const PONYTAIL_ULTRA_ROLES = new Set(["设计师", "程序员", "巡检台"]);
 function openSeatWindow(role, key) {
   const seatDir = path.join(HERE, "工位", role);
   fs.mkdirSync(seatDir, { recursive: true });
   const shell = readShell();
   const eng = path.join(HERE, "engine.mjs");
+  const pot = PONYTAIL_ULTRA_ROLES.has(String(role));
   // 双语版开窗链：cmd 用 &&/title/set，PowerShell 用 ;/$host.WindowTitle/$env:（PS 5.1 无 &&）。MOV_SEAT=角色 是座探的统一锚点（cmd/ps 通吃）
   // SYS-173：标题带体系标签 MOV-<席名>〔安卓中国〕（座探按 MOV- 前缀认窗·席名解析见 pollSeatsFull）
   const wakeCmd = shell === "powershell"
-    ? `chcp 65001 >$null; $host.ui.RawUI.WindowTitle='MOV-${role}〔安卓中国〕'; $env:MOV_SEAT='${role}'; node "${eng}" wake ${key}; Write-Host ''; Write-Host '[启动中] 正在拉起绑定 agent（首次约 10-20 秒，请勿关窗）...'; ${agentLaunchCmd(role, shell)}`
-    : `chcp 65001 >nul && title MOV-${role}〔安卓中国〕 && set "MOV_SEAT=${role}" && node "${eng}" wake ${key} && echo. && echo [启动中] 正在拉起绑定 agent（首次约 10-20 秒，请勿关窗）... && ${agentLaunchCmd(role, shell)}`; // 自动启动绑定 agent+上岗
+    ? `chcp 65001 >$null; $host.ui.RawUI.WindowTitle='MOV-${role}〔安卓中国〕'; $env:MOV_SEAT='${role}';${pot ? " $env:PONYTAIL_DEFAULT_MODE='ultra';" : ""} node "${eng}" wake ${key}; Write-Host ''; Write-Host '[启动中] 正在拉起绑定 agent（首次约 10-20 秒，请勿关窗）...'; ${agentLaunchCmd(role, shell)}`
+    : `chcp 65001 >nul && title MOV-${role}〔安卓中国〕 && set "MOV_SEAT=${role}"${pot ? ' && set "PONYTAIL_DEFAULT_MODE=ultra"' : ""} && node "${eng}" wake ${key} && echo. && echo [启动中] 正在拉起绑定 agent（首次约 10-20 秒，请勿关窗）... && ${agentLaunchCmd(role, shell)}`; // 自动启动绑定 agent+上岗
   // Windows Terminal 开窗（用户拍板：体验优先）。通知走 agent 值守自轮询；铃注入仅 conhost 可用、降为备用
   const ps = shell === "powershell"
     ? `Start-Process powershell.exe -WorkingDirectory "${seatDir}" -ArgumentList '-NoExit','-NoProfile','-Command','${wakeCmd.replace(/'/g, "''")}'`
@@ -3116,7 +3216,15 @@ else if (cmd === "audit") await cmdAudit();
 else if (cmd === "reject") reject(rest[0], rest[rest.indexOf("--to") + 1] || "", (rest[rest.indexOf("--note") + 1] || ""));
 else if (cmd === "approve") approve(rest[0]);
 else if (cmd === "rerun") rerun(rest[0]);
-else if (cmd === "挂起") { const [id, ...ra] = rest; const parts = ra.join(" ").split("|").map(s => s.trim()); if (!id || !parts[0]) { out("用法：挂起 <单号> <原因> | <解除条件> | [登记角色]"); process.exit(2); } parkTicket(id, parts[0], parts[1] || "待人工确认", parts[2] || "cli"); out(`⏸ ${id} 已挂起（哨兵豁免），知会信已投设计师`); }
+else if (cmd === "挂起") { // SYS-188 加固：--until 旗标；缺条件醒目提示；登记方=当前占用方 ⇒ 警告
+  const [id, ...ra] = rest;
+  const pa = parkArgsOf(ra);
+  if (!id || !pa.reason) { out("用法：挂起 <单号> <原因> --until <解除条件> [| 登记角色]（或旧式：挂起 <单号> <原因> | <解除条件> | <角色>）"); process.exit(2); }
+  if (!pa.until) out("⚠ 解除条件未给（until）——将默认「待人工确认」（不可机判）；建议 --until <可机判条件>（SYS-188）");
+  for (const w of selfHoldWarnings(pa.by)) out(w);
+  parkTicket(id, pa.reason, pa.until || "待人工确认", pa.by);
+  out(`⏸ ${id} 已挂起（哨兵豁免），知会信已投设计师`);
+}
 else if (cmd === "解挂") { if (!rest[0]) { out("用法：解挂 <单号>"); process.exit(2); } if (unparkTicket(rest[0])) out(`▶ ${rest[0]} 已解挂——复工信已投登记人角色`); else { out(`${rest[0]} 不在挂起登记里`); process.exit(1); } }
 else if (cmd === "tick") await tick(rest[0]);
 else if (cmd === "board") cmdBoard();
@@ -3187,9 +3295,14 @@ else if (cmd === "下班" || cmd === "off") {
   }
   out("👋 全员下班——五席工位灯已熄（窗口与进程不动，只熄灯）");
 }
-else if (cmd === "巡查") { patrolHygiene(true); out("🕊 已向巡检台工位注入「巡查」（席不在岗则记档跳过，复岗第一分钟补巡）"); } // CLI 面 2026-09-11：原仅看板窗交互可发
+else if (cmd === "巡查") { patrolHygiene(true); out("🕊 已向巡检台工位注入「巡查」（席不在岗则记档跳过并重置计时——复岗不补巡·打开后从头算）"); } // CLI 面 2026-09-11：原仅看板窗交互可发
 else if (cmd === "轮换自检") { scanSessionRotate({ force: true, dry: true }); console.log("（轮换自检完·未注入·条件：会话≥2MB＋静置≥阈值（**随体量缩小**：≥10MB→1min／≥5MB→3min／其余 15min）＋信箱空＋冷却≥60min）"); } // 2026-09-28 立
 else if (cmd === "放狗") { madDog(); out("🐕 已放狗绕场一圈（咬痕与升级见 处理中心\\看板\\疯狗.json）"); } // CLI 面 2026-09-11
+else if (cmd === "回主") { // SYS-184：空闲回主巡检一次（真跑＝同低频 tick 逻辑；供演练/运维直调）
+  const r = restoreMainTick({ force: true });
+  if (r.reconcile) out(`⚠️ 设备包对账：${r.reconcile}`);
+  out(`🔄 回主巡检：${r.action}${r.serial ? "｜" + r.serial : ""}${r.device ? "｜设备 " + r.device : ""}${r.main ? "｜main " + r.main : ""}`);
+}
 else if (cmd === "绑定") {
   // 换绑 agent（与看板窗「绑定」同逻辑·2026-09-11 补 CLI 面）：写 工位绑定.json，下次开工/换防生效；不动 _说明 等其它键
   const alias = { designer: "设计师", coder: "程序员", qa: "验收员", reviewer: "审验员", hygiene: "巡检台", 全部: "*", all: "*", "*": "*" };
@@ -3217,7 +3330,7 @@ else if (cmd === "hire") {
 }
 else if (cmd === "serve") serve(Number(rest[0]) || 8461);
 else if (!cmd) cmdBoard(); // 裸跑 engine.mjs = 直接开看板（2026-09-10：不带参数拿到用法页=打不开的体感来源）
-else { out("MOV 流水线看板 —— board(终端大屏) | hire(一键开工位窗) | 下班/off(全员熄灯) | 巡查(手动触发一轮) | 放狗(madDog 绕场) | 绑定 <角色|全部> <agent>(换绑·下次开工生效) | seat/checkin <designer|coder|qa|reviewer>(工位) | duty <key>(headless值守降级) | new <号> <标题> | status | approve <号> | rerun <号> | tick <号> | serve [端口](JSON API·网页版已下线)"); }
+else { out("MOV 流水线看板 —— board(终端大屏) | hire(一键开工位窗) | 下班/off(全员熄灯) | 巡查(手动触发一轮) | 放狗(madDog 绕场) | 回主(空闲回主巡检一次) | 绑定 <角色|全部> <agent>(换绑·下次开工生效) | seat/checkin <designer|coder|qa|reviewer>(工位) | duty <key>(headless值守降级) | new <号> <标题> | status | approve <号> | rerun <号> | tick <号> | serve [端口](JSON API·网页版已下线)"); }
 
 // 测试导出（三层加固·三层）
 
@@ -3228,17 +3341,20 @@ const TOKEN_STATE_FILE = path.join(HERE, "token哨兵.json");
 const TOKEN_BOARD_FILE = path.join(HERE, "..", "..", "巡检台", "checks", "token榜.json");
 const TOKEN_SENTRY_MS = 60e3;
 const TOKEN_BUDGET_DEFAULT = 300e6;
-const THRIFT_DEFAULT = { polls: 20, turns: 800 }; // SYS-167：单会话「轮询/回合」超阈初值（binding._pollLimit/_turnLimit 可配）
-const POLL_VIEW_RE = /(^|[\s|;&"'])(ls|dir|cat|type|head|tail|find|rg|grep|stat|wc|Get-ChildItem|Get-Content)([\s"']|$)/i; // 查看类命令判据（轮询）
-function countPollCalls(line) { // SYS-167：一条 pi assistant 行内数「信箱轮询」bash 调用（段内含 INBOX/邮箱 且为查看类）
-  let n = 0;
-  for (const seg of line.split('"type":"toolCall"').slice(1)) {
-    if (!/"name":"bash"/.test(seg)) continue;
+const THRIFT_DEFAULT = { polls: 30, turns: 800 }; // SYS-167：单会话「轮询/回合」超阈初值（binding._pollLimit/_turnLimit 可配）；SYS-193：轮询 20→30（实据：21-29 皆边际噪声·终身累计必响）
+const POLL_DIR_RE = /(^|[\s|;&"'])(ls|dir|Get-ChildItem)([\s"']|$)/i; // SYS-188：目录级查看（唯一默认计轮询的形态）
+const POLL_READ_CMD_RE = /(^|[\s|;&"'])(cat|type|head|tail|Get-Content|rg|grep|find|stat|wc)([\s"']|$)/i; // 单件读物（默认不计；同路径≥3 次起计）
+const POLL_PATH_RE = /(?:INBOX|邮箱)[\\/][^\s"'|;&)]+\.md/gi; // 办信单件读路径（信件 .md）
+function pollHits(line) { // SYS-188：一条 assistant 行内的信箱查看分解 {dirs, paths}——pi（toolCall/bash）/kimi（tool.call/Bash）两形态兼容
+  let dirs = 0;
+  const paths = [];
+  for (const seg of line.split(/"type":"tool(?:Call|\.call)"/).slice(1)) {
+    if (!/"name":"[Bb]ash"/.test(seg)) continue;
     if (!/INBOX|邮箱/.test(seg)) continue;
-    if (!POLL_VIEW_RE.test(seg)) continue;
-    n++;
+    if (POLL_DIR_RE.test(seg)) { dirs++; continue; }
+    if (POLL_READ_CMD_RE.test(seg)) for (const m of seg.match(POLL_PATH_RE) || []) paths.push(m.toLowerCase());
   }
-  return n;
+  return { dirs, paths };
 }
 let lastTokenScan = 0;
 
@@ -3336,16 +3452,21 @@ function tokenSentinel(force = false, opts = {}) {
       }
       if (!seat) { files[f] = { ...rec0, size, seat }; continue; } // 非本席（异体系/无 cwd）只记档位·不计数
       let turns = 0, polls = 0; // SYS-167：轮询/回合增量（与 token 同一次流读·不额外扫档·不阻塞主循环）
+      const readPaths = { ...((rec0 && rec0.readPaths) || {}) }; // SYS-188：同路径重复读计数（≥3 起计轮询）
       for (const line of text.split("\n")) {
         if (!line.trim()) continue;
         if (line.includes('"role":"assistant"')) turns++;
-        if (line.includes('"type":"toolCall"')) polls += countPollCalls(line);
+        if (line.includes('"type":"toolCall"')) {
+          const ph = pollHits(line);
+          polls += ph.dirs;
+          for (const p of ph.paths) { const c = (readPaths[p] = (readPaths[p] || 0) + 1); if (c >= 3) polls++; }
+        }
         const mm = [...line.matchAll(/"totalTokens":(\d+)/g)];
         if (!mm.length) continue;
         const tm = line.match(/"timestamp":"(\d{4}-\d{2}-\d{2})/);
         add("pi", seat, Number(mm[mm.length - 1][1]), tm ? tm[1] : day); // 按行时间戳归日（首读历史不冒充今日）
       }
-      files[f] = { size, seat, turns: (rec0?.turns || 0) + turns, polls: (rec0?.polls || 0) + polls };
+      files[f] = { size, seat, turns: (rec0?.turns || 0) + turns, polls: (rec0?.polls || 0) + polls, readPaths };
     }
     // ② kimi：~/.kimi-code/sessions/<wd>/session_*/agents/*/wire.jsonl（step.end usage 四字段和）
     const kimiRoot = opts.kimiRoot || path.join(home, ".kimi-code", "sessions");
@@ -3354,10 +3475,15 @@ function tokenSentinel(force = false, opts = {}) {
       const wd = path.basename(path.dirname(path.dirname(path.dirname(path.dirname(f))))); // .../sessions/<wd>/session_*/agents/<a>/wire.jsonl
       const seat = tokenSeatOfSlot(wd);
       let kturns = 0, kpolls = 0; // SYS-167：kimi 侧回合/轮询（step.begin / Bash 工具调用·增量）
+      const kreadPaths = { ...((files[f] && files[f].readPaths) || {}) }; // SYS-188：同路径重复读计数
       readAppended(f, files, (text) => {
         for (const line of text.split("\n")) {
           if (line.includes('"type":"step.begin"')) kturns++;
-          if (line.includes('"type":"tool.call"') && /"name":"Bash"/i.test(line) && /INBOX|邮箱/.test(line) && POLL_VIEW_RE.test(line)) kpolls++;
+          if (line.includes('"type":"tool.call"') && /"name":"Bash"/i.test(line) && /INBOX|邮箱/.test(line)) {
+            const ph = pollHits(line);
+            kpolls += ph.dirs;
+            for (const p of ph.paths) { const c = (kreadPaths[p] = (kreadPaths[p] || 0) + 1); if (c >= 3) kpolls++; }
+          }
           if (!line.trim()) continue;
           const i = line.indexOf('"usage":{');
           if (i < 0) continue;
@@ -3375,7 +3501,7 @@ function tokenSentinel(force = false, opts = {}) {
         }
 
       });
-      { const rec = files[f]; if (rec) { rec.turns = (rec.turns || 0) + kturns; rec.polls = (rec.polls || 0) + kpolls; } }
+      { const rec = files[f]; if (rec) { rec.turns = (rec.turns || 0) + kturns; rec.polls = (rec.polls || 0) + kpolls; rec.readPaths = kreadPaths; } }
     }
     // ③ hermes：state.db session_model_usage（node:sqlite·只读；表无 cwd → 无席位归属，计全局）
     try {
@@ -3436,19 +3562,20 @@ function tokenSentinel(force = false, opts = {}) {
     for (const [f, rec] of Object.entries(files)) {
       if (!rec || !rec.seat) continue;
       const p = Number(rec.polls) || 0, t = Number(rec.turns) || 0;
-      if (p <= pollLimit && t <= turnLimit) continue;
+      // SYS-193：轮询维改「≥阈即响」（21-29 静默·30 响）；回合维保持「>阈」不动（SYS-167 体例·11:58 例 802 命中为证）
+      if (p < pollLimit && t <= turnLimit) continue;
       thrift.push({ seat: rec.seat, session: path.basename(f), polls: p, turns: t });
       const ak = "thrift|" + f;
       if (!alerted[ak]) {
         alerted[ak] = true;
-        const msg = `轮询/回合超阈：${rec.seat} 会话 ${path.basename(f)} 轮询 ${p}（阈>${pollLimit}）/ 回合 ${t}（阈>${turnLimit}）——等待走 处理中心/机器闸/等信.mjs、只读小检串一条命令（SYS-167）`;
-        try { (opts.onAlert || ((m) => { sendWatchAlert(m); fileProblem("SYS-Token", "钱包", m); }))(msg); } catch (e) { fault("tokenSentinel.alert", e); }
+        const msg = `轮询/回合超阈：${rec.seat} 会话 ${path.basename(f)} 轮询 ${p}（阈≥${pollLimit}）/ 回合 ${t}（阈>${turnLimit}）——等待走 处理中心/机器闸/等信.mjs、只读小检串一条命令（SYS-167）`;
+        try { (opts.onAlert || ((m) => { sendThriftAlert(m); fileProblem("SYS-Token", "钱包", m); }))(msg); } catch (e) { fault("tokenSentinel.alert", e); }
       }
     }
     const board = {
       at: new Date(now).toISOString(), day, seats, sources,
       budget: { limit, exceeded }, thrift,
-      note: "pi 按会话 cwd 判席（锚本体系工位）；kimi 按 wd 目录名归席（含体系标记）；hermes 经 sessions.cwd join 归席（无 cwd 行 → 全局）。SYS-167：turns/polls 逐会话随 token哨兵.json files 记录（turns=assistant 回合·polls=含 INBOX/邮箱 的查看类 bash），thrift=超阈会话清单",
+      note: "pi 按会话 cwd 判席（锚本体系工位）；kimi 按 wd 目录名归席（含体系标记）；hermes 经 sessions.cwd join 归席（无 cwd 行 → 全局）。SYS-167：turns/polls 逐会话随 token哨兵.json files 记录（turns=assistant 回合·polls=目录级信箱查看/同路径≥3 次重复读——SYS-188 收窄：办信单件读不计），thrift=超阈会话清单",
     };
     const boardFile = opts.boardFile || TOKEN_BOARD_FILE;
     const io = opts.io || fs; // UPG-482：写通道（默认真 fs；测试注入写失败用）
@@ -3461,7 +3588,8 @@ function tokenSentinel(force = false, opts = {}) {
   } catch (e) { fault("tokenSentinel", e); }
 }
 
-export { seatScorePanel, fault, ringUnreadSeats, watchdog, madDog, tokenSentinel, hermesDbSeatMtimes, seatProbeAllowed, parkTicket, unparkTicket, checkInboxForCompletion, applyAdvance, handoffToMerge, pollSeats, pollSeatsLight, pollSeatsFull, rootSentry, readSetLiteral, rotateFaultLog, fitRows, boardNavigate, buildFullListText, everRung, scanDispatchIdle, scanClaimStale, pullUpSilentSeats, parseSeatField, seatStateOf, backupDue, dailyBackupTick, latestSessionMtime, skipEscalateStep, patrolHygiene, sendWatchAlert, __testResetWatchdog, __testResetRingAck, __testResetWorkerOpen, wakeWorker, latestSessionProbe, sendSpriteBite, __testResetSpriteBite, mailLedgerStats, scanHygieneLine, killStaleBoards, detectAgent, sys88SeatVerdict, sys88InTree, sys88PickAgentPid, __testResetSys88, seatSelfHeal, seatFileOf, __testResetSeatHeal, logFileFor, logLine, scanSessionRotate }; // SYS-88/SYS-102：判据与自愈单一真源导出（测试/复演用）；SYS-91：日志缝单点导出（测试用）
+export { seatScorePanel, fault, ringUnreadSeats, watchdog, madDog, tokenSentinel, hermesDbSeatMtimes, seatProbeAllowed, parkTicket, unparkTicket, parkArgsOf, selfHoldWarnings, checkInboxForCompletion, applyAdvance, handoffToMerge, pollSeats, pollSeatsLight, pollSeatsFull, rootSentry, readSetLiteral, rotateFaultLog, fitRows, boardNavigate, buildFullListText, everRung, scanDispatchIdle, scanClaimStale, pullUpSilentSeats, parseSeatField, seatStateOf, backupDue, dailyBackupTick, latestSessionMtime, skipEscalateStep, patrolHygiene, sendWatchAlert, __testResetWatchdog, __testResetRingAck, __testResetWorkerOpen, wakeWorker, latestSessionProbe, sendSpriteBite, __testResetSpriteBite, mailLedgerStats, scanHygieneLine, killStaleBoards, detectAgent, sys88SeatVerdict, sys88InTree, sys88PickAgentPid, __testResetSys88, seatSelfHeal, seatFileOf, __testResetSeatHeal, logFileFor, logLine, scanSessionRotate, restoreMainTick }; // SYS-88/SYS-102：判据与自愈单一真源导出（测试/复演用）；SYS-91：日志缝单点导出（测试用）；SYS-184：回主巡检（测试用）
+export function __testResetRestoreMain() { lastRestoreAt = 0; } // SYS-184：测试隔离（同 __testResetRing 先例）
 export function __testResetPullUp() { for (const k of Object.keys(lastPullUpAt)) delete lastPullUpAt[k]; lastPullUpScan = 0; } // SYS-53：测试隔离（同 __testResetRing 先例）
 export function __testResetRing() { rungLetters.clear(); for (const k of Object.keys(lastRingAt)) delete lastRingAt[k]; for (const k of Object.keys(lastBackfill)) delete lastBackfill[k]; for (const k of Object.keys(ringFail)) delete ringFail[k]; } // SYS-90/SYS-103 S1：铃态与失败退避一并重置（测试隔离）
 export function __testResetSeats() { seatFullAt = 0; seatFullFails = 0; } // SYS-26：退避状态归零（测试隔离）

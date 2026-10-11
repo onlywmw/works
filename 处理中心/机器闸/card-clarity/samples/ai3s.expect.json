@@ -1,0 +1,97 @@
+{
+  "onboard.rejected.1": {
+    "mustMention": [
+      "驳回",
+      "不符",
+      "改正"
+    ],
+    "nextLabel": "去修正",
+    "actionAlt": [
+      "修正",
+      "改正",
+      "重提",
+      "重提交",
+      "改资料"
+    ]
+  },
+  "onboard.reviewing.1": {
+    "mustMention": [
+      "审核"
+    ],
+    "nextLabel": "查看任务",
+    "actionAlt": [
+      "查看任务",
+      "看任务",
+      "任务",
+      "进度"
+    ]
+  },
+  "shop.orders.1": {
+    "mustMention": [
+      "订单"
+    ],
+    "nextLabel": "查看订单",
+    "actionAlt": [
+      "查看订单",
+      "订单",
+      "处理",
+      "查看并处理"
+    ]
+  },
+  "express.arrived.1": {
+    "mustMention": [
+      "代收点",
+      "驿站",
+      "快递"
+    ],
+    "nextLabel": "查看物流",
+    "actionAlt": [
+      "查看物流",
+      "物流",
+      "查快递",
+      "跟踪",
+      "取件",
+      "去取"
+    ]
+  },
+  "task.generic.1": {
+    "mustMention": [
+      "补充",
+      "地址",
+      "确认"
+    ],
+    "nextLabel": "去办理",
+    "actionAlt": [
+      "去办理",
+      "办理",
+      "继续",
+      "补充"
+    ]
+  },
+  "shelf.empty.1": {
+    "mustMention": [
+      "上架",
+      "商品",
+      "货架"
+    ],
+    "nextLabel": "查看货架",
+    "actionAlt": [
+      "查看货架",
+      "货架",
+      "上架"
+    ]
+  },
+  "neg.vague.1": {
+    "mustMention": [
+      "驳回",
+      "不符",
+      "改正",
+      "审核"
+    ],
+    "nextLabel": "去修正",
+    "actionAlt": [
+      "修正",
+      "改正"
+    ]
+  }
+}

@@ -17,12 +17,13 @@ const problems = [], warns = [];
 
 // ① 账本完整性：工单库/台账类被改时，卡数与二级标题不得减少，行数不得异常缩水
 for (const f of staged) {
-  if (!/(工单库\.md|挂账登记表\.md|台账\.md)$/.test(f)) continue;
+  if (!/(工单库[^/]*\.md|挂账登记表[^/]*\.md|台账[^/]*\.md)$/.test(f)) continue;   // SYS-204 B#19：含备份/归档变体（工单库_backup_*/工单库_归档/*）
   let head = "";
   try { head = git(["show", `HEAD:${f}`]); } catch { continue; }     // 新文件跳过
-  const now = fs.readFileSync(f, "utf8");
+  let now;
+  try { now = fs.readFileSync(f, "utf8"); } catch (e) { problems.push(`${f}：读取失败（${e.code || e.message}）——按截断疑点拦`); continue; }   // SYS-204 B#19：读失败不崩钩
   const cnt = (s, re) => (s.match(re) || []).length;
-  const hCards = cnt(head, /^# (?:UPG|SYS)-\d+ /gm), nCards = cnt(now, /^# (?:UPG|SYS)-\d+ /gm);
+  const hCards = cnt(head, /^# (?:UPG|SYS|POL)-\d+ /gm), nCards = cnt(now, /^# (?:UPG|SYS|POL)-\d+ /gm);
   const hH2 = cnt(head, /^## /gm), nH2 = cnt(now, /^## /gm);
   if (nCards < hCards) problems.push(`${f}：卡数减少 ${hCards} → ${nCards}（疑截断）`);
   if (nH2 < hH2) problems.push(`${f}：二级标题减少 ${hH2} → ${nH2}（疑截断）`);
@@ -58,19 +59,47 @@ if (GL) {
 
 // ④ 角色根层白名单（2026-09-30 立·根因：设计师侧「证据数据 vs 检查证据」两套名·写入面无闸）：
 //    复用 layout-check 的 ROLE_RULES（单一真源，不另抄一份）——暂存区**新增/改动**的 <角色>/<首段> 越白名单即拦；删除放行（清理存量越界件必须能提交）
-const { ROLE_RULES } = await import("./layout-check.mjs");
+let ROLE_RULES = null;
+try { ({ ROLE_RULES } = await import("./layout-check.mjs")); } catch (e) { problems.push(`layout-check 依赖不可用（${String(e.message || e)}）——白名单闸 fail-closed`); }   // SYS-204 B#19
 for (const f of staged) {
   const [role, seg] = f.split("/");
-  const rule = ROLE_RULES[role];
+  const rule = ROLE_RULES && ROLE_RULES[role];
   if (!rule || !seg || !fs.existsSync(f)) continue;
   if (rule.fixed.includes(seg) || (rule.pattern && rule.pattern.test(seg))) continue;
   problems.push(`${f}：${role} 根层越界（白名单见该角色手册卫生节／layout-check ROLE_RULES——确需新增先改白名单同批提交）`);
 }
 
 if (warns.length) console.log("⚠ " + warns.join("；"));
+
+// ⑤ 复用扫（SYS-192·**warn 起步**）：新增行旁路模式（新 HttpURLConnection／Keystore／存储根／正则／基址）——
+//   单源清单＝checks/单源清单.json；计次留痕＝checks/dup-radar.count.jsonl；**不 fail-closed**（7 日看误报率后再议）。
+try {
+  const radar = path.resolve(REPO, "处理中心/机器闸/checks/dup-radar.mjs");
+  if (fs.existsSync(radar)) {
+    try {
+      execFileSync("node", [radar, "--staged", "--quiet"], { windowsHide: true, cwd: REPO, stdio: "pipe" });
+    } catch (e) {
+      const last = (e.stdout || "").toString().trim().split("\n").pop() || "有命中";
+      console.log("⚠ 复用扫：" + last + "（→ 单源建议见 checks/单源清单.json）");
+    }
+  }
+} catch { /* 雷达缺失不阻断（warn 级） */ }
+// ⑥ 乱码扫（SYS-201·**warn 起步**）：暂存区件跑 checks/mojibake-scan.mjs --staged（五探针·白名单＝checks/mojibake-baseline.json）——
+//   只提示不 fail-closed（7 日看误报率后再议；沿 ⑤ 复用扫先例）。确需保留 ⇒ 补基线理由（只增需理由）。
+try {
+  const moji = path.resolve(REPO, "处理中心/机器闸/checks/mojibake-scan.mjs");
+  if (fs.existsSync(moji)) {
+    try {
+      execFileSync("node", [moji, "--staged", "--quiet"], { windowsHide: true, cwd: REPO, stdio: "pipe" });
+    } catch (e) {
+      const last = (e.stdout || "").toString().trim().split("\n").filter(Boolean).pop() || "有命中";
+      console.log("⚠ 乱码扫：" + last.replace(/^乱码扫\s*/, "") + "（→ 复核后确需保留补 checks/mojibake-baseline.json 理由）");
+    }
+  }
+} catch { /* 扫描器缺失不阻断（warn 级） */ }
 if (problems.length) {
   console.error("✗ 提交前自证不过：\n   - " + problems.join("\n   - "));
   console.error("\n（确需跳过：git commit --no-verify；但账本截断类问题请先修）");
   process.exit(1);
 }
-console.log(`✅ 提交前自证通过（${staged.length} 件：账本完整/语法/密钥/角色根层白名单）`);
+console.log(`✅ 提交前自证通过（${staged.length} 件：账本完整/语法/密钥/角色根层白名单/复用扫(warn)/乱码扫(warn)）`);

@@ -192,6 +192,36 @@ else {
   ok("I", `发射端扫描：${emitFiles.length} 件（含注释剔除）｜卡型词表 ${cards.length}｜退役残留 ${residual.length}｜在用未引用见上`);
 }
 
+// ---- J 判读句契约（UPG-580·change=card-headline-contract）：headline 在场且 ≤6 字；动作 label ≤4 字（注册表↔台账两面）----
+//  判据：①注册表非退役卡型 MUST 声明 headline（text/tool·required·max ≤ HEADLINE_MAX）；
+//       ②台账 LIVE 非房间卡的 fields MUST 登记 headline（required 一致）——新卡登记即检（准入闸②机检面）；
+//       ③白名单动作中文 label（注册表 ACTION_LABELS）与台账 actions[].zh MUST ≤ ACTION_LABEL_MAX 字。
+let headlineDeclared = 0
+{
+  const HMAX = Number.isInteger(R.HEADLINE_MAX) ? R.HEADLINE_MAX : null
+  const LMAX = Number.isInteger(R.ACTION_LABEL_MAX) ? R.ACTION_LABEL_MAX : null
+  if (!HMAX || !LMAX) red("J", "registry 缺文案预算常量（HEADLINE_MAX／ACTION_LABEL_MAX）⇒ 判读句契约未落地")
+  for (const [id, t] of Object.entries(TYPES)) {
+    const h = (t.fields || {}).headline
+    if (!h) { red("J", `${id}：缺 headline 字段（判读句必填契约）`); continue }
+    if (h.type !== "text" || h.src !== "tool") red("J", `${id}.headline：规格须 {type:'text',src:'tool'}`)
+    if (h.required !== true) red("J", `${id}.headline：required 须为 true`)
+    if (HMAX && Number(h.max) > HMAX) red("J", `${id}.headline：max ${h.max} 超 ${HMAX} 字预算`)
+    else headlineDeclared++
+  }
+  for (const [a, zh] of Object.entries(LABELS)) {
+    if (LMAX && [...String(zh)].length > LMAX) red("J", `动作 ${a}：中文 label「${zh}」超 ${LMAX} 字预算`)
+  }
+  for (const c of cards) {
+    if (c.runtime === "room" || !LIVE.has(c.status)) continue
+    const lf = (c.fields || []).find((f) => f.name === "headline")
+    if (!lf) red("J", `${c.id}：台账缺 headline 字段登记（台账↔注册表不一致）`)
+    else if (lf.required !== true) red("J", `${c.id}.headline：台账 required 与注册表不一致（须 true）`)
+    for (const a of (c.actions || [])) if (LMAX && [...String(a.zh || "")].length > LMAX) red("J", `${c.id}.${a.id}：台账 label「${a.zh}」超 ${LMAX} 字预算`)
+  }
+  ok("J", `判读句契约：registry 声明 ${headlineDeclared}/${Object.keys(TYPES).length}｜label 预算 ≤${LMAX} 字｜台账对齐已检`)
+}
+
 // ---- 接受清单（登记为「有意」的漂移降黄·禁静默）----
 const ACCEPTED = (ledger._meta && ledger._meta.accepted) || [];
 if (ACCEPTED.length) {
@@ -204,6 +234,30 @@ if (ACCEPTED.length) {
   RED.length = 0; RED.push(...keep);
 }
 
+// ---- POL-8 五答检查（卡面行动语义协议·`--five <cards.json|目录>` 时启用；既有 A–F 判据零改动）----
+const FIVE = opt("--five", null);
+const five = { enabled: !!FIVE, total: 0, pass: 0, slopHit: 0 };
+if (FIVE) {
+  const { execFileSync } = await import("node:child_process");
+  const run = (script, ...args) => {
+    try { return JSON.parse(execFileSync(process.execPath, [path.join(HERE, script), ...args, "--json"], { encoding: "utf8", windowsHide: true })); }
+    catch (e) { try { return JSON.parse(e.stdout || "{}"); } catch (_) { return null; } }
+  };
+  const vres = run("card-clarity/validate.mjs", "--cards", FIVE);
+  if (vres && typeof vres.total === "number") {
+    five.total = vres.total; five.pass = vres.total - vres.failed;
+    const rate = vres.total ? Math.round((five.pass / vres.total) * 100) : 0;
+    if (vres.failed) red("FIVE", `五答检查：${vres.failed}/${vres.total} 张违协议（完备率 ${rate}%）——` + vres.results.filter((r) => r.violations.length).map((r) => `${r.cardId || "?"}(${r.violations[0]})`).slice(0, 3).join("；"));
+    else ok("FIVE", `五答检查通过：${vres.total} 张·完备率 ${rate}%（主行动唯一且白名单·术语直出 0·steps 完整）`);
+  } else red("FIVE", "五答检查：校验器不可用/输出不可解析（card-clarity/validate.mjs）");
+  const sres = run("card-clarity/gates/slop.mjs", "--cards", FIVE);
+  if (sres && typeof sres.hit === "number") {
+    five.slopHit = sres.hit;
+    if (sres.hit) red("FIVE/SLOP", `slop guards：${sres.hit}/${sres.total} 张命中（占位/过长/重复/信息量低）`);
+    else ok("FIVE/SLOP", `slop guards 全过：${sres.total} 张`);
+  }
+}
+
 // ---- 输出 ----
 const summary = {
   at: new Date().toLocaleString("sv-SE"), repo: REPO, ledger: LEDGER, only: ONLY,
@@ -213,6 +267,9 @@ const summary = {
   fields_exact_verified: cards.filter((c) => (c.fields || []).length && TYPES[c.id]).length,
   fields_note_only: cards.filter((c) => !(c.fields || []).length).length,
   surface_tagged: cards.filter((c) => c.surface).length,
+  headline_declared: headlineDeclared,   // UPG-580：判读句声明数（应与 registry 卡型数相等）
+  headline_types: Object.keys(TYPES).length,
+  five: five.enabled ? { total: five.total, pass: five.pass, slopHit: five.slopHit } : "off（--five <cards> 启用）",
 };
 if (JSON_OUT) {
   console.log(JSON.stringify({ summary, red: RED, yellow: YEL }, null, 2));
@@ -220,7 +277,9 @@ if (JSON_OUT) {
   console.log(`卡片四方对账 @ ${summary.at}`);
   console.log(`  台账：${LEDGER}\n  注册表：${REGISTRY}${ONLY ? `\n  限定：${ONLY}` : ""}`);
   console.log(`  卡型 ${cards.length} 张｜红 ${RED.length}｜黄 ${YEL.length}`);
-  console.log(`  契约覆盖：精确 fields ${summary.fields_exact} 张（其中可与 registry 逐项比对 ${summary.fields_exact_verified} 张）｜仅 fields_note ${summary.fields_note_only} 张｜surface 已标 ${summary.surface_tagged} 张`);
+  console.log(`  契约覆盖：精确 fields ${summary.fields_exact} 张（其中可与 registry 逐项比对 ${summary.fields_exact_verified} 张）｜仅 fields_note ${summary.fields_note_only} 张｜surface 已标 ${summary.surface_tagged} 张`)
+  console.log(`  判读句契约：headline 声明 ${summary.headline_declared}/${summary.headline_types}（赤字见下）｜动作 label ≤4 字预算已检`);
+  if (five.enabled) console.log(`  五答检查：${five.pass}/${five.total} 过｜slop 命中 ${five.slopHit} 张`);
   if (RED.length) { console.log("\n🔴 漂移（必须处置）："); for (const r of RED) console.log(`  [${r.id}] ${r.msg}`); }
   if (YEL.length) { console.log("\n🟡 提示（不阻断）："); for (const y of YEL) console.log(`  [${y.id}] ${y.msg}`); }
   if (!RED.length) console.log("\n✅ 全绿：台账／注册表／渲染集／文案四方一致");

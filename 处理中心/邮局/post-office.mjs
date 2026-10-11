@@ -266,17 +266,17 @@ function cmdDone(a) {
   if (["卫生通报", "告警"].includes(L.env.type)) {
     const roots = [];
     try {
-      for (const r of fs.readdirSync(BOX)) {
-        const inbox = path.join(BOX, r, "INBOX");
+      for (const r of fs.readdirSync(ROOT)) {
+        const inbox = path.join(ROOT, r, "INBOX");
         if (fs.existsSync(inbox)) roots.push({ dir: inbox, from: r });
       }
-      const arch = path.join(BOX, "归档");
+      const arch = ARCHIVE;   // SYS-203 #1：原 BOX 未定义（ReferenceError 被 catch 吞）⇒ 用已定义路径
       if (fs.existsSync(arch)) roots.push({ dir: arch, from: "归档" });
     } catch (_) {}
     let answered = false, seen = [];
     for (const { dir } of roots) {
       for (const fn of fs.readdirSync(dir).filter((f) => f.endsWith(".md"))) {
-        const e = readEnv(path.join(dir, fn));
+        let e; try { e = readLetter(path.join(dir, fn)).env; } catch (_) { continue; }
         if (!e || e.from !== actor || e.type === "回执") continue;
         const ref = String(e.ref || "");
         if (ref && ref.includes(id)) { answered = true; seen.push(e.id); }

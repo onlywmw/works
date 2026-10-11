@@ -30,6 +30,33 @@ const TOMBSTONE_PAT = /^# ([A-Z][A-Z0-9]*-[A-Z0-9]+) 【已归档→/;
 
 const CARD_RE = /^# ([A-Z][A-Z0-9]*-[A-Z0-9]+)[ \t]+(.+)$/gm;
 
+// ── SYS-194 库锁（实搬路）：与 set-status.py / lib-edit.mjs / 取号.mjs 跨语言同协议 ──
+// O_EXCL 原子建·pid+时刻·排队等待（env 覆写·测试用）·15min 僵锁破锁留痕；返回释放函数。
+const LOCK_WAIT_SEC = Number(process.env.ARCHIVE_LOCK_WAIT || "30");
+const LOCK_STALE_SEC = 900;
+function acquireLibLock(target) {
+  const lock = target + ".lock";
+  const deadline = Date.now() + LOCK_WAIT_SEC * 1000;
+  for (;;) {
+    try {
+      const fd = fs.openSync(lock, "wx");
+      fs.writeSync(fd, `${process.pid} ${new Date().toISOString()}`);
+      fs.closeSync(fd);
+      return () => { try { fs.unlinkSync(lock); } catch {} };
+    } catch (e) {
+      if (e.code !== "EEXIST") throw e;
+      let age = 0;
+      try { age = (Date.now() - fs.statSync(lock).mtimeMs) / 1000; } catch {}
+      if (age > LOCK_STALE_SEC) {
+        const stale = `${lock}.stale-${Math.floor(Date.now() / 1000)}`;
+        try { fs.renameSync(lock, stale); console.log(`⚠ 破僵锁（>${LOCK_STALE_SEC}s 未更新·疑持有者已死）→ 留痕 ${path.basename(stale)}`); } catch {}
+      }
+      if (Date.now() > deadline) { console.error(`❌ 写锁超时（${LOCK_WAIT_SEC}s）：${path.basename(lock)} 被他人持有——稍后重试（勿绕锁强写）`); process.exit(1); }
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500);
+    }
+  }
+}
+
 /** 解析库文本 → 卡片（含整卡原文）。已归档（墓碑）卡单独标记。 */
 export function parseCards(text) {
   const heads = [];
@@ -242,28 +269,35 @@ function main() {
     return;
   }
 
-  // 实搬：写前备份
-  const ts = new Date().toISOString().replace(/[-:T]/g, "").slice(0, 14);
-  const backupDir = path.join(ROOT, "处理中心", "归档", "_备份归档");
-  fs.mkdirSync(backupDir, { recursive: true });
-  fs.writeFileSync(path.join(backupDir, `工单库_backup_archive_${ts}.md`), libText, "utf8");
-  fs.mkdirSync(archiveDir, { recursive: true });
+  // 实搬：SYS-194 写库路——持 <库>.lock 全程（锁内重读→备份→写→自证）；锁序无环（本工具不取号段锁）
+  const releaseLibLock = acquireLibLock(libPath);
+  try {
+    const libNow = fs.readFileSync(libPath, "utf8"); // 锁内重读（写前重读纪律）
+    const ts = new Date().toISOString().replace(/[-:T]/g, "").slice(0, 14);
+    const backupDir = path.join(ROOT, "处理中心", "归档", "_备份归档");
+    fs.mkdirSync(backupDir, { recursive: true });
+    fs.writeFileSync(path.join(backupDir, `工单库_backup_archive_${ts}.md`), libNow, "utf8");
+    fs.mkdirSync(archiveDir, { recursive: true });
 
-  let libOut = libText;
-  const date = new Date().toISOString().slice(0, 10);
-  let moved = 0;
-  for (const c of cand) {
-    const dest = path.join(archiveDir, `${c.no}.md`);
-    if (fs.existsSync(dest)) { console.log(`  跳过 ${c.no}（归档文件已存在）`); continue; }
-    fs.writeFileSync(dest, c.raw, "utf8");
-    libOut = libOut.replace(c.raw, `# ${c.no} 【已归档→${ARCHIVE_DIR_NAME}/${c.no}.md @${date}】\n`);
-    moved++;
+    let libOut = libNow;
+    const date = new Date().toISOString().slice(0, 10);
+    let moved = 0;
+    for (const c of cand) {
+      const dest = path.join(archiveDir, `${c.no}.md`);
+      if (fs.existsSync(dest)) { console.log(`  跳过 ${c.no}（归档文件已存在）`); continue; }
+      if (!libOut.includes(c.raw)) { console.log(`  跳过 ${c.no}（锁内重读未见在库原卡——疑并发变更）`); continue; }
+      fs.writeFileSync(dest, c.raw, "utf8");
+      libOut = libOut.replace(c.raw, `# ${c.no} 【已归档→${ARCHIVE_DIR_NAME}/${c.no}.md @${date}】\n`);
+      moved++;
+    }
+    fs.writeFileSync(libPath, libOut, "utf8");
+    const idxRows = rebuildIndex(archiveDir);
+    const problems = consistencyCheck(fs.readFileSync(libPath, "utf8"), archiveDir);
+    console.log(`实搬 ${moved} 卡 ｜ INDEX 再生 ${idxRows} 行 ｜ 一致性 ${problems.length === 0 ? "PASS" : "FAIL " + problems.join(";")}`);
+    console.log(`写前备份：${path.relative(ROOT, path.join(backupDir, `工单库_backup_archive_${ts}.md`))}`);
+  } finally {
+    releaseLibLock();
   }
-  fs.writeFileSync(libPath, libOut, "utf8");
-  const idxRows = rebuildIndex(archiveDir);
-  const problems = consistencyCheck(fs.readFileSync(libPath, "utf8"), archiveDir);
-  console.log(`实搬 ${moved} 卡 ｜ INDEX 再生 ${idxRows} 行 ｜ 一致性 ${problems.length === 0 ? "PASS" : "FAIL " + problems.join(";")}`);
-  console.log(`写前备份：${path.relative(ROOT, path.join(backupDir, `工单库_backup_archive_${ts}.md`))}`);
 }
 
 main();

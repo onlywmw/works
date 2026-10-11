@@ -41,6 +41,8 @@ function seatOfCwd(cwd) {
 const boxes = () => { try { return fs.readdirSync(BOX_ROOT, { withFileTypes: true }).filter((e) => e.isDirectory() && fs.existsSync(path.join(BOX_ROOT, e.name, "INBOX"))).map((e) => e.name); } catch { return []; } };
 const BOX = opt("--box") || seatOfCwd(process.cwd());
 if (!BOX) die(`无法从当前目录判定信箱角色（${process.cwd()}）——请显式给 --box <角色>；现有信箱：${boxes().join("/")}`);
+// SYS-204 A#2：--box 须为信箱根内单段角色名（防 ../ 穿越读任意目录）
+if (/[\\/]/.test(BOX) || BOX === ".." || BOX === "." || !path.resolve(BOX_ROOT, BOX).startsWith(path.resolve(BOX_ROOT) + path.sep)) die(`--box 非法（须信箱根内单段角色名）：${BOX}`);
 if (!fs.existsSync(path.join(BOX_ROOT, BOX))) die(`信箱不存在：${BOX}；现有信箱：${boxes().join("/")}`);
 const INBOX = path.join(BOX_ROOT, BOX, "INBOX");
 

@@ -19,9 +19,11 @@ test("取号① 空仓从 1 起，全文扫描取 max+1（含正文提及）", (
   assert.equal(run(mkLib(""), ["下一个", "UPG"]), "UPG-1");
 });
 
-test("取号② 单字母前缀不误匹配（S/W 要词边界）", () => {
-  const lib = mkLib("# SYS-5 x\n\nSHOW-12 与 REW-7 不算 S/W 系票\n");
-  assert.equal(run(lib, ["下一个", "S"]), "S-1", "SHOW-12 里的 S- 不算数");
+test("取号② 前缀白名单：S/W/HMOS 已裁撤（拒收）＋词边界防误匹配", () => {
+  const lib = mkLib("# SYS-5 x\n\nXUPG-9 只是提法，不算 UPG 系票\n");
+  for (const bad of ["S", "W", "HMOS"]) assert.throws(() => run(lib, ["下一个", bad]), `${bad} 须拒收（已裁撤）`);
+  assert.equal(run(mkLib(""), ["下一个", "POL"]), "POL-1", "POL 合法（打磨线）");
+  assert.equal(run(lib, ["下一个", "UPG"]), "UPG-1", "XUPG-9 不计入（词边界）");
   assert.equal(run(lib, ["下一个", "SYS"]), "SYS-6");
 });
 

@@ -1,0 +1,37 @@
+{
+ "whitelist": [
+  "express.track",
+  "reminder.set",
+  "copy.number",
+  "onboard.sendPhoto",
+  "onboard.fix",
+  "ledger.edit",
+  "ledger.confirm",
+  "mall.addCart",
+  "mall.openProduct",
+  "merchant.orders",
+  "merchant.onboard.start",
+  "merchant.shelf",
+  "task.view",
+  "task.go",
+  "task.result"
+ ],
+ "labels": {
+  "express.track": "查看物流",
+  "reminder.set": "提醒我",
+  "copy.number": "复制单号",
+  "onboard.sendPhoto": "拍照识别",
+  "onboard.fix": "去修正",
+  "ledger.edit": "编辑",
+  "ledger.confirm": "确认入账",
+  "mall.addCart": "加购物车",
+  "mall.openProduct": "查看商品",
+  "merchant.orders": "查看订单",
+  "merchant.onboard.start": "开始入驻",
+  "merchant.shelf": "查看货架",
+  "task.view": "查看任务",
+  "task.go": "去办理",
+  "task.result": "看结果"
+ },
+ "note": "随协议冻结的内嵌快照（注册表不可达时降级用）；真源=cardRegistry.js"
+}

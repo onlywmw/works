@@ -23,6 +23,13 @@ import { fileURLToPath } from "node:url";
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = process.env.POST_ROOT || path.join(HERE, "邮箱");
 const ROLE = process.env.POST_ROLE || process.argv[2] || "";
+// SYS-204 A#6：shell:true 下禁元字符（AGENT_CMD/AGENT_ARGS 注入闸——只许安全字符集）
+const AGENT_CMD = process.env.AGENT_CMD || "claude";
+const AGENT_ARGS_RAW = process.env.AGENT_ARGS || "--dangerously-skip-permissions";
+if (!/^[\w./\\:-]+$/.test(AGENT_CMD) || !/^[\w\s./\\:="'-]*$/.test(AGENT_ARGS_RAW)) {
+  console.error("AGENT_CMD/AGENT_ARGS 含 shell 元字符——拒启（SYS-204 A#6）");
+  process.exit(2);
+}
 const POLL = Number(process.env.POLL_MS || 5000);
 const ROLES = ["设计师", "程序员", "验收员", "审验员", "巡检台"]; // 2026-09-10 补巡检台：有信箱有工位，headless 值守降级也该覆盖
 if (!ROLES.includes(ROLE)) { console.log(`❌ 缺角色：设 POST_ROLE 或传参（${ROLES.join("/")}` + "）"); process.exit(1); }
@@ -51,12 +58,13 @@ let waiting = false;
 
 async function runAgent(letterPath) {
   const args = ["-p"];
-  args.push(...(process.env.AGENT_ARGS || "--dangerously-skip-permissions").split(" ").filter(Boolean));
+  args.push(...AGENT_ARGS_RAW.split(" ").filter(Boolean));
   args.push("--output-format", "stream-json", "--verbose", "--include-partial-messages");
   const prompt = protocol + `信件路径：${letterPath}\n开工。`;
   return new Promise((resolve) => {
     // Windows npm shim 需要 shell；prompt 走 stdin 避开引号/中文转义问题
-    const child = spawn(process.env.AGENT_CMD || "claude", args, {
+    // SYS-204 A#6：命令/参数已过顶部元字符闸（shell:true 下无注入面）
+    const child = spawn(AGENT_CMD, args, {
       shell: true, cwd: path.dirname(HERE), // cwd = 处理中心
       stdio: ["pipe", "pipe", "pipe"],
     });
@@ -115,6 +123,8 @@ function ringSeat() {
 console.log(`📮 值守启动：${ROLE}｜邮箱：${inboxDir}`);
 console.log(`   优先敲工位窗（窗内人工 agent 接活）；无工位窗时降级 headless（${process.env.AGENT_CMD || "claude"}）`);
 let rungLetter = null; // 已敲过窗的信：agent 在办，不重复敲、不起 headless
+let rungStall = 0;     // SYS-204 B#23：同一封信的等待轮数（超限重敲——防永久阻塞）
+const RUNG_RETRY_LIMIT = 30;
 
 while (true) {
   const list = letters();
@@ -127,8 +137,13 @@ while (true) {
   }
   waiting = false;
   const file = path.join(inboxDir, list[0]);
-  if (list[0] === rungLetter) { await sleep(POLL); continue; } // 已敲给窗内 agent，等它销信
-  const raw = fs.readFileSync(file, "utf-8");
+  if (list[0] === rungLetter) { // 已敲给窗内 agent，等它销信
+    rungStall++;   // SYS-204 B#23：久未销⇒重敲一次（不再无限阻塞后续信）
+    if (rungStall > RUNG_RETRY_LIMIT) { console.log(`⚠ ${list[0]} 久未销（${rungStall} 轮）——重敲一次「收信」（SYS-204 B#23 防永久阻塞）`); rungLetter = null; rungStall = 0; }
+    await sleep(POLL); continue;
+  }
+  let raw;
+  try { raw = fs.readFileSync(file, "utf-8"); } catch (e) { console.log(`⚠ 读信失败（本轮跳过）：${list[0]} — ${String(e.message || e)}`); await sleep(POLL); continue; }   // SYS-204 B#23：单坏件不得杀值守
   const re = (raw.match(/^re:\s*(.*)$/m) || [])[1] || "";
   const from = (raw.match(/^from:\s*(.*)$/m) || [])[1] || "?";
   const type = (raw.match(/^type:\s*(.*)$/m) || [])[1] || "?";
@@ -136,6 +151,7 @@ while (true) {
   if (ringSeat()) {
     console.log(`   已把「收信」敲进工位窗——窗内 agent 办完会销信（done），此信转人工线。`);
     rungLetter = list[0];
+    rungStall = 0;
     await sleep(1000);
     continue;
   }

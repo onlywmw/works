@@ -8,11 +8,11 @@
 //
 // 本件两件事：
 //   ① 占用登记：占/放/查（只登记「谁·何时·预计多久」，**不建调度系统**）
-//   ② 真机读数：wm size/density 覆盖读数（跑前查残留·跑毕自证已还原）＋ adb 定位（precheck-l23 复用）
+//   ② 真机读数：wm size/density 覆盖读数＋**默认输入法（IME）**（跑前查残留·跑毕自证已还原：占时留原值·放时若被留为 ADBKeyboard 自动还原）＋ adb 定位（precheck-l23 复用）
 //
 // 用法（cwd 任意）：
-//   node 处理中心\机器闸\checks\真机占用.mjs 占 --serial <机> [--for 30] [--who <名>] [--why "..."] [--force]
-//   node ... 放 --serial <机> [--who <名>] [--force]     # 跑毕清占用；设备在线则顺带打 wm 覆盖读数自证「已还原」
+//   node 处理中心\机器闸\checks\真机占用.mjs 占 --serial <机> [--for 30] [--waiting] [--who <名>] [--why "..."] [--force]
+//   node ... 放 --serial <机> [--who <名>] [--force]     # 跑毕清占用；设备在线则顺带打 wm 覆盖读数＋输入法自证「已还原」
 //   node ... 查 [--serial <机>]
 // 身份：--who > 环境变量 MOV_SEAT > 「未署名」——占/放/预检三处同源，才认得出「自持」
 // 退出码：0=成 ｜ 1=被他人占用／覆盖未还原 ｜ 2=用法错
@@ -21,7 +21,7 @@
 // 口径：《已知坑》「真机跑测试的占用纪律」＝① 占用前先确认 ② 设备级覆盖必还原并留读数 ③ 循环脚本给静默窗。
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "./key-health.mjs";
 
@@ -77,8 +77,9 @@ export function logForce(entry) {
   writeReg(r);
   return r._forceLog.length;
 }
-/** 占：空/自持 ⇒ 占上；他人在用 ⇒ 拒（--force 才越过并留痕）。 */
-export function park(serial, { who, forMin = 30, why = "", force = false, tool = "真机占用.mjs" } = {}) {
+export const WAIT_TTL_MIN = 15; // SYS-188 占用让位制：等待型（候外部条件）不长持设备——重装 ~1 分钟接力足够
+/** 占：空/自持 ⇒ 占上；他人在用 ⇒ 拒（--force 才越过并留痕）。waiting=true ⇒ 等待型（SYS-188 TTL 封顶 15min）。 */
+export function park(serial, { who, forMin = 30, why = "", force = false, waiting = false, tool = "真机占用.mjs" } = {}) {
   const r = readReg();
   const cur = r[serial] || null;
   if (cur && cur.who !== who) {
@@ -86,9 +87,10 @@ export function park(serial, { who, forMin = 30, why = "", force = false, tool =
     pushForce(r, { who, serial, skipped: [`占用：他人在用 ${occLine(cur)}`], tool }); // 与本次登记同一次落盘（分两次写会丢留痕）
   }
   const now = new Date();
-  r[serial] = { who, since: stamp(now), until: stamp(new Date(now.getTime() + forMin * 60000)), why };
+  const effMin = waiting ? Math.min(forMin, WAIT_TTL_MIN) : forMin;
+  r[serial] = { who, since: stamp(now), until: stamp(new Date(now.getTime() + effMin * 60000)), why, ...(waiting ? { waiting: true } : {}) };
   writeReg(r);
-  return { ok: true, entry: r[serial], displaced: cur };
+  return { ok: true, entry: r[serial], displaced: cur, waitClamped: waiting && forMin > WAIT_TTL_MIN };
 }
 /** 放：清占用（登记是他人时要 --force）。 */
 export function release(serial, who, { force = false } = {}) {
@@ -134,6 +136,18 @@ export function deviceOnline(adb, serial) {
   return run(adb, ["-s", serial, "get-state"]).out.trim() === "device";
 }
 
+/** 输入法读数（2026-10-05 用户报「键盘锁住了」后补）：注入类自动化会把默认 IME 切到 ADBKeyboard（无可见键盘）
+ *  ⇒ 用户拿到手机后敲不出字。纪律：占时留原值、放时自证并自动还原。 */
+export const ADB_IME = "com.android.adbkeyboard/.AdbIME";
+export const USER_IME_FALLBACK = process.env.MOV_USER_IME || "com.baidu.input/.ImeService";
+export function imeRead(adb, serial, runFn = run) {
+  const r = runFn(adb, ["-s", serial, "shell", "settings", "get", "secure", "default_input_method"]);
+  return String(r.out || "").trim();
+}
+export function imeSet(adb, serial, ime, runFn = run) {
+  return runFn(adb, ["-s", serial, "shell", "ime", "set", ime]).ok;
+}
+
 function main() {
   const a = parseArgs(process.argv.slice(2));
   const verb = a._[0];
@@ -141,20 +155,35 @@ function main() {
   const who = whoami(a.who);
   const force = "force" in a; // parseArgs 剥 -- 前缀：判 --force 得用键名 force（原 "--force" in a 恒假）
   const usage = () => {
-    console.error(`用法：node 处理中心\\机器闸\\checks\\真机占用.mjs 占|放|查 [--serial <机>] [--for 30] [--who <名>] [--why "..."] [--force]`);
+    console.error(`用法：node 处理中心\\机器闸\\checks\\真机占用.mjs 占|放|查 [--serial <机>] [--for 30] [--waiting] [--who <名>] [--why "..."] [--force]`);
     process.exit(2);
   };
 
   if (verb === "占") {
     const forMin = Number(a.for || 30);
     if (!Number.isFinite(forMin) || forMin <= 0) usage();
-    const r = park(serial, { who, forMin, why: a.why || "", force });
+    const waiting = "waiting" in a; // SYS-188：等待型占用（候外部条件）——TTL ≤15min
+    const r = park(serial, { who, forMin, why: a.why || "", force, waiting });
+    if (r.waitClamped) console.log(`⚠ 等待型占用 TTL ≤${WAIT_TTL_MIN}min（SYS-188）：--for ${forMin} 超窗，已按 ${WAIT_TTL_MIN}min 登记（候外部条件不长持设备·到期重登即接力）`);
+    else if (forMin > WAIT_TTL_MIN && !waiting) console.log(`⚠ 预计占用 ${forMin}min > ${WAIT_TTL_MIN}min：若系「候外部条件」请改 --waiting（等待型 TTL ≤15min·SYS-188）`);
     if (!r.ok) {
       console.log(`✋ ${serial} 他人在用：${occLine(r.cur)}（本席=${who}）——等 TA 放行或换机；确需抢占加 --force（记 _forceLog 留痕）。`);
       process.exit(1);
     }
     if (r.displaced) console.log(`⚠️ --force 越过：${occLine(r.displaced)}（已记 _forceLog）`);
     console.log(`📌 已占用 ${serial}：${occLine(r.entry)}——跑毕请「放」：node 处理中心\\机器闸\\checks\\真机占用.mjs 放 --serial ${serial}`);
+    // 设备态留存（2026-10-05）：记下现默认输入法，供「放」时自动还原（与 wm 同荣辱）
+    try {
+      const adb0 = resolveAdb(a.adb);
+      if (run(adb0, ["version"]).ok && deviceOnline(adb0, serial)) {
+        const ime = imeRead(adb0, serial);
+        if (ime) {
+          const rr = readReg();
+          if (rr[serial]) { rr[serial].ime = ime; writeReg(rr); }
+          console.log(`   🔎 设备态留存：默认输入法=${ime}`);
+        }
+      }
+    } catch { /* fail-quiet：留存失败不影响占用 */ }
     return;
   }
 
@@ -165,6 +194,22 @@ function main() {
       console.log(`✋ ${serial} 占用登记是 ${occLine(r.cur)}——本席=${who}；要替 TA 放加 --force。`);
       process.exit(1);
     } else console.log(`🔓 已放 ${serial}（原占用：${occLine(r.cur)}）`);
+
+    // SYS-186（2026-10-06 用户令：设备包回主）：放行即异步排程「回主检查」——
+    //   延迟 ≥2min（防抖·不打断下一席开机）→ 占用中/设备离线/已 main 均跳过；冷却/失败退避在 装机.mjs 内。
+    if (r.ok) {
+      try {
+        const installMjs = path.join(HERE, "..", "装机.mjs");
+        const p = spawn(process.execPath, [
+          installMjs, "--restore-check", "--delay", "120", "--serial", serial,
+          "--purpose", "restore-after-release", "--by", `release:${who}`,
+        ], { detached: true, stdio: "ignore", windowsHide: true });
+        p.unref();
+        console.log("   ⚙️ 已排程回主检查（≥120s 防抖·异步）：装机.mjs --restore-check（占用中/已 main 跳过）");
+      } catch (e) {
+        console.log(`   ⚠️ 回主排程失败（不影响放行）：${String((e && e.message) || e).slice(0, 80)}`);
+      }
+    }
 
     // 跑毕自证（SYS-135）：设备在线 ⇒ 打覆盖读数，跑者/证据直接抄（纪律②：必还原并留读数）
     const adb = resolveAdb(a.adb);
@@ -179,6 +224,18 @@ function main() {
     const wm = wmRead(adb, serial);
     const clean = !wm.sizeOverride && !wm.densityOverride;
     console.log(`   🔎 覆盖自证：size=[${wm.size}]；density=[${wm.density}] ⇒ ${clean ? "已回物理值 ✅" : "❌ 仍有 override 未还原！"}`);
+    // 输入法自证（2026-10-05 立·用户报「键盘锁住了」）：默认 IME 被留为 ADBKeyboard ⇒ 自动还原为占时留存值
+    try {
+      const ime = imeRead(adb, serial);
+      const target = (r.cur && r.cur.ime) || USER_IME_FALLBACK;
+      if (ime === ADB_IME && target && target !== ADB_IME) {
+        const okr = imeSet(adb, serial, target);
+        console.log(`   🔎 输入法自证：被留为 ADBKeyboard（无可见键盘）→ ${okr ? "已还原 " + target + " ✅" : "❌ 还原失败！手动：adb -s " + serial + " shell ime set " + target}`);
+        if (!okr) process.exit(1);
+      } else {
+        console.log(`   🔎 输入法自证：${ime || "（未读数）"}${r.cur && r.cur.ime ? "（占时=" + r.cur.ime + "）" : ""}`);
+      }
+    } catch { console.log("   ⚠️ 输入法自证未做（adb 读失败）——手动核：adb -s " + serial + " shell settings get secure default_input_method"); }
     if (!clean) {
       console.log(`      还原：adb -s ${serial} shell wm size reset ／ adb -s ${serial} shell wm density reset`);
       process.exit(1);

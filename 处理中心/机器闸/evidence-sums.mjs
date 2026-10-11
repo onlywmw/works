@@ -5,12 +5,13 @@
 // ⇒ 标准 `sha256sum -c` 报格式错，复核者只能自写解析器。本工具定死格式并给出校验。
 //
 // 用法：
-//   node evidence-sums.mjs gen   <dir> [--manifest EVIDENCE_SHA256SUMS.txt]   # 生成清单（覆盖）＋打印官方目录 pin（重录 DEL 用）
+//   node evidence-sums.mjs gen   <dir> [--manifest EVIDENCE_SHA256SUMS.txt] [--force]   # 生成清单（覆盖）＋打印官方目录 pin（重录 DEL 用）；目标合理性闸＋件数阈（>2000 拒·--force 越·.git 永不入）
 //   node evidence-sums.mjs check <dir> [--manifest EVIDENCE_SHA256SUMS.txt]   # 校验（缺件/改件/多件）
 // 退出码：0=全过；1=有差异；2=用法错误
 import { createHash } from "node:crypto";
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const [cmd, dirArg, ...rest] = process.argv.slice(2);
 if (!cmd || !dirArg || !["gen", "check"].includes(cmd)) {
@@ -20,10 +21,23 @@ if (!cmd || !dirArg || !["gen", "check"].includes(cmd)) {
 const MANIFEST = (() => { const i = rest.indexOf("--manifest"); return i >= 0 ? rest[i + 1] : "EVIDENCE_SHA256SUMS.txt"; })();
 const ROOT = path.resolve(dirArg);
 
+// 2026-10-06 闸（卫生通报 LTR-20261006-133136-821-m3e·根层误落案 5.8MB/37497 行）：
+// 目标合理性——体系根 / works 根 / 直含 .git 的树一律拒（证据清单只对「单工单证据目录」跑）；--force 可越。
+{
+  const SYS = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
+  const WORKS = path.resolve(SYS, "..");
+  const bad = ROOT === SYS ? "体系根" : ROOT === WORKS ? "works 根" : existsSync(path.join(ROOT, ".git")) ? "含 .git 的树" : "";
+  if (bad && !rest.includes("--force")) {
+    console.error(`✗ 目标不合理（${bad}）：${ROOT}\n   证据清单只对「单工单证据目录」生成——全树/仓库根会产出数万行误清单（先例：2026-10-06 根层误落 37497 行）。确需，加 --force。`);
+    process.exit(2);
+  }
+}
+
 function walk(d) {
   return readdirSync(d, { withFileTypes: true }).flatMap((e) => {
     const p = path.join(d, e.name);
-    return e.isDirectory() ? walk(p) : (e.name === MANIFEST ? [] : [p]);
+    if (e.isDirectory()) return e.name === ".git" ? [] : walk(p); // 2026-10-06：.git 永不入清单
+    return e.name === MANIFEST ? [] : [p];
   });
 }
 const rel = (p) => path.relative(ROOT, p).split(path.sep).join("/");
@@ -42,6 +56,11 @@ const sha = (p) => createHash("sha256").update(readFileSync(p)).digest("hex");
 
 const files = walk(ROOT).sort();
 if (!files.length) { console.error(`✗ 目录内无可入清单的文件：${ROOT}`); process.exit(1); }
+// 2026-10-06 闸：件数超阈 ⇒ 疑误指大目录（先例 37497 行）；--force 可越。
+if (files.length > 2000 && !rest.includes("--force")) {
+  console.error(`✗ 件数超阈：${files.length} > 2000——疑似误指大目录（先例：2026-10-06 根层误落 37497 行）。确需，加 --force。`);
+  process.exit(2);
+}
 
 if (cmd === "gen") {
   const lines = files.map((p) => `${sha(p)}  ${rel(p)}`);

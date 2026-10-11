@@ -19,14 +19,14 @@ const outDir = path.join(SYS, "处理中心", "验证产物");
 
 // 工单库 status 块 → { 工单号: phase }
 const phases = {};
-for (const m of lib.matchAll(/^# (UPG|SYS|W|S)-\d+[\s\S]*?```status\n([\s\S]*?)```/gm)) {
+for (const m of lib.matchAll(/^# (UPG|SYS|POL)-\d+[\s\S]*?```status\n([\s\S]*?)```/gm)) {
   const id = m[1] + "-" + parseInt(m[0].match(/^# ([A-Z]+-\d+)/)[1].split("-")[1], 10); // 前导零归一：SYS-05 == SYS-5
   const ph = (m[2].match(/^phase:\s*(\S+)/m) || [])[1] || "?";
   phases[id] = ph; // SYS-24：原为 parseInt(m[2],10)（m[2]=status 块文本）→ 键全 NaN；改用循环内已算好的 id
 }
 // 目录名 → 工单号（UPG49-R2-evidence → UPG-49；SYS05-evidence → SYS-05）
 const dir2id = (d) => {
-  const m = d.match(/^(SYS|UPG|W|S)-?(\d+)/i);
+  const m = d.match(/^(UPG|SYS|POL)-?(\d+)/i);
   return m ? `${m[1].toUpperCase()}-${parseInt(m[2], 10)}` : null;
 };
 
@@ -34,7 +34,7 @@ const evDir = EV_SUB[role] ? path.join(roleDir, EV_SUB[role]) : roleDir;
 // F0（2026-09-30）：白名单证据目录可能不存在（git 不跟踪空目录 ⇒ 无在途证据时必然消失）
 // ——跳过并显式标「—」，不崩、不冒充 0。挂账＝LTR-20260930-025401-624-1i5
 if (!fs.existsSync(evDir)) { console.log(`${role}: （— 目录不存在·跳过：${evDir}）`); process.exit(0); }
-const dirs = fs.readdirSync(evDir).filter(d => (/-evidence$/i.test(d)|| /^(SYS|UPG|W|S)-?\d/i.test(d)) && fs.statSync(path.join(evDir, d)).isDirectory());
+const dirs = fs.readdirSync(evDir).filter(d => (/-evidence$/i.test(d)|| /^(UPG|SYS|POL)-?\d/i.test(d)) && fs.statSync(path.join(evDir, d)).isDirectory());
 const GROUP = {
   "🔨 在途（未合单）": p => !["merged", "closed", "obsolete"].includes(p),
   "✅ 已合 main（凭据链锁定·禁搬）": p => p === "merged",
@@ -44,11 +44,11 @@ const GROUP = {
 // ─────────── SYS-24 自测（--self-test）：键格式 + dir2id 抽样 + 归组一致 ───────────
 if (SELF_TEST) {
   const errs = [];
-  const blocks = [...lib.matchAll(/^# (UPG|SYS|W|S)-\d+[\s\S]*?```status\n([\s\S]*?)```/gm)].length;
+  const blocks = [...lib.matchAll(/^# (UPG|SYS|POL)-\d+[\s\S]*?```status\n([\s\S]*?)```/gm)].length;
   const keys = Object.keys(phases);
   // ① 键格式：NaN/非法一律红；键数须等于 status 块数（NaN 坍缩会把 N 卡并成 1 键）
   if (keys.length !== blocks) errs.push(`键数 ${keys.length} ≠ status 块数 ${blocks}（键碰撞/NaN 坍缩）`);
-  for (const k of keys) if (!/^(UPG|SYS|W|S|HMOS)-\d+$/.test(k)) errs.push(`键格式非法: ${k}`);
+  for (const k of keys) if (!/^(UPG|SYS|POL)-\d+$/.test(k)) errs.push(`键格式非法: ${k}`);
   // ② dir2id 抽样（纯函数，环境无关）
   for (const [d, want] of [["UPG49-R2-evidence", "UPG-49"], ["SYS05-evidence", "SYS-5"], ["UPG129-evidence", "UPG-129"], ["SYS23-evidence", "SYS-23"]]) { // 前导零归一：SYS05→SYS-5
     const got = dir2id(d);

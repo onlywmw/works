@@ -3,14 +3,15 @@
 //
 // 语义：交付（set-status --phase delivered）时会把 worktree 全树摘要写进卡面 `tree_digest`；
 //       验收/审验/合并位用本工具**重算**并与卡面值比对——不等 = 交付后动过树 ⇒ 红「交付树被改」。
-// 摘要口径（与 set-status.py 逐字节同源）：sha256(排序后 `git status --porcelain -uall` 行 + "\n--\n" + `git diff HEAD --no-renames` 全文) 前16位。
+// 摘要口径（SYS-200 升级·2026-10-09）：**索引态无关内容指纹**，单源＝lib/tree-digest.mjs
+//       （路径集=HEAD 差异 ∪ 未跟踪 → 逐路径工作树内容 sha256 → 清单 sha256 前16）。
+//       `git add -N` 与 untracked 两态同判；历史锚不回溯（旧口径锚与新口径不可比）。
 // 用法：node 处理中心/机器闸/delivery-drift-check.mjs --ticket UPG-xxx [--lib <工单库>] [--expect <16位>（自测/覆盖卡面值）]
 // 退出码：0=干净（或卡面无锚·明确标注）｜1=漂移（红）｜2=用法/环境错。
 import fs from "node:fs";
 import { USER_HOME, WORKSPACE } from "./lib/root.mjs"; // SYS-160：根解析单源
+import { computeTreeDigest } from "./lib/tree-digest.mjs"; // SYS-200：摘要口径单源
 import path from "node:path";
-import crypto from "node:crypto";
-import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -43,13 +44,9 @@ for (const n of names) for (const rt of [USER_HOME, WORKSPACE]) {   // SYS-160�
 if (!wt) { console.error(`DRIFT_ERR 未定位 worktree（branch=${br || "—"}·候选=${names.join("/") || "无"}）`); process.exit(2); }
 
 const gitOut = (args) => execFileSync("git", ["-C", wt, ...args], { windowsHide: true, encoding: "utf-8", maxBuffer: 1 << 28 });
-const norm = (s) => s.replace(/\r\n?/g, "\n"); // 同 Python text 模式：\r\n/\r → \n
 let actual;
 try {
-  const stLines = norm(gitOut(["status", "--porcelain", "-uall"])).split("\n");
-  while (stLines.length && stLines[stLines.length - 1] === "") stLines.pop(); // 同 Python splitlines()：去尾空行
-  const payload = stLines.sort().join("\n") + "\n--\n" + norm(gitOut(["diff", "HEAD", "--no-renames"]));
-  actual = crypto.createHash("sha256").update(payload, "utf-8").digest("hex").slice(0, 16);
+  actual = computeTreeDigest(wt); // SYS-200：索引态无关·单源（lib/tree-digest.mjs）
 } catch (e) {
   console.error(`DRIFT_ERR git 摘要失败：${String(e.message).slice(0, 120)}`); process.exit(2);
 }

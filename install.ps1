@@ -17,7 +17,8 @@
   自检三步出屏（engine status／工具自检／post-office status）→ 快捷方式。禁远程执行未声明内容。
 #>
 $ErrorActionPreference = "Stop"
-$ScriptVersion = "0.1.0"
+# 注：本值仅为源件默认；发行包（mov-ticket-<ver>）由 打包分发.mjs 打包时按 version.json 强刷（2026-10-11·SYS-177）
+$ScriptVersion = "0.2.1"
 
 # ---------- 参数解析（$args 手解：兼容 iex 无参与直跑带参） ----------
 $Opts = @{ dir = (Join-Path $env:USERPROFILE "mov-ticket"); local = $null; sha = $null; dry = $false;

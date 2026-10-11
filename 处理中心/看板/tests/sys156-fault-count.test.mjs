@@ -9,7 +9,10 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const BOARD = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const REL = ["engine.mjs", "board-data.mjs", "值守池.mjs", path.join("lib", "envelope.mjs"), path.join("lib", "seat-thresh.mjs")]; // SYS-176：engine 新增引阈值单源 ⇒ 沙箱依赖同步
+const REL = ["engine.mjs", "board-data.mjs", path.join("lib", "envelope.mjs"), path.join("lib", "seat-thresh.mjs"),
+  // SYS-184：engine 新增引 机器闸（空闲回主判据/占用单源）⇒ 沙箱依赖同步
+  path.join("..", "机器闸", "lib", "root.mjs"), path.join("..", "机器闸", "lib", "device-version.mjs"),
+  path.join("..", "机器闸", "checks", "真机占用.mjs"), path.join("..", "机器闸", "checks", "key-health.mjs")]; // SYS-176：engine 新增引阈值单源 ⇒ 沙箱依赖同步；2026-10-05 瘦身批1：值守池.mjs 退场（SYS-61 退役件删除）
 
 function sandbox(engineSrc) { // engineSrc=变异体源码（空=用仓内当前件）
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "mov-sys156-"));

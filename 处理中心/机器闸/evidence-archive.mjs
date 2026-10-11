@@ -45,11 +45,11 @@ function dirHash(root) {
 }
 
 const phases = {};
-for (const m of lib.matchAll(/^# (UPG|SYS|W|S)-(\d+)[\s\S]*?```status\n([\s\S]*?)```/gm)) {
+for (const m of lib.matchAll(/^# (UPG|SYS|POL)-(\d+)[\s\S]*?```status\n([\s\S]*?)```/gm)) {
   phases[`${m[1]}-${parseInt(m[2], 10)}`] = (m[3].match(/^phase:\s*(\S+)/m) || [])[1] || "?";
 }
 const dir2id = (d) => {
-  const m = d.match(/^(SYS|UPG|W|S)-?(\d+)/i);
+  const m = d.match(/^(UPG|SYS|POL)-?(\d+)/i);
   return m ? `${m[1].toUpperCase()}-${parseInt(m[2], 10)}` : null;
 };
 
@@ -89,7 +89,7 @@ const occupied = moves.filter(m => fs.existsSync(path.join(arcDir, m.rel))); // 
 console.log(`归档（已合/闭环/作废）：${moves.length} ｜ 留守（在途）：${stay.length} ｜ 孤儿（库无卡，不动待追查）：${orphan.length}`);
 if (orphan.length) orphan.forEach(o => console.log(`  ❓ 孤儿: ${o.d}（留给卫生员追查，不自动归档）`));
 if (shells.length) { console.log(`  ⚠️ 空壳目录 ${shells.length} 件（0 文件·疑似残留/占位——已跳过不迁移，请人工确认后处理）：`); shells.forEach(s => console.log(`     · ${role}/${s.rel}`)); }
-if (occupied.length) { console.log(`  ⚠️ 目标占位 ${occupied.length} 件（归档位已有同名，迁移将失败——需人工定名后再补跑）：`); occupied.forEach(o => console.log(`     · ${role}/${o.rel}（归档位已存在）`)); }
+if (occupied.length) { console.log(`  ↪ 目标占位 ${occupied.length} 件（执行时将自动改名 _补记N 迁移）：`); occupied.forEach(o => console.log(`     · ${role}/${o.rel}（归档位已存在 ⇒ _补记N）`)); }
 if (!execute) {
   if (process.argv.includes("--list")) { // 补跑前给设计师核的待迁清单（SYS-33 红线：干跑清单先报确认）
     moves.forEach(m => console.log(`  → ${m.id} [${m.ph}] ${role}/${m.rel}`));
@@ -110,20 +110,37 @@ const skipped = [];   // SYS-142 ①：单件失败（占位/EPERM 等）跳过�
 const rollback = () => { for (const d of [...doneMoves].reverse()) { try { fs.renameSync(d.newP, d.oldP); } catch {} } };
 const fail = (msg) => { console.log(`❌ ${msg}`); process.exit(1); };
 for (const m of moves) {
+  // 2026-10-11：目标占位 ⇒ 自动 _补记N（免人工定名；原 SYS-142 ① 跳过行为仅保留给其它真失败）
+  let dstRel = m.rel;
+  let newP = path.join(arcDir, dstRel);
+  if (fs.existsSync(newP)) {
+    const seg = dstRel.split("/"); const leaf = seg.pop();
+    let cand = null;
+    for (let i = 1; i <= 99; i++) {
+      const nm = leaf + "_补记" + (i === 1 ? "" : i);
+      if (!fs.existsSync(path.join(arcDir, ...seg, nm)) && !fs.existsSync(path.join(roleDir, ...seg, nm))) { cand = nm; break; }
+    }
+    if (!cand) {
+      skipped.push({ ...m, why: "suffix-exhausted" });
+      console.log(`  ⏭️ 跳过 ${m.id} ${role}/${m.rel}：目标占位且 _补记1..99 均占——需人工定名`);
+      continue;
+    }
+    seg.push(cand); dstRel = seg.join("/"); newP = path.join(arcDir, dstRel);
+    console.log(`  ↪ 目标占位：${role}/${m.rel} ⇒ 归档位 ${dstRel}（自动后缀）`);
+  }
   const oldP = path.join(roleDir, m.rel);
-  const newP = path.join(arcDir, m.rel);
   const oldH = dirHash(oldP); // 迁移前：旧目录逐文件 hash 合并
   try { fs.mkdirSync(path.dirname(newP), { recursive: true }); fs.renameSync(oldP, newP); }
   catch (e) {
-    // SYS-142 ①：占位/单件失败 ⇒ 跳过并报，其余照常（旧行为＝整批回滚——09-29 一件占位致 158 件全批积压）
+    // 真失败（锁/权限等）⇒ 跳过并报，其余照常（不整批回滚——09-29 一件占位致 158 件全批积压）
     skipped.push({ ...m, why: e.code || e.message });
-    console.log(`  ⏭️ 跳过 ${m.id} ${role}/${m.rel}：${e.code || ""} ${e.message}（跳过件不入登记；定名/清理后重跑补迁）`);
+    console.log(`  ⏭️ 跳过 ${m.id} ${role}/${m.rel}：${e.code || ""} ${e.message}（跳过件不入登记；清理后重跑补迁）`);
     continue;
   }
   const newH = dirHash(newP); // 迁移后：新位复算比对
   if (oldH !== newH) { try { fs.renameSync(newP, oldP); } catch {} rollback(); fail(`目录 hash 迁移前后不一致（${m.id}：${oldH}→${newH}）——已整体回滚，登记不写`); }
   doneMoves.push({ oldP, newP });
-  rows += `| ${today} | ${m.id} | ${m.ph} | ${role}/${m.rel}/ | 归档/证据/${role}/${m.rel}/ | ${oldH}→${newH} ✅ |\n`;
+  rows += `| ${today} | ${m.id} | ${m.ph} | ${role}/${m.rel}/ | 归档/证据/${role}/${dstRel}/ | ${oldH}→${newH} ✅ |\n`;
 }
 if (rows) { // 有已迁件才写登记（全跳过 ⇒ 登记不写）
   if (!fs.existsSync(reg)) {
@@ -230,7 +247,7 @@ function runSelfTest() {
     t("在途单留守未动", fs.existsSync(path.join(fx.stay, "wip.txt")));
     t("--execute 退出码 0 且报迁移计数", ex.ok && /迁移 1 个目录/.test(ex.out), (ex.out.trim().split("\n").pop() || "").slice(0, 90));
 
-    // SYS-142 ① 变异亲杀：占位单件 ⇒ 跳过并报、其余件照常迁移、非零退（禁整批回滚——09-29 一件占位致 158 件积压案）
+    // 2026-10-11 升级（原 SYS-142 ① 占位跳过 ⇒ 自动后缀）：占位件自动落 _补记N（免人工定名）、其余件照常、登记双行
     const fx2 = mkSelfTwoMerged(base2);
     const occupied = path.join(base2, "处理中心", "归档", "证据", "验收员", "证据数据", "UPG-1-evidence");
     fs.mkdirSync(occupied, { recursive: true });
@@ -238,27 +255,19 @@ function runSelfTest() {
     const r2 = call(base2, ["验收员", "--execute"]);
     const reg2 = path.join(base2, "处理中心", "归档", "证据", "迁移登记.md");
     const regTxt2 = fs.existsSync(reg2) ? fs.readFileSync(reg2, "utf-8") : "";
+    const arc1s = path.join(base2, "处理中心", "归档", "证据", "验收员", "证据数据", "UPG-1-evidence_补记");
     const arc3m = path.join(base2, "处理中心", "归档", "证据", "验收员", "证据数据", "UPG-3-evidence");
-    t("占位单件 ⇒ 非零退且其余件照常迁移（不整批回滚）",
-      !r2.ok && fs.existsSync(path.join(arc3m, "log.txt")),
-      `退出非0=${!r2.ok} 其余件已迁=${fs.existsSync(path.join(arc3m, "log.txt"))}`);
-    t("占位件列名报出＋原目录原地（不丢件）",
-      /UPG-1/.test(r2.out) && fs.existsSync(path.join(fx2.ev1, "log.txt")),
-      `已报出=${/UPG-1/.test(r2.out)} 原目录在位=${fs.existsSync(path.join(fx2.ev1, "log.txt"))}`);
-    t("登记只写已迁件·占位件不入登记（登记不写口径收窄）",
-      /UPG-3/.test(regTxt2) && !/UPG-1/.test(regTxt2),
-      `含UPG-3=${/UPG-3/.test(regTxt2)} 含UPG-1=${/UPG-1/.test(regTxt2)}`);
-    // 重跑幂等：补定名/清占位后重跑 ⇒ 仅补迁占位件、计数与登记正确
-    fs.rmSync(occupied, { recursive: true, force: true });
-    const r2b = call(base2, ["验收员", "--execute"]);
-    const regTxt2b = fs.readFileSync(reg2, "utf-8");
-    const arc1 = path.join(base2, "处理中心", "归档", "证据", "验收员", "证据数据", "UPG-1-evidence");
-    const reg1Rows = regTxt2b.split("\n").filter((l) => /UPG-1/.test(l)).length;
-    t("清占位重跑：仅补迁占位件（计数=1·登记恰 +1 行·幂等）",
-      r2b.ok && /ARCHIVE_MIGRATED=1/.test(r2b.out) && fs.existsSync(path.join(arc1, "log.txt")) && reg1Rows === 1,
-      `补迁=${fs.existsSync(path.join(arc1, "log.txt"))} 登记UPG-1行=${reg1Rows}`);
+    t("占位件 ⇒ 自动后缀迁出（UPG-1-evidence_补记 内容在位）",
+      r2.ok && fs.existsSync(path.join(arc1s, "log.txt")),
+      `补记位=${fs.existsSync(arc1s)} rc0=${r2.ok}`);
+    t("原占位目标未动＋其余件照常迁移",
+      fs.existsSync(path.join(occupied, "occupied.txt")) && fs.existsSync(path.join(arc3m, "log.txt")),
+      `占位原位=${fs.existsSync(path.join(occupied, "occupied.txt"))} 其余件=${fs.existsSync(path.join(arc3m, "log.txt"))}`);
+    t("登记双行（UPG-1-evidence_补记 与 UPG-3 旧→新映射）",
+      /UPG-1-evidence_补记/.test(regTxt2) && /UPG-3/.test(regTxt2),
+      `含补记行=${/UPG-1-evidence_补记/.test(regTxt2)} 含UPG-3=${/UPG-3/.test(regTxt2)}`);
     const r2c = call(base2, ["验收员", "--execute"]);
-    t("再跑幂等：0 件＋无待归档（不误报）",
+    t("重跑幂等：0 件＋无待归档（不误迁）",
       /无待归档/.test(r2c.out) && /ARCHIVE_MIGRATED=0/.test(r2c.out),
       (r2c.out.trim().split("\n")[0] || "").slice(0, 60));
 

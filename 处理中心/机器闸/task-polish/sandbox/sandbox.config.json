@@ -1,0 +1,12 @@
+{
+  "root": "E:/mov工作区/pol4-sandbox",
+  "serverSrcRepo": "E:/mov归档/mov-web",
+  "serverPin": "0444adc",
+  "a2aPort": 8180,
+  "partnerStubPort": 8392,
+  "envFile": "E:/mov工作区/pol4-sandbox/a2a.env",
+  "appWorktree": "E:/mov工作区/mov-pol4",
+  "sandboxAppBase": "http://10.0.2.2:8180",
+  "avd": "MOV_Test",
+  "_note": "POL-4 沙盒单一配置：serverPin=mov-web commit（只读 pin·git archive 导出）；envFile 在仓外（凭据纪律）；AVD 固定 MOV_Test（专用模拟器）。"
+}

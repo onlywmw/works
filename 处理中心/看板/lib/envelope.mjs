@@ -48,4 +48,9 @@ export function parseEnvelope(raw) {
 }
 
 // 文本内票据号（无锚，用于信件 re/正文里捞单号）；带锚的整串校验用各模块自有 TICKET_RE
-export const TICKET_IN_TEXT = /(?:UPG|SYS|W|S|HMOS)-[A-Za-z0-9]+/;
+export const TICKET_IN_TEXT = /(?:UPG|SYS|POL)-[A-Za-z0-9]+/;
+
+// SYS-45 A 层：派单路由字段（frontmatter `seat:` 或正文 `工位[:：]` 行）——定向投递。
+// 2026-10-05 瘦身批1：自 值守池.mjs 收编至本件（SYS-61 RPC 通道已退役·池件删除·解析两行保留—engine 4 处在用）。
+export const SEAT_FIELD_RE = /^(?:工位|seat)[:：]\s*(\S+)\s*$/m;
+export const parseSeatField = (text) => (String(text).match(SEAT_FIELD_RE) || [])[1] || null;

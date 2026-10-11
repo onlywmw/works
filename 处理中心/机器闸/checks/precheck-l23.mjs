@@ -6,6 +6,8 @@
 //                  （SYS-135：2026-09-28 用户真机被 UPG-365 采集循环占用案）；--force 显式越过并留痕
 //   ① 模拟器在线   adb devices 里有目标机（默认 emulator-5554）
 //   ①b 设备覆盖    wm size/density 残留 override ⇒ 跑前必还原（跑毕 MUST 自证；纪律见 设计师/经验库/已知坑.md）
+//   ①c 设备包指纹  --expect-device <main|树路径|指纹> ⇒ 断言「设备现包指纹 == 期望」（SYS-184/D4 跑前门）：
+//                  不符 ⇒ fail-closed（rc≠0）＋两指纹对比；复用 lib/device-version.mjs 同一解析（D1）。
 //   ② App 已装     adb shell pm path <包名> 能列出 package:
 //                  包名默认**从 worktree 的 app/build.gradle(.kts) 读 applicationId**（SYS-133：
 //                  旧默认 com.mov.android 是 namespace、与现行 applicationId=cn.mov.app 分家 ⇒ ② 恒假红）
@@ -15,10 +17,12 @@
 //   node 处理中心\机器闸\checks\precheck-l23.mjs
 //   node ... --serial emulator-5554 --package cn.mov.app --worktree E:/mov工作区/mov-upg339 --adb <adb路径> --keys <keys路径> --quiet
 //   node ... --serial <机> --who <操作者> --park --for 30 --why "L2 复跑"   ← 跑前登记「占用起」（跑毕「放」清占用）
+//   node ... --serial <机> --expect-device <main|树路径|指纹>               ← 跑前核设备包指纹（不符即拒跑·SYS-184）
 //   node ... --serial <机> --force                                       ← 越过他人在用/残留覆盖（记 _forceLog 留痕）
 // 退出码：0=全绿；1=有缺项（逐项列缺+补法）
 import fs from "node:fs";
-import { WORKSPACE } from "../lib/root.mjs"; // SYS-160：根解析单源（残留修：原 ../../../ 越根＋导出名错〔WORKSPACE_ROOT 不存在〕）
+import { WORKSPACE, PRODUCT } from "../lib/root.mjs"; // SYS-160：根解析单源（残留修：原 ../../../ 越根＋导出名错〔WORKSPACE_ROOT 不存在〕）
+import { baseSha, suffixOf, fingerprintOf, isMainLine, gitShort } from "../lib/device-version.mjs"; // SYS-184：①c 指纹解析单一真源（D1/D4）
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readKeys, probeAll, parseArgs, LABEL } from "./key-health.mjs";
@@ -158,6 +162,46 @@ async function main() {
         fix: `跑前还原：adb -s ${serial} shell wm size reset ／ wm density reset；跑毕 MUST 自证读数回 Physical（口径=设计师/经验库/已知坑.md「真机跑测试的占用纪律」）` });
     } else {
       console.log(`  ✅ ①b 设备覆盖 —— 无 override（size=[${wm.size}]；density=[${wm.density}]）`);
+    }
+  }
+
+  // ①c 设备包指纹（SYS-184·D4 跑前门）：--expect-device <main|树路径|指纹>——设备现包指纹 MUST == 期望；
+  //     不符 ⇒ fail-closed（rc≠0）＋两指纹对比。main 判据＝base sha==main 头且无分支标记（+dirty 容忍·见 D1 备注）。
+  {
+    const expArg = a["expect-device"];
+    if (expArg && !online) {
+      console.log(`  ❌ ①c 设备包指纹 —— 无在线设备，无法核对 --expect-device ${expArg}`);
+      problems.push({ item: "①c 设备包指纹", lack: `--expect-device ${expArg} 无法核对（无在线设备）`, fix: "先过 ①（设备在线），本条自动可查" });
+    } else if (expArg) {
+      const mainShort = gitShort(PRODUCT);
+      let expected = "", how = "", mode = "exact";
+      if (/^V1\.1-/i.test(expArg)) { expected = expArg; how = "指纹字面量"; }
+      else if (expArg === "main") { expected = `V1.1-${mainShort}`; how = `main（现构建指纹 ${fingerprintOf(PRODUCT)}）`; mode = "main"; }
+      else {
+        const p = path.resolve(expArg);
+        if (fs.existsSync(p)) { expected = fingerprintOf(p); how = `树 ${p}`; }
+        else if (/^[0-9a-f]{6,40}$/i.test(expArg)) { expected = expArg; how = "base sha"; mode = "base"; }
+        else {
+          console.log(`  ❌ ①c 设备包指纹 —— 无法解析 --expect-device「${expArg}」（非 main／非存在树路径／非指纹）`);
+          problems.push({ item: "①c 设备包指纹", lack: `--expect-device「${expArg}」无法解析`, fix: "传 main、树路径或 `V1.1-<sha>[+mark][+dirty]` 指纹" });
+        }
+      }
+      if (expected) {
+        const dp = run(adb, ["-s", serial, "shell", "dumpsys", "package", pkg]);
+        const ver = (String(dp.out || "").match(/versionName=(\S+)/) || [])[1] || "";
+        const c = (x) => String(x).toLowerCase();
+        const ok = !ver ? false
+          : mode === "main" ? isMainLine(ver, mainShort)
+          : mode === "base" ? c(baseSha(ver)) === c(expArg)
+          : c(ver) === c(expected);
+        if (ok) {
+          console.log(`  ✅ ①c 设备包指纹 —— 设备 ${ver} == 期望（${how}）`);
+        } else {
+          console.log(`  ❌ ①c 设备包指纹 —— 设备 ${ver || "(未装/读不到)"}（base=${baseSha(ver) || "?"}｜suffix=${suffixOf(ver) || "—"}）≠ 期望 ${expected}（${how}）`);
+          problems.push({ item: "①c 设备包指纹", lack: `设备 ${ver || "(未装)"} ≠ 期望 ${expected}（${how}）`,
+            fix: `装机回期望树（node 处理中心\\机器闸\\装机.mjs [--from <树>|main]）；或核对判据树是否选错。口径=SYS-184/D4 跑前门` });
+        }
+      }
     }
   }
 

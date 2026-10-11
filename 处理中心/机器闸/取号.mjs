@@ -48,7 +48,7 @@ if (sandboxFlag) {
 } else {
   LIB = REAL_LIB;
 }
-const PREFIXES = ["UPG", "SYS", "W", "S", "HMOS"];
+const PREFIXES = ["UPG", "SYS", "POL"]; // POL＝任务打磨环线（2026-10-06 用户令：打磨单与产品单分开）；W/S/HMOS 裁撤（同日用户令：无定义号段·不发号）
 
 // S2：对侧账/共享锁/水位投影路径一律自推（兄弟体系平铺 E:\MOV\<体系>\——SYS-66 换装纪律：不硬编码）；旗标/env 可覆盖
 const CROSS_LIB = opt("--lib-an") || process.env.MOV_CROSS_LIB || path.join(HERE, "..", "..", "..", "网页体系建设", "处理中心", "工单库.md");
@@ -56,7 +56,7 @@ const STATION_LOCK_DIR = path.join(HERE, "..", "..", "..", "驿站", "共享");
 const SHARED_LOCK = path.join(STATION_LOCK_DIR, "号段锁.lock"); // 瞬态互斥件（锁内串行、用毕即删），非账非信
 const WATERMARK = path.join(STATION_LOCK_DIR, "号段水位.json"); // 投影（双账扫描才是真源）；仅真模式写
 
-const maxNo = (prefix, file = LIB) => { // 全文扫（含正文提及）——宁可跳号不撞号；(?<![A-Za-z0-9-]) 防 S/W 单字母前缀误匹配（如 SHOW-12 里的 W-12）
+const maxNo = (prefix, file = LIB) => { // 全文扫（含正文提及）——宁可跳号不撞号；(?<![A-Za-z0-9-]) 防长串误匹配（如 XUPG-9 不计入 UPG）
   const raw = fs.existsSync(file) ? fs.readFileSync(file, "utf-8") : "";
   let m = 0;
   for (const hit of raw.matchAll(new RegExp(`(?<![A-Za-z0-9-])${prefix}-(\\d+)`, "g"))) m = Math.max(m, +hit[1]);
@@ -72,7 +72,7 @@ if (sub === "水位") {
   const sides = [{ name: "AN", file: LIB }, { name: "WEB", file: CROSS_LIB }];
   const readOr = (f) => (fs.existsSync(f) ? fs.readFileSync(f, "utf-8") : null);
   const res = { at: new Date().toISOString(), sides: sides.map((s) => ({ name: s.name, file: s.file, present: !!readOr(s.file) })), prefixes: {}, notes: [], rebuild: "node 处理中心/机器闸/取号.mjs 水位 [--lib <本账> --lib-an <对侧账> --out <目录>]" };
-  for (const pfx of ["UPG", "SYS"]) {
+  for (const pfx of ["UPG", "SYS", "POL"]) {
     const per = sides.map((s) => ({ name: s.name, max: readOr(s.file) ? maxNo(pfx, s.file) : null }));
     const global = Math.max(0, ...per.filter((x) => x.max != null).map((x) => x.max));
     // 在册跳号（区间内无卡号头）＋命中处（各账全文提及行）
@@ -98,7 +98,7 @@ if (sub === "水位") {
     const raw = readOr(s.file); if (!raw) continue;
     const lines = raw.split(/\r?\n/).slice(0, 30);
     for (let i = 0; i < lines.length; i++) {
-      for (const m of lines[i].matchAll(/全局已用 max=\*{0,2}((?:UPG|SYS)-(\d+))\*{0,2}/g)) {
+      for (const m of lines[i].matchAll(/全局已用 max=\*{0,2}((?:UPG|SYS|POL)-(\d+))\*{0,2}/g)) {
         const pfx = m[1].split("-")[0];
         const g = res.prefixes[pfx] ? res.prefixes[pfx].global : 0;
         res.notes.push({ side: s.name, line: i + 1, note: m[1], globalMax: pfx + "-" + g, stale: +m[2] < g });
@@ -106,7 +106,7 @@ if (sub === "水位") {
     }
   }
   const md = ["# 号段水位（机生成·勿手编）", "", `> 生成：${res.at} ｜ 重建：\`${res.rebuild}\``, "> 口径：两侧全提及扫 max（同立卡口径·号不复用）；跳号=区间内无卡号头；注记过时=手写 max＜机算全局 max", ""];
-  for (const pfx of ["UPG", "SYS"]) { const r = res.prefixes[pfx]; md.push(`## ${pfx}`, "", `- 水位（下一个可用）= **${r.water}** ｜ 全局 max=${pfx}-${r.global} ｜ 分账：${r.per.map((x) => `${x.name}=${x.max == null ? "缺" : pfx + "-" + x.max}`).join(" ｜ ")}`); md.push("", `- 在册跳号 ${r.gaps.length} 个（区间 ${pfx}-${r.minCarded || 1}..${pfx}-${r.global}）：${r.gaps.slice(0, 20).map((g) => g.n + (g.hits.length ? "（提及 " + g.hits.join(" ") + "）" : "")).join("、") || "—"}`); md.push(""); }
+  for (const pfx of ["UPG", "SYS", "POL"]) { const r = res.prefixes[pfx]; md.push(`## ${pfx}`, "", `- 水位（下一个可用）= **${r.water}** ｜ 全局 max=${pfx}-${r.global} ｜ 分账：${r.per.map((x) => `${x.name}=${x.max == null ? "缺" : pfx + "-" + x.max}`).join(" ｜ ")}`); md.push("", `- 在册跳号 ${r.gaps.length} 个（区间 ${pfx}-${r.minCarded || 1}..${pfx}-${r.global}）：${r.gaps.slice(0, 20).map((g) => g.n + (g.hits.length ? "（提及 " + g.hits.join(" ") + "）" : "")).join("、") || "—"}`); md.push(""); }
   md.push("## 手写号段注记核（注记过时=红）", "");
   for (const n of res.notes) md.push(`- [${n.stale ? "🔴 注记过时" : "✅"} ] ${n.side} L${n.line}：注记 ${n.note} ＜ 机算全局 ${n.globalMax}`);
   md.push("");
@@ -167,6 +167,17 @@ if (kind === "bug") {
 const prio = itil ? itil.p : (opt("--priority") || "P2");
 if (!/^P[0-4]$/.test(prio)) { console.error(`❌ 拒立卡：--priority 值非法「${prio}」（P0-P4）`); process.exit(1); }
 
+// 前缀预检（warn 级·2026-10-08 立·SYS-196→UPG-589 误判案——README §五之二判例：
+//   治理产品面的闸/词典/清单 ⇒ UPG；工单系统自身机制（取号/铃/邮务/流程闸/看板）⇒ SYS。出生即警、不拦（人读自裁）。
+{
+  const blob = [title || "", ...noteParts].join(" ");
+  const prod = /产品仓|0027-mov|mov-vue|前端设计|app\/src|assets\/pages/;
+  const flow = /工单系统|取号|铃|邮务|邮局|看板|席位|工单库/;
+  const pm = blob.match(prod), fm = blob.match(flow);
+  if (prefix === "SYS" && pm) console.warn(`⚠ 前缀预检：SYS 卡正文出现产品面特征「${pm[0]}」——判例：治理产品面的工具/台账 ⇒ UPG（README §五之二·2026-10-08）；请复核前缀。`);
+  if (prefix === "UPG" && fm && !pm) console.warn(`⚠ 前缀预检：UPG 卡正文出现工单系统机制特征「${fm[0]}」——判例：工单系统自身机制 ⇒ SYS；请复核前缀。`);
+}
+
 // S2 锁式立卡：全局共享锁（驿站\共享\号段锁.lock——wx 在 NTFS 原子；两体系同锁=取号全局串行）；>60 秒=残锁强拆；最多等 10 秒
 try { fs.mkdirSync(STATION_LOCK_DIR, { recursive: true }); } catch {}
 const lock = SHARED_LOCK;
@@ -179,6 +190,40 @@ for (let i = 0; i < 50; i++) {
   }
 }
 if (fd === null) { console.error("❌ 取号锁占用超 10 秒——有别的立卡在进行或残锁未清，排查后重试"); process.exit(1); }
+
+// ── SYS-194 库锁（主修）：取号「读→追加」段并持 <库>.lock——与 set-status.py / lib-edit.mjs 跨语言同协议 ──
+// O_EXCL 原子建·内容 pid+时刻·排队等待（env SYS194_LIB_LOCK_WAIT 覆写·测试用）·15min 僵锁破锁留痕；
+// 锁序＝号段锁 → 库锁（单向·无环：其他库锁使用方不取号段锁，无死锁）。
+const LIB_LOCK = LIB + ".lock";
+const LIB_LOCK_WAIT_SEC = Number(process.env.SYS194_LIB_LOCK_WAIT || "30");
+const LIB_LOCK_STALE_SEC = 900;
+let libLocked = false;
+{
+  const deadline = Date.now() + LIB_LOCK_WAIT_SEC * 1000;
+  while (Date.now() <= deadline) {
+    try {
+      const lfd = fs.openSync(LIB_LOCK, "wx");
+      fs.writeSync(lfd, `${process.pid} ${new Date().toISOString()}`);
+      fs.closeSync(lfd);
+      libLocked = true;
+      break;
+    } catch (e) {
+      if (e.code !== "EEXIST") throw e;
+      let age = 0;
+      try { age = (Date.now() - fs.statSync(LIB_LOCK).mtimeMs) / 1000; } catch {}
+      if (age > LIB_LOCK_STALE_SEC) {
+        const stale = `${LIB_LOCK}.stale-${Math.floor(Date.now() / 1000)}`;
+        try { fs.renameSync(LIB_LOCK, stale); console.error(`⚠ 破僵锁（>${LIB_LOCK_STALE_SEC}s 未更新·疑持有者已死）→ 留痕 ${path.basename(stale)}`); } catch {}
+      }
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500);
+    }
+  }
+}
+if (!libLocked) {
+  fs.closeSync(fd); fs.rmSync(lock, { force: true }); // 不留号段死锁
+  console.error(`❌ 取号库锁超时（${LIB_LOCK_WAIT_SEC}s）：${path.basename(LIB_LOCK)} 被他人持有——稍后重试（写前重读再战，勿绕锁强写）`);
+  process.exit(1);
+}
 
 try {
   const id = `${prefix}-${globalNext(prefix)}`; // 锁内重新取号（S2 双账扫描；查号与落卡之间无窗）
@@ -226,6 +271,7 @@ TODO
 - **交付件正文禁写会陈化的绑定值**（2026-09-28 体例·审验席三次同型后裁）：报告/证据说明的正文里**不写**报告自身 sha、证据 pin、信 id、合并 sha——一律**只写指针**（如「pin 见 SUMS 文件」「报告 sha 见信封」）；绑定值由清单承载体（DEL/SUMS/信封）承载。
 - **交付登记不填 head**（2026-09-28 立·两次同型：交付方把**基点**填进 head ⇒ 卡面审计误判「已合未更新相位」并**给错药方**）：交付（delivered）时 **head 保持「—」**，head 只在**合并位**由设计师填入合并提交 sha。
 - **交付冻结 patch 用 git diff HEAD --no-renames**（2026-09-28 验收席 F-2 采纳）：改名会被展开成「删旧＋增新」⇒ 与 git status -uall 逐件口径一致；**段数 MUST == 变集件数**（不等即查）。
+- **单内产物一轮一版·一名一物**（2026-10-06 立·同族三现：532 R0 冻结构被同名覆盖·538 R2 同名累积·539 旧新双版并存致误读）：同一单内旧轮产物**改名（-v0/-r0）或移入 old/ 或直接覆盖**——禁「无后缀旧件＋有后缀新件」并存；交付/审验按名取件前先对件表。
 - **改到代码面 ⇒ 交付报告必附「app 全量零新增红」读数**（2026-09-28 验收席 F-3 采纳）：省掉验收席每次代跑，防「交付面缺件」。
 - **双实现同步红线**（mall 单必读·2026-09-10 立）：改动 「mall-web/**」 或 「app/src/main/assets/pages/mall/**」 的单——**改一侧 MUST 同批同步另一侧**（权威裁定＋逐页裁剪清单见 「mall-web/README.md」；漂移检查 「node scripts/mall-sync-check.mjs」，单侧漂移退出码 1）。
 - **scope_extra**（超申报登记·2026-09-28 审验 F-3 采纳）：本单**超出卡面范围**的附带改动在此逐件登记（件名＋为什么），空则写「无」。
@@ -243,6 +289,7 @@ TODO
   console.log(`✅ 立卡 ${id}：${title}（WSJF ${wsjf}·${prio}；全局锁+双账扫描 max+1${SANDBOX ? "·沙盒" : ""}）`);
   if (SANDBOX) console.log(`🛡 已拦真库写入：沙盒模式 → ${LIB}（真库 ${REAL_LIB} 零触）`); // SYS-104
 } finally {
+  try { fs.unlinkSync(LIB_LOCK); } catch {} // SYS-194：库锁释放（先库后号段·逆序）
   fs.closeSync(fd);
   fs.rmSync(lock, { force: true });
 }

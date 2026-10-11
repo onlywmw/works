@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "名称": "实现层单源清单（复用闸 registry）",
+    "版本": 1,
+    "更新日期": "2026-10-07",
+    "owner": "设计师",
+    "维护节奏": "新增/退役/豁免同轮登记（理由＋日期·本文内改）；周减负评审引用本件（只增不减=病）；owner=设计师",
+    "口径": "change=实现层单源化整理方案 §二/§六；派单模板口径补遗 #48；与 checks/dup-radar.mjs 同源消费（--check-registry 断链即红）",
+    "候件语义": "指定件尚不存在（收口单在途）——候件期间登记「候」单号，收口后同轮填指针；断链检查对候件只核单号在册"
+  },
+  "sources": [
+    {
+      "层": "网络",
+      "指定件": "（候 UPG-566 收口后填指针：共享 HTTP 薄层——基址/UA/超时/错误形态/401 钩）",
+      "守闸规则": "dup-radar：新 HttpURLConnection／自建 HTTP 客户端（现仓 25 件待收口·568 扩面）",
+      "候": "UPG-566",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    },
+    {
+      "层": "JSON",
+      "指定件": "app/src/main/kotlin/com/hermes/mov/mcp/MiniJson.kt",
+      "守闸规则": "dup-radar：org.json 引用（仅豁免册在案者除外·候 UPG-568 逐件判）",
+      "验证符号": "object MiniJson",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    },
+    {
+      "层": "加密",
+      "指定件": "app/src/main/java/com/mov/android/KeystoreAes.kt（唯一实现·AES/GCM）＋ app/src/main/java/com/mov/android/VaultKeystoreCrypto.kt（委托消费者）",
+      "守闸规则": "dup-radar：KeyGenerator.getInstance／自造 Keystore AES/GCM（实现数=1；CredentialStore 已收口=UPG-567 merged 2f7e15c7；抽取件 KeystoreAes 为明许单源·2026-10-07 合并位登记）",
+      "验证符号": "VaultKeystoreCrypto",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    },
+    {
+      "层": "存储根",
+      "指定件": "app/src/main/java/com/mov/android/AccountData.kt（accountRoot／accountDataDir；设备级＝具名件）",
+      "守闸规则": "dup-radar：File(filesDir, …) 直建平级根；禁新建全局根（沿 UPG-288/349/563/564/565）",
+      "验证符号": "fun accountDataDir",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    },
+    {
+      "层": "校验/文案",
+      "指定件": "app/src/main/kotlin/com/hermes/mov/ocr/Validators.kt ＋ app/src/main/java/com/mov/android/LoginState.kt（LoginValidators）",
+      "守闸规则": "dup-radar：新手机号/邮箱 Regex（校验单源）",
+      "验证符号": "fun isValidPhone",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    },
+    {
+      "层": "登录出口",
+      "指定件": "（候 UPG-567 收口后填指针：needLogin 单源出口——现 8 处手写）",
+      "守闸规则": "grep 单源：needLogin 出口新写点",
+      "候": "UPG-566",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    },
+    {
+      "层": "协议",
+      "指定件": "（候 UPG-569 收口后填指针：场景包共享协议——Ready 载荷解耦）",
+      "守闸规则": "定义数=1：AskBack/PlanResult 新副本",
+      "候": "UPG-569",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    },
+    {
+      "层": "卡片/工具面",
+      "指定件": "app/src/main/java/com/mov/android/tools/ToolsRegistry.kt ＋ app/src/main/java/com/mov/android/tools/MallRoomTools.kt（MallRoomState）",
+      "守闸规则": "入册防第二套（现状已单源）",
+      "验证符号": "object ToolsRegistry",
+      "owner": "设计师",
+      "更新日期": "2026-10-07"
+    }
+  ],
+  "豁免册": [
+    {
+      "件": "mall 原生 ⇄ WebView 双实现",
+      "层": "商城",
+      "理由": "双形态（原生全屏模式/WebView 页）设计需要；有 4 道同步闸（check-mall-mode/shelf/fastpath/sync-check）",
+      "复核条件": "闸存续即豁免"
+    },
+    {
+      "件": "settings 原生 ⇄ pages/settings",
+      "层": "设置",
+      "理由": "原生为在用面；WebView 版留档（浏览器宿主）·明文口径在案",
+      "复核条件": "定期核「WebView 版是否仍有消费者」"
+    },
+    {
+      "件": "vault 本地 ⇄ Envelope 便携格式",
+      "层": "存储/加密",
+      "理由": "本地 Keystore 密文 与 便携自包含信封＝两个真需求域",
+      "复核条件": "改格式须过单"
+    },
+    {
+      "件": "MCP 客户端自建 HTTP",
+      "层": "网络",
+      "理由": "协议族独立（JSON-RPC 特定传输语义）",
+      "复核条件": "若并入薄层须先证等值"
+    },
+    {
+      "件": "org.json（12 件未迁者）",
+      "层": "JSON",
+      "理由": "候 UPG-568 逐件判：能力缺口入册/可迁即迁",
+      "复核条件": "UPG-568 收口时定"
+    },
+    {
+      "件": "app/src/androidTest/java/com/mov/android/Upg567ReadbackInstrumentedTest.kt（跨版本回读仪·测试夹具）",
+      "层": "存储根",
+      "理由": "instrumented 测试夹具需持久位（filesDir 读回文件＝跨版本设计·非产品路径）",
+      "复核条件": "若夹具逻辑迁入产品代码即撤"
+    }
+  ]
+}

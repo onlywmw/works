@@ -140,7 +140,7 @@ test("B② 阈值告警：默认阈内不报；构造超阈（pollLimit=1）报�
   writePi(pi, "程序员", [POLL(), POLL()]);
   const alerts = [];
   tokenSentinel(true, sentinelOpts(root, { onAlert: (m) => alerts.push(m) }));
-  assert.equal(alerts.length, 0, "默认阈（polls>20）内不报");
+  assert.equal(alerts.length, 0, "默认阈（30）内不报");
   const o2 = sentinelOpts(root, { pollLimit: 1, onAlert: (m) => alerts.push(m) });
   const b = tokenSentinel(true, o2);
   assert.equal(alerts.length, 1, "超阈告警一次");
@@ -165,4 +165,34 @@ test("B③ kimi 计数：step.begin=回合·Bash 查看类=轮询（增量）", 
   const rec = JSON.parse(fs.readFileSync(path.join(root, "state.json"), "utf8")).files[f];
   assert.deepEqual([rec.turns, rec.polls], [2, 1], "kimi：2 回合·1 轮询");
   assert.equal(b.seats["设计师"].today, 6, "token 四字段读数不受影响（5+1）");
+});
+
+// ── SYS-193（降耗阈标定）：轮询 20→30＋轮询维「≥阈即响」；回合维「>阈」不动 ──
+
+test("B④ SYS-193 阈标定：轮询 29 静音·30 即响（阈≥口径）——A/B 降噪侧", () => {
+  const root = tmpRoot("thr193a"); const pi = path.join(root, "pi");
+  fs.mkdirSync(pi, { recursive: true });
+  const f = writePi(pi, "程序员", Array.from({ length: 29 }, () => POLL()));
+  const alerts = [];
+  let b = tokenSentinel(true, sentinelOpts(root, { onAlert: (m) => alerts.push(m) }));
+  assert.deepEqual([recOf(root, f).turns, recOf(root, f).polls], [29, 29], "轮询 29（POLL 行同为 assistant 行⇒turns 同计；旧阈 20 下本会响）");
+  assert.equal(alerts.length, 0, "29 < 阈 30 ⇒ 静默（边际噪声归零）");
+  assert.equal(b.thrift.length, 0, "board.thrift 不含 29");
+  fs.appendFileSync(f, POLL() + "\n", "utf-8");
+  b = tokenSentinel(true, sentinelOpts(root, { onAlert: (m) => alerts.push(m) }));
+  assert.equal(recOf(root, f).polls, 30, "轮询 30");
+  assert.equal(alerts.length, 1, "30 ≥ 阈 30 ⇒ 响（≥序口径）");
+  assert.ok(alerts[0].includes("阈≥30"), "文案阈值口径（≥）：" + alerts[0]);
+  assert.equal(b.thrift.length, 1, "board.thrift 列 30");
+});
+
+test("B⑤ SYS-193 真信号不误杀：回合 802（11:58 实况先例）仍响·阈>800 口径不变", () => {
+  const root = tmpRoot("thr193b"); const pi = path.join(root, "pi");
+  fs.mkdirSync(pi, { recursive: true });
+  const f = writePi(pi, "程序员", Array.from({ length: 802 }, () => asstTurn()));
+  const alerts = [];
+  tokenSentinel(true, sentinelOpts(root, { onAlert: (m) => alerts.push(m) }));
+  assert.equal(recOf(root, f).turns, 802, "turns=802");
+  assert.equal(alerts.length, 1, "802 > 800 ⇒ 响（真信号路径不动）");
+  assert.ok(alerts[0].includes("阈>800"), "回合阈口径沿「>」不变：" + alerts[0]);
 });

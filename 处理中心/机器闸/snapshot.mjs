@@ -63,6 +63,10 @@ if (cmd === "save") {
   const i = process.argv.indexOf("--");
   if (!short || i < 0) { console.error("用法：restore <sha> -- <路径>"); process.exit(2); }
   const target = process.argv[i + 1];
+  // SYS-204 A#3：target 须落在仓内（拒绝对路径/../ 穿越——防误覆盖仓外文件）
+  const repoAbs = path.resolve(REPO);
+  const tAbs = path.resolve(repoAbs, target);
+  if (!(tAbs === repoAbs || tAbs.startsWith(repoAbs + path.sep))) { console.error(`target 必须在仓内：${target}`); process.exit(2); }
   const full = short.length === 40 ? short : git(["rev-parse", short]);
   git(["checkout", full, "--", target]);
   console.log(`✅ 已从 ${short} 恢复：${target}`);

@@ -11,11 +11,11 @@
   ② 归属校验：branch 必须含工单号小写（feat/upg107 ↔ UPG-107）——错挂拦截
   ③ phase 迁移校验：closed 必须先 merged；rejected_work 必须 --note 附注
   ④ hash 校验：--head 必须在主仓存在；phase=merged 时必须是 origin/main 祖先
-  ⑤ 写前备份 _备份归档\\；写后自动 sync --sync + --check（diff≠0=报错）
+  ⑤ 写前备份 _备份归档\\；写后自动 sync --sync + --check（diff≠0=报错）；备份**滚动窗口**=最近 20 份（超出即剪·`--prune-backups [N]` 手动入口——2026-10-05 瘦身批3）
   ⑥ 写锁（R2·2026-10-04 工单系统重构）：读-改-写全程持锁 <库路径>.lock（O_EXCL 原子建·默认 30s 排队·15min 僵锁破锁留痕）——「写前重读」纪律闸内建；等待上限可 env SET_STATUS_LOCK_WAIT 覆盖（测试用）
   ⑦ 读回对账（R2）：写后重读——目标卡字段到位＋全卡头集合零变动（丢行/覆盖即红·真库自动回滚备份）——「写后读回」纪律闸内建（UPG-56/57/60 同型防线）
 """
-import argparse, datetime, glob, hashlib, io, os, re, subprocess, sys
+import argparse, datetime, glob, hashlib, io, json, os, re, subprocess, sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
@@ -23,6 +23,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LIB = os.path.join(ROOT, "处理中心", "工单库.md")
 LIB_GLOBAL = None
+BACKUP_KEEP = 20  # 备份滚动窗口（2026-10-05 瘦身批3：存量 1595 件/1.07GB 与 git 历史 100% 冗余 → 只留最近 20 份；回滚/去重只读“最新一份”，语义不变）
 
 CONFIG_FILE = os.path.join(ROOT, "项目配置.md")
 DEFAULT_REPO = r"E:\mov归档\0027-mov"
@@ -138,18 +139,52 @@ def save(text):
     open(LIB_GLOBAL or LIB, "w", encoding='utf-8', newline="\n").write(text)
 
 
+def bak_ts_key(name):
+    """备份件时间键＝文件名尾 <YYYYMMDD>_<HHMMSS>（**不能按整名倒序**——tag 前缀 UPG- 恒排在 SYS- 前，会把旧件当最新：2026-10-05 瘦身批3 实测踩中）。"""
+    m = re.search(r"_(\d{8})_(\d{6})\.md$", name)
+    return (m.group(1) + m.group(2)) if m else ""
+
+
+def prune_backups(backup_dir, keep=BACKUP_KEEP):
+    """滚动窗口：仅保留时间最新 keep 份 工单库_backup_setstatus_*；返回剪除数。
+    fail-quiet：剪枝异常不影响写入（备份已落盘才是硬要求）——2026-10-05 瘦身批3。"""
+    try:
+        items = sorted([f for f in os.listdir(backup_dir) if f.startswith("工单库_backup_setstatus_")], key=bak_ts_key, reverse=True)
+    except OSError:
+        return 0
+    n = 0
+    for f in items[keep:]:
+        try:
+            os.remove(os.path.join(backup_dir, f))
+            n += 1
+        except OSError:
+            pass
+    return n
+
+
 def backup(tag):
-    """写前备份——md5 比对无变化不备份（2026-09-09 节流）；SYS-104：沙盒模式不动真库备份区"""
-    if LIB_GLOBAL:  # SYS-104：--lib/--adhoc-lib 沙盒模式——不碰真 归档/_备份归档
-        print("  ○ 沙盒模式：跳过真库备份（不写 归档/_备份归档）")
-        return "(沙盒模式·跳过备份)"  # 调用方 os.path.basename() 安全（非路径字串）
+    """写前备份——md5 比对无变化不备份（2026-09-09 节流）；SYS-104：沙盒模式不动真库备份区。
+    SYS-194：沙盒模式改「沙盒旁备份」（<沙盒>.bak-<ts>·不写真 归档/_备份归档，但保留 ⑦ 对账回滚能力）。"""
     ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     src = LIB_GLOBAL or LIB
+    if LIB_GLOBAL:  # SYS-104：--lib/--adhoc-lib 沙盒模式——不碰真 归档/_备份归档
+        import shutil as _sh
+        prev = sorted(glob.glob(glob.escape(src) + ".bak-*"))
+        with open(src, "rb") as f:
+            cur_md5 = hashlib.md5(f.read()).hexdigest()
+        if prev:
+            with open(prev[-1], "rb") as f:
+                if hashlib.md5(f.read()).hexdigest() == cur_md5:
+                    return prev[-1]  # 无变化不重复备份（沙盒节流）
+        bak = f"{src}.bak-{ts}"
+        _sh.copyfile(src, bak)
+        print(f"  ○ 沙盒模式：跳过真库备份（改落沙盒旁 {os.path.basename(bak)}·真备份区零触）")
+        return bak
     backup_dir = os.path.join(ROOT, "处理中心", "归档", "_备份归档")
     os.makedirs(backup_dir, exist_ok=True)
 
-    # 找最近一次备份，md5 比对
-    existing = sorted([f for f in os.listdir(backup_dir) if f.startswith("工单库_backup_setstatus_")], reverse=True)
+    # 找时间上最近一次备份（不得按整名倒序：tag 前缀会错序），md5 比对
+    existing = sorted([f for f in os.listdir(backup_dir) if f.startswith("工单库_backup_setstatus_")], key=bak_ts_key, reverse=True)
     if existing:
         latest = os.path.join(backup_dir, existing[0])
         with open(latest, "rb") as f:
@@ -162,6 +197,9 @@ def backup(tag):
     dst = os.path.join(backup_dir, f"工单库_backup_setstatus_{tag}_{ts}.md")
     import shutil
     shutil.copyfile(src, dst)
+    n = prune_backups(backup_dir)  # 滚动窗口（fail-quiet）
+    if n:
+        print(f"  🧹 备份滚动：剪除 {n} 份旧备份（保留最近 {BACKUP_KEEP} 份）")
     return dst
 
 
@@ -199,7 +237,7 @@ def parse_block(card_lines):
 
 
 def render_block(kv):
-    order = ["phase", "branch", "head", "std", "delivery_id",
+    order = ["phase", "branch", "head", "std", "delivery_id", "install",
              "designer", "dev", "inspector", "merge", "actor", "updated_at"]
     out = [FENCE]
     for k in order:
@@ -229,16 +267,16 @@ def find_worktree(kv, card_lines):
 
 
 def compute_tree_digest(wt):
-    """全树摘要锚 = sha256(排序后 `status --porcelain -uall` 行 + `diff HEAD --no-renames` 全文) 前16位。
-    （不用 `git stash create`：默认不含 untracked 新件、且产物无 ref 会被 gc 回收。）"""
-    st = subprocess.run(["git", "-C", wt, "status", "--porcelain", "-uall"],
-                        capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=NO_WINDOW)
-    df = subprocess.run(["git", "-C", wt, "diff", "HEAD", "--no-renames"],
-                        capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=NO_WINDOW)
-    if st.returncode != 0 or df.returncode != 0:
+    """全树摘要锚（SYS-200 归一 · 索引态无关）：单源＝机器闸/lib/tree-digest.mjs（node 子进程直调·防再分叉）。
+    口径：路径集（HEAD 差异 ∪ 未跟踪）→ 逐路径工作树内容 sha256 → 清单 sha256 前16。
+    `git add -N`（intent-to-add）与 untracked 两态同判；历史锚不回溯（旧口径锚与新口径不可比）。"""
+    r = subprocess.run(["node", os.path.join("处理中心", "机器闸", "lib", "tree-digest.mjs"), wt],
+                       cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace",
+                       creationflags=NO_WINDOW)
+    out = (r.stdout or "").strip()
+    if r.returncode != 0 or not re.fullmatch(r"[0-9a-f]{16}", out):
         return None
-    payload = "\n".join(sorted(st.stdout.splitlines())) + "\n--\n" + df.stdout
-    return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
+    return out
 
 
 def sync_and_check():
@@ -291,6 +329,39 @@ def readback(ticket, want, pre_headers, bak):
     print(f"  🔒 读回对账通过：{ticket} 字段到位·卡头集合零变动（在册 {len(headers2)} 卡）")
 
 
+def set_install_field(ticket, value):
+    """SYS-186 版本记账：只更新 install: 字段（装机回写用·不动 phase/角色列/updated_at）。
+    纪律同 set_status：持锁→备份→写→读回对账；值形如 V1.1-<sha>[+suffix+dirty]·≤70。"""
+    v = (value or "").strip()
+    if not v:
+        die("--install 值不能为空（形如 V1.1-<sha>[+suffix+dirty]）")
+    if len(v) > 70:
+        die(f"--install 值超长（{len(v)}>70）:{v[:40]}…")
+    if not re.match(r"^V\d+(?:\.\d+)*-\S+$", v):
+        die(f"--install 值形如 V1.1-<sha>[+suffix+dirty]：{v[:48]}")
+    global _ACTIVE_LOCK
+    lock = LibLock(LIB_GLOBAL or LIB)
+    lock.acquire()
+    _ACTIVE_LOCK = lock
+    lines = load().split("\n")
+    start, end = find_card(lines, ticket)
+    card = lines[start:end]
+    bi, bj, kv = parse_block(card)
+    if bi is None:
+        die(f"{ticket} 无 status 块（先 set-status 立卡后才能记 install）")
+    kv["install"] = v
+    card = card[:bi] + render_block(kv) + card[bj + 1:]
+    lines = lines[:start] + card + lines[end:]
+    # SYS-194 ⑧：写前即刻重读盘面——⑦ 比对面取「disk 现态」（初始读与写之间被外部写 ⇒ 写后对账现形并回滚备份）
+    expected_headers = [l for l in load().split("\n") if re.match(r"^# [A-Z][A-Z0-9]*-\d+\s", l)]
+    b = backup(ticket)
+    save("\n".join(lines))
+    readback(ticket, {"install": v}, expected_headers, b)
+    lock.release()
+    _ACTIVE_LOCK = None
+    print(f"📇 {ticket} install: {v}")
+
+
 def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor, extra_set=None, exempt=None):
     # 闸 ⓪ 交付门（2026-09-30 05:3x 立·治「交付即填 delivery_id」连续 8 单同型的事）：
     #   体例已写进派单模板补遗，但八单仍漏（模板文本治不了执行）⇒ 改为**机器拒绝**：
@@ -316,6 +387,11 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
     _ACTIVE_LOCK = lock
     text = load()
     lines = text.split("\n")
+    # SYS-194 测试缝（仅沙盒 --lib 生效·生产零延时）：显式延时以确定性地构造「读后写前」并发窗口
+    _delay_ms = float(os.environ.get("SET_STATUS_TEST_DELAY_MS", "0") or 0)
+    if _delay_ms > 0 and LIB_GLOBAL:
+        import time as _t2
+        _t2.sleep(_delay_ms / 1000)
     start, end = find_card(lines, ticket)
     card = lines[start:end]
     bi, bj, kv = parse_block(card)
@@ -431,9 +507,10 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
         kv[col] = label[:70]
     for kv_pair in (extra_set or []):
         k, _, v = kv_pair.partition("=")
-        if k not in ("designer", "dev", "inspector", "merge", "std", "delivery_id", "branch", "head"):
+        if k not in ("designer", "dev", "inspector", "merge", "std", "delivery_id", "branch", "head", "install"):
             die(f"--set 字段非法：{k}")
-        kv[k] = v[:70] if k in ("designer", "dev", "inspector", "merge") else v
+        # SYS-186：install（设备实装版本名）与角色列同口径截断 ≤70
+        kv[k] = v[:70] if k in ("designer", "dev", "inspector", "merge", "install") else v
 
     new_block = render_block(kv)
     if bi is None:
@@ -449,12 +526,14 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
     else:
         card = card[:bi] + new_block + card[bj + 1:]
     lines = lines[:start] + card + lines[end:]
+    # SYS-194 ⑧：写前即刻重读盘面——⑦ 比对面取「disk 现态」（初始读与写之间被外部写 ⇒ 写后对账现形并回滚备份）
+    expected_headers = [l for l in load().split("\n") if re.match(r"^# [A-Z][A-Z0-9]*-\d+\s", l)]
     b = backup(ticket)
     save("\n".join(lines))
     # R2 闸⑦：写后读回对账——目标卡字段到位＋全卡头集合零变动；失败=真库回滚备份后拒写
     readback(ticket,
              {**{"phase": phase}, **({"branch": branch} if branch else {}), **({"head": head} if head else {})},
-             [l for l in text.split("\n") if re.match(r"^# [A-Z][A-Z0-9]*-\d+\s", l)], b)
+             expected_headers, b)
     lock.release()
     _ACTIVE_LOCK = None
     if LIB_GLOBAL:
@@ -464,6 +543,59 @@ def set_status(ticket, phase, role, note, branch, head, std, delivery_id, actor,
     else:
         sync_and_check()
         print(f"✅ {ticket} → phase={phase}（块已写+表已 sync+check 通过；备份 {os.path.basename(b)}）")
+
+    # 2026-10-05（UPG-499 静默 9h 案·ultra 版）：merged＝挂起依赖的达成事件——顺手查挂起表，依赖全达即提示可解挂（只提示·不自动解挂）
+    if phase == "merged":
+        try:
+            _pf = os.environ.get("MOV_PARK_FILE") or os.path.join(ROOT, "处理中心", "看板", "挂起.json")
+            _parks = json.load(open(_pf, encoding="utf-8")) if os.path.exists(_pf) else {}
+            _all = "\n".join(lines)
+
+            def _ph(dep):
+                _b = re.search(rf"(?ms)^# {re.escape(dep)}\s.*?(?=^# |\Z)", _all)
+                _m = re.search(r"(?m)^phase:\s*(\S+)", _b.group(0)) if _b else None
+                return _m.group(1) if _m else "?"
+            for _pid, _p in _parks.items():
+                _u = str(_p.get("until") or "")
+                if _pid == ticket or "合并" not in _u:
+                    continue
+                _deps = re.findall(r"[A-Z]+-\d+", _u)
+                if ticket in _deps and all(_ph(d) in ("merged", "obsolete", "closed") for d in _deps):
+                    print(f"  ⚠ 挂起依赖达成：{_pid} —— 可解挂（node 处理中心/看板/engine.mjs 解挂 {_pid}）")
+        except Exception as _e:
+            print(f"  （挂起复核跳过：{_e}）")
+
+    # 2026-10-05（用户报「之前提过的问题没落实」案·UPG-519 根因）：merged＝挂账行「候 <单号>」类条件的达成事件——
+    #   顺手扫 问题区/挂账登记表.md：「设计师验证」或「施工/转工单」列含「候」且未勾销的行，其引用了本单（本单刚终态＝其条件达成事件）⇒ 提示可复核销账。
+    #   ★2026-10-05 复演修正：原判据是「引用他单且他单已终态」——每单刷 58 条陈年噪声、反而不放本单刚满足的行（UPG-499 复演实证）；改「引用本单」＝与 HY-BASE-27 主口径（窗口×候行）同语义。
+    #   ★只提示·不自动销（台账人工裁决）；fail-quiet；沙盒跳过（不读真面）；输出上限 5 条+计数（SYS-154 摘要纪律）。
+    if phase == "merged" and not LIB_GLOBAL:
+        try:
+            _lf = os.path.join(ROOT, "处理中心", "问题区", "挂账登记表.md")
+            if os.path.exists(_lf) and "_ph" in dir():
+                _rows = [l for l in open(_lf, encoding="utf-8").read().splitlines() if l.startswith("| 挂账")]
+                _closed = ("✅", "已销", "已闭", "已落", "已核销")
+                _hits = []
+                for _r in _rows:
+                    _c = _r.split("|")
+                    if len(_c) < 8:
+                        continue
+                    _verify = (_c[6] or "").strip()      # 第6列 = 设计师验证
+                    _work = (_c[7] or "").strip()          # 第7列 = 施工/转工单
+                    if "候" not in _verify and "候" not in _work:
+                        continue
+                    if any(_m in _verify for _m in _closed):
+                        continue
+                    _ids = [i for i in re.findall(r"[A-Z]+-\d+", _r) if i == ticket]
+                    _hit = sorted({i for i in _ids if _ph(i) in ("merged", "obsolete", "closed")})
+                    if _hit:
+                        _hits.append(((_c[1] or "").strip()[:26], _hit[:2], _verify[:20]))
+                for _h in _hits[:5]:
+                    print(f"  ⚠ 挂账可复核：{_h[0]} —— 相关单 {','.join(_h[1])} 已终态（候={_h[2]}…）·人工裁定销/改")
+                if len(_hits) > 5:
+                    print(f"  （另有 {len(_hits)-5} 条同型候选——台账：处理中心/问题区/挂账登记表.md）")
+        except Exception as _e:
+            print(f"  （挂账复核跳过：{_e}）")
 
 
 def PHASE_LABEL(phase):
@@ -487,7 +619,7 @@ def backfill():
     # 自后向前插入，行号不失效
     cards = []
     for i, l in enumerate(lines):
-        m = re.match(r"^# ((?:UPG|S|W|SYS)-\d+)\s", l)
+        m = re.match(r"^# ((?:UPG|SYS|POL)-\d+)\s", l)
         if m:
             cards.append((i, m.group(1)))
     ends = [c[0] for c in cards[1:]] + [len(lines)]
@@ -579,11 +711,13 @@ def main():
     ap.add_argument("--head")
     ap.add_argument("--std")
     ap.add_argument("--delivery-id", dest="delivery_id")
+    ap.add_argument("--install", help="设备实装版本名（装机回写 install: 字段·只改该字段·SYS-186）")
     ap.add_argument("--actor", default="设计师")
     ap.add_argument("--set", dest="extra_set", action="append", default=[])
     ap.add_argument("--backfill", action="store_true")
     ap.add_argument("--show", action="store_true")
     ap.add_argument("--exempt", help="豁免理由（merged 登记跳过 hash 祖先闸——红线22 显式豁免，理由入册）")
+    ap.add_argument("--prune-backups", dest="prune_backups", nargs="?", type=int, const=BACKUP_KEEP, default=None, help=f"手动剪枝：保留最近 N 份工单库备份（缺省 {BACKUP_KEEP}）后退出")
     a = ap.parse_args()
     # P0-4 Registry-first routing：--system → registry → lib（普通业务入口）
     if a.system:
@@ -608,10 +742,22 @@ def main():
     if a.backfill:
         backfill()
         return
+    if a.prune_backups is not None:
+        if LIB_GLOBAL:
+            print("  ○ 沙盒模式：跳过备份剪枝（不触真 归档面）")
+            return
+        _bd = os.path.join(ROOT, "处理中心", "归档", "_备份归档")
+        _n = prune_backups(_bd, a.prune_backups)
+        print(f"🧹 备份滚动：剪除 {_n} 份（保留最近 {a.prune_backups} 份）｜{_bd}")
+        return
     if not a.ticket:
         die("缺工单号")
     if a.show:
         show(a.ticket)
+        return
+    if a.install:
+        # SYS-186：安装回写专用口（只改 install: 字段——免重跑 phase 流程/其交付门）
+        set_install_field(a.ticket, a.install)
         return
     if not a.phase:
         die("缺 --phase")
@@ -670,7 +816,8 @@ def main():
             _fh = open(_mlog, "ab")
             _flags = (subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == "nt" else 0
             subprocess.Popen(
-                ["node", os.path.join(ROOT, "处理中心", "机器闸", "装机.mjs")],
+                ["node", os.path.join(ROOT, "处理中心", "机器闸", "装机.mjs"), "--purpose", "main-align", "--by", "merge-hook",
+                 "--ticket", a.ticket],  # SYS-184：设备包台账记触发源｜SYS-186：带单号 ⇒ 卡面 install: 自动回写
                 cwd=ROOT, stdout=_fh, stderr=subprocess.STDOUT,
                 creationflags=_flags, close_fds=True,
             )

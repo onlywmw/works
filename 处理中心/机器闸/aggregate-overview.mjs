@@ -108,7 +108,7 @@ function parseLib(libPath, sysDef) {
     const stage = normalizeStage(stm?.[1] || "");
     // === Ownership Validator（P0-2）：卡 ID 前缀 == Registry.prefix == 库归属 ===
     const idPrefix = no.split(/[-—]/)[0];
-    const allowedPrefix = new Set([sysDef.prefix.replace(/-$/, ""), ...(sysDef.retired_prefixes || [])].map(x => x.toUpperCase()));
+    const allowedPrefix = new Set([sysDef.prefix.replace(/-$/, ""), ...(sysDef.retired_prefixes || []), ...(sysDef.extra_prefixes || [])].map(x => x.toUpperCase()));
     const ownershipOk = allowedPrefix.has(idPrefix.toUpperCase());
     cards.push({
       no, title: (title?.[1] || "").trim().slice(0, 60),
@@ -244,7 +244,7 @@ ${featNote}${warnNote}${warnHtml}
       errors: warnings.length + refIssues.length,
       status,
     };
-    html = html.replace("</body>", '<script id="snapshot" type="application/json">' + JSON.stringify(snapshot) + '</script>\n</body>');
+    html = html.replace("</body>", '<script id="snapshot" type="application/json">' + JSON.stringify(snapshot).replace(/</g, "\\u003c") + '</script>\n</body>');   // SYS-204 B#28：内联 JSON 逃逸 <（防 </script> 断出注入）
     const bar = status === "WARNING"
       ? '<div style="background:#FEF3C7;color:#92400E;padding:8px 16px;border-radius:8px;margin-bottom:12px;font-size:13px;font-weight:600">⚠️ SNAPSHOT WARNING — 有提示级问题（历史状态/功能域待补录），快照仍可用</div>'
       : status === "INVALID"
